@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Métadonnées de base -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkings de Strasbourg - Carte et Tableau</title>
+    
+    <!-- ========================================= -->
+    <!-- BIBLIOTHÈQUES EXTERNES                    -->
+    <!-- ========================================= -->
+    
+    <!-- Leaflet CSS pour la carte interactive -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    
+    <!-- DataTables CSS pour le tableau triable -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css" />
+    
+    <!-- ========================================= -->
+    <!-- STYLES CSS                                -->
+    <!-- ========================================= -->
+    <style>
+        /**
+         * Variables CSS pour la cohérence des couleurs 
+         * et faciliter la personnalisation de l'interface
+         */
+        :root {
+            --primary-color: #0D47A1;      /* Bleu foncé pour éléments principaux */
+            --secondary-color: #2196F3;     /* Bleu clair pour éléments secondaires */
+            --background-color: #F5F5F5;    /* Gris très clair pour le fond */
+            --text-color: #333;             /* Gris foncé pour le texte */
+            --success-color: #4CAF50;       /* Vert pour les indicateurs positifs (> 30% libre) */
+            --warning-color: #FF9800;       /* Orange pour les indicateurs d'attention (10-30% libre) */
+            --danger-color: #777777;        /* Gris foncé pour les indicateurs critiques (< 10% libre) */
+            --closed-color: #000000;        /* Noir pour les parkings fermés */
+        }
+        
+        /* Réinitialisation de base et styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== MAIN CONTAINER ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        /* ===== TABS NAVIGATION ===== */
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-right: 0.5rem;
+            border-radius: 5px 5px 0 0;
+            background-color: #eee;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border-color: #ddd;
+            border-bottom-color: white;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* ===== MAP CONTAINER ===== */
+        #map-container {
+            height: 600px;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        /* ===== CONTROLS ===== */
+        #last-update {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+        
+        #refresh-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 1rem;
+        }
+        
+        #refresh-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* ===== TABLE STYLES ===== */
+        /* Style spécial pour les lignes de parkings fermés */
+        table.dataTable tbody tr.status-closed {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== LOADING SPINNER ===== */
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* ===== ERROR MESSAGE ===== */
+        .error-message {
+            color: var(--danger-color);
+            text-align: center;
+            margin: 2rem;
+            font-weight: bold;
+        }
+        
+        /* ===== POPUP STYLES ===== */
+        .marker-popup {
+            max-width: 300px;
+        }
+        
+        .marker-popup h3 {
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .marker-popup .availability {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .marker-popup .description {
+            margin-top: 10px;
+            font-size: 0.9em;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        /* Styles pour les boutons dans les popups */
+        .marker-popup .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .marker-popup .toggle-description {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            color: var(--primary-color);
+            background-color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .marker-popup .toggle-description:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .marker-popup .nav-button {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .marker-popup .nav-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Style pour les liens de parkings dans le tableau */
+        .parking-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        
+        .parking-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            #map-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================= -->
+    <!-- HEADER                                    -->
+    <!-- ========================================= -->
+    <header>
+        <h1>Parkings de Strasbourg</h1>
+        <p>Consultez en temps réel les places disponibles dans les parkings de la ville</p>
+    </header>
+    
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT                              -->
+    <!-- ========================================= -->
+    <main>
+        <!-- Contrôles principaux -->
+        <div id="controls">
+            <button id="refresh-btn">Rafraîchir les données</button>
+            <div id="last-update">Dernière mise à jour : --</div>
+        </div>
+        
+        <!-- Système d'onglets -->
+        <div class="tabs">
+            <div class="tab active" data-tab="map">Carte</div>
+            <div class="tab" data-tab="table">Tableau</div>
+        </div>
+        
+        <!-- Contenu de l'onglet Carte -->
+        <div id="map-tab" class="tab-content active">
+            <div id="map-container"></div>
+        </div>
+        
+        <!-- Contenu de l'onglet Tableau -->
+        <div id="table-tab" class="tab-content">
+            <table id="parking-table" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>État</th>
+                        <th>Places totales</th>
+                        <th>Places libres</th>
+                        <th>% disponible</th>
+                    </tr>
+                </thead>
+                <tbody id="parking-list">
+                    <!-- Les données seront insérées ici via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <!-- ========================================= -->
+    <!-- FOOTER                                    -->
+    <!-- ========================================= -->
+    <footer>
+        <p>Données Open Data ville de Strasbourg - (c) 2025 Claude3.7 sur directives E.DORNINGER</p>
+    </footer>
+    
+    <!-- ========================================= -->
+    <!-- BIBLIOTHÈQUES JAVASCRIPT                  -->
+    <!-- ========================================= -->
+    
+    <!-- jQuery pour DataTables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- DataTables JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <!-- ========================================= -->
+    <!-- CODE JAVASCRIPT PRINCIPAL                 -->
+    <!-- ========================================= -->
+    <script>
+        /**
+         * ========================================
+         * CONFIGURATION ET CONSTANTES
+         * ========================================
+         */
+        
+        /**
+         * Intervalle de rafraîchissement automatique des données (en millisecondes)
+         * 60000 ms = 1 minute
+         */
+        const REFRESH_INTERVAL = 60000;
+        
+        /**
+         * URLs des APIs de données ouvertes de Strasbourg
+         * - PARKING_AVAILABILITY_API : Données en temps réel sur l'occupation des parkings
+         * - PARKING_INFO_API : Informations générales sur les parkings (emplacement, description, etc.)
+         */
+        const PARKING_AVAILABILITY_API = "https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/occupation-parkings-temps-reel/records?limit=100";
+        const PARKING_INFO_API = "https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/parkings/records?limit=100";
+        
+        /**
+         * ========================================
+         * VARIABLES GLOBALES
+         * ========================================
+         */
+        
+        /** Données brutes récupérées des APIs */
+        let parkingInfoData = [];         // Informations statiques des parkings
+        let parkingAvailabilityData = []; // Données dynamiques d'occupation
+        
+        /** Variables temporelles et minuteries */
+        let lastUpdateTime = null;        // Horodatage de la dernière mise à jour des données
+        let refreshTimer = null;          // Référence au timer de rafraîchissement automatique
+        
+        /** Variables pour la carte */
+        let map = null;                   // Instance de la carte Leaflet
+        let markersMap = new Map();       // Map pour stocker les marqueurs par ID
+        let highlightCircle = null;       // Cercle de mise en évidence pour le parking sélectionné
+        
+        /** Référence à l'instance DataTable */
+        let dataTable = null;             // Instance du tableau DataTable
+        
+        /**
+         * ========================================
+         * FONCTIONS D'INITIALISATION
+         * ========================================
+         */
+        
+        /**
+         * Fonction principale d'initialisation de l'application
+         * Appelée au chargement de la page
+         */
+        function init() {
+            // Initialiser la carte Leaflet
+            setupMap();
+            
+            // Configurer les écouteurs d'événements (boutons, onglets, etc.)
+            setupEventListeners();
+            
+            // Démarrer le rafraîchissement automatique des données
+            startAutoRefresh();
+            
+            // Charger les données initiales
+            fetchData();
+        }
+        
+        /**
+         * Configuration et initialisation de la carte Leaflet
+         */
+        function setupMap() {
+            // Coordonnées du centre de Strasbourg
+            const strasbourg = [48.5734, 7.7521];
+            
+            // Initialiser la carte Leaflet avec le centre et le niveau de zoom initial
+            map = L.map('map-container').setView(strasbourg, 13);
+            
+            // Ajouter la couche de tuiles OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+        }
+        
+        /**
+         * Configuration des écouteurs d'événements pour les interactions utilisateur
+         */
+        function setupEventListeners() {
+            // Écouteur pour le bouton de rafraîchissement manuel des données
+            document.getElementById('refresh-btn').addEventListener('click', fetchData);
+            
+            // Configuration du système d'onglets
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Retirer la classe active de tous les onglets et contenus
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Ajouter la classe active à l'onglet cliqué et au contenu correspondant
+                    this.classList.add('active');
+                    document.getElementById(this.dataset.tab + '-tab').classList.add('active');
+                    
+                    // Redimensionner la carte si on passe à l'onglet carte
+                    // (nécessaire car la carte Leaflet peut ne pas se redimensionner correctement
+                    // si elle est initialement cachée)
+                    if (this.dataset.tab === 'map' && map) {
+                        setTimeout(() => {
+                            console.log("Redimensionnement de la carte");
+                            map.invalidateSize();
+                        }, 100); // Délai pour s'assurer que l'onglet est bien affiché
+                    }
+                });
+            });
+        }
+        
+        /**
+         * Démarrer le rafraîchissement automatique des données
+         * Configure un timer qui appelle fetchData() à intervalles réguliers
+         */
+        function startAutoRefresh() {
+            // Nettoyer l'ancien timer s'il existe pour éviter les doublons
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+            }
+            
+            // Configurer un nouveau timer qui appellera fetchData() à intervalles réguliers
+            refreshTimer = setInterval(fetchData, REFRESH_INTERVAL);
+        }
+        
+        /**
+         * ========================================
+         * FONCTIONS DE GESTION DES DONNÉES
+         * ========================================
+         */
+        
+        /**
+         * Récupérer les données depuis les APIs
+         * Cette fonction récupère à la fois les informations sur les parkings
+         * et les données de disponibilité en temps réel
+         */
+        function fetchData() {
+            // Indiquer à l'utilisateur que le chargement est en cours
+            updateLastUpdateTime('Chargement en cours...');
+            
+            // Utiliser async/await dans une fonction interne pour plus de clarté
+            const loadData = async () => {
+                try {
+                    // 1. Récupérer les informations des parkings (position, description, etc.)
+                    console.log("Chargement des informations des parkings...");
+                    const infoResponse = await fetch(PARKING_INFO_API);
+                    if (!infoResponse.ok) {
+                        throw new Error('Erreur lors de la récupération des informations des parkings');
+                    }
+                    const infoData = await infoResponse.json();
+                    parkingInfoData = infoData.results || [];
+                    
+                    // 2. Récupérer les disponibilités des parkings en temps réel
+                    console.log("Chargement des disponibilités des parkings...");
+                    const availabilityResponse = await fetch(PARKING_AVAILABILITY_API);
+                    if (!availabilityResponse.ok) {
+                        throw new Error('Erreur lors de la récupération des disponibilités des parkings');
+                    }
+                    const availabilityData = await availabilityResponse.json();
+                    parkingAvailabilityData = availabilityData.results || [];
+                    
+                    // 3. Mettre à jour l'interface utilisateur avec les nouvelles données
+                    console.log("Mise à jour de l'interface...");
+                    updateTable();
+                    updateMap();
+                    updateLastUpdateTime();
+                } catch (error) {
+                    console.error('Erreur lors du chargement des données:', error);
+                    updateLastUpdateTime('Erreur: ' + error.message);
+                }
+            };
+            
+            // Exécuter la fonction de chargement
+            loadData();
+        }
+        
+        /**
+         * Fusionner les données d'information et de disponibilité
+         * Cette fonction crée un jeu de données complet en combinant les informations
+         * statiques des parkings avec les données de disponibilité en temps réel
+         * @returns {Array} Tableau d'objets contenant les données fusionnées des parkings
+         */
+        function mergeData() {
+            const mergedData = [];
+            const infoMap = new Map();
+            
+            // 1. Créer une carte des données d'information par ID pour un accès rapide
+            parkingInfoData.forEach(info => {
+                // Utiliser idsurfs comme identifiant unique
+                const id = info.idsurfs;
+                if (id) {
+                    infoMap.set(id, info);
+                }
+            });
+            
+            // 2. Fusionner avec les données de disponibilité
+            parkingAvailabilityData.forEach(availability => {
+                const id = availability.idsurfs;
+                const info = id ? infoMap.get(id) : null;
+                
+                if (info) {
+                    // Fusionner les deux objets en conservant les coordonnées
+                    mergedData.push({
+                        ...info,
+                        ...availability,
+                        position: info.position // Conserver les coordonnées
+                    });
+                } else {
+                    // Utiliser uniquement les données de disponibilité si pas d'info associée
+                    mergedData.push(availability);
+                }
+            });
+            
+            return mergedData;
+        }
+        
+        /**
+         * ========================================
+         * FONCTIONS DE MISE À JOUR DE L'INTERFACE
+         * ========================================
+         */
+        
+        /**
+         * Mettre à jour le tableau avec les données de disponibilité
+         * Crée un tableau triable avec les informations des parkings
+         */
+        function updateTable() {
+            // Détruire la table DataTable existante si elle existe pour éviter les doublons
+            if (dataTable) {
+                dataTable.destroy();
+            }
+            
+            // Récupérer l'élément tbody où insérer les données
+            const tableBody = document.getElementById('parking-list');
+            tableBody.innerHTML = '';
+            
+            // Fusionner les données pour obtenir un jeu complet
+            const mergedData = mergeData();
+            
+            console.log("Mise à jour du tableau avec", mergedData.length, "parkings");
+            
+            // Remplir le tableau avec les données des parkings
+            mergedData.forEach(parking => {
+                const row = document.createElement('tr');
+                
+                // Déterminer si le parking est fermé pour le style
+                const isClosed = parking.etat_descriptif === 'Fermé';
+                if (isClosed) {
+                    row.classList.add('status-closed');
+                }
+                
+                // Calculer le pourcentage de disponibilité
+                let percentAvailable = 0;
+                if (parking.total > 0) {
+                    percentAvailable = (parking.libre / parking.total) * 100;
+                }
+                
+                // Créer un ID unique pour le parking
+                const parkingId = parking.idsurfs || "";
+                
+                if (parkingId) {
+                    console.log(`Ajout du parking ${parking.nom_parking || parking.name} avec ID ${parkingId} au tableau`);
+                    
+                    // Ajouter les cellules avec le nom cliquable
+                    row.innerHTML = `
+                        <td><a href="#" class="parking-link" data-id="${parkingId}">${parking.nom_parking || parking.name}</a></td>
+                        <td>${parking.etat_descriptif || 'Inconnu'}</td>
+                        <td>${parking.total || 'N/A'}</td>
+                        <td>${isClosed ? '0' : (parking.libre || 'N/A')}</td>
+                        <td>${isClosed ? '0' : percentAvailable.toFixed(1)}%</td>
+                    `;
+                } else {
+                    // Pas d'ID disponible, nom non cliquable
+                    row.innerHTML = `
+                        <td>${parking.nom_parking || parking.name}</td>
+                        <td>${parking.etat_descriptif || 'Inconnu'}</td>
+                        <td>${parking.total || 'N/A'}</td>
+                        <td>${isClosed ? '0' : (parking.libre || 'N/A')}</td>
+                        <td>${isClosed ? '0' : percentAvailable.toFixed(1)}%</td>
+                    `;
+                }
+                
+                // Ajouter la ligne au tableau
+                tableBody.appendChild(row);
+            });
+            
+            // Initialiser DataTable pour permettre le tri et la pagination
+            dataTable = $('#parking-table').DataTable({
+                language: {
+                    // Traduction française pour l'interface DataTable
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json'
+                },
+                order: [[0, 'asc']], // Tri initial par nom (première colonne)
+                responsive: true,    // Adaptatif pour les mobiles
+                drawCallback: function() {
+                    // Ajouter les gestionnaires d'événements pour les liens de parking après chaque redessin
+                    // (important pour conserver les événements après tri/pagination)
+                    attachParkingLinkHandlers();
+                }
+            });
+        }
+        
+        /**
+         * Attacher les gestionnaires d'événements aux liens de parkings dans le tableau
+         * Permet de cliquer sur un nom de parking pour le localiser sur la carte
+         */
+        function attachParkingLinkHandlers() {
+            document.querySelectorAll('.parking-link').forEach(link => {
+                // Supprimer les gestionnaires existants pour éviter les doublons
+                link.removeEventListener('click', handleParkingLinkClick);
+                // Ajouter le nouveau gestionnaire
+                link.addEventListener('click', handleParkingLinkClick);
+            });
+        }
+        
+        /**
+         * Gestionnaire d'événement pour le clic sur un lien de parking
+         * @param {Event} e - L'événement de clic
+         */
+        function handleParkingLinkClick(e) {
+            e.preventDefault();
+            const parkingId = this.getAttribute('data-id');
+            console.log("Clic sur le parking avec ID:", parkingId);
+            highlightParking(parkingId);
+        }
+        
+        /**
+         * Mettre à jour la carte avec les données de disponibilité
+         * Crée et positionne les marqueurs des parkings sur la carte
+         */
+        function updateMap() {
+            // Supprimer les marqueurs existants
+            markersMap.forEach(info => map.removeLayer(info.marker));
+            markersMap.clear();
+            
+            // Supprimer le cercle de mise en évidence s'il existe
+            if (highlightCircle) {
+                map.removeLayer(highlightCircle);
+                highlightCircle = null;
+            }
+            
+            // Fusionner les données pour obtenir un jeu complet
+            const mergedData = mergeData();
+            
+            console.log("Mise à jour de la carte avec", mergedData.length, "parkings");
+            
+            // Ajouter les nouveaux marqueurs pour chaque parking
+            mergedData.forEach(parking => {
+                // Vérifier si les coordonnées sont disponibles
+                if (!parking.position || !parking.position.lat || !parking.position.lon) {
+                    return;
+                }
+                
+                // Obtenir l'ID unique du parking
+                const parkingId = parking.idsurfs || "";
+                
+                // Déterminer la couleur du marqueur en fonction du taux d'occupation
+                let markerColor = '#4CAF50'; // Vert par défaut (> 30% libre)
+                const isClosed = parking.etat_descriptif === 'Fermé';
+                
+                if (isClosed) {
+                    markerColor = '#000000'; // Noir si fermé
+                } else {
+                    const percentAvailable = parking.total > 0 ? (parking.libre / parking.total) * 100 : 0;
+                    
+                    if (percentAvailable < 10) {
+                        markerColor = '#777777'; // Gris foncé si < 10%
+                    } else if (percentAvailable < 30) {
+                        markerColor = '#FF9800'; // Orange si entre 10% et 30%
+                    }
+                }
+                
+                // Créer l'icône personnalisée pour le marqueur
+                const icon = L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div style="width: 20px; height: 20px; background-color: ${markerColor}; border-radius: 50%; border: 2px solid white;"></div>`,
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10]
+                });
+                
+                // Créer le contenu HTML du popup d'information
+                const popupContent = `
+                    <div class="marker-popup">
+                        <h3>${parking.nom_parking || parking.name}</h3>
+                        <div class="availability">
+                            ${isClosed ? 'FERMÉ' : `${parking.libre || 'N/A'} places libres sur ${parking.total || 'N/A'}`}
+                        </div>
+                        <div class="button-container">
+                            <div class="toggle-description">Afficher la description</div>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=${parking.position.lat},${parking.position.lon}" class="nav-button" target="_blank">Y aller</a>
+                        </div>
+                        <div class="description">${parking.description || 'Aucune description disponible.'}</div>
+                    </div>
+                `;
+                
+                // Créer et ajouter le marqueur à la carte
+                const marker = L.marker([parking.position.lat, parking.position.lon], { icon: icon })
+                    .addTo(map)
+                    .bindPopup(popupContent, { autoPan: true });
+                
+                // Configurer l'événement d'ouverture du popup
+                marker.on('popupopen', function() {
+                    setTimeout(() => {
+                        // Récupérer les éléments du popup
+                        const toggleDescription = document.querySelector('.toggle-description');
+                        const description = document.querySelector('.description');
+                        
+                        // Gérer l'affichage/masquage de la description
+                        if (toggleDescription && description) {
+                            toggleDescription.addEventListener('click', function() {
+                                if (description.style.display === 'block') {
+                                    description.style.display = 'none';
+                                    this.textContent = 'Afficher la description';
+                                } else {
+                                    description.style.display = 'block';
+                                    this.textContent = 'Masquer la description';
+                                }
+                            });
+                        }
+                        
+                        // Gestion spéciale pour la navigation sur mobile
+                        // En utilisant le protocole geo: natif pour les appareils mobiles
+                        const navButton = document.querySelector('.nav-button');
+                        if (navButton && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            navButton.addEventListener('click', function(e) {
+                                const lat = parking.position.lat;
+                                const lon = parking.position.lon;
+                                const geoUrl = `geo:${lat},${lon}?q=${lat},${lon}(${encodeURIComponent(parking.nom_parking || parking.name)})`;
+                                
+                                // Tenter d'ouvrir l'application de navigation native
+                                const mapsWindow = window.open(geoUrl, '_system');
+                                
+                                // Vérifier si l'ouverture a fonctionné
+                                // Si non, on utilisera le lien Google Maps par défaut (href)
+                                setTimeout(() => {
+                                    if (!mapsWindow || mapsWindow.closed || mapsWindow.closed === undefined) {
+                                        // Le protocole geo: n'a pas fonctionné, continuer avec Google Maps
+                                        return true;
+                                    } else {
+                                        // Le protocole geo: a fonctionné, annuler l'événement de clic
+                                        e.preventDefault();
+                                    }
+                                }, 500);
+                            });
+                        }
+                    }, 100);
+                });
+                
+                // Stocker le marqueur dans la Map avec l'ID du parking comme clé
+                if (parkingId) {
+                    markersMap.set(parkingId, {
+                        marker: marker,
+                        position: [parking.position.lat, parking.position.lon],
+                        name: parking.nom_parking || parking.name
+                    });
+                    console.log(`Marqueur ajouté pour ${parking.nom_parking || parking.name} avec ID: ${parkingId}`);
+                }
+            });
+            
+            console.log("Nombre de marqueurs stockés:", markersMap.size);
+        }
+        
+        /**
+         * Mettre en évidence un parking sur la carte
+         * Crée un cercle clignotant autour du parking et ouvre son popup
+         * @param {string} parkingId - L'identifiant unique du parking à mettre en évidence
+         */
+        function highlightParking(parkingId) {
+            console.log("Mise en évidence du parking:", parkingId);
+            
+            // Basculer vers l'onglet carte de façon explicite
+            const mapTab = document.querySelector('.tab[data-tab="map"]');
+            if (mapTab) {
+                // Simuler un clic sur l'onglet carte
+                mapTab.click();
+            }
+            
+            // Récupérer les informations du parking à partir de son ID
+            const parkingInfo = markersMap.get(parkingId);
+            
+            console.log("Informations du parking trouvées:", parkingInfo);
+            
+            if (!parkingInfo) {
+                console.error("Parking non trouvé:", parkingId);
+                console.log("Parkings disponibles:", Array.from(markersMap.keys()));
+                return;
+            }
+            
+            // Centrer la carte sur le parking avec un délai
+            // pour laisser le temps à la carte de s'initialiser
+            setTimeout(() => {
+                console.log("Centrage de la carte sur:", parkingInfo.position);
+                
+                // Centrer la carte sur le parking avec un zoom rapproché
+                map.setView(parkingInfo.position, 16);
+                
+                // Ouvrir le popup du parking
+                console.log("Ouverture du popup");
+                parkingInfo.marker.openPopup();
+                
+                // Supprimer l'ancien cercle de mise en évidence s'il existe
+                if (highlightCircle) {
+                    console.log("Suppression de l'ancien cercle");
+                    map.removeLayer(highlightCircle);
+                }
+                
+                // Créer un cercle rouge autour du marqueur pour le mettre en évidence
+                console.log("Création du nouveau cercle");
+                highlightCircle = L.circle(parkingInfo.position, {
+                    color: 'red',
+                    fillColor: 'rgba(255, 0, 0, 0.2)',
+                    fillOpacity: 0.5,
+                    radius: 40,  // Rayon en mètres
+                    weight: 3    // Épaisseur de la bordure
+                }).addTo(map);
+                
+                // Animation de pulsation pour attirer l'attention
+                let opacity = 0.5;
+                let increasing = false;
+                
+                // Créer une animation pour faire "pulser" le cercle
+                const blinkInterval = setInterval(() => {
+                    if (increasing) {
+                        opacity += 0.1;
+                        if (opacity >= 0.8) increasing = false;
+                    } else {
+                        opacity -= 0.1;
+                        if (opacity <= 0.2) increasing = true;
+                    }
+                    
+                    // Appliquer l'opacité actuelle si le cercle existe toujours
+                    if (highlightCircle) {
+                        highlightCircle.setStyle({ fillOpacity: opacity });
+                    } else {
+                        clearInterval(blinkInterval);
+                    }
+                }, 100);
+                
+                // Arrêter l'animation après 3 secondes
+                setTimeout(() => {
+                    clearInterval(blinkInterval);
+                    if (highlightCircle) {
+                        highlightCircle.setStyle({ fillOpacity: 0.5 });
+                    }
+                }, 3000);
+            }, 300); // Délai pour s'assurer que la carte est bien initialisée
+        }
+        
+        /**
+         * Mettre à jour l'affichage de l'heure de dernière mise à jour
+         * @param {string} [customText] - Texte personnalisé à afficher (optionnel)
+         */
+        function updateLastUpdateTime(customText) {
+            const lastUpdateElement = document.getElementById('last-update');
+            
+            if (customText) {
+                // Afficher un texte personnalisé (ex: "Chargement en cours...")
+                lastUpdateElement.textContent = customText;
+            } else {
+                // Afficher l'heure actuelle comme heure de mise à jour
+                lastUpdateTime = new Date();
+                lastUpdateElement.textContent = `Dernière mise à jour : ${lastUpdateTime.toLocaleTimeString()}`;
+            }
+        }
+        
+        /**
+         * ========================================
+         * DÉMARRAGE DE L'APPLICATION
+         * ========================================
+         */
+        
+        // Démarrer l'application une fois que la page est chargée
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
