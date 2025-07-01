@@ -79,12 +79,51 @@
             border-color: #007bff;
         }
 
+        #update-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.8em;
+            color: #6c757d;
+        }
+
+        #refresh-button {
+            padding: 4px 8px;
+            font-size: 0.9em;
+            border: 1px solid #ced4da;
+            background-color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #refresh-button:hover {
+            background-color: #e9ecef;
+        }
+
+        #refresh-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
         #parking-list {
             list-style: none;
             margin: 0;
             padding: 0;
             overflow-y: auto;
             flex-grow: 1;
+        }
+
+        #footer-info {
+            padding: 12px;
+            text-align: center;
+            font-size: 0.75em;
+            color: #adb5bd;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            margin-top: auto; /* Pousse le pied de page en bas */
         }
 
         .parking-item {
@@ -174,7 +213,14 @@
                 <button id="sort-by-name" class="sort-button">Par nom</button>
                 <button id="sort-by-availability" class="sort-button">Par places libres</button>
             </div>
+            <div id="update-controls">
+                <span id="last-update">Chargement...</span>
+                <button id="refresh-button">Rafraîchir</button>
+            </div>
             <ul id="parking-list"></ul>
+            <footer id="footer-info">
+                Page générée avec Gemini CLI sur demande de E. DORNINGER
+            </footer>
         </aside>
         <main id="map"></main>
     </div>
@@ -194,9 +240,12 @@
             key: 'name',
             direction: 'asc'
         };
+        let refreshInterval;
 
         const sortByNameButton = document.getElementById('sort-by-name');
         const sortByAvailabilityButton = document.getElementById('sort-by-availability');
+        const lastUpdateElement = document.getElementById('last-update');
+        const refreshButton = document.getElementById('refresh-button');
 
         function getStatusInfo(availability) {
             if (!availability || availability.etat_descriptif !== 'Ouvert') {
@@ -220,17 +269,15 @@
         }
         
         function renderParkingList() {
-            // 1. Sort the data based on the current state
             const direction = sortState.direction === 'asc' ? 1 : -1;
             allParkings.sort((a, b) => {
                 if (sortState.key === 'name') {
                     return a.name.localeCompare(b.name) * direction;
-                } else { // availability
+                } else {
                     return (a.status.free - b.status.free) * direction;
                 }
             });
             
-            // 2. Update button styles and text
             const nameArrow = sortState.key === 'name' ? (sortState.direction === 'asc' ? ' ▲' : ' ▼') : '';
             const availArrow = sortState.key === 'availability' ? (sortState.direction === 'asc' ? ' ▲' : ' ▼') : '';
             
@@ -240,7 +287,6 @@
             sortByNameButton.classList.toggle('active', sortState.key === 'name');
             sortByAvailabilityButton.classList.toggle('active', sortState.key === 'availability');
 
-            // 3. Render the list
             const parkingList = document.getElementById('parking-list');
             parkingList.innerHTML = '';
 
@@ -258,27 +304,17 @@
                     </div>
                 `;
                 
-                // --- INTERACTIVITY --- 
-                // Click to focus on map
                 listItem.addEventListener('click', () => {
                     map.flyTo([lat, lon], 16);
                     marker.openPopup();
                 });
 
-                // Hover to highlight on map
                 listItem.addEventListener('mouseenter', () => {
-                    marker.setStyle({
-                        weight: 5,
-                        radius: 10
-                    });
-                    marker.bringToFront();
+                    marker.setStyle({ weight: 5, radius: 10 }).bringToFront();
                 });
 
                 listItem.addEventListener('mouseleave', () => {
-                    marker.setStyle({
-                        weight: 2,
-                        radius: 8
-                    });
+                    marker.setStyle({ weight: 2, radius: 8 });
                 });
 
                 parkingList.appendChild(listItem);
@@ -287,17 +323,18 @@
         
         function setSort(key) {
             if (sortState.key === key) {
-                // If same key, reverse direction
                 sortState.direction = sortState.direction === 'asc' ? 'desc' : 'asc';
             } else {
-                // If new key, set it and default direction
                 sortState.key = key;
-                sortState.direction = key === 'name' ? 'asc' : 'desc'; // Default for availability is most free first
+                sortState.direction = key === 'name' ? 'asc' : 'desc';
             }
             renderParkingList();
         }
 
         async function fetchAndProcessData() {
+            refreshButton.disabled = true;
+            refreshButton.textContent = 'Chargement...';
+            
             try {
                 const [staticResponse, realtimeResponse] = await Promise.all([
                     fetch(staticApiUrl),
@@ -353,18 +390,29 @@
                 });
                 
                 renderParkingList();
+                const now = new Date();
+                lastUpdateElement.textContent = `Màj: ${now.toLocaleTimeString('fr-FR')}`;
 
             } catch (error) {
                 console.error("Erreur:", error);
-                document.getElementById('sidebar').innerHTML = '<h1>Erreur</h1><p style="padding:20px;">Impossible de charger les données. Veuillez réessayer plus tard.</p>';
+                lastUpdateElement.textContent = "Erreur de mise à jour.";
+            } finally {
+                refreshButton.disabled = false;
+                refreshButton.textContent = 'Rafraîchir';
             }
         }
         
-        sortByNameButton.addEventListener('click', () => setSort('name'));
-        sortByAvailabilityButton.addEventListener('click', () => setSort('availability'));
+        function startApp() {
+            sortByNameButton.addEventListener('click', () => setSort('name'));
+            sortByAvailabilityButton.addEventListener('click', () => setSort('availability'));
+            refreshButton.addEventListener('click', fetchAndProcessData);
 
-        fetchAndProcessData();
-        setInterval(fetchAndProcessData, 60000);
+            fetchAndProcessData();
+            clearInterval(refreshInterval);
+            refreshInterval = setInterval(fetchAndProcessData, 60000);
+        }
+
+        startApp();
 
     </script>
 
