@@ -1,420 +1,681 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Métadonnées de base -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte des Parkings - Strasbourg</title>
+    <title>Parkings de Strasbourg - Carte et Tableau</title>
     
-    <!-- Leaflet.js (pour la carte) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- ========================================= -->
+    <!-- BIBLIOTHÈQUES EXTERNES                    -->
+    <!-- ========================================= -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css" />
     
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- STYLES CSS                                -->
+    <!-- ========================================= -->
     <style>
+        /**
+         * Thème Clair (par défaut)
+         */
         :root {
-            --color-green: #28a745;
-            --color-orange: #fd7e14;
-            --color-gray: #6c757d;
-            --color-black: #212529;
-            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --header-footer-bg: #0D47A1; /* Bleu foncé constant pour header/footer */
+            --primary-color: #0D47A1;
+            --secondary-color: #2196F3;
+            --background-color: #F5F5F5;
+            --text-color: #333;
+            --card-background: #FFFFFF;
+            --border-color: #ddd;
+            --header-text: #FFFFFF;
+            --success-color: #4CAF50;
+            --warning-color: #FF9800;
+            --danger-color: #F44336;
+            --closed-color: #757575;
+            --highlight-color: #d32f2f;
+        }
+        
+        /**
+         * Thème Sombre
+         */
+        [data-theme="dark"] {
+            --primary-color: #5595e8;
+            --secondary-color: #3d7cc9;
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --card-background: #1e1e1e;
+            --border-color: #444;
+            --danger-color: #ef5350;
+            --closed-color: #bdbdbd;
+            --highlight-color: #ff5252;
         }
 
-        html, body {
-            height: 100%;
+        /* Réinitialisation et styles généraux */
+        * {
             margin: 0;
             padding: 0;
-            font-family: var(--font);
-            overflow: hidden;
-        }
-
-        h1 {
-            margin: 0;
-            padding: 15px 20px;
-            font-size: 1.4em;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            color: #343a40;
-        }
-
-        #app-container {
-            display: flex;
-            height: 100vh;
-        }
-
-        #sidebar {
-            width: 350px;
-            display: flex;
-            flex-direction: column;
-            background-color: #fff;
-            border-right: 1px solid #dee2e6;
-            flex-shrink: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
         
-        #sort-controls {
-            display: flex;
-            gap: 10px;
-            padding: 10px 20px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .sort-button {
-            flex-grow: 1;
-            padding: 8px 12px;
-            font-size: 0.9em;
-            font-family: var(--font);
-            border: 1px solid #ced4da;
-            background-color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-
-        .sort-button:hover {
-            background-color: #e9ecef;
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
         
-        .sort-button.active {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        #update-controls {
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--header-text);
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 20px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            font-size: 0.8em;
-            color: #6c757d;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        #refresh-button {
-            padding: 4px 8px;
-            font-size: 0.9em;
-            border: 1px solid #ced4da;
-            background-color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
+        header h1 {
+            font-size: 1.5rem;
         }
 
-        #refresh-button:hover {
-            background-color: #e9ecef;
-        }
-
-        #refresh-button:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        #parking-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        #footer-info {
-            padding: 12px;
-            text-align: center;
-            font-size: 0.75em;
-            color: #adb5bd;
-            background-color: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-            margin-top: auto; /* Pousse le pied de page en bas */
-        }
-
-        .parking-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #e9ecef;
-            cursor: pointer;
-            transition: background-color 0.2s;
+        #app-controls {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .parking-item:hover {
-            background-color: #f1f3f5;
-        }
-
-        .parking-item-info {
-            flex-grow: 1;
-        }
-
-        .parking-item-name {
-            font-weight: 600;
-            color: #212529;
-        }
-
-        .parking-item-details {
-            font-size: 0.9em;
-            color: #495057;
-        }
-
-        .status-dot {
-            height: 12px;
-            width: 12px;
+        .control-button {
+            background: none;
+            border: 1px solid var(--header-text);
+            color: var(--header-text);
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            flex-shrink: 0;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
         }
-
-        #map {
-            width: 100%;
-            height: 100%;
+        .control-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .control-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
         }
         
-        .leaflet-popup-content-wrapper {
-            border-radius: 8px;
+        /* ===== MAIN CONTAINER ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
         }
         
-        .leaflet-popup-content {
-            font-family: var(--font);
+        /* ===== TABS NAVIGATION ===== */
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
         }
-
-        .popup-name {
+        
+        .tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-right: 0.5rem;
+            border-radius: 5px 5px 0 0;
+            background-color: #eee;
+            color: #333;
+        }
+        
+        .tab.active {
+            background-color: var(--card-background);
+            color: var(--text-color);
+            border-color: var(--border-color);
+            border-bottom-color: var(--card-background);
+            margin-bottom: -1px;
             font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 5px;
         }
         
-        .popup-nav-link {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
+        .tab-content {
+            display: none;
+            background-color: var(--card-background);
+            padding: 1rem;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* ===== MAP CONTAINER ===== */
+        #map-container {
+            height: 600px;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        
+        /* ===== CONTROLS ===== */
+        #update-info {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+        
+        /* ===== TABLE STYLES ===== */
+        #parking-table tbody tr td .parking-link {
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        #parking-table tbody tr td .parking-link:hover {
+            text-decoration: underline;
+            color: var(--secondary-color);
+        }
+        [data-theme="dark"] #parking-table tbody tr td .parking-link {
+            color: var(--secondary-color);
         }
 
+        .availability-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .availability-bar-inner {
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        .highlight-pulse {
+            animation: pulse 1.5s infinite;
+            border-color: var(--highlight-color) !important;
+        }
+
+        /* ===== MODERN POPUP STYLES ===== */
+        .leaflet-popup-content-wrapper {
+            background: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .leaflet-popup-content {
+            margin: 0 !important;
+            padding: 0;
+            width: 280px !important;
+        }
+        .modern-popup {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .popup-header .name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .popup-header .status {
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .popup-availability .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .popup-availability .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease-in-out;
+        }
+        .popup-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+        }
+        .popup-actions .action-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--primary-color);
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+        .popup-actions .action-link:hover {
+            background-color: var(--border-color);
+        }
+        .popup-description {
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0;
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
+            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
+        }
+        .popup-description.visible {
+            padding-top: 12px;
+            max-height: 200px; /* Adjust as needed */
+            overflow-y: auto;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            background-color: var(--header-footer-bg);
+            color: var(--header-text);
+        }
+        
+        /* ===== RESPONSIVE STYLES ===== */
         @media (max-width: 768px) {
-            #app-container {
-                flex-direction: column;
-            }
-            #sidebar {
-                width: 100%;
-                height: 40%;
-            }
-            #map {
-                height: 60%;
-            }
+            header { flex-direction: column; gap: 10px; }
+            #map-container { height: 400px; }
         }
     </style>
 </head>
 <body>
-
-    <div id="app-container">
-        <aside id="sidebar">
-            <h1>Parkings de Strasbourg</h1>
-            <div id="sort-controls">
-                <button id="sort-by-name" class="sort-button">Par nom</button>
-                <button id="sort-by-availability" class="sort-button">Par places libres</button>
-            </div>
-            <div id="update-controls">
-                <span id="last-update">Chargement...</span>
-                <button id="refresh-button">Rafraîchir</button>
-            </div>
-            <ul id="parking-list"></ul>
-            <footer id="footer-info">
-                Page générée avec Gemini CLI sur demande de E. DORNINGER
-            </footer>
-        </aside>
-        <main id="map"></main>
-    </div>
-
+    <header>
+        <h1>Parkings de Strasbourg</h1>
+        <div id="app-controls">
+            <button id="geolocate-btn" class="control-button" title="Me localiser">📍</button>
+            <button id="refresh-btn" class="control-button" title="Rafraîchir les données">🔄</button>
+            <button id="theme-switcher" class="control-button" title="Changer de thème">🌙</button>
+        </div>
+    </header>
+    
+    <main>
+        <div id="update-info">Dernière mise à jour : --</div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="map">Carte</div>
+            <div class="tab" data-tab="table">Tableau</div>
+        </div>
+        
+        <div id="map-tab" class="tab-content active">
+            <div id="map-container"></div>
+        </div>
+        
+        <div id="table-tab" class="tab-content">
+            <table id="parking-table" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>État</th>
+                        <th>Places libres</th>
+                        <th>% Disponible</th>
+                        <th>Disponibilité</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Données Open Data ville de Strasbourg - Page générée avec Gemini CLI sur demande de E. DORNINGER</p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
     <script>
-        const staticApiUrl = 'https://data.strasbourg.eu/api/records/1.0/search/?dataset=parkings&rows=50';
-        const realtimeApiUrl = 'https://data.strasbourg.eu/api/records/1.0/search/?dataset=occupation-parkings-temps-reel&rows=50';
+        const REFRESH_INTERVAL = 60000;
+        const PARKING_AVAILABILITY_API = "https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/occupation-parkings-temps-reel/records?limit=100";
+        const PARKING_INFO_API = "https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/parkings/records?limit=100";
 
-        const map = L.map('map').setView([48.583, 7.75], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        let parkingInfoData = new Map();
+        let map, dataTable, refreshTimer;
+        let markersMap = new Map();
+        let highlightCircle = null;
+        let userMarker = null;
 
-        let allParkings = [];
-        let markers = {};
-        let sortState = {
-            key: 'name',
-            direction: 'asc'
-        };
-        let refreshInterval;
-
-        const sortByNameButton = document.getElementById('sort-by-name');
-        const sortByAvailabilityButton = document.getElementById('sort-by-availability');
-        const lastUpdateElement = document.getElementById('last-update');
-        const refreshButton = document.getElementById('refresh-button');
-
-        function getStatusInfo(availability) {
-            if (!availability || availability.etat_descriptif !== 'Ouvert') {
-                return { color: 'var(--color-black)', label: 'Fermé', free: -1 };
-            }
-            
-            const free = availability.libre;
-            const total = availability.total;
-            if (total === 0) {
-                 return { color: 'var(--color-gray)', label: 'Données invalides', free: -1 };
-            }
-
-            const ratio = free / total;
-            if (ratio > 0.3) {
-                return { color: 'var(--color-green)', label: `Libre: ${free}/${total}`, free };
-            }
-            if (ratio >= 0.1) {
-                return { color: 'var(--color-orange)', label: `Libre: ${free}/${total}`, free };
-            }
-            return { color: 'var(--color-gray)', label: `Libre: ${free}/${total}`, free };
+        function init() {
+            setupTheme();
+            setupMap();
+            setupEventListeners();
+            fetchInitialData();
+            startAutoRefresh();
         }
-        
-        function renderParkingList() {
-            const direction = sortState.direction === 'asc' ? 1 : -1;
-            allParkings.sort((a, b) => {
-                if (sortState.key === 'name') {
-                    return a.name.localeCompare(b.name) * direction;
-                } else {
-                    return (a.status.free - b.status.free) * direction;
-                }
-            });
-            
-            const nameArrow = sortState.key === 'name' ? (sortState.direction === 'asc' ? ' ▲' : ' ▼') : '';
-            const availArrow = sortState.key === 'availability' ? (sortState.direction === 'asc' ? ' ▲' : ' ▼') : '';
-            
-            sortByNameButton.textContent = `Par nom${nameArrow}`;
-            sortByAvailabilityButton.textContent = `Par places libres${availArrow}`;
-            
-            sortByNameButton.classList.toggle('active', sortState.key === 'name');
-            sortByAvailabilityButton.classList.toggle('active', sortState.key === 'availability');
 
-            const parkingList = document.getElementById('parking-list');
-            parkingList.innerHTML = '';
+        function setupTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            document.getElementById('theme-switcher').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
 
-            allParkings.forEach(parkingData => {
-                const { name, status, marker, position } = parkingData;
-                const [lat, lon] = position;
+        function setupMap() {
+            map = L.map('map-container').setView([48.5734, 7.7521], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        }
 
-                const listItem = document.createElement('li');
-                listItem.className = 'parking-item';
-                listItem.innerHTML = `
-                    <span class="status-dot" style="background-color: ${status.color};"></span>
-                    <div class="parking-item-info">
-                        <div class="parking-item-name">${name}</div>
-                        <div class="parking-item-details">${status.label}</div>
-                    </div>
-                `;
-                
-                listItem.addEventListener('click', () => {
-                    map.flyTo([lat, lon], 16);
-                    marker.openPopup();
+        function setupEventListeners() {
+            document.getElementById('theme-switcher').addEventListener('click', toggleTheme);
+            document.getElementById('geolocate-btn').addEventListener('click', geolocateUser);
+            document.getElementById('refresh-btn').addEventListener('click', () => refreshAvailability(false));
+
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById(this.dataset.tab + '-tab').classList.add('active');
+                    if (this.dataset.tab === 'map') {
+                        setTimeout(() => map.invalidateSize(), 100);
+                    }
                 });
-
-                listItem.addEventListener('mouseenter', () => {
-                    marker.setStyle({ weight: 5, radius: 10 }).bringToFront();
-                });
-
-                listItem.addEventListener('mouseleave', () => {
-                    marker.setStyle({ weight: 2, radius: 8 });
-                });
-
-                parkingList.appendChild(listItem);
             });
         }
-        
-        function setSort(key) {
-            if (sortState.key === key) {
-                sortState.direction = sortState.direction === 'asc' ? 'desc' : 'asc';
+
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            document.getElementById('theme-switcher').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', newTheme);
+        }
+
+        function geolocateUser() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userLatLng = [position.coords.latitude, position.coords.longitude];
+                    if (userMarker) {
+                        userMarker.setLatLng(userLatLng);
+                    } else {
+                        userMarker = L.marker(userLatLng, {
+                            icon: L.divIcon({
+                                className: 'user-marker',
+                                html: `<div style="background-color: var(--secondary-color); width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 5px #000;"></div>`,
+                                iconSize: [20, 20]
+                            })
+                        }).addTo(map);
+                    }
+                    map.setView(userLatLng, 15);
+                }, () => alert("Impossible de récupérer votre position."));
             } else {
-                sortState.key = key;
-                sortState.direction = key === 'name' ? 'asc' : 'desc';
+                alert("La géolocalisation n'est pas supportée par votre navigateur.");
             }
-            renderParkingList();
         }
 
-        async function fetchAndProcessData() {
-            refreshButton.disabled = true;
-            refreshButton.textContent = 'Chargement...';
+        async function fetchInitialData() {
+            await refreshAvailability(true);
+        }
+
+        async function refreshAvailability(isInitial = false) {
+            const refreshBtn = document.getElementById('refresh-btn');
+            refreshBtn.disabled = true;
+            updateLastUpdateTime(isInitial ? 'Chargement initial...' : 'Mise à jour...');
             
             try {
-                const [staticResponse, realtimeResponse] = await Promise.all([
-                    fetch(staticApiUrl),
-                    fetch(realtimeApiUrl)
-                ]);
+                if (isInitial) {
+                    const infoResponse = await fetch(PARKING_INFO_API);
+                    if (!infoResponse.ok) throw new Error('Erreur de récupération des infos statiques.');
+                    const infoData = await infoResponse.json();
+                    (infoData.results || []).forEach(info => parkingInfoData.set(info.idsurfs, info));
+                }
 
-                if (!staticResponse.ok || !realtimeResponse.ok) throw new Error('Erreur de réseau.');
-
-                const staticData = await staticResponse.json();
-                const realtimeData = await realtimeResponse.json();
-
-                const availabilityMap = new Map(
-                    realtimeData.records.map(record => [record.fields.nom_parking, record.fields])
-                );
+                const availabilityResponse = await fetch(PARKING_AVAILABILITY_API);
+                if (!availabilityResponse.ok) throw new Error('Erreur de récupération des disponibilités.');
+                const availabilityData = await availabilityResponse.json();
+                const mergedData = mergeData(availabilityData.results || []);
                 
-                Object.values(markers).forEach(marker => marker.remove());
-                markers = {};
-                allParkings = [];
-
-                staticData.records.forEach(record => {
-                    const parking = record.fields;
-                    if (!parking.position) return;
-
-                    const availability = availabilityMap.get(parking.name);
-                    const status = getStatusInfo(availability);
-                    const [lat, lon] = parking.position;
-
-                    const marker = L.circleMarker([lat, lon], {
-                        radius: 8,
-                        fillColor: status.color,
-                        color: '#fff',
-                        weight: 2,
-                        opacity: 1,
-                        fillOpacity: 0.9
-                    }).addTo(map);
-                    
-                    const navLink = `https://www.google.com/maps?daddr=${lat},${lon}`;
-                    const popupContent = `
-                        <div class="popup-name">${parking.name}</div>
-                        <div><strong>Statut:</strong> ${availability ? availability.etat_descriptif : 'N/A'}</div>
-                        <div><strong>Disponibilité:</strong> ${status.label.includes('Libre') ? status.label.split(': ')[1] : 'N/A'}</div>
-                        <a href="${navLink}" target="_blank" class="popup-nav-link">M'y rendre</a>
-                    `;
-                    marker.bindPopup(popupContent);
-                    markers[parking.name] = marker;
-
-                    allParkings.push({
-                        name: parking.name,
-                        position: parking.position,
-                        status: status,
-                        marker: marker
-                    });
-                });
-                
-                renderParkingList();
-                const now = new Date();
-                lastUpdateElement.textContent = `Màj: ${now.toLocaleTimeString('fr-FR')}`;
-
+                updateTable(mergedData);
+                updateMap(mergedData);
+                updateLastUpdateTime();
             } catch (error) {
-                console.error("Erreur:", error);
-                lastUpdateElement.textContent = "Erreur de mise à jour.";
+                console.error("Erreur de rafraîchissement:", error);
+                updateLastUpdateTime(`Erreur: ${error.message}`);
             } finally {
-                refreshButton.disabled = false;
-                refreshButton.textContent = 'Rafraîchir';
+                refreshBtn.disabled = false;
             }
         }
-        
-        function startApp() {
-            sortByNameButton.addEventListener('click', () => setSort('name'));
-            sortByAvailabilityButton.addEventListener('click', () => setSort('availability'));
-            refreshButton.addEventListener('click', fetchAndProcessData);
 
-            fetchAndProcessData();
-            clearInterval(refreshInterval);
-            refreshInterval = setInterval(fetchAndProcessData, 60000);
+        function mergeData(availabilityData) {
+            return availabilityData.map(availability => {
+                const info = parkingInfoData.get(availability.idsurfs) || {};
+                return { ...info, ...availability };
+            });
         }
 
-        startApp();
+        function startAutoRefresh() {
+            if (refreshTimer) clearInterval(refreshTimer);
+            refreshTimer = setInterval(refreshAvailability, REFRESH_INTERVAL);
+        }
 
+        function updateTable(data) {
+            if (dataTable) dataTable.destroy();
+            
+            const tableBody = $('#parking-table tbody');
+            tableBody.empty();
+
+            data.forEach(p => {
+                const isClosed = p.etat_descriptif === 'Fermé';
+                const percent = !isClosed && p.total > 0 ? (p.libre / p.total) * 100 : 0;
+                const color = getMarkerColor(p);
+
+                tableBody.append(`
+                    <tr data-id="${p.idsurfs}">
+                        <td><a href="#" class="parking-link">${p.nom_parking || p.name}</a></td>
+                        <td>${p.etat_descriptif || 'Inconnu'}</td>
+                        <td>${isClosed ? '0' : (p.libre || 'N/A')}</td>
+                        <td>${!isClosed ? percent.toFixed(1) + '%' : 'N/A'}</td>
+                        <td>
+                            <div class="availability-bar">
+                                <div class="availability-bar-inner" style="width: ${percent}%; background-color: ${color};"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `);
+            });
+
+            dataTable = $('#parking-table').DataTable({
+                language: { url: 'https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json' },
+                order: [[0, 'asc']],
+                responsive: true
+            });
+
+            $('#parking-table tbody').on('click', 'a.parking-link', function (e) {
+                e.preventDefault();
+                const parkingId = $(this).closest('tr').data('id');
+                if (parkingId) highlightParking(parkingId);
+            });
+            
+            dataTable.on('search.dt', () => {
+                const filteredIds = new Set();
+                dataTable.rows({ filter: 'applied' }).nodes().each(node => {
+                    filteredIds.add($(node).data('id'));
+                });
+                markersMap.forEach((marker, id) => {
+                    const isVisible = filteredIds.has(id);
+                    if (isVisible && !map.hasLayer(marker)) {
+                        marker.addTo(map);
+                    } else if (!isVisible && map.hasLayer(marker)) {
+                        map.removeLayer(marker);
+                    }
+                });
+            });
+        }
+
+        function updateMap(data) {
+            const updatedIds = new Set();
+
+            data.forEach(p => {
+                if (!p.position || !p.position.lat || !p.position.lon) return;
+                
+                updatedIds.add(p.idsurfs);
+                const color = getMarkerColor(p);
+                const icon = L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div style="width: 24px; height: 24px; background-color: ${color}; color: white; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; font-weight: bold;">P</div>`,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+
+                const popupContent = buildPopupContent(p);
+
+                if (markersMap.has(p.idsurfs)) {
+                    const marker = markersMap.get(p.idsurfs);
+                    marker.setIcon(icon);
+                    marker.setPopupContent(popupContent);
+                } else {
+                    const newMarker = L.marker([p.position.lat, p.position.lon], { icon: icon })
+                        .bindPopup(popupContent, { 
+                            offset: [0, -10],
+                            autoPan: true,
+                            autoPanPaddingTopLeft: L.point(50, 100),
+                            autoPanPaddingBottomRight: L.point(50, 50)
+                        });
+                    
+                    newMarker.on('popupopen', (e) => {
+                        const popupElement = e.popup.getElement();
+                        if (!popupElement) return;
+
+                        L.DomEvent.disableClickPropagation(popupElement);
+
+                        const toggleBtn = popupElement.querySelector('.toggle-description');
+                        const description = popupElement.querySelector('.popup-description');
+
+                        if (toggleBtn && description) {
+                            L.DomEvent.on(toggleBtn, 'click', (ev) => {
+                                L.DomEvent.stop(ev);
+                                description.classList.toggle('visible');
+                                toggleBtn.innerHTML = description.classList.contains('visible') ? 'ℹ️ Masquer' : 'ℹ️ Info';
+                                
+                                setTimeout(() => {
+                                    if (map && map._popup) map._popup.update();
+                                }, 10000);
+                            });
+                        }
+                    });
+
+                    markersMap.set(p.idsurfs, newMarker);
+                    
+                    const isFiltered = dataTable && dataTable.search() && $(`#parking-table tbody tr[data-id="${p.idsurfs}"]`).css('display') === 'none';
+                    if (!isFiltered) {
+                        newMarker.addTo(map);
+                    }
+                }
+            });
+
+            markersMap.forEach((marker, id) => {
+                if (!updatedIds.has(id)) {
+                    map.removeLayer(marker);
+                    markersMap.delete(id);
+                }
+            });
+        }
+        
+        function buildPopupContent(p) {
+            const isClosed = p.etat_descriptif === 'Fermé';
+            const availabilityText = isClosed ? 'Fermé' : `${p.libre || 'N/A'} places libres sur ${p.total || 'N/A'}`;
+            const percent = !isClosed && p.total > 0 ? (p.libre / p.total) * 100 : 0;
+            const color = getMarkerColor(p);
+
+            return `
+                <div class="modern-popup">
+                    <div class="popup-header">
+                        <div class="name">${p.nom_parking || p.name}</div>
+                        <div class="status" style="color: ${color};">${p.etat_descriptif}</div>
+                    </div>
+                    <div class="popup-availability">
+                        <span>${availabilityText}</span>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: ${percent}%; background-color: ${color};"></div>
+                        </div>
+                    </div>
+                    <div class="popup-description">${p.descriptio || p.description || 'Aucune description disponible.'}</div>
+                    <div class="popup-actions">
+                        <a href="#" class="action-link toggle-description">ℹ️ Info</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${p.position.lat},${p.position.lon}" target="_blank" class="action-link">➤ Y aller</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getMarkerColor(parking) {
+            if (parking.etat_descriptif === 'Fermé') return 'var(--closed-color)';
+            if (parking.libre === 0) return 'var(--danger-color)';
+            const percent = parking.total > 0 ? (parking.libre / parking.total) * 100 : 0;
+            if (percent < 10) return 'var(--warning-color)';
+            return 'var(--success-color)';
+        }
+
+        function highlightParking(parkingId) {
+            const marker = markersMap.get(parkingId);
+            if (!marker) return;
+
+            document.querySelector('.tab[data-tab="map"]').click();
+            
+            setTimeout(() => {
+                map.setView(marker.getLatLng(), 16);
+                marker.openPopup();
+
+                if (highlightCircle) map.removeLayer(highlightCircle);
+                
+                highlightCircle = L.circle(marker.getLatLng(), {
+                    color: 'var(--highlight-color)',
+                    fillOpacity: 0,
+                    radius: 40,
+                    weight: 3,
+                    className: 'highlight-pulse'
+                }).addTo(map);
+
+                setTimeout(() => {
+                    if (highlightCircle) {
+                        map.removeLayer(highlightCircle);
+                        highlightCircle = null;
+                    }
+                }, 3000);
+            }, 200);
+        }
+
+        function updateLastUpdateTime(text) {
+            const el = document.getElementById('update-info');
+            if (text) {
+                el.textContent = text;
+            } else {
+                el.textContent = `Dernière mise à jour : ${new Date().toLocaleTimeString()}`;
+            }
+        }
+
+        window.addEventListener('load', init);
     </script>
-
 </body>
 </html>
+
+
