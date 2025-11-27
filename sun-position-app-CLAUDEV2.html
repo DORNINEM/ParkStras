@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course du Soleil - Aide Installation Panneaux Solaires</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-rotate@0.2.8/dist/leaflet-rotate.css" />
     <style>
         * {
             margin: 0;
@@ -93,7 +92,7 @@
         .btn-compass {
             background: #5856d6;
             color: white;
-            display: none; /* Masqué par défaut, affiché sur mobile */
+            display: none;
         }
         .btn-compass:hover {
             background: #4240b0;
@@ -106,67 +105,92 @@
             0%, 100% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4); }
             50% { box-shadow: 0 0 0 10px rgba(52, 199, 89, 0); }
         }
-        .map-container {
+        .map-wrapper {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
-        #map {
-            height: 500px;
+        .map-container {
+            position: relative;
             width: 100%;
+            height: 500px;
+            overflow: hidden;
         }
-        .compass-indicator {
+        #map {
+            position: absolute;
+            /* On agrandit la carte pour éviter les coins vides lors de la rotation */
+            width: 150%;
+            height: 150%;
+            left: -25%;
+            top: -25%;
+            transition: transform 0.15s ease-out;
+        }
+        .compass-overlay {
             position: absolute;
             top: 10px;
             left: 10px;
             z-index: 1000;
+            pointer-events: none;
+        }
+        .compass-rose {
+            width: 70px;
+            height: 70px;
             background: rgba(255,255,255,0.95);
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
             display: none;
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            font-size: 24px;
-            transition: transform 0.1s ease-out;
+            position: relative;
         }
-        .compass-indicator.active {
+        .compass-rose.active {
             display: flex;
         }
-        .compass-indicator::before {
-            content: '';
+        .compass-needle {
             position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 20px solid #ff3b30;
-            top: 8px;
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ff3b30 50%, #333 50%);
+            border-radius: 2px;
+            transform-origin: center bottom;
+            top: 5px;
+            left: calc(50% - 2px);
         }
-        .compass-indicator::after {
-            content: 'N';
+        .compass-letters {
             position: absolute;
-            top: -2px;
+            width: 100%;
+            height: 100%;
             font-size: 10px;
             font-weight: bold;
-            color: #ff3b30;
         }
+        .compass-letters span {
+            position: absolute;
+        }
+        .compass-letters .n { top: 2px; left: 50%; transform: translateX(-50%); color: #ff3b30; }
+        .compass-letters .s { bottom: 2px; left: 50%; transform: translateX(-50%); color: #666; }
+        .compass-letters .e { right: 4px; top: 50%; transform: translateY(-50%); color: #666; }
+        .compass-letters .o { left: 4px; top: 50%; transform: translateY(-50%); color: #666; }
         .heading-display {
             position: absolute;
             bottom: 10px;
             left: 10px;
             z-index: 1000;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
             display: none;
+            backdrop-filter: blur(5px);
         }
         .heading-display.active {
             display: block;
+        }
+        .heading-display .deg {
+            font-size: 20px;
+            margin-right: 5px;
         }
         .legend {
             background: white;
@@ -276,6 +300,22 @@
             font-size: 0.9em;
             color: #2e7d32;
         }
+        .debug-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.7);
+            color: #0f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 11px;
+            display: none;
+        }
+        .debug-info.active {
+            display: block;
+        }
         @media (max-width: 768px) {
             .controls {
                 flex-direction: column;
@@ -283,7 +323,7 @@
             .search-group {
                 width: 100%;
             }
-            #map {
+            .map-container {
                 height: 450px;
             }
             .btn-compass {
@@ -321,10 +361,25 @@
             </div>
         </div>
 
-        <div class="map-container">
-            <div id="map"></div>
-            <div class="compass-indicator" id="compassIndicator"></div>
-            <div class="heading-display" id="headingDisplay">Cap: 0°</div>
+        <div class="map-wrapper">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="compass-overlay">
+                <div class="compass-rose" id="compassRose">
+                    <div class="compass-needle" id="compassNeedle"></div>
+                    <div class="compass-letters">
+                        <span class="n">N</span>
+                        <span class="s">S</span>
+                        <span class="e">E</span>
+                        <span class="o">O</span>
+                    </div>
+                </div>
+            </div>
+            <div class="heading-display" id="headingDisplay">
+                <span class="deg">0°</span> N
+            </div>
+            <div class="debug-info" id="debugInfo"></div>
             <div class="loading" id="loading">⏳ Chargement...</div>
         </div>
 
@@ -357,7 +412,6 @@
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/@raruto/leaflet-rotate@0.2.8/dist/leaflet-rotate.js"></script>
     <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
     <script>
         // Configuration
@@ -367,7 +421,7 @@
             winter: '#007aff',
             today: '#34c759'
         };
-        const LINE_LENGTH = 150; // mètres
+        const LINE_LENGTH = 150;
 
         // Variables globales
         let map;
@@ -379,7 +433,8 @@
         // Variables boussole
         let compassEnabled = false;
         let currentHeading = 0;
-        let orientationHandler = null;
+        let targetHeading = 0;
+        let animationFrame = null;
 
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
@@ -390,70 +445,68 @@
         });
 
         function initMap() {
-            // Initialiser avec le support de rotation
             map = L.map('map', {
-                rotate: true,
-                rotateControl: {
-                    closeOnZeroBearing: false,
-                    position: 'topright'
-                },
-                touchRotate: true,
-                bearing: 0
+                zoomControl: true,
+                attributionControl: true
             }).setView([currentLat, currentLng], 18);
             
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors',
+                attribution: '© OpenStreetMap',
                 maxZoom: 20
             }).addTo(map);
 
-            // Clic sur la carte pour changer la position
             map.on('click', (e) => {
                 setPosition(e.latlng.lat, e.latlng.lng);
             });
         }
 
         function checkMobileCapabilities() {
-            // Vérifier si l'appareil supporte l'orientation
             const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             const hasOrientation = 'DeviceOrientationEvent' in window;
             
             if (isMobile && hasOrientation) {
                 document.getElementById('compassBtn').style.display = 'block';
-                document.getElementById('mobileNotice').style.display = 'block';
+            }
+            
+            // Afficher le bouton sur desktop aussi pour les tests
+            if (hasOrientation) {
+                document.getElementById('compassBtn').style.display = 'block';
             }
         }
 
         async function toggleCompass() {
             const btn = document.getElementById('compassBtn');
-            const indicator = document.getElementById('compassIndicator');
+            const compassRose = document.getElementById('compassRose');
             const headingDisplay = document.getElementById('headingDisplay');
+            const debugInfo = document.getElementById('debugInfo');
             
             if (compassEnabled) {
-                // Désactiver la boussole
+                // Désactiver
                 compassEnabled = false;
                 btn.classList.remove('active');
                 btn.textContent = '🧭 Activer boussole';
-                indicator.classList.remove('active');
+                compassRose.classList.remove('active');
                 headingDisplay.classList.remove('active');
+                debugInfo.classList.remove('active');
                 
-                // Remettre la carte à 0°
-                if (map.setBearing) {
-                    map.setBearing(0);
-                }
+                // Remettre la carte droite
+                document.getElementById('map').style.transform = 'rotate(0deg)';
                 
-                // Supprimer le listener
-                if (orientationHandler) {
-                    window.removeEventListener('deviceorientationabsolute', orientationHandler);
-                    window.removeEventListener('deviceorientation', orientationHandler);
+                window.removeEventListener('deviceorientation', handleOrientation, true);
+                window.removeEventListener('deviceorientationabsolute', handleOrientation, true);
+                
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
                 }
             } else {
-                // Activer la boussole
+                // Activer
                 try {
-                    // iOS 13+ nécessite une permission explicite
-                    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    // iOS 13+ : demande de permission
+                    if (typeof DeviceOrientationEvent !== 'undefined' && 
+                        typeof DeviceOrientationEvent.requestPermission === 'function') {
                         const permission = await DeviceOrientationEvent.requestPermission();
                         if (permission !== 'granted') {
-                            alert('Permission refusée pour accéder à la boussole. Veuillez autoriser l\'accès dans les paramètres.');
+                            alert('Permission refusée. Veuillez autoriser l\'accès aux capteurs de mouvement dans les réglages Safari.');
                             return;
                         }
                     }
@@ -461,77 +514,90 @@
                     compassEnabled = true;
                     btn.classList.add('active');
                     btn.textContent = '🧭 Boussole active';
-                    indicator.classList.add('active');
+                    compassRose.classList.add('active');
                     headingDisplay.classList.add('active');
+                    // debugInfo.classList.add('active'); // Décommenter pour debug
                     
-                    // Créer le handler d'orientation
-                    orientationHandler = handleOrientation;
-                    
-                    // Essayer d'abord deviceorientationabsolute (plus précis sur Android)
+                    // Écouter les événements d'orientation
                     if ('ondeviceorientationabsolute' in window) {
-                        window.addEventListener('deviceorientationabsolute', orientationHandler, true);
+                        window.addEventListener('deviceorientationabsolute', handleOrientation, true);
                     } else {
-                        window.addEventListener('deviceorientation', orientationHandler, true);
+                        window.addEventListener('deviceorientation', handleOrientation, true);
                     }
+                    
+                    // Démarrer l'animation fluide
+                    animateRotation();
                     
                 } catch (error) {
                     console.error('Erreur boussole:', error);
-                    alert('Impossible d\'accéder à la boussole. Vérifiez que vous utilisez HTTPS et que votre appareil dispose d\'un capteur.');
+                    alert('Erreur: ' + error.message);
                 }
             }
         }
 
         function handleOrientation(event) {
-            let heading;
+            let heading = null;
             
-            // Récupérer le cap selon le type d'événement
-            if (event.webkitCompassHeading !== undefined) {
-                // iOS - webkitCompassHeading est déjà en degrés par rapport au Nord
+            // iOS avec webkitCompassHeading (le plus précis sur iOS)
+            if (event.webkitCompassHeading !== undefined && event.webkitCompassHeading !== null) {
                 heading = event.webkitCompassHeading;
-            } else if (event.absolute && event.alpha !== null) {
-                // Android avec orientation absolue
-                heading = 360 - event.alpha;
-            } else if (event.alpha !== null) {
-                // Fallback - orientation relative
-                heading = 360 - event.alpha;
-            } else {
-                return; // Pas de données valides
+            }
+            // Android / autres avec alpha absolu
+            else if (event.absolute === true && event.alpha !== null) {
+                heading = (360 - event.alpha) % 360;
+            }
+            // Fallback sur alpha relatif
+            else if (event.alpha !== null) {
+                heading = (360 - event.alpha) % 360;
             }
             
-            // Normaliser entre 0 et 360
-            heading = ((heading % 360) + 360) % 360;
-            
-            // Lisser les mouvements (filtre passe-bas)
-            const smoothing = 0.3;
-            const delta = heading - currentHeading;
-            
-            // Gérer le passage 359° -> 0°
-            let adjustedDelta = delta;
-            if (delta > 180) adjustedDelta = delta - 360;
-            if (delta < -180) adjustedDelta = delta + 360;
-            
-            currentHeading = (currentHeading + adjustedDelta * smoothing + 360) % 360;
-            
-            // Mettre à jour l'affichage
-            updateCompassDisplay(currentHeading);
-            
-            // Faire tourner la carte (inverse du heading pour que le Nord pointe vers le haut du téléphone)
-            if (map.setBearing && compassEnabled) {
-                map.setBearing(-currentHeading);
+            if (heading !== null) {
+                targetHeading = heading;
+                
+                // Debug
+                const debugInfo = document.getElementById('debugInfo');
+                debugInfo.innerHTML = `α: ${event.alpha?.toFixed(1) || 'null'}<br>` +
+                                      `webkit: ${event.webkitCompassHeading?.toFixed(1) || 'null'}<br>` +
+                                      `abs: ${event.absolute}<br>` +
+                                      `heading: ${heading.toFixed(1)}°`;
             }
         }
 
-        function updateCompassDisplay(heading) {
-            const indicator = document.getElementById('compassIndicator');
-            const headingDisplay = document.getElementById('headingDisplay');
+        function animateRotation() {
+            if (!compassEnabled) return;
             
-            // Tourner l'indicateur de boussole
-            indicator.style.transform = `rotate(${heading}deg)`;
+            // Interpolation douce vers le heading cible
+            let delta = targetHeading - currentHeading;
             
-            // Afficher le cap avec direction cardinale
+            // Gérer le passage 359° <-> 0°
+            if (delta > 180) delta -= 360;
+            if (delta < -180) delta += 360;
+            
+            // Lissage (0.1 = très lisse, 0.3 = réactif)
+            currentHeading += delta * 0.15;
+            
+            // Normaliser
+            currentHeading = ((currentHeading % 360) + 360) % 360;
+            
+            // Appliquer la rotation à la carte
+            const mapEl = document.getElementById('map');
+            mapEl.style.transform = `rotate(${-currentHeading}deg)`;
+            
+            // Mettre à jour l'aiguille de la boussole (tourne dans le sens inverse)
+            const needle = document.getElementById('compassNeedle');
+            needle.style.transform = `rotate(${-currentHeading}deg)`;
+            
+            // Mettre à jour l'affichage du cap
+            updateHeadingDisplay(currentHeading);
+            
+            animationFrame = requestAnimationFrame(animateRotation);
+        }
+
+        function updateHeadingDisplay(heading) {
             const directions = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'];
             const index = Math.round(heading / 45) % 8;
-            headingDisplay.textContent = `Cap: ${Math.round(heading)}° ${directions[index]}`;
+            const headingDisplay = document.getElementById('headingDisplay');
+            headingDisplay.innerHTML = `<span class="deg">${Math.round(heading)}°</span> ${directions[index]}`;
         }
 
         function updateTodayDate() {
@@ -594,7 +660,6 @@
             currentLat = lat;
             currentLng = lng;
 
-            // Mettre à jour le marqueur
             if (marker) {
                 marker.setLatLng([lat, lng]);
             } else {
@@ -617,8 +682,8 @@
             clearSunLines();
             
             const year = new Date().getFullYear();
-            const summerSolstice = new Date(year, 5, 21); // 21 juin
-            const winterSolstice = new Date(year, 11, 21); // 21 décembre
+            const summerSolstice = new Date(year, 5, 21);
+            const winterSolstice = new Date(year, 11, 21);
             const today = new Date();
 
             if (document.getElementById('showSummer').checked) {
@@ -639,35 +704,28 @@
 
         function drawSunPath(date, season) {
             const color = COLORS[season];
-            const positions = [];
 
             HOURS.forEach(hour => {
                 const dateTime = new Date(date);
                 dateTime.setHours(hour, 0, 0, 0);
                 
                 const sunPos = SunCalc.getPosition(dateTime, currentLat, currentLng);
-                const azimuth = sunPos.azimuth * 180 / Math.PI + 180; // Convertir en degrés (0° = Nord)
+                const azimuth = sunPos.azimuth * 180 / Math.PI + 180;
                 const altitude = sunPos.altitude * 180 / Math.PI;
 
-                // Ne dessiner que si le soleil est au-dessus de l'horizon
                 if (altitude > 0) {
-                    positions.push({ hour, azimuth, altitude });
-                    
-                    // Calculer le point final de la ligne
                     const endPoint = calculateEndPoint(currentLat, currentLng, azimuth, LINE_LENGTH);
                     
-                    // Dessiner la ligne
                     const line = L.polyline(
                         [[currentLat, currentLng], endPoint],
                         { 
                             color: color, 
                             weight: 3, 
                             opacity: 0.7,
-                            dashArray: altitude < 15 ? '5,5' : null // Pointillé si soleil bas
+                            dashArray: altitude < 15 ? '5,5' : null
                         }
                     ).addTo(map);
                     
-                    // Ajouter un marqueur au bout de la ligne
                     const markerSize = Math.max(6, Math.min(12, altitude / 5));
                     const circleMarker = L.circleMarker(endPoint, {
                         radius: markerSize,
@@ -689,8 +747,7 @@
         }
 
         function calculateEndPoint(lat, lng, bearing, distance) {
-            // Calcul simplifié pour de courtes distances
-            const R = 6371000; // Rayon de la Terre en mètres
+            const R = 6371000;
             const d = distance / R;
             const brng = bearing * Math.PI / 180;
             const lat1 = lat * Math.PI / 180;
@@ -761,7 +818,6 @@
             return `${hours}h ${minutes}min`;
         }
 
-        // Permettre la recherche avec Entrée
         document.getElementById('addressInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') searchAddress();
         });
