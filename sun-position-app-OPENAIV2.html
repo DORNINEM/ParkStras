@@ -323,17 +323,40 @@
             return dirs[idx];
         }
 
-        // ===== Carte MapLibre =====
+        // ===== Carte MapLibre avec style OSM inline =====
+        const osmStyle = {
+            version: 8,
+            sources: {
+                osm: {
+                    type: "raster",
+                    tiles: [
+                        "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    ],
+                    tileSize: 256,
+                    attribution: "© OpenStreetMap contributors"
+                }
+            },
+            layers: [
+                {
+                    id: "osm",
+                    type: "raster",
+                    source: "osm"
+                }
+            ]
+        };
+
         const map = new maplibregl.Map({
             container: "map",
-            style: "https://demotiles.maplibre.org/style.json",
+            style: osmStyle,
             center: [2.3522, 48.8566], // Paris
             zoom: 15,
             pitch: 0,
             bearing: 0
         });
 
-        // Contrôle zoom (sans boussole intégrée, on a la nôtre)
+        // Contrôle zoom (sans boussole intégrée)
         map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
         let mapLoaded = false;
@@ -363,10 +386,10 @@
             el.textContent = `soleil visible env. de ${s.start}h à ${s.end}h, altitude max ≈ ${s.maxAlt.toFixed(1)}°`;
         }
 
-        // Sources & layers pour les 3 modes
         const sunSources = ["today", "summer", "winter"];
 
         map.on("load", () => {
+            // Charger SunCalc (via global SunCalc déjà inclus)
             sunSources.forEach(mode => {
                 map.addSource("sun-" + mode, {
                     type: "geojson",
@@ -511,11 +534,11 @@
 
                 const altitudeDeg = alt * 180 / Math.PI;
 
-                // Conversion azimuth SunCalc -> cap depuis le Nord, sens horaire
+                // Transformation azimuth SunCalc -> cap depuis Nord, sens horaire
                 let bearingDeg = (az * 180 / Math.PI + 180 + 360) % 360; // 0=N, 90=E
                 const bearingRad = bearingDeg * Math.PI / 180;
 
-                const lengthMeters = 80; // longueur de la "rayon" sur la carte
+                const lengthMeters = 80;
                 const dx = lengthMeters * Math.sin(bearingRad); // vers l'est
                 const dy = lengthMeters * Math.cos(bearingRad); // vers le nord
 
@@ -537,7 +560,7 @@
                     }
                 });
 
-                // Point + label
+                // Point
                 features.push({
                     type: "Feature",
                     geometry: {
@@ -631,7 +654,7 @@
             }
         });
 
-        // ===== Modes (jour / été / hiver) =====
+        // ===== Modes =====
         document.querySelectorAll(".modeBtn").forEach(btn => {
             btn.addEventListener("click", () => {
                 document.querySelectorAll(".modeBtn").forEach(b => b.classList.remove("active"));
@@ -652,11 +675,9 @@
                 let heading;
 
                 if (typeof event.webkitCompassHeading === "number") {
-                    // iOS
-                    heading = event.webkitCompassHeading; // déjà 0 = Nord, sens horaire
+                    heading = event.webkitCompassHeading; // iOS
                 } else if (typeof event.alpha === "number") {
-                    // Android / autres (approx)
-                    heading = 360 - event.alpha; // correction simple
+                    heading = 360 - event.alpha; // Android (approx)
                 }
 
                 if (heading == null || isNaN(heading)) {
@@ -672,7 +693,6 @@
                 const arrow = document.getElementById("compassArrow");
                 arrow.style.transform = `rotate(${heading}deg)`;
 
-                // Rotation de la carte selon le cap
                 if (mapLoaded) {
                     map.setBearing(heading);
                 }
@@ -682,7 +702,6 @@
 
             if (typeof DeviceOrientationEvent !== "undefined"
                 && typeof DeviceOrientationEvent.requestPermission === "function") {
-                // iOS : demande de permission
                 DeviceOrientationEvent.requestPermission()
                     .then(state => {
                         if (state === "granted") {
@@ -698,7 +717,6 @@
                         showToast("Erreur boussole (permission).");
                     });
             } else if (typeof DeviceOrientationEvent !== "undefined") {
-                // Android / autres
                 window.addEventListener("deviceorientation", handleOrientation, true);
                 compassActive = true;
                 showToast("Boussole activée (si supportée).");
