@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Course du soleil (MapLibre) — aide à la pose</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- MapLibre GL CSS -->
+    <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
+    <!-- SunCalc -->
+    <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: #f3f4f6;
+        }
+
+        header {
+            padding: 0.5rem 0.75rem;
+            background: #111827;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        header h1 {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .controls input[type="text"] {
+            padding: 0.3rem 0.5rem;
+            border-radius: 0.4rem;
+            border: 1px solid #d1d5db;
+            min-width: 200px;
+            max-width: 260px;
+            font-size: 0.85rem;
+        }
+
+        .controls button {
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            background: #e5e7eb;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .controls button.primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .controls button.active {
+            background: #1f2937;
+            color: white;
+        }
+
+        #map {
+            flex: 1;
+            width: 100%;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .panel {
+            background: white;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+            line-height: 1.4;
+            pointer-events: auto;
+        }
+
+        .panel-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .legend-colors div {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .legend-colors span.color {
+            display: inline-block;
+            width: 14px;
+            height: 3px;
+            border-radius: 999px;
+        }
+
+        .legend-colors .today {
+            background: #ef4444;
+        }
+
+        .legend-colors .summer {
+            background: #22c55e;
+        }
+
+        .legend-colors .winter {
+            background: #3b82f6;
+        }
+
+        .field-label {
+            font-weight: 600;
+            margin-right: 0.25rem;
+        }
+
+        .coords {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.78rem;
+        }
+
+        .toast {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #111827;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            display: none;
+            z-index: 1000;
+        }
+
+        .compass-widget {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+        }
+
+        .compass-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compass-arrow {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 14px solid #ef4444;
+            transform-origin: 50% 12px;
+            transform: rotate(0deg);
+        }
+
+        .compass-center {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #111827;
+        }
+
+        .compass-text {
+            font-size: 0.78rem;
+        }
+
+        .notes {
+            width: 100%;
+            min-height: 50px;
+            max-height: 80px;
+            resize: vertical;
+            border-radius: 0.4rem;
+            border: 1px solid #e5e7eb;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.4rem;
+        }
+
+        @media (min-width: 800px) {
+            header {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            header h1 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Course du soleil — aide à la pose de caméras / panneaux solaires (MapLibre)</h1>
+        <div class="controls">
+            <button id="geoBtn" class="primary">📍 Me géolocaliser</button>
+
+            <input type="text" id="addressInput" placeholder="Adresse (n° rue, ville...)" />
+            <button id="searchBtn">Rechercher</button>
+
+            <span>Mode :</span>
+            <button class="modeBtn active" data-mode="today">Aujourd'hui</button>
+            <button class="modeBtn" data-mode="summer">Été</button>
+            <button class="modeBtn" data-mode="winter">Hiver</button>
+
+            <button id="compassBtn">🧭 Boussole & rotation</button>
+        </div>
+    </header>
+
+    <div id="map"></div>
+
+    <div class="overlay-panel">
+        <!-- Infos techniques -->
+        <div class="panel">
+            <div class="panel-row" style="margin-bottom:0.3rem;">
+                <span class="field-label">Coordonnées :</span>
+                <span id="coords" class="coords">lat — lon</span>
+            </div>
+
+            <div class="panel-row" style="margin-bottom:0.3rem;">
+                <div class="legend-colors">
+                    <strong>Codes couleur :</strong>
+                    <div><span class="color today"></span> Aujourd'hui</div>
+                    <div><span class="color summer"></span> Été (21 juin)</div>
+                    <div><span class="color winter"></span> Hiver (21 décembre)</div>
+                </div>
+            </div>
+
+            <div class="panel-row" style="margin-bottom:0.3rem;">
+                <span class="field-label">Soleil (mode courant) :</span>
+                <span id="sunSummary">—</span>
+            </div>
+
+            <div class="panel-row">
+                <span class="field-label">Cap mobile :</span>
+                <div class="compass-widget">
+                    <div class="compass-circle">
+                        <div id="compassArrow" class="compass-arrow"></div>
+                        <div class="compass-center"></div>
+                    </div>
+                    <div class="compass-text">
+                        <span id="headingText">N/A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes terrain -->
+        <div class="panel">
+            <div style="font-weight:600;margin-bottom:0.25rem;">
+                Notes d’installation (façade, obstacles, remarques terrain) :
+            </div>
+            <textarea id="notes" class="notes"
+                placeholder="Exemples : façade sud-ouest, avancée de toit 50 cm, arbre à 4 m (≈6 m de haut), mur voisin à 3 m..."></textarea>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- MapLibre GL JS -->
+    <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
+
+    <script>
+        // ===== Utils =====
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.style.display = "block";
+            setTimeout(() => (toast.style.display = "none"), 2200);
+        }
+
+        function getDatesForMode(mode) {
+            const now = new Date();
+            const year = now.getFullYear();
+            if (mode === "summer") return new Date(year, 5, 21);   // 21 juin
+            if (mode === "winter") return new Date(year, 11, 21);  // 21 décembre
+            return now;
+        }
+
+        function colorForMode(mode) {
+            if (mode === "summer") return "#22c55e";
+            if (mode === "winter") return "#3b82f6";
+            return "#ef4444"; // today
+        }
+
+        function formatCardinal(deg) {
+            const dirs = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"];
+            const idx = Math.round(deg / 45) % 8;
+            return dirs[idx];
+        }
+
+        // ===== Carte MapLibre =====
+        const map = new maplibregl.Map({
+            container: "map",
+            style: "https://demotiles.maplibre.org/style.json",
+            center: [2.3522, 48.8566], // Paris
+            zoom: 15,
+            pitch: 0,
+            bearing: 0
+        });
+
+        // Contrôle zoom (sans boussole intégrée, on a la nôtre)
+        map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+
+        let mapLoaded = false;
+        let currentLatLng = { lat: 48.8566, lng: 2.3522 };
+        let baseMarker = null;
+        let currentMode = "today";
+
+        let lastSunSummary = {
+            today: null,
+            summer: null,
+            winter: null
+        };
+
+        function updateCoordsDisplay() {
+            if (!currentLatLng) return;
+            const el = document.getElementById("coords");
+            el.textContent = `${currentLatLng.lat.toFixed(6)} ; ${currentLatLng.lng.toFixed(6)}`;
+        }
+
+        function updateSunSummaryText() {
+            const s = lastSunSummary[currentMode];
+            const el = document.getElementById("sunSummary");
+            if (!s) {
+                el.textContent = "soleil non visible entre 6h et 20h pour ce mode";
+                return;
+            }
+            el.textContent = `soleil visible env. de ${s.start}h à ${s.end}h, altitude max ≈ ${s.maxAlt.toFixed(1)}°`;
+        }
+
+        // Sources & layers pour les 3 modes
+        const sunSources = ["today", "summer", "winter"];
+
+        map.on("load", () => {
+            sunSources.forEach(mode => {
+                map.addSource("sun-" + mode, {
+                    type: "geojson",
+                    data: { type: "FeatureCollection", features: [] }
+                });
+
+                // Lignes
+                map.addLayer({
+                    id: "sun-line-" + mode,
+                    type: "line",
+                    source: "sun-" + mode,
+                    filter: ["==", ["get", "featureType"], "line"],
+                    layout: {
+                        "line-join": "round",
+                        "line-cap": "round"
+                    },
+                    paint: {
+                        "line-color": colorForMode(mode),
+                        "line-width": 2.5,
+                        "line-opacity": 0.9
+                    }
+                });
+
+                // Points (cercles)
+                map.addLayer({
+                    id: "sun-circle-" + mode,
+                    type: "circle",
+                    source: "sun-" + mode,
+                    filter: ["==", ["get", "featureType"], "point"],
+                    paint: {
+                        "circle-color": "#ffffff",
+                        "circle-stroke-color": colorForMode(mode),
+                        "circle-stroke-width": 2,
+                        "circle-radius": 8
+                    }
+                });
+
+                // Labels heures
+                map.addLayer({
+                    id: "sun-label-" + mode,
+                    type: "symbol",
+                    source: "sun-" + mode,
+                    filter: ["==", ["get", "featureType"], "point"],
+                    layout: {
+                        "text-field": ["to-string", ["get", "hour"]],
+                        "text-size": 10,
+                        "text-offset": [0, 1.1],
+                        "text-anchor": "top"
+                    },
+                    paint: {
+                        "text-color": "#111827"
+                    }
+                });
+
+                // Popup altitude au clic
+                map.on("click", "sun-circle-" + mode, (e) => {
+                    const f = e.features[0];
+                    const hour = f.properties.hour;
+                    const alt = f.properties.altitudeDeg;
+                    new maplibregl.Popup()
+                        .setLngLat(e.lngLat)
+                        .setHTML(`<strong>${hour}h</strong><br>Altitude: ${alt.toFixed(1)}°`)
+                        .addTo(map);
+                });
+
+                map.on("mouseenter", "sun-circle-" + mode, () => {
+                    map.getCanvas().style.cursor = "pointer";
+                });
+                map.on("mouseleave", "sun-circle-" + mode, () => {
+                    map.getCanvas().style.cursor = "";
+                });
+            });
+
+            setBasePosition(currentLatLng, false);
+            mapLoaded = true;
+        });
+
+        function setBasePosition(latlng, fly = true) {
+            currentLatLng = latlng;
+
+            if (!mapLoaded) return;
+
+            if (baseMarker) {
+                baseMarker.setLngLat([latlng.lng, latlng.lat]);
+            } else {
+                baseMarker = new maplibregl.Marker({ draggable: true })
+                    .setLngLat([latlng.lng, latlng.lat])
+                    .addTo(map);
+
+                baseMarker.on("dragend", () => {
+                    const pos = baseMarker.getLngLat();
+                    currentLatLng = { lat: pos.lat, lng: pos.lng };
+                    updateCoordsDisplay();
+                    recomputeAllModes();
+                });
+            }
+
+            if (fly) {
+                map.flyTo({ center: [latlng.lng, latlng.lat], zoom: 17, duration: 800 });
+            }
+
+            updateCoordsDisplay();
+            recomputeAllModes();
+        }
+
+        // ===== Calcul course du soleil =====
+        function recomputeAllModes() {
+            ["today", "summer", "winter"].forEach(mode => {
+                computeSunPathForMode(mode);
+            });
+            updateSunSummaryText();
+        }
+
+        function computeSunPathForMode(mode) {
+            if (!mapLoaded || !currentLatLng) return;
+            const source = map.getSource("sun-" + mode);
+            if (!source) return;
+
+            const baseLat = currentLatLng.lat;
+            const baseLng = currentLatLng.lng;
+            const baseCoord = [baseLng, baseLat];
+            const dateBase = getDatesForMode(mode);
+
+            const features = [];
+            let firstHour = null;
+            let lastHour = null;
+            let maxAlt = -Infinity;
+
+            for (let hour = 6; hour <= 20; hour++) {
+                const d = new Date(dateBase);
+                d.setHours(hour, 0, 0, 0);
+
+                const pos = SunCalc.getPosition(d, baseLat, baseLng);
+                const alt = pos.altitude; // rad
+                const az = pos.azimuth;   // rad, 0 = sud, + vers l'ouest
+
+                if (alt <= 0) continue; // soleil sous l'horizon
+
+                if (firstHour === null) firstHour = hour;
+                lastHour = hour;
+                if (alt > maxAlt) maxAlt = alt;
+
+                const altitudeDeg = alt * 180 / Math.PI;
+
+                // Conversion azimuth SunCalc -> cap depuis le Nord, sens horaire
+                let bearingDeg = (az * 180 / Math.PI + 180 + 360) % 360; // 0=N, 90=E
+                const bearingRad = bearingDeg * Math.PI / 180;
+
+                const lengthMeters = 80; // longueur de la "rayon" sur la carte
+                const dx = lengthMeters * Math.sin(bearingRad); // vers l'est
+                const dy = lengthMeters * Math.cos(bearingRad); // vers le nord
+
+                const destLat = baseLat + (dy / 111320);
+                const destLng = baseLng + (dx / (40075000 * Math.cos(baseLat * Math.PI / 180) / 360));
+
+                const destCoord = [destLng, destLat];
+
+                // Ligne
+                features.push({
+                    type: "Feature",
+                    geometry: {
+                        type: "LineString",
+                        coordinates: [baseCoord, destCoord]
+                    },
+                    properties: {
+                        featureType: "line",
+                        hour: hour
+                    }
+                });
+
+                // Point + label
+                features.push({
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: destCoord
+                    },
+                    properties: {
+                        featureType: "point",
+                        hour: hour,
+                        altitudeDeg: altitudeDeg
+                    }
+                });
+            }
+
+            if (firstHour !== null && lastHour !== null && maxAlt > -Infinity) {
+                lastSunSummary[mode] = {
+                    start: firstHour,
+                    end: lastHour,
+                    maxAlt: maxAlt * 180 / Math.PI
+                };
+            } else {
+                lastSunSummary[mode] = null;
+            }
+
+            source.setData({
+                type: "FeatureCollection",
+                features: features
+            });
+        }
+
+        // ===== Géoloc =====
+        document.getElementById("geoBtn").addEventListener("click", () => {
+            if (!navigator.geolocation) {
+                showToast("La géolocalisation n'est pas supportée par ce navigateur.");
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const latlng = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+                    setBasePosition(latlng, true);
+                    showToast("Position détectée.");
+                },
+                (err) => {
+                    console.error(err);
+                    showToast("Impossible de récupérer la position.");
+                }
+            );
+        });
+
+        // ===== Géocodage (Nominatim) =====
+        async function geocodeAddress(address) {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`;
+            const res = await fetch(url, {
+                headers: { "Accept-Language": "fr" }
+            });
+            if (!res.ok) throw new Error("Erreur réseau");
+            const data = await res.json();
+            if (!data || data.length === 0) throw new Error("Adresse introuvable");
+            return {
+                lat: parseFloat(data[0].lat),
+                lng: parseFloat(data[0].lon)
+            };
+        }
+
+        document.getElementById("searchBtn").addEventListener("click", async () => {
+            if (!mapLoaded) {
+                showToast("Carte en cours de chargement...");
+                return;
+            }
+            const input = document.getElementById("addressInput");
+            const address = input.value.trim();
+            if (!address) {
+                showToast("Veuillez saisir une adresse.");
+                return;
+            }
+            showToast("Recherche en cours...");
+            try {
+                const latlng = await geocodeAddress(address);
+                setBasePosition(latlng, true);
+                showToast("Adresse trouvée.");
+            } catch (e) {
+                console.error(e);
+                showToast("Adresse introuvable.");
+            }
+        });
+
+        document.getElementById("addressInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                document.getElementById("searchBtn").click();
+            }
+        });
+
+        // ===== Modes (jour / été / hiver) =====
+        document.querySelectorAll(".modeBtn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".modeBtn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentMode = btn.dataset.mode;
+                recomputeAllModes();
+            });
+        });
+
+        // ===== Boussole + rotation carte =====
+        let compassActive = false;
+        let orientationHandler = null;
+
+        function startCompass() {
+            if (compassActive) return;
+
+            function handleOrientation(event) {
+                let heading;
+
+                if (typeof event.webkitCompassHeading === "number") {
+                    // iOS
+                    heading = event.webkitCompassHeading; // déjà 0 = Nord, sens horaire
+                } else if (typeof event.alpha === "number") {
+                    // Android / autres (approx)
+                    heading = 360 - event.alpha; // correction simple
+                }
+
+                if (heading == null || isNaN(heading)) {
+                    document.getElementById("headingText").textContent = "N/A";
+                    return;
+                }
+
+                heading = (heading + 360) % 360;
+                const cardinal = formatCardinal(heading);
+                document.getElementById("headingText").textContent =
+                    `${heading.toFixed(0)}° (${cardinal})`;
+
+                const arrow = document.getElementById("compassArrow");
+                arrow.style.transform = `rotate(${heading}deg)`;
+
+                // Rotation de la carte selon le cap
+                if (mapLoaded) {
+                    map.setBearing(heading);
+                }
+            }
+
+            orientationHandler = handleOrientation;
+
+            if (typeof DeviceOrientationEvent !== "undefined"
+                && typeof DeviceOrientationEvent.requestPermission === "function") {
+                // iOS : demande de permission
+                DeviceOrientationEvent.requestPermission()
+                    .then(state => {
+                        if (state === "granted") {
+                            window.addEventListener("deviceorientation", handleOrientation, true);
+                            compassActive = true;
+                            showToast("Boussole activée.");
+                        } else {
+                            showToast("Accès à la boussole refusé.");
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        showToast("Erreur boussole (permission).");
+                    });
+            } else if (typeof DeviceOrientationEvent !== "undefined") {
+                // Android / autres
+                window.addEventListener("deviceorientation", handleOrientation, true);
+                compassActive = true;
+                showToast("Boussole activée (si supportée).");
+            } else {
+                showToast("Boussole non supportée sur ce device.");
+            }
+        }
+
+        document.getElementById("compassBtn").addEventListener("click", () => {
+            if (!compassActive) {
+                startCompass();
+            } else {
+                window.removeEventListener("deviceorientation", orientationHandler, true);
+                compassActive = false;
+                document.getElementById("headingText").textContent = "N/A";
+                document.getElementById("compassArrow").style.transform = "rotate(0deg)";
+                if (mapLoaded) map.setBearing(0);
+                showToast("Boussole désactivée.");
+            }
+        });
+    </script>
+</body>
+
+</html>
