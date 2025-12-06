@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - HOMIRIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 750px;
+            position: relative;
+        }
+
+        /* FLOATING HEADER */
+        .floating-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .logo-compact {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-compact img {
+            height: 24px;
+        }
+
+        .logo-compact span {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon-btn:active {
+            transform: scale(0.95);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* FLOATING STATS */
+        .floating-stats {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.75em;
+            z-index: 10;
+        }
+
+        .floating-stats.show {
+            display: flex;
+        }
+
+        .stat-mini {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+        }
+
+        .stat-mini strong {
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        /* CARD CONTAINER */
+        .card-container {
+            perspective: 1200px;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flashcard-box {
+            width: 100%;
+            height: 500px;
+            display: none;
+            position: relative;
+        }
+
+        .flashcard-box.show {
+            display: block;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            padding: 50px 35px 35px 35px;
+        }
+
+        .card-front {
+            background: white;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(102, 126, 234, 0.12);
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-back .card-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .card-number-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #999;
+        }
+
+        .card-back .card-number-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .card-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-text {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .card-back .card-text {
+            color: white;
+        }
+
+        .card-tip {
+            text-align: center;
+            font-size: 0.75em;
+            color: #aaa;
+            font-style: italic;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-back .card-tip {
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* WELCOME */
+        .welcome-box {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .welcome-box h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .welcome-box p {
+            color: #666;
+            font-size: 1em;
+        }
+
+        /* BOTTOM CONTROLS */
+        .bottom-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 15px;
+            border-radius: 25px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .bottom-controls.show {
+            display: flex;
+        }
+
+        .progress-zone {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-info {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #666;
+            min-width: 75px;
+        }
+
+        .progress-rail {
+            flex: 1;
+            height: 5px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-active {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .nav-zone {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-circle:hover:not(:disabled) {
+            background: #5568d3;
+            transform: scale(1.08);
+        }
+
+        .nav-circle:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .card-container {
+                min-height: 400px;
+            }
+
+            .flashcard-box {
+                height: 400px;
+            }
+
+            .card-text {
+                font-size: 1.1em;
+            }
+
+            .floating-header {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- FLOATING HEADER -->
+        <div class="floating-header">
+            <div class="logo-compact">
+                <img src="logo-homiris.png" alt="HOMIRIS">
+                <span>Flashcards</span>
+            </div>
+            <div class="quick-actions">
+                <input type="file" id="fileInput" class="file-input" accept=".json" />
+                <button class="icon-btn" onclick="document.getElementById('fileInput').click()" title="Charger">📁</button>
+                <button class="icon-btn" id="shuffleBtn" style="display: none;" title="Mélanger">🔀</button>
+                <button class="icon-btn" id="resetBtn" style="display: none;" title="Recommencer">↺</button>
+            </div>
+        </div>
+
+        <!-- FLOATING STATS -->
+        <div class="floating-stats" id="floatingStats">
+            <div class="stat-mini">📚 <strong id="totalCards">0</strong></div>
+            <div class="stat-mini">👁️ <strong id="cardsViewed">0</strong></div>
+            <div class="stat-mini">🔄 <strong id="flipsCount">0</strong></div>
+        </div>
+
+        <!-- CARD AREA -->
+        <div class="card-container">
+            <div class="welcome-box" id="welcomeBox">
+                <h2>📚 Flashcards</h2>
+                <p>Cliquez sur 📁 pour charger vos cartes</p>
+            </div>
+
+            <div class="flashcard-box" id="flashcardBox">
+                <div class="flashcard" id="flashcard">
+                    <div class="card-side card-front">
+                        <div class="card-tag">Question</div>
+                        <div class="card-number-badge" id="numFront">1</div>
+                        <div class="card-main">
+                            <div class="card-text" id="textFront"></div>
+                        </div>
+                        <div class="card-tip">👆 Cliquez pour voir la réponse</div>
+                    </div>
+                    <div class="card-side card-back">
+                        <div class="card-tag">Réponse</div>
+                        <div class="card-number-badge" id="numBack">1</div>
+                        <div class="card-main">
+                            <div class="card-text" id="textBack"></div>
+                        </div>
+                        <div class="card-tip">👆 Cliquez pour revenir</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM CONTROLS -->
+        <div class="bottom-controls" id="bottomControls">
+            <div class="progress-zone">
+                <span class="progress-info" id="progressInfo">1/0</span>
+                <div class="progress-rail">
+                    <div class="progress-active" id="progressActive"></div>
+                </div>
+            </div>
+            <div class="nav-zone">
+                <button class="nav-circle" id="prevBtn" disabled>◀</button>
+                <button class="nav-circle" id="nextBtn">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let flashcards = [];
+        let currentIndex = 0;
+        let viewedCards = new Set();
+        let flipCount = 0;
+
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        flashcards = data.flashcards;
+                        initFlashcards();
+                    } catch (error) {
+                        alert('❌ Erreur de lecture');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function initFlashcards() {
+            currentIndex = 0;
+            viewedCards.clear();
+            flipCount = 0;
+            
+            document.getElementById('welcomeBox').style.display = 'none';
+            document.getElementById('flashcardBox').classList.add('show');
+            document.getElementById('floatingStats').classList.add('show');
+            document.getElementById('shuffleBtn').style.display = 'flex';
+            document.getElementById('resetBtn').style.display = 'flex';
+            document.getElementById('bottomControls').classList.add('show');
+            
+            updateStats();
+            showCard();
+        }
+
+        function showCard() {
+            if (!flashcards.length) return;
+
+            const card = flashcards[currentIndex];
+            const flashcard = document.getElementById('flashcard');
+            
+            flashcard.classList.remove('flipped');
+            
+            document.getElementById('textFront').textContent = card.f;
+            document.getElementById('textBack').textContent = card.b;
+            
+            const num = currentIndex + 1;
+            document.getElementById('numFront').textContent = num;
+            document.getElementById('numBack').textContent = num;
+            
+            viewedCards.add(currentIndex);
+            updateProgress();
+            updateStats();
+            
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === flashcards.length - 1;
+        }
+
+        function updateProgress() {
+            const progress = ((currentIndex + 1) / flashcards.length) * 100;
+            document.getElementById('progressActive').style.width = progress + '%';
+            document.getElementById('progressInfo').textContent = `${currentIndex + 1}/${flashcards.length}`;
+        }
+
+        function updateStats() {
+            document.getElementById('totalCards').textContent = flashcards.length;
+            document.getElementById('cardsViewed').textContent = viewedCards.size;
+            document.getElementById('flipsCount').textContent = flipCount;
+        }
+
+        document.getElementById('flashcard').addEventListener('click', function() {
+            this.classList.toggle('flipped');
+            flipCount++;
+            updateStats();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showCard();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentIndex < flashcards.length - 1) {
+                currentIndex++;
+                showCard();
+            }
+        });
+
+        document.getElementById('shuffleBtn').addEventListener('click', () => {
+            for (let i = flashcards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+            }
+            currentIndex = 0;
+            showCard();
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            currentIndex = 0;
+            showCard();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!flashcards.length) return;
+            
+            if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                currentIndex--;
+                showCard();
+            } else if (e.key === 'ArrowRight' && currentIndex < flashcards.length - 1) {
+                currentIndex++;
+                showCard();
+            } else if (e.key === ' ') {
+                e.preventDefault();
+                document.getElementById('flashcard').classList.toggle('flipped');
+                flipCount++;
+                updateStats();
+            }
+        });
+    </script>
+</body>
+</html>

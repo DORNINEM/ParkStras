@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - HOMIRIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 680px;
+        }
+
+        /* TOP */
+        .top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            flex: 1;
+            background: rgba(255,255,255,0.95);
+            padding: 6px 15px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 24px;
+        }
+
+        .logo span {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .info {
+            background: rgba(255,255,255,0.95);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #666;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .info.show {
+            display: block;
+        }
+
+        .info strong {
+            color: #667eea;
+        }
+
+        .btns {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.95);
+            cursor: pointer;
+            font-size: 0.95em;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        input {
+            display: none;
+        }
+
+        /* CARD */
+        .stage {
+            perspective: 1200px;
+        }
+
+        .box {
+            width: 100%;
+            height: 460px;
+            display: none;
+        }
+
+        .box.show {
+            display: block;
+        }
+
+        .flipper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flipper.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .front {
+            background: white;
+        }
+
+        .back {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .left-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .label {
+            background: rgba(102,126,234,0.12);
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.65em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .back .label {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .counter {
+            font-size: 0.7em;
+            color: #999;
+            font-weight: 600;
+        }
+
+        .back .counter {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .right-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #999;
+        }
+
+        .back .num {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .metrics {
+            display: flex;
+            gap: 5px;
+        }
+
+        .metric {
+            font-size: 0.65em;
+            background: rgba(0,0,0,0.05);
+            padding: 3px 7px;
+            border-radius: 8px;
+            color: #999;
+            font-weight: 600;
+        }
+
+        .back .metric {
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .middle {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .back .text {
+            color: white;
+        }
+
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .back .bottom-row {
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tip {
+            font-size: 0.7em;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .back .tip {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bar-text {
+            font-size: 0.7em;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .back .bar-text {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .bar-track {
+            width: 60px;
+            height: 4px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .back .bar-track {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #667eea;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .back .bar-fill {
+            background: white;
+        }
+
+        /* WELCOME */
+        .welcome {
+            background: white;
+            border-radius: 16px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .welcome h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #666;
+            font-size: 1em;
+        }
+
+        /* BOTTOM */
+        .bottom {
+            display: none;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .bottom.show {
+            display: flex;
+        }
+
+        .arrow {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.95);
+            color: #667eea;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 700;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+
+        .arrow:hover:not(:disabled) {
+            background: #667eea;
+            color: white;
+            transform: scale(1.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                height: 400px;
+            }
+
+            .text {
+                font-size: 1.05em;
+            }
+
+            .metrics {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top">
+            <div class="logo">
+                <img src="logo-homiris.png" alt="">
+                <span>Flashcards</span>
+            </div>
+            <div class="info" id="info"></div>
+            <div class="btns">
+                <input type="file" id="f" accept=".json">
+                <button class="btn" onclick="f.click()">📁</button>
+                <button class="btn" id="s" style="display:none">🔀</button>
+                <button class="btn" id="r" style="display:none">↺</button>
+            </div>
+        </div>
+
+        <div class="stage">
+            <div class="welcome" id="w">
+                <h2>📚</h2>
+                <p>Chargez vos flashcards</p>
+            </div>
+
+            <div class="box" id="b">
+                <div class="flipper" id="flip">
+                    <div class="side front">
+                        <div class="top-row">
+                            <div class="left-info">
+                                <div class="label">Question</div>
+                                <div class="counter" id="cf"></div>
+                            </div>
+                            <div class="right-info">
+                                <div class="num" id="nf">1</div>
+                                <div class="metrics">
+                                    <div class="metric" id="m1f">📚0</div>
+                                    <div class="metric" id="m2f">👁️0</div>
+                                    <div class="metric" id="m3f">🔄0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="text" id="tf"></div>
+                        </div>
+                        <div class="bottom-row">
+                            <div class="tip">👆 Voir réponse</div>
+                            <div class="bar">
+                                <span class="bar-text" id="btf">1/0</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill" id="bff"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="side back">
+                        <div class="top-row">
+                            <div class="left-info">
+                                <div class="label">Réponse</div>
+                                <div class="counter" id="cb"></div>
+                            </div>
+                            <div class="right-info">
+                                <div class="num" id="nb">1</div>
+                                <div class="metrics">
+                                    <div class="metric" id="m1b">📚0</div>
+                                    <div class="metric" id="m2b">👁️0</div>
+                                    <div class="metric" id="m3b">🔄0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="text" id="tb"></div>
+                        </div>
+                        <div class="bottom-row">
+                            <div class="tip">👆 Revenir</div>
+                            <div class="bar">
+                                <span class="bar-text" id="btb">1/0</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill" id="bfb"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom" id="nav">
+            <button class="arrow" id="p" disabled>◀</button>
+            <button class="arrow" id="n">▶</button>
+        </div>
+    </div>
+
+    <script>
+        let data=[], i=0, v=new Set(), fc=0;
+
+        f.onchange = e => {
+            const file = e.target.files[0];
+            if(!file) return;
+            const rd = new FileReader();
+            rd.onload = ev => {
+                try {
+                    data = JSON.parse(ev.target.result).flashcards;
+                    start();
+                } catch { alert('❌ Erreur'); }
+            };
+            rd.readAsText(file);
+        };
+
+        function start() {
+            i=0; v.clear(); fc=0;
+            w.style.display='none';
+            b.classList.add('show');
+            info.classList.add('show');
+            s.style.display='block';
+            r.style.display='block';
+            nav.classList.add('show');
+            render();
+        }
+
+        function render() {
+            if(!data.length) return;
+            const c = data[i];
+            flip.classList.remove('flipped');
+            
+            tf.textContent = c.f;
+            tb.textContent = c.b;
+            
+            const pos = i+1;
+            nf.textContent = nb.textContent = pos;
+            
+            v.add(i);
+            
+            const prog = (pos/data.length)*100;
+            bff.style.width = bfb.style.width = prog+'%';
+            
+            const txt = `${pos}/${data.length}`;
+            btf.textContent = btb.textContent = txt;
+            
+            const cnt = `${pos} sur ${data.length}`;
+            cf.textContent = cb.textContent = cnt;
+            
+            m1f.textContent = m1b.textContent = '📚'+data.length;
+            m2f.textContent = m2b.textContent = '👁️'+v.size;
+            m3f.textContent = m3b.textContent = '🔄'+fc;
+            
+            info.innerHTML = `<strong>${pos}</strong>/${data.length}`;
+            
+            p.disabled = i===0;
+            n.disabled = i===data.length-1;
+        }
+
+        flip.onclick = () => {
+            flip.classList.toggle('flipped');
+            fc++;
+            render();
+        };
+
+        p.onclick = () => {
+            if(i>0) { i--; render(); }
+        };
+
+        n.onclick = () => {
+            if(i<data.length-1) { i++; render(); }
+        };
+
+        s.onclick = () => {
+            for(let x=data.length-1; x>0; x--) {
+                const j = Math.floor(Math.random()*(x+1));
+                [data[x], data[j]] = [data[j], data[x]];
+            }
+            i=0; render();
+        };
+
+        r.onclick = () => { i=0; render(); };
+
+        document.onkeydown = e => {
+            if(!data.length) return;
+            if(e.key==='ArrowLeft' && i>0) { i--; render(); }
+            else if(e.key==='ArrowRight' && i<data.length-1) { i++; render(); }
+            else if(e.key===' ') {
+                e.preventDefault();
+                flip.classList.toggle('flipped');
+                fc++; render();
+            }
+        };
+    </script>
+</body>
+</html>
