@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 PIPOTRON 3000 🎰</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 0.1s;
+        }
+
+        .flash-overlay.active {
+            opacity: 0.9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #764ba2;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .selector {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .selector label {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        select:hover {
+            border-color: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .result-text {
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+            line-height: 1.6;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .result-text.generating {
+            animation: textGlow 0.5s infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.3); }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        .generate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .stats {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .rainbow-mode {
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .result-text {
+                font-size: 1.2em;
+            }
+            
+            button {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flash-overlay" id="flashOverlay"></div>
+    
+    <div class="container" id="container">
+        <div class="particles" id="particles"></div>
+        
+        <h1>🎰 PIPOTRON 3000 🎰</h1>
+        <div class="subtitle">Générateur de bullshit de qualité premium</div>
+        
+        <div class="selector">
+            <label for="themeSelect">Choisir le thème :</label>
+            <select id="themeSelect">
+                <option value="corporate">Corporate / Business</option>
+                <option value="racaille">Racaille / Cité</option>
+                <option value="science">Science / Physique</option>
+            </select>
+        </div>
+        
+        <div class="result-box" id="resultBox">
+            <p class="result-text" id="resultText">
+                Clique sur le bouton pour générer un pipotron de qualité industrielle ! 🚀
+            </p>
+        </div>
+        
+        <div class="button-container">
+            <button class="generate-btn" onclick="generatePipotron()">
+                ⚡ Générer ⚡
+            </button>
+        </div>
+        
+        <div class="stats" id="stats">
+            Pipotrons générés : <strong>0</strong>
+        </div>
+    </div>
+
+    <script>
+        let generatedCount = 0;
+        
+        const pipotronData = {
+            corporate: {
+                section1: ["Intrinsèquement,", "Conceptuellement,", "Inversement,", "Dans le cadre de sa restructuration,", "Pour permettre un juste rééquilibrage,", "Dans un contexte défavorable,", "Comme annoncé,", "En allant à l'encontre des indicateurs,", "Face au marché,", "Pour répondre aux impératifs budgétaires", "Avec audace,", "Par la suite,", "Dans le cadre des accords syndicaux"],
+                section2: ["l'entreprise", "notre secteur d'activité", "le service achat", "notre responsable informatique", "Jean-Paul Dupont", "le PDG du groupe", "le conseil d'administration", "mon activité principale", "le coeur de cible de notre business", "la situation actuelle", "la politique des 35 heures", "la traçabilité", "la phase de qualification", "la productivité"],
+                section3: ["valorise", "développe", "manage", "réévalue", "donne une visibilité sur", "permet de recentrer", "affine", "réaffirme", "s'oriente vers", "aménage", "redistribue", "recentre", "place dans notre périmètre"],
+                section4: ["le couple développement/conception", "le dépassement", "le résultat", "le déploiement", "le dualisme objectif/mission", "le système de valorisation", "le regain de business", "le retour sur investissement", "le concept culturel", "le principe de globalisation", "le rapport"],
+                section5: ["multidisciplinaire", "intertechnologique", "commercial", "systématique", "vertical", "diagonal", "hiérarchique", "des nouvelles technologies", "statistique", "provisionnel", "alarmiste", "du binôme production/distribution", "technodépendant", "anticipé", "symbiotique"],
+                section6: ["par la mise en avant de", "en absorbant", "en restructurant", "en mettant l'accent auprès de", "en rebondissant sur", "au travers de", "en absorbant le potentiel de", "de", "pour", "en direction de", "à l'encontre de", "dans la logique d'accompagnement de", "par opposition à"],
+                section7: ["ses collaborateurs", "ses concurrents", "ses systèmes d'informations", "l'ensemble des productions", "ses coeurs de cible", "ses espaces commerciaux", "ses métiers principaux", "ses fonctionnements cycliques", "des résultats marketings"],
+                section8: ["High-Techs.", "les plus performants.", "satellites.", "leaders.", "indispensables.", "prévisionnels.", "les plus prudents.", "répartis."]
+            },
+            racaille: {
+                section1: ["Wesh cousin!", "Trop ratale p'tain,", "La vi d'ma mere,", "Wesh bouffon,", "Hé coonnar,", "Hé tarlouse,", "Hé pigeon,", "Putéééééééééé,", "Sa mère!", "ZYva,", "Vazy!", "Westcauuuuust!", "Plééééboyyyyyy!", "Yeah man!"],
+                section2: ["comment ki s'la pete,", "comment ki me parle,", "il a baisé ta soeur,", "il a une nouvelle mobilette,", "il a un t-shirt fhm69,", "comment kil me regarde,", "ca weshe,", "il kiffe grave ta soeur,", "il est sorti avec doriana,", "il a passé son année,", "il est en polytechnique de réinsertion,", "il est sorti de prison,", "il est sorti de maison de jeunes,", "il a cassé le gueule a giorginio,"],
+                section3: ["le boufffon!", "le batard!", "Angelo.", "le pigeon!", "le fils de sa mere!", "le connarrr!", "le blaireau!", "le paumé, la!", "le sale grunge!", "le playboy!", "le sale con!", "l'aut' trouduc!", "la tarlouse!"],
+                section4: ["Tain sa mere la pute,", "Ils me vnr tellemen ke", "Wesh gro", "vas-y koi looser!", "Trop ratale tain de samerrrrr", "Putain kil va mourrrir", "vas-y kestu cherches,", "Bordel la zoooone", "Ya ke des pas caille-ra ici,", "Fti", "Wesh wesh cousin"],
+                section5: ["j'vais leur declalquer la face!", "j'vais leur casser la gueule!", "j'vais leur défoncer la tronche!", "j'vais leur poncer la face!", "j'vais leur peter le nez!", "j'vais leur detruirrr la gueule!", "trop envie d'leur pourrir la face!", "pas cap de leur casser la face!", "zyva on va leur niquer la gueule!", "comment ki vont se faire troncher!!!", "viens putain ce kon va leur mettre!!!!", "fatcha tiputéééé!!!", "bordel jvais trop leur niquer la tronche!", "tu cherches lambiance ou lambulance?", "comment tu saoules!", "il me fout la haine là!!!", "sans déconneer!!"],
+                section6: ["Paske il", "Quand il", "Comment ke il", "Tain paske il", "Bordel il", "Y s'la petait alors comment il", "Déconnééééé comme il", "zyvaaaaaa il", "Putééééé comment il", "Chié 'tain il"],
+                section7: ["me saoulait", "me fzait chiééé", "m'a trop bassiné", "ma vnr", "y s'la pete", "se la joue"],
+                section8: ["kand jetais sur msn!!", "kan jétais avec gina!!", "koi!!!!", "ratale!!!!", "kan je zonais avec mes potes...", "kan je trainais avec les caille-ra de la cité...", "tain!", "putain!", "à m'appeler sur mon portab' koi!", "ca m'vénère!"]
+            },
+            science: {
+                section1: ["Intrinsèquement,", "Conceptuellement,", "Inversement,", "Dans le cadre d'un vision purement quantique du phénomène", "En partant des relations d'incertitude d'Heinsenberg on constate que", "Si on considère cette manifestation comme découlant de la fonction d'onde", "Comme prévu par la relativité générale", "Conformément aux prédictions de Louis de Broglie", "Dans une perspective relativiste", "Afin de parvenir à une mesure plus précise des constantes", "Tout en étant en superposition d'état,", "De par les règles probabilistes", "Dans un espace temps à 11 dimensions dont 7 repliées,"],
+                section2: ["les photons", "les gravitons de masse nulle et de spin-2", "les protons du noyau", "les électrons, de spin 1 ou 0,", "les ondes électromagnétiques", "les atomes d'hydrogènes", "les bosons W", "les ondes gravitationelles", "les atomes radioactifs", "les neutrinos et antineutrinos", "les gluons", "les neutrons hors du noyau", "les ions négatifs", "les cations"],
+                section3: ["interfèrent avec", "se désintègrent en", "échangent de l'énergie avec", "se combinent avec", "intéragissent avec", "assimilent", "émettent", "capturent", "fusionnent avec", "peuvent être confondus avec", "ne doivent pas être confondus avec", "sont attirés par", "sont repoussés par"],
+                section4: ["une particule de charge contraire", "leur antiparticule", "les électrons des couches extérieures", "les protons H+", "un électron et un antineutrino", "les ondes gamma", "les ondes alpha", "les ondes beta", "les ondes électromagnétiques", "l'énergie des ondes lumineuses", "les ondes gravitationnelles"],
+                section5: ["dans un état défini", "dans un état superposé", "de spin 0 ou 1", "de charge inconnue", "de masse nulle", "de masse très faible", "très lourde", "d'une énergie élevée", "à durée de vie de l'ordre de la microseconde", "en accélération", "en mouvement périodique", "de vitesse élevée", "qui remonte le temps", "qui se diffuse dans l'espace", "encore de l'ordre de la théorie"],
+                section6: ["en interférant avec", "en absorbant", "en fusionnant avec", "en modifiant la trajectoire", "en servant de catalyseur pour", "en émettant", "en absorbant le potentiel", "afin de donner", "ce qui entraine la formation", "en direction de", "ce qui cause la disparition"],
+                section7: ["des ondes de moindre énergie", "d'autres particules proches", "des champs électromagnétiques", "des ondes lumineuses", "des photons incidents", "des électrons les plus proches", "des masses les plus proches", "des fonctionnements cycliques"],
+                section8: ["et de type encore inconnu.", "et plus énergétiques.", "et satellites.", "et de masse plus élevée.", "et mesurables.", "et conformes au prévisions.", "et indentifiables.", "et dont la répartition est aléatoire"]
+            }
+        };
+
+        function getRandom(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = '100%';
+                    particle.style.animation = `particleFloat ${1 + Math.random()}s ease-out forwards`;
+                    container.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 1500);
+                }, i * 50);
+            }
+        }
+
+        function flashEffect() {
+            const flash = document.getElementById('flashOverlay');
+            flash.classList.add('active');
+            setTimeout(() => flash.classList.remove('active'), 100);
+            
+            setTimeout(() => {
+                flash.classList.add('active');
+                setTimeout(() => flash.classList.remove('active'), 100);
+            }, 200);
+        }
+
+        function shakeContainer() {
+            const container = document.getElementById('container');
+            container.classList.add('shake');
+            setTimeout(() => container.classList.remove('shake'), 500);
+        }
+
+        function generatePipotron() {
+            const theme = document.getElementById('themeSelect').value;
+            const data = pipotronData[theme];
+            const resultText = document.getElementById('resultText');
+            
+            // Effets visuels
+            flashEffect();
+            shakeContainer();
+            createParticles();
+            
+            // Animation de génération
+            resultText.classList.add('generating');
+            resultText.textContent = '⚡ GÉNÉRATION EN COURS ⚡';
+            
+            // Mode rainbow temporaire
+            const container = document.getElementById('container');
+            container.classList.add('rainbow-mode');
+            
+            setTimeout(() => {
+                // Génération du pipotron
+                let result = '';
+                for (let i = 1; i <= 8; i++) {
+                    const section = data[`section${i}`];
+                    if (section && section.length > 0) {
+                        result += getRandom(section) + ' ';
+                    }
+                }
+                
+                resultText.textContent = result.trim();
+                resultText.classList.remove('generating');
+                container.classList.remove('rainbow-mode');
+                
+                // Mise à jour du compteur
+                generatedCount++;
+                document.getElementById('stats').innerHTML = 
+                    `Pipotrons générés : <strong>${generatedCount}</strong> 🔥`;
+                
+            }, 800);
+        }
+
+        // Easter egg : clic sur le titre
+        let clickCount = 0;
+        document.querySelector('h1').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount >= 5) {
+                flashEffect();
+                createParticles();
+                alert('🎉 SUPER MODE ACTIVÉ ! 🎉');
+                clickCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>
