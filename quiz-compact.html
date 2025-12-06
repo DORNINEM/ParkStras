@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - HOMIRIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* MINI HEADER */
+        .mini-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .brand img {
+            height: 22px;
+        }
+
+        .brand span {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .tools {
+            display: flex;
+            gap: 5px;
+        }
+
+        .tool-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            cursor: pointer;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s;
+        }
+
+        .tool-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .tool-btn:active {
+            transform: scale(0.95);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* MODAL FILE LIST */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            max-width: 450px;
+            width: 90%;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-title {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background: #f0f0f0;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e0e0e0;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .file-item {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+        }
+
+        .file-item:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .file-icon {
+            font-size: 1.2em;
+        }
+
+        .file-name {
+            flex: 1;
+            font-size: 0.9em;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .file-badge {
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .empty-state-text {
+            font-size: 0.9em;
+        }
+
+        .modal-footer {
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .upload-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .upload-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        /* QUIZ CARD */
+        .quiz-wrap {
+            width: 100%;
+            display: none;
+        }
+
+        .quiz-wrap.active {
+            display: block;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .quiz-stats {
+            display: flex;
+            gap: 8px;
+        }
+
+        .stat-mini {
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .stat-mini strong {
+            color: #667eea;
+        }
+
+        .question-num {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+
+        .progress-section {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            font-size: 0.75em;
+            color: #999;
+            text-align: right;
+        }
+
+        .question-text {
+            font-size: 1.15em;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .hint-section {
+            margin-bottom: 15px;
+        }
+
+        .hint-btn {
+            background: #ffc107;
+            color: #333;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hint-btn:hover:not(:disabled) {
+            background: #ffca2c;
+            transform: translateY(-2px);
+        }
+
+        .hint-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .hint-cost {
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.85em;
+        }
+
+        .hint-box {
+            display: none;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            color: #856404;
+        }
+
+        .hint-box.show {
+            display: block;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .answer-option {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+        .answer-option:hover:not(.disabled) {
+            background: #e9ecef;
+            transform: translateX(3px);
+        }
+
+        .answer-option.selected {
+            border-color: #667eea;
+            background: #e7eaf6;
+        }
+
+        .answer-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .answer-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .answer-option.disabled {
+            cursor: not-allowed;
+        }
+
+        .rationale {
+            display: none;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .rationale.show {
+            display: block;
+        }
+
+        .nav-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* WELCOME */
+        .welcome {
+            background: white;
+            border-radius: 18px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .welcome h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+
+        .welcome p {
+            color: #666;
+            font-size: 1em;
+        }
+
+        /* RESULTS */
+        .results {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results h2 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 3em;
+            color: #667eea;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .appreciation {
+            text-align: center;
+            font-size: 1.3em;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .detail-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+
+        .detail-item.correct {
+            border-left: 4px solid #28a745;
+        }
+
+        .detail-item.incorrect {
+            border-left: 4px solid #dc3545;
+        }
+
+        .restart-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            display: block;
+            margin: 20px auto 0;
+            transition: all 0.2s;
+        }
+
+        .restart-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        /* MODAL HINT CONFIRM */
+        .hint-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hint-modal.show {
+            display: flex;
+        }
+
+        .hint-modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hint-modal-content h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .hint-modal-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hint-modal-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .modal-btn.confirm {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .modal-btn.confirm:hover {
+            background: #ffca2c;
+        }
+
+        .modal-btn.cancel {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn.cancel:hover {
+            background: #5a6268;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-stats {
+                flex-wrap: wrap;
+            }
+
+            .question-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- MINI HEADER -->
+        <div class="mini-header">
+            <div class="brand">
+                <img src="logo-homiris.png" alt="HOMIRIS">
+                <span>Quiz Interactif</span>
+            </div>
+            <div class="tools">
+                <input type="file" id="file" accept=".json" />
+                <button class="tool-btn" id="fileListBtn" title="Liste des quiz">📁</button>
+                <button class="tool-btn" id="restart" style="display:none;" title="Recommencer">↺</button>
+            </div>
+        </div>
+
+        <!-- MODAL FILE LIST -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <div class="modal-title">📁 Quiz disponibles</div>
+                    <button class="modal-close" id="modalClose">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="file-list" id="fileList"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="upload-btn" onclick="document.getElementById('file').click()">
+                        📤 Charger un autre quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL HINT CONFIRM -->
+        <div class="hint-modal" id="hintModal">
+            <div class="hint-modal-content">
+                <h3>⚠️ Utiliser un indice ?</h3>
+                <p>Afficher l'indice vous coûtera <strong>0.5 point</strong> sur votre score final.</p>
+                <p>Êtes-vous sûr de vouloir continuer ?</p>
+                <div class="hint-modal-btns">
+                    <button class="modal-btn cancel" id="cancelHint">Annuler</button>
+                    <button class="modal-btn confirm" id="confirmHint">Oui, afficher</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- WELCOME -->
+        <div class="welcome" id="welcome">
+            <h2>🎯 Quiz Interactif</h2>
+            <p>Chargez un quiz pour commencer</p>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="quiz-wrap" id="quizWrap">
+            <div class="quiz-card">
+                <div class="quiz-header">
+                    <div class="quiz-stats">
+                        <div class="stat-mini">Score: <strong id="scoreDisplay">0</strong></div>
+                        <div class="stat-mini">Questions: <strong id="totalQuestions">0</strong></div>
+                    </div>
+                    <div class="question-num" id="questionNum">Question 1/10</div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Progression: 10%</div>
+                </div>
+
+                <div class="question-text" id="questionText"></div>
+
+                <div class="hint-section">
+                    <button class="hint-btn" id="hintBtn">
+                        💡 Afficher l'indice
+                        <span class="hint-cost">-0.5 pt</span>
+                    </button>
+                    <div class="hint-box" id="hintBox"></div>
+                </div>
+
+                <div class="answers" id="answersContainer"></div>
+
+                <div class="nav-section">
+                    <button class="nav-btn" id="nextBtn" disabled>Question suivante</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="results" id="results">
+            <h2>🎉 Quiz terminé !</h2>
+            <div class="score-display" id="finalScore"></div>
+            <div class="appreciation" id="appreciation"></div>
+            <div class="details" id="detailsContainer"></div>
+            <button class="restart-btn" id="restartBtn">Recommencer</button>
+        </div>
+    </div>
+
+    <script>
+        let quizData = [];
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+        let hintUsed = false;
+        let availableFiles = [];
+
+        // Détecter les fichiers QZ_*.json disponibles
+        async function detectFiles() {
+            availableFiles = [];
+            
+            const possibleFiles = [
+                'QZ_Alarmes.json',
+                'QZ_Securite.json',
+                'QZ_Video.json',
+                'QZ_General.json',
+                'QZ_Technique.json',
+                'QZ_Installation.json',
+                'QZ_Maintenance.json',
+                'QZ_Formation.json',
+                'Alarme_Quiz.json'
+            ];
+
+            for (const filename of possibleFiles) {
+                try {
+                    const response = await fetch(filename);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.quiz && Array.isArray(data.quiz)) {
+                            availableFiles.push({
+                                name: filename,
+                                count: data.quiz.length,
+                                data: data
+                            });
+                        }
+                    }
+                } catch (e) {
+                    // Fichier non trouvé
+                }
+            }
+
+            return availableFiles;
+        }
+
+        // Afficher la modal
+        async function showFileList() {
+            const modal = document.getElementById('modalOverlay');
+            const fileListContainer = document.getElementById('fileList');
+            
+            modal.classList.add('show');
+            fileListContainer.innerHTML = '<div style="text-align: center; padding: 20px; color: #999;">Recherche des quiz...</div>';
+            
+            const files = await detectFiles();
+            
+            if (files.length === 0) {
+                fileListContainer.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <div class="empty-state-text">Aucun fichier QZ_*.json trouvé<br>dans le même répertoire</div>
+                    </div>
+                `;
+            } else {
+                fileListContainer.innerHTML = '';
+                files.forEach((file) => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <span class="file-icon">📄</span>
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-badge">${file.count} questions</span>
+                    `;
+                    fileItem.onclick = () => {
+                        loadFileData(file);
+                        modal.classList.remove('show');
+                    };
+                    fileListContainer.appendChild(fileItem);
+                });
+            }
+        }
+
+        // Charger les données
+        function loadFileData(fileObj) {
+            quizData = fileObj.data.quiz;
+            initQuiz();
+        }
+
+        // Fermer la modal
+        document.getElementById('modalClose').addEventListener('click', () => {
+            document.getElementById('modalOverlay').classList.remove('show');
+        });
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'modalOverlay') {
+                document.getElementById('modalOverlay').classList.remove('show');
+            }
+        });
+
+        // Bouton liste
+        document.getElementById('fileListBtn').addEventListener('click', showFileList);
+
+        // Upload manuel
+        document.getElementById('file').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        quizData = data.quiz;
+                        initQuiz();
+                        document.getElementById('modalOverlay').classList.remove('show');
+                    } catch {
+                        alert('❌ Erreur de lecture');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Initialiser le quiz
+        function initQuiz() {
+            currentQuestion = 0;
+            score = quizData.length;
+            userAnswers = [];
+            hintUsed = false;
+
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('quizWrap').classList.add('active');
+            document.getElementById('restart').style.display = 'block';
+
+            document.getElementById('totalQuestions').textContent = quizData.length;
+            updateScore();
+            displayQuestion();
+        }
+
+        // Afficher une question
+        function displayQuestion() {
+            const question = quizData[currentQuestion];
+            hintUsed = false;
+
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('hintBox').textContent = '💡 ' + question.hint;
+            document.getElementById('hintBox').classList.remove('show');
+            document.getElementById('hintBtn').disabled = false;
+            document.getElementById('hintBtn').innerHTML = '💡 Afficher l\'indice <span class="hint-cost">-0.5 pt</span>';
+
+            document.getElementById('questionNum').textContent = `Question ${currentQuestion + 1}/${quizData.length}`;
+
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Progression: ${Math.round(progress)}%`;
+
+            const answersContainer = document.getElementById('answersContainer');
+            answersContainer.innerHTML = '';
+
+            question.answerOptions.forEach((option, index) => {
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'answer-option';
+                answerDiv.innerHTML = `
+                    <div><strong>${String.fromCharCode(65 + index)}.</strong> ${option.text}</div>
+                    <div class="rationale" id="rationale-${index}">
+                        <strong>Explication :</strong> ${option.rationale}
+                    </div>
+                `;
+                answerDiv.addEventListener('click', () => selectAnswer(index, option.isCorrect));
+                answersContainer.appendChild(answerDiv);
+            });
+
+            document.getElementById('nextBtn').disabled = true;
+        }
+
+        // Sélectionner une réponse
+        function selectAnswer(index, isCorrect) {
+            const answerOptions = document.querySelectorAll('.answer-option');
+            
+            answerOptions.forEach(option => {
+                option.classList.add('disabled');
+                option.style.pointerEvents = 'none';
+            });
+
+            const selectedOption = answerOptions[index];
+            selectedOption.classList.add('selected');
+
+            quizData[currentQuestion].answerOptions.forEach((option, i) => {
+                const rationale = document.getElementById(`rationale-${i}`);
+                rationale.classList.add('show');
+                
+                if (option.isCorrect) {
+                    answerOptions[i].classList.add('correct');
+                } else if (i === index) {
+                    answerOptions[i].classList.add('incorrect');
+                }
+            });
+
+            if (!isCorrect) {
+                score -= 1;
+                updateScore();
+            }
+
+            userAnswers.push({
+                question: quizData[currentQuestion].question,
+                userAnswer: quizData[currentQuestion].answerOptions[index].text,
+                isCorrect: isCorrect,
+                correctAnswer: quizData[currentQuestion].answerOptions.find(opt => opt.isCorrect).text,
+                hintUsed: hintUsed
+            });
+
+            document.getElementById('hintBtn').disabled = true;
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        // Mettre à jour le score
+        function updateScore() {
+            document.getElementById('scoreDisplay').textContent = score.toFixed(1);
+        }
+
+        // Gestion de l'indice
+        document.getElementById('hintBtn').addEventListener('click', () => {
+            if (!hintUsed) {
+                document.getElementById('hintModal').classList.add('show');
+            }
+        });
+
+        document.getElementById('confirmHint').addEventListener('click', () => {
+            score -= 0.5;
+            updateScore();
+            hintUsed = true;
+            document.getElementById('hintBox').classList.add('show');
+            document.getElementById('hintBtn').disabled = true;
+            document.getElementById('hintBtn').textContent = '💡 Indice utilisé';
+            document.getElementById('hintModal').classList.remove('show');
+        });
+
+        document.getElementById('cancelHint').addEventListener('click', () => {
+            document.getElementById('hintModal').classList.remove('show');
+        });
+
+        // Question suivante
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentQuestion++;
+            
+            if (currentQuestion < quizData.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        // Afficher les résultats
+        function showResults() {
+            document.getElementById('quizWrap').classList.remove('active');
+            document.getElementById('results').classList.add('show');
+
+            const maxScore = quizData.length;
+            const percentage = Math.round((score / maxScore) * 100);
+            document.getElementById('finalScore').textContent = `${score.toFixed(1)} / ${maxScore} (${percentage}%)`;
+
+            let appreciation = '';
+            if (score === maxScore) {
+                appreciation = '🏆 Parfait ! Score maximal !';
+            } else if (percentage >= 90) {
+                appreciation = '🌟 Excellent ! Très bonne maîtrise.';
+            } else if (percentage >= 75) {
+                appreciation = '👍 Bien joué ! Bonne compréhension.';
+            } else if (percentage >= 60) {
+                appreciation = '📚 Pas mal, quelques révisions seraient utiles.';
+            } else if (percentage >= 40) {
+                appreciation = '💪 Il y a du potentiel !';
+            } else {
+                appreciation = '📖 Révisez et réessayez !';
+            }
+            document.getElementById('appreciation').textContent = appreciation;
+
+            const detailsContainer = document.getElementById('detailsContainer');
+            detailsContainer.innerHTML = '<h3 style="margin-bottom: 15px;">Détails de vos réponses :</h3>';
+            
+            userAnswers.forEach((answer, index) => {
+                const detailDiv = document.createElement('div');
+                detailDiv.className = `detail-item ${answer.isCorrect ? 'correct' : 'incorrect'}`;
+                let pointsLost = '';
+                if (!answer.isCorrect) {
+                    pointsLost = answer.hintUsed ? ' (-1.5 pts)' : ' (-1 pt)';
+                } else if (answer.hintUsed) {
+                    pointsLost = ' (-0.5 pt)';
+                }
+                detailDiv.innerHTML = `
+                    <strong>Question ${index + 1} :</strong> ${answer.question}<br>
+                    <strong>Votre réponse :</strong> ${answer.userAnswer} ${answer.isCorrect ? '✅' : '❌'}${pointsLost}<br>
+                    ${!answer.isCorrect ? `<strong>Bonne réponse :</strong> ${answer.correctAnswer}<br>` : ''}
+                    ${answer.hintUsed ? '<em style="color: #856404;">💡 Indice utilisé</em>' : ''}
+                `;
+                detailsContainer.appendChild(detailDiv);
+            });
+        }
+
+        // Recommencer
+        document.getElementById('restart').addEventListener('click', () => {
+            if (quizData.length > 0) {
+                initQuiz();
+            }
+        });
+
+        document.getElementById('restartBtn').addEventListener('click', () => {
+            if (quizData.length > 0) {
+                initQuiz();
+            }
+        });
+
+        // Navigation clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('modalOverlay').classList.remove('show');
+                document.getElementById('hintModal').classList.remove('show');
+            }
+        });
+
+        // Auto-détection au chargement
+        window.addEventListener('load', () => {
+            detectFiles();
+        });
+    </script>
+</body>
+</html>
