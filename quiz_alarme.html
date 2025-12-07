@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sur les alarmes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz sur les alarmes</h1>
+    <div id="quiz"></div>
+    <div id="result"></div>
+    
+    <script>
+        const quizData = {
+            quiz: {
+                "questions": []
+            }
+        };
+
+        // Load quiz data from JSON
+        function loadQuizData() {
+            // This is a placeholder for the actual JSON data
+            // In a real scenario, you would load this from a file
+            // For now, we'll use the data from the uploaded JSON
+            quizData.quiz.questions = {quiz_data};
+        }
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const questionData = quizData.quiz.questions[currentQuestion];
+            const quizDiv = document.getElementById('quiz');
+            
+            let questionHTML = `<div class="question">`;
+            questionHTML += `<h2>Question ${currentQuestion + 1}: ${questionData.question}</h2>`;
+            questionHTML += `<div class="options">`;
+
+            questionData.answerOptions.forEach((option, index) => {
+                questionHTML += `<div class="option">`;
+                questionHTML += `<input type="radio" id="option${index}" name="question${currentQuestion}" value="${option.isCorrect}">`;
+                questionHTML += `<label for="option${index}">${option.text}</label>`;
+                questionHTML += `</div>`;
+            });
+
+            questionHTML += `</div>`;
+            questionHTML += `</div>`;
+            questionHTML += `<button onclick="checkAnswer()">Suivant</button>`;
+
+            quizDiv.innerHTML = questionHTML;
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`);
+            if (selectedOption) {
+                if (selectedOption.value === 'true') {
+                    score++;
+                }
+                currentQuestion++;
+                if (currentQuestion < quizData.quiz.questions.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            } else {
+                alert('Veuillez sélectionner une réponse.');
+            }
+        }
+
+        function showResult() {
+            const resultDiv = document.getElementById('result');
+            let appreciation;
+            if (score === quizData.quiz.questions.length) {
+                appreciation = "Félicitations! Vous avez un score parfait!";
+            } else if (score >= quizData.quiz.questions.length / 2) {
+                appreciation = "Bien joué! Vous avez une bonne compréhension du sujet.";
+            } else {
+                appreciation = "Vous pouvez faire mieux! Revoyez le sujet et réessayez.";
+            }
+            resultDiv.innerHTML = `<h2>Votre score: ${score} / ${quizData.quiz.questions.length}</h2><p>${appreciation}</p>`;
+        }
+
+        // Load quiz data and start the quiz
+        window.onload = function() {
+            loadQuizData();
+            loadQuestion();
+        };
+    </script>
+</body>
+</html>
