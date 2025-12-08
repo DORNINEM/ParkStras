@@ -554,6 +554,244 @@
             transform: translateY(-2px);
         }
 
+        /* DASHBOARD STATS */
+        .dashboard {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+
+        .dashboard.show {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .dashboard-title {
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dash-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .dash-btn:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .dash-btn.primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .dash-btn.primary:hover {
+            background: #5568d3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card-label {
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .stat-card-value {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-card-sublabel {
+            font-size: 0.75em;
+            opacity: 0.8;
+        }
+
+        .history-section {
+            margin-top: 25px;
+        }
+
+        .history-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #667eea;
+            transition: all 0.2s;
+        }
+
+        .history-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .history-info {
+            flex: 1;
+        }
+
+        .history-quiz-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .history-date {
+            font-size: 0.75em;
+            color: #999;
+        }
+
+        .history-score {
+            text-align: right;
+        }
+
+        .history-percentage {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .history-details {
+            font-size: 0.75em;
+            color: #666;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .no-data-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .no-data-text {
+            font-size: 1em;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .chart-title {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .progress-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 150px;
+            gap: 8px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 8px 8px 0 0;
+            min-height: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+            transform: translateY(-5px);
+        }
+
+        .chart-bar-label {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .chart-bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #667eea;
+            white-space: nowrap;
+        }
+
+        .export-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
         /* MODAL HINT CONFIRM */
         .hint-modal {
             display: none;
@@ -648,6 +886,7 @@
             <div class="tools">
                 <input type="file" id="file" accept=".json" />
                 <button class="tool-btn" id="fileListBtn" title="Liste des quiz">📁</button>
+                <button class="tool-btn" id="statsBtn" title="Statistiques">📊</button>
                 <button class="tool-btn" id="restart" style="display:none;" title="Recommencer">↺</button>
             </div>
         </div>
@@ -680,6 +919,30 @@
                     <button class="modal-btn cancel" id="cancelHint">Annuler</button>
                     <button class="modal-btn confirm" id="confirmHint">Oui, afficher</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="dashboard" id="dashboard">
+            <div class="dashboard-header">
+                <div class="dashboard-title">📊 Mes Statistiques</div>
+                <div class="dashboard-actions">
+                    <button class="dash-btn" id="exportBtn">📥 Exporter</button>
+                    <button class="dash-btn" id="clearDataBtn">🗑️ Effacer</button>
+                    <button class="dash-btn primary" id="closeDashboard">✕ Fermer</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" id="statsGrid"></div>
+
+            <div class="chart-container" id="chartContainer" style="display:none;">
+                <div class="chart-title">📈 Évolution des scores (10 dernières tentatives)</div>
+                <div class="progress-chart" id="progressChart"></div>
+            </div>
+
+            <div class="history-section">
+                <div class="history-title">🕐 Historique des tentatives</div>
+                <div class="history-list" id="historyList"></div>
             </div>
         </div>
 
@@ -742,6 +1005,285 @@
         let userAnswers = [];
         let hintUsed = false;
         let availableFiles = [];
+        let startTime = 0;
+        let currentQuizName = '';
+        let userId = getUserId();
+
+        // Récupérer ou créer un ID utilisateur
+        function getUserId() {
+            // Vérifier si un cookie userId existe
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'userId') {
+                    return value;
+                }
+            }
+            
+            // Si pas de cookie, chercher dans localStorage
+            let id = localStorage.getItem('homiris_user_id');
+            if (!id) {
+                // Générer un nouvel ID unique
+                id = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('homiris_user_id', id);
+                // Créer le cookie (expire dans 1 an)
+                const expiryDate = new Date();
+                expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+                document.cookie = `userId=${id}; expires=${expiryDate.toUTCString()}; path=/`;
+            }
+            return id;
+        }
+
+        // Sauvegarder les résultats dans localStorage
+        function saveResults() {
+            const key = `quiz_${userId}_${currentQuizName}`;
+            const data = {
+                date: new Date().toISOString(),
+                score: score,
+                maxScore: quizData.length,
+                percentage: Math.round((score / quizData.length) * 100),
+                duration: Math.round((Date.now() - startTime) / 1000), // en secondes
+                answers: userAnswers,
+                hintsUsed: userAnswers.filter(a => a.hintUsed).length,
+                correctAnswers: userAnswers.filter(a => a.isCorrect).length
+            };
+            
+            // Récupérer l'historique existant
+            let history = JSON.parse(localStorage.getItem(key) || '[]');
+            history.push(data);
+            
+            // Garder seulement les 10 dernières tentatives
+            if (history.length > 10) {
+                history = history.slice(-10);
+            }
+            
+            localStorage.setItem(key, JSON.stringify(history));
+            
+            // Mettre à jour les stats globales
+            updateGlobalStats();
+        }
+
+        // Mettre à jour les statistiques globales
+        function updateGlobalStats() {
+            const globalKey = `quiz_${userId}_global`;
+            let stats = JSON.parse(localStorage.getItem(globalKey) || '{}');
+            
+            if (!stats[currentQuizName]) {
+                stats[currentQuizName] = {
+                    attempts: 0,
+                    bestScore: 0,
+                    averageScore: 0,
+                    totalTime: 0
+                };
+            }
+            
+            stats[currentQuizName].attempts++;
+            stats[currentQuizName].bestScore = Math.max(stats[currentQuizName].bestScore, score);
+            stats[currentQuizName].lastDate = new Date().toISOString();
+            
+            localStorage.setItem(globalKey, JSON.stringify(stats));
+        }
+
+        // Récupérer l'historique d'un quiz
+        function getQuizHistory(quizName) {
+            const key = `quiz_${userId}_${quizName}`;
+            return JSON.parse(localStorage.getItem(key) || '[]');
+        }
+
+        // Récupérer toutes les statistiques
+        function getAllStats() {
+            const globalKey = `quiz_${userId}_global`;
+            return JSON.parse(localStorage.getItem(globalKey) || '{}');
+        }
+
+        // Afficher le dashboard
+        function showDashboard() {
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('quizWrap').classList.remove('active');
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('dashboard').classList.add('show');
+            
+            loadDashboardData();
+        }
+
+        // Charger les données du dashboard
+        function loadDashboardData() {
+            const stats = getAllStats();
+            const statsGrid = document.getElementById('statsGrid');
+            const historyList = document.getElementById('historyList');
+            
+            // Calculer les statistiques globales
+            let totalAttempts = 0;
+            let totalQuizzes = Object.keys(stats).length;
+            let bestOverallScore = 0;
+            let averageScore = 0;
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            
+            Object.values(stats).forEach(quiz => {
+                totalAttempts += quiz.attempts;
+                bestOverallScore = Math.max(bestOverallScore, quiz.bestScore || 0);
+            });
+            
+            // Récupérer tous les historiques
+            let allHistory = [];
+            Object.keys(stats).forEach(quizName => {
+                const history = getQuizHistory(quizName);
+                history.forEach(attempt => {
+                    allHistory.push({
+                        ...attempt,
+                        quizName: quizName
+                    });
+                    totalCorrect += attempt.correctAnswers;
+                    totalQuestions += attempt.maxScore;
+                });
+            });
+            
+            // Trier par date décroissante
+            allHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Calculer le score moyen
+            if (allHistory.length > 0) {
+                averageScore = allHistory.reduce((sum, h) => sum + h.percentage, 0) / allHistory.length;
+            }
+            
+            // Afficher les cartes de stats
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-card-label">Total Quiz</div>
+                    <div class="stat-card-value">${totalQuizzes}</div>
+                    <div class="stat-card-sublabel">différents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Tentatives</div>
+                    <div class="stat-card-value">${totalAttempts}</div>
+                    <div class="stat-card-sublabel">au total</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Score Moyen</div>
+                    <div class="stat-card-value">${Math.round(averageScore)}%</div>
+                    <div class="stat-card-sublabel">sur toutes les tentatives</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Meilleur Score</div>
+                    <div class="stat-card-value">${bestOverallScore.toFixed(1)}</div>
+                    <div class="stat-card-sublabel">pts obtenus</div>
+                </div>
+            `;
+            
+            // Afficher le graphique si on a des données
+            if (allHistory.length > 0) {
+                displayChart(allHistory.slice(0, 10));
+            }
+            
+            // Afficher l'historique
+            if (allHistory.length === 0) {
+                historyList.innerHTML = `
+                    <div class="no-data">
+                        <div class="no-data-icon">📊</div>
+                        <div class="no-data-text">Aucun quiz effectué pour le moment.<br>Commencez un quiz pour voir vos statistiques !</div>
+                    </div>
+                `;
+            } else {
+                historyList.innerHTML = '';
+                allHistory.forEach((attempt, index) => {
+                    const date = new Date(attempt.date);
+                    const dateStr = date.toLocaleDateString('fr-FR', {
+                        day: '2-digit',
+                        month: 'short',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.innerHTML = `
+                        <div class="history-info">
+                            <div class="history-quiz-name">${attempt.quizName}</div>
+                            <div class="history-date">${dateStr} • ${attempt.duration}s • ${attempt.hintsUsed} indice(s)</div>
+                        </div>
+                        <div class="history-score">
+                            <div class="history-percentage">${attempt.percentage}%</div>
+                            <div class="history-details">${attempt.score.toFixed(1)}/${attempt.maxScore}</div>
+                        </div>
+                    `;
+                    historyList.appendChild(historyItem);
+                });
+            }
+        }
+
+        // Afficher le graphique d'évolution
+        function displayChart(history) {
+            const chartContainer = document.getElementById('chartContainer');
+            const progressChart = document.getElementById('progressChart');
+            
+            chartContainer.style.display = 'block';
+            progressChart.innerHTML = '';
+            
+            // Inverser pour avoir du plus ancien au plus récent
+            const data = [...history].reverse();
+            
+            data.forEach((attempt, index) => {
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = `${attempt.percentage}%`;
+                bar.innerHTML = `
+                    <div class="chart-bar-value">${attempt.percentage}%</div>
+                    <div class="chart-bar-label">#${data.length - index}</div>
+                `;
+                bar.title = `${attempt.quizName} - ${attempt.percentage}% - ${new Date(attempt.date).toLocaleDateString('fr-FR')}`;
+                progressChart.appendChild(bar);
+            });
+        }
+
+        // Exporter les données
+        function exportData() {
+            const stats = getAllStats();
+            let allData = { userId: userId, stats: stats, history: {} };
+            
+            Object.keys(stats).forEach(quizName => {
+                allData.history[quizName] = getQuizHistory(quizName);
+            });
+            
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `homiris_quiz_stats_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Effacer toutes les données
+        function clearAllData() {
+            if (confirm('⚠️ Êtes-vous sûr de vouloir effacer TOUTES vos statistiques ?\n\nCette action est irréversible !')) {
+                if (confirm('Confirmez-vous vraiment la suppression de toutes vos données ?')) {
+                    // Supprimer toutes les clés liées à cet utilisateur
+                    const keysToDelete = [];
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        if (key.startsWith(`quiz_${userId}_`)) {
+                            keysToDelete.push(key);
+                        }
+                    }
+                    keysToDelete.forEach(key => localStorage.removeItem(key));
+                    
+                    alert('✅ Toutes vos données ont été effacées.');
+                    loadDashboardData();
+                }
+            }
+        }
+
+        // Event listeners pour le dashboard
+        document.getElementById('statsBtn').addEventListener('click', showDashboard);
+        document.getElementById('closeDashboard').addEventListener('click', () => {
+            document.getElementById('dashboard').classList.remove('show');
+            document.getElementById('welcome').style.display = 'block';
+        });
+        document.getElementById('exportBtn').addEventListener('click', exportData);
+        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
 
         // Détecter les fichiers QZ_*.json disponibles
         async function detectFiles() {
@@ -818,6 +1360,7 @@
 
         // Charger les données
         function loadFileData(fileObj) {
+            currentQuizName = fileObj.name.replace('.json', '');
             quizData = fileObj.data.quiz;
             initQuiz();
         }
@@ -844,6 +1387,7 @@
                 reader.onload = (event) => {
                     try {
                         const data = JSON.parse(event.target.result);
+                        currentQuizName = file.name.replace('.json', '');
                         quizData = data.quiz;
                         initQuiz();
                         document.getElementById('modalOverlay').classList.remove('show');
@@ -861,9 +1405,11 @@
             score = quizData.length;
             userAnswers = [];
             hintUsed = false;
+            startTime = Date.now();
 
             document.getElementById('welcome').style.display = 'none';
             document.getElementById('results').classList.remove('show');
+            document.getElementById('dashboard').classList.remove('show');
             document.getElementById('quizWrap').classList.add('active');
             document.getElementById('restart').style.display = 'block';
 
@@ -987,6 +1533,9 @@
 
         // Afficher les résultats
         function showResults() {
+            // Sauvegarder les résultats
+            saveResults();
+            
             document.getElementById('quizWrap').classList.remove('active');
             document.getElementById('results').classList.add('show');
 
@@ -1056,6 +1605,7 @@
         // Auto-détection au chargement
         window.addEventListener('load', () => {
             detectFiles();
+            console.log('User ID:', userId);
         });
     </script>
 </body>
