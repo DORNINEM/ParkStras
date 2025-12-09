@@ -38,7 +38,11 @@ interface LocationInfo {
   address?: string;
 }
 
-// --- UTILS: SUN CALCULATIONS ---
+// --- UTILS ---
+
+const isValidNumber = (num: any): boolean => {
+  return typeof num === 'number' && !isNaN(num) && Number.isFinite(num);
+};
 
 const getDayHours = (date: Date): Date[] => {
   const hours: Date[] = [];
@@ -57,7 +61,7 @@ const getDayHours = (date: Date): Date[] => {
 };
 
 const calculateSunPaths = (coords: Coordinates): SunPathData[] => {
-  if (!coords || isNaN(coords.lat) || isNaN(coords.lng)) return [];
+  if (!coords || !isValidNumber(coords.lat) || !isValidNumber(coords.lng)) return [];
 
   const now = new Date();
   const currentYear = now.getFullYear();
@@ -75,10 +79,11 @@ const calculateSunPaths = (coords: Coordinates): SunPathData[] => {
   return dates.map(({ date, label, color }) => {
     const timePoints = getDayHours(date);
     const points = timePoints.map((time) => {
+      // SunCalc might return NaN for extreme latitudes or invalid dates, though rare.
       const pos = SunCalc.getPosition(time, coords.lat, coords.lng);
       return {
-        azimuth: pos.azimuth,
-        altitude: pos.altitude,
+        azimuth: pos.azimuth || 0,
+        altitude: pos.altitude || 0,
         time: time
       };
     });
@@ -93,8 +98,8 @@ const calculateSunPaths = (coords: Coordinates): SunPathData[] => {
 };
 
 const projectPoint = (origin: Coordinates, distanceMeters: number, bearing: number): Coordinates => {
-  if (!origin || isNaN(origin.lat) || isNaN(origin.lng) || isNaN(bearing)) {
-    return { lat: 0, lng: 0 };
+  if (!origin || !isValidNumber(origin.lat) || !isValidNumber(origin.lng) || !isValidNumber(bearing)) {
+    return { lat: NaN, lng: NaN };
   }
 
   const R = 6371e3; // Earth radius in meters
@@ -104,20 +109,26 @@ const projectPoint = (origin: Coordinates, distanceMeters: number, bearing: numb
   // Bearing adjustment: SunCalc 0 is South, Map 0 is North.
   const mapBearing = Math.PI + bearing;
 
-  const lat2 = Math.asin(
-    Math.sin(lat1) * Math.cos(distanceMeters / R) +
-    Math.cos(lat1) * Math.sin(distanceMeters / R) * Math.cos(mapBearing)
-  );
+  const sinLat1 = Math.sin(lat1);
+  const cosLat1 = Math.cos(lat1);
+  const cosDistR = Math.cos(distanceMeters / R);
+  const sinDistR = Math.sin(distanceMeters / R);
+  const cosMapBearing = Math.cos(mapBearing);
+  const sinMapBearing = Math.sin(mapBearing);
+
+  // Clamp input to asin to [-1, 1] to prevent NaN from floating point errors
+  const lat2Arg = sinLat1 * cosDistR + cosLat1 * sinDistR * cosMapBearing;
+  const lat2 = Math.asin(Math.max(-1, Math.min(1, lat2Arg)));
 
   const lon2 = lon1 + Math.atan2(
-    Math.sin(mapBearing) * Math.sin(distanceMeters / R) * Math.cos(lat1),
-    Math.cos(distanceMeters / R) - Math.sin(lat1) * Math.sin(lat2)
+    sinMapBearing * sinDistR * cosLat1,
+    cosDistR - sinLat1 * Math.sin(lat2)
   );
 
   const newLat = (lat2 * 180) / Math.PI;
   const newLng = (lon2 * 180) / Math.PI;
 
-  if (isNaN(newLat) || isNaN(newLng)) return { lat: 0, lng: 0 };
+  if (!isValidNumber(newLat) || !isValidNumber(newLng)) return { lat: NaN, lng: NaN };
 
   return {
     lat: newLat,
@@ -128,10 +139,25 @@ const projectPoint = (origin: Coordinates, distanceMeters: number, bearing: numb
 // --- SERVICE: GEMINI ---
 
 const initGenAI = () => {
-  // Safe access to process.env for static environments
-  const env = (window as any).process?.env || {};
-  const apiKey = env.API_KEY;
-  if (!apiKey || apiKey === '') throw new Error("API Key not configured");
+  let apiKey = '';
+  
+  // Try standard process.env (Node/Bundlers)
+  try {
+    apiKey = process.env.API_KEY || '';
+  } catch (e) {
+    // Ignore ReferenceError if process is not defined
+  }
+
+  // Fallback to window.process (Static Polyfill)
+  if (!apiKey && (window as any).process?.env?.API_KEY) {
+    apiKey = (window as any).process.env.API_KEY;
+  }
+
+  if (!apiKey || apiKey.trim() === '') {
+    // Throw a specific error that we catch later to show UI help
+    throw new Error("MISSING_API_KEY"); 
+  }
+
   return new GoogleGenAI({ apiKey });
 };
 
@@ -162,8 +188,8 @@ const analyzeSolarLocation = async (
     return response.text || "Analyse indisponible.";
   } catch (error: any) {
     console.error("Gemini Error:", error);
-    if (error.message === "API Key not configured") {
-      return "⚠️ Clé API non détectée. L'assistant IA nécessite une clé API.";
+    if (error.message === "MISSING_API_KEY" || error.message.includes("API Key")) {
+      return "⚠️ Clé API non configurée. Veuillez ouvrir le fichier index.html et ajouter votre clé API dans la section window.process.env pour activer l'assistant IA.";
     }
     return "Impossible de contacter l'assistant solaire pour le moment.";
   }
@@ -185,7 +211,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 const MapController: React.FC<{ coords: Coordinates }> = ({ coords }) => {
   const map = useMap();
   useEffect(() => {
-    if (coords && !isNaN(coords.lat) && !isNaN(coords.lng)) {
+    if (coords && isValidNumber(coords.lat) && isValidNumber(coords.lng)) {
       map.flyTo([coords.lat, coords.lng], 18, { duration: 1.5 });
     }
   }, [coords, map]);
@@ -200,11 +226,14 @@ interface SolarMapProps {
 const SolarMap: React.FC<SolarMapProps> = ({ location, sunPaths }) => {
   const PATH_RADIUS = 80; 
 
-  // Guard against invalid coordinates crashing Leaflet
-  if (!location || isNaN(location.lat) || isNaN(location.lng)) {
+  // Strict Guard against invalid coordinates crashing Leaflet
+  if (!location || !isValidNumber(location.lat) || !isValidNumber(location.lng)) {
     return (
       <div className="h-full w-full flex items-center justify-center bg-slate-100 text-slate-400">
-        Coordonnées invalides
+        <div className="flex flex-col items-center gap-2">
+          <Loader2 className="w-8 h-8 animate-spin text-slate-300" />
+          <span>Chargement de la carte...</span>
+        </div>
       </div>
     );
   }
@@ -233,8 +262,8 @@ const SolarMap: React.FC<SolarMapProps> = ({ location, sunPaths }) => {
             .filter(p => p.altitude > 0)
             .map(p => {
                const projected = projectPoint(location, PATH_RADIUS, p.azimuth);
-               // Filter out any NaN results from projection
-               if (isNaN(projected.lat) || isNaN(projected.lng)) return null;
+               // Strict filter out any invalid results from projection
+               if (!isValidNumber(projected.lat) || !isValidNumber(projected.lng)) return null;
                return [projected.lat, projected.lng] as [number, number];
             })
             .filter((pt): pt is [number, number] => pt !== null);
@@ -250,7 +279,7 @@ const SolarMap: React.FC<SolarMapProps> = ({ location, sunPaths }) => {
               
               {path.points.filter((_, i) => i % 2 === 0 && _.altitude > 0).map((p, pIdx) => {
                  const proj = projectPoint(location, PATH_RADIUS, p.azimuth);
-                 if (isNaN(proj.lat) || isNaN(proj.lng)) return null;
+                 if (!isValidNumber(proj.lat) || !isValidNumber(proj.lng)) return null;
 
                  const hours = p.time.getHours();
                  return (
@@ -272,17 +301,22 @@ const SolarMap: React.FC<SolarMapProps> = ({ location, sunPaths }) => {
           );
         })}
 
-        {/* North Indicator */}
-        <Polyline 
-            positions={[
-                [location.lat, location.lng],
-                [
-                  projectPoint(location, PATH_RADIUS + 20, Math.PI).lat || location.lat, 
-                  projectPoint(location, PATH_RADIUS + 20, Math.PI).lng || location.lng
-                ]
-            ]}
-            pathOptions={{ color: '#94a3b8', weight: 1, dashArray: '4, 4' }}
-        />
+        {/* North Indicator - Calculated safely */}
+        {(() => {
+          const northPt = projectPoint(location, PATH_RADIUS + 20, Math.PI);
+          if (isValidNumber(northPt.lat) && isValidNumber(northPt.lng)) {
+            return (
+              <Polyline 
+                  positions={[
+                      [location.lat, location.lng],
+                      [northPt.lat, northPt.lng]
+                  ]}
+                  pathOptions={{ color: '#94a3b8', weight: 1, dashArray: '4, 4' }}
+              />
+            );
+          }
+          return null;
+        })()}
       </MapContainer>
     </div>
   );
@@ -389,10 +423,12 @@ function App() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          const coords = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          
+          if (!isValidNumber(lat) || !isValidNumber(lng)) return;
+
+          const coords = { lat, lng };
           try {
              const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.lat}&lon=${coords.lng}`);
              const data = await res.json();
@@ -416,10 +452,17 @@ function App() {
       const data = await res.json();
 
       if (data && data.length > 0) {
-        setLocation({
-          coords: { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) },
-          address: data[0].display_name
-        });
+        const lat = parseFloat(data[0].lat);
+        const lng = parseFloat(data[0].lon);
+
+        if (isValidNumber(lat) && isValidNumber(lng)) {
+          setLocation({
+            coords: { lat, lng },
+            address: data[0].display_name
+          });
+        } else {
+           alert("Données de localisation invalides reçues.");
+        }
       } else {
         alert("Adresse non trouvée.");
       }
@@ -435,10 +478,15 @@ function App() {
      if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          const coords = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          
+          if (!isValidNumber(lat) || !isValidNumber(lng)) {
+             setLoadingGeo(false);
+             return;
+          }
+
+          const coords = { lat, lng };
           try {
              const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.lat}&lon=${coords.lng}`);
              const data = await res.json();

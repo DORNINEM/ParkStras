@@ -32,8 +32,16 @@
 </script>
 <script>
   // Polyfill pour simuler l'environnement Node.js (process.env) dans le navigateur
-  // Cela évite le crash "process is not defined" sur un serveur statique.
-  window.process = window.process || { env: { API_KEY: '' } };
+  window.process = window.process || { 
+    env: { 
+      // --- CONFIGURATION ---
+      // Pour un déploiement statique (GitHub Pages), collez votre clé API Gemini entre les guillemets ci-dessous.
+      // EXEMPLE: API_KEY: 'AIzaSy...'
+      // 
+      NOTE : Cette clé sera visible dans le code source du navigateur (Client-side only).
+      API_KEY: '' 
+    } 
+  };
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
