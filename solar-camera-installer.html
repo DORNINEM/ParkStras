@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installateur Caméra Solaire - Guide d'Installation</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff9500, #ff5e3a);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .controls {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .search-group {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-group input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-group input:focus {
+            outline: none;
+            border-color: #ff9500;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #ff9500;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e68600;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #007aff;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #0066d6;
+        }
+
+        .btn-compass {
+            background: #5856d6;
+            color: white;
+            display: none;
+        }
+
+        .btn-compass:hover {
+            background: #4240b0;
+        }
+
+        .btn-compass.active {
+            background: #34c759;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(52, 199, 89, 0);
+            }
+        }
+
+        .map-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        #map {
+            position: absolute;
+            /* On agrandit la carte pour éviter les coins vides lors de la rotation */
+            width: 150%;
+            height: 150%;
+            left: -25%;
+            top: -25%;
+            transition: transform 0.15s ease-out;
+        }
+
+        .compass-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .compass-rose {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .compass-rose.active {
+            display: flex;
+        }
+
+        .compass-needle {
+            position: absolute;
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ff3b30 50%, #333 50%);
+            border-radius: 2px;
+            transform-origin: center bottom;
+            top: 5px;
+            left: calc(50% - 2px);
+        }
+
+        .compass-letters {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .compass-letters span {
+            position: absolute;
+        }
+
+        .compass-letters .n {
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff3b30;
+        }
+
+        .compass-letters .s {
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+        }
+
+        .compass-letters .e {
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .compass-letters .o {
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .heading-display {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .heading-display.active {
+            display: block;
+        }
+
+        .heading-display .deg {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .legend {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend h3 {
+            margin-bottom: 12px;
+            color: #333;
+            font-size: 1em;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-line {
+            width: 40px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .legend-summer {
+            background: #ff3b30;
+        }
+
+        .legend-winter {
+            background: #007aff;
+        }
+
+        .legend-today {
+            background: #34c759;
+        }
+
+        .info-panel {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-panel h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .info-card.summer {
+            border-color: #ff3b30;
+        }
+
+        .info-card.winter {
+            border-color: #007aff;
+        }
+
+        .info-card.today {
+            border-color: #34c759;
+        }
+
+        .info-card h4 {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-card p {
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        .coordinates {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .mobile-notice {
+            display: none;
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #2e7d32;
+        }
+
+        .debug-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            color: #0f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 11px;
+            display: none;
+        }
+
+        .debug-info.active {
+            display: block;
+        }
+
+        .installation-guide {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff9500;
+        }
+
+        .installation-guide h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .installation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #ff9500;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #ff9500;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .step-title {
+            display: inline-block;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .step-description {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .angle-indicator {
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-group {
+                width: 100%;
+            }
+
+            .map-container {
+                height: 450px;
+            }
+
+            .btn-compass {
+                display: block;
+                width: 100%;
+            }
+
+            .mobile-notice {
+                display: block;
+            }
+        }
+
+        /* Style for the time labels on the map */
+        .time-label {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📷 Installateur Caméra Solaire - Guide d'Installation</h1>
+            <p>Optimisez le placement de votre caméra alimentée par panneau solaire</p>
+        </header>
+
+        <div class="mobile-notice" id="mobileNotice">
+            📱 <strong>Mode mobile détecté</strong> — Utilisez le bouton "Boussole" pour orienter la carte selon votre
+            téléphone
+        </div>
+
+        <div class="controls">
+            <div class="search-group">
+                <input type="text" id="addressInput" placeholder="Entrez une adresse..." />
+                <button class="btn-primary" onclick="searchAddress()">🔍 Rechercher</button>
+            </div>
+            <button class="btn-secondary" onclick="geolocate()">📍 Ma position</button>
+            <button class="btn-compass" id="compassBtn" onclick="toggleCompass()">🧭 Activer boussole</button>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="showSummer" checked onchange="updateDisplay()"> <span
+                        style="color:#ff3b30">●</span> Été (21 juin)</label>
+                <label><input type="checkbox" id="showWinter" checked onchange="updateDisplay()"> <span
+                        style="color:#007aff">●</span> Hiver (21 déc)</label>
+                <label><input type="checkbox" id="showToday" checked onchange="updateDisplay()"> <span
+                        style="color:#34c759">●</span> Aujourd'hui</label>
+            </div>
+        </div>
+
+        <div class="map-wrapper">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="compass-overlay">
+                <div class="compass-rose" id="compassRose">
+                    <div class="compass-needle" id="compassNeedle"></div>
+                    <div class="compass-letters">
+                        <span class="n">N</span>
+                        <span class="s">S</span>
+                        <span class="e">E</span>
+                        <span class="o">O</span>
+                    </div>
+                </div>
+            </div>
+            <div class="heading-display" id="headingDisplay">
+                <span class="deg">0°</span> N
+            </div>
+            <div class="debug-info" id="debugInfo"></div>
+            <div class="loading" id="loading">⏳ Chargement...</div>
+        </div>
+
+        <div class="legend">
+            <h3>📊 Légende - Course du soleil (6h - 20h)</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-line legend-summer"></div>
+                    <span>Été (solstice 21 juin) - Course haute</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line legend-winter"></div>
+                    <span>Hiver (solstice 21 décembre) - Course basse</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line legend-today"></div>
+                    <span>Aujourd'hui (<span id="todayDate"></span>)</span>
+                </div>
+                <div class="legend-item">
+                    <span>● Marqueurs = Position horaire (6h-20h)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <h3>📋 Informations solaires</h3>
+            <p class="coordinates" id="coordsInfo">Cliquez sur la carte ou utilisez la géolocalisation</p>
+            <div class="info-grid" id="sunInfo"></div>
+        </div>
+
+        <div class="installation-guide">
+            <h3>🛠️ Guide d'Installation pour la Caméra Solaire</h3>
+            <div class="installation-steps">
+                <div class="step">
+                    <div>
+                        <span class="step-number">1</span>
+                        <span class="step-title">Positionnement optimal</span>
+                    </div>
+                    <div class="step-description">
+                        Placez la caméra dans un emplacement offrant une vue dégagée vers le sud pour maximiser l'exposition au soleil tout au long de la journée.
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <span class="step-number">2</span>
+                        <span class="step-title">Inclinaison du panneau</span>
+                    </div>
+                    <div class="step-description">
+                        <div class="angle-indicator" id="angleIndicator">Angle d'inclinaison à déterminer</div>
+                        L'angle d'inclinaison du panneau solaire devrait être égal à la latitude du lieu plus 15° en hiver ou moins 15° en été pour une production optimale.
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <span class="step-number">3</span>
+                        <span class="step-title">Orientation</span>
+                    </div>
+                    <div class="step-description">
+                        Orientez le panneau vers le sud avec une tolérance de ±15°. Utilisez la boussole intégrée pour vous assurer d'une bonne orientation.
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <span class="step-number">4</span>
+                        <span class="step-title">Fixation</span>
+                    </div>
+                    <div class="step-description">
+                        Assurez-vous que la fixation est stable et résistante aux intempéries. Vérifiez que le câble d'alimentation n'est pas tendu.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
+    <script>
+        /**
+         * CONFIGURATION
+         * Constants defining the app's behavior and appearance.
+         */
+        const HOURS = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; // Hours to display
+        const COLORS = {
+            summer: '#ff3b30', // Red for summer
+            winter: '#007aff', // Blue for winter
+            today: '#34c759'   // Green for today
+        };
+        const LINE_LENGTH = 150; // Base length (deprecated by dynamic length, but kept for reference)
+
+        /**
+         * GLOBAL VARIABLES
+         * State management for the application.
+         */
+        let map;           // Leaflet map instance
+        let marker;        // Draggable marker for user position
+        let sunLines = { summer: [], winter: [], today: [] }; // Storage for map layers
+        let currentLat = 48.8566; // Default: Paris
+        let currentLng = 2.3522;
+
+        // Compass State
+        let compassEnabled = false;
+        let currentHeading = 0;
+        let targetHeading = 0;
+        let animationFrame = null;
+
+        /** 
+         * INITIALIZATION
+         * Sets up the app when the DOM is ready.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            updateTodayDate();
+            checkMobileCapabilities();
+            geolocate(); // Try to get user's real location
+        });
+
+        // Initialize Leaflet Map
+        function initMap() {
+            map = L.map('map', {
+                zoomControl: true,
+                attributionControl: true
+            }).setView([currentLat, currentLng], 18);
+
+            // Add tile layer (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Create draggable marker
+            marker = L.marker([currentLat, currentLng], { draggable: true }).addTo(map);
+            marker.on('dragend', onMarkerMove);
+
+            // Update sun positions when marker moves
+            map.on('click', onMapClick);
+        }
+
+        // Handle marker movement
+        function onMarkerMove(e) {
+            const pos = e.target.getLatLng();
+            currentLat = pos.lat;
+            currentLng = pos.lng;
+            updateSunPositions();
+            updateInstallationGuide();
+        }
+
+        // Handle map click
+        function onMapClick(e) {
+            currentLat = e.latlng.lat;
+            currentLng = e.latlng.lng;
+            marker.setLatLng([currentLat, currentLng]);
+            updateSunPositions();
+            updateInstallationGuide();
+        }
+
+        // Search for address using Nominatim
+        async function searchAddress() {
+            const address = document.getElementById('addressInput').value.trim();
+            if (!address) return;
+
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`);
+                const data = await response.json();
+                
+                if (data && data.length > 0) {
+                    const lat = parseFloat(data[0].lat);
+                    const lon = parseFloat(data[0].lon);
+                    
+                    currentLat = lat;
+                    currentLng = lon;
+                    
+                    map.setView([lat, lon], 18);
+                    marker.setLatLng([lat, lon]);
+                    
+                    updateSunPositions();
+                    updateInstallationGuide();
+                } else {
+                    alert('Adresse non trouvée');
+                }
+            } catch (error) {
+                console.error('Error searching address:', error);
+                alert('Erreur lors de la recherche de l\'adresse');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Get user's current position
+        function geolocate() {
+            if (navigator.geolocation) {
+                showLoading(true);
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        currentLat = position.coords.latitude;
+                        currentLng = position.coords.longitude;
+                        
+                        map.setView([currentLat, currentLng], 18);
+                        marker.setLatLng([currentLat, currentLng]);
+                        
+                        updateSunPositions();
+                        updateInstallationGuide();
+                        showLoading(false);
+                    },
+                    (error) => {
+                        console.error('Geolocation error:', error);
+                        alert('Impossible de récupérer votre position. Veuillez entrer une adresse manuellement.');
+                        showLoading(false);
+                    }
+                );
+            } else {
+                alert('La géolocalisation n\'est pas supportée par votre navigateur');
+            }
+        }
+
+        // Calculate sun positions for different seasons
+        function calculateSunPositions(date) {
+            const positions = [];
+            
+            for (const hour of HOURS) {
+                const time = new Date(date);
+                time.setHours(hour, 0, 0, 0);
+                
+                const sunPos = SunCalc.getPosition(time, currentLat, currentLng);
+                const azimuth = sunPos.azimuth;
+                const altitude = sunPos.altitude;
+                
+                // Convert azimuth to degrees (from radians)
+                const azimuthDeg = (azimuth * 180 / Math.PI + 180) % 360;
+                
+                // Calculate position offset based on azimuth and altitude
+                // Using a basic projection model
+                const distanceFactor = Math.sin(altitude); // Higher when sun is higher
+                const radius = 0.01 * (1 + distanceFactor * 5); // Adjust base radius
+                
+                // Calculate offset coordinates
+                const latOffset = Math.cos(azimuth) * radius;
+                const lngOffset = Math.sin(azimuth) * radius / Math.cos(currentLat * Math.PI / 180);
+                
+                positions.push({
+                    lat: currentLat + latOffset,
+                    lng: currentLng + lngOffset,
+                    azimuth: azimuthDeg,
+                    altitude: altitude * 180 / Math.PI,
+                    hour: hour
+                });
+            }
+            
+            return positions;
+        }
+
+        // Update sun position markers and lines
+        function updateSunPositions() {
+            clearSunLines();
+            
+            // Calculate positions for summer solstice (June 21)
+            const summerDate = new Date(new Date().getFullYear(), 5, 21); // Month is 0-indexed
+            const summerPositions = calculateSunPositions(summerDate);
+            
+            // Calculate positions for winter solstice (December 21)
+            const winterDate = new Date(new Date().getFullYear(), 11, 21);
+            const winterPositions = calculateSunPositions(winterDate);
+            
+            // Calculate positions for today
+            const todayDate = new Date();
+            const todayPositions = calculateSunPositions(todayDate);
+            
+            // Draw lines for each season
+            drawSunLine(summerPositions, 'summer');
+            drawSunLine(winterPositions, 'winter');
+            drawSunLine(todayPositions, 'today');
+            
+            updateSunInfoPanel(summerPositions, winterPositions, todayPositions);
+            updateCoordinatesInfo();
+        }
+
+        // Draw a line showing sun trajectory
+        function drawSunLine(positions, type) {
+            // Draw line connecting all positions
+            const polyline = L.polyline(
+                positions.map(p => [p.lat, p.lng]), 
+                { 
+                    color: COLORS[type], 
+                    weight: 4,
+                    opacity: 0.7
+                }
+            ).addTo(map);
+            sunLines[type].push(polyline);
+            
+            // Add markers for each hour
+            positions.forEach(pos => {
+                const marker = L.circleMarker([pos.lat, pos.lng], {
+                    radius: 6,
+                    fillColor: COLORS[type],
+                    color: "#fff",
+                    weight: 1.5,
+                    opacity: 0.9,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                // Add tooltip with time
+                marker.bindTooltip(`${pos.hour}h`, {
+                    permanent: false,
+                    direction: 'top',
+                    className: 'time-label'
+                });
+                
+                sunLines[type].push(marker);
+            });
+        }
+
+        // Clear existing sun lines and markers
+        function clearSunLines() {
+            for (const type in sunLines) {
+                sunLines[type].forEach(layer => {
+                    map.removeLayer(layer);
+                });
+                sunLines[type] = [];
+            }
+        }
+
+        // Update information panel with sun data
+        function updateSunInfoPanel(summerData, winterData, todayData) {
+            const infoDiv = document.getElementById('sunInfo');
+            infoDiv.innerHTML = '';
+            
+            // Create info cards for each season
+            const createInfoCard = (title, data, type) => {
+                // Find sunrise and sunset times approximately
+                const visibleHours = data.filter(d => d.altitude > 0);
+                const sunriseHour = visibleHours.length > 0 ? visibleHours[0].hour : 'N/A';
+                const sunsetHour = visibleHours.length > 0 ? visibleHours[visibleHours.length - 1].hour : 'N/A';
+                
+                const card = document.createElement('div');
+                card.className = `info-card ${type}`;
+                card.innerHTML = `
+                    <h4>${title}</h4>
+                    <p>Heures d'ensoleillement: ${sunriseHour}h - ${sunsetHour}h</p>
+                    <p>Max altitude: ${Math.max(...data.map(d => d.altitude)).toFixed(1)}°</p>
+                `;
+                return card;
+            };
+            
+            infoDiv.appendChild(createInfoCard('☀️ Été (21 juin)', summerData, 'summer'));
+            infoDiv.appendChild(createInfoCard('❄️ Hiver (21 décembre)', winterData, 'winter'));
+            infoDiv.appendChild(createInfoCard('📅 Aujourd\'hui', todayData, 'today'));
+        }
+
+        // Update coordinates display
+        function updateCoordinatesInfo() {
+            const coordsInfo = document.getElementById('coordsInfo');
+            coordsInfo.innerHTML = `Coordonnées: ${currentLat.toFixed(4)}, ${currentLng.toFixed(4)}
+                <br>Latitude: ${currentLat.toFixed(4)}° | Longitude: ${currentLng.toFixed(4)}°`;
+        }
+
+        // Update display based on checkbox selections
+        function updateDisplay() {
+            clearSunLines();
+            updateSunPositions();
+        }
+
+        // Show/hide loading indicator
+        function showLoading(show) {
+            const loadingEl = document.getElementById('loading');
+            loadingEl.style.display = show ? 'block' : 'none';
+        }
+
+        // Update today's date in the legend
+        function updateTodayDate() {
+            const today = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const dateString = today.toLocaleDateString('fr-FR', options);
+            document.getElementById('todayDate').textContent = dateString;
+        }
+
+        // Check if on mobile device and enable compass if supported
+        function checkMobileCapabilities() {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                document.getElementById('mobileNotice').style.display = 'block';
+                
+                // Check if device orientation is supported
+                if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    // iOS 13+ devices
+                    document.getElementById('compassBtn').style.display = 'block';
+                } else if (window.DeviceOrientationEvent) {
+                    // Non-iOS devices
+                    document.getElementById('compassBtn').style.display = 'block';
+                }
+            }
+        }
+
+        // Toggle compass functionality
+        function toggleCompass() {
+            compassEnabled = !compassEnabled;
+            const btn = document.getElementById('compassBtn');
+            const rose = document.getElementById('compassRose');
+            const display = document.getElementById('headingDisplay');
+            const debug = document.getElementById('debugInfo');
+            
+            btn.classList.toggle('active', compassEnabled);
+            rose.classList.toggle('active', compassEnabled);
+            display.classList.toggle('active', compassEnabled);
+            debug.classList.toggle('active', compassEnabled && window.location.search.includes('debug'));
+            
+            if (compassEnabled) {
+                startCompassTracking();
+            } else {
+                stopCompassTracking();
+            }
+        }
+
+        // Start tracking compass heading
+        function startCompassTracking() {
+            if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                // iOS 13+ requires permission
+                DeviceOrientationEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('deviceorientation', handleOrientation);
+                        }
+                    })
+                    .catch(console.error);
+            } else {
+                window.addEventListener('deviceorientation', handleOrientation);
+            }
+        }
+
+        // Stop tracking compass heading
+        function stopCompassTracking() {
+            window.removeEventListener('deviceorientation', handleOrientation);
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+            }
+        }
+
+        // Handle device orientation events
+        function handleOrientation(event) {
+            // Check if browser provides alpha with reference to compass
+            if (event.alpha !== null) {
+                // Use compass heading (alpha) if available
+                targetHeading = event.alpha;
+            } else {
+                // Fallback to gamma/beta for devices that don't provide alpha
+                // This is a simplified approach and might not be accurate on all devices
+                // For a production app, you'd want more sophisticated handling
+                if (event.gamma !== null && event.beta !== null) {
+                    // Calculate an approximate heading based on device tilt
+                    const x = event.gamma; // Range: [-90, 90]
+                    const y = event.beta;  // Range: [-180, 180]
+                    
+                    // Simplified calculation - this would need refinement for accuracy
+                    targetHeading = Math.atan2(x, y) * (180 / Math.PI);
+                    if (targetHeading < 0) targetHeading += 360;
+                }
+            }
+            
+            // Animate to smooth out changes
+            animateToTargetHeading();
+        }
+
+        // Animate needle to target heading
+        function animateToTargetHeading() {
+            const diff = targetHeading - currentHeading;
+            // Normalize difference to shortest angle
+            let normalizedDiff = diff % 360;
+            if (normalizedDiff > 180) normalizedDiff -= 360;
+            if (normalizedDiff < -180) normalizedDiff += 360;
+            
+            // Smooth interpolation
+            currentHeading += normalizedDiff * 0.1;
+            if (Math.abs(normalizedDiff) < 0.5) currentHeading = targetHeading; // Snap when close
+            
+            // Update compass needle
+            const needle = document.getElementById('compassNeedle');
+            needle.style.transform = `translateY(-100%) rotate(${currentHeading}deg)`;
+            
+            // Update heading display
+            const display = document.getElementById('headingDisplay');
+            display.innerHTML = `<span class="deg">${Math.round(currentHeading)}°</span> N`;
+            
+            // Update map rotation to match heading
+            const mapElement = document.getElementById('map');
+            // Apply inverse rotation to make north always point up
+            mapElement.style.transform = `rotate(${-currentHeading}deg)`;
+            
+            // Continue animation loop if needed
+            if (Math.abs(normalizedDiff) >= 0.5) {
+                animationFrame = requestAnimationFrame(animateToTargetHeading);
+            }
+        }
+
+        // Update installation guide with specific recommendations
+        function updateInstallationGuide() {
+            // Calculate optimal angle based on latitude
+            const latitude = currentLat;
+            const today = new Date();
+            const month = today.getMonth(); // 0-11 (Jan-Dec)
+            
+            // Season-based angle calculation
+            // Winter months: Oct-Mar (9-2), Summer months: Apr-Sep (3-8)
+            let optimalAngle;
+            if (month >= 9 || month <= 2) {
+                // Winter: latitude + 15°
+                optimalAngle = latitude + 15;
+            } else {
+                // Summer: latitude - 15°
+                optimalAngle = latitude - 15;
+            }
+            
+            // Ensure angle is within reasonable bounds
+            optimalAngle = Math.min(Math.max(optimalAngle, 15), 60);
+            
+            // Update the angle indicator
+            const angleIndicator = document.getElementById('angleIndicator');
+            angleIndicator.textContent = `Angle d'inclinaison recommandé: ${optimalAngle.toFixed(1)}°`;
+            
+            // Additional guidance based on location
+            const coordsInfo = document.getElementById('coordsInfo');
+            if (coordsInfo) {
+                // Determine hemisphere
+                const hemisphere = latitude >= 0 ? 'nord' : 'sud';
+                const direction = hemisphere === 'nord' ? 'sud' : 'nord';
+                
+                coordsInfo.innerHTML += `<br>Orientation optimale: Vers le ${direction} avec une inclinaison de ${optimalAngle.toFixed(1)}°`;
+            }
+        }
+
+        // Initialize the installation guide
+        function initializeInstallationGuide() {
+            updateInstallationGuide();
+        }
+
+        // Add event listener for initialization
+        window.addEventListener('load', initializeInstallationGuide);
+    </script>
+</body>
+</html>
