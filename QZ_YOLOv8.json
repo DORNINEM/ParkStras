@@ -1,0 +1,136 @@
+{
+  "quiz": [
+    {
+      "question": "Lors de la préparation d'un jeu de données pour YOLOv8, quel est le format requis pour les fichiers d'annotation (labels) correspondant à chaque image ?",
+      "answerOptions": [
+        {
+          "text": "Un fichier .txt contenant l'indice de classe et les coordonnées normalisées.",
+          "rationale": "YOLO utilise des fichiers texte où chaque ligne représente un objet avec des coordonnées $[0, 1]$ relatives à la taille de l'image.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Ce format repose sur un fichier par image contenant des valeurs flottantes normalisées."
+    },
+    {
+      "question": "Dans le dossier des étiquettes (labels), quel est l'ordre exact des cinq valeurs définissant une boîte englobante pour une ligne d'annotation ?",
+      "answerOptions": [
+        {
+          "text": "class_id x_center y_center width height",
+          "rationale": "L'architecture YOLO attend l'identifiant de classe suivi du centre de la boîte ($x, y$) et de ses dimensions ($largeur, hauteur$).",
+          "isCorrect": true
+        }
+      ],
+      "hint": "L'identifiant de la catégorie d'objet doit toujours apparaître en premier."
+    },
+    {
+      "question": "Pourquoi est-il crucial de nommer les sous-dossiers de données 'images' et 'labels' (avec un 's' final) dans votre structure de répertoire ?",
+      "answerOptions": [
+        {
+          "text": "Pour permettre la correspondance automatique entre les images et leurs annotations par le framework.",
+          "rationale": "Les scripts d'entraînement d'Ultralytics recherchent spécifiquement cette convention de nommage pour lier chaque image à son fichier .txt associé.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "C'est une convention logicielle d'Ultralytics pour retrouver les étiquettes à partir des images."
+    },
+    {
+      "question": "Quel est le rôle spécifique du dossier 'VAL' (Validation) lors du processus de fine-tuning de YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Ajuster les hyperparamètres et surveiller le surapprentissage pendant l'entraînement.",
+          "rationale": "Le jeu de validation permet d'évaluer le modèle sur des données non vues à chaque époque pour guider l'optimisation sans biaiser le test final.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Ce dossier sert de test intermédiaire pour vérifier si le modèle généralise bien avant la fin de l'apprentissage."
+    },
+    {
+      "question": "Quelle métrique est définie comme la moyenne harmonique de la précision et du rappel, utile pour évaluer globalement un modèle de détection ?",
+      "answerOptions": [
+        {
+          "text": "Le F1-score",
+          "rationale": "Le score F1 combine la précision et le rappel en une seule mesure, ce qui est idéal quand on veut un équilibre entre la justesse des détections et la quantité d'objets trouvés.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Elle cherche à équilibrer les faux positifs et les faux négatifs."
+    },
+    {
+      "question": "Dans le cadre d'un projet de détection d'objets sur des images aériennes de très haute résolution ($5472 \\times 3648$), quelle étape de prétraitement est recommandée ?",
+      "answerOptions": [
+        {
+          "text": "Le découpage en imagettes (tiling) de taille uniforme (ex: $640 \\times 640$).",
+          "rationale": "Le découpage permet de conserver les détails des petits objets tout en s'adaptant à la mémoire limitée du GPU.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "L'objectif est de réduire la charge mémoire tout en gardant la résolution locale des objets."
+    },
+    {
+      "question": "Quel fichier de configuration centralise les chemins vers les dossiers TRAIN et VAL ainsi que les noms des classes pour YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Le fichier data.yaml",
+          "rationale": "Ce fichier YAML définit la structure du jeu de données, incluant les chemins d'accès et le dictionnaire des classes (`names`).",
+          "isCorrect": true
+        }
+      ],
+      "hint": "C'est un format de fichier texte structuré souvent utilisé pour les paramètres de configuration en Vision par Ordinateur."
+    },
+    {
+      "question": "Que signifie 'geler' (freeze) des couches lors du fine-tuning d'un modèle YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Empêcher la mise à jour des poids de certaines couches pour conserver les connaissances acquises sur COCO.",
+          "rationale": "Le gel des premières couches (backbone) permet de garder les extracteurs de caractéristiques génériques et d'accélérer l'entraînement sur les couches finales.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "On utilise souvent cette technique pour ne réentraîner que la 'tête' de détection."
+    },
+    {
+      "question": "En quoi consiste l'augmentation de données 'Mosaic' intégrée nativement dans YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Combiner quatre images d'entraînement différentes en une seule image composite.",
+          "rationale": "Cette technique force le modèle à détecter des objets à des échelles plus petites et dans des contextes variés, améliorant la robustesse.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Imaginez un quadrillage composé de plusieurs scènes différentes."
+    },
+    {
+      "question": "Quelle est l'utilité principale de l'indicateur mAP (Mean Average Precision) lors de l'évaluation du modèle ?",
+      "answerOptions": [
+        {
+          "text": "Mesurer la précision globale du modèle sur l'ensemble des classes et des seuils de confiance.",
+          "rationale": "Le mAP calcule l'aire sous la courbe précision-rappel, offrant une vue d'ensemble de la capacité du modèle à classer et localiser correctement.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "C'est l'indicateur standard utilisé dans les benchmarks comme COCO."
+    },
+    {
+      "question": "Dans le processus pas à pas, quelle action doit suivre immédiatement l'annotation des images sur une plateforme comme Picsellia avant de lancer l'entraînement ?",
+      "answerOptions": [
+        {
+          "text": "L'exportation et la conversion des annotations vers le format YOLO .txt.",
+          "rationale": "Picsellia exporte souvent en format COCO JSON ; il faut donc transformer ces annotations en fichiers textes normalisés lisibles par YOLO.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Le modèle ne peut pas apprendre si les étiquettes ne sont pas dans son format spécifique."
+    },
+    {
+      "question": "Quel hyperparamètre contrôle la vitesse à laquelle le modèle ajuste ses poids en fonction de l'erreur estimée ?",
+      "answerOptions": [
+        {
+          "text": "Le taux d'apprentissage (learning rate - lr0)",
+          "rationale": "Un taux d'apprentissage bien réglé est vital : trop élevé, il empêche la convergence ; trop bas, l'entraînement est excessivement lent.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "On le compare souvent au 'pas' effectué par un randonneur descendant une montagne dans le noir."
+    }
+  ]
+}
