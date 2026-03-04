@@ -1,0 +1,316 @@
+{
+  "quiz": [
+    {
+      "question": "Lors de la préparation d'un jeu de données pour YOLOv8, quel est le format requis pour les fichiers d'annotation (labels) correspondant à chaque image ?",
+      "answerOptions": [
+        {
+          "text": "Un fichier .txt contenant l'indice de classe et les coordonnées normalisées.",
+          "rationale": "YOLO utilise des fichiers texte où chaque ligne représente un objet avec des coordonnées $[0, 1]$ relatives à la taille de l'image.",
+          "isCorrect": true
+        },
+        {
+          "text": "Un fichier .json unique au format COCO regroupant toutes les annotations.",
+          "rationale": "Bien que Picsellia exporte en COCO, les algorithmes YOLO ne lisent pas nativement ce format JSON et nécessitent une conversion en fichiers .txt individuels.",
+          "isCorrect": false
+        },
+        {
+          "text": "Un fichier .xml structuré selon le format Pascal VOC.",
+          "rationale": "Le format XML est utilisé par d'autres architectures, mais YOLO privilégie un format texte plus compact et spécifique.",
+          "isCorrect": false
+        },
+        {
+          "text": "Un fichier .csv listant les noms de fichiers et les pixels des boîtes englobantes.",
+          "rationale": "Le format CSV utilise généralement des coordonnées en pixels absolus, alors que YOLO exige des valeurs normalisées entre 0 et 1.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Ce format repose sur un fichier par image contenant des valeurs flottantes normalisées."
+    },
+    {
+      "question": "Dans le dossier des étiquettes (labels), quel est l'ordre exact des cinq valeurs définissant une boîte englobante pour une ligne d'annotation ?",
+      "answerOptions": [
+        {
+          "text": "class_id x_center y_center width height",
+          "rationale": "L'architecture YOLO attend l'identifiant de classe suivi du centre de la boîte ($x, y$) et de ses dimensions ($largeur, hauteur$).",
+          "isCorrect": true
+        },
+        {
+          "text": "class_id x_min y_min x_max y_max",
+          "rationale": "Cette structure définit les coins de la boîte, ce qui correspond au format COCO ou Pascal VOC, mais pas au format natif de YOLO.",
+          "isCorrect": false
+        },
+        {
+          "text": "x_center y_center width height class_id",
+          "rationale": "L'identifiant de classe doit impérativement figurer en première position pour permettre à l'algorithme d'identifier l'objet avant ses coordonnées.",
+          "isCorrect": false
+        },
+        {
+          "text": "x_min y_min width height class_id",
+          "rationale": "Ce format mélange des coordonnées de coin avec des dimensions, ce qui ne respecte pas la convention de centrage de YOLO.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "L'identifiant de la catégorie d'objet doit toujours apparaître en premier."
+    },
+    {
+      "question": "Pourquoi est-il crucial de nommer les sous-dossiers de données 'images' et 'labels' (avec un 's' final) dans votre structure de répertoire ?",
+      "answerOptions": [
+        {
+          "text": "Pour permettre la correspondance automatique entre les images et leurs annotations par le framework.",
+          "rationale": "Les scripts d'entraînement d'Ultralytics recherchent spécifiquement cette convention de nommage pour lier chaque image à son fichier .txt associé.",
+          "isCorrect": true
+        },
+        {
+          "text": "Parce que le GPU ne peut lire que des dossiers dont le nom respecte la norme POSIX.",
+          "rationale": "Le matériel GPU traite les données chargées en mémoire ; le nommage des dossiers est une contrainte logicielle du framework, pas matérielle.",
+          "isCorrect": false
+        },
+        {
+          "text": "Pour différencier les données d'entraînement des données de prétraitement.",
+          "rationale": "La distinction entre entraînement et prétraitement se fait par l'organisation des dossiers racine (train/val), pas par le pluriel des noms de dossiers internes.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cela permet d'activer automatiquement l'augmentation de données Mosaic.",
+          "rationale": "L'augmentation Mosaic est gérée par des hyperparamètres dans le fichier de configuration et non par le nom des dossiers.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "C'est une convention logicielle d'Ultralytics pour retrouver les étiquettes à partir des images."
+    },
+    {
+      "question": "Quel est le rôle spécifique du dossier 'VAL' (Validation) lors du processus de fine-tuning de YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Ajuster les hyperparamètres et surveiller le surapprentissage pendant l'entraînement.",
+          "rationale": "Le jeu de validation permet d'évaluer le modèle sur des données non vues à chaque époque pour guider l'optimisation sans biaiser le test final.",
+          "isCorrect": true
+        },
+        {
+          "text": "Fournir des exemples supplémentaires pour mettre à jour les poids du backbone.",
+          "rationale": "Seules les données du dossier 'TRAIN' sont utilisées pour la rétropropagation et la mise à jour effective des poids du réseau.",
+          "isCorrect": false
+        },
+        {
+          "text": "Servir exclusivement à l'évaluation finale de la précision après le déploiement.",
+          "rationale": "L'évaluation finale après déploiement ou après la fin de l'entraînement incombe au dossier 'TEST' pour garantir une impartialité totale.",
+          "isCorrect": false
+        },
+        {
+          "text": "Stocker les images qui ont été rejetées par l'outil d'étiquetage.",
+          "rationale": "Le dossier de validation doit contenir des données de haute qualité et correctement annotées pour mesurer fidèlement la performance.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Ce dossier sert de test intermédiaire pour vérifier si le modèle généralise bien avant la fin de l'apprentissage."
+    },
+    {
+      "question": "Quelle métrique est définie comme la moyenne harmonique de la précision et du rappel, utile pour évaluer globalement un modèle de détection ?",
+      "answerOptions": [
+        {
+          "text": "Le F1-score",
+          "rationale": "Le score F1 combine la précision et le rappel en une seule mesure, ce qui est idéal quand on veut un équilibre entre la justesse des détections et la quantité d'objets trouvés.",
+          "isCorrect": true
+        },
+        {
+          "text": "Le mAP50",
+          "rationale": "Le mAP (Mean Average Precision) mesure l'aire sous la courbe précision-rappel, mais n'est pas une moyenne harmonique directe.",
+          "isCorrect": false
+        },
+        {
+          "text": "L'IoU (Intersection over Union)",
+          "rationale": "L'IoU mesure le chevauchement entre la boîte prédite et la boîte réelle, servant de critère pour valider une détection plutôt que de métrique globale.",
+          "isCorrect": false
+        },
+        {
+          "text": "La fonction de perte (Loss)",
+          "rationale": "La perte mesure l'erreur que le modèle tente de minimiser, tandis que le score F1 est un indicateur de performance finale pour l'utilisateur.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Elle cherche à équilibrer les faux positifs et les faux négatifs."
+    },
+    {
+      "question": "Dans le cadre d'un projet de détection d'objets sur des images aériennes de très haute résolution ($5472 \\times 3648$), quelle étape de prétraitement est recommandée ?",
+      "answerOptions": [
+        {
+          "text": "Le découpage en imagettes (tiling) de taille uniforme (ex: $640 \\times 640$).",
+          "rationale": "Le découpage permet de conserver les détails des petits objets tout en s'adaptant à la mémoire limitée du GPU.",
+          "isCorrect": true
+        },
+        {
+          "text": "L'augmentation systématique de la taille du lot (batch size) à 128.",
+          "rationale": "Augmenter le batch size sur des images de très haute résolution provoquerait une erreur de mémoire (Out of Memory) immédiate.",
+          "isCorrect": false
+        },
+        {
+          "text": "La conversion de toutes les images en noir et blanc pour réduire le poids.",
+          "rationale": "La perte de l'information chromatique nuit généralement à la capacité du modèle à distinguer les objets du fond.",
+          "isCorrect": false
+        },
+        {
+          "text": "La désactivation de la fonction de perte IoU.",
+          "rationale": "La perte IoU est essentielle pour la localisation précise des boîtes et ne doit pas être désactivée.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "L'objectif est de réduire la charge mémoire tout en gardant la résolution locale des objets."
+    },
+    {
+      "question": "Quel fichier de configuration centralise les chemins vers les dossiers TRAIN et VAL ainsi que les noms des classes pour YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Le fichier data.yaml",
+          "rationale": "Ce fichier YAML définit la structure du jeu de données, incluant les chemins d'accès et le dictionnaire des classes (`names`).",
+          "isCorrect": true
+        },
+        {
+          "text": "Le fichier yolov8.pt",
+          "rationale": "Le fichier .pt contient les poids du modèle pré-entraîné, mais pas les configurations spécifiques à l'emplacement de vos données locales.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le fichier train.py",
+          "rationale": "Bien qu'il lance l'entraînement, les paramètres de données sont extraits d'un fichier externe pour faciliter la réutilisation du code.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le fichier coco.json",
+          "rationale": "C'est un format d'export d'annotations, pas un fichier de configuration pour le processus d'entraînement YOLO.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "C'est un format de fichier texte structuré souvent utilisé pour les paramètres de configuration en Vision par Ordinateur."
+    },
+    {
+      "question": "Que signifie 'geler' (freeze) des couches lors du fine-tuning d'un modèle YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Empêcher la mise à jour des poids de certaines couches pour conserver les connaissances acquises sur COCO.",
+          "rationale": "Le gel des premières couches (backbone) permet de garder les extracteurs de caractéristiques génériques et d'accélérer l'entraînement sur les couches finales.",
+          "isCorrect": true
+        },
+        {
+          "text": "Réduire la température du processeur pour éviter la surchauffe pendant l'entraînement.",
+          "rationale": "Il s'agit d'un concept algorithmique de stabilité des poids, sans lien direct avec le système de refroidissement matériel.",
+          "isCorrect": false
+        },
+        {
+          "text": "Verrouiller le format de sortie du modèle en .onnx uniquement.",
+          "rationale": "Le format d'export est indépendant du processus de mise à jour des poids lors de l'apprentissage.",
+          "isCorrect": false
+        },
+        {
+          "text": "Arrêter l'entraînement dès que la précision atteint 90%.",
+          "rationale": "Ceci correspondrait à un 'Early Stopping', alors que le gel concerne la structure interne du réseau pendant toute la durée de l'étape.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "On utilise souvent cette technique pour ne réentraîner que la 'tête' de détection."
+    },
+    {
+      "question": "En quoi consiste l'augmentation de données 'Mosaic' intégrée nativement dans YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Combiner quatre images d'entraînement différentes en une seule image composite.",
+          "rationale": "Cette technique force le modèle à détecter des objets à des échelles plus petites et dans des contextes variés, améliorant la robustesse.",
+          "isCorrect": true
+        },
+        {
+          "text": "Appliquer un flou artistique sur les bords de l'image pour simuler la profondeur de champ.",
+          "rationale": "Bien que le flou existe en augmentation, 'Mosaic' se réfère spécifiquement à l'assemblage spatial de plusieurs échantillons.",
+          "isCorrect": false
+        },
+        {
+          "text": "Multiplier le nombre de classes par quatre pour complexifier la tâche.",
+          "rationale": "L'augmentation Mosaic ne modifie pas le nombre de classes définies, mais seulement la présentation visuelle des données.",
+          "isCorrect": false
+        },
+        {
+          "text": "Remplacer les pixels de l'objet par un motif de bruit aléatoire.",
+          "rationale": "Ceci ressemble plus à du 'Cutout', alors que Mosaic conserve l'intégrité visuelle des objets mais change leur environnement.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Imaginez un quadrillage composé de plusieurs scènes différentes."
+    },
+    {
+      "question": "Quelle est l'utilité principale de l'indicateur mAP (Mean Average Precision) lors de l'évaluation du modèle ?",
+      "answerOptions": [
+        {
+          "text": "Mesurer la précision globale du modèle sur l'ensemble des classes et des seuils de confiance.",
+          "rationale": "Le mAP calcule l'aire sous la courbe précision-rappel, offrant une vue d'ensemble de la capacité du modèle à classer et localiser correctement.",
+          "isCorrect": true
+        },
+        {
+          "text": "Calculer uniquement le temps nécessaire pour traiter une image sur le CPU.",
+          "rationale": "Le temps de traitement est mesuré par la latence d'inférence (ms), pas par une métrique de précision comme le mAP.",
+          "isCorrect": false
+        },
+        {
+          "text": "Déterminer le nombre exact de pixels constituant chaque boîte englobante.",
+          "rationale": "Le mAP est un score statistique de performance et non une mesure dimensionnelle géométrique.",
+          "isCorrect": false
+        },
+        {
+          "text": "Identifier quelle image du jeu de données contient le plus d'erreurs.",
+          "rationale": "Bien que l'analyse des erreurs par image soit possible, le mAP est une moyenne agrégée sur l'ensemble du dataset.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "C'est l'indicateur standard utilisé dans les benchmarks comme COCO."
+    },
+    {
+      "question": "Dans le processus pas à pas, quelle action doit suivre immédiatement l'annotation des images sur une plateforme comme Picsellia avant de lancer l'entraînement ?",
+      "answerOptions": [
+        {
+          "text": "L'exportation et la conversion des annotations vers le format YOLO .txt.",
+          "rationale": "Picsellia exporte souvent en format COCO JSON ; il faut donc transformer ces annotations en fichiers textes normalisés lisibles par YOLO.",
+          "isCorrect": true
+        },
+        {
+          "text": "Le déploiement immédiat du modèle sur un serveur sans GPU.",
+          "rationale": "Le déploiement est la toute dernière étape, après l'entraînement et la validation.",
+          "isCorrect": false
+        },
+        {
+          "text": "La suppression de la moitié des images pour accélérer le processus.",
+          "rationale": "Supprimer des données annotées réduit la diversité et nuit généralement à la performance finale du modèle.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le changement de l'architecture CSPDarknet pour un réseau Transformer.",
+          "rationale": "Le choix de l'architecture se fait au moment de l'initialisation du modèle, pas après l'étape d'annotation.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Le modèle ne peut pas apprendre si les étiquettes ne sont pas dans son format spécifique."
+    },
+    {
+      "question": "Quel hyperparamètre contrôle la vitesse à laquelle le modèle ajuste ses poids en fonction de l'erreur estimée ?",
+      "answerOptions": [
+        {
+          "text": "Le taux d'apprentissage (learning rate - lr0)",
+          "rationale": "Un taux d'apprentissage bien réglé est vital : trop élevé, il empêche la convergence ; trop bas, l'entraînement est excessivement lent.",
+          "isCorrect": true
+        },
+        {
+          "text": "La taille de l'image (imgsz)",
+          "rationale": "La taille de l'image affecte la résolution et la charge mémoire, mais n'influence pas directement la magnitude des mises à jour des poids.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le nombre d'époques (epochs)",
+          "rationale": "Les époques définissent combien de fois le dataset complet est vu, pas la force de l'ajustement à chaque itération.",
+          "isCorrect": false
+        },
+        {
+          "text": "La taille du lot (batch size)",
+          "rationale": "Le batch size définit le nombre d'échantillons vus avant une mise à jour, mais pas l'ampleur de cette mise à jour.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "On le compare souvent au 'pas' effectué par un randonneur descendant une montagne dans le noir."
+    }
+  ]
+}
