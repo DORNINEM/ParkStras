@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Énergies Renouvelables — Strasbourg</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090f;
+    --bg2: #0d1117;
+    --bg3: #131925;
+    --gold: #c9a84c;
+    --gold2: #e2c878;
+    --gold-dim: rgba(201,168,76,0.15);
+    --text: #e8e2d6;
+    --muted: #7c8599;
+    --green: #4ade80;
+    --red: #f87171;
+    --amber: #fbbf24;
+    --border: rgba(201,168,76,0.2);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  /* Animated background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(201,168,76,0.08) 0%, transparent 100%);
+    padding: 28px 40px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--gold2);
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+  header p { color: var(--muted); font-size: 13px; font-weight: 300; }
+  header .badge {
+    display: inline-block;
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+
+  nav {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 6px;
+    padding: 16px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  nav button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    padding: 7px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  nav button:hover { border-color: var(--gold); color: var(--gold); }
+  nav button.active {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+    color: var(--gold2);
+    font-weight: 500;
+  }
+
+  main { position: relative; z-index: 1; padding: 28px 40px; max-width: 1200px; margin: 0 auto; }
+
+  /* === OVERVIEW === */
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent-color);
+    border-radius: 12px 0 0 12px;
+  }
+  .card:hover { transform: translateY(-2px); border-color: rgba(201,168,76,0.3); }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 500; color: var(--text); }
+  .card-emoji { font-size: 20px; margin-right: 8px; }
+  .card-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.07);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .card-desc { font-size: 11px; color: var(--muted); font-style: italic; margin-bottom: 14px; }
+  .card-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .metric {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .metric-label { font-size: 10px; color: var(--muted); margin-bottom: 3px; }
+  .metric-val { font-size: 15px; font-weight: 600; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; }
+  .stars { font-size: 12px; letter-spacing: 1px; }
+  .pertinence-label { font-size: 11px; color: var(--muted); }
+
+  /* === CHARTS === */
+  .chart-block {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .chart-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--gold2);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  canvas { max-height: 320px; }
+
+  /* === TABLE === */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    padding: 10px 12px;
+    text-align: right;
+    color: var(--muted);
+    font-weight: 400;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th:first-child { text-align: left; }
+  td { padding: 9px 12px; text-align: right; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  td:first-child { text-align: left; font-weight: 500; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+  tr:hover td { background: rgba(201,168,76,0.05); }
+
+  /* === DETAIL === */
+  .sol-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .sol-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sol-btn.active { font-weight: 500; }
+
+  .detail-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 14px;
+    padding: 28px;
+    border-left: 4px solid var(--accent-color);
+  }
+  .detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; flex-wrap: wrap; gap: 12px; }
+  .detail-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .detail-desc { color: var(--muted); font-style: italic; font-size: 13px; }
+  .detail-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .detail-metric {
+    background: rgba(0,0,0,0.35);
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .detail-metric .lbl { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+  .detail-metric .val { font-size: 17px; font-weight: 700; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .info-box {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .info-box .ibl { font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .info-box p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .analysis-box {
+    background: rgba(99,102,241,0.07);
+    border: 1px solid rgba(99,102,241,0.18);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .analysis-box .ibl { font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 6px; }
+  .analysis-box p { font-size: 13px; color: #d1d5db; line-height: 1.7; }
+
+  .notice {
+    margin-top: 24px;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    font-size: 11px;
+    color: #374151;
+    line-height: 1.6;
+  }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 600px) {
+    header, nav, main { padding-left: 16px; padding-right: 16px; }
+    .info-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ ROI — Énergies Renouvelables</h1>
+  <p>Maison individuelle 120 m² · 4 occupants · Quartier de Strasbourg</p>
+  <span class="badge">Données 2025–2026 · MaPrimeRénov' · Prix élec. 0,25 €/kWh</span>
+</header>
+
+<nav>
+  <button class="active" onclick="switchTab('overview')">Vue d'ensemble</button>
+  <button onclick="switchTab('charts')">Graphiques</button>
+  <button onclick="switchTab('table')">Tableau comparatif</button>
+  <button onclick="switchTab('detail')">Analyse détaillée</button>
+</nav>
+
+<main>
+
+<!-- ===== OVERVIEW ===== -->
+<section id="tab-overview">
+  <div class="grid-cards" id="cards-container"></div>
+  <div style="padding:16px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:10px;">
+    <p style="color:var(--gold2);font-weight:600;font-size:13px;margin-bottom:8px;">💡 Contexte spécifique Strasbourg</p>
+    <ul style="padding-left:18px;color:var(--muted);font-size:13px;line-height:1.9;">
+      <li>Ensoleillement ~1 650h/an → solaire PV est le <strong style="color:var(--gold2)">meilleur compromis coût/ROI</strong></li>
+      <li>Ville classée UNESCO → éoliennes <strong style="color:var(--red)">quasi-impossibles</strong> en zone urbaine (PLU restrictif)</li>
+      <li>Hiver continental (jusqu'à -10°C) → PAC air/eau moins efficace que géothermie en plein hiver</li>
+      <li>Biomasse : <strong style="color:var(--amber)">exclue de MaPrimeRénov' « par geste » depuis janvier 2026</strong></li>
+      <li>Micro-hydraulique : réservé aux propriétés rurales avec cours d'eau, <strong style="color:var(--red)">inapplicable en quartier</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== CHARTS ===== -->
+<section id="tab-charts" class="hidden">
+  <div class="chart-block">
+    <h3>Retour sur investissement net (années) — solutions rentables</h3>
+    <canvas id="chartROI"></canvas>
+  </div>
+  <div class="chart-block">
+    <h3>Gain net cumulé sur 25 ans (€) — évolution annuelle</h3>
+    <canvas id="chartLine"></canvas>
+  </div>
+</section>
+
+<!-- ===== TABLE ===== -->
+<section id="tab-table" class="hidden">
+  <div class="chart-block table-wrap">
+    <h3>Tableau comparatif complet</h3>
+    <table id="main-table"></table>
+  </div>
+</section>
+
+<!-- ===== DETAIL ===== -->
+<section id="tab-detail" class="hidden">
+  <div class="sol-selector" id="sol-selector"></div>
+  <div id="detail-content"></div>
+</section>
+
+<div class="notice">⚠️ Estimations indicatives basées sur les données marché 2025-2026. Les économies réelles dépendent de l'isolation, du système actuel, du profil de consommation et de l'évolution tarifaire de l'énergie. Consultez un conseiller France Rénov' pour une simulation personnalisée.</div>
+
+</main>
+
+<script>
+const SOLUTIONS = [
+  {
+    id: "pv",
+    nom: "Solaire Photovoltaïque",
+    emoji: "☀️",
+    desc: "Installation 6 kWc en autoconsommation",
+    invest: 9000,
+    aides: 800,
+    investNet: 8200,
+    eco: 1100,
+    entretien: 150,
+    duree: 25,
+    pertinence: 4,
+    pertinenceNote: "Bon ensoleillement (1 650h/an), orientation favorable possible",
+    contraintes: "Orientation toiture requise, déclaration préalable de travaux",
+    faisabilite: "✅ Très faisable",
+    couleur: "#F59E0B",
+    aidesDetail: "Pas de MaPrimeRénov' pour PV simple. Prime EDF OA à l'autoconsommation ~800 € pour ≤3 kWc + TVA 10%.",
+    analyse: "Solution la plus populaire et la plus simple à mettre en œuvre. Strasbourg bénéficie d'un bon ensoleillement pour le Grand Est. L'autoconsommation couvre environ 30-40% des besoins électriques d'un foyer de 4 personnes. Couplé à une PAC ou un chauffe-eau thermodynamique, le ROI s'améliore encore.",
+  },
+  {
+    id: "thermique",
+    nom: "Solaire Thermique (SSC)",
+    emoji: "🌡️",
+    desc: "Système solaire combiné chauffage + ECS",
+    invest: 12000,
+    aides: 4000,
+    investNet: 8000,
+    eco: 900,
+    entretien: 200,
+    duree: 25,
+    pertinence: 3,
+    pertinenceNote: "Utile pour l'ECS mais apport limité en chauffage lors des hivers alsaciens",
+    contraintes: "Surface toiture 10–15 m² dédiée, circuit hydraulique complexe",
+    faisabilite: "✅ Faisable",
+    couleur: "#EF4444",
+    aidesDetail: "MaPrimeRénov' jusqu'à 4 000 € selon revenus (éligible car production thermique) + CEE jusqu'à 1 500 €.",
+    analyse: "Couvre 50–60% des besoins en eau chaude sanitaire et apporte un complément de chauffage. Intéressant si la maison a des besoins ECS importants (4 personnes). Moins pertinent que le PV seul sur le plan financier, mais complément écologique solide.",
+  },
+  {
+    id: "geo",
+    nom: "Géothermie (PAC sol-eau)",
+    emoji: "🌍",
+    desc: "Pompe à chaleur géothermique, captage horizontal",
+    invest: 20000,
+    aides: 9000,
+    investNet: 11000,
+    eco: 1800,
+    entretien: 250,
+    duree: 20,
+    pertinence: 3,
+    pertinenceNote: "Sol argilo-limoneux du Rhin favorable, mais terrain ≥180 m² requis",
+    contraintes: "Grand terrain disponible, étude de sol obligatoire, déclaration GMI",
+    faisabilite: "⚠️ Selon terrain disponible",
+    couleur: "#10B981",
+    aidesDetail: "MaPrimeRénov' jusqu'à 11 000 € (très modestes) / 9 000 € (modestes) / 6 000 € (intermédiaires) + CEE.",
+    analyse: "COP 4–4,5 très performant, stable en hiver — idéal pour le climat continental alsacien. Durée de vie des sondes >100 ans. L'investissement est élevé mais les économies de chauffage sont les plus importantes de toutes les solutions. Nécessite un terrain suffisant (1,5× la surface habitable pour captage horizontal).",
+  },
+  {
+    id: "pac",
+    nom: "PAC Air/Eau",
+    emoji: "💨",
+    desc: "Pompe à chaleur aérothermique air-eau",
+    invest: 15000,
+    aides: 4000,
+    investNet: 11000,
+    eco: 1400,
+    entretien: 200,
+    duree: 15,
+    pertinence: 3,
+    pertinenceNote: "Performances réduites lors des froids alsaciens (< -5°C), bonne en intersaison",
+    contraintes: "Emplacement extérieur, nuisances sonores, entretien biennal obligatoire",
+    faisabilite: "✅ Très faisable",
+    couleur: "#6366F1",
+    aidesDetail: "MaPrimeRénov' 3 000–5 000 € selon revenus + CEE + éco-PTZ possible pour le reste à charge.",
+    analyse: "Alternative moins chère à la géothermie, sans travaux de forage. Attention : les températures stratsbourgeoises peuvent descendre à -10°C en janvier, réduisant le COP à 2–2,5 et nécessitant un appoint électrique. Idéalement couplée à des panneaux PV pour absorber la consommation électrique.",
+  },
+  {
+    id: "eolien",
+    nom: "Éolien Domestique",
+    emoji: "🌬️",
+    desc: "Éolienne 3 kW avec mât 12 m",
+    invest: 20000,
+    aides: 0,
+    investNet: 20000,
+    eco: 500,
+    entretien: 400,
+    duree: 20,
+    pertinence: 1,
+    pertinenceNote: "⚠️ Zone UNESCO, PLU très restrictif. Vent moyen insuffisant en urbain (<4 m/s)",
+    contraintes: "Permis de construire, distance réglementaire, bruit, restrictions PLU, voisinage",
+    faisabilite: "❌ Déconseillé à Strasbourg",
+    couleur: "#64748B",
+    aidesDetail: "Aucune aide nationale. TVA 10% si bâtiment >2 ans. Pas de MaPrimeRénov'.",
+    analyse: "Strasbourg est classée au patrimoine mondial UNESCO et son PLU interdit ou restreint fortement les éoliennes en zone urbaine. Le vent moyen en ville est de 3–4 m/s, bien en dessous du seuil de rentabilité de 5–6 m/s. Le ROI dépasse 40 ans dans le meilleur des cas. À éviter totalement en quartier résidentiel.",
+  },
+  {
+    id: "biomasse",
+    nom: "Chaudière Biomasse Granulés",
+    emoji: "🪵",
+    desc: "Chaudière granulés automatique 15 kW",
+    invest: 16000,
+    aides: 4000,
+    investNet: 12000,
+    eco: 1800,
+    entretien: 1300,
+    duree: 20,
+    pertinence: 3,
+    pertinenceNote: "Climat continental froid bien adapté. Bonne disponibilité granulés en Alsace",
+    contraintes: "Silo de stockage (5–10 m²), entretien annuel, émissions particules fines",
+    faisabilite: "✅ Faisable si remplacement chaudière",
+    couleur: "#92400E",
+    aidesDetail: "⚠️ Exclue de MaPrimeRénov' par geste depuis janvier 2026. Éligible uniquement en rénovation d'ampleur. CEE jusqu'à 4 000 €.",
+    analyse: "Économies sur le combustible très attractives (granulés ≈ 0,05 €/kWh vs gaz 0,11 €/kWh). Mais l'entretien annuel (~1 300 € en comptant granulés + maintenance) réduit fortement le gain net. Attention au changement de réglementation MaPrimeRénov' 2026. Adapté aux grandes maisons mal isolées en zone non raccordée au gaz.",
+  },
+  {
+    id: "hydraulique",
+    nom: "Micro-hydraulique",
+    emoji: "💧",
+    desc: "Turbine sur cours d'eau privatif",
+    invest: 50000,
+    aides: 0,
+    investNet: 50000,
+    eco: 1200,
+    entretien: 600,
+    duree: 30,
+    pertinence: 1,
+    pertinenceNote: "⚠️ Nécessite un cours d'eau traversant la propriété. Quasi-inexistant en zone résidentielle",
+    contraintes: "Débit ≥10 L/s, autorisation loi sur l'eau, cours d'eau privatif obligatoire",
+    faisabilite: "❌ Quasiment inapplicable en quartier",
+    couleur: "#0EA5E9",
+    aidesDetail: "Aucune aide nationale pour les particuliers. Très encadré par la police de l'eau.",
+    analyse: "Solution uniquement viable pour une propriété rurale avec un ruisseau ou une rivière traversant le terrain. Inapplicable dans un quartier résidentiel de Strasbourg. Même en zone rurale, le coût de mise en conformité avec la loi sur l'eau et les délais administratifs (2–5 ans) en font un projet complexe.",
+  },
+];
+
+function calcROI(s) {
+  const net = s.eco - s.entretien;
+  if (net <= 0) return 999;
+  return Math.round(s.investNet / net);
+}
+
+function calcGain(s, years) {
+  const net = s.eco - s.entretien;
+  return net * Math.min(years, s.duree) - s.investNet;
+}
+
+function stars(n) {
+  return '★'.repeat(n) + '☆'.repeat(5 - n);
+}
+
+function colorROI(roi) {
+  if (roi < 15) return 'var(--green)';
+  if (roi < 25) return 'var(--amber)';
+  return 'var(--red)';
+}
+
+function colorVal(v) {
+  return v >= 0 ? 'var(--green)' : 'var(--red)';
+}
+
+// ===== BUILD CARDS =====
+function buildCards() {
+  const container = document.getElementById('cards-container');
+  SOLUTIONS.forEach(s => {
+    const roi = calcROI(s);
+    const gain25 = calcGain(s, 25);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.setProperty('--accent-color', s.couleur);
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-title"><span class="card-emoji">${s.emoji}</span>${s.nom}</span>
+        <span class="card-badge">${s.faisabilite}</span>
+      </div>
+      <p class="card-desc">${s.desc}</p>
+      <div class="card-metrics">
+        <div class="metric">
+          <div class="metric-label">Invest. net</div>
+          <div class="metric-val" style="color:var(--gold)">${s.investNet.toLocaleString('fr-FR')} €</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Retour invest.</div>
+          <div class="metric-val" style="color:${colorROI(roi)}">${roi > 100 ? 'Non rentable' : roi + ' ans'}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Économies/an</div>
+          <div class="metric-val" style="color:var(--green)">+${s.eco.toLocaleString('fr-FR')} €</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Gain net 25 ans</div>
+          <div class="metric-val" style="color:${colorVal(gain25)}">${gain25 > 0 ? '+' : ''}${gain25.toLocaleString('fr-FR')} €</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <span class="stars" style="color:${s.couleur}">${stars(s.pertinence)}</span>
+          <span class="pertinence-label"> Strasbourg</span>
+        </div>
+        <span style="font-size:11px;color:var(--muted);text-decoration:underline;cursor:pointer" onclick="openDetail('${s.id}')">Détails →</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ===== BUILD CHARTS =====
+let chartROI, chartLine;
+function buildCharts() {
+  if (chartROI) return; // already built
+
+  const rentables = SOLUTIONS.filter(s => calcROI(s) < 100).sort((a, b) => calcROI(a) - calcROI(b));
+
+  // Bar chart - ROI
+  const ctxROI = document.getElementById('chartROI').getContext('2d');
+  chartROI = new Chart(ctxROI, {
+    type: 'bar',
+    data: {
+      labels: rentables.map(s => s.nom),
+      datasets: [{
+        label: 'Retour sur investissement (années)',
+        data: rentables.map(s => calcROI(s)),
+        backgroundColor: rentables.map(s => s.couleur + 'bb'),
+        borderColor: rentables.map(s => s.couleur),
+        borderWidth: 1,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.raw} ans`
+          },
+          backgroundColor: '#1a1a2e',
+          borderColor: '#c9a84c',
+          borderWidth: 1,
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: { color: '#7c8599', font: { size: 11 } }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: '#c9c3b3', font: { size: 12 } }
+        }
+      }
+    }
+  });
+
+  // Line chart - gain cumulé
+  const years = Array.from({ length: 26 }, (_, i) => i);
+  const ctxLine = document.getElementById('chartLine').getContext('2d');
+  chartLine = new Chart(ctxLine, {
+    type: 'line',
+    data: {
+      labels: years,
+      datasets: rentables.map(s => ({
+        label: s.nom,
+        data: years.map(y => Math.round(calcGain(s, y))),
+        borderColor: s.couleur,
+        backgroundColor: s.couleur + '18',
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.3,
+        fill: false,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: '#7c8599', font: { size: 11 }, boxWidth: 12 }
+        },
+        tooltip: {
+          backgroundColor: '#1a1a2e',
+          borderColor: '#c9a84c',
+          borderWidth: 1,
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: ${ctx.raw >= 0 ? '+' : ''}${ctx.raw.toLocaleString('fr-FR')} €`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: { color: '#7c8599', font: { size: 11 } },
+          title: { display: true, text: 'Années', color: '#7c8599', font: { size: 11 } }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: {
+            color: '#7c8599',
+            font: { size: 11 },
+            callback: v => v.toLocaleString('fr-FR') + ' €'
+          }
+        }
+      }
+    }
+  });
+}
+
+// ===== BUILD TABLE =====
+function buildTable() {
+  const table = document.getElementById('main-table');
+  if (table.innerHTML) return;
+  const headers = ['Solution', 'Invest. brut', 'Aides', 'Invest. net', 'Économies/an', 'Entretien/an', 'Net/an', 'ROI', 'Gain 25 ans'];
+  const thead = document.createElement('thead');
+  thead.innerHTML = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+  table.appendChild(thead);
+  const tbody = document.createElement('tbody');
+  SOLUTIONS.forEach(s => {
+    const roi = calcROI(s);
+    const net = s.eco - s.entretien;
+    const gain25 = calcGain(s, 25);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="color:${s.couleur}">${s.emoji} ${s.nom}</td>
+      <td>${s.invest.toLocaleString('fr-FR')} €</td>
+      <td style="color:var(--green)">-${s.aides.toLocaleString('fr-FR')} €</td>
+      <td style="color:var(--gold);font-weight:600">${s.investNet.toLocaleString('fr-FR')} €</td>
+      <td style="color:var(--green)">+${s.eco.toLocaleString('fr-FR')} €</td>
+      <td style="color:var(--red)">-${s.entretien.toLocaleString('fr-FR')} €</td>
+      <td style="color:${colorVal(net)};font-weight:500">${net > 0 ? '+' : ''}${net.toLocaleString('fr-FR')} €</td>
+      <td style="color:${colorROI(roi)};font-weight:700">${roi > 100 ? 'N/A' : roi + ' ans'}</td>
+      <td style="color:${colorVal(gain25)};font-weight:700">${gain25 > 0 ? '+' : ''}${gain25.toLocaleString('fr-FR')} €</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+}
+
+// ===== BUILD DETAIL SELECTOR =====
+function buildDetailSelector() {
+  const sel = document.getElementById('sol-selector');
+  if (sel.innerHTML) return;
+  SOLUTIONS.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'sol-btn';
+    btn.id = 'btn-' + s.id;
+    btn.textContent = s.emoji + ' ' + s.nom.split(' ').slice(0, 2).join(' ');
+    btn.onclick = () => showDetail(s.id);
+    sel.appendChild(btn);
+  });
+  showDetail(SOLUTIONS[0].id);
+}
+
+function showDetail(id) {
+  const s = SOLUTIONS.find(x => x.id === id);
+  if (!s) return;
+  document.querySelectorAll('.sol-btn').forEach(b => {
+    b.classList.remove('active');
+    b.style.borderColor = 'rgba(255,255,255,0.12)';
+    b.style.color = 'var(--muted)';
+  });
+  const activeBtn = document.getElementById('btn-' + id);
+  if (activeBtn) {
+    activeBtn.classList.add('active');
+    activeBtn.style.borderColor = s.couleur;
+    activeBtn.style.color = s.couleur;
+    activeBtn.style.background = s.couleur + '18';
+  }
+
+  const roi = calcROI(s);
+  const gain25 = calcGain(s, 25);
+  const net = s.eco - s.entretien;
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-card" style="--accent-color:${s.couleur};border-color:${s.couleur}44">
+      <div class="detail-header">
+        <div>
+          <div class="detail-title" style="color:${s.couleur}">${s.emoji} ${s.nom}</div>
+          <div class="detail-desc">${s.desc}</div>
+        </div>
+        <span class="card-badge" style="font-size:13px;padding:6px 14px">${s.faisabilite}</span>
+      </div>
+      <div class="detail-metrics">
+        <div class="detail-metric"><div class="lbl">Investissement brut</div><div class="val" style="color:var(--text)">${s.invest.toLocaleString('fr-FR')} €</div></div>
+        <div class="detail-metric"><div class="lbl">Aides disponibles</div><div class="val" style="color:var(--green)">-${s.aides.toLocaleString('fr-FR')} €</div></div>
+        <div class="detail-metric"><div class="lbl">Invest. net estimé</div><div class="val" style="color:var(--gold)">${s.investNet.toLocaleString('fr-FR')} €</div></div>
+        <div class="detail-metric"><div class="lbl">Économies annuelles</div><div class="val" style="color:var(--green)">+${s.eco.toLocaleString('fr-FR')} €</div></div>
+        <div class="detail-metric"><div class="lbl">Entretien/an</div><div class="val" style="color:var(--red)">-${s.entretien.toLocaleString('fr-FR')} €</div></div>
+        <div class="detail-metric"><div class="lbl">Gain net/an</div><div class="val" style="color:${colorVal(net)}">${net > 0 ? '+' : ''}${net.toLocaleString('fr-FR')} €</div></div>
+        <div class="detail-metric"><div class="lbl">Durée de vie</div><div class="val" style="color:var(--muted)">${s.duree} ans</div></div>
+        <div class="detail-metric"><div class="lbl">Retour sur invest.</div><div class="val" style="color:${colorROI(roi)}">${roi > 100 ? 'Non rentable' : roi + ' ans'}</div></div>
+        <div class="detail-metric"><div class="lbl">Gain net 25 ans</div><div class="val" style="color:${colorVal(gain25)}">${gain25 > 0 ? '+' : ''}${gain25.toLocaleString('fr-FR')} €</div></div>
+      </div>
+      <div class="info-grid">
+        <div class="info-box" style="border-color:rgba(201,168,76,0.15)">
+          <div class="ibl" style="color:var(--gold)">📍 Pertinence Strasbourg — ${stars(s.pertinence)}</div>
+          <p>${s.pertinenceNote}</p>
+        </div>
+        <div class="info-box" style="border-color:rgba(248,113,113,0.15)">
+          <div class="ibl" style="color:var(--red)">⚠️ Contraintes</div>
+          <p>${s.contraintes}</p>
+        </div>
+      </div>
+      <div class="info-box" style="margin-bottom:14px;border-color:rgba(74,222,128,0.15)">
+        <div class="ibl" style="color:var(--green)">💶 Aides financières</div>
+        <p>${s.aidesDetail}</p>
+      </div>
+      <div class="analysis-box">
+        <div class="ibl">📋 Analyse</div>
+        <p>${s.analyse}</p>
+      </div>
+    </div>
+  `;
+}
+
+function openDetail(id) {
+  switchTab('detail');
+  buildDetailSelector();
+  showDetail(id);
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(tab) {
+  ['overview', 'charts', 'table', 'detail'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
+  });
+  document.querySelectorAll('nav button').forEach((b, i) => {
+    b.classList.toggle('active', ['overview','charts','table','detail'][i] === tab);
+  });
+  if (tab === 'charts') buildCharts();
+  if (tab === 'table') buildTable();
+  if (tab === 'detail') buildDetailSelector();
+}
+
+// Init
+buildCards();
+</script>
+</body>
+</html>

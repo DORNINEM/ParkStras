@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reformulateur · IA Locale · V4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #18140e;
+  --paper: #f4efe6;
+  --cream: #ece6d5;
+  --white: #fdfaf4;
+  --gold: #b8821e;
+  --gold-lt: #d9a84c;
+  --rust: #9a3d14;
+  --muted: #7e7060;
+  --border: #d0c5ad;
+  --green: #2a6348;
+  --green-lt: #4fa87a;
+  --blue: #2355a0;
+  --shadow: 0 1px 3px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 5% 10%, rgba(184,130,30,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 95% 90%, rgba(154,61,20,.05) 0%, transparent 60%);
+}
+
+header {
+  padding: 1.4rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: rgba(244,239,230,.85);
+  backdrop-filter: blur(6px);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.35rem;
+  letter-spacing: -.02em;
+}
+.logo em { color: var(--gold); font-style: italic; }
+.logo-sep {
+  width: 1px; height: 28px;
+  background: var(--border);
+}
+.header-right { display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  padding: .25rem .65rem; border-radius: 20px;
+}
+.badge-local { color: var(--green); background: rgba(42,99,72,.1); border: 1px solid rgba(42,99,72,.25); }
+.badge-local::before {
+  content:''; width:6px; height:6px; border-radius:50%; background:var(--green-lt);
+  animation: pulse 2s ease-in-out infinite;
+}
+.badge-loading { color: var(--gold); background: rgba(184,130,30,.1); border: 1px solid rgba(184,130,30,.25); }
+.badge-loading::before {
+  content:''; width:6px; height:6px; border-radius:50%; background:var(--gold-lt);
+  animation: pulse 1s ease-in-out infinite;
+}
+.badge-error { color: var(--rust); background: rgba(154,61,20,.08); border: 1px solid rgba(154,61,20,.22); }
+.badge-error::before { content:'•'; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+
+#app { display:flex; flex-direction:column; padding:1.8rem 2rem 3rem; max-width:1060px; margin:0 auto; width:100%; gap:1.4rem; }
+
+.warmup-bar {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  padding:.9rem 1rem; background:var(--white); border:1px solid var(--border); border-radius:8px; box-shadow:var(--shadow);
+}
+.warmup-copy { display:flex; flex-direction:column; gap:.25rem; }
+.warmup-title { font-size:.82rem; font-weight:600; }
+.warmup-sub { font-size:.74rem; color:var(--muted); line-height:1.5; }
+.warmup-meta { display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; }
+.pill {
+  font-size:.68rem; color:var(--muted); background:var(--cream); border:1px solid var(--border);
+  border-radius:999px; padding:.28rem .65rem;
+}
+
+.model-bar,
+.sysprompt-section,
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.model-bar { padding: 1rem 1.2rem; }
+.model-bar-title {
+  font-size:.7rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem;
+}
+.model-bar-title svg { color:var(--gold); }
+.model-cards { display:flex; gap:.6rem; flex-wrap:wrap; }
+.model-card {
+  flex: 1; min-width: 150px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: .75rem .9rem;
+  background: var(--paper);
+  cursor: pointer;
+  transition: all .18s;
+  position: relative;
+  user-select: none;
+}
+.model-card:hover { border-color: var(--gold-lt); background: var(--white); }
+.model-card.active {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(184,130,30,.12);
+}
+.model-card.loading-model { opacity:.65; pointer-events:none; }
+.model-card.current::after {
+  content:'Actif'; position:absolute; left:.7rem; bottom:.55rem;
+  font-size:.6rem; color:var(--green); letter-spacing:.06em; text-transform:uppercase;
+}
+.mc-name { font-size:.82rem; font-weight:500; color:var(--ink); margin-bottom:.2rem; }
+.mc-desc { font-size:.7rem; color:var(--muted); line-height:1.4; padding-right:3.4rem; }
+.mc-size,
+.mc-badge-best {
+  position:absolute; top:.45rem; right:.55rem;
+  font-size:.62rem; font-weight:500; letter-spacing:.05em;
+  border-radius:10px; padding:.1rem .45rem;
+}
+.mc-size { color:var(--muted); background:var(--cream); }
+.mc-badge-best { color:var(--gold); background:rgba(184,130,30,.12); border:1px solid rgba(184,130,30,.3); }
+
+.model-status-row { margin-top:.9rem; display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; }
+.model-status-text { font-size:.73rem; color:var(--muted); }
+.model-reload-btn,
+.model-warm-btn {
+  font-size:.72rem; color:var(--blue); cursor:pointer; text-decoration:underline;
+  background:none; border:none; padding:0; font-family:inherit;
+}
+.model-reload-btn:hover,
+.model-warm-btn:hover { color:var(--rust); }
+
+.prog-wrap { width:220px; height:5px; background:var(--cream); border:1px solid var(--border); border-radius:3px; overflow:hidden; }
+.prog-bar { height:100%; background:linear-gradient(90deg,var(--gold),var(--gold-lt)); width:0%; transition:width .35s; }
+
+.sysprompt-section { overflow: hidden; }
+.sysprompt-header {
+  padding: .75rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: space-between; gap:1rem;
+  cursor: pointer; user-select: none;
+}
+.sysprompt-header:hover { background: #e6dfc9; }
+.sysprompt-label {
+  font-size:.7rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); display:flex; align-items:center; gap:.5rem;
+}
+.sysprompt-label svg { color:var(--gold); }
+.sysprompt-actions { display:flex; align-items:center; gap:.8rem; }
+.chevron { transition:transform .2s; color:var(--muted); }
+.chevron.open { transform:rotate(180deg); }
+.sysprompt-body { padding:1rem 1.2rem; display:none; }
+.sysprompt-body.visible { display:block; }
+.sysprompt-hint { font-size:.73rem; color:var(--muted); margin-bottom:.7rem; line-height:1.5; }
+.sysprompt-hint strong { color:var(--ink); }
+textarea.sys-ta {
+  width:100%; min-height:130px; padding:.9rem 1rem;
+  border:1px solid var(--border); border-radius:6px;
+  font-family:'DM Sans',sans-serif; font-size:.85rem; line-height:1.65;
+  color:var(--ink); background:var(--paper); resize:vertical; outline:none; transition:border-color .15s;
+}
+textarea.sys-ta:focus { border-color:var(--gold); }
+.preset-row { display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.7rem; }
+.preset-chip {
+  padding:.28rem .7rem; border-radius:20px; border:1px solid var(--border);
+  background:var(--paper); font-size:.72rem; color:var(--muted);
+  cursor:pointer; transition:all .15s; font-family:inherit;
+}
+.preset-chip:hover { border-color:var(--gold); color:var(--gold); }
+.preset-chip.active { background:var(--gold); border-color:var(--gold); color:#fff; }
+
+.options-row { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+.opt-label { font-size:.73rem; font-weight:500; color:var(--muted); letter-spacing:.05em; white-space:nowrap; }
+.chip-group { display:flex; gap:.3rem; flex-wrap:wrap; }
+.chip {
+  padding:.3rem .75rem; border-radius:20px; border:1px solid var(--border);
+  background:var(--white); font-size:.76rem; color:var(--muted);
+  cursor:pointer; transition:all .15s; font-family:inherit;
+}
+.chip:hover { border-color:var(--gold-lt); color:var(--ink); }
+.chip.active { background:var(--ink); border-color:var(--ink); color:var(--paper); font-weight:500; }
+
+.editor-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.panel { display:flex; flex-direction:column; overflow:hidden; }
+.panel-head {
+  padding:.6rem 1rem; border-bottom:1px solid var(--border); background:var(--cream);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.panel-label { font-size:.68rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.char-count { font-size:.68rem; color:var(--muted); }
+textarea.main-ta {
+  flex:1; min-height:230px; padding:1.1rem;
+  border:none; resize:none; outline:none;
+  font-family:'Libre Baskerville',serif; font-size:.93rem; line-height:1.8;
+  color:var(--ink); background:var(--white);
+}
+textarea.main-ta::placeholder { color:#c2b49a; font-style:italic; }
+#output-text {
+  flex:1; min-height:230px; padding:1.1rem;
+  font-family:'Libre Baskerville',serif; font-size:.93rem; line-height:1.8;
+  color:var(--ink); white-space:pre-wrap; word-break:break-word;
+  overflow-y:auto;
+}
+.placeholder-text { color:#c2b49a; font-style:italic; }
+.cursor {
+  display:inline-block; width:2px; height:1em;
+  background:var(--gold); margin-left:1px; vertical-align:text-bottom;
+  animation:blink .75s step-end infinite;
+}
+@keyframes blink { 50%{opacity:0} }
+
+.actions-row { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; }
+.btn-primary {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.7rem 1.7rem; background:var(--ink); color:var(--paper);
+  border:none; border-radius:5px; font-family:inherit; font-size:.85rem;
+  font-weight:500; cursor:pointer; letter-spacing:.02em; transition:all .2s;
+}
+.btn-primary:hover:not(:disabled) { background:var(--rust); }
+.btn-primary:disabled { opacity:.4; cursor:not-allowed; }
+.btn-primary .arrow { transition:transform .25s; }
+.btn-primary:not(:disabled):hover .arrow { transform:translateX(3px); }
+.btn-sec {
+  padding:.7rem 1.1rem; background:transparent; color:var(--muted);
+  border:1px solid var(--border); border-radius:5px;
+  font-family:inherit; font-size:.82rem; cursor:pointer; transition:all .15s;
+}
+.btn-sec:hover { border-color:var(--ink); color:var(--ink); }
+.btn-copy {
+  margin-left:auto; padding:.28rem .75rem;
+  background:transparent; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px;
+  font-family:inherit; font-size:.7rem;
+  cursor:pointer; transition:all .15s;
+  display:none; align-items:center; gap:.3rem;
+}
+.btn-copy:hover { border-color:var(--green); color:var(--green); }
+.btn-copy.show { display:inline-flex; }
+
+.info-bar {
+  padding:.75rem 1rem; background:var(--cream);
+  border:1px solid var(--border); border-radius:6px;
+  display:flex; align-items:center; gap:.75rem;
+  font-size:.75rem; color:var(--muted); line-height:1.5;
+}
+#err-box {
+  display:none; background:#fff5f5; border:1px solid #f5c6c6;
+  border-radius:6px; padding:.9rem 1rem; font-size:.83rem; color:var(--rust);
+}
+.dot-spin { display:inline-flex; gap:3px; align-items:center; }
+.dot-spin span {
+  width:4px; height:4px; border-radius:50%; background:currentColor;
+  animation:ds .9s ease-in-out infinite;
+}
+.dot-spin span:nth-child(2){animation-delay:.15s}
+.dot-spin span:nth-child(3){animation-delay:.3s}
+@keyframes ds{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+
+@media(max-width:760px){
+  .editor-grid{grid-template-columns:1fr}
+  header{padding:1rem 1.2rem}
+  #app{padding:1.2rem 1rem 2.5rem}
+  .model-cards{flex-direction:column}
+  .prog-wrap{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center;gap:1.4rem;"><img src="data:image/png;base64,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" alt="Homiris" style="height:36px;width:auto;"><div class="logo-sep"></div><div class="logo">Re<em>forme</em> V4</div></div>
+  <div class="header-right">
+    <span id="hdr-model" style="font-size:.75rem;color:var(--muted)">Préparation du moteur local</span>
+    <span id="hdr-badge" class="badge badge-loading">Préchargement…</span>
+  </div>
+</header>
+
+<div id="app">
+  <div id="err-box"></div>
+
+  <div class="warmup-bar">
+    <div class="warmup-copy">
+      <div class="warmup-title">Préchargement intelligent du modèle local</div>
+      <div class="warmup-sub" id="warmup-sub">La page charge automatiquement le dernier modèle utilisé. Le premier démarrage peut être long, les suivants sont généralement beaucoup plus rapides.</div>
+    </div>
+    <div class="warmup-meta">
+      <span class="pill" id="warmup-pill">Auto‑warmup activé</span>
+      <div class="prog-wrap"><div class="prog-bar" id="prog-bar"></div></div>
+    </div>
+  </div>
+
+  <div class="model-bar">
+    <div class="model-bar-title">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      Modèle LLM local
+    </div>
+    <div class="model-cards" id="model-cards"></div>
+    <div class="model-status-row">
+      <span class="model-status-text" id="model-status-text">Initialisation…</span>
+      <button class="model-reload-btn" id="btn-reload" style="display:none" onclick="reloadModel()">↺ Recharger</button>
+      <button class="model-warm-btn" id="btn-preload" style="display:none" onclick="triggerWarmup(true)">⚡ Lancer le préchargement</button>
+    </div>
+  </div>
+
+  <div class="sysprompt-section">
+    <div class="sysprompt-header" onclick="toggleSysprompt()">
+      <div class="sysprompt-label">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Prompt système &amp; contexte
+      </div>
+      <div class="sysprompt-actions">
+        <span id="sysprompt-preview" style="font-size:.72rem;color:var(--muted);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+        <svg class="chevron" id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="sysprompt-body" id="sysprompt-body">
+      <div class="sysprompt-hint">Ce prompt est envoyé <strong>en amont</strong> de chaque reformulation. Ajoutez ici votre contexte métier, des consignes de style, un vocabulaire spécifique, etc.</div>
+      <textarea class="sys-ta" id="sys-prompt" rows="5" placeholder="Ex : Tu es un expert en télésurveillance pour la marque HOMIRIS. Utilise un vocabulaire technique précis. Évite les anglicismes. Conserve les termes : centrale, détecteur, levée de doute, téléassistance…"></textarea>
+      <div style="margin-top:.7rem;">
+        <div style="font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;">Présélections</div>
+        <div class="preset-row">
+          <button class="preset-chip active" data-preset="neutral" onclick="applyPreset(this,'neutral')">Reformulation neutre</button>
+          <button class="preset-chip" data-preset="formal" onclick="applyPreset(this,'formal')">Registre formel</button>
+          <button class="preset-chip" data-preset="simple" onclick="applyPreset(this,'simple')">Simplifié</button>
+          <button class="preset-chip" data-preset="pro" onclick="applyPreset(this,'pro')">Professionnel</button>
+          <button class="preset-chip" data-preset="homiris" onclick="applyPreset(this,'homiris')">HOMIRIS</button>
+          <button class="preset-chip" data-preset="blank" onclick="applyPreset(this,'blank')">Vide (personnalisé)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="options-row">
+    <span class="opt-label">Ton :</span>
+    <div class="chip-group">
+      <button class="chip active" data-tone="natural" onclick="setTone(this)">Naturel</button>
+      <button class="chip" data-tone="concise" onclick="setTone(this)">Concis</button>
+      <button class="chip" data-tone="elaborate" onclick="setTone(this)">Développé</button>
+      <button class="chip" data-tone="bullet" onclick="setTone(this)">Points clés</button>
+    </div>
+  </div>
+
+  <div class="editor-grid">
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-label">Texte original</span>
+        <span class="char-count" id="char-count">0 car.</span>
+      </div>
+      <textarea class="main-ta" id="input-text" placeholder="Entrez ici le texte à reformuler…"></textarea>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-label">Reformulation</span>
+        <button class="btn-copy" id="btn-copy" onclick="copyResult()">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copier
+        </button>
+      </div>
+      <div id="output-text"><span class="placeholder-text">La reformulation apparaîtra ici…</span></div>
+    </div>
+  </div>
+
+  <div class="actions-row">
+    <button class="btn-primary" id="btn-ref" onclick="reformulate()" disabled>
+      <span id="btn-ref-label">Préchargement…</span>
+      <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <button class="btn-sec" onclick="clearAll()">Effacer</button>
+    <span style="font-size:.73rem;color:var(--muted);margin-left:.3rem">Ctrl+Entrée</span>
+  </div>
+
+  <div class="info-bar">
+    <span>🔒</span>
+    <span>Traitement <strong>100 % local</strong> sur votre poste via WebGPU. Aucune donnée ne quitte votre machine. Modèle actif : <strong id="info-model">—</strong></span>
+  </div>
+</div>
+
+<script type="module">
+import * as webllm from "https://esm.run/@mlc-ai/web-llm";
+
+const STORAGE_KEYS = {
+  model: 'reformulateur.v4.model',
+  prompt: 'reformulateur.v4.prompt',
+  tone: 'reformulateur.v4.tone'
+};
+
+const MODELS = [
+  { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', name: 'Qwen 2.5 · 1.5B', desc: 'Très rapide · Bon français', size: '~900 Mo', best: false },
+  { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   name: 'Qwen 2.5 · 3B',   desc: 'Rapide · Meilleure qualité', size: '~1.7 Go', best: true },
+  { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   name: 'Qwen 2.5 · 7B',   desc: 'Qualité maximale · GPU requis', size: '~4.5 Go', best: false },
+  { id: 'gemma-2-2b-it-q4f16_1-MLC',         name: 'Gemma 2 · 2B',    desc: 'Google · Rapide · Bon fr.', size: '~1.5 Go', best: false },
+  { id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC', name: 'Llama 3.2 · 3B',  desc: 'Meta · Équilibré', size: '~1.9 Go', best: false }
+];
+
+const PRESETS = {
+  neutral: 'Tu es un assistant de reformulation en français. Reformule le texte fourni en conservant le sens exact, mais avec des mots et une structure différents. Réponds uniquement avec le texte reformulé, sans commentaire ni introduction.',
+  formal:  'Tu es un assistant de reformulation en français. Reformule le texte fourni dans un registre soutenu et formel, adapté à des communications officielles. Réponds uniquement avec le texte reformulé.',
+  simple:  'Tu es un assistant de reformulation en français. Reformule le texte fourni de manière simple et claire, accessible à tous, sans jargon technique. Réponds uniquement avec le texte reformulé.',
+  pro:     'Tu es un assistant de reformulation en français. Reformule le texte fourni dans un style professionnel et concis, adapté à un contexte d\'entreprise. Évite les redondances. Réponds uniquement avec le texte reformulé.',
+  homiris: 'Tu es un expert en sécurité et télésurveillance pour la marque HOMIRIS (filiale EPS). Reformule le texte fourni avec un vocabulaire technique précis du secteur de la sécurité : centrale d\'alarme, détecteur, levée de doute, téléassistance, intervention, opérateur de télésurveillance. Évite les anglicismes. Réponds uniquement avec le texte reformulé.',
+  blank:   ''
+};
+
+const TONES = {
+  natural:   '',
+  concise:   ' Sois concis et synthétique.',
+  elaborate: ' Développe et enrichis le texte tout en restant fidèle au sens original.',
+  bullet:    ' Présente le résultat sous forme de points clés avec des tirets.'
+};
+
+const DEFAULT_MODEL_ID = 'Qwen2.5-3B-Instruct-q4f16_1-MLC';
+
+let engine = null;
+let currentModelId = null;
+let isGenerating = false;
+let isLoading = false;
+let selectedTone = 'natural';
+let syspromptOpen = false;
+let preloadStarted = false;
+let lastProgress = 0;
+
+function getModelInfo(id) {
+  return MODELS.find(m => m.id === id) || MODELS.find(m => m.id === DEFAULT_MODEL_ID);
+}
+
+function getPreferredModelId() {
+  const saved = localStorage.getItem(STORAGE_KEYS.model);
+  return MODELS.some(m => m.id === saved) ? saved : DEFAULT_MODEL_ID;
+}
+
+function savePreferredModelId(modelId) {
+  localStorage.setItem(STORAGE_KEYS.model, modelId);
+}
+
+function buildModelCards() {
+  const container = document.getElementById('model-cards');
+  container.innerHTML = '';
+  MODELS.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'model-card';
+    card.id = 'mc-' + m.id;
+    card.onclick = () => selectModel(m.id);
+    card.innerHTML = `
+      <div class="mc-name">${m.name}</div>
+      <div class="mc-desc">${m.desc}</div>
+      ${m.best ? `<span class="mc-badge-best">★ Recommandé</span>` : `<span class="mc-size">${m.size}</span>`}
+    `;
+    container.appendChild(card);
+  });
+}
+
+function markActiveCard(modelId) {
+  document.querySelectorAll('.model-card').forEach(c => {
+    c.classList.remove('active', 'current');
+    if (currentModelId && c.id === 'mc-' + currentModelId && engine) c.classList.add('current');
+  });
+  document.getElementById('mc-' + modelId)?.classList.add('active');
+  if (currentModelId === modelId && engine) document.getElementById('mc-' + modelId)?.classList.add('current');
+}
+
+function setStatusText(text) {
+  document.getElementById('model-status-text').textContent = text;
+}
+
+function setWarmupSub(text) {
+  document.getElementById('warmup-sub').textContent = text;
+}
+
+function setWarmupPill(text) {
+  document.getElementById('warmup-pill').textContent = text;
+}
+
+function setHeader(modelName, badgeClass, badgeText) {
+  document.getElementById('hdr-model').textContent = modelName;
+  const badge = document.getElementById('hdr-badge');
+  badge.className = 'badge ' + badgeClass;
+  badge.textContent = badgeText;
+}
+
+function updateProgress(progress, text='') {
+  lastProgress = Math.max(0, Math.min(100, progress));
+  document.getElementById('prog-bar').style.width = lastProgress + '%';
+  if (text) setStatusText(text);
+}
+
+function setReadyState(modelInfo) {
+  document.getElementById('btn-ref').disabled = false;
+  document.getElementById('btn-ref-label').textContent = 'Reformuler';
+  document.getElementById('btn-reload').style.display = 'inline';
+  document.getElementById('btn-preload').style.display = 'none';
+  document.getElementById('info-model').textContent = modelInfo?.name || currentModelId || '—';
+  setHeader(modelInfo?.name || 'Modèle prêt', 'badge-local', '100 % local');
+  setStatusText(`✓ ${modelInfo?.name || currentModelId} prêt`);
+  setWarmupPill('Modèle chaud');
+  setWarmupSub('Le moteur local est prêt. Vous pouvez reformuler immédiatement.');
+  updateProgress(100);
+  markActiveCard(currentModelId);
+}
+
+function setLoadingState(modelInfo, forced=false) {
+  document.getElementById('btn-ref').disabled = true;
+  document.getElementById('btn-ref-label').textContent = 'Préchargement…';
+  document.getElementById('btn-reload').style.display = 'none';
+  document.getElementById('btn-preload').style.display = 'none';
+  setHeader(modelInfo?.name || 'Chargement local', 'badge-loading', 'Préchargement…');
+  setWarmupPill(forced ? 'Préchargement manuel' : 'Préchargement automatique');
+  setWarmupSub(`Chargement de ${modelInfo?.name || currentModelId} en local. Le premier lancement peut prendre un moment, surtout au premier téléchargement.`);
+  markActiveCard(modelInfo?.id || currentModelId);
+}
+
+function setErrorState(message) {
+  const msg = message || 'WebGPU requis. Utilisez Chrome ou Edge à jour.';
+  document.getElementById('btn-ref').disabled = true;
+  document.getElementById('btn-ref-label').textContent = 'Modèle indisponible';
+  document.getElementById('btn-preload').style.display = 'inline';
+  document.getElementById('btn-reload').style.display = currentModelId ? 'inline' : 'none';
+  document.getElementById('err-box').style.display = 'block';
+  document.getElementById('err-box').textContent = 'Erreur de chargement : ' + msg;
+  setHeader('Erreur moteur local', 'badge-error', 'Erreur');
+  setStatusText('❌ ' + msg.slice(0, 100));
+  setWarmupPill('Préchargement interrompu');
+  setWarmupSub('Le moteur local n\'a pas pu démarrer. Vérifiez WebGPU, la mémoire disponible et le modèle choisi.');
+}
+
+async function loadModel(modelId, forced = false) {
+  if (isLoading) return;
+  isLoading = true;
+  preloadStarted = true;
+  currentModelId = modelId;
+  savePreferredModelId(modelId);
+  engine = null;
+  document.getElementById('err-box').style.display = 'none';
+
+  const modelInfo = getModelInfo(modelId);
+  setLoadingState(modelInfo, forced);
+  updateProgress(1, `Démarrage du chargement de ${modelInfo.name}…`);
+
+  try {
+    engine = await webllm.CreateMLCEngine(modelId, {
+      initProgressCallback: (report) => {
+        const pct = Math.round((report.progress || 0) * 100);
+        let txt = report.text || `Chargement… ${pct}%`;
+        if (txt.length > 110) txt = txt.slice(0, 110) + '…';
+        updateProgress(pct, txt);
+      }
+    });
+    setReadyState(modelInfo);
+  } catch (err) {
+    console.error(err);
+    engine = null;
+    setErrorState(err?.message || 'WebGPU non supporté');
+  } finally {
+    isLoading = false;
+  }
+}
+
+async function selectModel(modelId) {
+  if (isLoading) return;
+  if (currentModelId === modelId && engine) {
+    markActiveCard(modelId);
+    return;
+  }
+  await loadModel(modelId, true);
+}
+
+window.reloadModel = function() {
+  if (!currentModelId) return;
+  engine = null;
+  loadModel(currentModelId, true);
+};
+
+window.triggerWarmup = async function(forceManual = false) {
+  const targetId = currentModelId || getPreferredModelId();
+  if (engine && currentModelId === targetId) return;
+  await loadModel(targetId, forceManual);
+};
+
+function scheduleWarmup() {
+  const preferred = getPreferredModelId();
+  const modelInfo = getModelInfo(preferred);
+  currentModelId = preferred;
+  markActiveCard(preferred);
+  setHeader(modelInfo.name, 'badge-loading', 'Préchargement…');
+  setStatusText(`Préchargement planifié pour ${modelInfo.name}…`);
+  setWarmupSub(`Le dernier modèle utilisé sera chargé automatiquement : ${modelInfo.name}.`);
+
+  setTimeout(() => triggerWarmup(false), 900);
+}
+
+function restoreUserSettings() {
+  const savedPrompt = localStorage.getItem(STORAGE_KEYS.prompt);
+  document.getElementById('sys-prompt').value = savedPrompt !== null ? savedPrompt : PRESETS.neutral;
+
+  const savedTone = localStorage.getItem(STORAGE_KEYS.tone);
+  if (savedTone && TONES[savedTone] !== undefined) {
+    selectedTone = savedTone;
+    document.querySelectorAll('.chip[data-tone]').forEach(c => c.classList.toggle('active', c.dataset.tone === savedTone));
+  }
+
+  updateSyspromptPreview();
+}
+
+function persistPrompt() {
+  localStorage.setItem(STORAGE_KEYS.prompt, document.getElementById('sys-prompt').value);
+}
+
+window.reformulate = async function() {
+  const input = document.getElementById('input-text').value.trim();
+  if (!input) { document.getElementById('input-text').focus(); return; }
+
+  if (!engine) {
+    await triggerWarmup(true);
+    if (!engine) return;
+  }
+  if (isGenerating) return;
+
+  isGenerating = true;
+  document.getElementById('btn-ref').disabled = true;
+  document.getElementById('btn-ref-label').innerHTML = '<span class="dot-spin"><span></span><span></span><span></span></span>';
+  document.getElementById('err-box').style.display = 'none';
+
+  const outputEl = document.getElementById('output-text');
+  outputEl.innerHTML = '<span class="cursor"></span>';
+  document.getElementById('btn-copy').classList.remove('show');
+
+  const basePrompt = document.getElementById('sys-prompt').value.trim() || PRESETS.neutral;
+  const toneAdd = TONES[selectedTone] || '';
+  const fullSystem = basePrompt + toneAdd;
+
+  try {
+    let fullText = '';
+    const stream = await engine.chat.completions.create({
+      messages: [
+        { role: 'system', content: fullSystem },
+        { role: 'user', content: input }
+      ],
+      stream: true,
+      temperature: 0.6,
+      max_tokens: 768
+    });
+
+    for await (const chunk of stream) {
+      const delta = chunk.choices[0]?.delta?.content || '';
+      fullText += delta;
+      outputEl.innerHTML = esc(fullText) + '<span class="cursor"></span>';
+    }
+
+    outputEl.innerHTML = esc(fullText);
+    document.getElementById('btn-copy').classList.add('show');
+  } catch (err) {
+    console.error(err);
+    outputEl.innerHTML = '<span style="color:var(--rust)">Erreur lors de la génération. Rechargez le modèle.</span>';
+  } finally {
+    isGenerating = false;
+    document.getElementById('btn-ref').disabled = !engine;
+    document.getElementById('btn-ref-label').textContent = engine ? 'Reformuler' : 'Préchargement…';
+  }
+};
+
+window.clearAll = function() {
+  document.getElementById('input-text').value = '';
+  document.getElementById('char-count').textContent = '0 car.';
+  document.getElementById('output-text').innerHTML = '<span class="placeholder-text">La reformulation apparaîtra ici…</span>';
+  document.getElementById('btn-copy').classList.remove('show');
+};
+
+window.copyResult = function() {
+  const text = document.getElementById('output-text').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('btn-copy');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copié !';
+    setTimeout(() => btn.innerHTML = orig, 1600);
+  });
+};
+
+window.setTone = function(el) {
+  document.querySelectorAll('.chip[data-tone]').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  selectedTone = el.dataset.tone;
+  localStorage.setItem(STORAGE_KEYS.tone, selectedTone);
+};
+
+window.toggleSysprompt = function() {
+  syspromptOpen = !syspromptOpen;
+  document.getElementById('sysprompt-body').classList.toggle('visible', syspromptOpen);
+  document.getElementById('chevron').classList.toggle('open', syspromptOpen);
+};
+
+window.applyPreset = function(el, key) {
+  document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('sys-prompt').value = PRESETS[key];
+  persistPrompt();
+  updateSyspromptPreview();
+};
+
+function updateSyspromptPreview() {
+  const val = document.getElementById('sys-prompt').value.trim();
+  document.getElementById('sysprompt-preview').textContent = val ? val.slice(0, 60) + (val.length > 60 ? '…' : '') : '(vide)';
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+buildModelCards();
+restoreUserSettings();
+scheduleWarmup();
+
+document.getElementById('sys-prompt').addEventListener('input', () => {
+  persistPrompt();
+  updateSyspromptPreview();
+});
+
+document.getElementById('input-text').addEventListener('focus', () => {
+  if (!preloadStarted) triggerWarmup(false);
+}, { once: true });
+
+document.getElementById('input-text').addEventListener('input', function() {
+  document.getElementById('char-count').textContent = this.value.length + ' car.';
+});
+
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') window.reformulate();
+});
+</script>
+</body>
+</html>
