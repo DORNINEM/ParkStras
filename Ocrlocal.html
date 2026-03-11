@@ -221,6 +221,8 @@ self.onmessage = async function(msg) {
     try {
       post('status', 'Chargement ONNX Runtime…', 'onnxruntime-web v1.18');
       importScripts('https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.min.js');
+      ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';
+
       ort = self.ort;
 
       post('status', 'Chargement OpenCV.js…', 'OpenCV 4.8');
