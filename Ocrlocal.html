@@ -1,1 +1,512 @@
+<!DOCTYPE html>
 
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaddleOCR — Reconnaissance locale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0f;--surface:#111118;--surface2:#16161f;
+    --border:rgba(255,255,255,0.07);--accent:#00e5ff;--accent2:#7c3aed;
+    --green:#00ff87;--red:#ff4444;--text:#e8e8f0;--muted:#6b6b80;
+    --fh:'Syne',sans-serif;--fm:'DM Mono',monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--fm);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;
+    background-image:linear-gradient(rgba(0,229,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.03) 1px,transparent 1px);
+    background-size:40px 40px;pointer-events:none;z-index:0}
+  .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:40px 24px 80px}
+  header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+  h1{font-family:var(--fh);font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
+  h1 span{color:var(--accent)}
+  .sub{font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.08em;text-transform:uppercase}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:4px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:rgba(0,255,135,.1);border:1px solid rgba(0,255,135,.25);color:var(--green)}
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* WARN */
+.warn{display:none;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:14px 18px;font-size:12px;color:#f59e0b;line-height:1.7;margin-bottom:20px}
+.warn code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:3px;font-family:var(–fm)}
+
+/* STATUS */
+.sbar{display:flex;align-items:center;gap:12px;background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:14px 20px;margin-bottom:32px;font-size:13px;flex-wrap:wrap}
+.sico{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background .3s}
+.sico.loading{background:#f59e0b;animation:pulse 1s ease-in-out infinite}
+.sico.ready{background:var(–green)}.sico.error{background:var(–red)}.sico.idle{background:var(–muted)}
+#stxt{flex:1;color:var(–text)}#sdet{color:var(–muted);font-size:11px}
+.pbar-wrap{width:100%;height:3px;background:var(–border);border-radius:2px;margin-top:8px;display:none;overflow:hidden}
+.pbar{height:100%;background:linear-gradient(90deg,var(–accent),var(–accent2));border-radius:2px;width:0%;transition:width .4s ease}
+
+/* STATS */
+.stats{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.scard{flex:1;min-width:120px;background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:16px 18px}
+.slabel{font-size:10px;color:var(–muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.sval{font-family:var(–fh);font-size:26px;font-weight:700;color:var(–text)}
+.sval.a{color:var(–accent)}.sval.g{color:var(–green)}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.panel{background:var(–surface);border:1px solid var(–border);border-radius:12px;overflow:hidden}
+.ph{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(–border)}
+.pt{font-family:var(–fh);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(–muted)}
+.pa{font-size:11px;color:var(–accent);cursor:pointer;background:none;border:none;font-family:var(–fm);letter-spacing:.06em;padding:0;transition:opacity .2s}
+.pa:hover{opacity:.7}
+
+/* DROP */
+.dz{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;transition:all .2s;padding:24px}
+.dz.drag{background:rgba(0,229,255,.04)}
+.dzico{width:56px;height:56px;border:1.5px solid rgba(0,229,255,.3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(–accent);transition:all .2s}
+.dz:hover .dzico{border-color:var(–accent);background:rgba(0,229,255,.07);transform:scale(1.05)}
+.dz p{font-size:13px;color:var(–muted);text-align:center;line-height:1.6}
+.dz strong{color:var(–text);font-weight:400}
+#fi{display:none}
+
+/* IMAGE */
+.iw{position:relative;min-height:280px;display:flex;align-items:center;justify-content:center;background:#0d0d14}
+#prev{max-width:100%;max-height:420px;object-fit:contain;display:block}
+#oc{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+
+/* BTN */
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,var(–accent2),#5b21b6);border:none;border-radius:8px;color:#fff;font-family:var(–fh);font-size:14px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:all .2s;margin:16px 18px;width:calc(100% - 36px)}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,58,237,.4)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.run{background:linear-gradient(135deg,#0f766e,#0e7490)}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(–border);padding:0 18px}
+.tab{font-size:12px;padding:10px 14px;color:var(–muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;letter-spacing:.06em;background:none;border-top:none;border-left:none;border-right:none;font-family:var(–fm)}
+.tab.on{color:var(–accent);border-bottom-color:var(–accent)}
+.tc{display:none;padding:18px}.tc.on{display:block}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px;color:var(–muted);font-size:13px;text-align:center}
+.empty svg{opacity:.3}
+.rlines{display:flex;flex-direction:column;gap:10px}
+.rline{display:flex;align-items:flex-start;gap:12px;background:var(–surface2);border:1px solid var(–border);border-radius:8px;padding:12px 14px;transition:border-color .2s;animation:si .3s ease forwards;opacity:0}
+@keyframes si{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.rline:hover{border-color:rgba(0,229,255,.2)}
+.lnum{font-size:10px;color:var(–muted);width:20px;flex-shrink:0;padding-top:2px;text-align:right}
+.ltxt{flex:1;font-size:14px;color:var(–text);line-height:1.5;word-break:break-word}
+.lscore{flex-shrink:0;font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;letter-spacing:.04em}
+.sh{background:rgba(0,255,135,.1);color:var(–green);border:1px solid rgba(0,255,135,.2)}
+.sm{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
+.sl{background:rgba(255,68,68,.1);color:var(–red);border:1px solid rgba(255,68,68,.2)}
+.ftb{background:var(–surface2);border:1px solid var(–border);border-radius:8px;padding:16px;font-size:13px;color:var(–text);line-height:1.7;white-space:pre-wrap;word-break:break-word;min-height:80px;max-height:340px;overflow-y:auto}
+.ftb::-webkit-scrollbar{width:4px}.ftb::-webkit-scrollbar-thumb{background:var(–border);border-radius:2px}
+.cbtn{display:inline-flex;align-items:center;gap:6px;font-family:var(–fm);font-size:11px;color:var(–accent);background:none;border:1px solid rgba(0,229,255,.2);border-radius:4px;padding:4px 10px;cursor:pointer;transition:all .2s;letter-spacing:.06em;margin-bottom:10px}
+.cbtn:hover{background:rgba(0,229,255,.08)}
+.tnote{background:var(–surface);border:1px solid var(–border);border-left:3px solid var(–accent2);border-radius:8px;padding:16px 18px;font-size:12px;color:var(–muted);line-height:1.7}
+.tnote strong{color:var(–text)}
+.spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:24px;right:24px;background:var(–surface2);border:1px solid var(–border);border-radius:8px;padding:12px 18px;font-size:13px;color:var(–text);z-index:9999;transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none}
+.toast.on{transform:translateY(0);opacity:1}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>Paddle<span>OCR</span></h1>
+      <p class="sub">Reconnaissance de texte — 100% locale, zéro serveur</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+      <div class="badge"><div class="dot"></div>Local · In-browser</div>
+      <div style="font-size:10px;color:var(--muted);text-align:right">PP-OCRv3 · ONNX Runtime Web · OpenCV.js</div>
+    </div>
+  </header>
+
+  <div class="warn" id="wfile">
+    ⚠️ <strong>Ouvert en file://</strong> — Lancez un serveur local pour éviter les erreurs CORS :<br>
+    <code>python3 -m http.server 8080</code> puis ouvrez <strong>http://localhost:8080/paddleocr-demo.html</strong>
+  </div>
+
+  <div class="sbar">
+    <div class="sico idle" id="sico"></div>
+    <span id="stxt">Initialisation…</span>
+    <span id="sdet"></span>
+    <div class="pbar-wrap" id="pw"><div class="pbar" id="pb"></div></div>
+  </div>
+
+  <div class="stats" id="stats" style="display:none">
+    <div class="scard"><div class="slabel">Lignes détectées</div><div class="sval a" id="sv-l">0</div></div>
+    <div class="scard"><div class="slabel">Confiance moy.</div><div class="sval g" id="sv-c">—</div></div>
+    <div class="scard"><div class="slabel">Temps traitement</div><div class="sval" id="sv-t">—</div></div>
+    <div class="scard"><div class="slabel">Mots extraits</div><div class="sval" id="sv-w">0</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="ph">
+        <span class="pt">Image source</span>
+        <button class="pa" onclick="resetAll()">↺ Réinitialiser</button>
+      </div>
+      <div class="dz" id="dz" onclick="document.getElementById('fi').click()"
+           ondragover="onDragOver(event)" ondrop="onDrop(event)" ondragleave="onDragLeave(event)">
+        <div class="dzico">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p><strong>Déposez une image ici</strong><br>ou cliquez pour choisir<br><span style="font-size:11px">JPG · PNG · WebP · BMP</span></p>
+      </div>
+      <div class="iw" id="iw" style="display:none">
+        <img id="prev" alt=""/><canvas id="oc"></canvas>
+      </div>
+      <input type="file" id="fi" accept="image/*" onchange="onFile(event)">
+      <button class="btn" id="btn" disabled onclick="runOCR()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Lancer l'OCR
+      </button>
+    </div>
+
+```
+<div class="panel">
+  <div class="tabs">
+    <button class="tab on" onclick="stab('lines',this)">Lignes</button>
+    <button class="tab" onclick="stab('text',this)">Texte brut</button>
+    <button class="tab" onclick="stab('json',this)">JSON</button>
+  </div>
+  <div class="tc on" id="tab-lines">
+    <div id="rlines"><div class="empty">
+      <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Les lignes de texte apparaîtront ici</span>
+    </div></div>
+  </div>
+  <div class="tc" id="tab-text">
+    <button class="cbtn" onclick="copyText()">⎘ Copier</button>
+    <div class="ftb" id="ftxt">En attente de l'OCR…</div>
+  </div>
+  <div class="tc" id="tab-json">
+    <button class="cbtn" onclick="copyJSON()">⎘ Copier JSON</button>
+    <div class="ftb" id="fjson" style="font-size:11px;color:var(--muted)">En attente…</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="tnote">
+    <strong>Architecture :</strong> PaddleOCR (PP-OCRv3) tourne dans un <strong>Web Worker</strong> isolé via <strong>ONNX Runtime Web (WebAssembly)</strong> + <strong>OpenCV.js</strong>.
+    Pas de <code>type="module"</code> sur la page — compatibilité maximale.
+    Les modèles ONNX (~15 Mo) sont mis en cache après le premier chargement. <strong>Aucune image ne quitte votre appareil.</strong>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+//  Web Worker défini inline comme un Blob — pas de fichier séparé
+//  Stratégie : importScripts() pour ONNX + OpenCV (synchrone),
+//  puis import() dynamique (ESM) pour esearch-ocr (seul bundle dispo)
+// ════════════════════════════════════════════════════════════════
+var WK = `
+'use strict';
+var ort, cv, Paddle, READY = false;
+
+self.onmessage = async function(msg) {
+  var d = msg.data;
+
+  // ── INIT ──────────────────────────────────────────────────────
+  if (d.type === 'init') {
+    try {
+      post('status', 'Chargement ONNX Runtime…', 'onnxruntime-web v1.18');
+      importScripts('https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.min.js');
+      ort = self.ort;
+
+      post('status', 'Chargement OpenCV.js…', 'OpenCV 4.8');
+      importScripts('https://docs.opencv.org/4.8.0/opencv.js');
+      cv = self.cv;
+
+      post('status', 'Chargement moteur PaddleOCR…', 'esearch-ocr via ESM');
+      // import() dynamique fonctionne dans les Workers même sans type=module sur la page
+      var mod = await import('https://cdn.jsdelivr.net/npm/esearch-ocr@5.1.5/dist/esearch-ocr.js');
+      Paddle = mod;
+
+      post('status', 'Téléchargement modèles ONNX…', '~15 Mo depuis jsDelivr');
+      var base = 'https://cdn.jsdelivr.net/npm/paddleocr-browser@1.0.3/dist/';
+      var r = await fetch(base + 'ppocr_keys_v1.txt');
+      if (!r.ok) throw new Error('ppocr_keys_v1.txt introuvable (HTTP ' + r.status + ')');
+      var dic = await r.text();
+
+      post('status', 'Initialisation pipeline OCR…', '');
+      await Paddle.init({
+        detPath: base + 'ppocr_det.onnx',
+        recPath: base + 'ppocr_rec.onnx',
+        dic: dic,
+        ort: ort,
+        node: false,
+        cv: cv
+      });
+
+      READY = true;
+      self.postMessage({ type: 'ready' });
+
+    } catch(e) {
+      self.postMessage({ type: 'error', msg: String(e && e.message ? e.message : e) });
+    }
+  }
+
+  // ── OCR ───────────────────────────────────────────────────────
+  if (d.type === 'ocr') {
+    if (!READY) { self.postMessage({ type: 'error', msg: 'Moteur pas encore prêt.' }); return; }
+    try {
+      var t = Date.now();
+      var res = await Paddle.ocr(d.dataURL);
+      self.postMessage({ type: 'result', results: res, elapsed: Date.now() - t });
+    } catch(e) {
+      self.postMessage({ type: 'error', msg: 'OCR: ' + (e.message || String(e)) });
+    }
+  }
+};
+
+function post(type, msg, detail) {
+  self.postMessage({ type: type, msg: msg, detail: detail });
+}
+`;
+
+// ────────────────────────────────────────────────────────────────
+//  STATE
+// ────────────────────────────────────────────────────────────────
+var worker = null;
+var imgDataURL = null;
+var lastRes = null;
+var busy = false;
+var eng = false;
+
+// ────────────────────────────────────────────────────────────────
+//  WORKER BOOTSTRAP
+// ────────────────────────────────────────────────────────────────
+function boot() {
+  if (location.protocol === 'file:') {
+    document.getElementById('wfile').style.display = 'block';
+  }
+  setSt('loading', 'Démarrage du Web Worker…', '');
+  showPb(true);
+  try {
+    var blob = new Blob([WK], { type: 'application/javascript' });
+    var url  = URL.createObjectURL(blob);
+    worker   = new Worker(url);
+    URL.revokeObjectURL(url);
+    worker.onmessage = onMsg;
+    worker.onerror   = function(e) { setSt('error', 'Erreur Worker : ' + e.message, ''); showPb(false); };
+    worker.postMessage({ type: 'init' });
+  } catch(e) {
+    setSt('error', 'Impossible de créer le Worker : ' + e.message, '');
+    showPb(false);
+  }
+}
+
+function onMsg(e) {
+  var d = e.data;
+  if (d.type === 'status') { setSt('loading', d.msg, d.detail || ''); incPb(); }
+  else if (d.type === 'ready') {
+    eng = true;
+    setSt('ready', 'Moteur prêt — déposez une image', 'PP-OCRv3 · WebAssembly');
+    showPb(false);
+    if (imgDataURL) document.getElementById('btn').disabled = false;
+  }
+  else if (d.type === 'error') {
+    setSt('error', d.msg, 'Voir la console (F12)');
+    showPb(false); resetBtn();
+  }
+  else if (d.type === 'result') {
+    lastRes = d.results;
+    render(d.results, d.elapsed);
+    drawBoxes(d.results);
+    setSt('ready', d.results.length + ' ligne(s) détectée(s)', d.elapsed + ' ms');
+    showPb(false); resetBtn();
+  }
+}
+
+// ────────────────────────────────────────────────────────────────
+//  UI HELPERS
+// ────────────────────────────────────────────────────────────────
+var pbPct = 0;
+function setSt(type, text, det) {
+  document.getElementById('sico').className = 'sico ' + type;
+  document.getElementById('stxt').textContent = text;
+  document.getElementById('sdet').textContent = det || '';
+}
+function showPb(on) {
+  document.getElementById('pw').style.display = on ? 'block' : 'none';
+  if (!on) { pbPct = 0; document.getElementById('pb').style.width = '0%'; }
+}
+function incPb() {
+  pbPct = Math.min(pbPct + 20, 90);
+  document.getElementById('pb').style.width = pbPct + '%';
+}
+function stab(name, el) {
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});
+  document.querySelectorAll('.tc').forEach(function(t){t.classList.remove('on')});
+  el.classList.add('on');
+  document.getElementById('tab-'+name).classList.add('on');
+}
+function toast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  setTimeout(function(){t.classList.remove('on');}, 2400);
+}
+function resetBtn() {
+  busy = false;
+  var b = document.getElementById('btn');
+  b.disabled = !eng || !imgDataURL;
+  b.classList.remove('run');
+  b.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke-linecap="round" stroke-linejoin="round"/></svg> Lancer l\'OCR';
+}
+
+// ────────────────────────────────────────────────────────────────
+//  FILE
+// ────────────────────────────────────────────────────────────────
+function onFile(ev) { var f = ev.target.files[0]; if(f) load(f); }
+function onDragOver(e) { e.preventDefault(); document.getElementById('dz').classList.add('drag'); }
+function onDragLeave(e) { document.getElementById('dz').classList.remove('drag'); }
+function onDrop(e) {
+  e.preventDefault(); document.getElementById('dz').classList.remove('drag');
+  var f = e.dataTransfer.files[0];
+  if (f && f.type.startsWith('image/')) load(f);
+}
+function load(file) {
+  var rd = new FileReader();
+  rd.onload = function(e) {
+    imgDataURL = e.target.result;
+    document.getElementById('prev').src = imgDataURL;
+    document.getElementById('dz').style.display = 'none';
+    document.getElementById('iw').style.display = 'flex';
+    clrCanvas(); clrResults();
+    document.getElementById('stats').style.display = 'none';
+    if (eng) document.getElementById('btn').disabled = false;
+  };
+  rd.readAsDataURL(file);
+}
+function resetAll() {
+  imgDataURL = null; lastRes = null;
+  document.getElementById('dz').style.display = 'flex';
+  document.getElementById('iw').style.display = 'none';
+  document.getElementById('fi').value = '';
+  document.getElementById('btn').disabled = true;
+  document.getElementById('stats').style.display = 'none';
+  clrResults(); clrCanvas();
+}
+function clrCanvas() {
+  var c = document.getElementById('oc');
+  c.getContext('2d').clearRect(0,0,c.width,c.height);
+}
+function clrResults() {
+  document.getElementById('rlines').innerHTML = emptyHTML('Les lignes de texte apparaîtront ici');
+  document.getElementById('ftxt').textContent = 'En attente de l\'OCR…';
+  document.getElementById('fjson').textContent = 'En attente…';
+}
+function emptyHTML(txt) {
+  return '<div class="empty"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>'+txt+'</span></div>';
+}
+
+// ────────────────────────────────────────────────────────────────
+//  OCR
+// ────────────────────────────────────────────────────────────────
+function runOCR() {
+  if (!eng || !imgDataURL || busy) return;
+  busy = true;
+  var b = document.getElementById('btn');
+  b.disabled = true; b.classList.add('run');
+  b.innerHTML = '<div class="spin"></div> Reconnaissance en cours…';
+  setSt('loading', 'OCR en cours…', 'Détection + reconnaissance');
+  showPb(true); pbPct = 50;
+  document.getElementById('pb').style.width = '50%';
+  worker.postMessage({ type: 'ocr', dataURL: imgDataURL });
+}
+
+// ────────────────────────────────────────────────────────────────
+//  RENDER
+// ────────────────────────────────────────────────────────────────
+function render(res, ms) {
+  if (!res || res.length === 0) {
+    document.getElementById('rlines').innerHTML = emptyHTML('Aucun texte détecté.');
+    return;
+  }
+  var total=0, txt='', json=[];
+  var html = '';
+  res.forEach(function(r,i) {
+    var t = (r[1]&&r[1][0]) ? r[1][0] : '';
+    var s = (r[1]&&r[1][1]) ? r[1][1] : 0;
+    total += s; txt += t + '\n';
+    json.push({ index:i+1, text:t, confidence:+s.toFixed(4), bbox:r[0] });
+    var cls = s>=.85?'sh':s>=.6?'sm':'sl';
+    html += '<div class="rline" style="animation-delay:'+(i*40)+'ms">'
+          + '<span class="lnum">'+(i+1)+'</span>'
+          + '<span class="ltxt">'+esc(t)+'</span>'
+          + '<span class="lscore '+cls+'">'+Math.round(s*100)+'%</span>'
+          + '</div>';
+  });
+  document.getElementById('rlines').innerHTML = '<div class="rlines">'+html+'</div>';
+  document.getElementById('ftxt').textContent = txt.trim();
+  document.getElementById('fjson').textContent = JSON.stringify(json, null, 2);
+  var avg = total/res.length;
+  var wc  = txt.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('sv-l').textContent = res.length;
+  document.getElementById('sv-c').textContent = (avg*100).toFixed(1)+'%';
+  document.getElementById('sv-t').textContent = ms+' ms';
+  document.getElementById('sv-w').textContent = wc;
+  document.getElementById('stats').style.display = 'flex';
+}
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ────────────────────────────────────────────────────────────────
+//  BOUNDING BOXES
+// ────────────────────────────────────────────────────────────────
+function drawBoxes(res) {
+  var img  = document.getElementById('prev');
+  var cv2  = document.getElementById('oc');
+  var wrap = document.getElementById('iw');
+  var wr   = wrap.getBoundingClientRect();
+  var ir   = img.getBoundingClientRect();
+  cv2.width  = wr.width;
+  cv2.height = wr.height;
+  var sx = ir.width  / img.naturalWidth;
+  var sy = ir.height / img.naturalHeight;
+  var ox = ir.left - wr.left;
+  var oy = ir.top  - wr.top;
+  var ctx = cv2.getContext('2d');
+  ctx.clearRect(0, 0, cv2.width, cv2.height);
+  if (!res) return;
+  res.forEach(function(r, i) {
+    var box = r[0];
+    var sc  = (r[1]&&r[1][1]) ? r[1][1] : 0;
+    if (!box || box.length < 4) return;
+    var col = sc>=.85?'#00ff87':sc>=.6?'#f59e0b':'#ff4444';
+    ctx.beginPath();
+    ctx.moveTo(box[0][0]*sx+ox, box[0][1]*sy+oy);
+    for (var j=1;j<box.length;j++) ctx.lineTo(box[j][0]*sx+ox, box[j][1]*sy+oy);
+    ctx.closePath();
+    ctx.strokeStyle=col; ctx.lineWidth=1.5; ctx.globalAlpha=.85; ctx.stroke();
+    ctx.fillStyle=col; ctx.globalAlpha=.08; ctx.fill();
+    ctx.globalAlpha=1; ctx.fillStyle=col; ctx.font='10px monospace';
+    ctx.fillText(i+1, box[0][0]*sx+ox, box[0][1]*sy+oy-3);
+  });
+}
+
+// ────────────────────────────────────────────────────────────────
+//  COPY
+// ────────────────────────────────────────────────────────────────
+function copyText() { navigator.clipboard.writeText(document.getElementById('ftxt').textContent).then(function(){toast('✓ Texte copié !');}); }
+function copyJSON() { navigator.clipboard.writeText(document.getElementById('fjson').textContent).then(function(){toast('✓ JSON copié !');}); }
+
+window.addEventListener('resize', function(){if(lastRes) drawBoxes(lastRes);});
+document.getElementById('prev').addEventListener('load', function(){if(lastRes) drawBoxes(lastRes);});
+
+boot();
+</script>
+
+</body>
+</html>
