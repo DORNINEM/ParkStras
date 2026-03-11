@@ -149,7 +149,7 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
       <button class="lang-btn on" onclick="selectLang('latin',this)">🇫🇷 Français / Latin</button>
     </div>
     <span class="lang-info" id="lang-info">
-      Modèle&nbsp;: <span>latin_PP-OCRv3 · dict officiel HuggingFace</span>
+      Modèle&nbsp;: <span id="lang-model-info">latin_PP-OCRv3 · dict officiel HuggingFace</span>
     </span>
   </div>
 
@@ -195,6 +195,17 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
     <div class="stat"><div class="stat-l">Confiance moy.</div><div class="stat-v g" id="sv-c">—</div></div>
     <div class="stat"><div class="stat-l">Durée</div><div class="stat-v" id="sv-t">—</div></div>
     <div class="stat"><div class="stat-l">Mots</div><div class="stat-v" id="sv-w">0</div></div>
+  </div>
+
+  <!-- Panneau diagnostic offset CTC -->
+
+  <div id="diag-wrap" style="display:none;margin-bottom:20px;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;">
+    <div style="padding:9px 16px;background:var(--sur2);border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:10px;">
+      <span style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">🔬 Diagnostic offset dictionnaire</span>
+      <span style="font-family:var(--fm);font-size:10px;color:var(--muted);">Si le texte est décalé, choisir l'offset correct</span>
+      <button onclick="document.getElementById('diag-wrap').style.display='none'" style="margin-left:auto;font-family:var(--fm);font-size:10px;background:none;border:none;cursor:pointer;color:var(--muted)">✕ Fermer</button>
+    </div>
+    <div style="padding:12px 16px;" id="diag-panel"></div>
   </div>
 
   <div class="grid">
@@ -412,24 +423,103 @@ function selectLang(lang, btn) {
 }
 
 // ── Init engine ─────────────────────────────────────────────────────────────
+// ── Diagnostic mapping ───────────────────────────────────────────────────────
+// Tester plusieurs offsets CTC sur les résultats pour trouver le bon décalage
+function applyDictOffset(text, dict, offset) {
+  var out = '';
+  for (var i = 0; i < text.length; i++) {
+    var c = text[i];
+    var idx = dict.indexOf(c);
+    if (idx === -1) { out += c; continue; }
+    var ni = idx + offset;
+    out += (ni >= 0 && ni < dict.length) ? dict[ni] : '?';
+  }
+  return out;
+}
+
+function showDiagnostic(results, dict) {
+  var panel = document.getElementById('diag-panel');
+  if (!panel || !results || !results.length) return;
+  var sample = results.slice(0, 4);
+  var offsets = [-2, -1, 0, 1, 2];
+  var html = '<table style="width:100%;border-collapse:collapse;font-family:var(--fm);font-size:11px;">';
+  html += '<tr style="background:var(--sur2)">'
+        + '<th style="padding:5px 8px;text-align:left;border:1px solid var(--border)">Brut</th>'
+        + offsets.map(function(o){ return '<th style="padding:5px 8px;border:1px solid var(--border);color:'+(o===0?'var(--acc2)':'var(--muted)')+'">offset '+(o>=0?'+':'')+o+'</th>'; }).join('')
+        + '</tr>';
+  sample.forEach(function(r) {
+    var raw = r.text || '';
+    html += '<tr><td style="padding:5px 8px;border:1px solid var(--border);color:var(--acc)">' + esc(raw) + '</td>'
+          + offsets.map(function(o) {
+              var decoded = applyDictOffset(raw, dict, o);
+              var isCurrent = (o === DICT_OFFSET);
+              return '<td style="padding:5px 8px;border:1px solid var(--border);background:'+(isCurrent?'#e8f5ee':'')+'">'+esc(decoded)+'</td>';
+            }).join('')
+          + '</tr>';
+  });
+  html += '</table>';
+  html += '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
+        + '<span style="font-size:10px;color:var(--muted)">Offset actif :</span>'
+        + offsets.map(function(o){
+            return '<button onclick="setDictOffset('+o+')" style="font-family:var(--fm);font-size:10px;padding:3px 8px;border:1px solid var(--border);border-radius:2px;background:'+(o===DICT_OFFSET?'var(--ink)':'none')+';color:'+(o===DICT_OFFSET?'var(--bg)':'var(--ink)')+';cursor:pointer" id="off-btn-'+o+'">'+(o>=0?'+':'')+o+'</button>';
+          }).join('')
+        + '<span style="font-size:10px;color:var(--muted);margin-left:8px">→ Choisir l'offset qui donne le texte correct, puis relancer l'OCR</span>'
+        + '</div>';
+  panel.innerHTML = html;
+  document.getElementById('diag-wrap').style.display = 'block';
+}
+
+var DICT_OFFSET = -1; // offset CTC par défaut (blank token en position 0)
+
+function setDictOffset(o) {
+  DICT_OFFSET = o;
+  // Mettre à jour les boutons
+  [-2,-1,0,1,2].forEach(function(x){
+    var b = document.getElementById('off-btn-'+x);
+    if(b){ b.style.background = x===o?'var(--ink)':'none'; b.style.color = x===o?'var(--bg)':'var(--ink)'; }
+  });
+  // Ré-appliquer l'offset sur les résultats déjà affichés si on en a
+  if (LAST && DICTS[CUR_LANG]) {
+    var reprocessed = LAST.map(function(r) {
+      return Object.assign({}, r, { text: applyDictOffset(r.text||'', DICTS[CUR_LANG], o) });
+    });
+    renderResults(reprocessed, null);
+  }
+}
+
 async function loadLatinDict() {
   if (DICTS.latin) return DICTS.latin;
-  // Charger le dict officiel depuis HuggingFace
   var url = 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/languages/latin/dict.txt';
+  var loaded = false;
   try {
     var r = await fetch(url);
     if (!r.ok) throw new Error('HTTP ' + r.status);
     var txt = await r.text();
     // Chaque ligne = un caractère (format PaddleOCR dict.txt)
-    DICTS.latin = txt.split('\n').map(function(l){ return l.trimEnd(); }).filter(function(l,i){ return i===0||l!==''; });
-    console.log('[dict] latin chargé — ' + DICTS.latin.length + ' chars');
-    return DICTS.latin;
+    var chars = txt.split('\n').map(function(l){ return l.trimEnd(); });
+    // Supprimer les lignes vides de fin sauf si déjà blank en position 0
+    while (chars.length && chars[chars.length-1] === '') chars.pop();
+    // CTC blank token : PaddleOCR réserve toujours l'index 0 pour le blank
+    // Si le dict ne commence pas par "" on l'ajoute
+    if (chars[0] !== '') chars.unshift('');
+    DICTS.latin = chars;
+    loaded = true;
+    console.log('[dict] latin HF chargé — ' + chars.length + ' chars, blank en [0]:', chars[0]==='' ? 'oui' : 'non');
   } catch(e) {
-    console.warn('[dict] HF indisponible, fallback dict latin embarqué:', e.message);
-    // Fallback : dict latin embarqué (fiable mais peut ne pas correspondre exactement au modèle)
-    DICTS.latin = [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","]","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","}","\u00e0","\u00e2","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb","\u00ee","\u00ef","\u00f4","\u0153","\u00f9","\u00fb","\u00fc","\u00ff","\u00c0","\u00c2","\u00c6","\u00c7","\u00c8","\u00c9","\u00ca","\u00cb","\u00ce","\u00cf","\u00d4","\u0152","\u00d9","\u00db","\u00dc","\u20ac"];
-    return DICTS.latin;
+    console.warn('[dict] HF indisponible, fallback embarqué:', e.message);
   }
+  if (!loaded) {
+    // Fallback : dict latin avec CTC blank en [0]
+    DICTS.latin = ["", " ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",
+      "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@",
+      "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+      "[","]","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+      "{","}","\u00e0","\u00e2","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb",
+      "\u00ee","\u00ef","\u00f4","\u0153","\u00f9","\u00fb","\u00fc","\u00ff",
+      "\u00c0","\u00c2","\u00c6","\u00c7","\u00c8","\u00c9","\u00ca","\u00cb",
+      "\u00ce","\u00cf","\u00d4","\u0152","\u00d9","\u00db","\u00dc","\u20ac"];
+  }
+  return DICTS.latin;
 }
 
 async function initEngine(lang) {
@@ -577,6 +667,8 @@ async function runOCR(){
     renderResults(results,ms);
     drawBoxes(results);
     st('ready',results.length+' ligne(s) · '+ms+' ms',MODELS[CUR_LANG].label);
+    // Afficher le diagnostic d'offset si mode latin
+    if (CUR_LANG === 'latin' && DICTS.latin) showDiagnostic(results, DICTS.latin);
   }catch(e){
     console.error('[OCR]',e);
     st('error','Erreur OCR : '+e.message,'F12 → Console');
@@ -591,8 +683,12 @@ async function runOCR(){
 function renderResults(res,ms){
   if(!res||!res.length){ document.getElementById('rlines').innerHTML=emptyHTML('Aucun texte détecté.'); return; }
   var sum=0,plain='',jarr=[],html='';
+  // Appliquer l'offset CTC si un dictionnaire est disponible
+  var activeDict = DICTS[CUR_LANG];
   res.forEach(function(r,i){
-    var txt=r.text||''; var conf=r.confidence||0;
+    var rawTxt = r.text||'';
+    var txt = (activeDict && DICT_OFFSET !== 0) ? applyDictOffset(rawTxt, activeDict, DICT_OFFSET) : rawTxt;
+    var conf=r.confidence||0;
     sum+=conf; plain+=txt+'\n';
     jarr.push({n:i+1,text:txt,confidence:+conf.toFixed(4),bbox:r.box});
     var cls=conf>=.85?'chi':conf>=.6?'cmi':'clo';
@@ -650,3 +746,4 @@ window.addEventListener('resize',function(){ if(LAST) drawBoxes(LAST); });
 
 </body>
 </html>
+
