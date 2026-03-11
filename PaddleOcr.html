@@ -463,7 +463,7 @@ function showDiagnostic(results, dict) {
         + offsets.map(function(o){
             return '<button onclick="setDictOffset('+o+')" style="font-family:var(--fm);font-size:10px;padding:3px 8px;border:1px solid var(--border);border-radius:2px;background:'+(o===DICT_OFFSET?'var(--ink)':'none')+';color:'+(o===DICT_OFFSET?'var(--bg)':'var(--ink)')+';cursor:pointer" id="off-btn-'+o+'">'+(o>=0?'+':'')+o+'</button>';
           }).join('')
-        + '<span style="font-size:10px;color:var(--muted);margin-left:8px">→ Choisir l offset qui donne le texte correct, puis relancer l OCR</span>'
+        + '<span style="font-size:10px;color:var(--muted);margin-left:8px">→ Choisir l'offset qui donne le texte correct, puis relancer l'OCR</span>'
         + '</div>';
   panel.innerHTML = html;
   document.getElementById('diag-wrap').style.display = 'block';
@@ -668,20 +668,35 @@ async function runOCR(){
     var ms=Math.round(performance.now()-t0);
     pct(100); LAST=results;
 
-    // ── DEBUG espace : inspecter le décodeur CTC de paddleocr.js ──────────────
-    console.group('[OCR DEBUG]');
-    // Clés de l'objet résultat ligne
-    if (results[0]) console.log('keys résultat:', Object.keys(results[0]));
-    // Texte brut des 5 premières lignes avec codes char
-    results.slice(0,5).forEach(function(r,i){
-      var codes = Array.from(r.text||'').map(function(c){return c+'('+c.charCodeAt(0)+')';});
-      console.log('L'+(i+1)+':', JSON.stringify(r.text), '→', codes.join(' '));
-    });
-    // Inspecter les méthodes/propriétés exposées par paddleocr.js
-    console.log('ENGINE keys:', Object.keys(ENGINE));
-    console.log('ENGINE proto:', Object.getOwnPropertyNames(Object.getPrototypeOf(ENGINE)));
-    // Inspecter paddleocr global
-    console.log('paddleocr keys:', Object.keys(paddleocr));
+    // ── DEBUG : inspecter options et processRecognition ────────────────────────
+    console.group('[OCR DEBUG v3]');
+
+    // 1. Options par défaut de reconnaissance — chercher option espace/blank
+    console.log('DEFAULT_RECOGNITION_OPTIONS:', JSON.stringify(paddleocr.DEFAULT_RECOGNITION_OPTIONS));
+    console.log('DEFAULT_PADDLE_OPTIONS:', JSON.stringify(paddleocr.DEFAULT_PADDLE_OPTIONS));
+
+    // 2. Inspecter RecognitionService directement
+    try {
+      var recSvc = ENGINE.recognitionService || ENGINE.recognitionSession;
+      if (recSvc) {
+        console.log('recognitionService keys:', Object.keys(recSvc));
+        console.log('recognitionService proto:', Object.getOwnPropertyNames(Object.getPrototypeOf(recSvc)));
+      }
+    } catch(ex){ console.warn('recSvc err:', ex); }
+
+    // 3. Tenter processRecognition sur la 1ère ligne pour voir la sortie brute
+    try {
+      var detSvc = ENGINE.detectionService || ENGINE.detectionSession;
+      if (detSvc) console.log('detectionService keys:', Object.keys(detSvc));
+    } catch(ex){ console.warn('detSvc err:', ex); }
+
+    // 4. Afficher texte ligne 1 + codes pour confirmation
+    if (results[0]) {
+      var codes = Array.from(results[0].text||'').map(function(c){return c+'('+c.charCodeAt(0)+')';});
+      console.log('L1 text:', JSON.stringify(results[0].text));
+      console.log('L1 codes:', codes.join(' '));
+    }
+
     console.groupEnd();
     // ─────────────────────────────────────────────────────────────────────────
     renderResults(results,ms);
