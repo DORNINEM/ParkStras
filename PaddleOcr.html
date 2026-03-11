@@ -667,6 +667,23 @@ async function runOCR(){
     var results=await ENGINE.recognize({width:imgData.width,height:imgData.height,data:imgData.data});
     var ms=Math.round(performance.now()-t0);
     pct(100); LAST=results;
+
+    // ── DEBUG espaces ─────────────────────────────────────────────────────────
+    console.group('[OCR DEBUG] ' + results.length + ' lignes');
+    results.slice(0,10).forEach(function(r,i){
+      var chars = r.text ? Array.from(r.text) : [];
+      var codes = chars.map(function(c){ return c+':'+c.charCodeAt(0); });
+      console.log('L'+(i+1)+' raw text    :', JSON.stringify(r.text));
+      console.log('L'+(i+1)+' char codes  :', codes.join(' | '));
+      console.log('L'+(i+1)+' confidence  :', r.confidence);
+      // Vérifier si paddleocr retourne des mots séparés
+      if (r.words) console.log('L'+(i+1)+' words[]     :', JSON.stringify(r.words));
+      if (r.chars) console.log('L'+(i+1)+' chars[]     :', JSON.stringify(r.chars));
+    });
+    // Dump de la 1ère ligne complète pour voir toutes les clés disponibles
+    if (results[0]) console.log('[OCR DEBUG] keys ligne 0:', Object.keys(results[0]));
+    console.groupEnd();
+    // ─────────────────────────────────────────────────────────────────────────
     renderResults(results,ms);
     drawBoxes(results);
     st('ready',results.length+' ligne(s) · '+ms+' ms',MODELS[CUR_LANG].label);
@@ -749,4 +766,3 @@ window.addEventListener('resize',function(){ if(LAST) drawBoxes(LAST); });
 
 </body>
 </html>
-
