@@ -490,37 +490,40 @@ function setDictOffset(o) {
 async function loadLatinDict() {
   if (DICTS.latin) return DICTS.latin;
   var url = 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/languages/latin/dict.txt';
-  var loaded = false;
   try {
     var r = await fetch(url);
     if (!r.ok) throw new Error('HTTP ' + r.status);
     var txt = await r.text();
-    // Chaque ligne = un caractère (format PaddleOCR dict.txt)
-    var chars = txt.split('\n').map(function(l){ return l.trimEnd(); });
-    // Supprimer les lignes vides de fin sauf si déjà blank en position 0
-    while (chars.length && chars[chars.length-1] === '') chars.pop();
-    // CTC blank token : PaddleOCR réserve toujours l'index 0 pour le blank
-    // Si le dict ne commence pas par "" on l'ajoute
-    if (chars[0] !== '') chars.unshift('');
-    DICTS.latin = chars;
-    loaded = true;
-    console.log('[dict] latin HF chargé — ' + chars.length + ' chars, blank en [0]:', chars[0]==='' ? 'oui' : 'non');
+    // Format dict.txt PaddleOCR : une ligne = un caractère
+    // L'index 0 est réservé au "blank" CTC → le moteur paddleocr.js attend
+    // que l'espace soit à l'index 0 dans charactersDictionary.
+    // On construit donc : [" ", char1, char2, ...] en ignorant la 1ère ligne
+    // si elle est déjà un espace (évite doublons).
+    var lines = txt.split('\n').map(function(l){ return l.trimEnd(); });
+    // Supprimer lignes vides finales
+    while (lines.length && lines[lines.length-1] === '') lines.pop();
+    // S'assurer que l'espace est en position 0
+    if (lines[0] !== ' ') lines.unshift(' ');
+    DICTS.latin = lines;
+    console.log('[dict] latin chargé — ' + DICTS.latin.length + ' entrées, index 0=' + JSON.stringify(DICTS.latin[0]));
+    return DICTS.latin;
   } catch(e) {
     console.warn('[dict] HF indisponible, fallback embarqué:', e.message);
-  }
-  if (!loaded) {
-    // Fallback : dict latin avec CTC blank en [0]
-    DICTS.latin = ["", " ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",
+    // Fallback : espace en [0] puis chars latins courants
+    DICTS.latin = [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",
       "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@",
       "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
-      "[","]","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-      "{","}","\u00e0","\u00e2","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb",
+      "[","]","_","`",
+      "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+      "{","}",
+      "\u00e0","\u00e2","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb",
       "\u00ee","\u00ef","\u00f4","\u0153","\u00f9","\u00fb","\u00fc","\u00ff",
       "\u00c0","\u00c2","\u00c6","\u00c7","\u00c8","\u00c9","\u00ca","\u00cb",
       "\u00ce","\u00cf","\u00d4","\u0152","\u00d9","\u00db","\u00dc","\u20ac"];
+    return DICTS.latin;
   }
-  return DICTS.latin;
 }
+
 
 async function initEngine(lang) {
   try {
@@ -592,7 +595,7 @@ function st(type,txt,det){
 }
 function prog(on){ document.getElementById('prog').style.display=on?'block':'none'; }
 function pct(p){ document.getElementById('pfill').style.width=p+'%'; }
-function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;'); }
 function emptyHTML(t){
   return '<div class="empty"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>'+t+'</span></div>';
 }
