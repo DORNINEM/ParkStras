@@ -28,7 +28,6 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
 
 .main{max-width:1200px;margin:0 auto;padding:40px 32px 80px;}
 
-/* Lang selector */
 .lang-bar{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid var(–ink);border-radius:var(–r);background:var(–sur);margin-bottom:20px;flex-wrap:wrap;}
 .lang-lbl{font-family:var(–fm);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);}
 .lang-btns{display:flex;gap:0;border:1.5px solid var(–border);border-radius:var(–r);overflow:hidden;}
@@ -38,7 +37,16 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
 .lang-info{font-family:var(–fm);font-size:11px;color:var(–muted);margin-left:auto;}
 .lang-info span{color:var(–ink);font-weight:700;}
 
-/* Status */
+/* Prétraitement toggle */
+.preproc-bar{display:flex;align-items:center;gap:12px;padding:10px 16px;border:1px solid var(–border);border-radius:var(–r);background:var(–sur);margin-bottom:20px;flex-wrap:wrap;font-family:var(–fm);font-size:11px;}
+.preproc-lbl{color:var(–muted);letter-spacing:.08em;text-transform:uppercase;font-weight:700;}
+.toggle-group{display:flex;gap:8px;flex-wrap:wrap;}
+.tog{display:flex;align-items:center;gap:6px;cursor:pointer;color:var(–muted);padding:4px 10px;border:1px solid var(–border);border-radius:2px;transition:all .15s;user-select:none;}
+.tog:hover{border-color:var(–ink);color:var(–ink);}
+.tog.on{background:var(–ink);color:var(–bg);border-color:var(–ink);}
+.tog input{display:none;}
+.preproc-note{color:var(–muted);font-size:10px;margin-left:auto;max-width:320px;line-height:1.5;}
+
 .sbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(–border);border-radius:var(–r);background:var(–sur);margin-bottom:20px;font-size:13px;font-family:var(–fm);flex-wrap:wrap;}
 .sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background .3s;}
 .sdot.loading{background:#e8a020;animation:blink .8s ease-in-out infinite;}
@@ -47,7 +55,6 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
 .prog-track{width:100%;height:2px;background:var(–border);border-radius:2px;margin-top:8px;overflow:hidden;display:none;}
 .prog-fill{height:100%;background:var(–acc);width:0%;transition:width .35s ease;border-radius:2px;}
 
-/* Stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:2px solid var(–ink);border-radius:var(–r);overflow:hidden;margin-bottom:20px;}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr);}}
 .stat{background:var(–sur);padding:16px;border-right:1px solid var(–border);}
@@ -56,7 +63,6 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
 .stat-v{font-size:26px;font-weight:700;}
 .stat-v.a{color:var(–acc)}.stat-v.g{color:var(–grn);}
 
-/* Grid */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:2px solid var(–ink);border-radius:var(–r);overflow:hidden;margin-bottom:20px;}
 @media(max-width:720px){.grid{grid-template-columns:1fr;}}
 .panel{background:var(–sur);display:flex;flex-direction:column;}
@@ -114,6 +120,11 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
 
 .toast{position:fixed;bottom:24px;right:24px;background:var(–ink);color:var(–bg);font-family:var(–fm);font-size:12px;padding:10px 16px;border-radius:var(–r);transform:translateY(60px);opacity:0;transition:all .25s;pointer-events:none;z-index:999;}
 .toast.on{transform:translateY(0);opacity:1;}
+
+/* Aperçu prétraitement */
+#preproc-preview-wrap{display:none;margin-bottom:20px;border:2px solid var(–ink);border-radius:var(–r);overflow:hidden;}
+#preproc-preview-head{padding:8px 16px;background:var(–sur2);border-bottom:2px solid var(–ink);font-family:var(–fm);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);}
+#preproc-preview-img{display:block;max-width:100%;background:#0d0d0d;}
 </style>
 
 </head>
@@ -138,8 +149,36 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
       <button class="lang-btn" onclick="selectLang('latin',this)">🇫🇷 Français / Latin</button>
     </div>
     <span class="lang-info" id="lang-info">
-      Modèle : <span>en_PP-OCRv3 · 97 classes ASCII</span>
+      Modèle&nbsp;: <span>en_PP-OCRv3 · 97 classes ASCII</span>
     </span>
+  </div>
+
+  <!-- Barre prétraitement (visible en mode FR) -->
+
+  <div class="preproc-bar" id="preproc-bar" style="display:none">
+    <span class="preproc-lbl">Prétraitement</span>
+    <div class="toggle-group">
+      <label class="tog on" id="tog-contrast">
+        <input type="checkbox" checked onchange="togglePreproc('contrast',this)"> ⬆ Contraste
+      </label>
+      <label class="tog on" id="tog-sharpen">
+        <input type="checkbox" checked onchange="togglePreproc('sharpen',this)"> ◈ Netteté
+      </label>
+      <label class="tog" id="tog-gray">
+        <input type="checkbox" onchange="togglePreproc('gray',this)"> ◑ Niveaux de gris
+      </label>
+      <label class="tog" id="tog-upscale">
+        <input type="checkbox" onchange="togglePreproc('upscale',this)"> ⤢ Agrandissement ×2
+      </label>
+    </div>
+    <span class="preproc-note">Améliore la reconnaissance des minuscules accentuées sur images de faible résolution.</span>
+  </div>
+
+  <!-- Aperçu image prétraitée -->
+
+  <div id="preproc-preview-wrap">
+    <div id="preproc-preview-head">▶ Image envoyée au moteur OCR (après prétraitement)</div>
+    <img id="preproc-preview-img" alt="prétraitement">
   </div>
 
   <div class="sbar">
@@ -225,6 +264,7 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
     Dictionnaires <strong>embarqués inline</strong> dans la page :
     EN = 96 chars ASCII · FR/Latin = 189 chars incluant <strong>tous les accents français</strong> (à â æ ç é è ê ë î ï ô œ ù û ü ÿ…).
     <strong>Aucun serveur. Aucune donnée ne quitte l'appareil.</strong>
+    Mode FR : prétraitement canvas (contraste + netteté) actif par défaut pour améliorer la reconnaissance des minuscules.
   </div>
 </main>
 <div class="toast" id="toast"></div>
@@ -232,13 +272,13 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
 <script>
 'use strict';
 
-// ── Dictionnaires embarqués (source : paddleocr 2.7.0 latin_dict.txt + complétés) ──
+// ── Dictionnaires ─────────────────────────────────────────────────────────────
 var DICTS = {
   en: [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","\\","]","^","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","|","}","~",""],
   latin: [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","]","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","}","\u00a1","\u00a3","\u00a7","\u00aa","\u00ab","\u00ad","\u00b0","\u00b2","\u00b3","\u00b4","\u00b5","\u00b7","\u00ba","\u00bb","\u00bf","\u00c0","\u00c1","\u00c2","\u00c4","\u00c5","\u00c7","\u00c8","\u00c9","\u00ca","\u00cb","\u00cc","\u00cd","\u00ce","\u00cf","\u00d2","\u00d3","\u00d4","\u00d5","\u00d6","\u00da","\u00dc","\u00dd","\u00df","\u00e0","\u00e1","\u00e2","\u00e3","\u00e4","\u00e5","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb","\u00ec","\u00ed","\u00ee","\u00ef","\u00f1","\u00f2","\u00f3","\u00f4","\u00f5","\u00f6","\u00f8","\u00f9","\u00fa","\u00fb","\u00fc","\u00fd","\u0105","\u0106","\u0107","\u010c","\u010d","\u0110","\u0111","\u0119","\u0131","\u0141","\u0142","\u014d","\u0152","\u0153","\u0160","\u0161","\u0178","\u017d","\u017e","\u0292","\u03b2","\u03b4","\u03b5","\u0437","\u1e60","\u2019","\u20ac","\u2122","\u00ff","\u00c6","\u00d9","\u00db"]
 };
 
-// ── URLs des modèles ─────────────────────────────────────────────────────────
+// ── URLs modèles ──────────────────────────────────────────────────────────────
 var MODELS = {
   en: {
     det: 'https://cdn.jsdelivr.net/npm/paddle-ocr-onnx-models@0.2.0/models/en_PP-OCRv3_det_infer.onnx',
@@ -246,35 +286,122 @@ var MODELS = {
     label: 'en_PP-OCRv3 · 97 classes ASCII'
   },
   latin: {
-    // latin_PP-OCRv3 converti ONNX — communauté monkt sur HuggingFace
     det: 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/detection/v5/det.onnx',
     rec: 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/languages/latin/rec.onnx',
-    // fallback détecteur EN si HF indisponible
     det_fb: 'https://cdn.jsdelivr.net/npm/paddle-ocr-onnx-models@0.2.0/models/en_PP-OCRv3_det_infer.onnx',
     label: 'latin_PP-OCRv3 · 189 classes FR/Latin'
   }
 };
 
-// ── State ────────────────────────────────────────────────────────────────────
+// ── State ─────────────────────────────────────────────────────────────────────
 var ENGINE   = null;
 var IMG_EL   = null;
 var LAST     = null;
 var BUSY     = false;
 var READY    = false;
 var CUR_LANG = 'en';
-var CACHE    = {};   // engines déjà initialisés par langue
+var CACHE    = {};
 
-// ── Sélection langue ─────────────────────────────────────────────────────────
+// Options prétraitement
+var PP = { contrast: true, sharpen: true, gray: false, upscale: false };
+
+// ── Prétraitement image ───────────────────────────────────────────────────────
+// Améliore la lisibilité des minuscules accentuées pour le moteur latin
+function applyPreprocessing(srcImg) {
+  var scale = (PP.upscale && CUR_LANG === 'latin') ? 2 : 1;
+  var w = srcImg.naturalWidth  * scale;
+  var h = srcImg.naturalHeight * scale;
+
+  var cvs = document.getElementById('hidden-canvas');
+  cvs.width = w; cvs.height = h;
+  var ctx = cvs.getContext('2d');
+
+  // Agrandissement
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(srcImg, 0, 0, w, h);
+
+  // Contraste + luminosité (uniquement en mode latin si actif)
+  if (PP.contrast && CUR_LANG === 'latin') {
+    ctx.filter = 'contrast(140%) brightness(108%)';
+    ctx.drawImage(cvs, 0, 0);
+    ctx.filter = 'none';
+  }
+
+  // Netteté via convolution manuelle (unsharp mask léger)
+  if (PP.sharpen && CUR_LANG === 'latin') {
+    var imgData = ctx.getImageData(0, 0, w, h);
+    var d = imgData.data;
+    // Kernel unsharp mask 3×3 léger
+    var kernel = [0,-0.5,0, -0.5,3,-0.5, 0,-0.5,0]; // sum=1
+    var tmp = new Uint8ClampedArray(d);
+    for (var y = 1; y < h-1; y++) {
+      for (var x = 1; x < w-1; x++) {
+        for (var c = 0; c < 3; c++) {
+          var sum = 0;
+          for (var ky = -1; ky <= 1; ky++) {
+            for (var kx = -1; kx <= 1; kx++) {
+              var idx = ((y+ky)*w+(x+kx))*4+c;
+              sum += tmp[idx] * kernel[(ky+1)*3+(kx+1)];
+            }
+          }
+          d[(y*w+x)*4+c] = Math.min(255, Math.max(0, sum));
+        }
+      }
+    }
+    ctx.putImageData(imgData, 0, 0);
+  }
+
+  // Niveaux de gris
+  if (PP.gray && CUR_LANG === 'latin') {
+    var imgData2 = ctx.getImageData(0, 0, w, h);
+    var d2 = imgData2.data;
+    for (var i = 0; i < d2.length; i += 4) {
+      var lum = 0.299*d2[i] + 0.587*d2[i+1] + 0.114*d2[i+2];
+      d2[i] = d2[i+1] = d2[i+2] = lum;
+    }
+    ctx.putImageData(imgData2, 0, 0);
+  }
+
+  return ctx.getImageData(0, 0, w, h);
+}
+
+function updatePreprocPreview() {
+  if (!IMG_EL || CUR_LANG !== 'latin') {
+    document.getElementById('preproc-preview-wrap').style.display = 'none';
+    return;
+  }
+  var imgData = applyPreprocessing(IMG_EL);
+  var tmp = document.createElement('canvas');
+  tmp.width = imgData.width; tmp.height = imgData.height;
+  tmp.getContext('2d').putImageData(imgData, 0, 0);
+  document.getElementById('preproc-preview-img').src = tmp.toDataURL();
+  document.getElementById('preproc-preview-wrap').style.display = 'block';
+}
+
+function togglePreproc(key, checkbox) {
+  PP[key] = checkbox.checked;
+  var lbl = document.getElementById('tog-' + key);
+  if (PP[key]) lbl.classList.add('on'); else lbl.classList.remove('on');
+  updatePreprocPreview();
+}
+
+// ── Sélection langue ──────────────────────────────────────────────────────────
 function selectLang(lang, btn) {
   if (BUSY) return;
   CUR_LANG = lang;
   document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('on'); });
   btn.classList.add('on');
   document.getElementById('lang-info').innerHTML =
-    'Modèle\u00a0: <span>' + MODELS[lang].label + '</span>';
+    'Modèle&nbsp;: <span>' + MODELS[lang].label + '</span>';
+
+  // Afficher/masquer barre prétraitement
+  document.getElementById('preproc-bar').style.display = lang === 'latin' ? 'flex' : 'none';
+  updatePreprocPreview();
+
   if (CACHE[lang]) {
     ENGINE = CACHE[lang]; READY = true;
-    st('ready', 'Moteur ' + (lang==='latin'?'FR/Latin':'EN') + ' prêt — déposez une image', MODELS[lang].label);
+    st('ready','Moteur '+(lang==='latin'?'FR/Latin':'EN')+' prêt — déposez une image',MODELS[lang].label);
     if (IMG_EL) document.getElementById('run-btn').disabled = false;
     return;
   }
@@ -283,10 +410,10 @@ function selectLang(lang, btn) {
   initEngine(lang);
 }
 
-// ── Init engine ──────────────────────────────────────────────────────────────
+// ── Init engine ───────────────────────────────────────────────────────────────
 async function initEngine(lang) {
   try {
-    st('loading', 'Configuration ONNX Runtime…', '');
+    st('loading','Configuration ONNX Runtime…','');
     prog(true); pct(5);
     ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';
     ort.env.wasm.numThreads = 1;
@@ -295,10 +422,8 @@ async function initEngine(lang) {
       throw new Error('paddleocr.js non chargé — vérifiez la connexion');
 
     var cfg = MODELS[lang];
+    st('loading','Chargement modèle détection…',cfg.label); pct(15);
 
-    // Détecteur avec fallback
-    st('loading', 'Chargement modèle détection…', cfg.label);
-    pct(15);
     var detBuf;
     try {
       var r1 = await fetch(cfg.det);
@@ -306,7 +431,7 @@ async function initEngine(lang) {
       detBuf = await r1.arrayBuffer();
     } catch(e1) {
       if (lang === 'latin' && cfg.det_fb) {
-        st('loading', 'Fallback : détecteur EN…', '');
+        st('loading','Fallback : détecteur EN…','');
         var r1b = await fetch(cfg.det_fb);
         if (!r1b.ok) throw new Error('det fallback ' + r1b.status);
         detBuf = await r1b.arrayBuffer();
@@ -314,15 +439,13 @@ async function initEngine(lang) {
     }
     pct(50);
 
-    // Reconnaissance
-    st('loading', 'Chargement modèle reconnaissance…', cfg.label);
+    st('loading','Chargement modèle reconnaissance…',cfg.label);
     var r2 = await fetch(cfg.rec);
     if (!r2.ok) throw new Error('rec HTTP ' + r2.status);
     var recBuf = await r2.arrayBuffer();
     pct(80);
 
-    // Init pipeline
-    st('loading', 'Initialisation pipeline OCR…', '');
+    st('loading','Initialisation pipeline OCR…','');
     var engine = await paddleocr.PaddleOcrService.createInstance({
       ort: ort,
       detection:   { modelBuffer: detBuf },
@@ -332,40 +455,37 @@ async function initEngine(lang) {
     pct(100);
     CACHE[lang] = engine;
     ENGINE = engine; READY = true;
-    st('ready', 'Moteur ' + (lang==='latin'?'FR/Latin':'EN') + ' prêt — déposez une image', cfg.label);
+    st('ready','Moteur '+(lang==='latin'?'FR/Latin':'EN')+' prêt — déposez une image',cfg.label);
     prog(false);
     if (IMG_EL) document.getElementById('run-btn').disabled = false;
 
   } catch(e) {
-    console.error('[init]', e);
-    st('error', 'Erreur : ' + e.message, 'F12 → Console pour détails');
+    console.error('[init]',e);
+    st('error','Erreur : '+e.message,'F12 → Console pour détails');
     prog(false);
   }
 }
 
-// ── Boot auto ────────────────────────────────────────────────────────────────
 (function(){ initEngine('en'); })();
 
-// ── UI helpers ───────────────────────────────────────────────────────────────
-function st(type, txt, det) {
-  document.getElementById('sdot').className = 'sdot ' + type;
-  document.getElementById('st-txt').textContent = txt;
-  document.getElementById('st-det').textContent = det || '';
+// ── UI helpers ────────────────────────────────────────────────────────────────
+function st(type,txt,det){
+  document.getElementById('sdot').className='sdot '+type;
+  document.getElementById('st-txt').textContent=txt;
+  document.getElementById('st-det').textContent=det||'';
 }
-function prog(on){ document.getElementById('prog').style.display = on ? 'block' : 'none'; }
-function pct(p)  { document.getElementById('pfill').style.width = p + '%'; }
-function esc(s)  { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function prog(on){ document.getElementById('prog').style.display=on?'block':'none'; }
+function pct(p){ document.getElementById('pfill').style.width=p+'%'; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function emptyHTML(t){
   return '<div class="empty"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>'+t+'</span></div>';
 }
-
 function stab(n,el){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
   document.querySelectorAll('.tc').forEach(function(t){t.classList.remove('on');});
   el.classList.add('on');
   document.getElementById('tab-'+n).classList.add('on');
 }
-
 function doDrag(e,type){
   e.preventDefault();
   var dz=document.getElementById('dz');
@@ -386,6 +506,7 @@ function loadImg(file){
       document.getElementById('iw').style.display='flex';
       clrCanvas(); clrResults();
       document.getElementById('stats').style.display='none';
+      updatePreprocPreview();
       if(READY) document.getElementById('run-btn').disabled=false;
     };
     img.src=e.target.result;
@@ -400,6 +521,7 @@ function resetAll(){
   document.getElementById('fi').value='';
   document.getElementById('run-btn').disabled=true;
   document.getElementById('stats').style.display='none';
+  document.getElementById('preproc-preview-wrap').style.display='none';
   clrCanvas(); clrResults();
 }
 function clrCanvas(){ var c=document.getElementById('oc'); c.getContext('2d').clearRect(0,0,c.width,c.height); }
@@ -409,7 +531,7 @@ function clrResults(){
   document.getElementById('fjson').textContent='En attente…';
 }
 
-// ── OCR ──────────────────────────────────────────────────────────────────────
+// ── OCR ───────────────────────────────────────────────────────────────────────
 async function runOCR(){
   if(!READY||!IMG_EL||BUSY) return;
   BUSY=true;
@@ -419,10 +541,8 @@ async function runOCR(){
   st('loading','OCR en cours…',MODELS[CUR_LANG].label);
   prog(true); pct(20);
   try{
-    var cvs=document.getElementById('hidden-canvas');
-    cvs.width=IMG_EL.naturalWidth; cvs.height=IMG_EL.naturalHeight;
-    var ctx=cvs.getContext('2d'); ctx.drawImage(IMG_EL,0,0);
-    var imgData=ctx.getImageData(0,0,cvs.width,cvs.height);
+    // Appliquer le prétraitement (ou image brute si EN)
+    var imgData = applyPreprocessing(IMG_EL);
     pct(40);
     var t0=performance.now();
     var results=await ENGINE.recognize({width:imgData.width,height:imgData.height,data:imgData.data});
@@ -441,7 +561,7 @@ async function runOCR(){
   btn.innerHTML='<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg> Lancer l\'OCR';
 }
 
-// ── Render ───────────────────────────────────────────────────────────────────
+// ── Render ────────────────────────────────────────────────────────────────────
 function renderResults(res,ms){
   if(!res||!res.length){ document.getElementById('rlines').innerHTML=emptyHTML('Aucun texte détecté.'); return; }
   var sum=0,plain='',jarr=[],html='';
@@ -491,7 +611,7 @@ function drawBoxes(res){
   });
 }
 
-// ── Copy / toast ───────────────────────────────────────────────────────────────
+// ── Copy / toast ──────────────────────────────────────────────────────────────
 function copyTxt(){  navigator.clipboard.writeText(document.getElementById('ftxt').textContent).then(function(){toast('✓ Texte copié');}); }
 function copyJSON(){ navigator.clipboard.writeText(document.getElementById('fjson').textContent).then(function(){toast('✓ JSON copié');}); }
 function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');},2000); }
