@@ -4,128 +4,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PaddleOCR — Reconnaissance locale</title>
+<title>PaddleOCR — Reconnaissance locale EN / FR+Latin</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-<!--
-  STACK — ZÉRO OpenCV, ZÉRO dépendance problématique :
-  1. onnxruntime-web UMD → window.ort
-  2. paddleocr UMD      → window.paddleocr (PaddleOcrService)
-  Les modèles .onnx sont fetchés en ArrayBuffer depuis jsDelivr.
-  L'image est convertie en ImageData via un <canvas> caché.
--->
-
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/paddleocr@1.0.7/dist/index.js"></script>
-
 <style>
-:root {
-  --bg: #f5f2eb; --ink: #1a1814; --muted: #7a7166;
-  --border: #d8d2c8; --acc: #c84b2f; --acc2: #2f6bc8;
-  --sur: #ffffff; --sur2: #ede9e1; --grn: #2a7a4b;
-  --fh: 'Space Grotesk', sans-serif; --fm: 'Space Mono', monospace;
-  --r: 6px;
+:root{
+  --bg:#f5f2eb;--ink:#1a1814;--muted:#7a7166;
+  --border:#d8d2c8;--acc:#c84b2f;--acc2:#2f6bc8;
+  --sur:#ffffff;--sur2:#ede9e1;--grn:#2a7a4b;
+  --fh:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;
+  --r:6px;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--fh); background: var(--bg); color: var(--ink); min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100vh;}
 
-.header { border-bottom: 2px solid var(--ink); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 64px; background: var(--bg); position: sticky; top: 0; z-index: 100; }
-.logo { font-family: var(--fm); font-size: 15px; font-weight: 700; letter-spacing: .04em; display: flex; align-items: center; gap: 10px; }
-.logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc); animation: blink 2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-.logo-sub { font-family: var(--fh); font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
-.header-badge { font-family: var(--fm); font-size: 10px; background: var(--ink); color: var(--bg); padding: 4px 10px; border-radius: 2px; letter-spacing: .06em; }
+.header{border-bottom:2px solid var(–ink);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px;background:var(–bg);position:sticky;top:0;z-index:100;}
+.logo{font-family:var(–fm);font-size:15px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:10px;}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(–acc);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.logo-sub{font-family:var(–fh);font-size:11px;font-weight:400;color:var(–muted);letter-spacing:.08em;text-transform:uppercase;}
+.header-badge{font-family:var(–fm);font-size:10px;background:var(–ink);color:var(–bg);padding:4px 10px;border-radius:2px;letter-spacing:.06em;}
 
-.main { max-width: 1200px; margin: 0 auto; padding: 40px 32px 80px; }
+.main{max-width:1200px;margin:0 auto;padding:40px 32px 80px;}
+
+/* Lang selector */
+.lang-bar{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid var(–ink);border-radius:var(–r);background:var(–sur);margin-bottom:20px;flex-wrap:wrap;}
+.lang-lbl{font-family:var(–fm);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);}
+.lang-btns{display:flex;gap:0;border:1.5px solid var(–border);border-radius:var(–r);overflow:hidden;}
+.lang-btn{font-family:var(–fm);font-size:12px;padding:8px 18px;background:none;border:none;cursor:pointer;letter-spacing:.04em;color:var(–muted);transition:all .15s;border-right:1px solid var(–border);}
+.lang-btn:last-child{border-right:none;}
+.lang-btn.on{background:var(–ink);color:var(–bg);}
+.lang-info{font-family:var(–fm);font-size:11px;color:var(–muted);margin-left:auto;}
+.lang-info span{color:var(–ink);font-weight:700;}
 
 /* Status */
-.sbar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--r); background: var(--sur); margin-bottom: 28px; font-size: 13px; font-family: var(--fm); flex-wrap: wrap; }
-.sdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; transition: background .3s; }
-.sdot.loading { background: #e8a020; animation: blink .8s ease-in-out infinite; }
-.sdot.ready { background: var(--grn); } .sdot.error { background: var(--acc); } .sdot.idle { background: var(--border); }
-#st-txt { flex: 1; } #st-det { color: var(--muted); font-size: 11px; }
-.prog-track { width: 100%; height: 2px; background: var(--border); border-radius: 2px; margin-top: 8px; overflow: hidden; display: none; }
-.prog-fill { height: 100%; background: var(--acc); width: 0%; transition: width .35s ease; border-radius: 2px; }
+.sbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(–border);border-radius:var(–r);background:var(–sur);margin-bottom:20px;font-size:13px;font-family:var(–fm);flex-wrap:wrap;}
+.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background .3s;}
+.sdot.loading{background:#e8a020;animation:blink .8s ease-in-out infinite;}
+.sdot.ready{background:var(–grn)}.sdot.error{background:var(–acc)}.sdot.idle{background:var(–border);}
+#st-txt{flex:1;}#st-det{color:var(–muted);font-size:11px;}
+.prog-track{width:100%;height:2px;background:var(–border);border-radius:2px;margin-top:8px;overflow:hidden;display:none;}
+.prog-fill{height:100%;background:var(–acc);width:0%;transition:width .35s ease;border-radius:2px;}
 
 /* Stats */
-.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; border: 2px solid var(--ink); border-radius: var(--r); overflow: hidden; margin-bottom: 20px; }
-@media(max-width:600px){ .stats { grid-template-columns: repeat(2,1fr); } }
-.stat { background: var(--sur); padding: 16px; border-right: 1px solid var(--border); }
-.stat:last-child { border-right: none; }
-.stat-l { font-family: var(--fm); font-size: 9px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
-.stat-v { font-size: 26px; font-weight: 700; }
-.stat-v.a { color: var(--acc); } .stat-v.g { color: var(--grn); }
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:2px solid var(–ink);border-radius:var(–r);overflow:hidden;margin-bottom:20px;}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat{background:var(–sur);padding:16px;border-right:1px solid var(–border);}
+.stat:last-child{border-right:none;}
+.stat-l{font-family:var(–fm);font-size:9px;color:var(–muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.stat-v{font-size:26px;font-weight:700;}
+.stat-v.a{color:var(–acc)}.stat-v.g{color:var(–grn);}
 
 /* Grid */
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border: 2px solid var(--ink); border-radius: var(--r); overflow: hidden; margin-bottom: 20px; }
-@media(max-width:720px){ .grid { grid-template-columns: 1fr; } }
-.panel { background: var(--sur); display: flex; flex-direction: column; }
-.panel + .panel { border-left: 2px solid var(--ink); }
-@media(max-width:720px){ .panel + .panel { border-left: none; border-top: 2px solid var(--ink); } }
-.phead { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 2px solid var(--ink); background: var(--sur2); flex-shrink: 0; }
-.ptitle { font-family: var(--fm); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.pact { font-family: var(--fm); font-size: 10px; color: var(--muted); background: none; border: none; cursor: pointer; letter-spacing: .05em; padding: 0; text-transform: uppercase; transition: color .15s; }
-.pact:hover { color: var(--acc); }
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:2px solid var(–ink);border-radius:var(–r);overflow:hidden;margin-bottom:20px;}
+@media(max-width:720px){.grid{grid-template-columns:1fr;}}
+.panel{background:var(–sur);display:flex;flex-direction:column;}
+.panel+.panel{border-left:2px solid var(–ink);}
+@media(max-width:720px){.panel+.panel{border-left:none;border-top:2px solid var(–ink);}}
+.phead{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:2px solid var(–ink);background:var(–sur2);flex-shrink:0;}
+.ptitle{font-family:var(–fm);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.pact{font-family:var(–fm);font-size:10px;color:var(–muted);background:none;border:none;cursor:pointer;letter-spacing:.05em;padding:0;text-transform:uppercase;transition:color .15s;}
+.pact:hover{color:var(–acc);}
 
-/* Drop zone */
-.dz { flex: 1; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; cursor: pointer; padding: 32px; transition: background .15s; border: 2px dashed transparent; text-align: center; }
-.dz:hover, .dz.drag { background: var(--sur2); border-color: var(--acc); }
-.dz-ico { width: 56px; height: 56px; border: 1.5px solid var(--border); border-radius: var(--r); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all .2s; }
-.dz:hover .dz-ico, .dz.drag .dz-ico { border-color: var(--acc); color: var(--acc); }
-.dz-t { font-size: 15px; font-weight: 600; }
-.dz-s { font-size: 12px; color: var(--muted); line-height: 1.6; font-family: var(--fm); margin-top: 6px; }
-#fi { display: none; }
-#hidden-canvas { display: none; }
+.dz{flex:1;min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;padding:32px;transition:background .15s;border:2px dashed transparent;text-align:center;}
+.dz:hover,.dz.drag{background:var(–sur2);border-color:var(–acc);}
+.dz-ico{width:56px;height:56px;border:1.5px solid var(–border);border-radius:var(–r);display:flex;align-items:center;justify-content:center;color:var(–muted);transition:all .2s;}
+.dz:hover .dz-ico,.dz.drag .dz-ico{border-color:var(–acc);color:var(–acc);}
+.dz-t{font-size:15px;font-weight:600;}
+.dz-s{font-size:12px;color:var(–muted);line-height:1.6;font-family:var(–fm);margin-top:6px;}
+#fi{display:none;}
+#hidden-canvas{display:none;}
 
-/* Image */
-.iw { flex: 1; min-height: 320px; display: none; align-items: center; justify-content: center; background: #0d0d0d; position: relative; overflow: hidden; }
-#prev { max-width: 100%; max-height: 440px; object-fit: contain; display: block; }
-#oc { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.iw{flex:1;min-height:320px;display:none;align-items:center;justify-content:center;background:#0d0d0d;position:relative;overflow:hidden;}
+#prev{max-width:100%;max-height:440px;object-fit:contain;display:block;}
+#oc{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
 
-/* Button */
-.run { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px; background: var(--ink); border: none; color: var(--bg); font-family: var(--fh); font-size: 14px; font-weight: 600; letter-spacing: .06em; cursor: pointer; transition: all .2s; flex-shrink: 0; }
-.run:hover:not(:disabled) { background: var(--acc); }
-.run:disabled { opacity: .35; cursor: not-allowed; }
-.run.busy { background: var(--acc2); }
-.spin { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.25); border-top-color: #fff; border-radius: 50%; animation: sp .7s linear infinite; }
-@keyframes sp { to { transform: rotate(360deg); } }
+.run{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;background:var(–ink);border:none;color:var(–bg);font-family:var(–fh);font-size:14px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.run:hover:not(:disabled){background:var(–acc);}
+.run:disabled{opacity:.35;cursor:not-allowed;}
+.run.busy{background:var(–acc2);}
+.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;}
+@keyframes sp{to{transform:rotate(360deg);}}
 
-/* Tabs */
-.tabs { display: flex; border-bottom: 2px solid var(--ink); }
-.tab { font-family: var(--fm); font-size: 11px; padding: 10px 14px; background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -2px; color: var(--muted); cursor: pointer; letter-spacing: .06em; text-transform: uppercase; transition: all .15s; }
-.tab.on { color: var(--ink); border-bottom-color: var(--acc); }
-.tc { display: none; padding: 16px; flex: 1; overflow-y: auto; max-height: 400px; }
-.tc.on { display: block; }
-.tc::-webkit-scrollbar { width: 4px; } .tc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.tabs{display:flex;border-bottom:2px solid var(–ink);}
+.tab{font-family:var(–fm);font-size:11px;padding:10px 14px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(–muted);cursor:pointer;letter-spacing:.06em;text-transform:uppercase;transition:all .15s;}
+.tab.on{color:var(–ink);border-bottom-color:var(–acc);}
+.tc{display:none;padding:16px;flex:1;overflow-y:auto;max-height:400px;}
+.tc.on{display:block;}
+.tc::-webkit-scrollbar{width:4px}.tc::-webkit-scrollbar-thumb{background:var(–border);border-radius:2px;}
 
-/* Empty */
-.empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 48px; color: var(--muted); font-size: 12px; font-family: var(--fm); text-align: center; min-height: 200px; }
-.empty svg { opacity: .2; }
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:48px;color:var(–muted);font-size:12px;font-family:var(–fm);text-align:center;min-height:200px;}
+.empty svg{opacity:.2;}
 
-/* Lines */
-.llist { display: flex; flex-direction: column; gap: 6px; }
-.litem { display: flex; align-items: flex-start; gap: 10px; border: 1px solid var(--border); border-radius: var(--r); padding: 8px 12px; animation: fu .2s ease both; }
-@keyframes fu { from{opacity:0;transform:translateY(3px)} to{opacity:1;transform:translateY(0)} }
-.ln { font-family: var(--fm); font-size: 9px; color: var(--muted); width: 16px; flex-shrink: 0; padding-top: 3px; text-align: right; }
-.lt { flex: 1; font-size: 13px; line-height: 1.55; word-break: break-word; }
-.lc { flex-shrink: 0; font-family: var(--fm); font-size: 10px; padding: 2px 6px; border-radius: 2px; }
-.chi { background: #e8f5ee; color: var(--grn); }
-.cmi { background: #fef3e2; color: #c07000; }
-.clo { background: #fdecea; color: var(--acc); }
+.llist{display:flex;flex-direction:column;gap:6px;}
+.litem{display:flex;align-items:flex-start;gap:10px;border:1px solid var(–border);border-radius:var(–r);padding:8px 12px;animation:fu .2s ease both;}
+@keyframes fu{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+.ln{font-family:var(–fm);font-size:9px;color:var(–muted);width:16px;flex-shrink:0;padding-top:3px;text-align:right;}
+.lt{flex:1;font-size:13px;line-height:1.55;word-break:break-word;}
+.lc{flex-shrink:0;font-family:var(–fm);font-size:10px;padding:2px 6px;border-radius:2px;}
+.chi{background:#e8f5ee;color:var(–grn)}.cmi{background:#fef3e2;color:#c07000}.clo{background:#fdecea;color:var(–acc);}
 
-/* Text */
-.ftb { font-family: var(--fm); font-size: 12px; line-height: 1.8; white-space: pre-wrap; word-break: break-word; background: var(--sur2); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; min-height: 80px; color: var(--ink); }
-.cbtn { display: inline-flex; align-items: center; gap: 5px; font-family: var(--fm); font-size: 10px; color: var(--muted); background: none; border: 1px solid var(--border); border-radius: 2px; padding: 4px 8px; cursor: pointer; margin-bottom: 10px; letter-spacing: .05em; text-transform: uppercase; transition: all .15s; }
-.cbtn:hover { border-color: var(--ink); color: var(--ink); }
+.ftb{font-family:var(–fm);font-size:12px;line-height:1.8;white-space:pre-wrap;word-break:break-word;background:var(–sur2);border:1px solid var(–border);border-radius:var(–r);padding:14px;min-height:80px;color:var(–ink);}
+.cbtn{display:inline-flex;align-items:center;gap:5px;font-family:var(–fm);font-size:10px;color:var(–muted);background:none;border:1px solid var(–border);border-radius:2px;padding:4px 8px;cursor:pointer;margin-bottom:10px;letter-spacing:.05em;text-transform:uppercase;transition:all .15s;}
+.cbtn:hover{border-color:var(–ink);color:var(–ink);}
 
-/* Note */
-.note { border: 1px solid var(--border); border-left: 3px solid var(--acc2); border-radius: var(--r); padding: 12px 16px; font-size: 12px; font-family: var(--fm); color: var(--muted); line-height: 1.7; }
-.note strong { color: var(--ink); }
+.note{border:1px solid var(–border);border-left:3px solid var(–acc2);border-radius:var(–r);padding:12px 16px;font-size:12px;font-family:var(–fm);color:var(–muted);line-height:1.7;}
+.note strong{color:var(–ink);}
 
-/* Toast */
-.toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--bg); font-family: var(--fm); font-size: 12px; padding: 10px 16px; border-radius: var(--r); transform: translateY(60px); opacity: 0; transition: all .25s; pointer-events: none; z-index: 999; }
-.toast.on { transform: translateY(0); opacity: 1; }
+.toast{position:fixed;bottom:24px;right:24px;background:var(–ink);color:var(–bg);font-family:var(–fm);font-size:12px;padding:10px 16px;border-radius:var(–r);transform:translateY(60px);opacity:0;transition:all .25s;pointer-events:none;z-index:999;}
+.toast.on{transform:translateY(0);opacity:1;}
 </style>
 
 </head>
@@ -143,9 +131,20 @@ body { font-family: var(--fh); background: var(--bg); color: var(--ink); min-hei
 
 <main class="main">
 
+  <div class="lang-bar">
+    <span class="lang-lbl">Langue</span>
+    <div class="lang-btns">
+      <button class="lang-btn on" onclick="selectLang('en',this)">🇬🇧 Anglais</button>
+      <button class="lang-btn" onclick="selectLang('latin',this)">🇫🇷 Français / Latin</button>
+    </div>
+    <span class="lang-info" id="lang-info">
+      Modèle : <span>en_PP-OCRv3 · 97 classes ASCII</span>
+    </span>
+  </div>
+
   <div class="sbar">
-    <div class="sdot loading" id="sdot"></div>
-    <span id="st-txt">Initialisation…</span>
+    <div class="sdot idle" id="sdot"></div>
+    <span id="st-txt">Chargement des modèles EN…</span>
     <span id="st-det"></span>
     <div class="prog-track" id="prog">
       <div class="prog-fill" id="pfill"></div>
@@ -220,9 +219,12 @@ body { font-family: var(--fh); background: var(--bg); color: var(--ink); min-hei
   </div>
 
   <div class="note">
-    <strong>Architecture :</strong> PP-OCRv3 via <strong>paddleocr.js 1.0.7</strong> + onnxruntime-web 1.18.
-    Les modèles ONNX (~12 Mo) sont téléchargés depuis jsDelivr en <strong>ArrayBuffer</strong> puis injectés directement dans ONNX Runtime.
-    L'image est lue via un <strong>Canvas caché</strong> (→ ImageData). <strong>Aucune dépendance OpenCV. Aucune donnée ne quitte votre appareil.</strong>
+    <strong>Architecture :</strong>
+    PP-OCRv3 via <strong>paddleocr.js 1.0.7</strong> + onnxruntime-web 1.18.
+    Modèles ONNX chargés en <strong>ArrayBuffer</strong> via fetch depuis jsDelivr / HuggingFace.
+    Dictionnaires <strong>embarqués inline</strong> dans la page :
+    EN = 96 chars ASCII · FR/Latin = 189 chars incluant <strong>tous les accents français</strong> (à â æ ç é è ê ë î ï ô œ ù û ü ÿ…).
+    <strong>Aucun serveur. Aucune donnée ne quitte l'appareil.</strong>
   </div>
 </main>
 <div class="toast" id="toast"></div>
@@ -230,247 +232,271 @@ body { font-family: var(--fh); background: var(--bg); color: var(--ink); min-hei
 <script>
 'use strict';
 
-// ── Globals ────────────────────────────────────────
-var ENGINE  = null;  // PaddleOcrService initialisé
-var IMG_EL  = null;  // HTMLImageElement courant
-var LAST    = null;  // derniers résultats bruts
-var BUSY    = false;
-var READY   = false;
+// ── Dictionnaires embarqués (source : paddleocr 2.7.0 latin_dict.txt + complétés) ──
+var DICTS = {
+  en: [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","\\","]","^","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","|","}","~",""],
+  latin: [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","]","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","}","\u00a1","\u00a3","\u00a7","\u00aa","\u00ab","\u00ad","\u00b0","\u00b2","\u00b3","\u00b4","\u00b5","\u00b7","\u00ba","\u00bb","\u00bf","\u00c0","\u00c1","\u00c2","\u00c4","\u00c5","\u00c7","\u00c8","\u00c9","\u00ca","\u00cb","\u00cc","\u00cd","\u00ce","\u00cf","\u00d2","\u00d3","\u00d4","\u00d5","\u00d6","\u00da","\u00dc","\u00dd","\u00df","\u00e0","\u00e1","\u00e2","\u00e3","\u00e4","\u00e5","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb","\u00ec","\u00ed","\u00ee","\u00ef","\u00f1","\u00f2","\u00f3","\u00f4","\u00f5","\u00f6","\u00f8","\u00f9","\u00fa","\u00fb","\u00fc","\u00fd","\u0105","\u0106","\u0107","\u010c","\u010d","\u0110","\u0111","\u0119","\u0131","\u0141","\u0142","\u014d","\u0152","\u0153","\u0160","\u0161","\u0178","\u017d","\u017e","\u0292","\u03b2","\u03b4","\u03b5","\u0437","\u1e60","\u2019","\u20ac","\u2122","\u00ff","\u00c6","\u00d9","\u00db"]
+};
 
-var MODEL_BASE = 'https://cdn.jsdelivr.net/npm/paddleocr-browser@1.0.3/dist/';
-var WASM_BASE  = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';
+// ── URLs des modèles ─────────────────────────────────────────────────────────
+var MODELS = {
+  en: {
+    det: 'https://cdn.jsdelivr.net/npm/paddle-ocr-onnx-models@0.2.0/models/en_PP-OCRv3_det_infer.onnx',
+    rec: 'https://cdn.jsdelivr.net/npm/paddle-ocr-onnx-models@0.2.0/models/en_PP-OCRv3_rec_infer.onnx',
+    label: 'en_PP-OCRv3 · 97 classes ASCII'
+  },
+  latin: {
+    // latin_PP-OCRv3 converti ONNX — communauté monkt sur HuggingFace
+    det: 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/detection/v5/det.onnx',
+    rec: 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/languages/latin/rec.onnx',
+    // fallback détecteur EN si HF indisponible
+    det_fb: 'https://cdn.jsdelivr.net/npm/paddle-ocr-onnx-models@0.2.0/models/en_PP-OCRv3_det_infer.onnx',
+    label: 'latin_PP-OCRv3 · 189 classes FR/Latin'
+  }
+};
 
-// ── Boot ───────────────────────────────────────────
-(async function boot() {
+// ── State ────────────────────────────────────────────────────────────────────
+var ENGINE   = null;
+var IMG_EL   = null;
+var LAST     = null;
+var BUSY     = false;
+var READY    = false;
+var CUR_LANG = 'en';
+var CACHE    = {};   // engines déjà initialisés par langue
+
+// ── Sélection langue ─────────────────────────────────────────────────────────
+function selectLang(lang, btn) {
+  if (BUSY) return;
+  CUR_LANG = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  document.getElementById('lang-info').innerHTML =
+    'Modèle\u00a0: <span>' + MODELS[lang].label + '</span>';
+  if (CACHE[lang]) {
+    ENGINE = CACHE[lang]; READY = true;
+    st('ready', 'Moteur ' + (lang==='latin'?'FR/Latin':'EN') + ' prêt — déposez une image', MODELS[lang].label);
+    if (IMG_EL) document.getElementById('run-btn').disabled = false;
+    return;
+  }
+  READY = false; ENGINE = null;
+  document.getElementById('run-btn').disabled = true;
+  initEngine(lang);
+}
+
+// ── Init engine ──────────────────────────────────────────────────────────────
+async function initEngine(lang) {
   try {
-    // 1. Configurer ONNX Runtime WASM
     st('loading', 'Configuration ONNX Runtime…', '');
-    prog(true); pct(10);
-    ort.env.wasm.wasmPaths = WASM_BASE;
+    prog(true); pct(5);
+    ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';
     ort.env.wasm.numThreads = 1;
 
-    // 2. Vérifier que paddleocr.js est chargé (UMD → window.paddleocr)
     if (typeof paddleocr === 'undefined' || !paddleocr.PaddleOcrService)
       throw new Error('paddleocr.js non chargé — vérifiez la connexion');
 
-    // 3. Fetch modèles en ArrayBuffer (parallèle)
-    st('loading', 'Téléchargement modèles ONNX…', '~12 Mo · mis en cache ensuite');
-    pct(25);
+    var cfg = MODELS[lang];
 
-    var [detBuf, recBuf, dicTxt] = await Promise.all([
-      fetch(MODEL_BASE + 'ppocr_det.onnx').then(function(r){ if(!r.ok) throw new Error('det HTTP '+r.status); pct(50); return r.arrayBuffer(); }),
-      fetch(MODEL_BASE + 'ppocr_rec.onnx').then(function(r){ if(!r.ok) throw new Error('rec HTTP '+r.status); return r.arrayBuffer(); }),
-      fetch(MODEL_BASE + 'ppocr_keys_v1.txt').then(function(r){ if(!r.ok) throw new Error('dic HTTP '+r.status); return r.text(); })
-    ]);
-    pct(70);
+    // Détecteur avec fallback
+    st('loading', 'Chargement modèle détection…', cfg.label);
+    pct(15);
+    var detBuf;
+    try {
+      var r1 = await fetch(cfg.det);
+      if (!r1.ok) throw new Error('HTTP ' + r1.status);
+      detBuf = await r1.arrayBuffer();
+    } catch(e1) {
+      if (lang === 'latin' && cfg.det_fb) {
+        st('loading', 'Fallback : détecteur EN…', '');
+        var r1b = await fetch(cfg.det_fb);
+        if (!r1b.ok) throw new Error('det fallback ' + r1b.status);
+        detBuf = await r1b.arrayBuffer();
+      } else throw e1;
+    }
+    pct(50);
 
-    // 4. Parser le dictionnaire (une ligne = un caractère)
-    var dic = dicTxt.split('\n').map(function(l){ return l.trim(); }).filter(Boolean);
+    // Reconnaissance
+    st('loading', 'Chargement modèle reconnaissance…', cfg.label);
+    var r2 = await fetch(cfg.rec);
+    if (!r2.ok) throw new Error('rec HTTP ' + r2.status);
+    var recBuf = await r2.arrayBuffer();
+    pct(80);
 
-    // 5. Créer le service PaddleOCR
+    // Init pipeline
     st('loading', 'Initialisation pipeline OCR…', '');
-    pct(85);
-
-    ENGINE = await paddleocr.PaddleOcrService.createInstance({
+    var engine = await paddleocr.PaddleOcrService.createInstance({
       ort: ort,
-      detection: {
-        modelBuffer: detBuf
-      },
-      recognition: {
-        modelBuffer: recBuf,
-        charactersDictionary: dic
-      }
+      detection:   { modelBuffer: detBuf },
+      recognition: { modelBuffer: recBuf, charactersDictionary: DICTS[lang] }
     });
 
-    pct(100); READY = true;
-    st('ready', 'Moteur prêt — déposez une image', 'PP-OCRv3 · paddleocr.js 1.0.7');
+    pct(100);
+    CACHE[lang] = engine;
+    ENGINE = engine; READY = true;
+    st('ready', 'Moteur ' + (lang==='latin'?'FR/Latin':'EN') + ' prêt — déposez une image', cfg.label);
     prog(false);
     if (IMG_EL) document.getElementById('run-btn').disabled = false;
 
   } catch(e) {
-    console.error('[boot]', e);
-    st('error', 'Échec : ' + e.message, 'F12 → Console pour détails');
+    console.error('[init]', e);
+    st('error', 'Erreur : ' + e.message, 'F12 → Console pour détails');
     prog(false);
   }
-})();
+}
 
-// ── UI helpers ─────────────────────────────────────
+// ── Boot auto ────────────────────────────────────────────────────────────────
+(function(){ initEngine('en'); })();
+
+// ── UI helpers ───────────────────────────────────────────────────────────────
 function st(type, txt, det) {
   document.getElementById('sdot').className = 'sdot ' + type;
   document.getElementById('st-txt').textContent = txt;
   document.getElementById('st-det').textContent = det || '';
 }
-function prog(on) { document.getElementById('prog').style.display = on ? 'block' : 'none'; }
-function pct(p)   { document.getElementById('pfill').style.width = p + '%'; }
-function esc(s)   { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function emptyHTML(t) {
-  return '<div class="empty"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>' + t + '</span></div>';
+function prog(on){ document.getElementById('prog').style.display = on ? 'block' : 'none'; }
+function pct(p)  { document.getElementById('pfill').style.width = p + '%'; }
+function esc(s)  { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function emptyHTML(t){
+  return '<div class="empty"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>'+t+'</span></div>';
 }
 
-// ── Tabs ───────────────────────────────────────────
-function stab(n, el) {
+function stab(n,el){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
   document.querySelectorAll('.tc').forEach(function(t){t.classList.remove('on');});
   el.classList.add('on');
-  document.getElementById('tab-' + n).classList.add('on');
+  document.getElementById('tab-'+n).classList.add('on');
 }
 
-// ── Drag & drop ────────────────────────────────────
-function doDrag(e, type) {
+function doDrag(e,type){
   e.preventDefault();
-  var dz = document.getElementById('dz');
-  if (type === 'over') dz.classList.add('drag');
-  else if (type === 'leave') dz.classList.remove('drag');
-  else { dz.classList.remove('drag'); var f = e.dataTransfer.files[0]; if (f) loadImg(f); }
+  var dz=document.getElementById('dz');
+  if(type==='over') dz.classList.add('drag');
+  else if(type==='leave') dz.classList.remove('drag');
+  else{ dz.classList.remove('drag'); var f=e.dataTransfer.files[0]; if(f) loadImg(f); }
 }
-function onFile(e) { var f = e.target.files[0]; if (f) loadImg(f); }
+function onFile(e){ var f=e.target.files[0]; if(f) loadImg(f); }
 
-function loadImg(file) {
-  var rd = new FileReader();
-  rd.onload = function(e) {
-    var img = new Image();
-    img.onload = function() {
-      IMG_EL = img;
-      document.getElementById('prev').src = e.target.result;
-      document.getElementById('dz').style.display = 'none';
-      document.getElementById('iw').style.display = 'flex';
+function loadImg(file){
+  var rd=new FileReader();
+  rd.onload=function(e){
+    var img=new Image();
+    img.onload=function(){
+      IMG_EL=img;
+      document.getElementById('prev').src=e.target.result;
+      document.getElementById('dz').style.display='none';
+      document.getElementById('iw').style.display='flex';
       clrCanvas(); clrResults();
-      document.getElementById('stats').style.display = 'none';
-      if (READY) document.getElementById('run-btn').disabled = false;
+      document.getElementById('stats').style.display='none';
+      if(READY) document.getElementById('run-btn').disabled=false;
     };
-    img.src = e.target.result;
+    img.src=e.target.result;
   };
   rd.readAsDataURL(file);
 }
 
-function resetAll() {
-  IMG_EL = null; LAST = null;
-  document.getElementById('dz').style.display = 'flex';
-  document.getElementById('iw').style.display = 'none';
-  document.getElementById('fi').value = '';
-  document.getElementById('run-btn').disabled = true;
-  document.getElementById('stats').style.display = 'none';
+function resetAll(){
+  IMG_EL=null; LAST=null;
+  document.getElementById('dz').style.display='flex';
+  document.getElementById('iw').style.display='none';
+  document.getElementById('fi').value='';
+  document.getElementById('run-btn').disabled=true;
+  document.getElementById('stats').style.display='none';
   clrCanvas(); clrResults();
 }
-function clrCanvas() { var c=document.getElementById('oc'); c.getContext('2d').clearRect(0,0,c.width,c.height); }
-function clrResults() {
-  document.getElementById('rlines').innerHTML = emptyHTML('Les lignes de texte apparaîtront ici');
-  document.getElementById('ftxt').textContent = 'En attente…';
-  document.getElementById('fjson').textContent = 'En attente…';
+function clrCanvas(){ var c=document.getElementById('oc'); c.getContext('2d').clearRect(0,0,c.width,c.height); }
+function clrResults(){
+  document.getElementById('rlines').innerHTML=emptyHTML('Les lignes de texte apparaîtront ici');
+  document.getElementById('ftxt').textContent='En attente…';
+  document.getElementById('fjson').textContent='En attente…';
 }
 
-// ── OCR ────────────────────────────────────────────
-async function runOCR() {
-  if (!READY || !IMG_EL || BUSY) return;
-  BUSY = true;
-  var btn = document.getElementById('run-btn');
-  btn.disabled = true; btn.classList.add('busy');
-  btn.innerHTML = '<div class="spin"></div> Reconnaissance en cours…';
-  st('loading', 'OCR en cours…', 'détection + reconnaissance');
+// ── OCR ──────────────────────────────────────────────────────────────────────
+async function runOCR(){
+  if(!READY||!IMG_EL||BUSY) return;
+  BUSY=true;
+  var btn=document.getElementById('run-btn');
+  btn.disabled=true; btn.classList.add('busy');
+  btn.innerHTML='<div class="spin"></div> Reconnaissance en cours…';
+  st('loading','OCR en cours…',MODELS[CUR_LANG].label);
   prog(true); pct(20);
-
-  try {
-    // Convertir l'image en ImageData via canvas caché
-    var cvs = document.getElementById('hidden-canvas');
-    cvs.width  = IMG_EL.naturalWidth;
-    cvs.height = IMG_EL.naturalHeight;
-    var ctx = cvs.getContext('2d');
-    ctx.drawImage(IMG_EL, 0, 0);
-    var imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);
-
+  try{
+    var cvs=document.getElementById('hidden-canvas');
+    cvs.width=IMG_EL.naturalWidth; cvs.height=IMG_EL.naturalHeight;
+    var ctx=cvs.getContext('2d'); ctx.drawImage(IMG_EL,0,0);
+    var imgData=ctx.getImageData(0,0,cvs.width,cvs.height);
     pct(40);
-    var t0 = performance.now();
-
-    // API paddleocr.js : recognize({width, height, data})
-    var results = await ENGINE.recognize({
-      width:  imgData.width,
-      height: imgData.height,
-      data:   imgData.data
-    });
-
-    var ms = Math.round(performance.now() - t0);
-    pct(100); LAST = results;
-    renderResults(results, ms);
+    var t0=performance.now();
+    var results=await ENGINE.recognize({width:imgData.width,height:imgData.height,data:imgData.data});
+    var ms=Math.round(performance.now()-t0);
+    pct(100); LAST=results;
+    renderResults(results,ms);
     drawBoxes(results);
-    st('ready', results.length + ' ligne(s) détectée(s)', ms + ' ms · PP-OCRv3');
-
-  } catch(e) {
-    console.error('[OCR]', e);
-    st('error', 'Erreur : ' + e.message, 'F12 → Console');
-    document.getElementById('rlines').innerHTML = emptyHTML('❌ ' + esc(e.message));
+    st('ready',results.length+' ligne(s) · '+ms+' ms',MODELS[CUR_LANG].label);
+  }catch(e){
+    console.error('[OCR]',e);
+    st('error','Erreur OCR : '+e.message,'F12 → Console');
+    document.getElementById('rlines').innerHTML=emptyHTML('❌ '+esc(e.message));
   }
-
-  BUSY = false; prog(false);
-  btn.disabled = false; btn.classList.remove('busy');
-  btn.innerHTML = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg> Lancer l\'OCR';
+  BUSY=false; prog(false);
+  btn.disabled=false; btn.classList.remove('busy');
+  btn.innerHTML='<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg> Lancer l\'OCR';
 }
 
-// ── Render ─────────────────────────────────────────
-function renderResults(res, ms) {
-  if (!res || !res.length) {
-    document.getElementById('rlines').innerHTML = emptyHTML('Aucun texte détecté.');
-    return;
-  }
-  var sum=0, plain='', jarr=[], html='';
-  res.forEach(function(r, i) {
-    // Format paddleocr.js : {text, confidence, box:{x,y,width,height}}
-    var txt  = r.text || '';
-    var conf = r.confidence || 0;
-    sum += conf; plain += txt + '\n';
-    jarr.push({ n: i+1, text: txt, confidence: +conf.toFixed(4), bbox: r.box });
-    var cls = conf >= .85 ? 'chi' : conf >= .6 ? 'cmi' : 'clo';
-    html += '<div class="litem" style="animation-delay:' + (i*25) + 'ms">'
-          + '<span class="ln">' + (i+1) + '</span>'
-          + '<span class="lt">' + esc(txt) + '</span>'
-          + '<span class="lc ' + cls + '">' + Math.round(conf*100) + '%</span>'
-          + '</div>';
+// ── Render ───────────────────────────────────────────────────────────────────
+function renderResults(res,ms){
+  if(!res||!res.length){ document.getElementById('rlines').innerHTML=emptyHTML('Aucun texte détecté.'); return; }
+  var sum=0,plain='',jarr=[],html='';
+  res.forEach(function(r,i){
+    var txt=r.text||''; var conf=r.confidence||0;
+    sum+=conf; plain+=txt+'\n';
+    jarr.push({n:i+1,text:txt,confidence:+conf.toFixed(4),bbox:r.box});
+    var cls=conf>=.85?'chi':conf>=.6?'cmi':'clo';
+    html+='<div class="litem" style="animation-delay:'+(i*25)+'ms">'
+        +'<span class="ln">'+(i+1)+'</span>'
+        +'<span class="lt">'+esc(txt)+'</span>'
+        +'<span class="lc '+cls+'">'+Math.round(conf*100)+'%</span></div>';
   });
-  document.getElementById('rlines').innerHTML = '<div class="llist">' + html + '</div>';
-  document.getElementById('ftxt').textContent = plain.trim();
-  document.getElementById('fjson').textContent = JSON.stringify(jarr, null, 2);
-  var wc = plain.trim().split(/\s+/).filter(Boolean).length;
-  document.getElementById('sv-l').textContent = res.length;
-  document.getElementById('sv-c').textContent = (sum/res.length*100).toFixed(1) + '%';
-  document.getElementById('sv-t').textContent = ms + ' ms';
-  document.getElementById('sv-w').textContent = wc;
-  document.getElementById('stats').style.display = 'grid';
+  document.getElementById('rlines').innerHTML='<div class="llist">'+html+'</div>';
+  document.getElementById('ftxt').textContent=plain.trim();
+  document.getElementById('fjson').textContent=JSON.stringify(jarr,null,2);
+  var wc=plain.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('sv-l').textContent=res.length;
+  document.getElementById('sv-c').textContent=(sum/res.length*100).toFixed(1)+'%';
+  document.getElementById('sv-t').textContent=ms+' ms';
+  document.getElementById('sv-w').textContent=wc;
+  document.getElementById('stats').style.display='grid';
 }
 
-// ── Bounding boxes ─────────────────────────────────
-function drawBoxes(res) {
-  if (!res || !res.length) return;
-  var imgDom = document.getElementById('prev');
-  var canvas = document.getElementById('oc');
-  var wrap   = document.getElementById('iw');
-  var wr = wrap.getBoundingClientRect();
-  var ir = imgDom.getBoundingClientRect();
-  canvas.width = wr.width; canvas.height = wr.height;
-  var sx = ir.width / imgDom.naturalWidth;
-  var sy = ir.height / imgDom.naturalHeight;
-  var ox = ir.left - wr.left, oy = ir.top - wr.top;
-  var ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  res.forEach(function(r, i) {
-    var b = r.box; // {x, y, width, height}
-    if (!b) return;
-    var conf = r.confidence || 0;
-    var col = conf >= .85 ? '#2a7a4b' : conf >= .6 ? '#c07000' : '#c84b2f';
-    ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.globalAlpha = .85;
-    ctx.strokeRect(b.x*sx+ox, b.y*sy+oy, b.width*sx, b.height*sy);
-    ctx.fillStyle = col; ctx.globalAlpha = .06;
-    ctx.fillRect(b.x*sx+ox, b.y*sy+oy, b.width*sx, b.height*sy);
-    ctx.globalAlpha = 1; ctx.fillStyle = col; ctx.font = 'bold 9px monospace';
-    ctx.fillText(i+1, b.x*sx+ox+2, b.y*sy+oy-3);
+// ── Bounding boxes ────────────────────────────────────────────────────────────
+function drawBoxes(res){
+  if(!res||!res.length) return;
+  var imgDom=document.getElementById('prev');
+  var canvas=document.getElementById('oc');
+  var wrap=document.getElementById('iw');
+  var wr=wrap.getBoundingClientRect(),ir=imgDom.getBoundingClientRect();
+  canvas.width=wr.width; canvas.height=wr.height;
+  var sx=ir.width/imgDom.naturalWidth,sy=ir.height/imgDom.naturalHeight;
+  var ox=ir.left-wr.left,oy=ir.top-wr.top;
+  var ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  res.forEach(function(r,i){
+    var b=r.box; if(!b) return;
+    var conf=r.confidence||0;
+    var col=conf>=.85?'#2a7a4b':conf>=.6?'#c07000':'#c84b2f';
+    ctx.strokeStyle=col; ctx.lineWidth=1.5; ctx.globalAlpha=.85;
+    ctx.strokeRect(b.x*sx+ox,b.y*sy+oy,b.width*sx,b.height*sy);
+    ctx.fillStyle=col; ctx.globalAlpha=.06;
+    ctx.fillRect(b.x*sx+ox,b.y*sy+oy,b.width*sx,b.height*sy);
+    ctx.globalAlpha=1; ctx.fillStyle=col; ctx.font='bold 9px monospace';
+    ctx.fillText(i+1,b.x*sx+ox+2,b.y*sy+oy-3);
   });
 }
 
-// ── Copy / toast ───────────────────────────────────
-function copyTxt()  { navigator.clipboard.writeText(document.getElementById('ftxt').textContent).then(function(){toast('✓ Texte copié');}); }
-function copyJSON() { navigator.clipboard.writeText(document.getElementById('fjson').textContent).then(function(){toast('✓ JSON copié');}); }
-function toast(msg) { var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');},2000); }
+// ── Copy / toast ───────────────────────────────────────────────────────────────
+function copyTxt(){  navigator.clipboard.writeText(document.getElementById('ftxt').textContent).then(function(){toast('✓ Texte copié');}); }
+function copyJSON(){ navigator.clipboard.writeText(document.getElementById('fjson').textContent).then(function(){toast('✓ JSON copié');}); }
+function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');},2000); }
 
-window.addEventListener('resize', function(){ if (LAST) drawBoxes(LAST); });
+window.addEventListener('resize',function(){ if(LAST) drawBoxes(LAST); });
 </script>
 
 </body>
