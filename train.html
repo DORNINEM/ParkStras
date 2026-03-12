@@ -3,1221 +3,646 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrainTrack — Suivi SNCF temps réel</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TrainTrack SNCF</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/protobufjs/7.2.5/protobuf.min.js"></script>
 <style>
-  :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --card: #1a2235;
-    --border: #2a3a55;
-    --accent: #f97316;
-    --accent2: #3b82f6;
-    --accent3: #10b981;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --danger: #ef4444;
-    --rail: #f97316;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-background: var(–bg);
-color: var(–text);
-font-family: ‘Syne’, sans-serif;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
+:root {
+–bg: #0d1117;
+–surface: #161b22;
+–card: #1c2333;
+–border: #30363d;
+–accent: #f97316;
+–accent-dim: rgba(249,115,22,0.15);
+–green: #3fb950;
+–red: #f85149;
+–yellow: #d29922;
+–text: #e6edf3;
+–muted: #7d8590;
+–panel-bg: rgba(13,17,23,0.97);
+–radius: 18px;
 }
 
-header {
-background: var(–surface);
-border-bottom: 1px solid var(–border);
-padding: 0 24px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: 60px;
-flex-shrink: 0;
-}
-
-.logo {
-display: flex;
-align-items: center;
-gap: 10px;
-font-size: 20px;
-font-weight: 800;
-letter-spacing: -0.5px;
-}
-
-.logo-icon {
-width: 32px;
-height: 32px;
-background: var(–accent);
-border-radius: 6px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 18px;
-}
-
-.logo span { color: var(–accent); }
-
-.source-badge {
-font-family: ‘Space Mono’, monospace;
-font-size: 10px;
-color: var(–muted);
-background: var(–card);
-border: 1px solid var(–border);
-padding: 4px 10px;
-border-radius: 20px;
-}
-
-.main-layout {
-display: grid;
-grid-template-columns: 360px 1fr;
-flex: 1;
-overflow: hidden;
-height: calc(100vh - 60px);
-}
-
-/* SIDEBAR */
-.sidebar {
-background: var(–surface);
-border-right: 1px solid var(–border);
-display: flex;
-flex-direction: column;
-overflow: hidden;
-}
-
-.search-area {
-padding: 20px;
-border-bottom: 1px solid var(–border);
-flex-shrink: 0;
-}
-
-.search-label {
-font-size: 11px;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 1.5px;
-color: var(–muted);
-margin-bottom: 10px;
-}
-
-.search-row {
-display: flex;
-gap: 8px;
-align-items: stretch;
-}
-
-.train-input {
-flex: 1;
-background: var(–card);
-border: 1.5px solid var(–border);
-border-radius: 8px;
-color: var(–text);
-font-family: ‘Space Mono’, monospace;
-font-size: 22px;
-font-weight: 700;
-padding: 10px 14px;
-letter-spacing: 3px;
-text-transform: uppercase;
-transition: border-color 0.2s;
-outline: none;
-}
-
-.train-input:focus { border-color: var(–accent); }
-.train-input::placeholder { color: var(–muted); font-size: 16px; letter-spacing: 1px; }
-
-.btn-search {
-background: var(–accent);
-color: #fff;
-border: none;
-border-radius: 8px;
-padding: 0 18px;
-font-family: ‘Syne’, sans-serif;
-font-size: 14px;
-font-weight: 700;
-cursor: pointer;
-transition: all 0.15s;
-white-space: nowrap;
-}
-.btn-search:hover { background: #ea6b0f; transform: translateY(-1px); }
-.btn-search:active { transform: translateY(0); }
-.btn-search:disabled { background: var(–muted); cursor: not-allowed; transform: none; }
-
-.examples {
-margin-top: 10px;
-display: flex;
-gap: 6px;
-flex-wrap: wrap;
-}
-
-.ex-chip {
-font-family: ‘Space Mono’, monospace;
-font-size: 11px;
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: 4px;
-padding: 3px 8px;
-cursor: pointer;
-color: var(–muted);
-transition: all 0.15s;
-}
-.ex-chip:hover { border-color: var(–accent); color: var(–accent); }
-
-/* STATUS PANEL */
-.status-panel {
-flex: 1;
-overflow-y: auto;
-padding: 20px;
-display: flex;
-flex-direction: column;
-gap: 16px;
-}
-
-.placeholder-msg {
-text-align: center;
-padding: 40px 20px;
-color: var(–muted);
-}
-
-.placeholder-msg .big-icon { font-size: 48px; margin-bottom: 16px; }
-.placeholder-msg p { font-size: 13px; line-height: 1.6; }
-
-/* Train status card */
-.train-card {
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: 12px;
-overflow: hidden;
-}
-
-.train-header {
-padding: 16px;
-border-bottom: 1px solid var(–border);
-display: flex;
-align-items: center;
-gap: 14px;
-}
-
-.train-number-badge {
-background: var(–accent);
-color: white;
-font-family: ‘Space Mono’, monospace;
-font-size: 18px;
-font-weight: 700;
-padding: 8px 14px;
-border-radius: 8px;
-letter-spacing: 2px;
-}
-
-.train-meta { flex: 1; }
-.train-name { font-size: 15px; font-weight: 600; }
-.train-type { font-size: 11px; color: var(–muted); margin-top: 2px; font-family: ‘Space Mono’, monospace; }
-
-.status-dot {
-width: 10px;
-height: 10px;
-border-radius: 50%;
-background: var(–accent3);
-box-shadow: 0 0 8px var(–accent3);
-animation: pulse 2s infinite;
-}
-.status-dot.late { background: var(–danger); box-shadow: 0 0 8px var(–danger); }
-.status-dot.offline { background: var(–muted); box-shadow: none; animation: none; }
-
-@keyframes pulse {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.4; }
-}
-
-/* Journey timeline */
-.journey-section { padding: 16px; }
-.section-title {
-font-size: 10px;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 1.5px;
-color: var(–muted);
-margin-bottom: 14px;
-}
-
-.stop-list { display: flex; flex-direction: column; }
-
-.stop-item {
-display: grid;
-grid-template-columns: 16px 1fr auto;
-gap: 10px;
-align-items: start;
-position: relative;
-padding-bottom: 14px;
-}
-
-.stop-item:last-child { padding-bottom: 0; }
-
-.stop-line {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 0;
-position: relative;
-}
-
-.stop-dot {
-width: 10px;
-height: 10px;
-border-radius: 50%;
-background: var(–border);
-border: 2px solid var(–muted);
-flex-shrink: 0;
-z-index: 1;
-margin-top: 3px;
-}
-
-.stop-dot.passed { background: var(–muted); border-color: var(–muted); }
-.stop-dot.current { background: var(–accent); border-color: var(–accent); box-shadow: 0 0 8px var(–accent); width: 13px; height: 13px; margin-top: 1px; }
-.stop-dot.future { background: var(–bg); border-color: var(–border); }
-
-.stop-connector {
-width: 2px;
-background: var(–border);
-flex: 1;
-min-height: 20px;
-}
-.stop-connector.passed { background: var(–muted); }
-.stop-connector.current { background: linear-gradient(var(–muted), var(–border)); }
-
-.stop-name {
-font-size: 13px;
-font-weight: 500;
-padding-top: 1px;
-}
-
-.stop-name.passed { color: var(–muted); }
-.stop-name.current { color: var(–accent); font-weight: 700; }
-
-.stop-time {
-font-family: ‘Space Mono’, monospace;
-font-size: 11px;
-color: var(–muted);
-padding-top: 2px;
-text-align: right;
-}
-
-.stop-delay {
-font-family: ‘Space Mono’, monospace;
-font-size: 10px;
-color: var(–danger);
-}
-
-/* Info cards */
-.info-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 10px;
-padding: 0 16px 16px;
-}
-
-.info-box {
-background: var(–bg);
-border: 1px solid var(–border);
-border-radius: 8px;
-padding: 12px;
-}
-
-.info-box-label {
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: var(–muted);
-margin-bottom: 4px;
-}
-
-.info-box-value {
-font-family: ‘Space Mono’, monospace;
-font-size: 14px;
-font-weight: 700;
-color: var(–text);
-}
-
-.info-box-value.ok { color: var(–accent3); }
-.info-box-value.warn { color: var(–accent); }
-.info-box-value.danger { color: var(–danger); }
-
-/* Loading */
-.loading-state {
-text-align: center;
-padding: 40px 20px;
-color: var(–muted);
-}
-
-.spinner {
-width: 36px;
-height: 36px;
-border: 3px solid var(–border);
-border-top-color: var(–accent);
-border-radius: 50%;
-animation: spin 0.8s linear infinite;
-margin: 0 auto 16px;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Error */
-.error-state {
-background: rgba(239,68,68,0.1);
-border: 1px solid rgba(239,68,68,0.3);
-border-radius: 10px;
-padding: 16px;
-font-size: 13px;
-line-height: 1.6;
-color: #fca5a5;
-}
+html, body { height: 100%; overflow: hidden; font-family: ‘Syne’, sans-serif; background: var(–bg); color: var(–text); }
 
 /* MAP */
-#map {
-height: 100%;
-background: #0d1320;
+#map { position: fixed; inset: 0; z-index: 0; }
+.leaflet-tile { filter: brightness(0.55) saturate(0.6); }
+.leaflet-control-zoom a {
+background: var(–surface) !important; color: var(–text) !important;
+border-color: var(–border) !important;
 }
 
-/* Leaflet overrides for dark theme */
-.leaflet-container { background: #0d1320; }
-.leaflet-tile { filter: brightness(0.7) saturate(0.8) hue-rotate(10deg); }
-
-/* Custom train marker */
-.train-marker {
-background: var(–accent);
-border: 3px solid white;
-border-radius: 50%;
-width: 20px;
-height: 20px;
-box-shadow: 0 0 15px var(–accent);
+/* TOPBAR */
+.topbar {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+padding: 12px 14px 0;
+pointer-events: none;
 }
-
-.stop-marker {
-background: #1a2235;
-border: 2px solid #64748b;
-border-radius: 50%;
-width: 10px;
-height: 10px;
-}
-
-.stop-marker.terminus {
-background: var(–accent);
-border-color: var(–accent);
-width: 14px;
-height: 14px;
-}
-
-.update-bar {
-padding: 10px 20px;
-border-top: 1px solid var(–border);
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-shrink: 0;
+.search-pill {
+display: flex; align-items: center; gap: 8px;
 background: var(–surface);
-}
-
-.update-info {
-font-family: ‘Space Mono’, monospace;
-font-size: 10px;
-color: var(–muted);
-}
-
-.btn-refresh {
-background: transparent;
 border: 1px solid var(–border);
+border-radius: 50px;
+padding: 8px 8px 8px 16px;
+box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+pointer-events: all;
+}
+.pill-icon { font-size: 20px; flex-shrink: 0; }
+.train-input {
+flex: 1; min-width: 0;
+background: transparent; border: none; outline: none;
 color: var(–text);
-border-radius: 6px;
-padding: 5px 12px;
 font-family: ‘Space Mono’, monospace;
-font-size: 11px;
-cursor: pointer;
-transition: all 0.15s;
+font-size: 22px; font-weight: 700; letter-spacing: 3px;
 }
-.btn-refresh:hover { border-color: var(–accent); color: var(–accent); }
-
-.info-note {
-background: rgba(59,130,246,0.1);
-border: 1px solid rgba(59,130,246,0.3);
-border-radius: 8px;
-padding: 12px;
-font-size: 11px;
-color: #93c5fd;
-line-height: 1.6;
+.train-input::placeholder { color: var(–muted); font-size: 14px; letter-spacing: 1px; }
+.btn-go {
+background: var(–accent); color: white; border: none;
+border-radius: 40px; padding: 10px 22px;
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 14px;
+cursor: pointer; flex-shrink: 0; transition: opacity .15s;
 }
+.btn-go:active { opacity: .75; }
+.btn-go:disabled { opacity: .4; }
 
-/* Leaflet popup override */
+.chips-bar {
+display: flex; gap: 6px; padding: 8px 0 0;
+overflow-x: auto; pointer-events: all;
+}
+.chips-bar::-webkit-scrollbar { display: none; }
+.chip {
+font-family: ‘Space Mono’, monospace; font-size: 11px;
+background: var(–surface); border: 1px solid var(–border);
+border-radius: 20px; padding: 5px 12px;
+white-space: nowrap; cursor: pointer; color: var(–muted); flex-shrink: 0;
+}
+.chip:active { border-color: var(–accent); color: var(–accent); }
+
+/* MARKERS */
+.train-pin {
+width: 28px; height: 28px;
+background: var(–accent); border: 3px solid white; border-radius: 50%;
+box-shadow: 0 0 0 4px rgba(249,115,22,.3), 0 4px 12px rgba(0,0,0,.5);
+animation: tpulse 2s ease-in-out infinite;
+}
+@keyframes tpulse {
+0%,100% { box-shadow: 0 0 0 4px rgba(249,115,22,.3), 0 4px 12px rgba(0,0,0,.5); }
+50%      { box-shadow: 0 0 0 10px rgba(249,115,22,.08), 0 4px 12px rgba(0,0,0,.5); }
+}
+.stop-dot-map {
+width: 10px; height: 10px;
+background: var(–surface); border: 2px solid var(–muted); border-radius: 50%;
+}
+.stop-dot-map.terminus { width: 14px; height: 14px; border-color: var(–accent); background: var(–accent-dim); }
+.stop-dot-map.passed { opacity: .3; }
+
+/* PANEL */
+.panel {
+position: fixed; left: 0; right: 0; bottom: 0; z-index: 200;
+background: var(–panel-bg);
+border-radius: var(–radius) var(–radius) 0 0;
+border-top: 1px solid var(–border);
+box-shadow: 0 -8px 40px rgba(0,0,0,.7);
+display: flex; flex-direction: column;
+max-height: 88vh;
+transform: translateY(calc(100% - 88px));
+transition: transform .35s cubic-bezier(.4,0,.2,1);
+padding-bottom: env(safe-area-inset-bottom, 0);
+touch-action: none; will-change: transform;
+}
+.panel.expanded { transform: translateY(0); }
+.panel.peek     { transform: translateY(calc(100% - 88px)); }
+
+.handle-zone {
+padding: 10px 0 4px; display: flex; flex-direction: column;
+align-items: center; cursor: grab; flex-shrink: 0; user-select: none;
+}
+.handle-bar { width: 40px; height: 4px; background: var(–border); border-radius: 2px; }
+
+/* PEEK ROW */
+.peek-row {
+display: flex; align-items: center; gap: 12px;
+padding: 4px 18px 14px; flex-shrink: 0; cursor: pointer;
+}
+.badge-num {
+background: var(–accent); color: white;
+font-family: ‘Space Mono’, monospace; font-size: 15px; font-weight: 700;
+padding: 7px 13px; border-radius: 8px; letter-spacing: 2px; flex-shrink: 0;
+}
+.peek-info { flex: 1; min-width: 0; }
+.peek-route { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.peek-status { font-size: 11px; color: var(–muted); margin-top: 2px; }
+.delay-chip {
+font-family: ‘Space Mono’, monospace; font-size: 12px; font-weight: 700;
+padding: 5px 11px; border-radius: 20px; flex-shrink: 0;
+}
+.delay-chip.ok     { background: rgba(63,185,80,.15); color: var(–green); }
+.delay-chip.warn   { background: rgba(210,153,34,.15); color: var(–yellow); }
+.delay-chip.danger { background: rgba(248,81,73,.15); color: var(–red); }
+
+/* SCROLL */
+.panel-scroll {
+flex: 1; overflow-y: auto; overscroll-behavior: contain;
+-webkit-overflow-scrolling: touch;
+}
+.panel-scroll::-webkit-scrollbar { display: none; }
+
+.section { padding: 0 18px 24px; }
+.sec-label {
+font-size: 10px; font-weight: 600; text-transform: uppercase;
+letter-spacing: 1.5px; color: var(–muted);
+padding: 16px 0 10px;
+border-top: 1px solid var(–border);
+}
+.sec-label:first-child { border-top: none; padding-top: 4px; }
+
+/* POSITION CARD */
+.pos-card {
+background: var(–card); border: 1px solid var(–border);
+border-radius: 12px; padding: 14px 16px;
+display: flex; align-items: flex-start; gap: 14px;
+}
+.pos-ico { font-size: 28px; flex-shrink: 0; padding-top: 2px; }
+.pos-body { flex: 1; min-width: 0; }
+.pos-title { font-size: 14px; font-weight: 700; }
+.pos-sub { font-size: 11px; color: var(–muted); margin-top: 3px; }
+.pos-prog { margin-top: 10px; height: 4px; background: var(–border); border-radius: 2px; overflow: hidden; }
+.pos-prog-fill { height: 100%; background: var(–accent); border-radius: 2px; }
+
+/* STOPS */
+.stop-row {
+display: grid; grid-template-columns: 18px 1fr auto;
+gap: 10px; align-items: start;
+}
+.stop-tl { display: flex; flex-direction: column; align-items: center; padding-top: 3px; }
+.stop-circle {
+width: 10px; height: 10px; border-radius: 50%;
+border: 2px solid var(–muted); background: var(–bg); flex-shrink: 0; z-index: 1;
+}
+.stop-circle.passed  { background: var(–muted); border-color: var(–muted); }
+.stop-circle.current { width: 14px; height: 14px; margin-top: -2px; background: var(–accent); border-color: var(–accent); box-shadow: 0 0 8px var(–accent); }
+.stop-circle.future  { background: var(–bg); border-color: var(–border); }
+.stop-vline { width: 2px; flex: 1; min-height: 20px; background: var(–border); }
+.stop-vline.passed { background: var(–muted); opacity: .35; }
+
+.stop-name-t {
+font-size: 14px; font-weight: 500; padding-top: 1px; padding-bottom: 22px;
+line-height: 1.3;
+}
+.stop-name-t.passed  { color: var(–muted); }
+.stop-name-t.current { color: var(–accent); font-weight: 700; }
+.stop-times-t { text-align: right; padding-top: 1px; padding-bottom: 22px; }
+.stop-time-v { font-family: ‘Space Mono’, monospace; font-size: 12px; color: var(–muted); }
+.stop-delay-v { font-family: ‘Space Mono’, monospace; font-size: 11px; color: var(–red); margin-top: 2px; }
+
+/* MSGS */
+.panel-msg { padding: 32px 16px; text-align: center; color: var(–muted); font-size: 13px; line-height: 1.7; }
+.panel-msg .ico { font-size: 40px; margin-bottom: 12px; }
+.spinner {
+width: 32px; height: 32px; border: 3px solid var(–border);
+border-top-color: var(–accent); border-radius: 50%;
+animation: spin .7s linear infinite; margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* FOOTER */
+.panel-footer {
+display: flex; align-items: center; justify-content: space-between;
+padding: 10px 18px; border-top: 1px solid var(–border); flex-shrink: 0;
+}
+.footer-info { font-family: ‘Space Mono’, monospace; font-size: 10px; color: var(–muted); }
+.btn-refresh {
+font-family: ‘Space Mono’, monospace; font-size: 11px;
+background: var(–card); border: 1px solid var(–border);
+color: var(–text); border-radius: 6px; padding: 5px 12px; cursor: pointer;
+}
+.btn-refresh:active { opacity: .6; }
+
+/* POPUP */
 .leaflet-popup-content-wrapper {
-background: var(–card) !important;
-color: var(–text) !important;
-border: 1px solid var(–border) !important;
-border-radius: 8px !important;
-box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+background: var(–card) !important; color: var(–text) !important;
+border: 1px solid var(–border) !important; border-radius: 10px !important;
+box-shadow: 0 4px 20px rgba(0,0,0,.6) !important; font-family: ‘Syne’, sans-serif;
 }
 .leaflet-popup-tip { background: var(–card) !important; }
-.leaflet-popup-content { font-family: ‘Syne’, sans-serif; font-size: 13px; }
-.popup-name { font-weight: 700; margin-bottom: 4px; }
-.popup-time { font-family: ‘Space Mono’, monospace; font-size: 11px; color: var(–muted); }
-.popup-delay { color: var(–danger); font-size: 11px; }
-
-scrollbar-width: thin;
-scrollbar-color: var(–border) transparent;
-
-.status-panel::-webkit-scrollbar { width: 4px; }
-.status-panel::-webkit-scrollbar-track { background: transparent; }
-.status-panel::-webkit-scrollbar-thumb { background: var(–border); border-radius: 2px; }
+.pu-name { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+.pu-t { font-family: ‘Space Mono’, monospace; font-size: 11px; color: var(–muted); }
+.pu-d { font-family: ‘Space Mono’, monospace; font-size: 11px; color: var(–red); margin-top: 2px; }
 </style>
 
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <div class="logo-icon">🚄</div>
-    Train<span>Track</span>
-  </div>
-  <div class="source-badge">transport.data.gouv.fr · GTFS-RT SNCF</div>
-</header>
+<div id="map"></div>
 
-<div class="main-layout">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="search-area">
-      <div class="search-label">Numéro de train</div>
-      <div class="search-row">
-        <input type="text" class="train-input" id="trainInput" placeholder="6201" maxlength="8"
-               pattern="[0-9]*" inputmode="numeric">
-        <button class="btn-search" id="searchBtn" onclick="startTracking()">Suivre</button>
-      </div>
-      <div class="examples">
-        <span style="font-size:11px;color:var(--muted);margin-right:4px;">Ex :</span>
-        <span class="ex-chip" onclick="setEx('6201')">TGV 6201</span>
-        <span class="ex-chip" onclick="setEx('8722')">TER 8722</span>
-        <span class="ex-chip" onclick="setEx('3657')">IC 3657</span>
-        <span class="ex-chip" onclick="setEx('6032')">TGV 6032</span>
+<div class="topbar">
+  <div class="search-pill">
+    <span class="pill-icon">🚄</span>
+    <input id="trainInput" class="train-input" type="text" inputmode="numeric"
+           placeholder="N° train (ex : 6201)" maxlength="8">
+    <button class="btn-go" id="searchBtn" onclick="startTracking()">Suivre</button>
+  </div>
+  <div class="chips-bar">
+    <span class="chip" onclick="setEx('6201')">TGV 6201</span>
+    <span class="chip" onclick="setEx('8722')">TER 8722</span>
+    <span class="chip" onclick="setEx('3657')">IC 3657</span>
+    <span class="chip" onclick="setEx('6032')">TGV 6032</span>
+    <span class="chip" onclick="setEx('6619')">TGV 6619</span>
+  </div>
+</div>
+
+<div class="panel peek" id="panel">
+  <div class="handle-zone" id="handleZone">
+    <div class="handle-bar"></div>
+  </div>
+
+  <div class="peek-row" id="peekRow" onclick="togglePanel()">
+    <div class="badge-num" id="badgeNum">—</div>
+    <div class="peek-info">
+      <div class="peek-route" id="peekRoute">Entrez un numéro de train</div>
+      <div class="peek-status" id="peekStatus">Données SNCF temps réel</div>
+    </div>
+    <div class="delay-chip ok" id="delayChip" style="display:none"></div>
+  </div>
+
+  <div class="panel-scroll" id="panelScroll">
+    <div class="section">
+      <div class="panel-msg">
+        <div class="ico">🔍</div>
+        <strong>Suivi temps réel SNCF</strong><br>
+        TGV · Intercités · TER<br><br>
+        Entrez le numéro commercial du train<br>et appuyez sur <strong>Suivre</strong>.<br><br>
+        <span style="font-size:11px">Source : transport.data.gouv.fr<br>GTFS-RT · mise à jour 2 min</span>
       </div>
     </div>
-
-```
-<div class="status-panel" id="statusPanel">
-  <div class="placeholder-msg">
-    <div class="big-icon">🔍</div>
-    <p>Entrez un numéro de train SNCF<br>pour démarrer le suivi en temps réel.<br><br>
-    <strong>TGV, Intercités et TER</strong><br>couverts par les données open data.</p>
-  </div>
-  <div class="info-note" style="margin-top:auto;">
-    ℹ️ <strong>Source :</strong> Flux GTFS-RT SNCF open data (transport.data.gouv.fr). Mise à jour toutes les 2 min. 
-    La position est interpolée entre gares successives selon l'heure estimée de passage.
-  </div>
-</div>
-
-<div class="update-bar" id="updateBar" style="display:none">
-  <div class="update-info" id="updateInfo">—</div>
-  <button class="btn-refresh" id="refreshBtn" onclick="refreshData()">⟳ Actualiser</button>
-</div>
-```
-
   </div>
 
-  <!-- MAP -->
-
-  <div id="map"></div>
+  <div class="panel-footer" id="panelFooter" style="display:none">
+    <div class="footer-info" id="footerInfo">—</div>
+    <button class="btn-refresh" onclick="refreshData()">⟳ Actu</button>
+  </div>
 </div>
 
 <script>
-// =========================================================
-// CONFIGURATION
-// =========================================================
 const GTFS_RT_URL = 'https://proxy.transport.data.gouv.fr/resource/sncf-gtfs-rt-trip-updates';
-// CORS proxy public pour accès depuis le navigateur
-const CORS_PROXY = 'https://corsproxy.io/?';
+const CORS_PROXY  = 'https://corsproxy.io/?';
 
-// Coordonnées des gares SNCF principales (code UIC → [lat, lng, nom])
 const GARES = {
-  // Paris
   '87113001': [48.8448, 2.3735, 'Paris Gare de Lyon'],
-  '87113001': [48.8448, 2.3735, 'Paris Gare de Lyon'],
-  '87271007': [48.8769, 2.3553, 'Paris Nord'],
-  '87113001': [48.8448, 2.3735, 'Paris Gare de Lyon'],
-  '87391003': [48.8759, 2.3553, 'Paris Nord'],
   '87271007': [48.8769, 2.3553, 'Paris Nord'],
   '87281006': [48.8409, 2.3721, 'Paris Austerlitz'],
   '87547000': [48.8771, 2.3047, 'Paris Saint-Lazare'],
-  '87384008': [48.8771, 2.3557, 'Paris Montparnasse'],
-  '87113001': [48.8448, 2.3735, 'Paris Gare de Lyon'],
-  // Grands axes
+  '87384008': [48.8409, 2.3218, 'Paris Montparnasse'],
   '87722025': [43.7005, 7.2617, 'Nice-Ville'],
-  '87751008': [43.2964, 5.3806, 'Marseille Saint-Charles'],
+  '87751008': [43.2964, 5.3806, 'Marseille St-Charles'],
   '87313098': [45.7488, 4.8261, 'Lyon Part-Dieu'],
   '87313003': [45.7580, 4.8340, 'Lyon Perrache'],
   '87481002': [43.6115, 1.4542, 'Toulouse Matabiau'],
-  '87581009': [48.5839, 7.7352, 'Strasbourg'],
   '87212027': [48.5839, 7.7352, 'Strasbourg'],
-  '87142000': [44.8379, -0.5784, 'Bordeaux Saint-Jean'],
-  '87351007': [47.0037, 2.3961, 'Bourges'],
-  '87613455': [47.2105, -1.5418, 'Nantes'],
+  '87581009': [48.5839, 7.7352, 'Strasbourg'],
+  '87215004': [48.5839, 7.7352, 'Strasbourg'],
+  '87182063': [48.0748, 7.3580, 'Colmar'],
+  '87583005': [48.0748, 7.3580, 'Colmar'],
+  '87142000': [44.8379,-0.5784, 'Bordeaux St-Jean'],
+  '87613455': [47.2105,-1.5418, 'Nantes'],
+  '87613000': [47.2105,-1.5418, 'Nantes'],
+  '87592006': [47.5219,-0.5525, 'Angers'],
   '87444677': [47.9010, 1.9080, 'Orléans'],
   '87273001': [50.6365, 3.0695, 'Lille Flandres'],
   '87286005': [50.6391, 3.0728, 'Lille Europe'],
   '87521005': [43.8359, 4.3597, 'Nîmes'],
-  '87688002': [43.7667, 4.7500, 'Montpellier Saint-Roch'],
-  '87689011': [43.7667, 4.7500, 'Montpellier Sud de France'],
+  '87688002': [43.6052, 3.8800, 'Montpellier St-Roch'],
   '87765008': [47.3215, 5.0214, 'Dijon'],
-  '87745497': [46.5179, 6.5632, 'Lausanne'],  // Hors périmètre mais affiché
-  '87223263': [49.0568, 2.0613, 'Massy TGV'],
-  '87686006': [43.6118, 3.8767, 'Montpellier Saint-Roch'],
-  '87648012': [49.1020, -0.3622, 'Caen'],
-  '87415398': [47.9975, -3.9989, 'Quimper'],
-  '87471003': [48.1038, -1.6728, 'Rennes'],
-  '87741009': [46.0040, 8.9553, 'Milano Centrale'],
-  '87722025': [43.7005, 7.2617, 'Nice'],
-  '87758490': [48.8769, 2.3553, 'Marne-la-Vallée Chessy'],
-  '87758458': [48.8501, 2.5736, 'Marne-la-Vallée'],
+  '87223263': [48.7249, 2.2731, 'Massy TGV'],
+  '87386318': [48.7249, 2.2731, 'Massy TGV'],
+  '87648012': [49.1020,-0.3622, 'Caen'],
+  '87415398': [47.9975,-3.9989, 'Quimper'],
+  '87471003': [48.1038,-1.6728, 'Rennes'],
   '87341024': [49.2444, 4.0284, 'Reims'],
   '87162008': [45.1805, 5.7213, 'Grenoble'],
-  '87341024': [49.2444, 4.0284, 'Reims'],
   '87612119': [47.3915, 0.6856, 'Tours'],
-  '87571000': [45.9217, 6.9186, 'Annecy'],
-  '87741001': [45.6924, 5.9217, 'Chambéry'],
-  '87745497': [46.0043, 8.9473, 'Lugano'],
+  '87571000': [45.9217, 6.1860, 'Annecy'],
+  '87741001': [45.5692, 5.9243, 'Chambéry'],
   '87251009': [50.2957, 2.7772, 'Arras'],
-  '87215004': [48.5839, 7.7352, 'Strasbourg'],
-  '87583005': [48.0748, 7.3580, 'Colmar'],
-  '87182063': [48.0748, 7.3580, 'Colmar'],
-  '87142000': [44.8379, -0.5784, 'Bordeaux'],
-  '87592006': [47.5219, -0.5525, 'Angers'],
-  '87613000': [47.2105, -1.5418, 'Nantes'],
-  '87321123': [48.7330, 2.3646, 'Massy-Palaiseau'],
-  // TGV Hub
-  '87394007': [49.9913, 2.1188, 'Amiens'],
+  '87394007': [49.8941, 2.2957, 'Amiens'],
   '87229013': [49.4447, 1.0909, 'Rouen Rive-Droite'],
   '87745000': [46.2041, 6.1426, 'Genève'],
+  '87321123': [48.7330, 2.3646, 'Massy-Palaiseau'],
+  '87758490': [48.8726, 2.7784, 'Marne-la-Vallée Chessy'],
 };
 
-// =========================================================
-// STATE
-// =========================================================
-let map, trainMarker, routePolyline, stopsLayer;
-let currentTrainNum = null;
-let refreshTimer = null;
-let lastUpdate = null;
+let map, trainMarker, stopsGroup;
+let currentNum = null, refreshTimer = null;
+let panelExpanded = false;
+let dragStartY = 0, dragStartTY = 0, isDragging = false;
 
-// =========================================================
-// INIT MAP
-// =========================================================
 function initMap() {
-  map = L.map('map', {
-    center: [46.8, 2.3],
-    zoom: 6,
-    zoomControl: true,
-  });
-
+  map = L.map('map', { center: [46.8, 2.3], zoom: 6, zoomControl: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors',
-    maxZoom: 18
+    attribution: '© OpenStreetMap', maxZoom: 18
   }).addTo(map);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
 }
 
-// =========================================================
-// UI HELPERS
-// =========================================================
-function setEx(num) {
-  document.getElementById('trainInput').value = num;
+function initDrag() {
+  const panel = document.getElementById('panel');
+  const zone  = document.getElementById('handleZone');
+
+  function onStart(y) {
+    isDragging = true; dragStartY = y;
+    const m = (panel.style.transform||'').match(/translateY\((.+)px\)/);
+    dragStartTY = m ? parseFloat(m[1]) : 0;
+    panel.style.transition = 'none';
+  }
+  function onMove(y) {
+    if (!isDragging) return;
+    const next = Math.max(0, dragStartTY + (y - dragStartY));
+    panel.style.transform = `translateY(${next}px)`;
+  }
+  function onEnd(y) {
+    if (!isDragging) return;
+    isDragging = false; panel.style.transition = '';
+    const dy = y - dragStartY;
+    if (dy < -40) expandPanel();
+    else if (dy > 40) collapsePanel();
+    else panelExpanded ? expandPanel() : collapsePanel();
+  }
+
+  zone.addEventListener('touchstart', e => onStart(e.touches[0].clientY), { passive: true });
+  window.addEventListener('touchmove', e => { if (isDragging) { e.preventDefault(); onMove(e.touches[0].clientY); } }, { passive: false });
+  window.addEventListener('touchend', e => onEnd(e.changedTouches[0].clientY));
+  zone.addEventListener('mousedown', e => onStart(e.clientY));
+  window.addEventListener('mousemove', e => onMove(e.clientY));
+  window.addEventListener('mouseup', e => onEnd(e.clientY));
 }
 
-function fmtTime(unixTs) {
-  if (!unixTs) return '—';
-  const d = new Date(unixTs * 1000);
-  return d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+function expandPanel() { panelExpanded = true; const p = document.getElementById('panel'); p.classList.remove('peek'); p.classList.add('expanded'); }
+function collapsePanel() { panelExpanded = false; const p = document.getElementById('panel'); p.classList.remove('expanded'); p.classList.add('peek'); }
+function togglePanel() { panelExpanded ? collapsePanel() : expandPanel(); }
+
+function fmtTime(ts) {
+  if (!ts) return '—';
+  return new Date(ts * 1000).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+}
+function fmtDelay(sec) {
+  if (!sec) return null;
+  const m = Math.round(sec / 60);
+  return m === 0 ? null : m > 0 ? `+${m} min` : `${m} min`;
+}
+function setEx(n) { document.getElementById('trainInput').value = n; }
+
+function getStopCoords(stopId) {
+  if (!stopId) return null;
+  const uic = stopId.replace(/\D/g,'').slice(-8);
+  if (GARES[uic]) return { lat: GARES[uic][0], lng: GARES[uic][1], name: GARES[uic][2] };
+  for (const [k,v] of Object.entries(GARES)) if (stopId.includes(k)) return { lat:v[0], lng:v[1], name:v[2] };
+  return null;
 }
 
-function fmtDelay(seconds) {
-  if (!seconds || seconds === 0) return null;
-  const mins = Math.round(seconds / 60);
-  if (mins === 0) return null;
-  return mins > 0 ? `+${mins} min` : `${mins} min`;
+function detectType(tripId) {
+  if (/TGV|INOUI/i.test(tripId)) return 'TGV inOui';
+  if (/OUIGO/i.test(tripId)) return 'OUIGO';
+  if (/IC|INTERCIT/i.test(tripId)) return 'Intercités';
+  if (/TER/i.test(tripId)) return 'TER';
+  return 'Train';
 }
-
-function showLoading() {
-  document.getElementById('statusPanel').innerHTML = `
-    <div class="loading-state">
-      <div class="spinner"></div>
-      <div>Interrogation du flux GTFS-RT SNCF…</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:8px;">transport.data.gouv.fr</div>
-    </div>`;
-}
-
-function showError(msg) {
-  document.getElementById('statusPanel').innerHTML = `
-    <div class="error-state">⚠️ ${msg}</div>
-    <div class="info-note" style="margin-top:12px;">
-      💡 Le flux GTFS-RT SNCF est un fichier binaire Protobuf public. Si la requête échoue à cause du CORS, 
-      utilisez cette application depuis un serveur local ou un navigateur avec l'extension CORS désactivée.
-      <br><br>Vous pouvez aussi télécharger le flux directement : 
-      <strong>proxy.transport.data.gouv.fr/resource/sncf-gtfs-rt-trip-updates</strong>
-    </div>`;
-}
-
-// =========================================================
-// GTFS-RT PARSING
-// =========================================================
-
-// Définition Protobuf GTFS-RT simplifiée
-const GTFS_RT_PROTO = `
-  syntax = "proto2";
-  
-  message FeedMessage {
-    required FeedHeader header = 1;
-    repeated FeedEntity entity = 2;
-  }
-  
-  message FeedHeader {
-    required string gtfs_realtime_version = 1;
-    optional uint64 timestamp = 3;
-  }
-  
-  message FeedEntity {
-    required string id = 1;
-    optional bool is_deleted = 2;
-    optional TripUpdate trip_update = 3;
-    optional VehiclePosition vehicle = 4;
-  }
-  
-  message TripUpdate {
-    required TripDescriptor trip = 1;
-    optional VehicleDescriptor vehicle = 3;
-    repeated StopTimeUpdate stop_time_update = 2;
-    optional uint64 timestamp = 4;
-    optional int32 delay = 5;
-  }
-  
-  message TripDescriptor {
-    optional string trip_id = 1;
-    optional string route_id = 5;
-    optional string direction_id = 6;
-    optional uint64 start_date = 4;
-    optional string schedule_relationship = 3;
-  }
-  
-  message StopTimeUpdate {
-    optional uint32 stop_sequence = 1;
-    optional string stop_id = 3;
-    optional StopTimeEvent arrival = 2;
-    optional StopTimeEvent departure = 4;
-    optional string schedule_relationship = 5;
-  }
-  
-  message StopTimeEvent {
-    optional int32 delay = 1;
-    optional int64 time = 2;
-    optional int32 uncertainty = 3;
-  }
-  
-  message VehicleDescriptor {
-    optional string id = 1;
-    optional string label = 2;
-    optional string license_plate = 3;
-  }
-  
-  message VehiclePosition {
-    optional TripDescriptor trip = 1;
-    optional Position position = 2;
-    optional uint64 timestamp = 3;
-    optional VehicleDescriptor vehicle = 4;
-  }
-  
-  message Position {
-    required float latitude = 1;
-    required float longitude = 2;
-    optional float bearing = 3;
-    optional double odometer = 4;
-    optional float speed = 5;
-  }
-`;
 
 async function fetchGTFSRT() {
-  // Essai avec corsproxy.io
-  const urls = [
-    CORS_PROXY + encodeURIComponent(GTFS_RT_URL),
-    // fallback direct (fonctionnera si pas de restriction CORS depuis ce contexte)
-    GTFS_RT_URL
-  ];
-
-  let lastErr = null;
-  for (const url of urls) {
+  for (const url of [CORS_PROXY + encodeURIComponent(GTFS_RT_URL), GTFS_RT_URL]) {
     try {
-      const resp = await fetch(url, { 
-        headers: { 'Accept': 'application/octet-stream' },
-        signal: AbortSignal.timeout(15000)
-      });
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const buf = await resp.arrayBuffer();
-      return buf;
-    } catch (e) {
-      lastErr = e;
-    }
+      const r = await fetch(url, { signal: AbortSignal.timeout(15000) });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return await r.arrayBuffer();
+    } catch(e) { /* try next */ }
   }
-  throw lastErr;
+  throw new Error('Flux SNCF inaccessible (CORS)');
 }
 
-// Parser le Protobuf binaire manuellement (simple wire format)
-function parseGTFSRT(buffer) {
-  const view = new DataView(buffer);
-  const bytes = new Uint8Array(buffer);
+function parseGTFSRT(buf) {
+  const bytes = new Uint8Array(buf), view = new DataView(buf);
+  let pos = 0;
   const entities = [];
 
-  let pos = 0;
+  function rV() { let r=0,s=0; while(pos<bytes.length){const b=bytes[pos++];r|=(b&0x7F)<<s;if(!(b&0x80))break;s+=7;} return r; }
+  function rS(l) { const v=new TextDecoder().decode(bytes.slice(pos,pos+l)); pos+=l; return v; }
+  function skip(w) { if(w===0)rV(); else if(w===1)pos+=8; else if(w===2)pos+=rV(); else if(w===5)pos+=4; }
 
-  function readVarint() {
-    let result = 0, shift = 0;
-    while (pos < bytes.length) {
-      const byte = bytes[pos++];
-      result |= (byte & 0x7F) << shift;
-      if (!(byte & 0x80)) break;
-      shift += 7;
-    }
-    return result;
+  function pSTE(end) { const e={}; while(pos<end){const t=rV(),f=t>>3,w=t&7; if(f===1&&w===0)e.delay=rV(); else if(f===2&&w===0)e.time=rV(); else skip(w);} return e; }
+  function pSTU(end) { const s={}; while(pos<end){const t=rV(),f=t>>3,w=t&7; if(f===1&&w===0)s.stop_sequence=rV(); else if(f===3&&w===2)s.stop_id=rS(rV()); else if(f===2&&w===2){const l=rV();s.arrival=pSTE(pos+l);} else if(f===4&&w===2){const l=rV();s.departure=pSTE(pos+l);} else skip(w);} return s; }
+  function pTD(end)  { const d={}; while(pos<end){const t=rV(),f=t>>3,w=t&7; if(f===1&&w===2)d.trip_id=rS(rV()); else if(f===4&&w===2)d.start_date=rS(rV()); else skip(w);} return d; }
+  function pTU(end)  { const u={stop_time_update:[]}; while(pos<end){const t=rV(),f=t>>3,w=t&7; if(f===1&&w===2){const l=rV();u.trip=pTD(pos+l);} else if(f===2&&w===2){const l=rV();u.stop_time_update.push(pSTU(pos+l));} else if(f===4&&w===0)u.timestamp=rV(); else skip(w);} return u; }
+  function pE(end)   { const e={}; while(pos<end){const t=rV(),f=t>>3,w=t&7; if(f===1&&w===2)e.id=rS(rV()); else if(f===3&&w===2){const l=rV();e.trip_update=pTU(pos+l);} else skip(w);} return e; }
+
+  while(pos<bytes.length) {
+    try { const t=rV(),f=t>>3,w=t&7; if(f===1&&w===2){pos+=rV();} else if(f===2&&w===2){const l=rV(),end=pos+l;entities.push(pE(end));pos=end;} else skip(w); }
+    catch(e) { break; }
   }
-
-  function readFixed32() {
-    const v = view.getFloat32(pos, true);
-    pos += 4;
-    return v;
-  }
-
-  function readFixed64() {
-    const v = view.getFloat64(pos, true);
-    pos += 8;
-    return v;
-  }
-
-  function readString(len) {
-    const slice = bytes.slice(pos, pos + len);
-    pos += len;
-    return new TextDecoder().decode(slice);
-  }
-
-  function readBytes(len) {
-    const slice = bytes.slice(pos, pos + len);
-    pos += len;
-    return slice;
-  }
-
-  function skipField(wireType) {
-    if (wireType === 0) { readVarint(); }
-    else if (wireType === 1) { pos += 8; }
-    else if (wireType === 2) { pos += readVarint(); }
-    else if (wireType === 5) { pos += 4; }
-  }
-
-  function parseStopTimeEvent(end) {
-    const ev = {};
-    while (pos < end) {
-      const tag = readVarint();
-      const field = tag >> 3, wire = tag & 0x7;
-      if (field === 1 && wire === 0) ev.delay = readVarint();
-      else if (field === 2 && wire === 0) ev.time = readVarint();
-      else skipField(wire);
-    }
-    return ev;
-  }
-
-  function parseStopTimeUpdate(end) {
-    const stu = {};
-    while (pos < end) {
-      const tag = readVarint();
-      const field = tag >> 3, wire = tag & 0x7;
-      if (field === 1 && wire === 0) stu.stop_sequence = readVarint();
-      else if (field === 3 && wire === 2) stu.stop_id = readString(readVarint());
-      else if (field === 2 && wire === 2) { const l = readVarint(); stu.arrival = parseStopTimeEvent(pos + l); }
-      else if (field === 4 && wire === 2) { const l = readVarint(); stu.departure = parseStopTimeEvent(pos + l); }
-      else skipField(wire);
-    }
-    return stu;
-  }
-
-  function parseTripDescriptor(end) {
-    const td = {};
-    while (pos < end) {
-      const tag = readVarint();
-      const field = tag >> 3, wire = tag & 0x7;
-      if (field === 1 && wire === 2) td.trip_id = readString(readVarint());
-      else if (field === 5 && wire === 2) td.route_id = readString(readVarint());
-      else if (field === 4 && wire === 2) td.start_date = readString(readVarint());
-      else skipField(wire);
-    }
-    return td;
-  }
-
-  function parseTripUpdate(end) {
-    const tu = { stop_time_update: [] };
-    while (pos < end) {
-      const tag = readVarint();
-      const field = tag >> 3, wire = tag & 0x7;
-      if (field === 1 && wire === 2) { const l = readVarint(); tu.trip = parseTripDescriptor(pos + l); }
-      else if (field === 2 && wire === 2) { const l = readVarint(); tu.stop_time_update.push(parseStopTimeUpdate(pos + l)); }
-      else if (field === 4 && wire === 0) tu.timestamp = readVarint();
-      else skipField(wire);
-    }
-    return tu;
-  }
-
-  function parseEntity(end) {
-    const e = {};
-    while (pos < end) {
-      const tag = readVarint();
-      const field = tag >> 3, wire = tag & 0x7;
-      if (field === 1 && wire === 2) e.id = readString(readVarint());
-      else if (field === 3 && wire === 2) { const l = readVarint(); e.trip_update = parseTripUpdate(pos + l); }
-      else skipField(wire);
-    }
-    return e;
-  }
-
-  // Parse FeedMessage
-  while (pos < bytes.length) {
-    try {
-      const tag = readVarint();
-      const field = tag >> 3, wire = tag & 0x7;
-      if (field === 1 && wire === 2) { pos += readVarint(); } // header
-      else if (field === 2 && wire === 2) {
-        const len = readVarint();
-        const endPos = pos + len;
-        entities.push(parseEntity(endPos));
-        pos = endPos;
-      } else skipField(wire);
-    } catch(e) { break; }
-  }
-
   return entities;
 }
 
-// Extraire le numéro de train du trip_id SNCF
-// Format SNCF : ex. "OCETGV INOUI-123456789:2025-03-12T..." ou "OCESN6201F..."
-function extractTrainNum(tripId) {
-  if (!tripId) return null;
-
-  // Pattern 1 : OCESN + number dans l'id
-  const m1 = tripId.match(/OCESN(\d+)[FR]/);
-  if (m1) return m1[1];
-
-  // Pattern 2 : numéro commercial direct
-  const m2 = tripId.match(/[:-](\d{4,6})[:-]/);
-  if (m2) return m2[1];
-
-  // Pattern 3 : extraction brute du dernier segment numérique long
-  const m3 = tripId.match(/(\d{4,6})/);
-  if (m3) return m3[1];
-
+function findTrain(entities, num) {
+  const n = String(num).replace(/^0+/, '');
+  for (const e of entities) {
+    if (!e.trip_update?.trip?.trip_id) continue;
+    if (e.trip_update.trip.trip_id.includes(n)) return e;
+  }
   return null;
 }
 
-// Recherche un train par numéro commercial
-function findTrain(entities, targetNum) {
-  const target = String(targetNum).replace(/^0+/, ''); // normalise
+function computePosition(stops) {
+  const now = Math.floor(Date.now() / 1000);
+  let lastPassed = null, lastCoords = null, nextStop = null, nextCoords = null;
 
-  for (const entity of entities) {
-    if (!entity.trip_update || !entity.trip_update.trip) continue;
-    const tu = entity.trip_update;
-    const tripId = tu.trip.trip_id || '';
-
-    // Cherche le numéro commercial dans le trip_id
-    if (tripId.includes(target)) {
-      return { entity, tripId, trainNum: target };
-    }
+  for (const s of stops) {
+    const t = s.departure?.time || s.arrival?.time;
+    const c = getStopCoords(s.stop_id);
+    if (!t || !c) continue;
+    if (t <= now) { lastPassed = s; lastCoords = c; }
+    else if (!nextStop) { nextStop = s; nextCoords = c; }
   }
 
-  // 2nd pass : recherche partielle
-  for (const entity of entities) {
-    if (!entity.trip_update || !entity.trip_update.trip) continue;
-    const tu = entity.trip_update;
-    const tripId = tu.trip.trip_id || '';
-    const extracted = extractTrainNum(tripId);
-    if (extracted && extracted.endsWith(target)) {
-      return { entity, tripId, trainNum: target };
-    }
-  }
-
-  return null;
-}
-
-// =========================================================
-// LOCALISATION
-// =========================================================
-function getStopCoords(stopId) {
-  if (!stopId) return null;
-  // Nettoyer l'ID de gare SNCF
-  const uic = stopId.replace(/^StopPoint:OCE.*?-/, '')
-                    .replace(/^StopArea:OCE/, '')
-                    .replace(/[^0-9]/g, '');
-  if (GARES[uic]) return { lat: GARES[uic][0], lng: GARES[uic][1], name: GARES[uic][2] };
-  if (GARES[stopId]) return { lat: GARES[stopId][0], lng: GARES[stopId][1], name: GARES[stopId][2] };
-  return null;
-}
-
-// Interpolation de position entre 2 gares
-function interpolatePosition(stops, nowTs) {
-  const now = nowTs || Math.floor(Date.now() / 1000);
-
-  for (let i = 0; i < stops.length - 1; i++) {
-    const curr = stops[i];
-    const next = stops[i + 1];
-
-    const depTime = curr.departure?.time || curr.arrival?.time;
-    const arrTime = next.arrival?.time || next.departure?.time;
-
-    if (!depTime || !arrTime) continue;
-
-    const c1 = getStopCoords(curr.stop_id);
-    const c2 = getStopCoords(next.stop_id);
-
-    if (!c1 || !c2) continue;
-
-    if (now >= depTime && now <= arrTime) {
-      const t = (now - depTime) / (arrTime - depTime);
+  if (lastPassed && nextStop && lastCoords && nextCoords) {
+    const dep = lastPassed.departure?.time || lastPassed.arrival?.time;
+    const arr = nextStop.arrival?.time || nextStop.departure?.time;
+    if (dep && arr && now >= dep && now <= arr) {
+      const t = (now - dep) / (arr - dep);
       return {
-        lat: c1.lat + t * (c2.lat - c1.lat),
-        lng: c1.lng + t * (c2.lng - c1.lng),
-        fromStop: c1,
-        toStop: c2,
-        progress: Math.round(t * 100),
-        segmentIndex: i,
+        lat: lastCoords.lat + t * (nextCoords.lat - lastCoords.lat),
+        lng: lastCoords.lng + t * (nextCoords.lng - lastCoords.lng),
+        fromStop: lastCoords, toStop: nextCoords,
+        progress: Math.round(t * 100), interpolated: true,
       };
     }
   }
-
-  // Train avant le départ ou après arrivée
-  const firstStop = stops.find(s => getStopCoords(s.stop_id));
-  const lastStop = [...stops].reverse().find(s => getStopCoords(s.stop_id));
-
-  if (firstStop && lastStop) {
-    const firstTime = firstStop.departure?.time || firstStop.arrival?.time || 0;
-    const lastTime = lastStop.arrival?.time || lastStop.departure?.time || 0;
-
-    if (now < firstTime) {
-      const c = getStopCoords(firstStop.stop_id);
-      return c ? { lat: c.lat, lng: c.lng, fromStop: c, progress: 0, pending: true } : null;
-    }
-    if (now > lastTime) {
-      const c = getStopCoords(lastStop.stop_id);
-      return c ? { lat: c.lat, lng: c.lng, toStop: c, progress: 100, arrived: true } : null;
-    }
-  }
-
+  if (lastCoords) return { lat: lastCoords.lat, lng: lastCoords.lng, fromStop: lastCoords, interpolated: false, progress: null };
+  if (nextCoords) return { lat: nextCoords.lat, lng: nextCoords.lng, toStop: nextCoords, interpolated: false, pending: true, progress: 0 };
   return null;
 }
 
-// =========================================================
-// RENDU
-// =========================================================
-function detectTrainType(tripId) {
-  if (/TGV|INOUI/i.test(tripId)) return { type: 'TGV inOui', color: '#f97316' };
-  if (/OUIGO/i.test(tripId)) return { type: 'OUIGO', color: '#e91e63' };
-  if (/IC|INTERCIT/i.test(tripId)) return { type: 'Intercités', color: '#3b82f6' };
-  if (/TER/i.test(tripId)) return { type: 'TER', color: '#10b981' };
-  return { type: 'Train', color: '#f97316' };
-}
-
-function renderTrainInfo(found, stops) {
-  const tu = found.entity.trip_update;
-  const tripId = found.tripId;
-  const trainMeta = detectTrainType(tripId);
-  const now = Math.floor(Date.now() / 1000);
-
-  // Calcul retard global
-  const lastUpdate = tu.stop_time_update.slice(-1)[0];
-  const globalDelay = lastUpdate?.arrival?.delay || lastUpdate?.departure?.delay || 0;
-  const delayMins = Math.round(globalDelay / 60);
-
-  // Détecter gare courante
-  let currentStopIdx = 0;
-  for (let i = 0; i < stops.length; i++) {
-    const t = stops[i].departure?.time || stops[i].arrival?.time;
-    if (t && t < now) currentStopIdx = i;
-  }
-
-  const stopsHtml = stops.map((s, i) => {
-    const c = getStopCoords(s.stop_id);
-    const name = c ? c.name : (s.stop_id || `Gare ${s.stop_sequence || i}`);
-    const arrT = s.arrival?.time;
-    const depT = s.departure?.time;
-    const delay = s.arrival?.delay || s.departure?.delay || 0;
-    const delayStr = fmtDelay(delay);
-
-    let cls = 'future', dotCls = 'future', connCls = '';
-    if (i < currentStopIdx) { cls = 'passed'; dotCls = 'passed'; connCls = 'passed'; }
-    else if (i === currentStopIdx) { cls = 'current'; dotCls = 'current'; }
-
-    const timeStr = arrT ? fmtTime(arrT) : (depT ? fmtTime(depT) : '');
-    const isLast = i === stops.length - 1;
-
-    return `
-      <div class="stop-item">
-        <div class="stop-line">
-          <div class="stop-dot ${dotCls}"></div>
-          ${!isLast ? `<div class="stop-connector ${connCls}"></div>` : ''}
-        </div>
-        <div>
-          <div class="stop-name ${cls}">${name}</div>
-        </div>
-        <div>
-          <div class="stop-time">${timeStr}</div>
-          ${delayStr ? `<div class="stop-delay">${delayStr}</div>` : ''}
-        </div>
-      </div>`;
-  }).join('');
-
-  const firstStop = stops.find(s => getStopCoords(s.stop_id));
-  const lastStop = [...stops].reverse().find(s => getStopCoords(s.stop_id));
-  const origin = firstStop ? (getStopCoords(firstStop.stop_id)?.name || '—') : '—';
-  const dest = lastStop ? (getStopCoords(lastStop.stop_id)?.name || '—') : '—';
-
-  const delayColor = delayMins <= 0 ? 'ok' : delayMins <= 5 ? 'warn' : 'danger';
-  const delayLabel = delayMins === 0 ? 'À l\'heure' : delayMins > 0 ? `+${delayMins} min` : `${delayMins} min`;
-
-  document.getElementById('statusPanel').innerHTML = `
-    <div class="train-card">
-      <div class="train-header">
-        <div class="train-number-badge">${found.trainNum}</div>
-        <div class="train-meta">
-          <div class="train-name">${origin} → ${dest}</div>
-          <div class="train-type">${trainMeta.type}</div>
-        </div>
-        <div class="status-dot ${delayMins > 5 ? 'late' : ''}"></div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-box">
-          <div class="info-box-label">Retard</div>
-          <div class="info-box-value ${delayColor}">${delayLabel}</div>
-        </div>
-        <div class="info-box">
-          <div class="info-box-label">Arrêts</div>
-          <div class="info-box-value">${stops.length}</div>
-        </div>
-        <div class="info-box">
-          <div class="info-box-label">Départ</div>
-          <div class="info-box-value" style="font-size:12px">${origin.length > 16 ? origin.slice(0,16)+'…' : origin}</div>
-        </div>
-        <div class="info-box">
-          <div class="info-box-label">Arrivée</div>
-          <div class="info-box-value" style="font-size:12px">${dest.length > 16 ? dest.slice(0,16)+'…' : dest}</div>
-        </div>
-      </div>
-
-      <div class="journey-section">
-        <div class="section-title">Arrêts</div>
-        <div class="stop-list">${stopsHtml}</div>
-      </div>
-    </div>
-  `;
-}
-
-function renderMap(stops, position) {
-  // Nettoyer
+function renderMap(stops, pos) {
   if (trainMarker) { map.removeLayer(trainMarker); trainMarker = null; }
-  if (routePolyline) { map.removeLayer(routePolyline); routePolyline = null; }
-  if (stopsLayer) { map.removeLayer(stopsLayer); stopsLayer = null; }
+  if (stopsGroup)  { map.removeLayer(stopsGroup); }
+  stopsGroup = L.layerGroup().addTo(map);
 
-  stopsLayer = L.layerGroup().addTo(map);
-
-  const coords = [];
   const now = Math.floor(Date.now() / 1000);
 
   stops.forEach((s, i) => {
     const c = getStopCoords(s.stop_id);
     if (!c) return;
-    coords.push([c.lat, c.lng]);
-
-    const isTerminus = i === 0 || i === stops.length - 1;
-    const arrT = s.arrival?.time || s.departure?.time;
-    const delay = s.arrival?.delay || s.departure?.delay || 0;
-    const delayStr = fmtDelay(delay) || 'À l\'heure';
-    const isPassed = arrT && arrT < now;
+    const isT = i === 0 || i === stops.length - 1;
+    const t   = s.arrival?.time || s.departure?.time;
+    const passed = t && t < now;
+    const delay = fmtDelay(s.arrival?.delay || s.departure?.delay || 0);
 
     const icon = L.divIcon({
       className: '',
-      html: `<div class="stop-marker ${isTerminus ? 'terminus' : ''}" style="${isPassed ? 'opacity:0.4' : ''}"></div>`,
-      iconSize: isTerminus ? [14, 14] : [10, 10],
-      iconAnchor: isTerminus ? [7, 7] : [5, 5],
+      html: `<div class="stop-dot-map ${isT?'terminus':''} ${passed?'passed':''}"></div>`,
+      iconSize: isT ? [14,14] : [10,10],
+      iconAnchor: isT ? [7,7] : [5,5],
     });
 
-    const marker = L.marker([c.lat, c.lng], { icon })
-      .bindPopup(`<div class="popup-name">${c.name}</div>
-                  <div class="popup-time">Arrivée : ${fmtTime(s.arrival?.time)}</div>
-                  <div class="popup-time">Départ : ${fmtTime(s.departure?.time)}</div>
-                  <div class="popup-delay">${delayStr !== 'À l\'heure' ? delayStr : '✓ À l\'heure'}</div>`)
-      .addTo(stopsLayer);
+    L.marker([c.lat, c.lng], { icon })
+      .bindPopup(`<div class="pu-name">${c.name}</div>
+                  <div class="pu-t">Arr ${fmtTime(s.arrival?.time)} · Dép ${fmtTime(s.departure?.time)}</div>
+                  ${delay ? `<div class="pu-d">${delay}</div>` : ''}`)
+      .addTo(stopsGroup);
   });
 
-  if (coords.length >= 2) {
-    routePolyline = L.polyline(coords, {
-      color: '#f97316',
-      weight: 3,
-      opacity: 0.7,
-      dashArray: '6,4'
-    }).addTo(map);
-  }
+  if (pos) {
+    const sub = pos.interpolated
+      ? `En route → ${pos.toStop?.name||'?'} (${pos.progress}%)`
+      : pos.pending ? `Avant départ : ${pos.toStop?.name||'?'}`
+      : `Dernière gare : ${pos.fromStop?.name||'?'}`;
 
-  // Marqueur train
-  if (position) {
-    const trainIcon = L.divIcon({
+    const icon = L.divIcon({
       className: '',
-      html: `<div class="train-marker"></div>`,
-      iconSize: [20, 20],
-      iconAnchor: [10, 10],
+      html: `<div class="train-pin"></div>`,
+      iconSize: [28,28], iconAnchor: [14,14],
     });
-
-    trainMarker = L.marker([position.lat, position.lng], { icon: trainIcon })
-      .bindPopup(`<div class="popup-name">🚄 Train ${currentTrainNum}</div>
-                  <div class="popup-time">Position interpolée</div>
-                  <div class="popup-time">Progression : ${position.progress}%</div>
-                  ${position.fromStop ? `<div class="popup-time">De : ${position.fromStop.name}</div>` : ''}
-                  ${position.toStop ? `<div class="popup-time">Vers : ${position.toStop.name}</div>` : ''}`)
+    trainMarker = L.marker([pos.lat, pos.lng], { icon, zIndexOffset: 1000 })
+      .bindPopup(`<div class="pu-name">🚄 Train ${currentNum}</div><div class="pu-t">${sub}</div>`)
       .addTo(map);
 
-    // Centrer sur le train
-    map.setView([position.lat, position.lng], 8);
-  } else if (coords.length > 0) {
-    const bounds = L.latLngBounds(coords);
-    map.fitBounds(bounds, { padding: [40, 40] });
+    map.flyTo([pos.lat, pos.lng], 9, { animate: true, duration: 1.2 });
   }
 }
 
-// =========================================================
-// LOGIQUE PRINCIPALE
-// =========================================================
+function renderPanel(entity, stops) {
+  const tripId = entity.trip_update.trip.trip_id;
+  const type   = detectType(tripId);
+  const now    = Math.floor(Date.now() / 1000);
+
+  const withC = stops.filter(s => getStopCoords(s.stop_id));
+  const first = withC[0], last = withC[withC.length-1];
+  const origin = first ? getStopCoords(first.stop_id).name : '—';
+  const dest   = last  ? getStopCoords(last.stop_id).name  : '—';
+
+  const lastSTU = stops.slice(-1)[0];
+  const delayMins = Math.round((lastSTU?.arrival?.delay || lastSTU?.departure?.delay || 0) / 60);
+  const delayLabel = delayMins === 0 ? 'À l\'heure' : delayMins > 0 ? `+${delayMins} min` : `${delayMins} min`;
+  const delayClass = delayMins <= 0 ? 'ok' : delayMins <= 5 ? 'warn' : 'danger';
+
+  const pos = computePosition(stops);
+
+  // Peek
+  document.getElementById('badgeNum').textContent = currentNum;
+  document.getElementById('peekRoute').textContent = `${origin} → ${dest}`;
+  document.getElementById('peekStatus').textContent = `${type} · ${pos?.interpolated ? 'En route' : pos?.pending ? 'Avant départ' : 'Données reçues'}`;
+  const chip = document.getElementById('delayChip');
+  chip.style.display = ''; chip.className = `delay-chip ${delayClass}`; chip.textContent = delayLabel;
+
+  // Position card
+  let posHtml = '';
+  if (pos) {
+    const ico   = pos.interpolated ? '🚄' : pos.pending ? '🚉' : '📍';
+    const title = pos.interpolated
+      ? `En route vers ${pos.toStop?.name||'?'}`
+      : pos.pending ? `En gare (avant départ) : ${pos.toStop?.name||'?'}`
+      : `Dernière gare : ${pos.fromStop?.name||'?'}`;
+    const sub = pos.interpolated
+      ? `Position interpolée · ${pos.progress}% du trajet effectué`
+      : pos.pending ? 'Train pas encore parti'
+      : 'Position sur la dernière gare connue';
+    const prog = pos.progress !== null
+      ? `<div class="pos-prog"><div class="pos-prog-fill" style="width:${pos.progress}%"></div></div>` : '';
+
+    posHtml = `<div class="sec-label">Position</div>
+      <div class="pos-card">
+        <div class="pos-ico">${ico}</div>
+        <div class="pos-body">
+          <div class="pos-title">${title}</div>
+          <div class="pos-sub">${sub}</div>
+          ${prog}
+        </div>
+      </div>`;
+  }
+
+  // Current stop index
+  let curIdx = 0;
+  for (let i = 0; i < stops.length; i++) {
+    const t = stops[i].departure?.time || stops[i].arrival?.time;
+    if (t && t < now) curIdx = i;
+  }
+
+  const stopsHtml = stops.map((s, i) => {
+    const c = getStopCoords(s.stop_id);
+    const name = c ? c.name : `Gare ${i+1}`;
+    const arrT = s.arrival?.time, depT = s.departure?.time;
+    const delay = fmtDelay(s.arrival?.delay || s.departure?.delay || 0);
+    const isLast = i === stops.length - 1;
+    let cls = i < curIdx ? 'passed' : i === curIdx ? 'current' : 'future';
+
+    return `<div class="stop-row">
+      <div class="stop-tl">
+        <div class="stop-circle ${cls}"></div>
+        ${!isLast ? `<div class="stop-vline ${i < curIdx ? 'passed' : ''}"></div>` : ''}
+      </div>
+      <div class="stop-name-t ${cls}">${name}</div>
+      <div class="stop-times-t">
+        <div class="stop-time-v">${arrT ? fmtTime(arrT) : depT ? fmtTime(depT) : '—'}</div>
+        ${delay ? `<div class="stop-delay-v">${delay}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('panelScroll').innerHTML = `
+    <div class="section">
+      ${posHtml}
+      <div class="sec-label">Arrêts · ${stops.length} gares</div>
+      ${stopsHtml}
+    </div>`;
+
+  document.getElementById('panelFooter').style.display = 'flex';
+  document.getElementById('footerInfo').textContent = `Maj ${new Date().toLocaleTimeString('fr-FR')} · GTFS-RT SNCF`;
+
+  renderMap(stops, pos);
+  collapsePanel(); // afficher le panneau en position peek avec les infos
+}
+
 async function startTracking() {
-  const input = document.getElementById('trainInput').value.trim();
-  if (!input) return;
-
-  currentTrainNum = input;
+  const val = document.getElementById('trainInput').value.trim();
+  if (!val) return;
+  currentNum = val;
   document.getElementById('searchBtn').disabled = true;
-  document.getElementById('updateBar').style.display = 'flex';
-  showLoading();
-
-  // Arrêter le timer précédent
-  if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; }
-
+  document.getElementById('badgeNum').textContent = val;
+  document.getElementById('peekRoute').textContent = 'Recherche en cours…';
+  document.getElementById('peekStatus').textContent = 'Flux GTFS-RT SNCF';
+  document.getElementById('delayChip').style.display = 'none';
+  document.getElementById('panelScroll').innerHTML = `<div class="section"><div class="panel-msg"><div class="spinner"></div>Interrogation transport.data.gouv.fr…</div></div>`;
+  document.getElementById('panelFooter').style.display = 'none';
+  collapsePanel();
+  if (refreshTimer) clearInterval(refreshTimer);
   await fetchAndDisplay();
-
-  // Auto-refresh toutes les 2 min
   refreshTimer = setInterval(fetchAndDisplay, 120000);
 }
 
 async function refreshData() {
-  if (!currentTrainNum) return;
-  showLoading();
+  if (!currentNum) return;
   await fetchAndDisplay();
 }
 
@@ -1225,63 +650,44 @@ async function fetchAndDisplay() {
   try {
     const buf = await fetchGTFSRT();
     const entities = parseGTFSRT(buf);
+    const entity = findTrain(entities, currentNum);
 
-    const found = findTrain(entities, currentTrainNum);
-
-    if (!found) {
-      document.getElementById('statusPanel').innerHTML = `
-        <div class="error-state">
-          🔍 Train <strong>${currentTrainNum}</strong> non trouvé dans le flux temps réel SNCF.<br><br>
-          Vérifications possibles :<br>
-          • Le train circule-t-il aujourd'hui ?<br>
-          • Le numéro est-il correct ? (ex : 6201 pour TGV 6201)<br>
-          • Le train est-il dans les 60 prochaines minutes ou en cours ?<br><br>
-          Le flux GTFS-RT SNCF couvre les trains circulant dans les 60 minutes à venir.
-        </div>
-        <div style="margin-top:8px;font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;">
-          ${entities.length} trains trouvés dans le flux
-        </div>`;
-      updateBar();
-      document.getElementById('searchBtn').disabled = false;
-      return;
+    if (!entity) {
+      document.getElementById('peekRoute').textContent = `Train ${currentNum} non trouvé`;
+      document.getElementById('peekStatus').textContent = `${entities.length} trains dans le flux actuel`;
+      document.getElementById('panelScroll').innerHTML = `<div class="section"><div class="panel-msg">
+        <div class="ico">🔍</div>
+        <strong>Train ${currentNum} introuvable</strong><br><br>
+        Circule-t-il dans les 60 prochaines minutes ?<br>Le flux SNCF ne couvre que la fenêtre ±60 min.<br><br>
+        <span style="font-size:11px;color:var(--muted)">${entities.length} trains présents dans le flux</span>
+      </div></div>`;
+      document.getElementById('panelFooter').style.display = 'flex';
+      document.getElementById('footerInfo').textContent = `${new Date().toLocaleTimeString('fr-FR')} · ${entities.length} trains`;
+    } else {
+      const stops = entity.trip_update.stop_time_update || [];
+      renderPanel(entity, stops);
     }
-
-    const stops = found.entity.trip_update.stop_time_update || [];
-    const position = interpolatePosition(stops);
-
-    renderTrainInfo(found, stops);
-    renderMap(stops, position);
-    updateBar(entities.length);
-
-  } catch (e) {
-    console.error(e);
-    showError(`Impossible de récupérer les données SNCF.<br><br>
-      <strong>Détail :</strong> ${e.message}<br><br>
-      Le flux GTFS-RT est accessible sur :<br>
-      <code>proxy.transport.data.gouv.fr/resource/sncf-gtfs-rt-trip-updates</code><br><br>
-      Les restrictions CORS peuvent bloquer l'accès depuis un navigateur. 
-      En production, passez par un backend ou un proxy serveur.`);
+  } catch(e) {
+    document.getElementById('peekRoute').textContent = 'Erreur connexion';
+    document.getElementById('peekStatus').textContent = e.message;
+    document.getElementById('panelScroll').innerHTML = `<div class="section"><div class="panel-msg">
+      <div class="ico">⚠️</div><strong>Données inaccessibles</strong><br><br>
+      ${e.message}<br><br>
+      <span style="font-size:11px;color:var(--muted)">
+      Le flux GTFS-RT peut être bloqué par le navigateur (CORS).<br>
+      Accès direct : proxy.transport.data.gouv.fr
+      </span>
+    </div></div>`;
   }
-
   document.getElementById('searchBtn').disabled = false;
 }
 
-function updateBar(count) {
-  lastUpdate = new Date();
-  const info = lastUpdate.toLocaleTimeString('fr-FR') +
-    (count ? ` · ${count} trains dans le flux` : '');
-  document.getElementById('updateInfo').textContent = `Mis à jour à ${info}`;
-}
-
-// =========================================================
-// ENTRÉE
-// =========================================================
 document.getElementById('trainInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') startTracking();
+  if (e.key === 'Enter') { document.getElementById('trainInput').blur(); startTracking(); }
 });
 
-// Init
 initMap();
+initDrag();
 </script>
 
 </body>
