@@ -390,6 +390,86 @@ function togglePreproc(key, checkbox) {
 }
 
 // ── Sélection langue ──────────────────────────────────────────────────────────
+async function loadLatinDict() {
+  if (DICTS.latin) return DICTS.latin;
+  var url = 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/languages/latin/dict.txt';
+  try {
+    var r = await fetch(url);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    var txt = await r.text();
+    var lines = txt.split('\n').map(function(l){ return l.trimEnd(); });
+    while (lines.length && lines[lines.length-1] === '') lines.pop();
+    // Index 0 = blank CTC (sauté par ctcLabelDecode) → forcer "" fictif
+    if (lines[0] !== '') lines.unshift('');
+    DICTS.latin = lines;
+    console.log('[dict] latin chargé — ' + DICTS.latin.length + ' entrées');
+    return DICTS.latin;
+  } catch(e) {
+    console.warn('[dict] HF indisponible, fallback embarqué:', e.message);
+    DICTS.latin = ['',' ','!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[',']','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','}','à','â','æ','ç','è','é','ê','ë','î','ï','ô','œ','ù','û','ü','ÿ','À','Â','Æ','Ç','È','É','Ê','Ë','Î','Ï','Ô','Œ','Ù','Û','Ü','€'];
+    return DICTS.latin;
+  }
+}
+
+async function initEngine(lang) {
+  try {
+    st('loading','Configuration ONNX Runtime…','');
+    prog(true); pct(5);
+    ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';
+    ort.env.wasm.numThreads = 1;
+
+    if (typeof paddleocr === 'undefined' || !paddleocr.PaddleOcrService)
+      throw new Error('paddleocr.js non chargé — vérifiez la connexion');
+
+    var cfg = MODELS[lang];
+    st('loading','Chargement modèle détection…',cfg.label); pct(10);
+
+    var detBuf;
+    try {
+      var r1 = await fetch(cfg.det);
+      if (!r1.ok) throw new Error('HTTP ' + r1.status);
+      detBuf = await r1.arrayBuffer();
+    } catch(e1) {
+      if (lang === 'latin' && cfg.det_fb) {
+        st('loading','Fallback : détecteur EN…','');
+        var r1b = await fetch(cfg.det_fb);
+        if (!r1b.ok) throw new Error('det fallback ' + r1b.status);
+        detBuf = await r1b.arrayBuffer();
+      } else throw e1;
+    }
+    pct(45);
+
+    st('loading','Chargement modèle reconnaissance…',cfg.label);
+    var r2 = await fetch(cfg.rec);
+    if (!r2.ok) throw new Error('rec HTTP ' + r2.status);
+    var recBuf = await r2.arrayBuffer();
+    pct(70);
+
+    st('loading','Chargement dictionnaire…',cfg.label);
+    var dict = lang === 'latin' ? await loadLatinDict() : DICTS[lang];
+    pct(85);
+
+    st('loading','Initialisation pipeline OCR…','');
+    var engine = await paddleocr.PaddleOcrService.createInstance({
+      ort: ort,
+      detection:   { modelBuffer: detBuf },
+      recognition: { modelBuffer: recBuf, charactersDictionary: dict }
+    });
+
+    pct(100);
+    CACHE[lang] = engine;
+    ENGINE = engine; READY = true;
+    st('ready','Moteur '+(lang==='latin'?'FR/Latin':'EN')+' prêt — déposez une image', cfg.label);
+    prog(false);
+    if (IMG_EL) document.getElementById('run-btn').disabled = false;
+
+  } catch(e) {
+    console.error('[init]',e);
+    st('error','Erreur : '+e.message,'F12 → Console pour détails');
+    prog(false);
+  }
+}
+
 function selectLang(lang, btn) {
   if (BUSY) return;
   CUR_LANG = lang;
@@ -559,7 +639,7 @@ function drawBoxes(res){
   canvas.width=wr.width; canvas.height=wr.height;
   var sx=ir.width/imgDom.naturalWidth,sy=ir.height/imgDom.naturalHeight;
   var ox=ir.left-wr.left,oy=ir.top-wr.top;
-  var ctx=canvas.getContext('2d');
+  var ctx=canvas.getContext('2d',{willReadFrequently:true});
   ctx.clearRect(0,0,canvas.width,canvas.height);
   res.forEach(function(r,i){
     var b=r.box; if(!b) return;
