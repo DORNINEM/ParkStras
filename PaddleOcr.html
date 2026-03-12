@@ -196,15 +196,6 @@ body{font-family:var(--fh);background:var(--bg);color:var(--ink);min-height:100v
     <div class="stat"><div class="stat-l">Durée</div><div class="stat-v" id="sv-t">—</div></div>
     <div class="stat"><div class="stat-l">Mots</div><div class="stat-v" id="sv-w">0</div></div>
   </div>
-
-  <!-- Panneau diagnostic offset CTC -->
-
-  <div id="diag-wrap" style="display:none;margin-bottom:20px;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;">
-    <div style="padding:9px 16px;background:var(--sur2);border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:10px;">
-      <span style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">🔬 Diagnostic offset dictionnaire</span>
-      <span style="font-family:var(--fm);font-size:10px;color:var(--muted);">Si le texte est décalé, choisir l'offset correct</span>
-      <button onclick="document.getElementById('diag-wrap').style.display='none'" style="margin-left:auto;font-family:var(--fm);font-size:10px;background:none;border:none;cursor:pointer;color:var(--muted)">✕ Fermer</button>
-    </div>
     <div style="padding:12px 16px;" id="diag-panel"></div>
   </div>
 
@@ -424,169 +415,6 @@ function selectLang(lang, btn) {
 
 // ── Init engine ─────────────────────────────────────────────────────────────
 // ── Diagnostic mapping ───────────────────────────────────────────────────────
-// Tester plusieurs offsets CTC sur les résultats pour trouver le bon décalage
-function applyDictOffset(text, dict, offset) {
-  var out = '';
-  for (var i = 0; i < text.length; i++) {
-    var c = text[i];
-    var idx = dict.indexOf(c);
-    if (idx === -1) { out += c; continue; }
-    var ni = idx + offset;
-    out += (ni >= 0 && ni < dict.length) ? dict[ni] : '?';
-  }
-  return out;
-}
-
-function showDiagnostic(results, dict) {
-  var panel = document.getElementById('diag-panel');
-  if (!panel || !results || !results.length) return;
-  var sample = results.slice(0, 4);
-  var offsets = [-2, -1, 0, 1, 2];
-  var html = '<table style="width:100%;border-collapse:collapse;font-family:var(--fm);font-size:11px;">';
-  html += '<tr style="background:var(--sur2)">'
-        + '<th style="padding:5px 8px;text-align:left;border:1px solid var(--border)">Brut</th>'
-        + offsets.map(function(o){ return '<th style="padding:5px 8px;border:1px solid var(--border);color:'+(o===0?'var(--acc2)':'var(--muted)')+'">offset '+(o>=0?'+':'')+o+'</th>'; }).join('')
-        + '</tr>';
-  sample.forEach(function(r) {
-    var raw = r.text || '';
-    html += '<tr><td style="padding:5px 8px;border:1px solid var(--border);color:var(--acc)">' + esc(raw) + '</td>'
-          + offsets.map(function(o) {
-              var decoded = applyDictOffset(raw, dict, o);
-              var isCurrent = (o === DICT_OFFSET);
-              return '<td style="padding:5px 8px;border:1px solid var(--border);background:'+(isCurrent?'#e8f5ee':'')+'">'+esc(decoded)+'</td>';
-            }).join('')
-          + '</tr>';
-  });
-  html += '</table>';
-  html += '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
-        + '<span style="font-size:10px;color:var(--muted)">Offset actif :</span>'
-        + offsets.map(function(o){
-            return '<button onclick="setDictOffset('+o+')" style="font-family:var(--fm);font-size:10px;padding:3px 8px;border:1px solid var(--border);border-radius:2px;background:'+(o===DICT_OFFSET?'var(--ink)':'none')+';color:'+(o===DICT_OFFSET?'var(--bg)':'var(--ink)')+';cursor:pointer" id="off-btn-'+o+'">'+(o>=0?'+':'')+o+'</button>';
-          }).join('')
-        + '<span style="font-size:10px;color:var(--muted);margin-left:8px">→ Choisir l offset qui donne le texte correct, puis relancer l OCR</span>'
-        + '</div>';
-  panel.innerHTML = html;
-  document.getElementById('diag-wrap').style.display = 'block';
-}
-
-var DICT_OFFSET = -1; // offset CTC par défaut (blank token en position 0)
-
-function setDictOffset(o) {
-  DICT_OFFSET = o;
-  // Mettre à jour les boutons
-  [-2,-1,0,1,2].forEach(function(x){
-    var b = document.getElementById('off-btn-'+x);
-    if(b){ b.style.background = x===o?'var(--ink)':'none'; b.style.color = x===o?'var(--bg)':'var(--ink)'; }
-  });
-  // Ré-appliquer l'offset sur les résultats déjà affichés si on en a
-  if (LAST && DICTS[CUR_LANG]) {
-    var reprocessed = LAST.map(function(r) {
-      return Object.assign({}, r, { text: applyDictOffset(r.text||'', DICTS[CUR_LANG], o) });
-    });
-    renderResults(reprocessed, null);
-  }
-}
-
-async function loadLatinDict() {
-  if (DICTS.latin) return DICTS.latin;
-  var url = 'https://huggingface.co/monkt/paddleocr-onnx/resolve/main/languages/latin/dict.txt';
-  try {
-    var r = await fetch(url);
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    var txt = await r.text();
-    // Format dict.txt PaddleOCR : une ligne = un caractère
-    // L'index 0 est réservé au "blank" CTC → le moteur paddleocr.js attend
-    // que l'espace soit à l'index 0 dans charactersDictionary.
-    // On construit donc : [" ", char1, char2, ...] en ignorant la 1ère ligne
-    // si elle est déjà un espace (évite doublons).
-    var lines = txt.split('\n').map(function(l){ return l.trimEnd(); });
-    // Supprimer lignes vides finales
-    while (lines.length && lines[lines.length-1] === '') lines.pop();
-    // S'assurer que l'espace est en position 0
-    if (lines[0] !== ' ') lines.unshift(' ');
-    DICTS.latin = lines;
-    console.log('[dict] latin chargé — ' + DICTS.latin.length + ' entrées, index 0=' + JSON.stringify(DICTS.latin[0]));
-    return DICTS.latin;
-  } catch(e) {
-    console.warn('[dict] HF indisponible, fallback embarqué:', e.message);
-    // Fallback : espace en [0] puis chars latins courants
-    DICTS.latin = [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",
-      "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@",
-      "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
-      "[","]","_","`",
-      "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-      "{","}",
-      "\u00e0","\u00e2","\u00e6","\u00e7","\u00e8","\u00e9","\u00ea","\u00eb",
-      "\u00ee","\u00ef","\u00f4","\u0153","\u00f9","\u00fb","\u00fc","\u00ff",
-      "\u00c0","\u00c2","\u00c6","\u00c7","\u00c8","\u00c9","\u00ca","\u00cb",
-      "\u00ce","\u00cf","\u00d4","\u0152","\u00d9","\u00db","\u00dc","\u20ac"];
-    return DICTS.latin;
-  }
-}
-
-
-async function initEngine(lang) {
-  try {
-    st('loading','Configuration ONNX Runtime…','');
-    prog(true); pct(5);
-    ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/';
-    ort.env.wasm.numThreads = 1;
-
-    if (typeof paddleocr === 'undefined' || !paddleocr.PaddleOcrService)
-      throw new Error('paddleocr.js non chargé — vérifiez la connexion');
-
-    var cfg = MODELS[lang];
-    st('loading','Chargement modèle détection…',cfg.label); pct(10);
-
-    var detBuf;
-    try {
-      var r1 = await fetch(cfg.det);
-      if (!r1.ok) throw new Error('HTTP ' + r1.status);
-      detBuf = await r1.arrayBuffer();
-    } catch(e1) {
-      if (lang === 'latin' && cfg.det_fb) {
-        st('loading','Fallback : détecteur EN…','');
-        var r1b = await fetch(cfg.det_fb);
-        if (!r1b.ok) throw new Error('det fallback ' + r1b.status);
-        detBuf = await r1b.arrayBuffer();
-      } else throw e1;
-    }
-    pct(45);
-
-    st('loading','Chargement modèle reconnaissance…',cfg.label);
-    var r2 = await fetch(cfg.rec);
-    if (!r2.ok) throw new Error('rec HTTP ' + r2.status);
-    var recBuf = await r2.arrayBuffer();
-    pct(70);
-
-    // Charger le dictionnaire (dynamique pour latin)
-    st('loading','Chargement dictionnaire…',cfg.label);
-    var dict = lang === 'latin' ? await loadLatinDict() : DICTS[lang];
-    pct(85);
-
-    st('loading','Initialisation pipeline OCR…','');
-    var engine = await paddleocr.PaddleOcrService.createInstance({
-      ort: ort,
-      detection:   { modelBuffer: detBuf },
-      recognition: { modelBuffer: recBuf, charactersDictionary: dict }
-    });
-
-    pct(100);
-    CACHE[lang] = engine;
-    ENGINE = engine; READY = true;
-    var dictInfo = lang === 'latin' ? (DICTS.latin ? DICTS.latin.length + ' chars' : '') : '';
-    st('ready','Moteur '+(lang==='latin'?'FR/Latin':'EN')+' prêt — déposez une image',
-       cfg.label + (dictInfo ? ' · ' + dictInfo : ''));
-    prog(false);
-    if (IMG_EL) document.getElementById('run-btn').disabled = false;
-
-  } catch(e) {
-    console.error('[init]',e);
-    st('error','Erreur : '+e.message,'F12 → Console pour détails');
-    prog(false);
-  }
-}
-
 // ── UI helpers ────────────────────────────────────────────────────────────────
 function st(type,txt,det){
   document.getElementById('sdot').className='sdot '+type;
@@ -665,45 +493,25 @@ async function runOCR(){
     pct(40);
     var t0=performance.now();
     var results=await ENGINE.recognize({width:imgData.width,height:imgData.height,data:imgData.data});
+    // processRecognition regroupe les lignes et insère les espaces inter-mots
+    // en se basant sur les positions des bounding boxes
+    var processed = ENGINE.processRecognition ? ENGINE.processRecognition(results) : null;
+    if (processed && processed.lines && processed.lines.length) {
+      // Remplacer chaque résultat brut par le texte reconstitué avec espaces
+      processed.lines.forEach(function(lineArr, li) {
+        if (results[li]) {
+          // Reconstruire le texte de la ligne avec espaces entre les mots
+          results[li].text = lineArr.map(function(r){ return r.text; }).join(' ');
+        }
+      });
+    }
     var ms=Math.round(performance.now()-t0);
     pct(100); LAST=results;
 
-    // ── DEBUG : inspecter options et processRecognition ────────────────────────
-    console.group('[OCR DEBUG v3]');
-
-    // 1. Options par défaut de reconnaissance — chercher option espace/blank
-    console.log('DEFAULT_RECOGNITION_OPTIONS:', JSON.stringify(paddleocr.DEFAULT_RECOGNITION_OPTIONS));
-    console.log('DEFAULT_PADDLE_OPTIONS:', JSON.stringify(paddleocr.DEFAULT_PADDLE_OPTIONS));
-
-    // 2. Inspecter RecognitionService directement
-    try {
-      var recSvc = ENGINE.recognitionService || ENGINE.recognitionSession;
-      if (recSvc) {
-        console.log('recognitionService keys:', Object.keys(recSvc));
-        console.log('recognitionService proto:', Object.getOwnPropertyNames(Object.getPrototypeOf(recSvc)));
-      }
-    } catch(ex){ console.warn('recSvc err:', ex); }
-
-    // 3. Tenter processRecognition sur la 1ère ligne pour voir la sortie brute
-    try {
-      var detSvc = ENGINE.detectionService || ENGINE.detectionSession;
-      if (detSvc) console.log('detectionService keys:', Object.keys(detSvc));
-    } catch(ex){ console.warn('detSvc err:', ex); }
-
-    // 4. Afficher texte ligne 1 + codes pour confirmation
-    if (results[0]) {
-      var codes = Array.from(results[0].text||'').map(function(c){return c+'('+c.charCodeAt(0)+')';});
-      console.log('L1 text:', JSON.stringify(results[0].text));
-      console.log('L1 codes:', codes.join(' '));
-    }
-
-    console.groupEnd();
-    // ─────────────────────────────────────────────────────────────────────────
+    // debug supprimé — espaces gérés via processRecognition()
     renderResults(results,ms);
     drawBoxes(results);
     st('ready',results.length+' ligne(s) · '+ms+' ms',MODELS[CUR_LANG].label);
-    // Afficher le diagnostic d'offset si mode latin
-    if (CUR_LANG === 'latin' && DICTS.latin) showDiagnostic(results, DICTS.latin);
   }catch(e){
     console.error('[OCR]',e);
     st('error','Erreur OCR : '+e.message,'F12 → Console');
@@ -719,10 +527,8 @@ function renderResults(res,ms){
   if(!res||!res.length){ document.getElementById('rlines').innerHTML=emptyHTML('Aucun texte détecté.'); return; }
   var sum=0,plain='',jarr=[],html='';
   // Appliquer l'offset CTC si un dictionnaire est disponible
-  var activeDict = DICTS[CUR_LANG];
   res.forEach(function(r,i){
-    var rawTxt = r.text||'';
-    var txt = (activeDict && DICT_OFFSET !== 0) ? applyDictOffset(rawTxt, activeDict, DICT_OFFSET) : rawTxt;
+    var txt = r.text||'';
     var conf=r.confidence||0;
     sum+=conf; plain+=txt+'\n';
     jarr.push({n:i+1,text:txt,confidence:+conf.toFixed(4),bbox:r.box});
@@ -781,4 +587,3 @@ window.addEventListener('resize',function(){ if(LAST) drawBoxes(LAST); });
 
 </body>
 </html>
-
