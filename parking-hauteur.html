@@ -114,11 +114,62 @@ const BARRIERS = [
   { h: 2.20, label: 'Barrière 2,20 m', note: 'Minimum légal NF P91-100 (public)' },
 ];
 
+// Calcule la hauteur verticale du coin le plus haut de la voiture
+// à une position donnée (progress) — pour détecter la collision en temps réel
+function calcLiveHeight({ hCar, coffre, lenCar, wb, angleDeg }, prog, S, rampTopX, rampLen, groundY) {
+  const a = DEG(angleDeg);
+  const hTotal = hCar + coffre;
+  const rampDx = rampLen * S * Math.cos(a);
+  const rampBotX = rampTopX + rampDx;
+  const totalDist = (lenCar + rampLen) * S;
+
+  function advToXY(adv) {
+    const startX = 20;
+    const flatEnd = rampTopX - startX;
+    if (adv <= flatEnd) return { x: startX + adv, y: groundY };
+    const onRamp = adv - flatEnd;
+    if (onRamp <= rampDx) return { x: rampTopX + onRamp, y: groundY + onRamp * Math.tan(a) };
+    return { x: rampBotX + (onRamp - rampDx), y: groundY + rampLen * S * Math.sin(a) };
+  }
+
+  const carAdv = prog * totalDist;
+  const fw = advToXY(carAdv);
+  const rw = advToXY(Math.max(0, carAdv - wb * S));
+  const bodyAngle = Math.atan2(fw.y - rw.y, fw.x - rw.x);
+
+  // Coin arrière du toit (le plus haut quand on descend)
+  const halfWB = wb * S / 2;
+  const ovR = (lenCar - wb) * S * 0.62;
+  // Position du coin arrière du toit en coords monde
+  const cosB = Math.cos(bodyAngle), sinB = Math.sin(bodyAngle);
+  const cx = (fw.x + rw.x) / 2;
+  const cy = (fw.y + rw.y) / 2;
+  // Coin haut arrière = centre + rotation du vecteur (-halfWB-ovR, -hTotal*S)
+  const cornerX = cx + (-halfWB - ovR) * cosB - (-hTotal * S) * sinB;
+  const cornerY = cy + (-halfWB - ovR) * sinB + (-hTotal * S) * cosB;
+
+  // Coin haut avant aussi
+  const ovF = (lenCar - wb) * S * 0.38;
+  const cornerFX = cx + (halfWB + ovF) * cosB - (-hTotal * S) * sinB;
+  const cornerFY = cy + (halfWB + ovF) * sinB + (-hTotal * S) * cosB;
+
+  return {
+    rearCornerY: cornerY,   // Y du coin arrière haut (petit Y = haut)
+    frontCornerY: cornerFY,
+    rearCornerX: cornerX,
+    frontCornerX: cornerFX,
+    bodyAngle,
+    fw, rw, cx, cy
+  };
+}
+
 function App() {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [running, setRunning] = useState(false);
+  const [crashed, setCrashed] = useState(false);
+  const [crashProgress, setCrashProgress] = useState(null);
 
   const [params, setParams] = useState({
     plafond: 2.10,
@@ -129,7 +180,11 @@ function App() {
     angleDeg: 12,
   });
 
-  const set = (k, v) => setParams(p => ({ ...p, [k]: v }));
+  const set = (k, v) => {
+    setParams(p => ({ ...p, [k]: v }));
+    setCrashed(false);
+    setCrashProgress(null);
+  };
 
   const crit = calcCritical(params);
 
@@ -139,7 +194,7 @@ function App() {
     return { ...b, clr: c.clr, ok: c.ok };
   });
 
-  const draw = useCallback((prog) => {
+  const draw = useCallback((prog, isCrashed = false) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -291,14 +346,22 @@ function App() {
 
     ctx.restore();
 
-    // === COTE HAUTEUR EN TEMPS RÉEL ===
+    // === DÉTECTION COLLISION TEMPS RÉEL ===
+    const live = calcLiveHeight(params, prog, S, rampTopX, rampLen, groundY);
+    const ceilY = groundY - plafH - 7; // Y du bas du plafond
+    const rearHit = live.rearCornerY <= ceilY;
+    const frontHit = live.frontCornerY <= ceilY;
+    const hitCornerY = Math.min(live.rearCornerY, live.frontCornerY);
+    const hitCornerX = live.rearCornerY < live.frontCornerY ? live.rearCornerX : live.frontCornerX;
     const isOnRamp = fw.x >= rampTopX - 10 && fw.x <= rampBotX + 10;
+
+    // === COTE HAUTEUR EN TEMPS RÉEL ===
     if (isOnRamp) {
       const effH = hTotal * Math.cos(bodyAngle);
       const topY = fw.y - effH * S;
       const xLabel = fw.x + 20;
-      const clrPx = groundY - plafH - 7 - topY;
-      const lineCol = clrPx < 0 ? WRN : clrPx < S * 0.15 ? AMB : OK;
+      const clrPx = ceilY - topY;
+      const lineCol = (rearHit || frontHit) ? WRN : clrPx < S * 0.15 ? AMB : OK;
 
       ctx.strokeStyle = lineCol + 'bb'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
       ctx.beginPath(); ctx.moveTo(xLabel - 4, fw.y); ctx.lineTo(xLabel - 4, topY); ctx.stroke(); ctx.setLineDash([]);
@@ -307,43 +370,102 @@ function App() {
       ctx.font = `bold ${Math.round(S * 0.2)}px monospace`;
       ctx.fillText(`${effH.toFixed(2)} m`, xLabel, topY + (fw.y - topY) / 2 + 4);
 
-      // Ligne de dégagement jusqu'au plafond
       if (Math.abs(clrPx) < S * 0.8) {
         ctx.strokeStyle = lineCol + '88'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
-        ctx.beginPath(); ctx.moveTo(xLabel - 4, topY); ctx.lineTo(xLabel - 4, groundY - plafH); ctx.stroke(); ctx.setLineDash([]);
-        const clrM = (plafond - effH);
+        ctx.beginPath(); ctx.moveTo(xLabel - 4, topY); ctx.lineTo(xLabel - 4, ceilY); ctx.stroke(); ctx.setLineDash([]);
+        const clrM = plafond - effH;
         ctx.fillStyle = lineCol;
         ctx.font = `${Math.round(S * 0.18)}px monospace`;
         ctx.fillText(`${clrM >= 0 ? '+' : ''}${clrM.toFixed(2)}m`, xLabel, topY - 4);
       }
     }
 
-    // Sync scrub si animation
+    // === EFFETS VISUELS COLLISION ===
+    if (isCrashed || rearHit || frontHit) {
+      // Flash rouge sur le plafond au point d'impact
+      const impactX = Math.max(rampTopX, Math.min(hitCornerX, W));
+      const flashW = S * 1.5;
+      ctx.fillStyle = WRN + '55';
+      ctx.fillRect(impactX - flashW / 2, ceilY, flashW, 10);
+
+      // Croix d'impact
+      const cx2 = impactX, cy2 = ceilY + 5;
+      ctx.strokeStyle = WRN; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(cx2 - 8, cy2 - 8); ctx.lineTo(cx2 + 8, cy2 + 8); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx2 + 8, cy2 - 8); ctx.lineTo(cx2 - 8, cy2 + 8); ctx.stroke();
+
+      // Étincelles
+      for (let i = 0; i < 6; i++) {
+        const ang = (i / 6) * Math.PI * 2 + prog * 10;
+        const r = S * 0.3 + Math.sin(prog * 30 + i) * S * 0.1;
+        ctx.fillStyle = i % 2 === 0 ? WRN : AMB;
+        ctx.beginPath();
+        ctx.arc(cx2 + Math.cos(ang) * r * 0.5, cy2 + Math.abs(Math.sin(ang)) * r * 0.5, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Banière BLOQUÉ sur le canvas
+      ctx.fillStyle = 'rgba(240,82,82,0.13)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = WRN;
+      ctx.font = `bold ${Math.round(S * 0.55)}px monospace`;
+      ctx.textAlign = 'center';
+      ctx.fillText('⛔ IMPACT — PASSAGE BLOQUÉ', W / 2, H / 2 - 10);
+      ctx.font = `${Math.round(S * 0.22)}px monospace`;
+      ctx.fillStyle = AMB;
+      const overM = (plafond - crit.heff);
+      ctx.fillText(`Dépassement : ${Math.abs(overM).toFixed(3)} m`, W / 2, H / 2 + S * 0.4);
+      ctx.textAlign = 'left';
+    }
+
+    // Sync scrub
     if (!running) {
       const scrub = document.getElementById('scrub');
       if (scrub) scrub.value = prog;
     }
 
-  }, [params, running]);
+  }, [params, running, crashed]);
 
-  useEffect(() => { draw(progress); }, [params, progress, draw]);
+  useEffect(() => { draw(progress, crashed); }, [params, progress, draw, crashed]);
 
-  // Animation
+  // Animation avec détection collision frame par frame
   useEffect(() => {
     if (!running) return;
     let start = null;
     const dur = 7000;
+    const canvas = canvasRef.current;
+    const W = canvas ? canvas.width : 800;
+    const S = Math.min(54, W / 16);
+    const rampTopX = Math.round(W * 0.26);
+    const H = 340;
+    const groundY = H - 60;
+
     const frame = (ts) => {
       if (!start) start = ts;
       const p = Math.min((ts - start) / dur, 1);
+
+      // Vérif collision en temps réel
+      const live = calcLiveHeight(params, p, S, rampTopX, 8.5, groundY);
+      const ceilY = groundY - params.plafond * S - 7;
+      const hit = live.rearCornerY <= ceilY || live.frontCornerY <= ceilY;
+
+      if (hit) {
+        setProgress(p);
+        setRunning(false);
+        setCrashed(true);
+        setCrashProgress(p);
+        draw(p, true);
+        return;
+      }
+
       setProgress(p);
-      draw(p);
+      draw(p, false);
       if (p < 1) animRef.current = requestAnimationFrame(frame);
       else setRunning(false);
     };
     animRef.current = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(animRef.current);
-  }, [running, draw]);
+  }, [running, draw, params]);
 
   // Resize
   useEffect(() => {
@@ -359,7 +481,7 @@ function App() {
     return () => window.removeEventListener('resize', resize);
   }, []);
 
-  const startAnim = () => { setProgress(0); setRunning(true); };
+  const startAnim = () => { setCrashed(false); setCrashProgress(null); setProgress(0); setRunning(true); };
   const stopAnim = () => { setRunning(false); cancelAnimationFrame(animRef.current); };
 
   const clrColor = crit.ok
@@ -424,11 +546,11 @@ function App() {
       <div className="btns">
         <button className="primary" onClick={startAnim} disabled={running}>▶ Simuler</button>
         <button onClick={stopAnim} disabled={!running}>⏹ Stop</button>
-        <button onClick={() => { stopAnim(); setProgress(0); }}>↺ Reset</button>
+        <button onClick={() => { stopAnim(); setProgress(0); setCrashed(false); setCrashProgress(null); }}>↺ Reset</button>
         <input
           type="range" id="scrub" className="scrub"
           min="0" max="1" step="0.005" value={progress}
-          onChange={e => { stopAnim(); setProgress(parseFloat(e.target.value)); }}
+          onChange={e => { stopAnim(); setCrashed(false); setCrashProgress(null); setProgress(parseFloat(e.target.value)); }}
         />
       </div>
 
