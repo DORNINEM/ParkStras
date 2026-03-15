@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur Rampe Parking</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f1117;
+      --bg2: #1a1d27;
+      --bg3: #22263a;
+      --border: #2e3347;
+      --text: #e8eaf0;
+      --muted: #7a7f9a;
+      --accent: #4f8ef7;
+      --amber: #f5a623;
+      --ok: #3ecf6e;
+      --warn: #f05252;
+      --car: #3a72d8;
+      --carTop: #5a92f8;
+      --radius: 10px;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 17px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .subtitle { font-size: 11px; color: var(--muted); margin-bottom: 16px; letter-spacing: 1px; }
+    .wrap { max-width: 860px; margin: 0 auto; }
+    canvas { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); display: block; background: #0a0c14; }
+    .result-bar {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin: 12px 0; padding: 12px 16px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); align-items: center;
+    }
+    .metric { flex: 1; min-width: 120px; }
+    .metric-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+    .metric-val { font-size: 20px; font-weight: 700; }
+    .barrier-box {
+      padding: 10px 14px; border-radius: var(--radius);
+      background: var(--bg3); border: 1px solid var(--border);
+      margin: 0 0 12px; font-size: 12px; line-height: 1.8;
+    }
+    .barrier-box strong { color: var(--accent); }
+    .barrier-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge {
+      display: inline-block; padding: 2px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    }
+    .badge-ok { background: #0d3320; color: var(--ok); border: 1px solid #1a5c38; }
+    .badge-warn { background: #3a0a0a; color: var(--warn); border: 1px solid #6b1212; }
+    .badge-caution { background: #3a2500; color: var(--amber); border: 1px solid #6b4500; }
+    .btns { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; }
+    button {
+      background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+      padding: 7px 18px; border-radius: 6px; cursor: pointer; font-family: inherit;
+      font-size: 12px; letter-spacing: 1px; transition: background 0.15s;
+    }
+    button:hover { background: var(--border); }
+    button.primary { background: #1a3a6e; border-color: var(--accent); color: var(--accent); }
+    button.primary:hover { background: #234d94; }
+    input[type=range] { flex: 1; accent-color: var(--accent); cursor: pointer; }
+    .scrub { flex: 1; }
+    .controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    @media (max-width: 600px) { .controls { grid-template-columns: repeat(2, 1fr); } }
+    .ctrl {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 10px 12px;
+    }
+    .ctrl-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .ctrl-row { display: flex; align-items: center; gap: 8px; }
+    .ctrl-val { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 42px; text-align: right; }
+    .note { font-size: 10px; color: var(--muted); margin-top: 10px; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 10px; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+const DEG = d => d * Math.PI / 180;
+
+function calcCritical({ plafond, hCar, coffre, lenCar, wb, angleDeg }) {
+  const a = DEG(angleDeg);
+  const hTotal = hCar + coffre;
+  // Point critique : arrière du toit (avec coffre) quand la caisse est inclinée
+  const heff = hTotal * Math.cos(a) + (lenCar - wb) * Math.sin(a);
+  const clr = plafond - heff;
+  return { heff, clr, ok: clr > 0 };
+}
+
+// Hauteurs de barrière courantes des parkings
+const BARRIERS = [
+  { h: 1.80, label: 'Barrière 1,80 m', note: 'Parkings anciens, centres commerciaux serrés' },
+  { h: 1.90, label: 'Barrière 1,90 m', note: 'Standard France (NF P91-100)' },
+  { h: 2.00, label: 'Barrière 2,00 m', note: 'Courant parkings modernes' },
+  { h: 2.10, label: 'Barrière 2,10 m', note: 'Parkings récents / ERP' },
+  { h: 2.20, label: 'Barrière 2,20 m', note: 'Minimum légal NF P91-100 (public)' },
+];
+
+function App() {
+  const canvasRef = useRef(null);
+  const animRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const [running, setRunning] = useState(false);
+
+  const [params, setParams] = useState({
+    plafond: 2.10,
+    hCar: 1.624,
+    coffre: 0,
+    lenCar: 4.79,
+    wb: 2.89,
+    angleDeg: 12,
+  });
+
+  const set = (k, v) => setParams(p => ({ ...p, [k]: v }));
+
+  const crit = calcCritical(params);
+
+  // Calcul du dégagement pour chaque barrière courante
+  const barrierResults = BARRIERS.map(b => {
+    const c = calcCritical({ ...params, plafond: b.h });
+    return { ...b, clr: c.clr, ok: c.ok };
+  });
+
+  const draw = useCallback((prog) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    const { plafond, hCar, coffre, lenCar, wb, angleDeg } = params;
+    const hTotal = hCar + coffre;
+    const S = Math.min(54, W / 16);
+    const a = DEG(angleDeg);
+    const rampLen = 8.5;
+    const groundY = H - 60;
+    const rampTopX = Math.round(W * 0.26);
+    const rampDx = rampLen * S * Math.cos(a);
+    const rampDy = rampLen * S * Math.sin(a);
+    const rampBotX = rampTopX + rampDx;
+    const rampBotY = groundY + rampDy;
+    const plafH = plafond * S;
+
+    // Palette
+    const CG = '#2a2e42';   // sol
+    const CW = '#1e2235';   // mur/plafond
+    const CT = '#5a607a';   // texte dim
+    const OK = '#3ecf6e';
+    const WRN = '#f05252';
+    const AMB = '#f5a623';
+
+    // Sol extérieur
+    ctx.fillStyle = CG;
+    ctx.fillRect(0, groundY, rampTopX + 4, 7);
+
+    // Rampe
+    ctx.beginPath(); ctx.moveTo(rampTopX, groundY); ctx.lineTo(rampBotX, rampBotY);
+    ctx.lineWidth = 7; ctx.strokeStyle = CG; ctx.stroke();
+    // Lignes de sécurité rampe
+    ctx.setLineDash([12, 8]);
+    ctx.beginPath(); ctx.moveTo(rampTopX, groundY - 2); ctx.lineTo(rampBotX, rampBotY - 2);
+    ctx.lineWidth = 1.5; ctx.strokeStyle = AMB + '60'; ctx.stroke(); ctx.setLineDash([]);
+
+    // Sol parking
+    ctx.fillStyle = CG;
+    ctx.fillRect(rampBotX - 2, rampBotY, W - rampBotX + 2, 7);
+
+    // Plafond
+    ctx.fillStyle = CW;
+    ctx.fillRect(rampTopX - 2, groundY - plafH - 7, W - rampTopX + 2, 7);
+    // Mur gauche
+    ctx.fillRect(rampTopX - 10, groundY - plafH - 7, 10, plafH + 7);
+
+    // Hachures plafond béton
+    ctx.strokeStyle = '#ffffff08'; ctx.lineWidth = 1;
+    for (let x = rampTopX; x < W; x += 18) {
+      ctx.beginPath(); ctx.moveTo(x, groundY - plafH - 7); ctx.lineTo(x - 10, groundY - plafH); ctx.stroke();
+    }
+
+    // Flèche hauteur plafond
+    const arrowX = rampTopX + 18;
+    ctx.strokeStyle = CT; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(arrowX, groundY); ctx.lineTo(arrowX, groundY - plafH + 7); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#4f8ef7';
+    ctx.font = `bold ${Math.round(S * 0.22)}px monospace`;
+    ctx.fillText(`⌀ ${plafond.toFixed(2)} m`, arrowX + 5, groundY - plafH + 20);
+
+    // Angle label
+    ctx.fillStyle = CT; ctx.font = `${Math.round(S * 0.2)}px monospace`;
+    ctx.fillText(`${angleDeg.toFixed(1)}°`, rampTopX + rampDx * 0.38, groundY + rampDy * 0.45 + 14);
+
+    // === VOITURE ===
+    const totalDist = (lenCar + rampLen) * S;
+
+    function advToXY(adv) {
+      const startX = 20;
+      const flatEnd = rampTopX - startX;
+      if (adv <= flatEnd) return { x: startX + adv, y: groundY };
+      const onRamp = adv - flatEnd;
+      if (onRamp <= rampDx) return { x: rampTopX + onRamp, y: groundY + onRamp * Math.tan(a) };
+      return { x: rampBotX + (onRamp - rampDx), y: rampBotY };
+    }
+
+    const carAdv = prog * totalDist;
+    const fw = advToXY(carAdv);
+    const rw = advToXY(Math.max(0, carAdv - wb * S));
+
+    const bodyAngle = Math.atan2(fw.y - rw.y, fw.x - rw.x);
+    const cx = (fw.x + rw.x) / 2;
+    const cy = (fw.y + rw.y) / 2;
+    const halfWB = wb * S / 2;
+    const ovF = (lenCar - wb) * S * 0.38;
+    const ovR = (lenCar - wb) * S * 0.62;
+    const carHpx = hCar * S;
+    const coffrePx = coffre * S;
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(bodyAngle);
+
+    // Bas carrosserie
+    ctx.fillStyle = '#2a4fa8';
+    ctx.beginPath();
+    ctx.roundRect(-halfWB - ovR, -carHpx * 0.52, halfWB + ovF + halfWB + ovR, carHpx * 0.52, [0, 0, 5, 5]);
+    ctx.fill();
+
+    // Toit
+    ctx.fillStyle = '#3a72d8';
+    ctx.beginPath();
+    ctx.roundRect(-halfWB - ovR * 0.35, -carHpx, halfWB + ovF * 0.65 + halfWB + ovR * 0.35, carHpx * 0.52, [6, 6, 0, 0]);
+    ctx.fill();
+
+    // Reflet toit
+    ctx.fillStyle = 'rgba(100,160,255,0.12)';
+    ctx.fillRect(-halfWB * 0.7, -carHpx + 4, halfWB * 1.4 + ovF * 0.3, 5);
+
+    // Pare-brise
+    ctx.fillStyle = 'rgba(120,190,255,0.25)';
+    ctx.beginPath();
+    ctx.moveTo(halfWB * 0.3, -carHpx);
+    ctx.lineTo(halfWB * 0.3 + ovF * 0.6, -carHpx * 0.52);
+    ctx.lineTo(halfWB * 0.3, -carHpx * 0.52);
+    ctx.closePath(); ctx.fill();
+
+    // Coffre de toit
+    if (coffre > 0.01) {
+      ctx.fillStyle = AMB;
+      ctx.beginPath();
+      ctx.roundRect(-halfWB * 0.7, -carHpx - coffrePx, halfWB * 0.7 + ovF * 0.45 + halfWB * 0.7, coffrePx, 3);
+      ctx.fill();
+      // Sangles
+      ctx.strokeStyle = '#b87400'; ctx.lineWidth = 1.5;
+      [-halfWB * 0.4, halfWB * 0.2].forEach(sx => {
+        ctx.beginPath(); ctx.moveTo(sx, -carHpx); ctx.lineTo(sx, -carHpx - coffrePx); ctx.stroke();
+      });
+    }
+
+    // Roues
+    const wheelR = Math.max(9, S * 0.18);
+    [halfWB, -halfWB].forEach(wx => {
+      ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, 0, wheelR, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, 0, wheelR * 0.4, 0, Math.PI * 2); ctx.fill();
+      // Jante
+      ctx.strokeStyle = '#888'; ctx.lineWidth = 1.5;
+      for (let i = 0; i < 5; i++) {
+        const ang = (i / 5) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(wx + Math.cos(ang) * wheelR * 0.18, Math.sin(ang) * wheelR * 0.18);
+        ctx.lineTo(wx + Math.cos(ang) * wheelR * 0.75, Math.sin(ang) * wheelR * 0.75);
+        ctx.stroke();
+      }
+    });
+
+    ctx.restore();
+
+    // === COTE HAUTEUR EN TEMPS RÉEL ===
+    const isOnRamp = fw.x >= rampTopX - 10 && fw.x <= rampBotX + 10;
+    if (isOnRamp) {
+      const effH = hTotal * Math.cos(bodyAngle);
+      const topY = fw.y - effH * S;
+      const xLabel = fw.x + 20;
+      const clrPx = groundY - plafH - 7 - topY;
+      const lineCol = clrPx < 0 ? WRN : clrPx < S * 0.15 ? AMB : OK;
+
+      ctx.strokeStyle = lineCol + 'bb'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(xLabel - 4, fw.y); ctx.lineTo(xLabel - 4, topY); ctx.stroke(); ctx.setLineDash([]);
+
+      ctx.fillStyle = lineCol;
+      ctx.font = `bold ${Math.round(S * 0.2)}px monospace`;
+      ctx.fillText(`${effH.toFixed(2)} m`, xLabel, topY + (fw.y - topY) / 2 + 4);
+
+      // Ligne de dégagement jusqu'au plafond
+      if (Math.abs(clrPx) < S * 0.8) {
+        ctx.strokeStyle = lineCol + '88'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+        ctx.beginPath(); ctx.moveTo(xLabel - 4, topY); ctx.lineTo(xLabel - 4, groundY - plafH); ctx.stroke(); ctx.setLineDash([]);
+        const clrM = (plafond - effH);
+        ctx.fillStyle = lineCol;
+        ctx.font = `${Math.round(S * 0.18)}px monospace`;
+        ctx.fillText(`${clrM >= 0 ? '+' : ''}${clrM.toFixed(2)}m`, xLabel, topY - 4);
+      }
+    }
+
+    // Sync scrub si animation
+    if (!running) {
+      const scrub = document.getElementById('scrub');
+      if (scrub) scrub.value = prog;
+    }
+
+  }, [params, running]);
+
+  useEffect(() => { draw(progress); }, [params, progress, draw]);
+
+  // Animation
+  useEffect(() => {
+    if (!running) return;
+    let start = null;
+    const dur = 7000;
+    const frame = (ts) => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      setProgress(p);
+      draw(p);
+      if (p < 1) animRef.current = requestAnimationFrame(frame);
+      else setRunning(false);
+    };
+    animRef.current = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [running, draw]);
+
+  // Resize
+  useEffect(() => {
+    const resize = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      canvas.width = canvas.parentElement.clientWidth || 800;
+      canvas.height = 340;
+      draw(progress);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, []);
+
+  const startAnim = () => { setProgress(0); setRunning(true); };
+  const stopAnim = () => { setRunning(false); cancelAnimationFrame(animRef.current); };
+
+  const clrColor = crit.ok
+    ? (crit.clr < 0.05 ? '#f5a623' : '#3ecf6e')
+    : '#f05252';
+
+  return (
+    <div className="wrap">
+      <h1>🅿 Simulateur rampe parking</h1>
+      <div className="subtitle">Vérification du passage sous linteau — Tesla Model Y Juniper par défaut</div>
+
+      <canvas ref={canvasRef} id="canvas" height="340" />
+
+      {/* Résultat principal */}
+      <div className="result-bar">
+        <div className="metric">
+          <div className="metric-label">Dégagement critique</div>
+          <div className="metric-val" style={{ color: clrColor }}>
+            {crit.clr >= 0 ? '+' : ''}{crit.clr.toFixed(3)} m
+          </div>
+        </div>
+        <div className="metric">
+          <div className="metric-label">Hauteur effective max</div>
+          <div className="metric-val" style={{ color: '#4f8ef7' }}>{crit.heff.toFixed(3)} m</div>
+        </div>
+        <div className="metric">
+          <div className="metric-label">Hauteur totale véhicule</div>
+          <div className="metric-val" style={{ color: '#7a7f9a' }}>
+            {(params.hCar + params.coffre).toFixed(2)} m
+          </div>
+        </div>
+        <div className="metric">
+          <div className="metric-label">Statut</div>
+          <div className="metric-val" style={{ color: clrColor }}>
+            {crit.ok ? (crit.clr < 0.05 ? '⚠ JUSTE' : '✓ OK') : '✗ BLOQUÉ'}
+          </div>
+        </div>
+      </div>
+
+      {/* Barrières courantes */}
+      <div className="barrier-box">
+        <div style={{ fontSize: 10, color: 'var(--muted)', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>
+          Compatibilité avec les hauteurs de barrière courantes
+        </div>
+        <div className="barrier-row">
+          {barrierResults.map(b => {
+            const cls = b.ok ? (b.clr < 0.05 ? 'badge-caution' : 'badge-ok') : 'badge-warn';
+            const icon = b.ok ? (b.clr < 0.05 ? '⚠' : '✓') : '✗';
+            return (
+              <span key={b.h} className={`badge ${cls}`} title={b.note}>
+                {icon} {b.label}
+              </span>
+            );
+          })}
+        </div>
+        <div style={{ fontSize: 10, color: 'var(--muted)', marginTop: 8 }}>
+          ⚠ = dégagement &lt; 5 cm · La hauteur effective inclut l'inclinaison de la caisse sur la rampe
+        </div>
+      </div>
+
+      {/* Boutons + scrub */}
+      <div className="btns">
+        <button className="primary" onClick={startAnim} disabled={running}>▶ Simuler</button>
+        <button onClick={stopAnim} disabled={!running}>⏹ Stop</button>
+        <button onClick={() => { stopAnim(); setProgress(0); }}>↺ Reset</button>
+        <input
+          type="range" id="scrub" className="scrub"
+          min="0" max="1" step="0.005" value={progress}
+          onChange={e => { stopAnim(); setProgress(parseFloat(e.target.value)); }}
+        />
+      </div>
+
+      {/* Paramètres */}
+      <div className="controls">
+        {[
+          { key: 'plafond',   label: 'Hauteur plafond (m)',    min: 1.8,  max: 3.0,  step: 0.05, fmt: v => v.toFixed(2) },
+          { key: 'hCar',      label: 'Hauteur voiture (m)',    min: 1.20, max: 2.10, step: 0.01, fmt: v => v.toFixed(3) },
+          { key: 'coffre',    label: 'Coffre de toit (m)',     min: 0,    max: 0.60, step: 0.01, fmt: v => v > 0 ? '+'+v.toFixed(2) : '—' },
+          { key: 'lenCar',    label: 'Longueur voiture (m)',   min: 3.50, max: 5.50, step: 0.05, fmt: v => v.toFixed(2) },
+          { key: 'wb',        label: 'Empattement (m)',        min: 2.00, max: 3.50, step: 0.01, fmt: v => v.toFixed(2) },
+          { key: 'angleDeg',  label: 'Angle rampe (°)',        min: 3,    max: 20,   step: 0.5,  fmt: v => v.toFixed(1)+'°' },
+        ].map(({ key, label, min, max, step, fmt }) => (
+          <div className="ctrl" key={key}>
+            <div className="ctrl-label">{label}</div>
+            <div className="ctrl-row">
+              <input
+                type="range" min={min} max={max} step={step}
+                value={params[key]}
+                onChange={e => set(key, parseFloat(e.target.value))}
+              />
+              <span className="ctrl-val">{fmt(params[key])}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="note">
+        <strong>Formule critique :</strong> H<sub>eff</sub> = (H<sub>voiture</sub> + H<sub>coffre</sub>) × cos(θ) + (L − empattement) × sin(θ)<br/>
+        Point le plus défavorable : arrière du toit au passage du linteau, quand la caisse est encore inclinée sur la rampe.<br/>
+        Normes FR : pente max 18% (≈10°) — recommandée 11-12% (≈6-7°) — débouché trottoir max 5% sur 4 m. Hauteur libre min : 2,20 m (NF P91-100 public) / 1,90 m (courant privatif).<br/>
+        <span style={{ color: '#4f8ef7' }}>Valeurs par défaut : Tesla Model Y Juniper 2025 (RWD Long Range)</span>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
