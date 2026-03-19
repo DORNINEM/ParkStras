@@ -247,10 +247,18 @@
 </div>
 
 <!-- Dependencies -->
-<script src="https://unpkg.com/tesseract.js@4/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
+// ─── Tesseract CDN paths (OBLIGATOIRE en CDN/GitHub Pages — sans ça le worker
+//     cherche ses fichiers en chemins relatifs et ne se charge jamais) ─────────
+const TESS_CDN = {
+  workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/worker.min.js',
+  corePath:   'https://cdn.jsdelivr.net/npm/tesseract.js-core@4.0.4/tesseract-core.wasm.js',
+  langPath:   'https://cdn.jsdelivr.net/npm/tesseract.js-data@4.0.0/traineddata/fast',
+};
+
 // ─── State ────────────────────────────────────────────────────────────────────
 let srcImage  = null;   // HTMLImageElement (image mode)
 let pdfDoc    = null;   // PDF.js PDFDocumentProxy
@@ -442,16 +450,18 @@ async function runOCR() {
     setProgress(5);
 
     // Create worker once — reused for all PDF pages
+    // Les chemins CDN absolus sont INDISPENSABLES (sinon hang infini sur GitHub Pages)
     const worker = await Tesseract.createWorker(lang, oem, {
+      ...TESS_CDN,
       logger: m => {
-        if (m.status === 'loading tesseract core')       setProgress(7);
-        if (m.status === 'initializing tesseract')       setProgress(14);
+        if (m.status === 'loading tesseract core')       { setProgress(7);  setStatus('loading', 'Chargement moteur Tesseract…'); }
+        if (m.status === 'initializing tesseract')       { setProgress(14); setStatus('loading', 'Initialisation…'); }
         if (m.status === 'loading language traineddata') {
           const pct = Math.round((m.progress || 0) * 100);
           setProgress(14 + (m.progress || 0) * 18);
           setStatus('loading', `Téléchargement modèle ${lang}… ${pct}%`);
         }
-        if (m.status === 'initialized api')              setProgress(34);
+        if (m.status === 'initialized api')              { setProgress(34); setStatus('loading', 'Prêt — lancement reconnaissance…'); }
       }
     });
 
@@ -515,8 +525,11 @@ async function runOCR() {
     setProgress(100);
 
   } catch (err) {
-    setStatus('err', err.message.split('\n')[0]);
-    document.getElementById('resultText').value = '⚠️ Erreur\n\n' + err.message;
+    const msg = (err && (err.message || String(err))) || 'Erreur inconnue';
+    setStatus('err', msg.split('\n')[0]);
+    document.getElementById('resultText').value = '⚠️ Erreur\n\n' + msg +
+      '\n\nSi le chargement restait bloqué, le problème était les chemins CDN.\n' +
+      'Vérifiez la console (F12) pour les détails.';
     setProgress(0);
   }
   btn.disabled = false;
@@ -617,3 +630,4 @@ function captureFrame() {
 </script>
 </body>
 </html>
+
