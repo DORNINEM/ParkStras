@@ -102,7 +102,7 @@
 <div class="container">
   <header>
     <h1>🔍 OCR Français</h1>
-    <p class="subtitle">Tesseract.js · Images (JPG, PNG, TIFF…) & PDF · 100% navigateur, sans serveur</p>
+    <p class="subtitle">Tesseract.js v5 · Images (JPG, PNG, TIFF…) & PDF · 100% navigateur, sans serveur</p>
   </header>
 
   <!-- Options -->
@@ -138,9 +138,9 @@
     <div class="opt-group">
       <label>Moteur (OEM)</label>
       <select id="oemSel">
-        <option value="1" selected>LSTM — neural (recommandé)</option>
-        <option value="0">Legacy — rapide</option>
-        <option value="3">LSTM + Legacy</option>
+        <option value="3" selected>Auto — LSTM + Legacy (recommandé)</option>
+        <option value="1">LSTM seul — neural</option>
+        <option value="0">Legacy seul — rapide</option>
       </select>
     </div>
     <div class="opt-sep"></div>
@@ -247,16 +247,14 @@
 </div>
 
 <!-- Dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
-// ─── Tesseract CDN paths (OBLIGATOIRE en CDN/GitHub Pages — sans ça le worker
-//     cherche ses fichiers en chemins relatifs et ne se charge jamais) ─────────
+// ─── Tesseract v5 CDN — seul langPath est forcé ; worker/core utilisent les
+//     défauts jsdelivr baked-in dans le bundle. ──────────────────────────────
 const TESS_CDN = {
-  workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/worker.min.js',
-  corePath:   'https://cdn.jsdelivr.net/npm/tesseract.js-core@4.0.4/tesseract-core.wasm.js',
-  langPath:   'https://cdn.jsdelivr.net/npm/tesseract.js-data@4.0.0/traineddata/fast',
+  langPath: 'https://tessdata.projectnaptha.com/4.0.0',
 };
 
 // ─── State ────────────────────────────────────────────────────────────────────
