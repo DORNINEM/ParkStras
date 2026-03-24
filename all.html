@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALL.HTML - Index des pages ParkStras</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --card-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 32px 20px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+
+    .intro {
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .intro strong {
+      color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      width: fit-content;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      word-break: break-word;
+    }
+
+    .card p {
+      margin: 0;
+      color: #d1d5db;
+      flex-grow: 1;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: #08111f;
+      background: var(--accent);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    footer {
+      margin-top: 36px;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .count {
+      color: var(--accent-2);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Index des pages HTML - ParkStras</h1>
+    <p>
+      Cette page regroupe les différentes pages HTML publiques du dépôt
+      <strong>ParkStras</strong> et propose un accès rapide à chacune d’elles.
+    </p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        Base des liens externes :
+        <strong>https://dorninem.github.io/ParkStras/</strong>
+      </p>
+      <p>
+        Exemple : <strong>quiz-compact.html</strong> →
+        <strong>https://dorninem.github.io/ParkStras/quiz-compact.html</strong>
+      </p>
+      <p>
+        Nombre de pages HTML listées ici :
+        <span class="count">21</span>
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <span class="tag">Accueil</span>
+        <h2>index.html</h2>
+        <p>Page d’accueil principale du projet ParkStras.</p>
+        <div class="meta">Entrée générale du site</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/index.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Quiz</span>
+        <h2>quiz-compact.html</h2>
+        <p>Version compacte du quiz interactif, avec chargement de fichiers JSON, statistiques et interface allégée.</p>
+        <div class="meta">Quiz rapide et pratique</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/quiz-compact.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Quiz</span>
+        <h2>quiz-compact-backend.html</h2>
+        <p>Variante orientée backend du quiz compact. À utiliser comme version technique ou de test liée au module de quiz compact.</p>
+        <div class="meta">Version spécialisée</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/quiz-compact-backend.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Quiz</span>
+        <h2>quiz.html</h2>
+        <p>Application de quiz standard du dépôt pour l’apprentissage interactif.</p>
+        <div class="meta">Version complète du quiz</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/quiz.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Flashcards</span>
+        <h2>flashcards-ultra-v1.html</h2>
+        <p>Version 1 de l’application de flashcards ultra pour réviser sous forme de cartes.</p>
+        <div class="meta">Première version</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/flashcards-ultra-v1.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Flashcards</span>
+        <h2>flashcards-ultra-v2.html</h2>
+        <p>Version 2 de l’application de flashcards ultra, évolution de la première interface.</p>
+        <div class="meta">Deuxième version</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/flashcards-ultra-v2.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Flashcards</span>
+        <h2>flashcards-ultra-v2B.html</h2>
+        <p>Variante de la v2 des flashcards, probablement dédiée à une liste de fichiers ou à un usage spécifique.</p>
+        <div class="meta">Déclinaison v2</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/flashcards-ultra-v2B.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Flashcards</span>
+        <h2>flashcards-ultra-v3.html</h2>
+        <p>Version 3 de l’application de flashcards ultra, destinée à une expérience de révision plus aboutie.</p>
+        <div class="meta">Troisième version</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/flashcards-ultra-v3.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">IA / ParkStras</span>
+        <h2>parkstras-gemini.html</h2>
+        <p>Application spéciale ParkStras avec Gemini.</p>
+        <div class="meta">Version IA dédiée</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/parkstras-gemini.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Texte</span>
+        <h2>pipotron.html</h2>
+        <p>Outil de génération automatique de texte.</p>
+        <div class="meta">Générateur de formulations</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/pipotron.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Univers</span>
+        <h2>galaxy.html</h2>
+        <p>Application interactive sur le thème de la galaxie.</p>
+        <div class="meta">Exploration thématique</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/galaxy.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Univers</span>
+        <h2>space.html</h2>
+        <p>Application interactive sur le thème spatial.</p>
+        <div class="meta">Ambiance espace</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/space.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Soleil</span>
+        <h2>sun-position-app-CLAUDE.html</h2>
+        <p>Application de position du soleil utilisant Claude.</p>
+        <div class="meta">Version Claude</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/sun-position-app-CLAUDE.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Soleil</span>
+        <h2>sun-position-app-CLAUDEV2.html</h2>
+        <p>Deuxième version de l’application de position du soleil utilisant Claude.</p>
+        <div class="meta">Version Claude v2</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/sun-position-app-CLAUDEV2.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Soleil</span>
+        <h2>sun-position-app-OPENAI.html</h2>
+        <p>Application de position du soleil utilisant OpenAI.</p>
+        <div class="meta">Version OpenAI</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/sun-position-app-OPENAI.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Soleil</span>
+        <h2>sun-position-app-OPENAIV2.html</h2>
+        <p>Deuxième version de l’application de position du soleil utilisant OpenAI.</p>
+        <div class="meta">Version OpenAI v2</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/sun-position-app-OPENAIV2.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Installation</span>
+        <h2>solar-camera-installer.html</h2>
+        <p>Guide d’installation de caméra solaire avec recommandations dynamiques.</p>
+        <div class="meta">Aide au déploiement</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/solar-camera-installer.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">OCR</span>
+        <h2>ocr-test.html</h2>
+        <p>Outil de test OCR avec Tesseract.js et prise en charge de PDF/images.</p>
+        <div class="meta">Reconnaissance de texte</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/ocr-test.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">OCR</span>
+        <h2>Ocrlocal.html</h2>
+        <p>Page OCR locale, vraisemblablement destinée à un traitement embarqué ou autonome.</p>
+        <div class="meta">Traitement local</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/Ocrlocal.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">OCR</span>
+        <h2>PaddleOcr.html</h2>
+        <p>Page OCR basée sur PaddleOCR ou sur une logique de test équivalente autour de cette technologie.</p>
+        <div class="meta">Alternative OCR</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/PaddleOcr.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Parking</span>
+        <h2>parking-hauteur.html</h2>
+        <p>Page liée à la hauteur de parking, probablement orientée simulation, contrôle ou détection de collision/limite.</p>
+        <div class="meta">Usage parking spécifique</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/parking-hauteur.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Énergie / POI</span>
+        <h2>nrj-poi.html</h2>
+        <p>Page dédiée à un sujet énergie / points d’intérêt, à confirmer selon son usage métier exact.</p>
+        <div class="meta">Page spécialisée</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/nrj-poi.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Texte</span>
+        <h2>reformulateur-v4.html</h2>
+        <p>Outil de reformulation de texte, version 4.</p>
+        <div class="meta">Rédaction / reformulation</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/reformulateur-v4.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Démo / Outil</span>
+        <h2>train.html</h2>
+        <p>Page nommée “train”, vraisemblablement une démo ou un outil spécifique du dépôt.</p>
+        <div class="meta">Fonction à préciser</div>
+        <div class="actions">
+          <a class="btn" href="https://dorninem.github.io/ParkStras/train.html" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    ALL.HTML - Index automatique des pages HTML publiques du dépôt ParkStras
+  </footer>
+</body>
+</html>
