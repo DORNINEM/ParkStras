@@ -4,9 +4,9 @@
       "question": "Dans le contexte de l'inspection des infrastructures, quel est l'avantage principal de l'utilisation de l'IA par rapport aux méthodes traditionnelles pour la détection des ponceaux ?",
       "answerOptions": [
         {
-          "text": "Elle permet une analyse plus rapide et réduit les coûts d'inspection manuelle.",
-          "rationale": "L'automatisation via l'IA traite les données de drones beaucoup plus vite que l'œil humain, optimisant ainsi les ressources financières et temporelles.",
-          "isCorrect": true
+          "text": "Elle remplace totalement le besoin d'ingénieurs sur le terrain.",
+          "rationale": "L'IA est un outil d'aide à la décision ; l'expertise humaine reste nécessaire pour valider les cas complexes et planifier les travaux de réparation.",
+          "isCorrect": false
         },
         {
           "text": "Elle garantit une détection à $100\\%$ sans besoin de données d'entraînement.",
@@ -14,14 +14,14 @@
           "isCorrect": false
         },
         {
-          "text": "Elle remplace totalement le besoin d'ingénieurs sur le terrain.",
-          "rationale": "L'IA est un outil d'aide à la décision ; l'expertise humaine reste nécessaire pour valider les cas complexes et planifier les travaux de réparation.",
-          "isCorrect": false
-        },
-        {
           "text": "Elle utilise uniquement des algorithmes de logique floue pour la localisation.",
           "rationale": "L'étude montre l'utilisation de réseaux de neurones convolutifs (CNN) comme YOLOv8, qui sont basés sur l'apprentissage profond et non sur la logique floue simple.",
           "isCorrect": false
+        },
+        {
+          "text": "Elle permet une analyse plus rapide et réduit les coûts d'inspection manuelle.",
+          "rationale": "L'automatisation via l'IA traite les données de drones beaucoup plus vite que l'œil humain, optimisant ainsi les ressources financières et temporelles.",
+          "isCorrect": true
         }
       ],
       "hint": "Pensez aux gains d'efficacité opérationnelle mentionnés dans l'étude de l'Université de Sherbrooke."
@@ -29,6 +29,16 @@
     {
       "question": "Lorsqu'on compare YOLOv8 à Faster R-CNN pour une application industrielle, quel compromis est généralement observé ?",
       "answerOptions": [
+        {
+          "text": "Il n'y a aucune différence de performance entre les deux modèles.",
+          "rationale": "Les tests sur la détection des ponceaux montrent des différences marquées en termes de rappel et de temps d'entraînement ($0.78$ h contre $4.6$ h).",
+          "isCorrect": false
+        },
+        {
+          "text": "YOLOv8 nécessite plus de mémoire GPU pour l'entraînement.",
+          "rationale": "Les modèles YOLO sont optimisés pour être légers et peuvent souvent être entraînés sur des GPU grand public contrairement aux modèles R-CNN plus massifs.",
+          "isCorrect": false
+        },
         {
           "text": "YOLOv8 est nettement plus rapide en temps d'exécution tout en offrant une précision compétitive.",
           "rationale": "L'architecture 'one-stage' de YOLO permet une inférence en temps réel, contrairement au processus en deux étapes de Faster R-CNN qui est plus lourd.",
@@ -38,16 +48,6 @@
           "text": "Faster R-CNN est plus rapide car il utilise moins de couches de convolution.",
           "rationale": "Faster R-CNN est structurellement plus lent car il doit d'abord proposer des régions d'intérêt avant de les classifier.",
           "isCorrect": false
-        },
-        {
-          "text": "YOLOv8 nécessite plus de mémoire GPU pour l'entraînement.",
-          "rationale": "Les modèles YOLO sont optimisés pour être légers et peuvent souvent être entraînés sur des GPU grand public contrairement aux modèles R-CNN plus massifs.",
-          "isCorrect": false
-        },
-        {
-          "text": "Il n'y a aucune différence de performance entre les deux modèles.",
-          "rationale": "Les tests sur la détection des ponceaux montrent des différences marquées en termes de rappel et de temps d'entraînement ($0.78$ h contre $4.6$ h).",
-          "isCorrect": false
         }
       ],
       "hint": "Considérez le temps d'entraînement mentionné dans le tableau comparatif des modèles."
@@ -56,13 +56,13 @@
       "question": "Qu'est-ce que l'augmentation de données 'exponentielle' apporte à un projet d'IA avec un petit jeu de données ?",
       "answerOptions": [
         {
-          "text": "Elle multiplie la diversité des exemples en appliquant des transformations en cascade sur les images déjà augmentées.",
-          "rationale": "En appliquant successivement des rotations, flous et miroirs, le nombre d'images croît de manière géométrique, couvrant plus de scénarios visuels.",
-          "isCorrect": true
-        },
-        {
           "text": "Elle remplace le besoin de collecter des images réelles sur le terrain.",
           "rationale": "L'augmentation enrichit les données existantes mais ne peut pas inventer de nouvelles classes d'objets sans une base réelle minimale.",
+          "isCorrect": false
+        },
+        {
+          "text": "Elle permet de diviser par deux le temps de calcul lors de l'entraînement.",
+          "rationale": "L'augmentation augmente le volume de données, ce qui tend à allonger le temps d'entraînement même si la convergence peut être plus stable.",
           "isCorrect": false
         },
         {
@@ -71,9 +71,9 @@
           "isCorrect": false
         },
         {
-          "text": "Elle permet de diviser par deux le temps de calcul lors de l'entraînement.",
-          "rationale": "L'augmentation augmente le volume de données, ce qui tend à allonger le temps d'entraînement même si la convergence peut être plus stable.",
-          "isCorrect": false
+          "text": "Elle multiplie la diversité des exemples en appliquant des transformations en cascade sur les images déjà augmentées.",
+          "rationale": "En appliquant successivement des rotations, flous et miroirs, le nombre d'images croît de manière géométrique, couvrant plus de scénarios visuels.",
+          "isCorrect": true
         }
       ],
       "hint": "Le terme 'exponentiel' fait référence à la croissance rapide du nombre d'échantillons par combinaisons successives."
@@ -81,11 +81,6 @@
     {
       "question": "Quelle est l'utilité de la technique 'Mosaic' introduite dans les versions récentes de YOLO ?",
       "answerOptions": [
-        {
-          "text": "Elle combine quatre images d'entraînement en une seule pour aider le modèle à détecter des objets dans des contextes variés.",
-          "rationale": "Cette méthode force le réseau à reconnaître des objets à différentes échelles et dans des positions inhabituelles au sein d'une même image.",
-          "isCorrect": true
-        },
         {
           "text": "Elle floute les visages pour respecter les règles de confidentialité des données.",
           "rationale": "La protection de la vie privée est une étape de prétraitement distincte ; Mosaic est une technique purement axée sur la performance de détection.",
@@ -95,6 +90,11 @@
           "text": "Elle permet de compresser les poids du modèle pour un déploiement sur mobile.",
           "rationale": "La compression des poids relève de la quantification ou de l'élagage, tandis que Mosaic agit sur les données d'entrée pendant l'apprentissage.",
           "isCorrect": false
+        },
+        {
+          "text": "Elle combine quatre images d'entraînement en une seule pour aider le modèle à détecter des objets dans des contextes variés.",
+          "rationale": "Cette méthode force le réseau à reconnaître des objets à différentes échelles et dans des positions inhabituelles au sein d'une même image.",
+          "isCorrect": true
         },
         {
           "text": "Elle sépare automatiquement les classes de fond des classes d'objets.",
@@ -107,11 +107,6 @@
     {
       "question": "Pourquoi est-il crucial pour une équipe de production de surveiller la 'Matrice de Confusion' après l'entraînement ?",
       "answerOptions": [
-        {
-          "text": "Elle permet d'identifier précisément quels types d'objets sont confondus avec d'autres ou avec le décor.",
-          "rationale": "C'est l'outil diagnostic principal pour comprendre les erreurs de classification et orienter la collecte de nouvelles données ciblées.",
-          "isCorrect": true
-        },
         {
           "text": "Elle indique la vitesse d'inférence du modèle sur un processeur donné.",
           "rationale": "La vitesse d'inférence est mesurée en millisecondes ($ms$) ou en images par seconde ($FPS$), pas par une matrice de classes.",
@@ -126,6 +121,11 @@
           "text": "Elle remplace le calcul de la précision moyenne ($mAP$).",
           "rationale": "La matrice de confusion et le $mAP$ sont complémentaires : l'une détaille les erreurs par classe, l'autre donne un score global de performance.",
           "isCorrect": false
+        },
+        {
+          "text": "Elle permet d'identifier précisément quels types d'objets sont confondus avec d'autres ou avec le décor.",
+          "rationale": "C'est l'outil diagnostic principal pour comprendre les erreurs de classification et orienter la collecte de nouvelles données ciblées.",
+          "isCorrect": true
         }
       ],
       "hint": "C'est un tableau qui croise les prédictions du modèle avec la réalité du terrain."
@@ -134,13 +134,13 @@
       "question": "Dans le déploiement réel, que signifie l'exportation d'un modèle en format 'TensorRT' ?",
       "answerOptions": [
         {
-          "text": "Le modèle est optimisé spécifiquement pour maximiser la vitesse sur le matériel NVIDIA.",
-          "rationale": "TensorRT est une bibliothèque de NVIDIA qui optimise les graphes de calcul pour obtenir une accélération allant jusqu'à $5x$ sur GPU.",
-          "isCorrect": true
-        },
-        {
           "text": "Le modèle peut désormais fonctionner sans aucune source d'énergie électrique.",
           "rationale": "Toute exécution de modèle d'IA nécessite une puissance de calcul alimentée électriquement.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cela permet au modèle de continuer à apprendre tout seul après son déploiement.",
+          "rationale": "L'exportation fige les poids du modèle pour l'inférence ; l'apprentissage continu nécessite une infrastructure MLOps beaucoup plus complexe.",
           "isCorrect": false
         },
         {
@@ -149,9 +149,9 @@
           "isCorrect": false
         },
         {
-          "text": "Cela permet au modèle de continuer à apprendre tout seul après son déploiement.",
-          "rationale": "L'exportation fige les poids du modèle pour l'inférence ; l'apprentissage continu nécessite une infrastructure MLOps beaucoup plus complexe.",
-          "isCorrect": false
+          "text": "Le modèle est optimisé spécifiquement pour maximiser la vitesse sur le matériel NVIDIA.",
+          "rationale": "TensorRT est une bibliothèque de NVIDIA qui optimise les graphes de calcul pour obtenir une accélération allant jusqu'à $5x$ sur GPU.",
+          "isCorrect": true
         }
       ],
       "hint": "Considérez les gains de performance matérielle mentionnés dans la documentation Ultralytics."
@@ -160,9 +160,9 @@
       "question": "Quel est l'impact du paramètre de 'Quantification INT8' lors de l'exportation d'un modèle YOLO ?",
       "answerOptions": [
         {
-          "text": "Il réduit considérablement la taille du modèle et accélère l'inférence sur les appareils mobiles au prix d'une légère perte de précision.",
-          "rationale": "En passant de la précision flottante $32$ bits à des entiers $8$ bits, on gagne en efficacité énergétique et en rapidité de calcul.",
-          "isCorrect": true
+          "text": "Il permet de doubler la résolution des images d'entrée sans ralentir le système.",
+          "rationale": "La quantification réduit la précision des calculs internes, mais augmenter la résolution d'entrée alourdit toujours la charge de calcul.",
+          "isCorrect": false
         },
         {
           "text": "Il augmente le nombre de classes que le modèle peut détecter simultanément.",
@@ -170,9 +170,9 @@
           "isCorrect": false
         },
         {
-          "text": "Il permet de doubler la résolution des images d'entrée sans ralentir le système.",
-          "rationale": "La quantification réduit la précision des calculs internes, mais augmenter la résolution d'entrée alourdit toujours la charge de calcul.",
-          "isCorrect": false
+          "text": "Il réduit considérablement la taille du modèle et accélère l'inférence sur les appareils mobiles au prix d'une légère perte de précision.",
+          "rationale": "En passant de la précision flottante $32$ bits à des entiers $8$ bits, on gagne en efficacité énergétique et en rapidité de calcul.",
+          "isCorrect": true
         },
         {
           "text": "Il transforme automatiquement le modèle de détection en un modèle de segmentation.",
@@ -186,23 +186,23 @@
       "question": "Comment le choix du 'Learning Rate' ($lr0$) influence-t-il la réussite d'un projet de détection d'objets en production ?",
       "answerOptions": [
         {
-          "text": "Un taux trop élevé peut empêcher le modèle de converger, tandis qu'un taux trop bas rend l'apprentissage extrêmement lent.",
-          "rationale": "Le $lr0$ détermine la taille des pas effectués pour minimiser l'erreur ; un équilibre est essentiel pour une convergence stable.",
-          "isCorrect": true
-        },
-        {
           "text": "Il définit le nombre d'images traitées par seconde lors de l'inférence.",
           "rationale": "Le taux d'apprentissage est un paramètre d'entraînement, il n'a aucun impact direct sur la vitesse d'inférence une fois le modèle déployé.",
           "isCorrect": false
         },
         {
-          "text": "Il permet de choisir si le modèle utilise un CPU ou un GPU.",
-          "rationale": "Le choix du matériel se fait via le paramètre 'device' et non par le taux d'apprentissage.",
+          "text": "Plus il est élevé, plus la précision finale du modèle sera garantie.",
+          "rationale": "Un taux trop élevé provoque souvent des oscillations erratiques de la fonction de perte, empêchant d'atteindre une précision optimale.",
           "isCorrect": false
         },
         {
-          "text": "Plus il est élevé, plus la précision finale du modèle sera garantie.",
-          "rationale": "Un taux trop élevé provoque souvent des oscillations erratiques de la fonction de perte, empêchant d'atteindre une précision optimale.",
+          "text": "Un taux trop élevé peut empêcher le modèle de converger, tandis qu'un taux trop bas rend l'apprentissage extrêmement lent.",
+          "rationale": "Le $lr0$ détermine la taille des pas effectués pour minimiser l'erreur ; un équilibre est essentiel pour une convergence stable.",
+          "isCorrect": true
+        },
+        {
+          "text": "Il permet de choisir si le modèle utilise un CPU ou un GPU.",
+          "rationale": "Le choix du matériel se fait via le paramètre 'device' et non par le taux d'apprentissage.",
           "isCorrect": false
         }
       ],
@@ -217,13 +217,13 @@
           "isCorrect": true
         },
         {
-          "text": "Il peut fonctionner entièrement sans électricité grâce à l'énergie solaire intégrée.",
-          "rationale": "C'est une affirmation physiquement impossible pour un logiciel ; il nécessite toujours une ressource de calcul alimentée.",
+          "text": "Il permet de détecter des objets même dans l'obscurité totale sans capteur thermique.",
+          "rationale": "L'IA traite les données qu'on lui donne ; sans lumière ou capteur adapté, aucun algorithme ne peut voir dans le noir complet.",
           "isCorrect": false
         },
         {
-          "text": "Il permet de détecter des objets même dans l'obscurité totale sans capteur thermique.",
-          "rationale": "L'IA traite les données qu'on lui donne ; sans lumière ou capteur adapté, aucun algorithme ne peut voir dans le noir complet.",
+          "text": "Il peut fonctionner entièrement sans électricité grâce à l'énergie solaire intégrée.",
+          "rationale": "C'est une affirmation physiquement impossible pour un logiciel ; il nécessite toujours une ressource de calcul alimentée.",
           "isCorrect": false
         },
         {
@@ -238,16 +238,6 @@
       "question": "Quel est le rôle du 'Datalake' dans une plateforme MLOps comme Picsellia ?",
       "answerOptions": [
         {
-          "text": "Centraliser et organiser de gros volumes d'images brutes et annotées pour faciliter les cycles d'entraînement.",
-          "rationale": "Un Datalake structuré permet aux équipes de retrouver facilement les données pertinentes et de gérer les versions des jeux de données.",
-          "isCorrect": true
-        },
-        {
-          "text": "Refroidir les serveurs GPU grâce à un système d'immersion liquide.",
-          "rationale": "Il s'agit d'une confusion sémantique ; le 'Datalake' est un concept de stockage de données, pas un système de refroidissement physique.",
-          "isCorrect": false
-        },
-        {
           "text": "Générer automatiquement des factures pour les clients finaux.",
           "rationale": "C'est une fonction de gestion commerciale (ERP), pas une fonctionnalité de gestion de données pour la vision par ordinateur.",
           "isCorrect": false
@@ -255,6 +245,16 @@
         {
           "text": "Supprimer les images de mauvaise qualité sans intervention humaine.",
           "rationale": "Le Datalake stocke les données ; le tri ou le nettoyage nécessite des outils d'analyse ou de curation spécifiques au-dessus du stockage.",
+          "isCorrect": false
+        },
+        {
+          "text": "Centraliser et organiser de gros volumes d'images brutes et annotées pour faciliter les cycles d'entraînement.",
+          "rationale": "Un Datalake structuré permet aux équipes de retrouver facilement les données pertinentes et de gérer les versions des jeux de données.",
+          "isCorrect": true
+        },
+        {
+          "text": "Refroidir les serveurs GPU grâce à un système d'immersion liquide.",
+          "rationale": "Il s'agit d'une confusion sémantique ; le 'Datalake' est un concept de stockage de données, pas un système de refroidissement physique.",
           "isCorrect": false
         }
       ],
@@ -264,9 +264,9 @@
       "question": "Pour une application de surveillance routière par drone, pourquoi privilégier YOLO26 plutôt que YOLOv8 ?",
       "answerOptions": [
         {
-          "text": "Il offre une meilleure détection des petits objets grâce aux technologies ProgLoss et STAL, ainsi qu'une vitesse sur CPU accrue.",
-          "rationale": "Les drones capturent souvent de petits objets (véhicules vus de haut) ; les innovations de YOLO26 ciblent précisément ce défi et la performance sur processeurs embarqués.",
-          "isCorrect": true
+          "text": "YOLOv8 est devenu obsolète et ne peut plus être installé sur les ordinateurs modernes.",
+          "rationale": "YOLOv8 reste un standard très robuste et largement supporté, même si des versions plus récentes proposent des optimisations spécifiques.",
+          "isCorrect": false
         },
         {
           "text": "YOLO26 est le seul modèle capable de voler physiquement avec le drone.",
@@ -274,14 +274,14 @@
           "isCorrect": false
         },
         {
-          "text": "YOLOv8 est devenu obsolète et ne peut plus être installé sur les ordinateurs modernes.",
-          "rationale": "YOLOv8 reste un standard très robuste et largement supporté, même si des versions plus récentes proposent des optimisations spécifiques.",
-          "isCorrect": false
-        },
-        {
           "text": "YOLO26 ne nécessite aucune annotation de données pour fonctionner.",
           "rationale": "Comme ses prédécesseurs, YOLO26 reste un modèle supervisé qui a besoin de données étiquetées pour atteindre une haute précision.",
           "isCorrect": false
+        },
+        {
+          "text": "Il offre une meilleure détection des petits objets grâce aux technologies ProgLoss et STAL, ainsi qu'une vitesse sur CPU accrue.",
+          "rationale": "Les drones capturent souvent de petits objets (véhicules vus de haut) ; les innovations de YOLO26 ciblent précisément ce défi et la performance sur processeurs embarqués.",
+          "isCorrect": true
         }
       ],
       "hint": "Pensez aux améliorations spécifiques pour les objets minuscules et les processeurs de type Raspberry Pi."
@@ -290,13 +290,8 @@
       "question": "Dans le cadre d'un projet industriel, que signifie 'Fine-tuning' ?",
       "answerOptions": [
         {
-          "text": "Adapter un modèle déjà entraîné sur un large domaine (comme COCO) à une tâche spécifique avec un jeu de données restreint.",
-          "rationale": "Cela permet de profiter des connaissances générales du modèle (formes, textures) tout en le spécialisant sur des objets métiers précis.",
-          "isCorrect": true
-        },
-        {
-          "text": "Régler manuellement la mise au point de la caméra sur le terrain.",
-          "rationale": "C'est un réglage optique physique, tandis que le fine-tuning est un processus logiciel de mise à jour des poids d'un réseau de neurones.",
+          "text": "Réduire le salaire des ingénieurs pour optimiser le budget du projet.",
+          "rationale": "Cette option n'a aucun rapport avec les techniques d'apprentissage automatique décrites dans les sources.",
           "isCorrect": false
         },
         {
@@ -305,9 +300,14 @@
           "isCorrect": false
         },
         {
-          "text": "Réduire le salaire des ingénieurs pour optimiser le budget du projet.",
-          "rationale": "Cette option n'a aucun rapport avec les techniques d'apprentissage automatique décrites dans les sources.",
+          "text": "Régler manuellement la mise au point de la caméra sur le terrain.",
+          "rationale": "C'est un réglage optique physique, tandis que le fine-tuning est un processus logiciel de mise à jour des poids d'un réseau de neurones.",
           "isCorrect": false
+        },
+        {
+          "text": "Adapter un modèle déjà entraîné sur un large domaine (comme COCO) à une tâche spécifique avec un jeu de données restreint.",
+          "rationale": "Cela permet de profiter des connaissances générales du modèle (formes, textures) tout en le spécialisant sur des objets métiers précis.",
+          "isCorrect": true
         }
       ],
       "hint": "Il s'agit d'un processus d'ajustement fin après un premier apprentissage global."
@@ -316,9 +316,9 @@
       "question": "Quelle métrique est la plus pertinente pour évaluer si un modèle ne manque pas trop d'objets réels sur le terrain ?",
       "answerOptions": [
         {
-          "text": "Le Rappel (Recall).",
-          "rationale": "Le Rappel mesure la capacité du modèle à trouver tous les objets positifs ; un rappel élevé signifie peu d'oublis (faux négatifs).",
-          "isCorrect": true
+          "text": "Le nombre de GPU utilisés.",
+          "rationale": "L'infrastructure matérielle accélère l'entraînement mais n'est pas une métrique de performance intrinsèque du modèle final.",
+          "isCorrect": false
         },
         {
           "text": "La Vitesse d'inférence.",
@@ -326,13 +326,13 @@
           "isCorrect": false
         },
         {
-          "text": "La taille du fichier .pt.",
-          "rationale": "Le poids du fichier influence le stockage et le chargement, mais ne garantit en rien la capacité de détection sur le terrain.",
-          "isCorrect": false
+          "text": "Le Rappel (Recall).",
+          "rationale": "Le Rappel mesure la capacité du modèle à trouver tous les objets positifs ; un rappel élevé signifie peu d'oublis (faux négatifs).",
+          "isCorrect": true
         },
         {
-          "text": "Le nombre de GPU utilisés.",
-          "rationale": "L'infrastructure matérielle accélère l'entraînement mais n'est pas une métrique de performance intrinsèque du modèle final.",
+          "text": "La taille du fichier .pt.",
+          "rationale": "Le poids du fichier influence le stockage et le chargement, mais ne garantit en rien la capacité de détection sur le terrain.",
           "isCorrect": false
         }
       ],
@@ -342,16 +342,6 @@
       "question": "Pourquoi l'optimisation Bayésienne est-elle recommandée pour le réglage des hyperparamètres ?",
       "answerOptions": [
         {
-          "text": "Elle apprend des essais passés pour suggérer intelligemment les prochaines combinaisons à tester, économisant du temps et des ressources.",
-          "rationale": "Contrairement à une recherche aléatoire, elle modélise la performance pour converger plus vite vers les meilleurs réglages.",
-          "isCorrect": true
-        },
-        {
-          "text": "Elle permet de transformer un modèle 2D en modèle 3D automatiquement.",
-          "rationale": "L'optimisation bayésienne est une méthode statistique de recherche de paramètres, elle ne modifie pas la dimensionnalité des données.",
-          "isCorrect": false
-        },
-        {
           "text": "Elle garantit que le modèle ne fera plus aucune erreur de détection.",
           "rationale": "Aucune méthode d'optimisation ne peut garantir un modèle sans erreur ; elle cherche seulement le 'meilleur' état possible.",
           "isCorrect": false
@@ -360,6 +350,16 @@
           "text": "Elle crypte le modèle pour qu'il soit indéchiffrable par la concurrence.",
           "rationale": "C'est un outil d'amélioration de la performance mathématique, pas un outil d'obfuscation de code.",
           "isCorrect": false
+        },
+        {
+          "text": "Elle permet de transformer un modèle 2D en modèle 3D automatiquement.",
+          "rationale": "L'optimisation bayésienne est une méthode statistique de recherche de paramètres, elle ne modifie pas la dimensionnalité des données.",
+          "isCorrect": false
+        },
+        {
+          "text": "Elle apprend des essais passés pour suggérer intelligemment les prochaines combinaisons à tester, économisant du temps et des ressources.",
+          "rationale": "Contrairement à une recherche aléatoire, elle modélise la performance pour converger plus vite vers les meilleurs réglages.",
+          "isCorrect": true
         }
       ],
       "hint": "Pensez à une stratégie de recherche plus 'intelligente' qu'un simple tirage au sort."
@@ -378,13 +378,13 @@
           "isCorrect": false
         },
         {
-          "text": "La réparation physique des ponceaux endommagés.",
-          "rationale": "Il s'agit de génie civil et de travaux publics, bien au-delà des capacités des logiciels d'IA mentionnés.",
+          "text": "Le calcul automatique des taxes municipales.",
+          "rationale": "Bien que l'IA puisse aider à l'inventaire des actifs, ces outils ne sont pas conçus pour des fonctions comptables ou fiscales.",
           "isCorrect": false
         },
         {
-          "text": "Le calcul automatique des taxes municipales.",
-          "rationale": "Bien que l'IA puisse aider à l'inventaire des actifs, ces outils ne sont pas conçus pour des fonctions comptables ou fiscales.",
+          "text": "La réparation physique des ponceaux endommagés.",
+          "rationale": "Il s'agit de génie civil et de travaux publics, bien au-delà des capacités des logiciels d'IA mentionnés.",
           "isCorrect": false
         }
       ],
@@ -394,14 +394,14 @@
       "question": "Qu'est-ce que le 'NMS' (Non-Maximum Suppression) dans un pipeline de détection standard ?",
       "answerOptions": [
         {
+          "text": "Un protocole de sécurité réseau pour empêcher les cyberattaques sur le modèle.",
+          "rationale": "Le NMS est purement mathématique et géométrique, il n'a aucune fonction de sécurité informatique.",
+          "isCorrect": false
+        },
+        {
           "text": "Un algorithme de post-traitement qui élimine les boîtes englobantes redondantes pour ne garder que la meilleure prédiction par objet.",
           "rationale": "Sans NMS, un modèle pourrait prédire dix boîtes pour une seule voiture ; le NMS nettoie le résultat final.",
           "isCorrect": true
-        },
-        {
-          "text": "Un système de refroidissement pour éviter que le CPU ne dépasse sa température maximale.",
-          "rationale": "Il s'agit d'une confusion avec des systèmes thermiques ; en vision, c'est un processus algorithmique de filtrage.",
-          "isCorrect": false
         },
         {
           "text": "Une méthode pour augmenter la luminosité des images sombres.",
@@ -409,8 +409,8 @@
           "isCorrect": false
         },
         {
-          "text": "Un protocole de sécurité réseau pour empêcher les cyberattaques sur le modèle.",
-          "rationale": "Le NMS est purement mathématique et géométrique, il n'a aucune fonction de sécurité informatique.",
+          "text": "Un système de refroidissement pour éviter que le CPU ne dépasse sa température maximale.",
+          "rationale": "Il s'agit d'une confusion avec des systèmes thermiques ; en vision, c'est un processus algorithmique de filtrage.",
           "isCorrect": false
         }
       ],
@@ -420,13 +420,13 @@
       "question": "Pourquoi est-il avantageux d'utiliser 'Apple Silicon MPS' pour entraîner YOLOv8 ?",
       "answerOptions": [
         {
-          "text": "Cela permet d'exploiter la puissance de calcul des processeurs M1/M2/M3 pour accélérer l'entraînement local sur Mac.",
-          "rationale": "Le framework Metal Performance Shaders (MPS) offre une alternative performante au CUDA de NVIDIA pour l'écosystème Apple.",
-          "isCorrect": true
-        },
-        {
           "text": "Cela permet au modèle de détecter uniquement des produits de la marque Apple.",
           "rationale": "Le matériel d'entraînement n'influence pas les classes d'objets détectées, qui dépendent uniquement du jeu de données utilisé.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cela rend le modèle immunisé contre tous les virus informatiques.",
+          "rationale": "L'utilisation d'une puce spécifique pour le calcul d'IA ne remplace pas une stratégie de cybersécurité globale.",
           "isCorrect": false
         },
         {
@@ -435,9 +435,9 @@
           "isCorrect": false
         },
         {
-          "text": "Cela rend le modèle immunisé contre tous les virus informatiques.",
-          "rationale": "L'utilisation d'une puce spécifique pour le calcul d'IA ne remplace pas une stratégie de cybersécurité globale.",
-          "isCorrect": false
+          "text": "Cela permet d'exploiter la puissance de calcul des processeurs M1/M2/M3 pour accélérer l'entraînement local sur Mac.",
+          "rationale": "Le framework Metal Performance Shaders (MPS) offre une alternative performante au CUDA de NVIDIA pour l'écosystème Apple.",
+          "isCorrect": true
         }
       ],
       "hint": "Il s'agit d'une optimisation matérielle pour une marque d'ordinateur spécifique."
@@ -446,23 +446,23 @@
       "question": "Que permet de simuler la transformation 'Gaussian Blur' lors de l'augmentation de données ?",
       "answerOptions": [
         {
-          "text": "Des conditions de prise de vue difficiles comme une mise au point incorrecte ou un bougé de l'appareil photo.",
-          "rationale": "En rendant certaines images floues artificiellement, on apprend au modèle à rester performant même si la photo réelle n'est pas parfaite.",
-          "isCorrect": true
-        },
-        {
           "text": "La présence de neige ou de pluie sur l'objectif.",
           "rationale": "Pour la pluie ou la neige, on utilise généralement des filtres de bruit ou des superpositions de textures spécifiques, pas un simple flou gaussien.",
           "isCorrect": false
         },
         {
-          "text": "Le passage d'un objet d'une classe à une autre.",
-          "rationale": "Le flou modifie l'apparence visuelle mais ne change pas l'identité de l'objet (un ponceau flou reste un ponceau).",
+          "text": "L'augmentation de la résolution spatiale des images.",
+          "rationale": "Au contraire, le flou supprime des détails haute fréquence, réduisant ainsi la netteté perçue de l'image.",
           "isCorrect": false
         },
         {
-          "text": "L'augmentation de la résolution spatiale des images.",
-          "rationale": "Au contraire, le flou supprime des détails haute fréquence, réduisant ainsi la netteté perçue de l'image.",
+          "text": "Des conditions de prise de vue difficiles comme une mise au point incorrecte ou un bougé de l'appareil photo.",
+          "rationale": "En rendant certaines images floues artificiellement, on apprend au modèle à rester performant même si la photo réelle n'est pas parfaite.",
+          "isCorrect": true
+        },
+        {
+          "text": "Le passage d'un objet d'une classe à une autre.",
+          "rationale": "Le flou modifie l'apparence visuelle mais ne change pas l'identité de l'objet (un ponceau flou reste un ponceau).",
           "isCorrect": false
         }
       ],
@@ -472,13 +472,8 @@
       "question": "Quel est l'intérêt de la 'Quantification FP16' (demi-précision) ?",
       "answerOptions": [
         {
-          "text": "Diviser par deux la mémoire occupée par les poids du modèle tout en gardant une précision quasi identique sur GPU.",
-          "rationale": "La plupart des GPU modernes calculent beaucoup plus vite en $16$ bits qu'en $32$ bits, accélérant l'inférence sans dégrader les résultats.",
-          "isCorrect": true
-        },
-        {
-          "text": "Permettre au modèle de fonctionner sur des ordinateurs datant des années $1990$.",
-          "rationale": "FP16 nécessite du matériel moderne supportant cette précision ; les vieux ordinateurs ne gèrent souvent que le FP32 ou l'entier.",
+          "text": "Forcer le modèle à ne détecter que la moitié des objets pour économiser du temps.",
+          "rationale": "La quantification vise à conserver la performance de détection tout en optimisant l'exécution mathématique.",
           "isCorrect": false
         },
         {
@@ -487,9 +482,14 @@
           "isCorrect": false
         },
         {
-          "text": "Forcer le modèle à ne détecter que la moitié des objets pour économiser du temps.",
-          "rationale": "La quantification vise à conserver la performance de détection tout en optimisant l'exécution mathématique.",
+          "text": "Permettre au modèle de fonctionner sur des ordinateurs datant des années $1990$.",
+          "rationale": "FP16 nécessite du matériel moderne supportant cette précision ; les vieux ordinateurs ne gèrent souvent que le FP32 ou l'entier.",
           "isCorrect": false
+        },
+        {
+          "text": "Diviser par deux la mémoire occupée par les poids du modèle tout en gardant une précision quasi identique sur GPU.",
+          "rationale": "La plupart des GPU modernes calculent beaucoup plus vite en $16$ bits qu'en $32$ bits, accélérant l'inférence sans dégrader les résultats.",
+          "isCorrect": true
         }
       ],
       "hint": "Il s'agit de passer de la précision standard de $32$ bits à $16$ bits."
@@ -529,11 +529,6 @@
           "isCorrect": true
         },
         {
-          "text": "Traduire automatiquement les commentaires du code de l'anglais vers le français.",
-          "rationale": "Un optimiseur gère la descente de gradient mathématique, il n'a aucune fonction de traduction linguistique.",
-          "isCorrect": false
-        },
-        {
           "text": "Réduire le bruit sonore des ventilateurs du serveur pendant le calcul.",
           "rationale": "Le bruit physique est lié au refroidissement matériel ; l'optimiseur est une entité logicielle mathématique.",
           "isCorrect": false
@@ -541,6 +536,11 @@
         {
           "text": "Permettre au modèle de détecter des objets même s'ils sont cachés derrière un mur.",
           "rationale": "Aucun algorithme de vision classique ne peut voir à travers les obstacles opaques sans capteurs spécifiques (ex: rayons X, radar).",
+          "isCorrect": false
+        },
+        {
+          "text": "Traduire automatiquement les commentaires du code de l'anglais vers le français.",
+          "rationale": "Un optimiseur gère la descente de gradient mathématique, il n'a aucune fonction de traduction linguistique.",
           "isCorrect": false
         }
       ],
@@ -555,8 +555,8 @@
           "isCorrect": true
         },
         {
-          "text": "Il vérifie si la licence du logiciel a bien été payée.",
-          "rationale": "Il s'agit d'un paramètre technique de performance d'apprentissage, pas d'un contrôle de droits numériques.",
+          "text": "Il s'assure que les images ne contiennent pas de virus informatiques.",
+          "rationale": "La validation ici est statistique (précision/rappel) ; la sécurité antivirus est gérée par des outils de cybersécurité dédiés.",
           "isCorrect": false
         },
         {
@@ -565,8 +565,8 @@
           "isCorrect": false
         },
         {
-          "text": "Il s'assure que les images ne contiennent pas de virus informatiques.",
-          "rationale": "La validation ici est statistique (précision/rappel) ; la sécurité antivirus est gérée par des outils de cybersécurité dédiés.",
+          "text": "Il vérifie si la licence du logiciel a bien été payée.",
+          "rationale": "Il s'agit d'un paramètre technique de performance d'apprentissage, pas d'un contrôle de droits numériques.",
           "isCorrect": false
         }
       ],
@@ -576,13 +576,13 @@
       "question": "Pourquoi la conversion du format COCO vers le format YOLO est-elle souvent nécessaire ?",
       "answerOptions": [
         {
-          "text": "Car YOLO utilise un format de texte spécifique avec des coordonnées normalisées, différent du format JSON standard de COCO.",
-          "rationale": "Chaque architecture a ses propres exigences de lecture de données ; YOLO attend des fichiers .txt avec des valeurs entre $0$ et $1$.",
-          "isCorrect": true
-        },
-        {
           "text": "Parce que le format COCO est trop lourd pour être envoyé par internet.",
           "rationale": "Les deux formats sont basés sur du texte et sont relativement légers ; la raison est structurelle et logicielle, pas liée au poids des fichiers.",
+          "isCorrect": false
+        },
+        {
+          "text": "Parce que le gouvernement impose l'utilisation du format YOLO pour les infrastructures publiques.",
+          "rationale": "Il n'y a pas de régulation étatique sur les formats de fichiers d'IA ; c'est un choix technique basé sur l'outil utilisé.",
           "isCorrect": false
         },
         {
@@ -591,9 +591,9 @@
           "isCorrect": false
         },
         {
-          "text": "Parce que le gouvernement impose l'utilisation du format YOLO pour les infrastructures publiques.",
-          "rationale": "Il n'y a pas de régulation étatique sur les formats de fichiers d'IA ; c'est un choix technique basé sur l'outil utilisé.",
-          "isCorrect": false
+          "text": "Car YOLO utilise un format de texte spécifique avec des coordonnées normalisées, différent du format JSON standard de COCO.",
+          "rationale": "Chaque architecture a ses propres exigences de lecture de données ; YOLO attend des fichiers .txt avec des valeurs entre $0$ et $1$.",
+          "isCorrect": true
         }
       ],
       "hint": "Considérez la différence entre un fichier JSON centralisé et des fichiers textes individuels."
@@ -601,16 +601,6 @@
     {
       "question": "Qu'est-ce que l'apprentissage par transfert (Transfer Learning) permet d'économiser lors d'un projet de vision par ordinateur ?",
       "answerOptions": [
-        {
-          "text": "Du temps de calcul et une grande quantité de données étiquetées en partant d'un modèle déjà compétent.",
-          "rationale": "Au lieu de partir de zéro, le modèle réutilise des capacités de détection de formes élémentaires acquises sur des millions d'images.",
-          "isCorrect": true
-        },
-        {
-          "text": "De l'électricité en éteignant les serveurs pendant la nuit.",
-          "rationale": "L'économie d'énergie vient de la réduction du temps total d'entraînement, pas d'une gestion manuelle des serveurs.",
-          "isCorrect": false
-        },
         {
           "text": "Le besoin d'acheter des caméras haute résolution.",
           "rationale": "L'apprentissage par transfert améliore l'efficacité du logiciel, mais ne peut compenser une qualité d'image source trop médiocre.",
@@ -620,6 +610,16 @@
           "text": "La nécessité d'avoir une connexion internet.",
           "rationale": "L'entraînement nécessite souvent des téléchargements de modèles de base, et donc une connexion au moins initiale.",
           "isCorrect": false
+        },
+        {
+          "text": "Du temps de calcul et une grande quantité de données étiquetées en partant d'un modèle déjà compétent.",
+          "rationale": "Au lieu de partir de zéro, le modèle réutilise des capacités de détection de formes élémentaires acquises sur des millions d'images.",
+          "isCorrect": true
+        },
+        {
+          "text": "De l'électricité en éteignant les serveurs pendant la nuit.",
+          "rationale": "L'économie d'énergie vient de la réduction du temps total d'entraînement, pas d'une gestion manuelle des serveurs.",
+          "isCorrect": false
         }
       ],
       "hint": "Il s'agit de ne pas 'réinventer la roue' à chaque nouvel entraînement."
@@ -627,6 +627,11 @@
     {
       "question": "Quel est l'intérêt d'utiliser un 'Modèle Pré-entraîné' au début d'un projet industriel ?",
       "answerOptions": [
+        {
+          "text": "Il permet de faire fonctionner l'IA sur une simple calculatrice solaire.",
+          "rationale": "La puissance requise dépend de la taille du modèle (nano, small, etc.) et non du fait qu'il soit pré-entraîné ou non.",
+          "isCorrect": false
+        },
         {
           "text": "Il fournit une base solide qui sait déjà reconnaître des formes de base (lignes, cercles), ce qui accélère la spécialisation métier.",
           "rationale": "C'est le principe du Transfer Learning : on gagne des semaines d'entraînement en utilisant un 'cerveau' déjà éduqué aux concepts visuels.",
@@ -638,17 +643,324 @@
           "isCorrect": false
         },
         {
-          "text": "Il permet de faire fonctionner l'IA sur une simple calculatrice solaire.",
-          "rationale": "La puissance requise dépend de la taille du modèle (nano, small, etc.) et non du fait qu'il soit pré-entraîné ou non.",
-          "isCorrect": false
-        },
-        {
           "text": "Il garantit que le modèle sera compatible avec toutes les futures versions de Windows.",
           "rationale": "La compatibilité logicielle est gérée par les environnements d'exécution (Python, ONNX Runtime) et non par les poids du modèle.",
           "isCorrect": false
         }
       ],
       "hint": "Imaginez que vous apprenez à conduire : il est plus facile si vous savez déjà marcher et reconnaître les panneaux."
+    },
+    {
+      "question": "Lors de la préparation d'un jeu de données pour YOLOv8, quel est le format requis pour les fichiers d'annotation (labels) correspondant à chaque image ?",
+      "answerOptions": [
+        {
+          "text": "Un fichier .json unique au format COCO regroupant toutes les annotations.",
+          "rationale": "Bien que Picsellia exporte en COCO, les algorithmes YOLO ne lisent pas nativement ce format JSON et nécessitent une conversion en fichiers .txt individuels.",
+          "isCorrect": false
+        },
+        {
+          "text": "Un fichier .csv listant les noms de fichiers et les pixels des boîtes englobantes.",
+          "rationale": "Le format CSV utilise généralement des coordonnées en pixels absolus, alors que YOLO exige des valeurs normalisées entre 0 et 1.",
+          "isCorrect": false
+        },
+        {
+          "text": "Un fichier .txt contenant l'indice de classe et les coordonnées normalisées.",
+          "rationale": "YOLO utilise des fichiers texte où chaque ligne représente un objet avec des coordonnées $[0, 1]$ relatives à la taille de l'image.",
+          "isCorrect": true
+        },
+        {
+          "text": "Un fichier .xml structuré selon le format Pascal VOC.",
+          "rationale": "Le format XML est utilisé par d'autres architectures, mais YOLO privilégie un format texte plus compact et spécifique.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Ce format repose sur un fichier par image contenant des valeurs flottantes normalisées."
+    },
+    {
+      "question": "Dans le dossier des étiquettes (labels), quel est l'ordre exact des cinq valeurs définissant une boîte englobante pour une ligne d'annotation ?",
+      "answerOptions": [
+        {
+          "text": "x_min y_min width height class_id",
+          "rationale": "Ce format mélange des coordonnées de coin avec des dimensions, ce qui ne respecte pas la convention de centrage de YOLO.",
+          "isCorrect": false
+        },
+        {
+          "text": "x_center y_center width height class_id",
+          "rationale": "L'identifiant de classe doit impérativement figurer en première position pour permettre à l'algorithme d'identifier l'objet avant ses coordonnées.",
+          "isCorrect": false
+        },
+        {
+          "text": "class_id x_min y_min x_max y_max",
+          "rationale": "Cette structure définit les coins de la boîte, ce qui correspond au format COCO ou Pascal VOC, mais pas au format natif de YOLO.",
+          "isCorrect": false
+        },
+        {
+          "text": "class_id x_center y_center width height",
+          "rationale": "L'architecture YOLO attend l'identifiant de classe suivi du centre de la boîte ($x, y$) et de ses dimensions ($largeur, hauteur$).",
+          "isCorrect": true
+        }
+      ],
+      "hint": "L'identifiant de la catégorie d'objet doit toujours apparaître en premier."
+    },
+    {
+      "question": "Pourquoi est-il crucial de nommer les sous-dossiers de données 'images' et 'labels' (avec un 's' final) dans votre structure de répertoire ?",
+      "answerOptions": [
+        {
+          "text": "Parce que le GPU ne peut lire que des dossiers dont le nom respecte la norme POSIX.",
+          "rationale": "Le matériel GPU traite les données chargées en mémoire ; le nommage des dossiers est une contrainte logicielle du framework, pas matérielle.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cela permet d'activer automatiquement l'augmentation de données Mosaic.",
+          "rationale": "L'augmentation Mosaic est gérée par des hyperparamètres dans le fichier de configuration et non par le nom des dossiers.",
+          "isCorrect": false
+        },
+        {
+          "text": "Pour permettre la correspondance automatique entre les images et leurs annotations par le framework.",
+          "rationale": "Les scripts d'entraînement d'Ultralytics recherchent spécifiquement cette convention de nommage pour lier chaque image à son fichier .txt associé.",
+          "isCorrect": true
+        },
+        {
+          "text": "Pour différencier les données d'entraînement des données de prétraitement.",
+          "rationale": "La distinction entre entraînement et prétraitement se fait par l'organisation des dossiers racine (train/val), pas par le pluriel des noms de dossiers internes.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "C'est une convention logicielle d'Ultralytics pour retrouver les étiquettes à partir des images."
+    },
+    {
+      "question": "Quel est le rôle spécifique du dossier 'VAL' (Validation) lors du processus de fine-tuning de YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Stocker les images qui ont été rejetées par l'outil d'étiquetage.",
+          "rationale": "Le dossier de validation doit contenir des données de haute qualité et correctement annotées pour mesurer fidèlement la performance.",
+          "isCorrect": false
+        },
+        {
+          "text": "Fournir des exemples supplémentaires pour mettre à jour les poids du backbone.",
+          "rationale": "Seules les données du dossier 'TRAIN' sont utilisées pour la rétropropagation et la mise à jour effective des poids du réseau.",
+          "isCorrect": false
+        },
+        {
+          "text": "Ajuster les hyperparamètres et surveiller le surapprentissage pendant l'entraînement.",
+          "rationale": "Le jeu de validation permet d'évaluer le modèle sur des données non vues à chaque époque pour guider l'optimisation sans biaiser le test final.",
+          "isCorrect": true
+        },
+        {
+          "text": "Servir exclusivement à l'évaluation finale de la précision après le déploiement.",
+          "rationale": "L'évaluation finale après déploiement ou après la fin de l'entraînement incombe au dossier 'TEST' pour garantir une impartialité totale.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Ce dossier sert de test intermédiaire pour vérifier si le modèle généralise bien avant la fin de l'apprentissage."
+    },
+    {
+      "question": "Quelle métrique est définie comme la moyenne harmonique de la précision et du rappel, utile pour évaluer globalement un modèle de détection ?",
+      "answerOptions": [
+        {
+          "text": "Le F1-score",
+          "rationale": "Le score F1 combine la précision et le rappel en une seule mesure, ce qui est idéal quand on veut un équilibre entre la justesse des détections et la quantité d'objets trouvés.",
+          "isCorrect": true
+        },
+        {
+          "text": "Le mAP50",
+          "rationale": "Le mAP (Mean Average Precision) mesure l'aire sous la courbe précision-rappel, mais n'est pas une moyenne harmonique directe.",
+          "isCorrect": false
+        },
+        {
+          "text": "L'IoU (Intersection over Union)",
+          "rationale": "L'IoU mesure le chevauchement entre la boîte prédite et la boîte réelle, servant de critère pour valider une détection plutôt que de métrique globale.",
+          "isCorrect": false
+        },
+        {
+          "text": "La fonction de perte (Loss)",
+          "rationale": "La perte mesure l'erreur que le modèle tente de minimiser, tandis que le score F1 est un indicateur de performance finale pour l'utilisateur.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Elle cherche à équilibrer les faux positifs et les faux négatifs."
+    },
+    {
+      "question": "Dans le cadre d'un projet de détection d'objets sur des images aériennes de très haute résolution ($5472 \\times 3648$), quelle étape de prétraitement est recommandée ?",
+      "answerOptions": [
+        {
+          "text": "La conversion de toutes les images en noir et blanc pour réduire le poids.",
+          "rationale": "La perte de l'information chromatique nuit généralement à la capacité du modèle à distinguer les objets du fond.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le découpage en imagettes (tiling) de taille uniforme (ex: $640 \\times 640$).",
+          "rationale": "Le découpage permet de conserver les détails des petits objets tout en s'adaptant à la mémoire limitée du GPU.",
+          "isCorrect": true
+        },
+        {
+          "text": "La désactivation de la fonction de perte IoU.",
+          "rationale": "La perte IoU est essentielle pour la localisation précise des boîtes et ne doit pas être désactivée.",
+          "isCorrect": false
+        },
+        {
+          "text": "L'augmentation systématique de la taille du lot (batch size) à 128.",
+          "rationale": "Augmenter le batch size sur des images de très haute résolution provoquerait une erreur de mémoire (Out of Memory) immédiate.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "L'objectif est de réduire la charge mémoire tout en gardant la résolution locale des objets."
+    },
+    {
+      "question": "Quel fichier de configuration centralise les chemins vers les dossiers TRAIN et VAL ainsi que les noms des classes pour YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Le fichier data.yaml",
+          "rationale": "Ce fichier YAML définit la structure du jeu de données, incluant les chemins d'accès et le dictionnaire des classes (`names`).",
+          "isCorrect": true
+        },
+        {
+          "text": "Le fichier coco.json",
+          "rationale": "C'est un format d'export d'annotations, pas un fichier de configuration pour le processus d'entraînement YOLO.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le fichier train.py",
+          "rationale": "Bien qu'il lance l'entraînement, les paramètres de données sont extraits d'un fichier externe pour faciliter la réutilisation du code.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le fichier yolov8.pt",
+          "rationale": "Le fichier .pt contient les poids du modèle pré-entraîné, mais pas les configurations spécifiques à l'emplacement de vos données locales.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "C'est un format de fichier texte structuré souvent utilisé pour les paramètres de configuration en Vision par Ordinateur."
+    },
+    {
+      "question": "Que signifie 'geler' (freeze) des couches lors du fine-tuning d'un modèle YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Empêcher la mise à jour des poids de certaines couches pour conserver les connaissances acquises sur COCO.",
+          "rationale": "Le gel des premières couches (backbone) permet de garder les extracteurs de caractéristiques génériques et d'accélérer l'entraînement sur les couches finales.",
+          "isCorrect": true
+        },
+        {
+          "text": "Réduire la température du processeur pour éviter la surchauffe pendant l'entraînement.",
+          "rationale": "Il s'agit d'un concept algorithmique de stabilité des poids, sans lien direct avec le système de refroidissement matériel.",
+          "isCorrect": false
+        },
+        {
+          "text": "Verrouiller le format de sortie du modèle en .onnx uniquement.",
+          "rationale": "Le format d'export est indépendant du processus de mise à jour des poids lors de l'apprentissage.",
+          "isCorrect": false
+        },
+        {
+          "text": "Arrêter l'entraînement dès que la précision atteint 90%.",
+          "rationale": "Ceci correspondrait à un 'Early Stopping', alors que le gel concerne la structure interne du réseau pendant toute la durée de l'étape.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "On utilise souvent cette technique pour ne réentraîner que la 'tête' de détection."
+    },
+    {
+      "question": "En quoi consiste l'augmentation de données 'Mosaic' intégrée nativement dans YOLOv8 ?",
+      "answerOptions": [
+        {
+          "text": "Appliquer un flou artistique sur les bords de l'image pour simuler la profondeur de champ.",
+          "rationale": "Bien que le flou existe en augmentation, 'Mosaic' se réfère spécifiquement à l'assemblage spatial de plusieurs échantillons.",
+          "isCorrect": false
+        },
+        {
+          "text": "Remplacer les pixels de l'objet par un motif de bruit aléatoire.",
+          "rationale": "Ceci ressemble plus à du 'Cutout', alors que Mosaic conserve l'intégrité visuelle des objets mais change leur environnement.",
+          "isCorrect": false
+        },
+        {
+          "text": "Combiner quatre images d'entraînement différentes en une seule image composite.",
+          "rationale": "Cette technique force le modèle à détecter des objets à des échelles plus petites et dans des contextes variés, améliorant la robustesse.",
+          "isCorrect": true
+        },
+        {
+          "text": "Multiplier le nombre de classes par quatre pour complexifier la tâche.",
+          "rationale": "L'augmentation Mosaic ne modifie pas le nombre de classes définies, mais seulement la présentation visuelle des données.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Imaginez un quadrillage composé de plusieurs scènes différentes."
+    },
+    {
+      "question": "Quelle est l'utilité principale de l'indicateur mAP (Mean Average Precision) lors de l'évaluation du modèle ?",
+      "answerOptions": [
+        {
+          "text": "Calculer uniquement le temps nécessaire pour traiter une image sur le CPU.",
+          "rationale": "Le temps de traitement est mesuré par la latence d'inférence (ms), pas par une métrique de précision comme le mAP.",
+          "isCorrect": false
+        },
+        {
+          "text": "Déterminer le nombre exact de pixels constituant chaque boîte englobante.",
+          "rationale": "Le mAP est un score statistique de performance et non une mesure dimensionnelle géométrique.",
+          "isCorrect": false
+        },
+        {
+          "text": "Mesurer la précision globale du modèle sur l'ensemble des classes et des seuils de confiance.",
+          "rationale": "Le mAP calcule l'aire sous la courbe précision-rappel, offrant une vue d'ensemble de la capacité du modèle à classer et localiser correctement.",
+          "isCorrect": true
+        },
+        {
+          "text": "Identifier quelle image du jeu de données contient le plus d'erreurs.",
+          "rationale": "Bien que l'analyse des erreurs par image soit possible, le mAP est une moyenne agrégée sur l'ensemble du dataset.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "C'est l'indicateur standard utilisé dans les benchmarks comme COCO."
+    },
+    {
+      "question": "Dans le processus pas à pas, quelle action doit suivre immédiatement l'annotation des images sur une plateforme comme Picsellia avant de lancer l'entraînement ?",
+      "answerOptions": [
+        {
+          "text": "Le déploiement immédiat du modèle sur un serveur sans GPU.",
+          "rationale": "Le déploiement est la toute dernière étape, après l'entraînement et la validation.",
+          "isCorrect": false
+        },
+        {
+          "text": "La suppression de la moitié des images pour accélérer le processus.",
+          "rationale": "Supprimer des données annotées réduit la diversité et nuit généralement à la performance finale du modèle.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le changement de l'architecture CSPDarknet pour un réseau Transformer.",
+          "rationale": "Le choix de l'architecture se fait au moment de l'initialisation du modèle, pas après l'étape d'annotation.",
+          "isCorrect": false
+        },
+        {
+          "text": "L'exportation et la conversion des annotations vers le format YOLO .txt.",
+          "rationale": "Picsellia exporte souvent en format COCO JSON ; il faut donc transformer ces annotations en fichiers textes normalisés lisibles par YOLO.",
+          "isCorrect": true
+        }
+      ],
+      "hint": "Le modèle ne peut pas apprendre si les étiquettes ne sont pas dans son format spécifique."
+    },
+    {
+      "question": "Quel hyperparamètre contrôle la vitesse à laquelle le modèle ajuste ses poids en fonction de l'erreur estimée ?",
+      "answerOptions": [
+        {
+          "text": "La taille de l'image (imgsz)",
+          "rationale": "La taille de l'image affecte la résolution et la charge mémoire, mais n'influence pas directement la magnitude des mises à jour des poids.",
+          "isCorrect": false
+        },
+        {
+          "text": "Le taux d'apprentissage (learning rate - lr0)",
+          "rationale": "Un taux d'apprentissage bien réglé est vital : trop élevé, il empêche la convergence ; trop bas, l'entraînement est excessivement lent.",
+          "isCorrect": true
+        },
+        {
+          "text": "Le nombre d'époques (epochs)",
+          "rationale": "Les époques définissent combien de fois le dataset complet est vu, pas la force de l'ajustement à chaque itération.",
+          "isCorrect": false
+        },
+        {
+          "text": "La taille du lot (batch size)",
+          "rationale": "Le batch size définit le nombre d'échantillons vus avant une mise à jour, mais pas l'ampleur de cette mise à jour.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "On le compare souvent au 'pas' effectué par un randonneur descendant une montagne dans le noir."
     }
   ]
 }
