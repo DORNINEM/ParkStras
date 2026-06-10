@@ -1,7 +1,7 @@
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
     const groups = [
-      { pattern: /^MISTRAL.*\.html$/i, label: 'Actualités Mistral', tabId: 'mistral' },
+      { pattern: /^MISTRAL*\.html$/i, label: 'Actualités Mistral', tabId: 'mistral' },
       { pattern: /^veille-IA.*\.html$/i, label: 'Actualités IA global', tabId: 'veille' },
       { pattern: /^veille-EPS.*\.html$/i, label: 'Veille télésurveillance', tabId: 'veille-eps' },
     ];
