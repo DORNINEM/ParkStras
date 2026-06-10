@@ -72,4 +72,8 @@
         panels.forEach(function (p) {
           p.classList.toggle('open', p.id === target);
         });
-   
+      });
+    });
+    }
+  });
+})();
