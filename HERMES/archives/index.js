@@ -1,7 +1,7 @@
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
     const groups = [
-      { pattern: /^MISTRAL*\.html$/i, label: 'Actualités Mistral', tabId: 'mistral' },
+      { pattern: /^MISTRAL.*\.html$/i, label: 'Actualités Mistral', tabId: 'mistral' },
       { pattern: /^veille-IA.*\.html$/i, label: 'Actualités IA global', tabId: 'veille' },
       { pattern: /^veille-EPS.*\.html$/i, label: 'Veille télésurveillance', tabId: 'veille-eps' },
     ];
@@ -9,13 +9,16 @@
     const tabsContainer = document.getElementById('tabs');
     const panelsContainer = document.getElementById('panels');
 
+    fetch('files.json')
+      .then(function (response) { return response.json(); })
+      .then(function (allFiles) { buildTabs(allFiles); })
+      .catch(function () { buildTabs([]); });
+
+    function buildTabs(allFiles) {
     groups.forEach(function (group, index) {
-      const files = Array.from(document.querySelectorAll('a[href]'))
-        .map(function (a) {
-          return a.getAttribute('href');
-        })
+      const files = allFiles
         .filter(function (href) {
-          return href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('//') && group.pattern.test(href.split('/').pop() || '');
+          return href && group.pattern.test(href.split('/').pop() || '');
         })
         .sort()
         .reverse();
@@ -69,7 +72,4 @@
         panels.forEach(function (p) {
           p.classList.toggle('open', p.id === target);
         });
-      });
-    });
-  });
-})();
+   
