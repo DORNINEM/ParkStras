@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA — 9 juin 2026</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #22d3ee;
+      --accent2: #a78bfa;
+      --chip: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 10% -10%, #1f2937 0%, #0b0f17 55%) fixed, #0b0f17;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 24px 64px; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding: 22px 26px; border-radius: 18px; background: linear-gradient(180deg, rgba(17,24,39,0.75), rgba(17,24,39,0.45));
+      border: 1px solid #273247; backdrop-filter: blur(8px);
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: grid; place-items: center; font-weight: 800; color: #0b0f17;
+    }
+    h1 { font-size: 22px; margin: 0; letter-spacing: 0.2px; }
+    .pill {
+      font-size: 12px; color: #cbd5e1; background: #0f172a; border: 1px solid #273247;
+      padding: 6px 10px; border-radius: 999px;
+    }
+    .trends {
+      margin-top: 22px; padding: 18px; border-radius: 16px;
+      background: linear-gradient(180deg, rgba(34,211,238,0.08), rgba(167,139,250,0.06));
+      border: 1px solid #273247;
+    }
+    .trends h2 { margin: 0 0 10px; font-size: 16px; color: #e5e7eb; }
+    .trends ol { margin: 6px 0 0 18px; padding: 0; }
+    .trends li { margin: 6px 0; color: #cbd5e1; }
+    .grid { margin-top: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+    .col { display: flex; flex-direction: column; gap: 14px; }
+    .card {
+      padding: 16px 18px; border-radius: 16px; background: #111827; border: 1px solid #273247;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: #334155; }
+    .card h3 { font-size: 14px; margin: 0 0 6px; color: #f8fafc; line-height: 1.35; }
+    .meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+    .source { color: #e2e8f0; font-weight: 600; }
+    .summary { font-size: 13px; color: #cbd5e1; }
+    .link {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+      font-size: 12px; color: var(--accent); text-decoration: none; font-weight: 600;
+    }
+    .link:visited { color: var(--accent2); }
+    .arxiv { margin-top: 22px; }
+    .arxiv h2 { font-size: 16px; margin: 0 0 10px; }
+    .arx-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 960px) { .arx-list { grid-template-columns: 1fr; } }
+    .arx {
+      padding: 14px; border-radius: 14px; background: #111827; border: 1px solid #273247;
+    }
+    .arx h4 { margin: 0 0 6px; font-size: 13px; color: #e5e7eb; line-height: 1.35; }
+    .arx .id { font-size: 12px; color: var(--accent); font-weight: 700; }
+    .arx p { font-size: 12px; color: #cbd5e1; margin: 6px 0; }
+    footer { margin-top: 26px; text-align: right; color: #64748b; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brand-mark">IA</div>
+        <div>
+          <h1>Veille IA — 9 juin 2026</h1>
+          <div style="color: #94a3b8; font-size: 13px;">Collecte FR / UE / Monde &amp; tendances ArXiv</div>
+        </div>
+      </div>
+      <div class="pill">Généré le 9 juin 2026</div>
+    </header>
+
+    <section class="trends" aria-labelledby="t-summary">
+      <h2 id="t-summary">5 tendances clés</h2>
+      <ol>
+        <li><strong>Gouvernance et régulation</strong> : moratoire mondial proposé par Anthropic, AI Act en préparation pour août 2026, garde-fous jugés trop tardifs par Politico.</li>
+        <li><strong>Agents autonomes</strong> : Google officialise Gemini Spark ; Qualcomm projette des agents invisibles dans l’IoT ; l’étude Perplexity/ArXiv montre un gain ×47 en productivité agentique.</li>
+        <li><strong>Infrastructure computationnelle</strong> : 110 000 GPU pour Google via SpaceX (30,36 Mds$) ; NVIDIA Cosmos 3 en open source pour l’IA physique ; investissements records mais dépendance aux puces américaines maintenue.</li>
+        <li><strong>Efficacité des modèles</strong> : l’optimiseur Muon améliore robustesse et transférabilité ; BUDDY permet un routage dynamique sous contrainte de budget compute.</li>
+        <li><strong>Consolidation financière</strong> : IPO confidentielle d’OpenAI ; stratégie low-capex d’Apple ; levées records et risques cognitifs soulignés par MIT Tech Review.</li>
+      </ol>
+    </section>
+
+    <main class="grid" aria-label="Actualités par région">
+      <section class="col" aria-labelledby="t-fr">
+        <div class="card">
+          <h3>Google annonce l’ère de l’IA agentique : qu’est-ce que ça va changer ?</h3>
+          <div class="meta"><span class="source">01net</span><span>19 mai 2026</span></div>
+          <p class="summary">Google a présenté à sa conférence I/O 2026 Gemini Spark, agent personnel en test aux États-Unis, marquant le basculement vers l’IA agentique. Le déploiement européen pourrait être retardé par le RGPD et l’AI Act applicables au 2 août 2026.</p>
+          <a class="link" href="https://www.01net.com/actualites/google-annonce-lere-de-lia-agentique-quest-ce-que-ca-va-changer.html" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Choose France 2026 : l’IA et les datacenters au cœur d’un investissement record de 93 Mds€</h3>
+          <div class="meta"><span class="source">ZDNet FR</span><span>1 juin 2026</span></div>
+          <p class="summary">Un pactole de 93 Mds€ a été confirmé, principalement pour l’IA et les datacenters, avec un objectif de 15 000 emplois sur 71 projets. La distribution de la valeur ajoutée reste interrogée.</p>
+          <a class="link" href="https://www.zdnet.fr/actualites/choose-france-2026-lia-et-les-datacenters-au-coeur-dun-investissement-record-de-93-milliards-deuros-495987.htm" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Qualcomm promet un avenir où les agents IA seront invisibles et partout</h3>
+          <div class="meta"><span class="source">Numerama</span><span>2 juin 2026</span></div>
+          <p class="summary">Au Computex 2026, Qualcomm a décrit des agents IA déployés sur l’ensemble des objets connectés via la 6G, avec une réduction de 30 à 60 % des tokens traitrés grâce à un traitement cloud/edge.</p>
+          <a class="link" href="https://www.numerama.com/tech/2266271-toute-resistance-est-inutile-qualcomm-promet-un-avenir-ou-les-agents-ia-seront-invisibles-et-partout.html" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Choose France : derrière les milliards de l’IA, l’enjeu crucial de l’énergie</h3>
+          <div class="meta"><span class="source">LeMonde</span><span>2 juin 2026</span></div>
+          <p class="summary">Les 93 Mds€ d’investissements record pourraient cantonner la France au rôle de sous-traitant énergétique si elle ne capte pas les segments haut de gamme : logiciels, puces et données.</p>
+          <a class="link" href="https://www.lemonde.fr/idees/article/2026/06/02/choose-france-derriere-les-milliards-de-l-ia-l-enjeu-crucial-de-l-energie_6696372_3232.html" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Anthropic appelle à un moratoire mondial sur l’IA</h3>
+          <div class="meta"><span class="source">Silicon.fr</span><span>mai-juin 2026</span></div>
+          <p class="summary">L’étude « When AI builds itself » alerte sur un risque de recapacité récursive ; le plaidoyer intervient dans un contexte pré-IPO et des revenus annualisés passés de 9 à 50 Mds$.</p>
+          <a class="link" href="https://www.silicon.fr/data-ia-1372/moratoire-sur-lia-anthropic-veut-geler-un-marche-quelle-domine-227530" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+      </section>
+
+      <section class="col" aria-labelledby="t-eu">
+        <div class="card">
+          <h3>Cosine sécurise le soutien de l’industrie pour le premier modèle frontalier souverain britannique</h3>
+          <div class="meta"><span class="source">Tech.eu</span><span>8 juin 2026</span></div>
+          <p class="summary">Cosine renforce l’autonomie technologique britannique avec un projet de modèle frontalier souverain soutenu par l’industrie, face aux géants américains et chinois.</p>
+          <a class="link" href="https://tech.eu/2026/06/08/cosine-secures-industry-backing-for-britain-s-first-sovereign-frontier-model/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>L’UE avance avec ses « AI Factories »</h3>
+          <div class="meta"><span class="source">EURACTIV</span><span>2 juin 2026</span></div>
+          <p class="summary">La Commission européenne déploie des centres dédiés à l’IA avec un budget maximal de 1,96 Md€ pour soutenir startups et PME et combler le retard face aux États-Unis et à la Chine.</p>
+          <a class="link" href="https://www.euractiv.com/news/european-commission-is-moving-ahead-with-ai-factories/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Le GPUaaS renforce l’illusion de la souveraineté européenne en IA</h3>
+          <div class="meta"><span class="source">The Next Web EU</span><span>7 juin 2026</span></div>
+          <p class="summary">Malgré des investissements massifs en GPU cloud, l’Europe reste dépendante des puces NVIDIA et de la fabrication asiatique, creusant un écart de souveraineté réelle.</p>
+          <a class="link" href="https://thenextweb.com/news/gpuaas-is-reinforcing-the-illusion-of-european-ai-sovereignty" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Les garde-fous autour des modèles d’IA puissants sont peut-être trop tardifs</h3>
+          <div class="meta"><span class="source">Politico Tech Europe</span><span>7 juin 2026</span></div>
+          <p class="summary">Une analyse de Politico souligne un retard dangereux des réglementations face aux capacités croissantes des modèles avancés et appelle à une action urgente.</p>
+          <a class="link" href="https://www.politico.eu/article/the-lawsuits-that-could-give-ai-its-big-tobacco-moment/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Les poursuites qui pourraient donner à l’IA son « moment Big Tobacco »</h3>
+          <div class="meta"><span class="source">Politico Tech Europe</span><span>7 juin 2026</span></div>
+          <p class="summary">Des litiges contre les entreprises d’IA soulèvent des questions de responsabilité et pourraient marquer un tournant réputationnel et réglementaire pour le secteur.</p>
+          <a class="link" href="https://www.politico.eu/article/the-lawsuits-that-could-give-ai-its-big-tobacco-moment/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+      </section>
+
+      <section class="col" aria-labelledby="t-world">
+        <div class="card">
+          <h3>How AI Agents Reshape Knowledge Work: Autonomy, Efficiency, and Scope</h3>
+          <div class="meta"><span class="source">ArXiv cs.AI</span><span>5 juin 2026</span></div>
+          <p class="summary">Une étude empirique montre que les agents autonomes font 47 fois plus de travail que les assistants classiques, réduisent le temps de complétion de 87 % et les coûts de 94 %.</p>
+          <a class="link" href="https://arxiv.org/abs/2606.07489" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Are AI chatbots making us lose control of our brains ?</h3>
+          <div class="meta"><span class="source">MIT Technology Review</span><span>5 juin 2026</span></div>
+          <p class="summary">Gloria Mark (UC Irvine) alerte sur le déclin cognitif provoqué par les chatbots et propose des routines délibérées pour restaurer la pensée critique et l’attention.</p>
+          <a class="link" href="https://www.technologyreview.com/2026/06/05/1138427/are-ai-chatbots-making-us-lose-control-of-our-brains/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Why Apple’s slow-and-steady AI bet is starting to look pretty smart</h3>
+          <div class="meta"><span class="source">TechCrunch</span><span>8 juin 2026</span></div>
+          <p class="summary">La stratégie low-capex d’Apple (~14 Mds$) combinant Gemini et confidentialité pourrait s’avérer plus durable que les dépenses massives des concurrents (~900 Mds$ cumulés).</p>
+          <a class="link" href="https://techcrunch.com/2026/06/08/why-apples-slow-and-steady-ai-bet-is-starting-to-look-pretty-smart/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>OpenAI files confidentially for IPO</h3>
+          <div class="meta"><span class="source">TechCrunch</span><span>8 juin 2026</span></div>
+          <p class="summary">OpenAI a déposé confidentiellement son dossier d’introduction en bourse, marquant une étape majeure dans la consolidation financière du secteur de l’IA.</p>
+          <a class="link" href="https://techcrunch.com/2026/06/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Google will pay SpaceX $920M per month for compute</h3>
+          <div class="meta"><span class="source">TechCrunch</span><span>5 juin 2026</span></div>
+          <p class="summary">Google signe un contrat de 30,36 Mds$ sur 33 mois avec SpaceX pour 110 000 GPU NVIDIA, illustrant la saturation de l’accès interne au compute pour les géants.</p>
+          <a class="link" href="https://techcrunch.com/2026/06/05/google-will-pay-spacex-920m-per-month-for-compute/" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+        <div class="card">
+          <h3>Welcome NVIDIA Cosmos 3: The First Open Omni-Model for Physical AI Reasoning and Action</h3>
+          <div class="meta"><span class="source">Hugging Face Blog</span><span>1 juin 2026</span></div>
+          <p class="summary">NVIDIA publie Cosmos 3 en open source, unifiant génération vidéo, raisonnement physique et actions robotiques pour la robotique et la conduite autonome.</p>
+          <a class="link" href="https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai" target="_blank" rel="noopener">Lire l’article →</a>
+        </div>
+      </section>
+    </main>
+
+    <section class="arxiv" aria-labelledby="t-arxiv">
+      <h2 id="t-arxiv">Tendances émergentes — ArXiv cs.AI / cs.LG (semaine du 2 au 9 juin 2026)</h2>
+      <div class="arx-list">
+        <article class="arx">
+          <h4>Muon Learns More Robust and Transferable Features than Adam</h4>
+          <div class="id">arXiv:2606.09658</div>
+          <p>Muon devient SOTA pour le pré-entraînement des LLMs en offrant des features plus robustes et transférables, avec un gain qualitatif démontré empiriquement et théoriquement.</p>
+          <a class="link" href="https://arxiv.org/abs/2606.09658" target="_blank" rel="noopener">Voir le papier →</a>
+        </article>
+        <article class="arx">
+          <h4>BUDDY: BUdget-Driven DYnamic Depth Routing for Adaptive Large Language Model Inference</h4>
+          <div class="id">arXiv:2606.09514</div>
+          <p>BUDDY permet un routage dynamique par profondeur pour respecter un budget compute strict pendant l’inférence, sans entraînement spécifique par niveau de budget.</p>
+          <a class="link" href="https://arxiv.org/abs/2606.09514" target="_blank" rel="noopener">Voir le papier →</a>
+        </article>
+        <article class="arx">
+          <h4>iOSWorld: A Benchmark for Personally Intelligent Phone Agents</h4>
+          <div class="id">arXiv:2606.09764</div>
+          <p>Premier benchmark simulateur iOS évaluant des agents IA personnels sur 26 apps et 133 tâches : les meilleurs modèles plafonnent à ~52 % de succès global.</p>
+          <a class="link" href="https://arxiv.org/abs/2606.09764" target="_blank" rel="noopener">Voir le papier →</a>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Veille IA quotidienne — 9 juin 2026 — Sources : LeMonde, 01net, ZDNet FR, Silicon.fr, Numerama, Tech.eu, EURACTIV, The Next Web EU, Politico Tech Europe, ArXiv, MIT Tech Review, TechCrunch, Hugging Face Blog.
+    </footer>
+  </div>
+</body>
+</html>
