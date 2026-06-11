@@ -4,23 +4,246 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HERMES Archives</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --color-bg: #f5f5f5;
+      --color-surface: #ffffff;
+      --color-text: #1f1f1f;
+      --color-muted: #6b6b6b;
+      --color-border: #dcdcdc;
+      --color-accent: #0f5c9e;
+      --color-accent-soft: #e6eef8;
+      --radius: 8px;
+      --shadow: 0 1px 0 rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    .header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 8px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .header-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      padding: 4px;
+    }
+    .header-text h1 { margin: 0 0 4px 0; font-size: 22px; letter-spacing: 0.2px; }
+    .header-subtitle { margin: 0; color: var(--color-muted); font-size: 14px; }
+
+    .tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: linear-gradient(to bottom, var(--color-bg) 80%, transparent);
+    }
+    .tablist {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .tab {
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      color: var(--color-muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 100ms ease, color 100ms ease, border-color 100ms ease;
+    }
+    .tab:hover { background: var(--color-accent-soft); color: var(--color-accent); }
+    .tab[aria-selected="true"] {
+      background: var(--color-surface);
+      color: var(--color-accent);
+      border-color: var(--color-border);
+    }
+    .tab[disabled] {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .tab[disabled]:hover { background: transparent; color: var(--color-muted); }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+    .panels {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 14px 18px 18px;
+      box-shadow: var(--shadow);
+    }
+    .panel { display: none; }
+    .panel[hidden] { display: none; }
+    .panel.is-active { display: block; }
+    .panel-title {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text);
+      display: none;
+    }
+    .empty {
+      color: var(--color-muted);
+      font-style: italic;
+      padding: 10px 0;
+    }
+    .file-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 8px;
+    }
+    .file-list a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      color: var(--color-text);
+      text-decoration: none;
+      transition: border-color 100ms ease, background 100ms ease;
+    }
+    .file-list a:hover { border-color: var(--color-accent); background: #fafcff; }
+    .file-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: var(--color-accent-soft);
+      color: var(--color-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .file-meta { line-height: 1.35; word-break: break-word; }
+    .file-name { font-weight: 500; }
+    .file-path { color: var(--color-muted); font-size: 12px; }
+
+    .footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 20px 26px;
+      text-align: right;
+      color: var(--color-muted);
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
     <img class="header-logo" src="innovia2.png" alt="Innovia" width="56" height="56">
     <div class="header-text">
       <h1>HERMES Archives</h1>
-      <p class="header-subtitle">Veille &amp; actualités Innovia</p>
+      <p class="header-subtitle">Veille & actualités Innovia</p>
     </div>
   </header>
-  <nav class="tabs" id="tabs"></nav>
+
+  <nav class="tabs">
+    <ul class="tablist" id="tablist">
+      <li class="tab" role="tab" aria-selected="true" tabindex="0" data-target="panel-mistral">Actualités Mistral</li>
+      <li class="tab" role="tab" aria-selected="false" tabindex="-1" data-target="panel-ia">Actualités IA global</li>
+      <li class="tab" role="tab" aria-selected="false" tabindex="-1" data-target="panel-eps">Veille télésurveillance</li>
+    </ul>
+  </nav>
+
   <main class="content">
-    <section id="panels"></section>
+    <div class="panels">
+      <section id="panel-mistral" class="panel is-active">
+        <h2 class="panel-title">Actualités Mistral</h2>
+        <ul class="file-list">
+          <li><a href="MISTRAL-2026-06-10.html"><span class="file-badge">HTML</span><span class="file-meta"><span class="file-name">MISTRAL-2026-06-10.html</span></span></a></li>
+          <li><a href="MISTRAL-2026-06-09.html"><span class="file-badge">HTML</span><span class="file-meta"><span class="file-name">MISTRAL-2026-06-09.html</span></span></a></li>
+        </ul>
+      </section>
+      <section id="panel-ia" class="panel">
+        <h2 class="panel-title">Actualités IA global</h2>
+        <ul class="file-list">
+          <li><a href="veille-IA-2026-06-10.html"><span class="file-badge">HTML</span><span class="file-meta"><span class="file-name">veille-IA-2026-06-10.html</span></span></a></li>
+          <li><a href="veille-IA-2026-06-09.html"><span class="file-badge">HTML</span><span class="file-meta"><span class="file-name">veille-IA-2026-06-09.html</span></span></a></li>
+        </ul>
+      </section>
+      <section id="panel-eps" class="panel">
+        <h2 class="panel-title">Veille télésurveillance</h2>
+        <ul class="file-list">
+          <li><a href="veille-EPS-2026-06-10.html"><span class="file-badge">HTML</span><span class="file-meta"><span class="file-name">veille-EPS-2026-06-10.html</span></span></a></li>
+        </ul>
+      </section>
+    </div>
   </main>
-  <footer class="footer">
-    <p>(c) Claude/Gpt/Hermes piloté par EDO</p>
-  </footer>
-  <script src="index.js"></script>
+
+  <footer class="footer">(c) Claude/Gpt/Hermes piloté par EDO</footer>
+  <script>
+    (function () {
+      const tablist = document.getElementById('tablist');
+      const tabs = Array.from(tablist.querySelectorAll('.tab'));
+      const panels = tabs.map((tab) => document.getElementById(tab.dataset.target));
+
+      function activateTab(selected) {
+        tabs.forEach((tab) => {
+          const selectedNow = tab === selected;
+          tab.setAttribute('aria-selected', String(selectedNow));
+          tab.tabIndex = selectedNow ? 0 : -1;
+        });
+        panels.forEach((panel, idx) => {
+          panel.classList.toggle('is-active', tabs[idx] === selected);
+        });
+        selected.focus();
+      }
+
+      tablist.addEventListener('click', (e) => {
+        const tab = e.target.closest('.tab');
+        if (!tab || tab.disabled) return;
+        activateTab(tab);
+      });
+
+      tablist.addEventListener('keydown', (e) => {
+        const tab = e.target.closest('.tab');
+        if (!tab || tab.disabled) return;
+        const idx = tabs.indexOf(tab);
+        let nextIdx = -1;
+        if (e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') nextIdx = 0;
+        else if (e.key === 'End') nextIdx = tabs.length - 1;
+        else return;
+        if (nextIdx !== -1 && !tabs[nextIdx].disabled) activateTab(tabs[nextIdx]);
+      });
+    })();
+  </script>
 </body>
 </html>
