@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Veille IA - 2026-06-11</title>
+<style>
+  :root{
+    --bg:#f5f7fb;--paper:#ffffff;--ink:#111827;--muted:#6b7280;
+    --brand:#0f172a;--blue:#2563eb;--violet:#7c3aed;--green:#16a34a;--amber:#d97706;
+    --shadow:0 10px 30px rgba(2,6,23,.08);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+    radial-gradient(1200px 800px at -10% -10%,#eef2ff 0%,transparent 55%),
+    radial-gradient(1000px 700px at 110% 10%,#f5f3ff 0%,transparent 55%),
+    linear-gradient(180deg,#f8fafc 0%,#f1f5f9 100%);
+    color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px}
+  header{display:flex;align-items:center;gap:16px;margin:14px 0 22px}
+  .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
+    background:linear-gradient(90deg,#0b1020,#0b1225);color:#e9eef7;font-weight:600;letter-spacing:.2px;
+    box-shadow:var(--shadow)}
+  .dot{width:10px;height:10px;border-radius:50%;background:#22c55e;
+    box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 12px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+  h1{font-size:clamp(22px,2.2vw,30px);margin:0}
+  .sub{color:var(--muted);font-size:14px}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .tab{appearance:none;border:1px solid #e5e7eb;background:#fff;color:#374151;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
+  .tab[aria-selected="true"]{background:#0b1225;color:#fff;border-color:#0b1225}
+  .panel{display:none}
+  .panel.open{display:block}
+  .card{background:var(--paper);border:1px solid #eef2f7;border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .col-12{grid-column:span 12}
+  .col-8{grid-column:span 8}
+  .col-4{grid-column:span 4}
+  @media (max-width:900px){.col-8,.col-4{grid-column:span 12}}
+  .news-item{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:14px 0;border-top:1px dashed #e5e7eb}
+  .news-item:first-child{border-top:0}
+  .date{font-weight:700;color:#0f172a;background:#eef2ff;border-radius:10px;padding:8px 6px;text-align:center;height:fit-content;min-width:56px}
+  .date small{display:block;color:#6b7280;font-weight:500;font-size:12px}
+  .title{font-weight:700;color:#0f172a;font-size:16px;margin:0 0 6px}
+  .meta{font-size:12px;color:#6b7280;margin-bottom:8px}
+  .title a{color:inherit;text-decoration:none}
+  .title a:hover{text-decoration:underline;text-underline-offset:3px}
+  .summary{color:#1f2937;font-size:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .tag{font-size:12px;padding:4px 10px;border-radius:999px;background:#f3f4f6;color:#374151;font-weight:600}
+  .tag.fr{background:#ecfdf5;color:#065f46}
+  .tag.eu{background:#eff6ff;color:#1e40af}
+  .tag.world{background:#fdf4ff;color:#701a75}
+  .tag.lib{background:#fff7ed;color:#9a3412}
+  .count{font-weight:700;color:#0f172a;font-size:14px;margin:0 0 10px}
+  footer{color:#6b7280;font-size:12px;margin:14px 0 6px;text-align:right}
+  a.btn{display:inline-block;margin-top:10px;padding:8px 12px;border-radius:10px;background:#0b1225;color:#fff;text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="badge"><span class="dot"></span><span>Veille IA quotidienne</span></div>
+    <div class="sub">Mise à jour&nbsp;: 2026-06-11&nbsp;· France · Europe · Monde · ArXiv</div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" aria-selected="true" onclick="show('fr')">France</button>
+    <button class="tab" role="tab" aria-selected="false" onclick="show('eu')">Europe hors France</button>
+    <button class="tab" role="tab" aria-selected="false" onclick="show('world')">Monde</button>
+    <button class="tab" role="tab" aria-selected="false" onclick="show('arxiv')">ArXiv tendances</button>
+    <button class="tab" role="tab" aria-selected="false" onclick="show('exec')">Résumé exécutif</button>
+  </nav>
+
+  <section id="fr" class="panel open">
+    <div class="card">
+      <p class="count">5 actualités IA France</p>
+      <div class="news-item">
+        <div class="date">06<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.lemonde.fr/idees/article/2026/06/06/aller-a-contre-courant-de-l-ia-pour-reprendre-le-controle-de-son-temps-et-de-sa-pensee-devient-un-nouveau-symbole-de-statut-social_6698104_3232.html">« Aller à contre-courant de l'IA pour reprendre le contrôle de son temps et de sa pensée devient un nouveau symbole de statut social »</a></p>
+          <div class="meta">Le Monde</div>
+          <p class="summary">Tribune sur les mouvements étudiants et la défiance croissante envers l'IA et les écrans, devenue un marqueur social.</p>
+          <div class="tags"><span class="tag fr">Culture / société</span><span class="tag fr">Le Monde</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">02<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.lemonde.fr/idees/article/2026/06/02/choose-france-derriere-les-milliards-de-l-ia-l-enjeu-crucial-de-l-energie_6696372_3232.html">Choose France : derrière les milliards de l'IA, l'enjeu crucial de l'énergie</a></p>
+          <div class="meta">Le Monde</div>
+          <p class="summary">Analyse du lien entre investissements IA et besoins en électricité bas-carbone, au coeur du sommet Choose France.</p>
+          <div class="tags"><span class="tag fr">Économie</span><span class="tag fr">Le Monde</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">02<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.01net.com/actualites/oscars-ia-nouvelles-regles-interdisent-vraiment-et-ce-quelles-autorisent.html">L'IA à Hollywood : les Oscars édictent de nouvelles règles</a></p>
+          <div class="meta">01net</div>
+          <p class="summary">Précisions des règles d'utilisation de l'IA pour les productions et performances éligibles aux Oscars.</p>
+          <div class="tags"><span class="tag fr">Régulation</span><span class="tag fr">01net</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.zdnet.fr/actualites/zd-tech-comment-lintelligence-artificielle-devient-un-confident-pour-les-jeunes-496174.htm">ZD Tech : Comment l'intelligence artificielle devient un confident pour les jeunes</a></p>
+          <div class="meta">ZDNet FR</div>
+          <p class="summary">Focus sur l'usage affectif et quasi-thérapeutique de l'IA par les jeunes et ses implications socio-psychologiques.</p>
+          <div class="tags"><span class="tag fr">Société</span><span class="tag fr">ZDNet FR</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">27<small>mai</small></div>
+        <div>
+          <p class="title"><a href="https://www.silicon.fr/cybersecurite-1371/le-g7-numerique-lance-le-standard-sbom-for-ai-227397">Sécurité de l’IA : le G7 numérique lance le standard "SBOM for AI"</a></p>
+          <div class="meta">Silicon.fr</div>
+          <p class="summary">Lancement du premier référentiel commun pour cartographier les composants d'un système IA et renforcer la sécurité.</p>
+          <div class="tags"><span class="tag fr">Cybersécurité</span><span class="tag fr">Silicon.fr</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="eu" class="panel">
+    <div class="card">
+      <p class="count">5 actualités IA Europe hors France</p>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.euractiv.com/news/eu-tells-ai-companies-how-they-can-make-their-content-detectable/">EU tells AI companies how they can make their content detectable</a></p>
+          <div class="meta">EURACTIV</div>
+          <p class="summary">L'UE publie son code final de transparence pour identifier textes, images et vidéos générés par l'IA.</p>
+          <div class="tags"><span class="tag eu">Régulation</span><span class="tag eu">EURACTIV</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.politico.eu/article/eu-orders-meta-to-reopen-whatsapp-to-ai-rivals-for-free/">EU orders Meta to reopen WhatsApp to AI rivals for free</a></p>
+          <div class="meta">Politico Europe</div>
+          <p class="summary">La Commission européenne impose à Meta d'ouvrir WhatsApp aux services d'IA concurrents afin de garantir la concurrence.</p>
+          <div class="tags"><span class="tag eu">Concurrence</span><span class="tag eu">Politico</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://tech.eu/2026/06/10/neura-robotics-secures-up-to-14b-series-c-to-scale-physical-ai-and-cognitive-robotics-platform/">NEURA Robotics secures up to $1.4B Series C to scale physical AI</a></p>
+          <div class="meta">Tech.eu</div>
+          <p class="summary">La licorne allemande NEURA Robotics lève jusqu'à 1,4 milliard de dollars pour accélérer sa plateforme de Physical AI.</p>
+          <div class="tags"><span class="tag eu">Investissement</span><span class="tag eu">Tech.eu</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">02<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://tech.eu/2026/05/20/ai-model-giants-should-pay-a-levy-to-operate-in-europe-says-mistral-boss/">AI model "capability overhang" biggest challenge for European businesses, says OpenAI revenue chief</a></p>
+          <div class="meta">Tech.eu</div>
+          <p class="summary">Écart croissant entre capacités des modèles IA avancés et capacité de déploiement pratique dans les entreprises européennes.</p>
+          <div class="tags"><span class="tag eu">Entreprise</span><span class="tag eu">Tech.eu</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://thenextweb.com/news/apple-siri-ai-eu-dma-delay-ios-27">Apple Intelligence delayed in Europe again, this time with no timeline</a></p>
+          <div class="meta">The Next Web EU</div>
+          <p class="summary">Apple Intelligence reporté en Europe pour des raisons de conformité au DMA, sans nouveau calendrier annoncé.</p>
+          <div class="tags"><span class="tag eu">Marché</span><span class="tag eu">TNW</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="world" class="panel">
+    <div class="card">
+      <p class="count">6 actualités IA mondiales majeures</p>
+      <div class="news-item">
+        <div class="date">11<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://techcrunch.com/2026/06/10/anthropics-dario-amodei-has-just-one-direct-report/">Anthropic’s Dario Amodei has just one direct report</a></p>
+          <div class="meta">TechCrunch</div>
+          <p class="summary">Anthropic cultive une structure ultra-plate: le CEO n'aurait qu'un seul rapport direct direct, gage d'agilité.</p>
+          <div class="tags"><span class="tag world">Organisation</span><span class="tag world">TechCrunch</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://techcrunch.com/2026/06/10/xai-fired-an-engineer-who-raised-alarms-about-grok-safety-new-lawsuit-claims/">xAI fired an engineer who raised alarms about Grok safety, new lawsuit claims</a></p>
+          <div class="meta">TechCrunch</div>
+          <p class="summary">Nouvelle plainte contre xAI alléguant qu'un ingénieur a été licencié après avoir signalé des problèmes de sécurité.</p>
+          <div class="tags"><span class="tag world">Éthique</span><span class="tag world">TechCrunch</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">10<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://techcrunch.com/2026/06/10/ai-pilled-firms-spend-7500-per-employee-each-month-on-ai/">‘AI-pilled’ firms spend $7,500 per employee each month on AI</a></p>
+          <div class="meta">TechCrunch</div>
+          <p class="summary">Les entreprises les plus investies dans l'IA dépenseraient plusieurs milliers de dollars par employé et par mois.</p>
+          <div class="tags"><span class="tag world">Entreprise</span><span class="tag world">TechCrunch</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">09<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/">Five things you need to know about AI</a></p>
+          <div class="meta">MIT Technology Review</div>
+          <p class="summary">Synthèse éditoriale des thèmes dominants de l'IA mi-2026, à l'occasion d'une intervention à SXSW London.</p>
+          <div class="tags"><span class="tag world">Tendances</span><span class="tag world">MIT Tech Review</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">09<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://thenextweb.com/news/physicsx-temasek-300m-series-c-ai-simulation">PhysicsX hits $2.4bn valuation as Temasek leads $300m round for AI simulation</a></p>
+          <div class="meta">The Next Web</div>
+          <p class="summary">La startup européenne PhysicsX atteint une valorisation de 2,4 milliards grâce à un tour de table mené par Temasek.</p>
+          <div class="tags"><span class="tag world">Investissement</span><span class="tag world">TNW</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">11<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://huggingface.co/blog/RDTvlokip/the-9-trends-that-will-explode-this-year">AI 2026 — The 9 trends that will EXPLODE this year!</a></p>
+          <div class="meta">Hugging Face Blog</div>
+          <p class="summary">Passage prévu d'assistants passifs à des collègues IA proactifs, avec neuf axes de transformation identifiés pour 2026.</p>
+          <div class="tags"><span class="tag world">Tendances</span><span class="tag world">Hugging Face</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="arxiv" class="panel">
+    <div class="card">
+      <p class="count">3 papiers marquants — tendances ArXiv cs.AI / cs.LG</p>
+      <div class="news-item">
+        <div class="date">11<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://arxiv.org/abs/2606.00005">Emergent Collaborative Deliberation in Multi-Model AI Systems: A BFT-Derived Protocol</a></p>
+          <div class="meta">arXiv cs.AI</div>
+          <p class="summary">Implication pratique : rendre plusieurs modèles IA capables de délibérer ensemble avec des garanties de fiabilité et de traçabilité.</p>
+          <div class="tags"><span class="tag lib">Multi-modèle</span><span class="tag lib">Fiabilité</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">11<small>juin</small></div>
+        <div>
+          <p class="title"><a href="https://arxiv.org/abs/2606.11949">ATLAS: Active Theory Learning for Automated Science</a></p>
+          <div class="meta">arXiv cs.AI / cs.LG</div>
+          <p class="summary">Implication pratique : automatiser la découverte scientifique en combinant apprentissage actif, expériences et théorie.</p>
+          <div class="tags"><span class="tag lib">Science</span><span class="tag lib">Apprentissage actif</span></div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">11<submit>juin</submit></div>
+        <div>
+          <p class="title"><a href="https://arxiv.org/abs/2606.00102">TIGER: Traceable Inference with Graph-Based Evidence Routing for Mitigating Hallucinations</a></p>
+          <div class="meta">arXiv cs.AI / cs.LG</div>
+          <p class="summary">Implication pratique : réduire les hallucinations en génération multimodale grâce à un routage par preuves graphes.</p>
+          <div class="tags"><span class="tag lib">Hallucinations</span><span class="tag lib">Graphes</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exec" class="panel">
+    <div class="card">
+      <p class="count">Résumé exécutif — 5 tendances clés</p>
+      <div class="news-item">
+        <div class="date">01<small>tendance</small></div>
+        <div>
+          <p class="title">Des IA conversationnelles à l'IA agentique</p>
+          <p class="summary">OpenAI, Google et Apple transforment leurs assistants en plateformes orientées agents et super-apps.</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">02<small>tendance</small></div>
+        <div>
+          <p class="title">Régulation asynchrone et tensions transatlantiques</p>
+          <p class="summary">L'UE accélère la transparence et l'interopérabilité tandis que des acteurs reprochent aux règles de freiner l'innovation.</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">03<small>tendance</small></div>
+        <div>
+          <p class="title">Physical AI et embodied systems en forte dynamique</p>
+          <p class="summary">NEURA Robotics et PhysicsX illustrent la montée en puissance des robots cognitifs et de la simulation accélérée.</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">04<small>tendance</small></div>
+        <div>
+          <p class="title">Coût réel et financement massif de l'IA</p>
+          <p class="summary">Les dépenses mensuelles par employé et les levées européennes montrent une industrialisation à très grande échelle.</p>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="date">05<small>tendance</small></div>
+        <div>
+          <p class="title">Souveraineté, sécurité et éthique</p>
+          <p class="summary">G7, souveraineté européenne, interception de modèles et déresponsabilisation des fournisseurs deviennent des sujets critiques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Généré le 2026-06-11 · basé sur Le Monde, 01net, ZDNet FR, Silicon.fr, Numerama, Tech.eu, EURACTIV, The Next Web, Politico, MIT Technology Review, TechCrunch, Hugging Face, arXiv.</footer>
+</div>
+<script>
+  function show(id){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('open'));
+    document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected','false'));
+    const panel=document.getElementById(id); if(panel) panel.classList.add('open');
+    const tab=[...document.querySelectorAll('.tab')].find(t=>t.getAttribute('onclick')?.includes(id));
+    if(tab) tab.setAttribute('aria-selected','true');
+  }
+</script>
+</body>
+</html>
