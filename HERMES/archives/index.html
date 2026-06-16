@@ -3,57 +3,215 @@
 <head>
 <meta charset="utf-8">
 <title>HERMES Archives</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #111; }
-  h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
-  nav a { margin-right: 1rem; text-decoration: none; color: #0b5cff; }
-  nav a[aria-disabled="true"] { color: #888; pointer-events: none; }
-  section { margin: 1.2rem 0 2rem; }
-  h2 { font-size: 1.15rem; margin-bottom: 0.4rem; }
-  ul { margin: 0.25rem 0 0; padding-left: 1.2rem; }
-  li { margin: 0.18rem 0; }
-  a { color: #0b5cff; word-break: break-word; }
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #0b5cff;
+    --accent-weak: rgba(11,92,255,.08);
+    --nav-bg: #eef2ff;
+    --nav-active: #dbeafe;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f19;
+      --surface: #0f1623;
+      --text: #e5e7eb;
+      --muted: #9aa3b2;
+      --border: #1f2937;
+      --accent: #5ea1ff;
+      --accent-weak: rgba(94,161,255,.12);
+      --nav-bg: #0c1220;
+      --nav-active: #101b2e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg), var(--bg));
+    color: var(--text);
+    margin: 0;
+    padding: 2rem 1rem 3rem;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  .logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 6px;
+  }
+  .logo img { width: 100%; height: auto; display: block; }
+  .title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .sub { color: var(--muted); font-size: 0.95rem; }
+  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: .5rem; flex-wrap: wrap; }
+  .theme-toggle {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: .45rem .7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  nav.tabs {
+    display: flex;
+    gap: .4rem;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    padding: .2rem 0;
+  }
+  .tab {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid transparent;
+    border-bottom: none;
+    padding: .55rem .9rem;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .tab[aria-selected="true"] {
+    background: var(--nav-active);
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .tab[disabled] { opacity: .5; cursor: not-allowed; }
+  .panels { margin-top: .6rem; }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0 10px 10px 10px;
+    padding: .9rem 1rem;
+    display: none;
+  }
+  .panel[hidden-by="disabled"] { display: none; }
+  .panel.is-open { display: block; }
+  .panel h2 { margin: 0 0 .45rem; font-size: 1.05rem; }
+  ul { margin: .5rem 0 0; padding-left: 1.1rem; }
+  li { margin: .28rem 0; }
+  a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .helper { color: var(--muted); font-size: .95rem; }
 </style>
 </head>
 <body>
-<h1>HERMES Archives</h1>
-<nav>
-  <a href="#actualites-mistral">Actualités Mistral</a>
-  <a href="#actualites-ia-global">Actualités IA global</a>
-  <a href="#veille-telesurveillance">Veille télésurveillance</a>
-</nav>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden="true">
+      <img src="innovia2.png" alt="InnovIA">
+    </div>
+    <div>
+      <p class="title">HERMES Archives</p>
+      <p class="sub">Actualités Mistral · IA global · Télésurveillance</p>
+    </div>
+  </header>
 
-<section id="actualites-mistral" aria-labelledby="actualites-mistral">
-  <h2 id="actualites-mistral">Actualités Mistral</h2>
-  <ul>
-    <li><a href="MISTRAL-2026-06-16.html">MISTRAL-2026-06-16.html</a></li>
-    <li><a href="MISTRAL-2026-06-15.html">MISTRAL-2026-06-15.html</a></li>
-    <li><a href="MISTRAL-2026-06-14.html">MISTRAL-2026-06-14.html</a></li>
-    <li><a href="MISTRAL-2026-06-13.html">MISTRAL-2026-06-13.html</a></li>
-    <li><a href="MISTRAL-2026-06-12.html">MISTRAL-2026-06-12.html</a></li>
-    <li><a href="MISTRAL-2026-06-10.html">MISTRAL-2026-06-10.html</a></li>
-    <li><a href="MISTRAL-2026-06-09.html">MISTRAL-2026-06-09.html</a></li>
-  </ul>
-</section>
+  <div class="toolbar">
+    <span class="helper">Sélectionnez une thématique</span>
+    <button class="theme-toggle" id="themeToggle" type="button">Thème sombre</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Catégories d'archives">
+    <button class="tab" role="tab" aria-selected="false" id="tab-actualites-mistral" aria-controls="panel-actualites-mistral">Actualités Mistral</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-actualites-ia-global" aria-controls="panel-actualites-ia-global">Actualités IA global</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-veille-telesurveillance" aria-controls="panel-veille-telesurveillance">Veille télésurveillance</button>
+  </nav>
 
-<section id="actualites-ia-global" aria-labelledby="actualites-ia-global">
-  <h2 id="actualites-ia-global">Actualités IA global</h2>
-  <ul>
-    <li><a href="veille-IA-2026-06-16.html">veille-IA-2026-06-16.html</a></li>
-    <li><a href="veille-IA-2026-06-15.html">veille-IA-2026-06-15.html</a></li>
-    <li><a href="veille-IA-2026-06-12.html">veille-IA-2026-06-12.html</a></li>
-    <li><a href="veille-IA-2026-06-11.html">veille-IA-2026-06-11.html</a></li>
-    <li><a href="veille-IA-2026-06-10.html">veille-IA-2026-06-10.html</a></li>
-    <li><a href="veille-IA-2026-06-09.html">veille-IA-2026-06-09.html</a></li>
-  </ul>
-</section>
+  <div class="panels">
+    <section class="panel" id="panel-actualites-mistral" role="tabpanel" hidden-by="disabled">
+      <h2>Actualités Mistral</h2>
+      <ul>
+        <li><a href="MISTRAL-2026-06-16.html">MISTRAL-2026-06-16.html</a></li>
+        <li><a href="MISTRAL-2026-06-15.html">MISTRAL-2026-06-15.html</a></li>
+        <li><a href="MISTRAL-2026-06-14.html">MISTRAL-2026-06-14.html</a></li>
+        <li><a href="MISTRAL-2026-06-13.html">MISTRAL-2026-06-13.html</a></li>
+        <li><a href="MISTRAL-2026-06-12.html">MISTRAL-2026-06-12.html</a></li>
+        <li><a href="MISTRAL-2026-06-10.html">MISTRAL-2026-06-10.html</a></li>
+        <li><a href="MISTRAL-2026-06-09.html">MISTRAL-2026-06-09.html</a></li>
+      </ul>
+    </section>
+    <section class="panel" id="panel-actualites-ia-global" role="tabpanel" hidden-by="disabled">
+      <h2>Actualités IA global</h2>
+      <ul>
+        <li><a href="veille-IA-2026-06-16.html">veille-IA-2026-06-16.html</a></li>
+        <li><a href="veille-IA-2026-06-15.html">veille-IA-2026-06-15.html</a></li>
+        <li><a href="veille-IA-2026-06-12.html">veille-IA-2026-06-12.html</a></li>
+        <li><a href="veille-IA-2026-06-11.html">veille-IA-2026-06-11.html</a></li>
+        <li><a href="veille-IA-2026-06-10.html">veille-IA-2026-06-10.html</a></li>
+        <li><a href="veille-IA-2026-06-09.html">veille-IA-2026-06-09.html</a></li>
+      </ul>
+    </section>
+    <section class="panel" id="panel-veille-telesurveillance" role="tabpanel" hidden-by="disabled">
+      <h2>Veille télésurveillance</h2>
+      <ul>
+        <li><a href="veille-EPS-2026-06-16.html">veille-EPS-2026-06-16.html</a></li>
+        <li><a href="veille-EPS-2026-06-10.html">veille-EPS-2026-06-10.html</a></li>
+      </ul>
+    </section>
+  </div>
+</div>
+<script>
+(function() {
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  const toggle = document.getElementById('themeToggle');
 
-<section id="veille-telesurveillance" aria-labelledby="veille-telesurveillance">
-  <h2 id="veille-telesurveillance">Veille télésurveillance</h2>
-  <ul>
-    <li><a href="veille-EPS-2026-06-16.html">veille-EPS-2026-06-16.html</a></li>
-    <li><a href="veille-EPS-2026-06-10.html">veille-EPS-2026-06-10.html</a></li>
-  </ul>
-</section>
+  function setTheme(dark) {
+    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    toggle.textContent = dark ? 'Thème clair' : 'Thème sombre';
+    try { localStorage.setItem('hermes-archives-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }
+
+  const saved = (() => {
+    try { return localStorage.getItem('hermes-archives-theme'); } catch (e) { return ''; }
+  })();
+  setTheme(saved === 'light' ? false : true);
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.documentElement.style.colorScheme === 'dark';
+    setTheme(!isDark);
+  });
+
+  function show(panel) {
+    panels.forEach(p => p.classList.remove('is-open'));
+    if (panel) {
+      panel.removeAttribute('hidden-by');
+      panel.classList.add('is-open');
+    }
+    tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+    const activeTab = tabs.find(t => t.getAttribute('aria-controls') === (panel && panel.id));
+    if (activeTab) activeTab.setAttribute('aria-selected', 'true');
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      if (tab.hasAttribute('disabled')) return;
+      show(panel);
+    });
+  });
+
+  // Open first enabled tab by default
+  const first = tabs.find(t => !t.hasAttribute('disabled'));
+  if (first) show(document.getElementById(first.getAttribute('aria-controls')));
+})();
+</script>
 </body>
 </html>
