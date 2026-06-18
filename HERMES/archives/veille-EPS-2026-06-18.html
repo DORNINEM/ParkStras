@@ -1,442 +1,545 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Veille Télésurveillance & Alarmes — 2026-06-18</title>
-<style>
-  :root {
-    --bg: #f4f6f9;
-    --panel: #ffffff;
-    --border: #e3e7ef;
-    --text: #1a1d23;
-    --muted: #5b6473;
-    --accent: #1458c2;
-    --accent-2: #0b3d91;
-    --tag-bg: #eef3fb;
-    --tag-text: #2356b3;
-    --shadow: 0 2px 8px rgba(16, 24, 40, 0.06);
-    --shadow-lg: 0 8px 24px rgba(16, 24, 40, 0.08);
-    --radius: 14px;
-    --gap: 18px;
-  }
-  @media (prefers-color-scheme: dark) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veille Télésurveillance & Alarmes — 2026-06-18</title>
+  <style>
     :root {
-      --bg: #0e1116;
-      --panel: #181c23;
-      --border: #252a35;
-      --text: #f1f4f9;
-      --muted: #a5b0c2;
-      --accent: #6cb6ff;
-      --accent-2: #3385d9;
-      --tag-bg: #162440;
-      --tag-text: #9fc2ff;
-      --shadow: 0 2px 8px rgba(0,0,0,0.25);
-      --shadow-lg: 0 8px 24px rgba(0,0,0,0.35);
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --border: #e5e9f0;
+      --text: #1f2430;
+      --muted: #5a6377;
+      --accent: #1859a5;
+      --accent-soft: #e8f1ff;
+      --pill-bg: #eef2fb;
+      --pill-text: #2b4478;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      --radius: 14px;
+      --gap: 16px;
     }
-  }
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px 20px 64px;
-  }
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 22px;
-  }
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .brand .ico {
-    width: 38px; height: 38px; border-radius: 10px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #fff; display: inline-flex; align-items: center; justify-content: center;
-    font-weight: 800; letter-spacing: 0.5px; font-size: 18px;
-  }
-  .brand h1 {
-    font-size: 18px; margin: 0; font-weight: 700;
-  }
-  .brand p { margin: 0; font-size: 12px; color: var(--muted); }
-  .pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 12px; border-radius: 999px;
-    background: var(--panel); border: 1px solid var(--border);
-    color: var(--muted); font-size: 12px;
-  }
-  .section {
-    margin: 22px 0 6px;
-  }
-  .section h2 {
-    font-size: 16px; margin: 0 0 12px;
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #fff; padding: 8px 12px; border-radius: 10px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--gap);
-  }
-  @media (min-width: 900px) {
-    .grid { grid-template-columns: 1fr 1fr; }
-  }
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: var(--shadow);
-    transition: transform 0.08s ease, box-shadow 0.15s ease;
-  }
-  .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
-  .card h3 {
-    margin: 0 0 8px; font-size: 15px; line-height: 1.35;
-  }
-  .meta {
-    display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center;
-    margin: 0 0 10px; font-size: 12px; color: var(--muted);
-  }
-  .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-  .summary { margin: 0 0 12px; font-size: 13.5px; color: var(--text); opacity: 0.92; }
-  .links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  a.link {
-    color: var(--accent-2); text-decoration: none; font-weight: 600; font-size: 13px;
-    border-bottom: 1px solid transparent;
-  }
-  a.link:hover { border-bottom-color: var(--accent-2); }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .tag {
-    background: var(--tag-bg); color: var(--tag-text);
-    border: 1px solid transparent;
-    padding: 4px 8px; border-radius: 999px; font-size: 11.5px;
-  }
-  .maturity { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
-  .maturity .bar { width: 14px; height: 4px; border-radius: 2px; background: var(--border); }
-  .maturity .bar.fill { background: var(--accent); }
-  .horizon { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
-  .horizon .dotx { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-  .images { margin-top: 6px; }
-  .images .vis {
-    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 14px; box-shadow: var(--shadow);
-  }
-  .signals { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
-  @media (min-width: 900px) { .signals { grid-template-columns: 1fr 1fr; } }
-  .signal {
-    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 16px; box-shadow: var(--shadow);
-  }
-  .signal .num {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 24px; height: 24px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff;
-    font-size: 12px; font-weight: 700; margin-right: 6px;
-  }
-  .signal h4 { display: inline; font-size: 14px; }
-  .signal p { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
-</style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1824;
+        --panel: #161e2a;
+        --border: #243048;
+        --text: #e9edf5;
+        --muted: #9aa7bf;
+        --accent: #7aa4f0;
+        --accent-soft: #1b2a42;
+        --pill-bg: #1c2a40;
+        --pill-text: #cfdaf6;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      }
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Inter, Segoe UI, Roboto, sans-serif;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 18px;
+    }
+    h1 {
+      font-size: clamp(22px, 2.2vw, 30px);
+      margin: 0 0 4px;
+      letter-spacing: -0.4px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    nav.toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    nav.toc a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+    }
+    nav.toc a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    nav.toc .count {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    section {
+      margin: 26px 0;
+    }
+    h2 {
+      font-size: clamp(18px, 1.9vw, 23px);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gap);
+    }
+    @media (min-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .meta .source {
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pill {
+      background: var(--pill-bg);
+      color: var(--pill-text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+    }
+    .pill.maturity {
+      background: #1d3524;
+      color: #c9f0d0;
+      border-color: #2d4a34;
+    }
+    .pill.time {
+      background: #3b2c14;
+      color: #f5dfa8;
+      border-color: #4a3819;
+    }
+    a.readmore {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    a.readmore:hover {
+      text-decoration: underline;
+    }
+    #images, #synth {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+    #synth ol {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 22px 10px;
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
   <header>
-    <div class="brand">
-      <div class="ico">H</div>
-      <div>
-        <h1>Veille Télésurveillance & Alarmes</h1>
-        <p>2026-06-18 · Rapport bimensuel · HOMIRIS</p>
-      </div>
+    <div class="container">
+      <h1>🔒 Veille Télésurveillance & Alarmes</h1>
+      <div class="subtitle">Rapport sectoriel bi-hebdomadaire — HOMIRIS — 2026-06-18</div>
+      <nav class="toc" aria-label="Sommaire">
+        <a href="#marche-france-europe"><span>🇫🇷🇪🇺</span> France & Europe <span class="count">5</span></a>
+        <a href="#monde"><span>🌍</span> Monde <span class="count">3</span></a>
+        <a href="#innovations"><span>🔧</span> Innovations produits <span class="count">5</span></a>
+        <a href="#prospective"><span>🚀</span> Prospective <span class="count">4</span></a>
+        <a href="#synth"><span>📊</span> Synthèse</a>
+      </nav>
     </div>
-    <div class="pill">🔒 Edition pour opérateur franco-belge</div>
   </header>
 
-  <section class="section">
-    <h2>🇫🇷🇪🇺 Marché France &amp; Europe (6 articles)</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Marché européen des systèmes de sécurité à domicile — 8,71 Mds USD en 2026</h3>
-        <div class="meta"><span class="dot"></span><span>Mordor Intelligence</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Le marché européen de la sécurité résidentielle, dont la télésurveillance, est estimé à 8,71 milliards USD en 2026 avec un TCAC de 7,72 % jusqu’à 2031. La vidéosurveillance, les incitations assureurs, le sans-fil et la réglementation UE tirent la croissance.</p>
-        <div class="links"><a class="link" href="https://www.mordorintelligence.com/fr/industry-reports/europe-home-security-system-market" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">marché</span><span class="tag">Europe</span><span class="tag">télésurveillance</span><span class="tag">réglementation</span></div>
-      </article>
+  <main class="container">
 
-      <article class="card">
-        <h3>France : le marché de la sécurité à domicile en plein boom</h3>
-        <div class="meta"><span class="dot"></span><span>Degrouptest</span><span>·</span><span>2025-10-04</span></div>
-        <p class="summary">Seulement 7 % des foyers français sont équipés d’alarmes contre 20 % dans les pays nordiques, avec une croissance de 10 % par an et une part des alarmes connectées à 35 % du marché. Le secteur de la sécurité privée dépasse 10 milliards d’euros.</p>
-        <div class="links"><a class="link" href="https://www.degrouptest.com/actualite/le-marche-de-la-securite-a-domicile-est-en-plein-boom-en-france-et-son-potentiel-est-enorme" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">France</span><span class="tag">marché</span><span class="tag">résidentiel</span><span class="tag">croissance</span></div>
-      </article>
+    <section id="marche-france-europe">
+      <h2>🇫🇷🇪🇺 Marché France & Europe</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Le marché de la sécurité à domicile est en plein boom en France (et son potentiel est énorme)</h3>
+          <div class="meta">
+            <span class="source">Degrouptest</span>
+            <span>2026-06-16</span>
+          </div>
+          <p>Le marché français de la télésurveillance résidentielle croît d'environ 10 % par an, avec seulement 7 % des foyers équipés en 2025 contre 20 % dans les pays nordiques ou aux États-Unis, ce qui laisse un gisement de croissance important. Ce dynamisme est porté par la diffusion des alarmes connectées (35 % du marché) et par la montée de l'insécurité ressentie, sous l'impulsion d'opérateurs comme Verisure ou Sector Alarm. Le secteur de la sécurité privée atteint plus de 10 milliards d'euros en 2025 et les perspectives de déploiement restent très favorables.</p>
+          <div class="pills">
+            <span class="pill">acteur-france</span>
+            <span class="pill">croissance</span>
+            <span class="pill">télésurveillance</span>
+            <span class="pill">marché</span>
+          </div>
+          <a class="readmore" href="https://www.degrouptest.com/actualite/le-marche-de-la-securite-a-domicile-est-en-plein-boom-en-france-et-son-potentiel-est-enorme" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
 
-      <article class="card">
-        <h3>ADT, Origin AI et Verisure signent un partenariat IA à 30 M$</h3>
-        <div class="meta"><span class="dot"></span><span>Verisure</span><span>·</span><span>2026-02-01</span></div>
-        <p class="summary">Un accord pluriannuel a été signé pour étendre les technologies de détection IA en Europe et en Amérique latine. L’accord valorisé à 30 millions de dollars s’appuie sur le rachat d’Origin AI par ADT.</p>
-        <div class="links"><a class="link" href="https://www.verisure.com/press-releases/adt-origin-ai-and-verisure-sign-long-term-commercial-agreement-to-scale-ai-driven-security" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">Verisure</span><span class="tag">ADT</span><span class="tag">partenariat</span><span class="tag">IA</span><span class="tag">Europe</span></div>
-      </article>
+        <article class="card">
+          <h3>Marché de la sécurité : une conjoncture incertaine en 2026</h3>
+          <div class="meta">
+            <span class="source">Face au Risque</span>
+            <span>2026-01-27</span>
+          </div>
+          <p>Après quatre années très favorables, le marché français de la sécurité pourrait marquer le pas en 2026, 57 % des dirigeants pointant l'instabilité de la politique économique comme premier frein à la croissance. Tous les segments ne sont pas touchés de la même façon, mais la visibilité s'est fortement dégradée, notamment pour les investissements longs ou les projets de déploiement de systèmes connectés.</p>
+          <div class="pills">
+            <span class="pill">acteur-france</span>
+            <span class="pill">conjoncture</span>
+            <span class="pill">2026</span>
+            <span class="pill">marché</span>
+          </div>
+          <a class="readmore" href="https://www.faceaurisque.com/2026/01/27/marche-de-la-securite-conjoncture-incertitudes-en-2026/" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
 
-      <article class="card">
-        <h3>Johnson Controls prépare la vente des activités résidentielles ADT à 2 Mds$</h3>
-        <div class="meta"><span class="dot"></span><span>Reuters / AKM</span><span>·</span><span>2026-06-01</span></div>
-        <p class="summary">Johnson Controls étudie la cession de la division résidentielle ADT pour un montant potentiel de 2 milliards de dollars. Plusieurs fonds sont positionnés, ce qui pourrait redistribuer la donne sur les marques et réseaux de télésurveillance européens.</p>
-        <div class="links"><a class="link" href="https://www.reuters.com/markets/deals/johnson-controls-weighs-sale-adt-alarms-unit-sources-say-2024-05-03/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">ADT</span><span class="tag">Johnson Controls</span><span class="tag">fusions-acquisitions</span><span class="tag">Europe</span></div>
-      </article>
+        <article class="card">
+          <h3>Vidéosurveillance : un marché de plus de 1,8 milliard d'euros en 2026</h3>
+          <div class="meta">
+            <span class="source">SOSMaster</span>
+            <span>2026-05-20</span>
+          </div>
+          <p>Le marché français de la vidéosurveillance dépasserait 1,8 milliard d'euros en valeur installée en 2026, avec une croissance annuelle soutenue de l'ordre de 12-14 % depuis 2022 et plus de 850 000 caméras professionnelles en service. Les orientations technologiques dominent désormais le choix des décideurs : migration vers l'IP, analytiques vidéo embarquées, architectures cloud ou hybrides, préfigurant la suite des déploiements.</p>
+          <div class="pills">
+            <span class="pill">vidéosurveillance</span>
+            <span class="pill">croissance</span>
+            <span class="pill">marché</span>
+            <span class="pill">France</span>
+            <span class="pill">IA edge</span>
+          </div>
+          <a class="readmore" href="https://sosmaster.pro/statistiques-videosurveillance-2026/" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
 
-      <article class="card">
-        <h3>Télésurveillance : nouvelle classification officielle des métiers en 2026</h3>
-        <div class="meta"><span class="dot"></span><span>83-629.fr</span><span>·</span><span>2026-03-01</span></div>
-        <p class="summary">Depuis mars 2026, la branche sécurité privée remplace les anciennes classifications SCT1/SCT2 par 11 emplois-repères dédiés à la télésurveillance, de l’opérateur au directeur, avec mise à jour des coefficients sur Légifrance.</p>
-        <div class="links"><a class="link" href="https://www.83-629.fr/telesurveillance-la-branche-securite-privee-refond-entierement-sa-classification-cest-officiel/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">réglementation</span><span class="tag">France</span><span class="tag">télésurveillance</span><span class="tag">RH</span></div>
-      </article>
+        <article class="card">
+          <h3>Comment S-Technologie veut transformer le marché des alarmes en France</h3>
+          <div class="meta">
+            <span class="source">CNews</span>
+            <span>2026-03-25</span>
+          </div>
+          <p>S-Technologie, créée par un ancien sapeur-pompier de Paris, ambitionne de bousculer le secteur français des alarmes et de la télésurveillance en proposant une stratégie de porte-à-porte et des produits fabriqués en Europe. L'entreprise mise sur la qualité, la traçabilité et une plus grande accessibilité commerciale dans un marché très concurrentiel où les grands opérateurs dominent mais où la demande explose.</p>
+          <div class="pills">
+            <span class="pill">acteur-france</span>
+            <span class="pill">alarmes</span>
+            <span class="pill">télésurveillance</span>
+            <span class="pill">concurrence</span>
+            <span class="pill">2026</span>
+          </div>
+          <a class="readmore" href="https://www.cnews.fr/le-corner-partenaires/2026-03-25/comment-s-technologie-veut-transformer-le-marche-des-alarmes-en" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
 
-      <article class="card">
-        <h3>Securitas Direct entame son rebranding global vers Verisure en Espagne</h3>
-        <div class="meta"><span class="dot"></span><span>Escudo Digital</span><span>·</span><span>2026-04-01</span></div>
-        <p class="summary">Securitas Direct en Espagne commence sa transition vers la marque Verisure dans une stratégie d’unification européenne sur plus de 100 millions d’euros d’investissement.</p>
-        <div class="links"><a class="link" href="https://www.escudodigital.com/en/security/private-security/securitas-direct-launches-rebrand-verisure-spain.html" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">Verisure</span><span class="tag">Securitas</span><span class="tag">Europe</span><span class="tag">marque</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>🌍 Monde — Pertinence Europe (6 articles)</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>ADT rachète Origin AI pour 170 M$ : l’IA sans caméra pour la sécurité résidentielle</h3>
-        <div class="meta"><span class="dot"></span><span>ADT Investor Relations</span><span>·</span><span>2026-02-01</span></div>
-        <p class="summary">ADT acquiert Origin Wireless pour intégrer une détection de présence et mouvance via Wi-Fi uniquement, sans caméra ni micro. Ce modèle est directement transposable aux offres résidentielles européennes.</p>
-        <div class="links"><a class="link" href="https://investor.adt.com/News--Events/news/news-details/2026/ADT-Acquires-OriginAItoPowerAISensing-and-Ambient-Intelligence-for-the-Home/default.aspx" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">ADT</span><span class="tag">IA</span><span class="tag">acquisition</span><span class="tag">sensing</span><span class="tag">résidentiel</span></div>
-      </article>
-
-      <article class="card">
-        <h3>VSaaS Europe : 1,92 Mds USD en 2026, basculement vers l’abonnement</h3>
-        <div class="meta"><span class="dot"></span><span>Fortune Business Insights</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Les modèles d’abonnement vidéo combinent cloud, analytics, vérification vidéo et maintenance à distance, réduisant les investissements matériels pour les installateurs et opérateurs européens.</p>
-        <div class="links"><a class="link" href="https://www.fortunebusinessinsights.com/vsaas-market-106923" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">VSaaS</span><span class="tag">abonnement</span><span class="tag">Europe</span><span class="tag">vidéo vérification</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Honeywell et Rhombus : vidéo cloud IA et contrôle d’accès</h3>
-        <div class="meta"><span class="dot"></span><span>Honeywell</span><span>·</span><span>2026-03-01</span></div>
-        <p class="summary">Honeywell collabore avec Rhombus pour intégrer des capacités de vidéosurveillance cloud IA et de contrôle d’accès dans ses offres bâtiment, avec un intérêt fort pour les intégrateurs européens.</p>
-        <div class="links"><a class="link" href="https://www.honeywell.com/us/en/press/2026/03/honeywell-and-rhombus-introduce-ai-driven-cloud-video-and-access-solution-to-modernize-building-security" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">Honeywell</span><span class="tag">Rhombus</span><span class="tag">IA</span><span class="tag">cloud</span><span class="tag">contrôle d’accès</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Advanced Video Monitoring : du monitoring à la prévention en 2026</h3>
-        <div class="meta"><span class="dot"></span><span>American Alarm</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">L’AVM transforme la vidéo passive en système actif préventif grâce à l’IA et la levée de doute vidéo en temps réel. Modèle économique clé pour les opérateurs européens de télésurveillance.</p>
-        <div class="links"><a class="link" href="https://www.americanalarm.com/blog/from-monitoring-to-prevention-commercial-security-trends-for-2026-028794" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">Advanced Video Monitoring</span><span class="tag">business model</span><span class="tag">prévention</span></div>
-      </article>
-
-      <article class="card">
-        <h3>SIA Security Megatrends 2026</h3>
-        <div class="meta"><span class="dot"></span><span>Security Industry Association</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Le rapport identifie les mégatendances 2026 : automatisation des SOCs/télésurveillance, revenus récurrents, solutions bout en bout et intégration IT/OT/sécurité.</p>
-        <div class="links"><a class="link" href="https://www.securityindustry.org/report/security-megatrends/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">SIA</span><span class="tag">mégatendances</span><span class="tag">business models</span><span class="tag">Europe relevant</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Le marché européen du home security monitoring à 15,66 Mds USD en 2024</h3>
-        <div class="meta"><span class="dot"></span><span>Cognitive Market Research</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Marché de la supervision résidentielle professionnelle européen de 15,66 milliards USD en 2024 avec un TCAC de 7,3 %, porté par les services vérifiés, les systèmes intelligents et les opérateurs comme ADT et Arlo.</p>
-        <div class="links"><a class="link" href="https://www.cognitivemarketresearch.com/regional-analysis/europe-home-security-monitoring-market-report" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">marché</span><span class="tag">supervision</span><span class="tag">revenue</span><span class="tag">Europe</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>🔧 Innovations Produits &amp; Composants (6 articles)</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Nouvelle centrale Diagral DIAG99AGX : IP native + 4G + sirène vocale intégrée</h3>
-        <div class="meta"><span class="dot"></span><span>Diagral</span><span>·</span><span>2026-01-19</span></div>
-        <p class="summary">Centrale d’alarme française IP/4G avec sirène vocale intégrée et double transmission, prévue au T2 2026 pour répondre à la fin des réseaux 2G/3G.</p>
-        <div class="links"><a class="link" href="https://www.diagral.fr/2026/01/19/nouvelle-centrale-dalarme-ip-4g-diagral-diag99agx/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">centrale IP/4G</span><span class="tag">Diagral</span><span class="tag">nouveauté produit</span><span class="tag">disponibilité 2026</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Delta Dore TYXAL+ 4G IP Wi-Fi HUB : nouvelle gamme 2026</h3>
-        <div class="meta"><span class="dot"></span><span>Delta Dore / Domotec</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Nouveau hub intègrant IP, Wi-Fi et 4G directement dans la centrale, compatible avec les installations existantes et certifié NF A2P / EN 50131. Disponible au printemps 2026.</p>
-        <div class="links"><a class="link" href="https://www.domotec-services.com/blog/notre-blog-1/post/nouvelle-alarme-delta-dore-tyxal-4g-securite-sans-faille-avec-ip-wifi-et-4g-integres-73" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">centrale 4G</span><span class="tag">Delta Dore</span><span class="tag">NF A2P</span><span class="tag">disponibilité 2026</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Ajax annonce 55 nouveaux appareils : Grade 3 sans fil, caméras IA et NVR IA</h3>
-        <div class="meta"><span class="dot"></span><span>Ajax Systems</span><span>·</span><span>2025-11-21</span></div>
-        <p class="summary">Lancement du premier système sans fil Grade 3, d’une gamme vidéo Baseline/Superior avec illumination hybride et d’un NVR à IA embarquée, disponible au premier semestre 2026.</p>
-        <div class="links"><a class="link" href="https://ajax.systems/press-page/55-new-devices-revealed-at-the-seventh-ajax-special-event/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">Ajax</span><span class="tag">caméras IA</span><span class="tag">NVR</span><span class="tag">système sans fil</span><span class="tag">disponibilité 2026</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Edge IA Hanwha Vision : détection temps réel et hybridation edge/cloud</h3>
-        <div class="meta"><span class="dot"></span><span>Hanwha Vision EU</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">L’IA embarquée 2026 permet la détection temps réel, le filtrage des flux et l’interprétation de comportements directement dans la caméra, avec une architecture hybride edge/cloud conforme au RGPD.</p>
-        <div class="links"><a class="link" href="https://hanwhavision.eu/fr/tendances-videosurveillance-2026-ia-hybride-durable/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">edge computing</span><span class="tag">caméras IA</span><span class="tag">RGPD</span><span class="tag">disponibilité 2026</span></div>
-      </article>
-
-      <article class="card">
-        <h3>NAVY : détecteur PIR + bris de glace nouvelle génération</h3>
-        <div class="meta"><span class="dot"></span><span>Satel</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Boîtier combinant PIR et acoustique de bris de glace avec algorithmes modernes, compensation de température et immunité animaux jusqu’à 15 kg, avec sorties d’alarme indépendantes.</p>
-        <div class="links"><a class="link" href="https://www.satel.eu/fr/product/600/NAVY,D%C3%A9tecteur-double-technologie-mouvement-+-de-bris-de-vitre" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">PIR</span><span class="tag">bris de glace</span><span class="tag">dual-tech</span><span class="tag">disponibilité 2026</span></div>
-      </article>
-
-      <article class="card">
-        <h3>PIR/microwave dual-tech réduit les fausses alarmes de plus de 95 %</h3>
-        <div class="meta"><span class="dot"></span><span>Roombanker</span><span>·</span><span>2025-01-01</span></div>
-        <p class="summary">Capteur extérieur combinant PIR et microwave 24 GHz avec porte ET pour ne déclencher l’alarme que si les deux technologies confirment la présence humaine, adapté aux environnements extérieurs.</p>
-        <div class="links"><a class="link" href="https://www.roombanker.com/blog/roombanker-release-pir-microwave-dual-tech-sensor/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">PIR</span><span class="tag">dual tech</span><span class="tag">extérieur</span><span class="tag">réduction fausses alarmes</span><span class="tag">disponibilité 2025-2026</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>🚀 Prospective &amp; Technologies Émergentes (6 articles)</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Dock de drones pour sécurité commerciale : autonomie 24/7 et intégration CMS</h3>
-        <div class="meta"><span class="dot"></span><span>DJI Enterprise</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Les docks DJI Dock 2 + Matrice 3TD permettent des patrouilles autonomes, un déploiement rapide après alarme et une intégration temps réel aux centres de commandement avec imagerie jour/nuit et thermique.</p>
-        <div class="links"><a class="link" href="https://enterprise-insights.dji.com/fr/blog/stations-de-drones-l-avenir-de-la-securite-commerciale" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">drone autonome</span><span class="tag">dock</span><span class="tag">patrouille</span><span class="tag">court terme &lt;2 ans</span></div>
-        <div class="horizon"><span class="dotx"></span><span>Court terme &lt;2 ans</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Radar FMCW pour périmètre avec suppression de la végétation</h3>
-        <div class="meta"><span class="dot"></span><span>IEEE / IET</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Un radar FMCW bande X dédié au périmètre atteint 96 à 100 % de détection jusqu’à 100 m, grâce à une antenne optimisée supprimant les fausses alarmes liées à la végétation. Applicable aux sites industriels.</p>
-        <div class="links"><a class="link" href="https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/tje2.70130" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">radar FMCW</span><span class="tag">anti-intrusion</span><span class="tag">végétation</span><span class="tag">court terme &lt;2 ans</span></div>
-        <div class="horizon"><span class="dotx"></span><span>Court terme &lt;2 ans</span></div>
-      </article>
-
-      <article class="card">
-        <h3>LiDAR 3D pour détection périmétrique et réduction des fausses alarmes</h3>
-        <div class="meta"><span class="dot"></span><span>Blickfeld / Quanergy</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Les solutions LiDAR 3D génèrent des barrières virtuelles et classent cibles humaines/animales/véhicules en temps réel pour des sites critiques ou grands périmètres extérieurs.</p>
-        <div class="links"><a class="link" href="https://www.blickfeld.com/intrusion-detection-with-lidar-technology/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">LiDAR 3D</span><span class="tag">périmètre</span><span class="tag">intrusion</span><span class="tag">court terme &lt;2 ans</span></div>
-        <div class="horizon"><span class="dotx"></span><span>Court terme &lt;2 ans</span></div>
-      </article>
-
-      <article class="card">
-        <h3>IEEE 802.11bf : le Wi-Fi sensing devient un standard pour la détection de présence</h3>
-        <div class="meta"><span class="dot"></span><span>ArXiv</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">L’évolution 802.11bf permet une détection passive de présence, mouvement et activité via les signaux Wi-Fi, sans capteur dédié, avec des précisions rapportées entre 92 % et 100 %.</p>
-        <div class="links"><a class="link" href="https://arxiv.org/abs/2505.06682" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">Wi-Fi sensing</span><span class="tag">802.11bf</span><span class="tag">intrusion</span><span class="tag">moyen terme 2-5 ans</span></div>
-        <div class="horizon"><span class="dotx"></span><span>Moyen terme 2-5 ans</span></div>
-      </article>
-
-      <article class="card">
-        <h3>UWB radar : détection de présence, mouvement et vital signs sans contact</h3>
-        <div class="meta"><span class="dot"></span><span>Qorvo</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">L’UWB radar utilise les impulsions CIR pour détecter présence, mouvement, respiration et rythme cardiaque, avec une faible consommation et une immunité aux brouillages.</p>
-        <div class="links"><a class="link" href="https://www.qorvo.com/design-hub/blog/ultra-wideband-uwb-radar-beyond-ranging-to-advanced-sensing" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">UWB radar</span><span class="tag">présence</span><span class="tag">contrôle d’accès</span><span class="tag">moyen terme 2-5 ans</span></div>
-        <div class="horizon"><span class="dotx"></span><span>Moyen terme 2-5 ans</span></div>
-      </article>
-
-      <article class="card">
-        <h3>LLM/IA dans les CMS : réduction des fausses alarmes et aide à la décision</h3>
-        <div class="meta"><span class="dot"></span><span>SDM Magazine</span><span>·</span><span>2026-01-01</span></div>
-        <p class="summary">Les opérateurs prévoient pour 2026 un passage de l’IA démonstrative à l’automatisation intelligente dans les centres de télésurveillance : filtrage, résumé d’événements et aide à la décision pour réduire la charge cognitive.</p>
-        <div class="links"><a class="link" href="https://www.sdmmag.com/articles/104966-2026-predictions-security-experts-talk-ai-proactive-deterrence-video-analytics-and-more" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
-        <div class="tags"><span class="tag">LLM</span><span class="tag">CMS</span><span class="tag">télésurveillance</span><span class="tag">IA opérateur</span><span class="tag">court terme &lt;2 ans</span></div>
-        <div class="horizon"><span class="dotx"></span><span>Court terme &lt;2 ans</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>🖼️ Images &amp; schémas analysés</h2>
-    <div class="grid">
-      <div class="vis">
-        <strong>Radar FMCW pour périmètre</strong><br />
-        <span style="color:var(--muted)">Coupleur réseau pour formation de faisceau étroit, antenne dédiée pour les scénarios extérieurs avec végétation.</span><br />
-        <a class="link" href="https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/tje2.70130" target="_blank" rel="noopener">🔗 Source</a>
+        <article class="card">
+          <h3>Privatisation de la sécurité et certification : ce qui change en 2026</h3>
+          <div class="meta">
+            <span class="source">Running Brains Robotics</span>
+            <span>2026-04-14</span>
+          </div>
+          <p>Le secteur de la sécurité privée en France et en Europe est marqué en 2026 par la montée en puissance des cadres NIS2, CER et AI Act, qui imposent résilience cyber-physique, traçabilité, convergence sûreté / cybersécurité et création de plateformes unifiées de supervision. Ces textes renforcent la nécessité de l'APSAD R31, de la certification des plateformes et d'une gestion plus intégrée des risques pour les opérateurs de télésurveillance.</p>
+          <div class="pills">
+            <span class="pill">réglementation</span>
+            <span class="pill">APSAD</span>
+            <span class="pill">NIS2</span>
+            <span class="pill">UE</span>
+            <span class="pill">cybersécurité</span>
+            <span class="pill">sécurité privée</span>
+          </div>
+          <a class="readmore" href="https://www.runningbrainsrobotics.com/fr/securite-privee-tendances-2026/" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
       </div>
-      <div class="vis">
-        <strong>Drone autonome docké Skydio X10</strong><br />
-        <span style="color:var(--muted)">Système drone-in-a-box avec station de recharge, interface de commandement et transmission thermique vers VMS/CMS.</span><br />
-        <a class="link" href="https://www.skydio.com/solutions/site-security" target="_blank" rel="noopener">🔗 Source</a>
-      </div>
-      <div class="vis">
-        <strong>LiDAR Blickfeld 3D pour intrusion</strong><br />
-        <span style="color:var(--muted)">Nuage de points temps réel pour barrière virtuelle, classification cibles humaines/animales et réduction de fausses alarmes.</span><br />
-        <a class="link" href="https://www.blickfeld.com/intrusion-detection-with-lidar-technology/" target="_blank" rel="noopener">🔗 Source</a>
-      </div>
-      <div class="vis">
-        <strong>Centre de supervision Jura à l’horizon 2027</strong><br />
-        <span style="color:var(--muted)">Supervision départementale par IA, souveraineté des données et centralisation des flux municipaux.</span><br />
-        <a class="link" href="https://hebdo39.net/dossier-de-la-semaine-un-centre-de-supervision-departemental-attendu-dici-a-2027/" target="_blank" rel="noopener">🔗 Source</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
-    <div class="signals">
-      <div class="signal">
-        <span class="num">1</span><h4>Edge IA embarquée comme standard différenciant</h4>
-        <p>PIR/centrales et caméras intègrent NPU et edge analytics : HOMIRIS doit anticiper les workflows compatibles, ainsi que la conformité RGPD et APSAD pour ces traitements au plus près des sites clients.</p>
-      </div>
-      <div class="signal">
-        <span class="num">2</span><h4>Wi-Fi sensing sans capteur dédié bientôt standardisé (802.11bf)</h4>
-        <p>Des box existantes peuvent devenir des détecteurs de présence sans nouvel équipement, disruptif pour les packages résidentiels. Le standard progresse rapidement ; il faut évaluer les cas d’usage belges et français.</p>
-      </div>
-      <div class="signal">
-        <span class="num">3</span><h4>Drones autonomes dockés : passage du POC aux contrats B2B</h4>
-        <p>Les solutions se professionnalisent avec intégration CMS et maintenance préventive. Pour HOMIRIS, axe d’enrichissement des services pour sites industriels/commerces avec partenariats dock/plate-forme à explorer.</p>
-      </div>
-      <div class="signal">
-        <span class="num">4</span><h4>Vente potentielle d’ADT et consolidation des réseaux</h4>
-        <p>L’opération à 2 Mds$ peut faire entrer de nouveaux fonds ou groupes industriels sur la télésurveillance, avec des effets potentiels sur la tarification et les réseaux de distribution en Belgique et en France.</p>
-      </div>
-      <div class="signal">
-        <span class="num">5</span><h4>UWB radar et LiDAR 3D comme compléments aux PIR dual-tech</h4>
-        <p>Leur coût baisse et leur précision s’améliore. Ils peuvent réduire les fausses alarmes et les maintenances sur grands sites, notamment dans l’industrie et la logistique à haute valeur ajoutée.</p>
-      </div>
-    </div>
-  </section>
+    <section id="monde">
+      <h2>🌍 Monde — Pertinence Europe</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>ADT Evolves Smarter Protection Beyond Your Front Door</h3>
+          <div class="meta">
+            <span class="source">ADT Newsroom</span>
+            <span>2026-04-14</span>
+          </div>
+          <p>ADT étend sa plateforme ADT+ au-delà de la maison intelligente avec deux nouveautés : Live Light, un panneau extérieur éclairé qui réagit en cas d'alarme vers les services d'urgence, et My Safety, un service gratuit de sécurité personnelle dans l'application. Ces fonctions illustrent l'évolution du métier vers le monitoring professionnel augmenté, combinant réception d'alerte, dissuasion visuelle et accessibilité mobile pour l'utilisateur final.</p>
+          <div class="pills">
+            <span class="pill">ADT</span>
+            <span class="pill">monitoring professionnel</span>
+            <span class="pill">innovation</span>
+            <span class="pill">IA</span>
+          </div>
+          <a class="readmore" href="https://investor.adt.com/News--Events/news/news-details/2026/ADT-Evolves-Smarter-Protection-Beyond-Your-Front-Door/default.aspx" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
 
-  <footer style="margin-top:28px;text-align:center;color:var(--muted);font-size:12px;">
-    Rapport auto-généré · Veille sectorielle HOMIRIS · 2026-06-18
+        <article class="card">
+          <h3>Ring Unveils a New Generation of Smarter, More Connected Security at CES 2026</h3>
+          <div class="meta">
+            <span class="source">Ring Newsroom</span>
+            <span>2026-01-06</span>
+          </div>
+          <p>Amazon a lancé au CES 2026 une nouvelle génération de capteurs Ring alimentés par Amazon Sidewalk et déconnectables du Wi-Fi domestique, couvrant détection de mouvement, bris de vitre et alarmes véhicule, avec des alertes IA et un « Fire Watch » communautaire. Cette offensive modulaire et autonome réinterroge le modèle du concentrateur unique et rappelle l'importance de la connectivité cellulaire ou LoRa comme couche de résilience pour la télésurveillance.</p>
+          <div class="pills">
+            <span class="pill">Ring</span>
+            <span class="pill">Amazon</span>
+            <span class="pill">Sidewalk</span>
+            <span class="pill">capteurs</span>
+            <span class="pill">résilience</span>
+          </div>
+          <a class="readmore" href="https://blog.ring.com/about-ring/ring-unveils-a-new-generation-of-smarter-more-connected-security-at-ces-2026/" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>Europe and North America Home and Small Business Security System Market Report 2026</h3>
+          <div class="meta">
+            <span class="source">GlobeNewswire</span>
+            <span>2026-02-04</span>
+          </div>
+          <p>Les systèmes d'alarme résidentiels et petit professionnel avec monitoring atteignent 19,6 millions d'installations en 2024 en Europe et Amérique du Nord et devraient dépasser 24,5 millions en 2029 (CAGR 4,6 %). La croissance est portée par les services interactifs, l'intégration smart home, l'IA et la convergence des offres DIY / professionnelles, ce qui impacte directement les stratégies d'acquisition et de rétention des opérateurs.</p>
+          <div class="pills">
+            <span class="pill">marché</span>
+            <span class="pill">Europe</span>
+            <span class="pill">DIY</span>
+            <span class="pill">professionnel</span>
+            <span class="pill">croissance</span>
+            <span class="pill">stratégie</span>
+          </div>
+          <a class="readmore" href="https://www.globenewswire.com/news-release/2026/02/04/3231865/0/en/europe-and-north-america-home-and-small-business-security-system-market-report-2026-diy-convergence-ai-integration-and-smart-home-competition-reshape-the-landscape-forecast-to-2031.html" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="innovations">
+      <h2>🔧 Innovations Produits & Composants</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Alarm.com Modernizes Legacy Security Systems with Enhanced Universal Communicator</h3>
+          <div class="meta">
+            <span class="source">Alarm.com</span>
+            <span>2026-04-15</span>
+            <span class="pill maturity">Disponible</span>
+          </div>
+          <p>Alarm.com annonce un communicateur universel évolué compatible LTE Verizon, avec fonction Smart Connector, permettant de moderniser des centrales d'alarme anciennes sans les remplacer. La solution transforme des équipements filaires historiques en systèmes cellulaires et connectés, un argument d'industrialisation pour les opérateurs possédant un parc installé hétérogène et cherchant à réduire le coût de migration des abonnés.</p>
+          <div class="pills">
+            <span class="pill">communicateur</span>
+            <span class="pill">LTE</span>
+            <span class="pill">IP</span>
+            <span class="pill">modernisation</span>
+            <span class="pill">parc installé</span>
+          </div>
+          <a class="readmore" href="https://investors.alarm.com/news-releases/press-release-details/2026/Alarm-com-Modernizes-Legacy-Security-Systems-with-Enhanced-Universal-Communicator/default.aspx" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>Ring Sensors — Sidewalk-Powered Security Devices at CES 2026</h3>
+          <div class="meta">
+            <span class="source">Ring</span>
+            <span>2026-01-06</span>
+            <span class="pill maturity">Disponible</span>
+          </div>
+          <p>Ring lance 15 nouveaux capteurs sans hub ni Wi-Fi reposant sur Amazon Sidewalk pour détecter mouvement, ouverture de porte/fenêtre, bris de vitre, fumée, monoxyde, inondation, avec option de monitoring professionnel par abonnement. L'architecture sans concentrateur central limite les points uniques de défaillance et peut influencer les spécifications de matériels de télésurveillance en Europe à moyen terme.</p>
+          <div class="pills">
+            <span class="pill">capteurs</span>
+            <span class="pill">connectivité</span>
+            <span class="pill">Sidewalk</span>
+            <span class="pill">monitoring-as-a-service</span>
+          </div>
+          <a class="readmore" href="https://blog.ring.com/about-ring/ring-unveils-a-new-generation-of-smarter-more-connected-security-at-ces-2026/" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>Edge AI Camera Is Reshaping the Future Landscape for Vision Applications</h3>
+          <div class="meta">
+            <span class="source">Security World Market</span>
+            <span>2026-05-18</span>
+            <span class="pill maturity">Disponible</span>
+          </div>
+          <p>L'inférence IA directement sur la caméra s'impose comme tendance dominante en vidéosurveillance : détection d'objets, classification, suivi et analyses comportementales s'exécutent localement, réduisant la latence, la bande passante et les risques liés au cloud. Ce marché est évalué entre 6,8 et 7,4 milliards USD en 2026, avec un important potentiel pour la supervision hybride edge-cloud.</p>
+          <div class="pills">
+            <span class="pill">caméra</span>
+            <span class="pill">IA edge</span>
+            <span class="pill">vidéo-analyse</span>
+            <span class="pill">cloud hybride</span>
+          </div>
+          <a class="readmore" href="https://www.securityworldmarket.com/int/News/Advert/edge-ai-camera-is-reshaping-the-future-landscape-for-vision-applications1" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>Calterah and Rohde & Schwarz Complete First Official 802.15.4ab-UWB Chip Verification at CES 2026</h3>
+          <div class="meta">
+            <span class="source">Calterah</span>
+            <span>2026-01-08</span>
+            <span class="pill maturity">Beta</span>
+          </div>
+          <p>Calterah annonce que son UWB SoC supportant la norme 802.15.4ab peut être utilisé pour des clés numériques automobiles sécurisées, mais aussi pour la détection d'intrusion dans les bâtiments grâce à des capacités radar intégrées. La vérification officielle ouvre la voie à l'intégration de capteurs UWB embarqués dans les centrales ou capteurs de proximité sans contact ni RFID, potentiellement transposable à la télésurveillance résidentielle et de sites.</p>
+          <div class="pills">
+            <span class="pill">UWB</span>
+            <span class="pill">SoC</span>
+            <span class="pill">radar</span>
+            <span class="pill">intrusion</span>
+          </div>
+          <a class="readmore" href="https://www.calterah.com/en/company-news-detail/475" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>KIT Researchers Demonstrate WiFi-Based Person Identification</h3>
+          <div class="meta">
+            <span class="source">ScienceDaily / KIT</span>
+            <span>2026-05-22</span>
+            <span class="pill maturity">R&amp;D</span>
+          </div>
+          <p>Des chercheurs du KIT montrent avec 99,5 % de précision que des routeurs Wi-Fi grand public peuvent identifier des individus à partir du retour d'émission (beamforming feedback), même sans équipement actif sur la cible. Cette découverte confirme la faisabilité de la détection passive par perturbation du signal Wi-Fi, une voie alternative aux capteurs traditionnels pour la détection de présence sans caméra ni capteur dédié.</p>
+          <div class="pills">
+            <span class="pill">WiFi sensing</span>
+            <span class="pill">IA</span>
+            <span class="pill">détection</span>
+            <span class="pill">vie privée</span>
+          </div>
+          <a class="readmore" href="https://www.sciencedaily.com/releases/2026/05/260522023127.htm" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="prospective">
+      <h2>🚀 Prospective & Technologies Émergentes</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Hyundai Deploys Boston Dynamics Spot Robots for FIFA World Cup 2026 Security</h3>
+          <div class="meta">
+            <span class="source">DesignNews</span>
+            <span>2026-06-10</span>
+            <span class="pill time">Court terme &lt;2 ans</span>
+          </div>
+          <p>Quatre robots quadrupèdes Boston Dynamics Spot sont déployés lors de la Coupe du Monde 2026 pour des patrouilles autonomes, des inspections de paquets suspects et la détection de dangers sur les sites, constituant un cas d'usage opérationnel à grande échelle de la robotique de surveillance sur des lieux de rassemblement. L'exemple est directement transposable à la sécurisation d'enceintes privées ou de parcs industriels.</p>
+          <div class="pills">
+            <span class="pill">robotique de surveillance</span>
+            <span class="pill">patrouille autonome</span>
+            <span class="pill">Boston Dynamics</span>
+            <span class="pill">événementiel</span>
+          </div>
+          <a class="readmore" href="https://www.designnews.com/automation/hyundai-deploys-boston-dynamics-spot-robots-for-fifa-world-cup-2026-security" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>AI and Video Analytics Reduce False Alarms by Up to 95% in ARC Workflows</h3>
+          <div class="meta">
+            <span class="source">Pelco Blog</span>
+            <span>2026-05-11</span>
+            <span class="pill time">Court terme &lt;2 ans</span>
+          </div>
+          <p>Des solutions d'IA embarquée ou en cloud permettent aujourd'hui de filtrer jusqu'à 95 % des fausses alertes avant le traitement humain dans les centres de réception d'alarmes, avec pour bénéfices une moindre fatigue opérationnelle, moins de déploiements policiers inutiles et une meilleure efficacité du personnel. Pour un opérateur franco-belge, la réduction des faux positifs constitue un levier direct de différenciation et de réduction coût.</p>
+          <div class="pills">
+            <span class="pill">IA</span>
+            <span class="pill">centre de surveillance</span>
+            <span class="pill">faux positifs</span>
+            <span class="pill">réduction des coûts</span>
+          </div>
+          <a class="readmore" href="https://www.pelco.com/blog/false-alarm-filtering" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>Security Drones with Docks Enable Autonomous Perimeter Patrol and Rapid Response</h3>
+          <div class="meta">
+            <span class="source">UAV Coach / Skydio</span>
+            <span>2026-05-01</span>
+            <span class="pill time">Court terme &lt;2 ans</span>
+          </div>
+          <p>Les drones de sécurité équipés de stations d'accueil automatique peuvent patrouiller 24h/24 sur un site, revenir se recharger et répondre en moins de 20 secondes à une alarme en cours. Intégrés aux FlightHub 2 ou CMS, ils offrent de la vidéo thermique et zoom aux opérateurs et complètent la détection périmétrique classique sans coût de personnel proportionnel. Plusieurs références industrielles existent en 2026.</p>
+          <div class="pills">
+            <span class="pill">drones</span>
+            <span class="pill">dock</span>
+            <span class="pill">perimeter</span>
+            <span class="pill">patrouille autonome</span>
+          </div>
+          <a class="readmore" href="https://www.skydio.com/solutions/site-security" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+
+        <article class="card">
+          <h3>LiDAR and UWB Are Converging Toward Low-Cost Perimeter Detection Systems</h3>
+          <div class="meta">
+            <span class="source">Qorvo / Calterah</span>
+            <span>2026-01-01</span>
+            <span class="pill time">Moyen terme 2-5 ans</span>
+          </div>
+          <p>Le marché du LiDAR basse consommation pour la détection de périmètre, ainsi que l'évolution des puces UWB 802.15.4ab capables de fusionner mesure de distance et mini-radar, ouvrent la voie à des barrières virtuelles sans caméra ni capteur PIR, avec localisation à quelques centimètres et résistance aux attaques par relais. La maturité industrielle reste à démontrer à grande échelle en environnement extérieur.</p>
+          <div class="pills">
+            <span class="pill">LiDAR</span>
+            <span class="pill">UWB</span>
+            <span class="pill">périmètre</span>
+            <span class="pill">low-power</span>
+          </div>
+          <a class="readmore" href="https://www.qorvo.com/design-hub/blog/ultra-wideband-uwb-radar-beyond-ranging-to-advanced-sensing" target="_blank" rel="noopener">Lire l'article 🔗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="images">
+      <h2>🖼️ Images & schémas analysés</h2>
+      <p>Aucune image ou schéma n'a été retenue pour ce rapport : la priorité a été donnée aux sources textuelles spécialisées et aux communiqués d'acteurs. Si vous souhaitez intégrer des visuels produits ou des schémas système, il est possible d'extraire les images officielles des communiqués d'Ajax, Axis, Napco, Skydio ou ADT référencés dans les parties précédentes.</p>
+    </section>
+
+    <section id="synth">
+      <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+      <ol>
+        <li><strong>Décomposition du concentrateur Wi-Fi dans les installations résidentielles</strong> — Les offres Ring/Amazon Sidewalk, Alula et Napco franchissent des étapes importantes vers des installations sans concentrateur central, rapprochant les architectures de sécurité résidentielle des topologies mesh sans hub unique. Pour HOMIRIS, cela signifie préparer l'interopérabilité avec des dispositifs cellulaires autonomes, notamment en 4G/5G et LoRa.</li>
+        <li><strong>Croissance de la détection sans caméra et sans capteur dédié</strong> — Les percées autour du WiFi sensing (KIT, +99 % de précision) et l'intégration UWB radar dans des puces grand public peuvent redéfinir l'offre de détection passive de présence. À moyen terme, il est conseillé de suivre ces technologies comme vecteurs alternatifs aux capteurs PIR et contacts.</li>
+        <li><strong>Pression sur les coûts liée aux faux positifs</strong> — L'IA de filtrage vidéo dans les centres de surveillance est désormais mature et agit comme un levier économique immédiat : réduction des interventions inutiles, baisse du turnover et meilleure valeur perçue pour l'opérateur. Les solutions à 95 % de réduction sont référencées chez Pelco, Evalink, Arcadian et autres ; une intégration ciblée peut améliorer la rentabilité des abonnements.</li>
+        <li><strong>Convergence réglementaire cybersécurité / sûreté</strong> — La transposition de NIS2, CER et AI Act impose aux télésurveilleurs une responsabilité cyber-physique qui dépasse la seule APSAD R31. Les opérateurs devront démontrer la résilience de leurs CMS, la traçabilité des événements et une qualification croisée sûreté / cybersécurité probablement d'ici 2027.</li>
+        <li><strong>Renforcement de la surveillance autonome par drones et robots fixes</strong> — Le déploiement de Boston Dynamics Spot à la Coupe du Monde 2026, l'offre K7 de Knightscope et les stations de drone intégrées aux CMS constituent des cas d'usage opérationnels crédibles en moins de deux ans. Cette tendance appelle une veille active sur le référentiel réglementaire de l'usage de drones autonomes en contexte privé et sur les modalités d'intégration aux centres de supervision existants.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    HOMIRIS · Veille sectorielle automatique · Généré le 2026-06-18 · Source : presse spécialisée, communiqués presse et fournisseurs
   </footer>
-</div>
 </body>
 </html>

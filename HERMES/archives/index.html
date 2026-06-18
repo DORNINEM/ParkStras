@@ -1,225 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<title>HERMES Archives</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #f4f5f7;
-    --surface: #ffffff;
-    --text: #111827;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-    --accent: #0b5cff;
-    --accent-weak: rgba(11,92,255,.08);
-    --nav-bg: #eef2ff;
-    --nav-active: #dbeafe;
-    --disabled: #cbd5e1;
-  }
-  @media (prefers-color-scheme: dark) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HERMES Archives</title>
+  <style>
     :root {
-      --bg: #0b0f19;
-      --surface: #0f1623;
-      --text: #e5e7eb;
-      --muted: #9aa3b2;
-      --border: #1f2937;
-      --accent: #5ea1ff;
-      --accent-weak: rgba(94,161,255,.12);
-      --nav-bg: #0c1220;
-      --nav-active: #101b2e;
-      --disabled: #3b4252;
+      --bg: #f5f6f8;
+      --surface: #ffffff;
+      --ink: #1a1d23;
+      --muted: #5b6573;
+      --border: #e5e7eb;
+      --accent: #0f4c81;
+      --accent-weak: #eef3fa;
+      --disabled: #c8cfd8;
     }
-  }
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    margin: 0;
-    padding: 2rem 1rem 3rem;
-  }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.4rem;
-  }
-  .logo {
-    width: 64px;
-    height: 64px;
-    border-radius: 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    padding: 6px;
-  }
-  .logo img { width: 100%; height: auto; display: block; }
-  .title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
-  .sub { color: var(--muted); font-size: 0.95rem; }
-  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: .5rem; flex-wrap: wrap; }
-  .theme-toggle {
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: .45rem .7rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  nav.tabs {
-    display: flex;
-    gap: .4rem;
-    overflow-x: auto;
-    border-bottom: 1px solid var(--border);
-    padding: .2rem 0;
-  }
-  .tab {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid transparent;
-    border-bottom: none;
-    padding: .55rem .9rem;
-    border-radius: 10px 10px 0 0;
-    cursor: pointer;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .tab[aria-selected="true"] {
-    background: var(--nav-active);
-    color: var(--text);
-    border-color: var(--border);
-  }
-  .tab[disabled] {
-    opacity: .55;
-    cursor: not-allowed;
-    color: var(--disabled);
-  }
-  .panels { margin-top: .6rem; }
-  .panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 0 10px 10px 10px;
-    padding: .9rem 1rem;
-    display: none;
-  }
-  .panel.is-open { display: block; }
-  .panel.has-placeholder { display: none; }
-  .panel h2 { margin: 0 0 .45rem; font-size: 1.05rem; }
-  .placeholder { color: var(--muted); font-size: .95rem; }
-  ul { margin: .5rem 0 0; padding-left: 1.1rem; }
-  li { margin: .28rem 0; }
-  a { color: var(--accent); text-decoration: none; word-break: break-all; }
-  a:hover { text-decoration: underline; }
-  .helper { color: var(--muted); font-size: .95rem; }
-</style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+    }
+    .logo {
+      display: block;
+      max-width: 220px;
+      height: auto;
+      margin-bottom: 28px;
+      opacity: .95;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: .2px;
+      margin: 0 0 18px;
+    }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding: 6px;
+      background: #e9ecf1;
+      border-radius: 10px;
+    }
+    .tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .tab:not(:disabled):hover {
+      background: #e3e7ee;
+      color: var(--ink);
+    }
+    .tab[aria-selected="true"] {
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 1px 3px rgba(20,24,31,.06);
+    }
+    .tab:disabled {
+      color: var(--disabled);
+      cursor: not-allowed;
+      opacity: .9;
+      background: transparent;
+    }
+    .panels {
+      margin-top: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 14px 8px;
+      min-height: 80px;
+    }
+    .panel[hidden] { display: none; }
+    .panel h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    .list {
+      display: grid;
+      gap: 6px;
+    }
+    .list a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--ink);
+      text-decoration: none;
+      background: linear-gradient(180deg, #fff 0%, #fbfcfd 100%);
+      border: 1px solid var(--border);
+    }
+    .list a:hover {
+      border-color: #cdd4df;
+      background: linear-gradient(180deg, #f8fafd 0%, #f7f9fb 100%);
+    }
+    .empty {
+      color: var(--muted);
+      padding: 14px 10px 18px;
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="logo" aria-hidden="true">
-      <img src="innovia2.png" alt="InnovIA">
+  <div class="wrap">
+    <img class="logo" src="innovia2.png" alt="Innovia 2" />
+    <h1>HERMES Archives</h1>
+    <nav class="tabs" role="tablist" aria-label="Archives">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="panel-mistral" id="tab-mistral">Actualités Mistral</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-ia" id="tab-ia">Actualités IA global</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-eps" id="tab-eps">Veille télésurveillance</button>
+    </nav>
+    <div class="panels">
+      <div class="panel" id="panel-mistral" role="tabpanel" aria-labelledby="tab-mistral">
+        <h2>Actualités Mistral</h2>
+        <div class="list">
+          <a href="MISTRAL-2026-06-17.html">MISTRAL-2026-06-17.html</a>
+          <a href="MISTRAL-2026-06-16.html">MISTRAL-2026-06-16.html</a>
+          <a href="MISTRAL-2026-06-15.html">MISTRAL-2026-06-15.html</a>
+          <a href="MISTRAL-2026-06-14.html">MISTRAL-2026-06-14.html</a>
+          <a href="MISTRAL-2026-06-13.html">MISTRAL-2026-06-13.html</a>
+          <a href="MISTRAL-2026-06-12.html">MISTRAL-2026-06-12.html</a>
+          <a href="MISTRAL-2026-06-10.html">MISTRAL-2026-06-10.html</a>
+          <a href="MISTRAL-2026-06-09.html">MISTRAL-2026-06-09.html</a>
+        </div>
+      </div>
+      <div class="panel" id="panel-ia" role="tabpanel" aria-labelledby="tab-ia" hidden>
+        <h2>Actualités IA global</h2>
+        <div class="list">
+          <a href="veille-IA-2026-06-18.html">veille-IA-2026-06-18.html</a>
+          <a href="veille-IA-2026-06-17.html">veille-IA-2026-06-17.html</a>
+          <a href="veille-IA-2026-06-16.html">veille-IA-2026-06-16.html</a>
+          <a href="veille-IA-2026-06-15.html">veille-IA-2026-06-15.html</a>
+          <a href="veille-IA-2026-06-12.html">veille-IA-2026-06-12.html</a>
+          <a href="veille-IA-2026-06-11.html">veille-IA-2026-06-11.html</a>
+          <a href="veille-IA-2026-06-10.html">veille-IA-2026-06-10.html</a>
+          <a href="veille-IA-2026-06-09.html">veille-IA-2026-06-09.html</a>
+        </div>
+      </div>
+      <div class="panel" id="panel-eps" role="tabpanel" aria-labelledby="tab-eps" hidden>
+        <h2>Veille télésurveillance</h2>
+        <div class="list">
+          <a href="veille-EPS-2026-06-18.html">veille-EPS-2026-06-18.html</a>
+          <a href="veille-EPS-2026-06-16.html">veille-EPS-2026-06-16.html</a>
+          <a href="veille-EPS-2026-06-10.html">veille-EPS-2026-06-10.html</a>
+        </div>
+      </div>
     </div>
-    <div>
-      <p class="title">HERMES Archives</p>
-      <p class="sub">Actualités Mistral · Actualités IA global · Veille télésurveillance</p>
-    </div>
-  </header>
-
-  <div class="toolbar">
-    <span class="helper">Sélectionnez une thématique</span>
-    <button class="theme-toggle" id="themeToggle" type="button">Thème sombre</button>
   </div>
-  <nav class="tabs" role="tablist" aria-label="Catégories d'archives">
-    <button class="tab" role="tab" aria-selected="false" id="tab-actualites-mistral" aria-controls="panel-actualites-mistral">Actualités Mistral</button>
-    <button class="tab" role="tab" aria-selected="false" id="tab-actualites-ia-global" aria-controls="panel-actualites-ia-global">Actualités IA global</button>
-    <button class="tab" role="tab" aria-selected="false" id="tab-veille-telesurveillance" aria-controls="panel-veille-telesurveillance">Veille télésurveillance</button>
-  </nav>
-
-  <div class="panels">
-    <section class="panel" id="panel-actualites-mistral" role="tabpanel">
-      <h2>Actualités Mistral</h2>
-      <ul>
-        <li><a href="MISTRAL-2026-06-17.html">MISTRAL-2026-06-17.html</a></li>
-        <li><a href="MISTRAL-2026-06-16.html">MISTRAL-2026-06-16.html</a></li>
-        <li><a href="MISTRAL-2026-06-15.html">MISTRAL-2026-06-15.html</a></li>
-        <li><a href="MISTRAL-2026-06-14.html">MISTRAL-2026-06-14.html</a></li>
-        <li><a href="MISTRAL-2026-06-13.html">MISTRAL-2026-06-13.html</a></li>
-        <li><a href="MISTRAL-2026-06-12.html">MISTRAL-2026-06-12.html</a></li>
-        <li><a href="MISTRAL-2026-06-10.html">MISTRAL-2026-06-10.html</a></li>
-        <li><a href="MISTRAL-2026-06-09.html">MISTRAL-2026-06-09.html</a></li>
-      </ul>
-    </section>
-    <section class="panel" id="panel-actualites-ia-global" role="tabpanel">
-      <h2>Actualités IA global</h2>
-      <ul>
-        <li><a href="veille-IA-2026-06-17.html">veille-IA-2026-06-17.html</a></li>
-        <li><a href="veille-IA-2026-06-16.html">veille-IA-2026-06-16.html</a></li>
-        <li><a href="veille-IA-2026-06-15.html">veille-IA-2026-06-15.html</a></li>
-        <li><a href="veille-IA-2026-06-12.html">veille-IA-2026-06-12.html</a></li>
-        <li><a href="veille-IA-2026-06-11.html">veille-IA-2026-06-11.html</a></li>
-        <li><a href="veille-IA-2026-06-10.html">veille-IA-2026-06-10.html</a></li>
-        <li><a href="veille-IA-2026-06-09.html">veille-IA-2026-06-09.html</a></li>
-      </ul>
-    </section>
-    <section class="panel" id="panel-veille-telesurveillance" role="tabpanel">
-      <h2>Veille télésurveillance</h2>
-      <ul>
-        <li><a href="veille-EPS-2026-06-16.html">veille-EPS-2026-06-16.html</a></li>
-        <li><a href="veille-EPS-2026-06-10.html">veille-EPS-2026-06-10.html</a></li>
-      </ul>
-    </section>
-  </div>
-</div>
-<script>
-(function() {
-  const tabs = Array.from(document.querySelectorAll('.tab'));
-  const panels = Array.from(document.querySelectorAll('.panel'));
-  const toggle = document.getElementById('themeToggle');
-
-  function setTheme(dark) {
-    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
-    toggle.textContent = dark ? 'Thème clair' : 'Thème sombre';
-    try { localStorage.setItem('hermes-archives-theme', dark ? 'dark' : 'light'); } catch (e) {}
-  }
-
-  const saved = (() => {
-    try { return localStorage.getItem('hermes-archives-theme'); } catch (e) { return ''; }
-  })();
-  setTheme(saved === 'light' ? false : true);
-
-  toggle.addEventListener('click', () => {
-    const isDark = document.documentElement.style.colorScheme === 'dark';
-    setTheme(!isDark);
-  });
-
-  function show(panel) {
-    panels.forEach(p => p.classList.remove('is-open'));
-    if (panel) {
-      panel.classList.add('is-open');
-    }
-    tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-    const activeTab = tabs.find(t => t.getAttribute('aria-controls') === (panel && panel.id));
-    if (activeTab) activeTab.setAttribute('aria-selected', 'true');
-  }
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const panel = document.getElementById(tab.getAttribute('aria-controls'));
-      if (tab.hasAttribute('disabled')) return;
-      show(panel);
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.setAttribute('aria-selected', 'false');
+          const panelId = t.getAttribute('aria-controls');
+          if (panelId) {
+            const p = document.getElementById(panelId);
+            if (p) p.setAttribute('hidden', '');
+          }
+        });
+        tab.setAttribute('aria-selected', 'true');
+        const target = tab.getAttribute('aria-controls');
+        if (target) {
+          const panel = document.getElementById(target);
+          if (panel) panel.removeAttribute('hidden');
+        }
+      });
     });
-  });
-
-  // Open first enabled tab by default
-  const first = tabs.find(t => !t.hasAttribute('disabled'));
-  if (first) show(document.getElementById(first.getAttribute('aria-controls')));
-})();
-</script>
+  </script>
 </body>
 </html>
