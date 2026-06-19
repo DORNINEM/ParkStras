@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 19 juin 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,0.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .card-title{font-weight:700;font-size:1.05rem;margin:0}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .news{border-top:1px dashed #eef2f7;padding-top:14px}
+    .news:first-of-type{border-top:0;padding-top:0}
+    .news h3{margin:0 0 6px;font-size:1rem;line-height:1.35}
+    .news .meta{font-size:.82rem;color:var(--muted)}
+    .news p{margin:8px 0 0;font-size:.95rem}
+    .news a{color:#1d4ed8;text-decoration:none;font-weight:600}
+    .news a:hover{text-decoration:underline}
+    .arxiv{border-top:1px dashed #eef2f7;padding-top:14px;margin-top:8px}
+    .arxiv:first-of-type{border-top:0;padding-top:0;margin-top:0}
+    .arxiv h3{margin:0 0 4px;font-size:1rem}
+    .arxiv .meta{font-size:.82rem;color:var(--muted)}
+    .arxiv p{margin:6px 0 0;font-size:.95rem}
+    .arxiv a{color:#1d4ed8;text-decoration:none;font-weight:600}
+    .arxiv a:hover{text-decoration:underline}
+    .note{
+      margin-top:10px;padding:12px 14px;border-radius:14px;
+      background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.92rem;
+    }
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>19 juin 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-06-19">2026-06-19</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--warn)">Données limitées</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Souveraineté numérique</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Risques & sécurité</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Agents autonomes</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche fondamentale</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Attitudes & société</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">🇫🇷 France</h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>L’OTAN installe son futur centre sur l’IA en Bretagne</h3>
+            <div class="meta">01net.com · 19 juin 2026</div>
+            <p>Rennes accueillera un nouveau centre d’excellence de l’OTAN dédié à l’intelligence artificielle. La France devient ainsi le seul pays avec trois centres OTAN, au sein d’un écosystème cyber réunissant Comcyber, DGA et AMIAD, avec des opérations prévues pour 2027.</p>
+            <a href="https://www.01net.com/actualites/lotan-installe-son-futur-centre-sur-lia-en-bretagne-au-coeur-de-lecosysteme-cyber-francais.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>655 millions d’euros pour l’IA : le coup de force de la France à VivaTech</h3>
+            <div class="meta">01net.com · 18 juin 2026</div>
+            <p>Le Premier ministre annonce 655 M€ via France 2030, un chatbot Mistral pour un million d’agents de l’État et le remplacement de Palantir par ChapsVision pour la DGSI, dans un contexte géopolitique lié aux restrictions américaines sur les modèles IA.</p>
+            <a href="https://www.01net.com/actualites/655-millions-deuros-pour-lia-le-coup-de-force-de-la-france-a-vivatech-vire-a-limbroglio-geopolitique.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>La France généralise l’IA générative auprès des agents publics</h3>
+            <div class="meta">zdnet.fr · 16 juin 2026</div>
+            <p>L’État déploie un assistant génératif IA pour l’ensemble des agents publics, hébergé sur SecNumCloud et propulsé par Mistral AI, avec des outils spécialisés pour encadrer les risques.</p>
+            <a href="https://www.zdnet.fr/actualites/la-france-generalise-lia-generative-aupres-des-agents-publics-et-promet-du-dialogue-496997.htm" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Yann LeCun juge xAI « un échec »</h3>
+            <div class="meta">silicon.fr · mi-juin 2026</div>
+            <p>Yann LeCun estime que xAI est condamné à l’échec en raison de crises internes et de départs d’éléments fondateurs. Il met en garde contre les modèles économiques susceptibles de générer une bulle spéculative durable.</p>
+            <a href="https://www.silicon.fr/data-ia-1372/yann-lecun-juge-xai-cest-un-echec-227850" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Tribune : « Nous condamnons un projet de société fondé sur la marginalisation… »</h3>
+            <div class="meta">lemonde.fr · 18 juin 2026</div>
+            <p>Un collectif d’écrivains, d’élus et de scientifiques dénonce le développement effréné des mégacentres de données pour l’IA en France et appelle au boycott des IA génératives grand public.</p>
+            <a href="https://www.lemonde.fr/idees/article/2026/06/18/ia-nous-condamnons-un-projet-de-societe-fonde-sur-la-marginalisation-de-l-etre-humain-et-la-destruction-de-notre-milieu-de-vie_6704505_3232.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">🌐 Monde</h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>World leaders want American AI, they just don’t want America turning it off</h3>
+            <div class="meta">TechCrunch · 17 juin 2026</div>
+            <p>Au G7, des dirigeants ont questionné la dépendance aux modèles IA américains après les restrictions sur Anthropic. Un schéma "trusted partners" est évoqué pour garantir la souveraineté numérique.</p>
+            <a href="https://techcrunch.com/2026/06/17/world-leaders-want-american-ai-they-just-dont-want-america-to-be-able-to-turn-it-off/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Only 16 % of Americans think AI will have a positive impact on society</h3>
+            <div class="meta">TechCrunch · 17 juin 2026</div>
+            <p>Pew Research révèle que seuls 16 % des Américains anticipent un impact positif à 20 ans, contre ~40 % qui craignent des effets négatifs, alors que le secteur domine l’économie.</p>
+            <a href="https://techcrunch.com/2026/06/17/only-16-percent-of-americans-think-ai-will-have-a-positive-impact-on-society-a-new-study-shows/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Five things you need to know about AI</h3>
+            <div class="meta">MIT Technology Review · 9 juin 2026</div>
+            <p>Synthèse claire des thèmes majeurs de l’IA mi-2026 : banalisation des outils génératifs, dérives concrètes, opposition publique, rôle dans la science, incertitude sociétale.</p>
+            <a href="https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>The Meta hack shows there’s more to AI security than Mythos</h3>
+            <div class="meta">MIT Technology Review · 5 juin 2026</div>
+            <p>Un piratage d’un agent support client Meta via des requêtes simples a détourné des comptes Instagram, rappelant l’importance de gardrails et de red-teaming.</p>
+            <a href="https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Why do South Koreans love AI so much?</h3>
+            <div class="meta">MIT Technology Review · 15 juin 2026</div>
+            <p>La Corée du Sud affiche un enthousiasme remarquable (robots, villes intelligentes), porté par l’État et les semiconducteurs, avec des risques d’emploi et des erreurs précoces.</p>
+            <a href="https://www.technologyreview.com/2026/06/15/1138983/why-do-south-koreans-love-ai-so-much/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>ACE-Step XL 1.5 Premium + META SAM Audio (community)</h3>
+            <div class="meta">Hugging Face Blog · 19 juin 2026</div>
+            <p>Article communautaire sur l’intégration ACE-Step XL 1.5 Premium avec META SAM pour l’édition audio automatique et un module tutor.</p>
+            <a href="https://huggingface.co/blog/MonsterMMORPG/ace-step-xl-15-premium-sam-audio-auto-editor-tutor" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Europe + ArXiv full width -->
+    <div class="grid">
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">🌍 Europe hors France</h2>
+          <span class="pill red">Données limitées</span>
+        </div>
+        <div class="card-body">
+          <div class="note">
+            Le 19 juin 2026, aucune actualité IA datée précisément de ce jour n’a été identifiée dans tech.eu, euractiv.com, thenextweb.com et politico.eu. Les résultats listés sont les plus récents disponibles.
+          </div>
+          <div class="news" style="margin-top:6px">
+            <h3>World leaders want American AI, they just don’t want America turning it off</h3>
+            <div class="meta">TechCrunch · 17 juin 2026</div>
+            <p>Souveraineté numérique européenne au cœur des discussions du G7, avec un schéma de partenaires de confiance.</p>
+            <a href="https://techcrunch.com/2026/06/17/world-leaders-want-american-ai-they-just-dont-want-america-to-be-able-to-turn-it-off/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>The EU’s secret weapon for enlargement: AI</h3>
+            <div class="meta">politico.eu · date indéterminée</div>
+            <p>La Commission européenne utilise GPT@EC pour évaluer l’alignement des pays candidats, ce qui soulève des questions sur les limites de l’IA pour des traitements juridictionnels complexes.</p>
+            <a href="https://www.politico.eu/article/the-eus-secret-weapon-for-enlargement-ai/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="arxiv" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="arxiv">🔬 ArXiv — Tendances de la semaine</h2>
+          <span class="pill yellow">13-19 juin 2026</span>
+        </div>
+        <div class="card-body">
+          <div class="arxiv">
+            <h3>APEX — Cadre d’auto-évolution pour agents IA de production</h3>
+            <div class="meta">Ya-Chuan Chen, Tien-Jen Lai, Hsiang-Wei Hu · 13 juin 2026</div>
+            <p>Cadre d’auto-évolution en trois couches (prompt, principes, topologie). Sur un cas réel, il améliore durablement la santé opérationnelle des agents avec un faible coût d’appels LLM.</p>
+            <a href="https://arxiv.org/abs/2606.15363" target="_blank" rel="noreferrer">Voir le papier →</a>
+          </div>
+          <div class="arxiv">
+            <h3>Kairos — World models natifs pour l’IA physique</h3>
+            <div class="meta">Shan You, Kairos Team · 15 juin 2026</div>
+            <p>Pile de world models pour la robotique avec architecture attention temporelle linéaire et co-conception déploiement-aware, adaptée aux contraintes embarquées temps réel.</p>
+            <a href="https://arxiv.org/abs/2606.16533" target="_blank" rel="noreferrer">Voir le papier →</a>
+          </div>
+          <div class="arxiv">
+            <h3>ForecastBench-Sim — Benchmark de prévision sur monde simulé</h3>
+            <div class="meta">Jaeho Lee, Nick Merrill, Ezra Karger · 17 juin 2026</div>
+            <p>Benchmark reproductible de prévision inspiré de Freeciv : permet d’évaluer sans données bruitées ni délai d’attente.</p>
+            <a href="https://arxiv.org/abs/2606.18686" target="_blank" rel="noreferrer">Voir le papier →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · 19 juin 2026 · Sauvegarde Hermes : ~/dev/ParkStras/HERMES/archives/veille-IA-2026-06-19.html
+    </footer>
+  </div>
+</body>
+</html>
