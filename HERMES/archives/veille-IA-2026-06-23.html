@@ -1,138 +1,262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Veille IA — 23 juin 2026</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 23 juin 2026</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; background: #f7f7f9; color: #1f1f1f; }
-    .wrap { max-width: 920px; margin: 0 auto; }
-    h1 { font-size: 26px; margin: 0 0 6px; }
-    .meta { color: #555; font-size: 13px; margin-bottom: 18px; }
-    .card { background: #fff; border: 1px solid #e8e8ef; border-radius: 14px; padding: 18px 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
-    .section { margin-top: 22px; }
-    .item { padding: 14px 0; border-bottom: 1px solid #f0f0f5; }
-    .item:last-child { border-bottom: none; }
-    .title { font-weight: 600; font-size: 16px; }
-    .source { font-size: 12px; color: #777; margin-top: 4px; }
-    .summary { margin-top: 8px; line-height: 1.55; font-size: 15px; }
-    .link { display: inline-block; margin-top: 10px; color: #0b57d0; text-decoration: none; font-weight: 500; }
-    .link:hover { text-decoration: underline; }
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .card-title{font-weight:700;font-size:1.05rem;margin:0}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .news{border-top:1px dashed #eef2f7;padding-top:14px}
+    .news:first-of-type{border-top:0;padding-top:0}
+    .news h3{margin:0 0 6px;font-size:1rem;line-height:1.35}
+    .news .meta{font-size:.82rem;color:var(--muted)}
+    .news p{margin:8px 0 0;font-size:.95rem}
+    .news a{color:#1d4ed8;text-decoration:none;font-weight:600}
+    .news a:hover{text-decoration:underline}
+    .arxiv{border-top:1px dashed #eef2f7;padding-top:14px;margin-top:8px}
+    .arxiv:first-of-type{border-top:0;padding-top:0;margin-top:0}
+    .arxiv h3{margin:0 0 4px;font-size:1rem}
+    .arxiv .meta{font-size:.82rem;color:var(--muted)}
+    .arxiv p{margin:6px 0 0;font-size:.95rem}
+    .arxiv a{color:#1d4ed8;text-decoration:none;font-weight:600}
+    .arxiv a:hover{text-decoration:underline}
+    .note{
+      margin-top:10px;padding:12px 14px;border-radius:14px;
+      background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.92rem;
+    }
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Veille IA — 23 juin 2026</h1>
-    <div class="meta">Généré automatiquement · Sources : Le Monde, 01net, ZDNet FR, Silicon.fr, Numerama, Tech.eu, EURACTIV, The Next Web, Politico, MIT Tech Review, TechCrunch, Hugging Face Blog</div>
-
-    <div class="card">
-      <div class="section">
-        <h2>🇫🇷 France</h2>
-        <div class="item">
-          <div class="title">Google se fait braconner ses talents dans l’intelligence artificielle par OpenAI et Anthropic</div>
-          <div class="source">Le Monde · 2026-06-23</div>
-          <div class="summary">La guerre des talents dans l’IA s’intensifie en Californie, avec des départs notables de chercheurs de Google DeepMind vers OpenAI et Anthropic, entraînant une chute de 5 % de l’action Alphabet et des pertes de plusieurs milliards en capitalisation. L’article souligne comment ce mouvement aggrave la pression déjà forte sur les grands groupes technologiques pour retenir leurs équipes clés.</div>
-          <a class="link" href="https://www.lemonde.fr/international/article/2026/06/23/google-se-fait-braconner-ses-talents-dans-l-intelligence-artificielle-par-openai-et-anthropic_6708550_3210.html" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Claude Mythos a découvert une faille de sécurité qui existe depuis près de 30 ans</div>
-          <div class="source">01net · 2026-06-23</div>
-          <div class="summary">L’IA Claude Mythos d’Anthropic a identifié une vulnérabilité baptisée Squidbleed, présente depuis 1997 dans le serveur proxy Squid et toujours exploitée par des milliers d’entreprises et d’établissements scolaires. Cette découverte illustre la capacité des modèles avancés d’IA à repérer des failles critiques restées invisibles aux humains pendant des décennies.</div>
-          <a class="link" href="https://www.01net.com/actualites/claude-mythos-decouvert-faille-securite-qui-existe-30-ans.html" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Choose France 2026 : l’IA et les datacenters au cœur d’un investissement record de 93 milliards d’euros</div>
-          <div class="source">ZDNet FR · 2026-06-23</div>
-          <div class="summary">Le sommet Choose France 2026 a enregistré un montant record d’investissements étrangers, avec notamment un engagement majeur de SoftBank pour déployer entre 3 et 5 GW de datacenters dédiés à l’IA d’ici 2031. La France mise sur son énergie nucléaire et ses prix compétitifs pour combler son retard en puissance de calcul souveraine.</div>
-          <a class="link" href="https://www.zdnet.fr/actualites/choose-france-2026-lia-et-les-datacenters-au-coeur-dun-investissement-record-de-93-milliards-deuros-495987.htm" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Yann LeCun juge xAI : c’est « un échec »</div>
-          <div class="source">Silicon.fr · 2026-06-23</div>
-          <div class="summary">Le parrain français de l’IA Yann LeCun estime que le projet xAI d’Elon Musk est condamné à l’échec en raison de départs fondateurs et de difficultés à attirer les meilleurs talents face aux leaders du secteur. Il met aussi en garde contre une économie de l’IA insoutenable, massivement subventionnée par les investisseurs.</div>
-          <a class="link" href="https://www.silicon.fr/data-ia-1372/yann-lecun-juge-xai-cest-un-echec-227850" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Pearltrees : cette entreprise française révolutionne discrètement l’école grâce à l’IA</div>
-          <div class="source">Numerama · 2026-06-23</div>
-          <div class="summary">La startup française Pearltrees intègre un assistant IA souverain baptisé Spirit pour aider les enseignants à générer des textes, des listes de vocabulaire et des corrections. Hébergée en France et sans utilisation des données pour l’entraînement de modèle, l’entreprise se positionne comme un champion national de l’EdTech.</div>
-          <a class="link" href="https://www.numerama.com/tech/2281857-pearltrees-cette-entreprise-francaise-revolutionne-discretement-lecole-grace-a-lia.html" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>23 juin 2026 · Hermes Agent</p>
       </div>
-
-      <div class="section">
-        <h2>🌍 Europe (hors France)</h2>
-        <div class="item">
-          <div class="title">Kyrok lève €3,1M pour un OS IA dédié à la supply chain pharma/chimie</div>
-          <div class="source">Tech.eu · 2026-06-23</div>
-          <div class="summary">Berlin-based Kyrok raised €3.1M to build an AI operating system for pharma/chemical supply chains. Cela renforce le positionnement européen sur l’IA appliquée à la logistique et à la santé.</div>
-          <a class="link" href="https://tech.eu/2026/06/23/kyrok-raises-eur3-1m" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Les dirigeants finlandais alertent sur la souveraineté IA de l’Europe</div>
-          <div class="source">EURACTIV · 2026-06-23</div>
-          <div class="summary">Finnish leaders warn Europe risks losing AI sovereignty after Nokia's mobile-tech decline. Le message est clair : sans puissance de calcul et champions européens, l’UE risque une nouvelle dépendance technologique.</div>
-          <a class="link" href="https://www.euractiv.com/2026/06/23/finland-ai-sovereignty-warning" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Lovable : l’Europe n’a pas un problème de talents, mais un problème de confiance</div>
-          <div class="source">The Next Web · 2026-06-22</div>
-          <div class="summary">The Next Web EU relayed Lovable’s CEO saying Europe has a confidence, not talent, problem in AI startups. Cela interroge la culture du risque et du financement sur le vieux continent.</div>
-          <a class="link" href="https://thenextweb.com/news/2026/06/22/lovable-ceo-europe-ai-confidence-gap" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Anthropic Mythos expose les limites des services réglementaires européens</div>
-          <div class="source">Politico · 2026-06-23</div>
-          <div class="summary">Anthropic's Mythos model exposes staff/resource gaps in the EU AI Office. Les institutions peinent à suivre le rythme de l’innovation, ce qui alimente le débat sur les moyens alloués à l’IA régulée.</div>
-          <a class="link" href="https://www.politico.eu/2026/06/23/anthropic-mythos-eu-ai-office-gaps" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Contrôles à l’exportation américains : l’UE dépend trop des modèles d’IA américains</div>
-          <div class="source">Politico · 2026-06-23</div>
-          <div class="summary">US export controls on Anthropic models highlight EU dependency on American AI. La restriction américaine renforce l’urgence d’une souveraineté numérique européenne.</div>
-          <a class="link" href="https://www.politico.eu/2026/06/23/us-export-controls-anthropic-eu-dependency" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
+      <div style="text-align:right">
+        <time datetime="2026-06-23">2026-06-23</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
       </div>
+    </header>
 
-      <div class="section">
-        <h2>🌐 Monde</h2>
-        <div class="item">
-          <div class="title">La machine à 400 millions de dollars d’ASML propulse la future génération de semi-conducteurs</div>
-          <div class="source">MIT Tech Review · 2026-06-23</div>
-          <div class="summary">ASML’s high-NA EUV lithography machine, costing $400 million, is enabling the production of advanced semiconductors that underpin modern AI workloads by etching ever-smaller, denser circuitry. The article highlights how ASML’s near-monopoly on these tools has significant geopolitical consequences for global AI development and chip supply chains.</div>
-          <a class="link" href="https://www.technologyreview.com/2026/06/23/1138837/asml-400-million-dollar-machine-powering-future-of-chipmaking/" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Trois choses à suivre dans le nouveau conflit entre Anthropic et le gouvernement américain</div>
-          <div class="source">MIT Tech Review · 2026-06-22</div>
-          <div class="summary">The U.S. government imposed export controls on Anthropic’s advanced coding AI models, Mythos and Fable, citing national security concerns. The move raises questions about AI safety regulation, competitive pressures from unrestricted Chinese open-source models, and potential cybersecurity fragilities.</div>
-          <a class="link" href="https://www.technologyreview.com/2026/06/22/1139424/three-things-to-watch-amid-anthropics-latest-feud-with-the-government/" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">La liste des licenciements technologiques de 2026 où les employeurs invoquent l’IA</div>
-          <div class="source">TechCrunch · 2026-06-22</div>
-          <div class="summary">Major technology companies announced large workforce reductions in 2026, repeatedly attributing the cuts to AI-driven efficiency and automation, with Oracle alone disclosing 21,000 job losses. Similar moves were seen at GitLab, Google, Meta, Intuit, and Cisco.</div>
-          <a class="link" href="https://techcrunch.com/2026/06/22/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">OpenAI lance « Patch the Planet » pour corriger des failles open source</div>
-          <div class="source">TechCrunch · 2026-06-22</div>
-          <div class="summary">OpenAI introduced the 'Patch the Planet' initiative partnering with Trail of Bits to help open source maintainers identify and patch security vulnerabilities using AI tools such as Codex Security. Security engineers review findings and build reusable workflows to reduce maintainer burden.</div>
-          <a class="link" href="https://techcrunch.com/2026/06/22/openai-launches-new-initiative-to-help-find-and-patch-open-source-bugs/" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Le monde de l’IA devient « Loopy »</div>
-          <div class="source">TechCrunch · 2026-06-22</div>
-          <div class="summary">AI companies and researchers are increasingly adopting 'loop' architectures in which AI agents continuously prompt, supervise, and iterate on one another to autonomously generate code and complete tasks. Meta showcased these agentic-loop paradigms at its @Scale conference.</div>
-          <a class="link" href="https://techcrunch.com/2026/06/22/the-ai-world-is-getting-loopy/" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
-        <div class="item">
-          <div class="title">Nemotron 3.5 Content Safety : sécurité multimodal personnalisable pour l’IA enterprise</div>
-          <div class="source">Hugging Face Blog · 2026-06-23</div>
-          <div class="summary">NVIDIA released Nemotron 3.5 Content Safety, a compact multimodal model that jointly evaluates text and images for safety risks across dozens of languages with customizable policy enforcement. The 4B-parameter model is built on Gemma 3 and offers optional auditable reasoning traces to help enterprises enforce aligned AI guardrails at scale.</div>
-          <a class="link" href="https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety" target="_blank" rel="noopener">Lire l’article</a>
-        </div>
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
       </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Souveraineté numérique</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Sécurité & confiance</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>IA agentique</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche fondamentale</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Edge & hardware</span>
     </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">🇫🇷 France</h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>Google se fait braconner ses talents dans l’IA par OpenAI et Anthropic</h3>
+            <div class="meta">Le Monde · 23 juin 2026</div>
+            <p>La guerre des talents dans l’IA s’intensifie en Californie, avec des départs notables de chercheurs de Google DeepMind vers OpenAI et Anthropic, entraînant une chute de 5 % de l’action Alphabet et des pertes en capitalisation.</p>
+            <a href="https://www.lemonde.fr/international/article/2026/06/23/google-se-fait-braconner-ses-talents-dans-l-intelligence-artificielle-par-openai-et-anthropic_6708550_3210.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Claude Mythos découvre une faille de sécurité vieille de 30 ans</h3>
+            <div class="meta">01net · 23 juin 2026</div>
+            <p>Claude Mythos identifie la vulnérabilité Squidbleed présente depuis 1997 dans le serveur proxy Squid, encore exploitée aujourd’hui. Cette découverte illustre la capacité du modèle à révéler des failles critiques demeurées invisibles pendant des décennies.</p>
+            <a href="https://www.01net.com/actualites/claude-mythos-decouvert-faille-securite-qui-existe-30-ans.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Choose France 2026 : 93 milliards d’euros d’investissement, dont datacenters IA</h3>
+            <div class="meta">ZDNet FR · 23 juin 2026</div>
+            <p>SoftBank engage 3 à 5 GW de datacenters dédiés à l’IA d’ici 2031. Le sommet met en lumière la course à la puissance de calcul souveraine et le rôle du nucléaire français.</p>
+            <a href="https://www.zdnet.fr/actualites/choose-france-2026-lia-et-les-datacenters-au-coeur-dun-investissement-record-de-93-milliards-deuros-495987.htm" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Yann LeCun juge xAI : c’est « un échec »</h3>
+            <div class="meta">Silicon.fr · 23 juin 2026</div>
+            <p>Yann LeCun pointe les difficultés de recrutement et la réalité d’une économie de l’IA subventionnée, renforçant le doute sur la viabilité du modèle xAI face aux leaders historiques.</p>
+            <a href="https://www.silicon.fr/data-ia-1372/yann-lecun-juge-xai-cest-un-echec-227850" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Pearltrees révolutionne l’école grâce à un assistant IA souverain</h3>
+            <div class="meta">Numerama · 23 juin 2026</div>
+            <p>La startup française déploie Spirit, un assistant IA hébergé en France sans réutilisation des données Utilisateurs pour l’entraînement, ciblant les collèges et lycées.</p>
+            <a href="https://www.numerama.com/tech/2281857-pearltrees-cette-entreprise-francaise-revolutionne-discretement-lecole-grace-a-lia.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">🌐 Monde</h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>ASML : une machine à 400 millions de dollars au cœur de la prochaine génération de puces IA</h3>
+            <div class="meta">MIT Tech Review · 23 juin 2026</div>
+            <p>L’EUV high-NA d’ASML devient un point de bascule géopolitique pour les chaînes d’approvisionnement en semi-conducteurs et les workloads IA.</p>
+            <a href="https://www.technologyreview.com/2026/06/23/1138837/asml-400-million-dollar-machine-powering-future-of-chipmaking/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Conflit Anthropic / Washington : trois points de tension à suivre</h3>
+            <div class="meta">MIT Tech Review · 22 juin 2026</div>
+            <p>Les contrôles à l’exportation sur Mythos et Fable ravivent les débats sur régulation, concurrence chinoise et cybersécurité.</p>
+            <a href="https://www.technologyreview.com/2026/06/22/1139424/three-things-to-watch-amid-anthropics-latest-feud-with-the-government/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>2026 : les licenciements dans la tech invoquent massivement l’IA</h3>
+            <div class="meta">TechCrunch · 22 juin 2026</div>
+            <p>Oracle, Google, Meta, GitLab et Cisco justifient des coupes par l’automatisation IA, marquant un tournant structurel dans l’emploi technologique.</p>
+            <a href="https://techcrunch.com/2026/06/22/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>OpenAI lance « Patch the Planet » pour la sécurité open source</h3>
+            <div class="meta">TechCrunch · 22 juin 2026</div>
+            <p>OpenAI s’associe à Trail of Bits pour identifier et corriger des vulnérabilités open source avec des outils IA.</p>
+            <a href="https://techcrunch.com/2026/06/22/openai-launches-new-initiative-to-help-find-and-patch-open-source-bugs/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>L’IA devient « Loopy » : l’architecture des agents autonomes en pleine maturation</h3>
+            <div class="meta">TechCrunch · 22 juin 2026</div>
+            <p>Les architectures en boucle d’agents autonomes gagnent du terrain chez Meta et dans les labs, au prix d’une charge computationnelle plus élevée.</p>
+            <a href="https://techcrunch.com/2026/06/22/the-ai-world-is-getting-loopy/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Nemotron 3.5 Content Safety : garde-fous multimodaux pour l’IA entreprise</h3>
+            <div class="meta">Hugging Face Blog · 23 juin 2026</div>
+            <p>NVIDIA propose un modèle compact de sécurité textuelle et image avec traçabilité d’alignement pour déploiements industriels.</p>
+            <a href="https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">🌍 Europe hors France</h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>Kyrok lève €3,1M pour un OS IA dédié à la supply chain pharma et chimie</h3>
+            <div class="meta">Tech.eu · 23 juin 2026</div>
+            <p>Berlin-based Kyrok raised €3.1M to build an AI operating system for pharma/chemical supply chains.</p>
+            <a href="https://tech.eu/2026/06/23/kyrok-raises-eur3-1m" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>La souveraineté IA de l’Europe en danger, selon des dirigeants finlandais</h3>
+            <div class="meta">EURACTIV · 23 juin 2026</div>
+            <p>Les alertes se multiplient sur le risque d’une dépendance structurelle de l’UE envers des acteurs non européens.</p>
+            <a href="https://www.euractiv.com/2026/06/23/finland-ai-sovereignty-warning" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Lovable : en Europe, le problème n’est pas les talents, c’est la confiance</h3>
+            <div class="meta">The Next Web · 22 juin 2026</div>
+            <p>Le CEO de Lovable estime que l’écosystème européen manque avant tout d’audace entrepreneuriale et de culture du risque.</p>
+            <a href="https://thenextweb.com/news/2026/06/22/lovable-ceo-europe-ai-confidence-gap" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Anthropic Mythos met en lumière les limites de l’EU AI Office</h3>
+            <div class="meta">Politico · 23 juin 2026</div>
+            <p>Les ressources humaines et opérationnelles des instances européennes peinent à suivre le rythme de l’innovation.</p>
+            <a href="https://www.politico.eu/2026/06/23/anthropic-mythos-eu-ai-office-gaps" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Contrôles américains à l’export : l’UE reste dépendante de l’IA made in USA</h3>
+            <div class="meta">Politico · 23 juin 2026</div>
+            <p>La restriction sur des modèles Anthropic renforce l’urgence d’une indépendance numérique européenne.</p>
+            <a href="https://www.politico.eu/2026/06/23/us-export-controls-anthropic-eu-dependency" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · 23 juin 2026 · Sauvegarde Hermes : ~/dev/ParkStras/HERMES/archives/veille-IA-2026-06-23.html
+    </footer>
   </div>
 </body>
 </html>

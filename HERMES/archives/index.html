@@ -12,8 +12,6 @@
       --muted: #5b6573;
       --border: #e5e7eb;
       --accent: #0f4c81;
-      --accent-weak: #eef3fa;
-      --disabled: #c8cfd8;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -55,7 +53,7 @@
       background: transparent;
       padding: 10px 14px;
       border-radius: 8px;
-      color: var(--muted);
+      color: #5b6573;
       cursor: pointer;
       font-weight: 500;
     }
@@ -63,13 +61,13 @@
       background: #e3e7ee;
       color: var(--ink);
     }
-    .tab[aria-selected="true"] {
+    .tab.active {
       background: var(--surface);
       color: var(--ink);
       box-shadow: 0 1px 3px rgba(20,24,31,.06);
     }
     .tab:disabled {
-      color: var(--disabled);
+      color: #c8cfd8;
       cursor: not-allowed;
       opacity: .9;
       background: transparent;
@@ -116,7 +114,7 @@
     <img class="logo" src="innovia2.png" alt="Innovia 2" />
     <h1>HERMES Archives</h1>
     <nav class="tabs" role="tablist" aria-label="Archives">
-      <button class="tab" role="tab" aria-selected="true" aria-controls="panel-mistral" id="tab-mistral">Actualités Mistral</button>
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-mistral" id="tab-mistral">Actualités Mistral</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="panel-ia" id="tab-ia">Actualités IA global</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="panel-eps" id="tab-eps">Veille télésurveillance</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="panel-rh-ia" id="tab-rh-ia">Veille IA RH</button>
@@ -188,6 +186,7 @@
       tab.addEventListener('click', () => {
         tabs.forEach(t => {
           t.setAttribute('aria-selected', 'false');
+          t.classList.remove('active');
           const panelId = t.getAttribute('aria-controls');
           if (panelId) {
             const p = document.getElementById(panelId);
@@ -195,6 +194,7 @@
           }
         });
         tab.setAttribute('aria-selected', 'true');
+        tab.classList.add('active');
         const target = tab.getAttribute('aria-controls');
         if (target) {
           const panel = document.getElementById(target);
