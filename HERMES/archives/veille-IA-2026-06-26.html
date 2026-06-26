@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 26/06/2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>26/06/2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-06-26">26/06/2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Souveraineté numérique</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Sécurité & confiance</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>IA agentique</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche fondamentale</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Edge & hardware</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>GPT-5.6 limité : l'administration Trump décidera qui pourra l'utiliser</h3>
+            <div class="meta">01net · 26/06/2026</div>
+            <p>Le président des États-Unis a prôné un développement de l'IA à grande vitesse, sans règles strictes, ainsi qu'un programme d'exportation contrôlé.</p>
+            <a href="https://www.01net.com/actualites/gpt-5-6-limite-ladministration-trump-decidera-qui-pourra-lutiliser.html" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>IA : Anthropic accuse Alibaba du plus grand piratage par « distillation »</h3>
+            <div class="meta">ZDNet FR · 25/06/2026</div>
+            <p>L’entreprise américaine accuse le géant chinois d’avoir siphonné les capacités de ses modèles d'IA Claude.</p>
+            <a href="https://www.zdnet.fr/actualites/ia-anthropic-accuse-alibaba-du-plus-grand-piratage-par-distillation-a-ce-jour-497708.htm" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>IA : le test d'un modèle chinois à la direction générale du Trésor interrompu</h3>
+            <div class="meta">Le Monde · 25/06/2026</div>
+            <p>Qwen AI (Alibaba) expérimenté par Bercy interrompu pour réponses biaisées.</p>
+            <a href="https://www.lemonde.fr/pixels/article/2026/06/25/ia-le-test-d-un-modele-chinois-a-la-direction-generale-du-tresor-interrompu-a-cause-de-reponses-orientees-ou-biaisees_6715445_4408996.html" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>Licenciements, perte de sens, risques pour la démocratie dans la Silicon Valley</h3>
+            <div class="meta">Le Monde · 26/06/2026</div>
+            <p>Le blues de la génération IA : candidatures refusées par IA, perte de sens.</p>
+            <a href="https://www.lemonde.fr/m-le-mag/article/2026/06/26/licenciements-perte-de-sens-risques-pour-la-democratie-dans-la-silicon-valley-le-blues-de-la-generation-ia_6715756_4500055.html" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>IA : après l'inflation énergétique, l'« IAflation »</h3>
+            <div class="meta">Le Monde · 26/06/2026</div>
+            <p>L'IA se traduit pour l'instant par des hausses de prix au lieu de gains de productivité.</p>
+            <a href="https://www.lemonde.fr/economie/article/2026/06/26/ia-apres-l-inflation-engendree-par-la-crise-energetique-celle-provoquee-par-l-intelligence-artificielle-l-iaflation_6715677_3234.html" target="_blank">Lire →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Databricks' former AI chief thinks he can cut AI's power bill by 1,000x</h3>
+            <div class="meta">TechCrunch · 25/06/2026</div>
+            <p>Unconventional AI promet une architecture oscillateur pour rendre l'inférence 1000x plus efficace énergétiquement.</p>
+            <a href="https://techcrunch.com/2026/06/25/databricks-former-ai-chief-thinks-he-can-cut-ais-power-bill-by-1000x/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>Patronus AI lands $50M to build 'digital worlds' that stress-test AI agents</h3>
+            <div class="meta">TechCrunch · 25/06/2026</div>
+            <p>Environnements simulés pour évaluer les agents IA autonomes.</p>
+            <a href="https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>General Intuition's $2.3B bet that video games can train AI agents</h3>
+            <div class="meta">TechCrunch · 25/06/2026</div>
+            <p>Jeux vidéo pour entraîner des agents IA pour le monde réel.</p>
+            <a href="https://techcrunch.com/2026/06/25/general-intuitions-2-3b-bet-that-video-games-can-train-ai-agents-for-the-real-world/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>The White House is asking OpenAI to slow roll GPT-5.6 release</h3>
+            <div class="meta">TechCrunch · 25/06/2026</div>
+            <p>Administration Trump demande un staggered release pour raisons de sécurité.</p>
+            <a href="https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>Anthropic's Claude is winning over paid consumers</h3>
+            <div class="meta">TechCrunch · 25/06/2026</div>
+            <p>Les consommateurs payants choisissent de plus en plus Claude.</p>
+            <a href="https://techcrunch.com/2026/06/25/anthropics-claude-is-winning-over-paid-consumers-a-market-owned-by-chatgpt/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>OpenAI will delay GPT-5.6 after Trump administration request</h3>
+            <div class="meta">The Verge · 25/06/2026</div>
+            <p>Confirmation du report de GPT-5.6 pour préoccupations de sécurité.</p>
+            <a href="https://www.theverge.com/ai-artificial-intelligence/957372/openai-will-delay-gpt-5-6-after-trump-administration-request" target="_blank">Lire →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Europe full width -->
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Companies bought the AI. Now they need people to use it</h3>
+            <div class="meta">Tech.eu · 26/06/2026</div>
+            <p>Les organisations ont déployé l'IA mais peinent à en faire usage effectif. Atheni AI aide à combler le gap.</p>
+            <a href="https://tech.eu/2026/06/26/companies-bought-the-ai-now-they-need-people-to-use-it/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>Serpier raises €1.4M to help online retailers improve digital visibility</h3>
+            <div class="meta">Tech.eu · 25/06/2026</div>
+            <p>Logiciel de marketing IA pour visibilité e-commerce et moteurs de recherche / IA.</p>
+            <a href="https://tech.eu/2026/06/25/serpier-raises-eur14m-to-help-online-retailers-improve-digital-visibility/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>Almetra secures €16.3M Series A to drive smarter manufacturing</h3>
+            <div class="meta">Tech.eu · 25/06/2026</div>
+            <p>Caméras IA au-dessus des lignes de production pour optimiser la fabrication.</p>
+            <a href="https://tech.eu/2026/06/25/almetra-secures-eur163m-series-a-to-drive-smarter-manufacturing/" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>A l'ère de l'IA, les universités chinoises bouleversent leurs cursus</h3>
+            <div class="meta">Le Monde (Europe) · 26/06/2026</div>
+            <p>Outils IA automatisent bilans financiers, rapports de marchés dans les universités chinoises.</p>
+            <a href="https://www.lemonde.fr/international/article/2026/06/26/a-l-ere-de-l-ia-les-universites-chinoises-bouleversent-leurs-cursus_6715795_3210.html" target="_blank">Lire →</a>
+          </div>
+          <div class="item">
+            <h3>DeepSeek change d'échelle après une levée de fonds record</h3>
+            <div class="meta">ZDNet FR · 25/06/2026</div>
+            <p>Le champion chinois de l'IA double ses effectifs.</p>
+            <a href="https://www.zdnet.fr/actualites/deepseek-change-dechelle-apres-une-levee-de-fonds-record-le-champion-chinois-de-lia-double-ses-effectifs-497746.htm" target="_blank">Lire →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · 26/06/2026 · Archive locale : veille-IA-2026-06-26.html
+    </footer>
+  </div>
+
+  <script>
+    const key = 'veille-ia-theme';
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(key);
+      if (saved === 'dark') document.body.classList.add('dark');
+    });
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      localStorage.setItem(key, document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
