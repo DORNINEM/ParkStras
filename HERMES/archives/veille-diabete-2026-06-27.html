@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 27 juin 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .purple{background:#ede9fe;color:#5b21b6}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .location{font-size:.75rem;padding:2px 8px;border-radius:6px;background:#f1f5f9;color:#475569;margin-right:6px}
+    .dark .location{background:#1e2937;color:#94a3b8}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+    .section-title{margin-top:32px;margin-bottom:12px;font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:10px}
+  </style>
+</head>
+<body class="dark">
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🩺 Veille Innovations Diabète</h1>
+        <p>27 juin 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-06-27">27 juin 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">Type 1</div>
+        <div class="value">18 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Type 2</div>
+        <div class="value" style="color:var(--success)">9 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Sources</div>
+        <div class="value">12 pays / régions</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Thérapies modifiantes</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Cellules souches & greffes</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>IA & technologies</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Immunothérapie</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Approbations réglementaires</span>
+    </div>
+
+    <!-- TYPE 1 -->
+    <div class="section-title">
+      <span style="font-size:1.4rem">🩸</span> 
+      <span>Type 1 (T1D)</span>
+    </div>
+
+    <div class="grid">
+      <!-- France T1 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Greffe d’îlots issus de cellules souches au CHU de Lille</h3>
+            <div class="meta"><span class="location">🇫🇷 France</span> • Juin 2025 (mise à jour 2026)</div>
+            <p>Premier essai européen de greffe d’îlots pancréatiques produits à partir de cellules souches embryonnaires. Objectif : restaurer la production d’insuline sans immunosuppression lourde.</p>
+            <a href="https://www.facebook.com/chulille/posts/vers-une-gu%C3%A9rison-du-diab%C3%A8te-de-type-1-pour-la-premi%C3%A8re-fois-un-essai-%C3%A0-base-dun/1189508966536277/" target="_blank">Voir l’annonce →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Europe T1 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe (hors France)
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Teplizumab approuvé par NICE (Royaume-Uni)</h3>
+            <div class="meta"><span class="location">🇬🇧 UK</span> • 23 juin 2026</div>
+            <p>Première approbation via un système de santé national en Europe. Teplizumab (Tzield/Teizeild) peut retarder l’apparition du T1D jusqu’à ~3 ans.</p>
+            <a href="https://www.nice.org.uk/news/articles/teplizumab-to-delay-the-onset-of-type-1-diabetes-recommended" target="_blank">NICE announcement →</a>
+          </div>
+          <div class="item">
+            <h3>Diabeloop DBLG2 – Lancement CE & FDA</h3>
+            <div class="meta"><span class="location">🇫🇷 Europe</span> • 2026</div>
+            <p>Nouvel algorithme IA + Dexcom G7 + pompe patch Kaleido. Améliore la gestion des excursions glycémiques inattendues.</p>
+            <a href="https://www.diabeloop.com/" target="_blank">Site Diabeloop →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde T1 -->
+      <article class="card" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">10 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Eledon – Tegoprubart : 12/12 patients sans insuline (ADA 2026)</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • Juin 2026</div>
+            <p>Essai avec immunosuppresseur nouvelle génération : tous les participants greffés n’ont plus besoin d’insuline.</p>
+          </div>
+          <div class="item">
+            <h3>Vertex VX-880 & Sana Biotechnology (îlots hypo-immunes)</h3>
+            <div class="meta"><span class="location">🌍 Monde</span> • 2026</div>
+            <p>Avancées majeures sur les cellules souches et les îlots génétiquement modifiés pour éviter le rejet.</p>
+          </div>
+          <div class="item">
+            <h3>Insuline ciblée foie HDV-Lispro (Diasome/UNC)</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • Juin 2026</div>
+            <p>Résultats Phase 2b positifs : contrôle glycémique équivalent avec réduction significative des hypoglycémies.</p>
+            <a href="https://news.unchealthcare.org/2026/06/new-liver-targeted-insulin-shows-promise-for-safer-type-1-diabetes-treatment/" target="_blank">News UNC →</a>
+          </div>
+          <div class="item">
+            <h3>Teplizumab : extension FDA aux enfants dès 1 an</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • Avril–Juin 2026</div>
+            <p>Approbation accélérée pour les enfants de 8-17 ans récemment diagnostiqués (stade 3) et extension aux plus jeunes.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- TYPE 2 -->
+    <div class="section-title">
+      <span style="font-size:1.4rem">💊</span> 
+      <span>Type 2 (T2D)</span>
+    </div>
+
+    <div class="grid">
+      <!-- France T2 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill purple">2 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>AdipoPharma – PATAS (résistance à l’insuline)</h3>
+            <div class="meta"><span class="location">🇫🇷 France</span> • 2026</div>
+            <p>Financement sécurisé pour les essais Phase I d’un nouveau médicament ciblant directement la résistance à l’insuline.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde T2 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">7 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Retatrutide (Eli Lilly) – Triple agoniste</h3>
+            <div class="meta"><span class="location">🌍 Monde</span> • ADA 2026</div>
+            <p>Résultats Phase 3 exceptionnels : forte baisse de l’HbA1c + perte de poids importante, bénéfices sur apnée du sommeil et arthrose.</p>
+            <a href="https://www.prnewswire.com/news-releases/breakthrough-studies-demonstrate-effectiveness-of-the-first-triple-hormone-therapy-for-type-2-diabetes-and-obesity-302793182.html" target="_blank">Communiqué ADA →</a>
+          </div>
+          <div class="item">
+            <h3>GLP-1 oral Eli Lilly – Soumission FDA fin Q2 2026</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • Juin 2026</div>
+            <p>Données de phase 3 présentées à l’ADA.</p>
+          </div>
+          <div class="item">
+            <h3>Hua Medicine – Nouvel activateur de glucokinase</h3>
+            <div class="meta"><span class="location">🇨🇳 Chine / International</span> • 2026</div>
+            <p>Essais internationaux en préparation pour ce successeur de dorzagliatin.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille Innovations Diabète · 27 juin 2026 · Généré par Hermes Agent · Template moderne figé (thème sombre persistant)
+    </footer>
+  </div>
+
+  <script>
+    const key = 'veille-diabete-theme';
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(key);
+      if (saved === 'dark') document.body.classList.add('dark');
+      if (!document.body.classList.contains('dark')) {
+        document.body.classList.add('dark'); // force dark par défaut
+      }
+    });
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      localStorage.setItem(key, document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
