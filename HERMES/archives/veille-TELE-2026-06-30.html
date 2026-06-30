@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Télésurveillance & Alarmes — 30/06/2026</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --border: #e3e8f0;
+      --accent: #1f6feb;
+      --text: #1a1d23;
+      --muted: #5a6270;
+      --chip-bg: #eef3fd;
+      --chip-text: #1f6feb;
+      --divider: #dde3ec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1116;
+        --panel: #1a1d24;
+        --border: #282c36;
+        --accent: #4090ff;
+        --text: #e7ecf4;
+        --muted: #a0a7b8;
+        --chip-bg: #111828;
+        --chip-text: #7ab2ff;
+        --divider: #262a34;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header { margin-bottom: 1.5rem; }
+    h1 {
+      font-size: clamp(1.4rem, 2vw + 0.6rem, 2rem);
+      margin: 0 0 0.35rem;
+    }
+    .subtitle { color: var(--muted); }
+
+    .section { margin-top: 1.8rem; }
+    .section h2 {
+      font-size: 1.15rem;
+      margin: 0 0 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .count {
+      display: inline-block;
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1rem 1.1rem;
+      box-shadow: 0 8px 24px rgba(20, 25, 34, 0.05);
+    }
+    .card h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin: 0 0 0.5rem;
+    }
+    .summary {
+      color: var(--text);
+      opacity: 0.92;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+    }
+    .tag {
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+
+    .divider { border: 0; border-top: 1px solid var(--divider); margin: 1.6rem 0; }
+
+    .maturity, .horizon {
+      font-weight: 600;
+      color: var(--muted);
+      margin-right: 0.3rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔒 Veille Télésurveillance & Alarmes — 30/06/2026</h1>
+      <div class="subtitle">Veille sectorielle structurée — télésurveillance, systèmes d'alarme et sécurité électronique</div>
+    </header>
+
+    <section class="section">
+      <h2>🇫🇷🇪🇺 Marché France & Europe <span class="count" id="count-fr">0</span></h2>
+      <div class="grid" id="fr"></div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section">
+      <h2>🌍 Monde — Pertinence Europe <span class="count" id="count-ww">0</span></h2>
+      <div class="grid" id="ww"></div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section">
+      <h2>🔧 Innovations Produits & Composants <span class="count" id="count-prod">0</span></h2>
+      <div class="grid" id="prod"></div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section">
+      <h2>🚀 Prospective & Technologies Émergentes <span class="count" id="count-prospect">0</span></h2>
+      <div class="grid" id="prospect"></div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section">
+      <h2>📊 Synthèse — 5 signaux faibles</h2>
+      <div class="grid">
+        <div class="card" style="grid-column: 1 / -1;">
+          <ol style="margin: 0; padding-left: 1.15rem; display: grid; gap: 0.6rem;">
+            <li>
+              <strong>Transition 2G/3G → IP/4G/5G comme accélérateur de renouvellement de parc —</strong>
+              L’obsolescence des réseaux 2G/3G impose de migrer vers des centrales IP/4G redondantes. Les programmes d’upgrade et de location associés sont un levier commercial direct pour un opérateur franco-belge.
+            </li>
+            <li>
+              <strong>Convergence sécurité physique / cyber / supervision à distance —</strong>
+              NIS2, l’AI Act et les règles UE poussent à des architectures unifiées PSIM et à des dispositifs hybrides. La capacité à vendre du monitoring couplé à de la gestion des risques cyber différencie les réponses à appels d’offres grands comptes.
+            </li>
+            <li>
+              <strong>IA embarquée comme standard de réduction des faux positifs —</strong>
+              Les centrales et caméras dotées de NPU réduisent massivement les interventions inutiles. Référencer des gammes IA-first dans le catalogue PME/commerce permet de réduire les coûts de service et d’améliorer l’expérience client.
+            </li>
+            <li>
+              <strong>Détecteurs sans caméra UWB, mmWave, Wi-Fi Sensing comme nouveaux entrants de périmètre —</strong>
+              Ces technologies privacy-preserving ouvrent un segment « sécurité sans caméra » pour les clients sensibles au RGPD. Les associer aux centrales existantes constitue une différenciation technique court terme.
+            </li>
+            <li>
+              <strong>Automatisation de la réponse : robots, drones et traitement automatisé des alarmes —</strong>
+              La robotisation des patrouilles et l’IA dans les workflows d’intervention créent des gains opérationnels. Un référencement ciblé de fournisseurs certifiés permet de tester l’offre sans investissement R&D massif.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Rapport généré le 30/06/2026 • Veille sectorielle interne
+    </footer>
+  </div>
+
+  <script>
+    const articles = {
+      fr: [
+        {
+          title: `Étude de marché : systèmes de sécurité résidentiels et professionnels en Europe`,
+          source: `GlobeNewswire / Berg Insight`,
+          date: `04/02/2026`,
+          summary: `L’Europe comptait environ 19,6 millions d’abonnements télésurveillance résidentielle/TPE fin 2024 et vise 24,5 millions d’ici 2029, avec Verisure comme leader avéré.`,
+          url: `https://www.globenewswire.com/news-release/2026/02/04/3231865/0/en/europe-and-north-america-home-and-small-business-security-system-market-report-2026-diy-convergence-ai-integration-and-smart-home-competition-reshape-the-landscape-forecast-to-2031.html`,
+          tags: [`marché_Europe`, `télésurveillance`, `Verisure`, `pénétration`]
+        },
+        {
+          title: `Marché européen des systèmes de sécurité à domicile`,
+          source: `Mordor Intelligence`,
+          date: `30/06/2026`,
+          summary: `Marché estimé à 8,71 milliards USD en 2026, croissance 7,72 % CAGR jusqu’en 2031. L’adoption des caméras IP, des incitations assureurs et des régulations UE CO alarmes tirent la demande.`,
+          url: `https://www.mordorintelligence.com/fr/industry-reports/europe-home-security-system-market`,
+          tags: [`marché_Europe`, `caméra_IP`, `assurance`, `régulation_UE`]
+        },
+        {
+          title: `Tendances du secteur de la sécurité privée en France et en Europe`,
+          source: `Running Brains Robotics`,
+          date: `30/06/2026`,
+          summary: `Convergence physique/cyber, IA analytics vidéo, plateformes PSIM unifiées, supervision à distance et drones/robots autonomes progressent sous l’effet de NIS2, CER et AI Act.`,
+          url: `https://www.runningbrainsrobotics.com/fr/securite-privee-tendances-2026/`,
+          tags: [`sécurité_privée`, `convergence_physique_cyber`, `NIS2`, `AI_Act`, `IA_analytics`]
+        },
+        {
+          title: `Verisure vs Sector Alarm 2026 : la compétition franco-européenne`,
+          source: `Mapetitealarme.fr`,
+          date: `30/06/2026`,
+          summary: `Verisure reste leader sur la télésurveillance en France et en Europe ; Sector Alarm se positionne comme challenger crédible sur le prix et le service client.`,
+          url: `https://mapetitealarme.fr/comparatifs/verisure-vs-sector-alarm/`,
+          tags: [`Verisure`, `Sector_Alarm`, `télésurveillance`, `France`]
+        }
+      ],
+      ww: [
+        {
+          title: `Marché mondial de la sécurité électronique`,
+          source: `GM Insights`,
+          date: `30/06/2026`,
+          summary: `Marché mondial supérieur à 74,6 milliards USD en 2025, croissance 6,3 % CAGR. L’Europe pèse 15,2 milliards USD, portée par les systèmes connectés et l’IA en vidéoprotection.`,
+          url: `https://www.gminsights.com/fr/industry-analysis/electronic-security-market`,
+          tags: [`marché_mondial`, `sécurité_électronique`, `Europe`]
+        },
+        {
+          title: `Marché des robots de sécurité à l’échelle mondiale`,
+          source: `Precedence Research`,
+          date: `30/06/2026`,
+          summary: `Croissance significative à partir de 2026, avec le segment UAV dominant pour la surveillance autonome de périmètres et d’infrastructures critiques.`,
+          url: `https://www.precedenceresearch.com/security-robots-market`,
+          tags: [`robots_sécurité`, `drones`, `infrastructure_critique`]
+        },
+        {
+          title: `Marché mondial des drones de sécurité et défense`,
+          source: `IDTechEx`,
+          date: `30/06/2026`,
+          summary: `Marché mondial des drones anticipé à 147,8 milliards USD d’ici 2036. Les segments sécurité et défense sont moteurs, dopés par l’IA, l’autonomie et les opérations BVLOS.`,
+          url: `https://www.idtechex.com/en/research-report/drones-market/1142`,
+          tags: [`drones`, `défense`, `sécurité`, `BVLOS`, `IA`]
+        }
+      ],
+      prod: [
+        {
+          title: `Nouvelle centrale d’alarme IP/4G Diagral DIAG99AGX`,
+          source: `Diagral`,
+          date: `19/01/2026`,
+          summary: `Centrale hybride IP/4G avec sirène vocale intégrée, 36 heures d’autonomie, compatible Diagral Secure et jusqu’à 40 détecteurs. Fabriquée en France pour répondre à la fin des réseaux 2G/3G.`,
+          url: `https://www.diagral.fr/2026/01/19/nouvelle-centrale-dalarme-ip-4g-diagral-diag99agx/`,
+          maturity: `Disponible`,
+          tags: [`alarme_IP`, `4G`, `Diagral`, `télésurveillance`, `France`]
+        },
+        {
+          title: `Caméras IA embarquée en 2026 : convergence edge/cloud`,
+          source: `Forasoft / marché`,
+          date: `30/06/2026`,
+          summary: `Des caméras IP avec accélérateurs IA 4 à 8 TOPS deviennent standard, réduisant la bande passante de 70–90 % et les fausses alertes de 85–95 % via une détection multi-classe temps réel.`,
+          url: `https://www.forasoft.com/blog/article/ai-powered-ip-cameras-trends`,
+          maturity: `Disponible`,
+          tags: [`caméra_IA`, `edge_computing`, `NPU`, `fausses_alertes`]
+        },
+        {
+          title: `Tendances télésurveillance 2026 : architecture hybride et IA fiable`,
+          source: `Hanwha Vision`,
+          date: `30/06/2026`,
+          summary: `Les architectures hybrides edge/cloud combinant agents autonomes IA et cybersécurité deviennent majoritaires, avec un accent sur la durabilité énergétique et la conformité RGPD.`,
+          url: `https://hanwhavision.eu/fr/tendances-videosurveillance-2026-ia-hybride-durable/`,
+          maturity: `Disponible`,
+          tags: [`vidéosurveillance`, `hybride`, `edge`, `cloud`, `IA`, `Hanwha`]
+        }
+      ],
+      prospect: [
+        {
+          title: `Drones de sécurité industriels en 2026 : du drone-in-a-box aux robots autonomes`,
+          source: `ASMAG`,
+          date: `30/06/2026`,
+          summary: `Les plateformes dominantes intègrent Skydio X10, DJI avancé, Parrot Anafi USA et Percepto Air Max avec IA de détection, LiDAR et navigation autonome pour des sites sensibles.`,
+          url: `https://www.asmag.com/showpost/35521.aspx`,
+          horizon: `Court`,
+          tags: [`drones`, `sécurité_industrielle`, `LiDAR`, `autonomie`]
+        },
+        {
+          title: `Capteurs de présence nouvelle génération : UWB radar, mmWave et combinaisons protocolaires`,
+          source: `MiNewsemi / Qorvo / R&D`,
+          date: `30/06/2026`,
+          summary: `L’UWB radar s’impose comme modalité privacy-preserving, avec une précision centimétrique et la détection de respiration/enfant. Elle se combine à BLE, Zigbee, WiFi et Thread.`,
+          url: `https://en.minewsemi.com/blog/uwb-vs-ble-vs-wifi-for-indoor-positioning-accuracy-cost-rtls-comparison`,
+          horizon: `Court`,
+          tags: [`UWB`, `radar`, `détection_présence`, `BLE`, `Zigbee`, `capteurs_alarme`]
+        },
+        {
+          title: `LiDAR intelligent pour la sécurité des sites et infrastructures`,
+          source: `ASIS / Security Management`,
+          date: `30/06/2026`,
+          summary: `Le LiDAR apporte détection 3D haute-précision, réduction des fausses alertes et classification temps réel des menaces pour la sécurisation de périmètres industriels et d’infrastructures critiques.`,
+          url: `https://www.asisonline.org/security-management-magazine/monthly-issues/security-technology/archive/2026/LiDAR/why-intelligent-lidar-solutions-are-the-next-frontier-in-security-and-safety/`,
+          horizon: `Court`,
+          tags: [`LiDAR`, `périmètre`, `infrastructure_critique`, `fausses_alertes`]
+        },
+        {
+          title: `Wi-Fi Sensing pour l’alarme résidentielle et les capteurs de mouvement avancés`,
+          source: `Surety Home / support`,
+          date: `30/06/2026`,
+          summary: `Émergence de la détection de mouvement intérieur par analyse du signal Wi-Fi traversant des obstacles, avec moins de fausses alertes que des PIR classiques.`,
+          url: `https://support.suretyhome.com/t/wi-fi-sensing-is-coming-to-home-security-here-is-why-it-matters/48494`,
+          horizon: `Court`,
+          tags: [`Wi_Fi_Sensing`, `mouvement`, `alarme_résidentielle`, `capteurs`]
+        }
+      ]
+    };
+
+    function renderCards(key, el) {
+      const set = articles[key];
+      document.getElementById('count-' + (key === 'ww' ? 'ww' : key)).textContent = set.length;
+      el.innerHTML = '';
+      set.forEach(a => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <h3><a href="${a.url}" target="_blank" rel="noopener">${a.title}</a></h3>
+          <div class="meta">${a.source} · ${a.date}${a.maturity ? ' · <span class="maturity">Maturité : ' + a.maturity + '</span>' : ''}${a.horizon ? ' · <span class="horizon">Horizon : ' + a.horizon + '</span>' : ''}</div>
+          <div class="summary">${a.summary}</div>
+          <div class="tags">${a.tags.map(t => '<span class="tag">#' + t + '</span>').join('')}</div>
+        `;
+        el.appendChild(card);
+      });
+    }
+
+    renderCards('fr', document.getElementById('fr'));
+    renderCards('ww', document.getElementById('ww'));
+    renderCards('prod', document.getElementById('prod'));
+    renderCards('prospect', document.getElementById('prospect'));
+  </script>
+</body>
+</html>
