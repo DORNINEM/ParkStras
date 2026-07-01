@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-01</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Mercredi 1 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-01T03:00:43.000000+00:00">Mercredi 1 juillet 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Inférence & modèles</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique de l'IA</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>IA industrielle</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche & science</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Edge & hardware</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Google lance ses résumés par IA en France</h3>
+            <div class="meta">Numerama · 01/07/2026</div>
+            <p>Google déploie des résumés générés par IA dans ses résultats de recherche en France, avec un risque réel de réduction du trafic vers les sites sources et les éditeurs.</p>
+            <a href="https://www.numerama.com/tech/2287953-adieu-les-sites-web-google-lance-ses-resumes-par-ia-en-france.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>SNCF et CEA lancent une recherche commune sur l'IA, le quantique et la robotique</h3>
+            <div class="meta">ZDNet France · 30/06/2026</div>
+            <p>Un nouvel accord de cinq ans portera sur l'IA de confiance pour la sécurité ferroviaire, la maintenance prédictive et la robotique, dans une logique de souveraineté technologique.</p>
+            <a href="https://www.zdnet.fr/actualites/la-sncf-et-le-cea-font-recherche-commune-sur-lia-le-quantique-et-la-robotique-497942.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>LongCat-2.0 : l'IA chinoise brise l'embargo américain avec un cluster de 50 000 puces</h3>
+            <div class="meta">ZDNet France · 30/06/2026</div>
+            <p>Meituan open-source LongCat-2.0, un modèle trillion de paramètres entraîné sur 50 000 puces domestiques, illustrant la progression chinoise face aux restrictions US.</p>
+            <a href="https://www.zdnet.fr/actualites/longcat-2-0-comment-lia-chinoise-brise-lembargo-americain-avec-un-cluster-de-50-000-puces-498009.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Anthropic, Nvidia et Microsoft concrétisent leur alliance IA avec l'arrivée de Claude sur Azure</h3>
+            <div class="meta">ZDNet France · 30/06/2026</div>
+            <p>Claude Opus 4.8 et Haiku 4.5 sont désormais disponibles sur Azure, concrétisant un partenariat à 45 milliards de dollars pour l'IA entreprise.</p>
+            <a href="https://www.zdnet.fr/actualites/anthropic-nvidia-et-microsoft-concretisent-leur-alliance-ia-avec-larrivee-de-claude-sur-azure-497931.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>L'IA au secours du contrôle aérien : révolution ou mirage ?</h3>
+            <div class="meta">ZDNet France · 30/06/2026</div>
+            <p>Face à la hausse du trafic et aux pénuries de contrôleurs, l'article examine si l'IA peut réellement transformer le contrôle aérien sans introduire de risques nouveaux.</p>
+            <a href="https://www.zdnet.fr/actualites/lia-au-secours-du-controle-aerien-revolution-ou-mirage-497973.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>OpenAI surpasserait les médecins aux urgences, selon une étude Harvard</h3>
+            <div class="meta">ZDNet FR · 30/06/2026</div>
+            <p>Une étude Harvard valide la supériorité des modèles OpenAI dans un contexte d'urgence médicale, ravivant le débat sur l'adoption de l'IA en santé.</p>
+            <a href="https://www.zdnet.fr/actualites/lia-dopenai-surpasse-les-medecins-aux-urgences-selon-une-etude-de-harvard-494541.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Trump lève les restrictions sur les modèles Mythos et Fable d'Anthropic</h3>
+            <div class="meta">TechCrunch · 30/06/2026</div>
+            <p>Le gouvernement américain assouplit les limitations d'exportation sur les modèles avancés d'Anthropic, ouvissant de nouveaux marchés pour l'éditeur.</p>
+            <a href="https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropic-mythos-and-fable-models/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Google introduit Nano Banana 2 Lite, générateur d'images plus rapide et moins cher</h3>
+            <div class="meta">TechCrunch · 30/06/2026</div>
+            <p>Google lance un nouveau générateur d'images IA optimisé pour la rapidité et le coût, ciblant les développeurs et les cas d'usage embarqués.</p>
+            <a href="https://techcrunch.com/2026/06/30/google-introduces-nano-banana-2-lite/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Google Gemini Omni Flash accélère l'inférence et réduit les coûts</h3>
+            <div class="meta">VentureBeat · 30/06/2026</div>
+            <p>VentureBeat détaille les améliorations de Gemini en matière de latence et de prix, consolidant la compétitivité de Google face à OpenAI et Anthropic.</p>
+            <a href="https://venturebeat.com/technology/googles-gemini-omni-flash-hits-the-market/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Reflection signe un contrat massif avec SpaceX pour du compute spatial/data-center</h3>
+            <div class="meta">CNBC · 30/06/2026</div>
+            <p>Le startup open source Reflection s'appuie sur SpaceX pour accéder à des ressources de calcul considerablement accrues, avec des paiements mensuels de 150 millions de dollars.</p>
+            <a href="https://www.cnbc.com/2026/06/22/spacex-ai-colossus-data-center-reflection.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Roundup AI du 1er juillet 2026 : Claude Sonnet 5, Anthropic et l'IA pour la science</h3>
+            <div class="meta">aitoolsrecap · 01/07/2026</div>
+            <p>Le récapitulatif quotidien souligne le lancement de Claude Sonnet 5, l'événement AI for Science d'Anthropic et les partenariats renforcés avec les acteurs du cloud.</p>
+            <a href="https://aitoolsrecap.com/Blog/ai-news-july-1-2026" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Europe full width -->
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Schneider Electric acquiert Cognite pour 3,1 Md$ et accélère dans l'IA industrielle</h3>
+            <div class="meta">The Next Web · 30/06/2026</div>
+            <p>Le groupe européen renforce son portefeuille IA industrielle via le rachat de Cognite, spécialisé dans les jumeaux numériques et l'optimisation des procédés.</p>
+            <a href="https://thenextweb.com/news/schneider-electric-cognite-3-1bn-industrial-ai" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>AWS injecte 1 Md$ pour déployer ses ingénieurs directement chez les clients</h3>
+            <div class="meta">The Next Web · 30/06/2026</div>
+            <p>Amazon Web Services annonce un programme de déploiement forward-deployed de 1 milliard de dollars pour accélérer l'adoption de l'IA en entreprise en Europe.</p>
+            <a href="https://thenextweb.com/news/aws-1bn-forward-deployed-engineers-customers" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Anthropic lance Claude Sonnet 5 pour démocratiser les agents IA</h3>
+            <div class="meta">The Next Web · 30/06/2026</div>
+            <p>Claude Sonnet 5 est positionné comme un modèle agentique plus accessible, avec des performances proches des versions supérieures et un prix réduit.</p>
+            <a href="https://thenextweb.com/news/anthropic-claude-sonnet-5-agentic-model-pricing" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Anthropic lance Claude Science, un workbench IA pour laboratoires</h3>
+            <div class="meta">The Next Web · 30/06/2026</div>
+            <p>Claude Science propose un environnement dédié aux laboratoires pour accélérer la découverte scientifique et l'analyse de données expérimentales.</p>
+            <a href="https://thenextweb.com/news/anthropic-claude-science-ai-workbench-laboratories" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>L'Europe face aux restrictions américaines sur l'accès aux modèles IA avancés</h3>
+            <div class="meta">EURACTIV · 27/06/2026</div>
+            <p>Les limitations imposées par les États-Unis contraignent l'Europe à renforcer sa souveraineté numérique et à explorer des alternatives d'accès aux modèles.</p>
+            <a href="https://www.euractiv.com/news/europe-stares-down-barrel-of-a-gun-on-accessing-american-ai/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ArXiv full width -->
+      <article class="card" aria-labelledby="arxiv" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="arxiv">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            ArXiv (cs.AI / cs.LG)
+          </h2>
+          <span class="pill yellow">0 item</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Aucune publication datée du 01/07/2026 n'a été identifiée dans les flux ArXiv consultés</h3>
+            <p>La collecte ArXiv a été effectuée via l'API publique ; aucune publication n'a été validée pour la date du jour dans les délais impartis.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · Mercredi 1 juillet 2026 · Archive locale : ~/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+
+  <script>
+    const key = 'veille-ia-theme';
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(key);
+      if (saved === 'dark') document.body.classList.add('dark');
+    });
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      localStorage.setItem(key, document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
