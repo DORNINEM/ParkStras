@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 Veille IA & Mutations RH — Banque · Assurance · Informatique — 2026-07-04</title>
+<style>
+  /* Reset & base */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+    background: #f5f7fa;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px 80px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(180deg,#0f172a,#1e293b);
+    color: white;
+    padding: 56px 24px;
+    border-bottom: 1px solid #334155;
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; }
+  header h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 10px; }
+  header p { opacity: .85; font-size: 1.05rem; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 999px;
+    font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+    margin-top: 14px;
+  }
+  .pill.teal { background: #0d9488; color: white; }
+  .pill.orange { background: #ea580c; color: white; }
+  .pill.blue { background: #2563eb; color: white; }
+  .pill.purple { background: #7c3aed; color: white; }
+
+  /* Navigation */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 24px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .nav a { font-weight: 600; padding: 8px 12px; border-radius: 12px; font-size: .95rem; color: #1f2937; background: #eef2ff; }
+  .nav a:hover { background:#e0e7ff; text-decoration: none; }
+
+  /* Sections */
+  section { margin: 36px 0; }
+  .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-title .ico { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 1rem; }
+  .ico-teal { background:#ccfbf1; color:#0f766e; }
+  .ico-orange { background:#ffedd5; color:#9a3412; }
+  .ico-blue { background:#dbeafe; color:#1e3a8a; }
+  .ico-purple { background:#ede9fe; color:#5b21b6; }
+
+  pre.sbox { background:#1f2937; color:#e5e7eb; padding:12px 14px; border-radius:12px; overflow:auto; font-size:.85rem; }
+
+  /* Cards */
+  .card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .card h3 { font-size: 1.05rem; font-weight: 750; margin-bottom: 6px; }
+  .meta { font-size: .82rem; color: #6b7280; margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .meta .tag { background:#f3f4f6; padding: 3px 8px; border-radius: 999px; font-weight: 600; font-size: .72rem; color:#374151; }
+  .meta .tag.red { background:#fee2e2; color:#991b1b; }
+  .meta .tag.amber { background:#ffedd5; color:#9a3412; }
+  .meta .tag.green { background:#d1fae5; color:#065f46; }
+  .meta .tag.blue { background:#dbeafe; color:#1e3a8a; }
+  .desc { font-size: .95rem; color: #374151; margin-bottom: 10px; }
+  .card-actions { display: flex; justify-content: space-between; align-items: center; }
+  a.btn { background:#2563eb; color:white; padding:8px 12px; border-radius:12px; font-weight:600; font-size:.9rem; }
+  a.btn:hover { background:#1d4ed8; text-decoration:none; }
+
+  /* Tables */
+  .responsive-wrap { overflow:auto; border-radius: 16px; border:1px solid #e5e7eb; }
+  table { width: 100%; border-collapse: collapse; background:white; font-size:.95rem; }
+  thead th { background:#0f172a; color:white; padding:14px 12px; text-align:left; white-space:nowrap; }
+  tbody td { padding:12px 12px; border-top:1px solid #e5e7eb; vertical-align: top; }
+  tbody tr:hover { background:#f8fafc; }
+  .risk { display:inline-flex; padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: .78rem; }
+  .risk.fort { background:#fee2e2; color:#991b1b; }
+  .risk.modere { background:#ffedd5; color:#9a3412; }
+  .risk.faible { background:#d1fae5; color:#065f46; }
+
+  /* Section colors */
+  .section-teal { border-left: 5px solid #0d9488; padding-left: 16px; }
+  .section-orange { border-left: 5px solid #ea580c; padding-left: 16px; }
+  .section-blue { border-left: 5px solid #2563eb; padding-left: 16px; }
+  .section-purple { border-left: 5px solid #7c3aed; padding-left: 16px; }
+
+  .alert { padding: 14px 16px; border-radius: 14px; background:#fff7ed; border:1px solid #ffedd5; color:#7c2d12; margin: 14px 0; font-size:.92rem; }
+
+  @media (max-width: 720px) {
+    .nav-inner { gap: 6px }
+    .nav a { padding: 8px 10px; font-size: .90rem; }
+    .card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>🤖 Veille IA & Mutations RH — Banque · Assurance · Informatique</h1>
+    <p>Édition bi-hebémadaire — Date : 4 juillet 2026</p>
+    <div style="margin-top:10px;">
+      <span class="pill teal">🛠️ Apports RH & outils</span>
+      <span class="pill orange">⚠️ Risques métiers</span>
+      <span class="pill blue">🔄 Accompagnement</span>
+      <span class="pill purple">🔭 Prospective</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#apports">Apports & outils</a>
+    <a href="#risques">Risques & transformations</a>
+    <a href="#dispositifs">Accompagnement</a>
+    <a href="#prospective">Prospective</a>
+    <a href="#visuels">Visuels</a>
+    <a href="#signaux">Signaux faibles</a>
+    <a href="#tableau">Tableau de bord</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <section id="apports" class="section-apports">
+    <div class="section-title ico-teal section-teal"><span class="ico ico-teal">🛠️</span> IA dans les métiers RH : apports & outils</div>
+
+    <div class="card">
+      <h3>SAP acquiert SmartRecruiters et accélère l’IA générative dans SuccessFactors</h3>
+      <div class="meta"><em>L’Usine Digitale RH</em> · 15 mai 2026 · Transversal</div>
+      <div class="desc">SAP renforce ses SIRH avec l’acquisition de SmartRecruiters et l’assistant IA Winston, qui automatise sourcing, matching de compétences et tri de CV, directement intégré à SuccessFactors. <strong>Apport</strong> : réduction du temps de screening, intégration SIRH-native.</div>
+      <div class="card-actions"><span class="tag">ATS augmenté</span><a class="btn" href="https://www.usine-digitale.fr/article/sap-acquiert-smartrecruiters-pour-integrer-plus-d-ia-dans-ses-solutions-rh.N2236055" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
+    </div>
+
+    <div class="card">
+      <h3>LinkedIn Hiring Assistant en français : automatisation du sourcing sur marchés tendus</h3>
+      <div class="meta"><em>L’Usine Digitale RH</em> · 22 mars 2026 · Transversal</div>
+      <div class="desc">LinkedIn Recruiter intégre un agent IA natif automatisant les tâches répétitives de sourcing et de qualification en contexte de marché tendu. <strong>Apport</strong> : accélération du time-to-hire sans remplacement du recruteur.</div>
+      <div class="card-actions"><span class="tag">Sourcing IA</span><a class="btn" href="https://www.usine-digitale.fr/intelligence-artificielle/ia-generative/lia-au-secours-dun-marche-du-recrutement-en-tension-cest-ce-que-propose-linkedin-avec-son-hiring-assistant-desormais-disponible-en-francais.JQ3XUMXN6FGRBOLGQQWKDSVKQA.html" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
+    </div>
+
+    <div class="card">
+      <h3>L’IA face à l’inflation des CV : abandon des ATS mots-clés pour le matching sémantique</h3>
+      <div class="meta"><em>RH Info / ADP</em> · 10 avr. 2026 · Transversal</div>
+      <div class="desc">Face aux CV saturés de mots-clés IA, les ATS basculent vers l’analyse sémantique et les graphes de compétences, sous supervision humaine requise par l’AI Act. <strong>Apport</strong> : matching plus robuste et conforme.</div>
+      <div class="card-actions"><span class="tag">Matching CV/offre</span><a class="btn" href="https://www.fr.adp.com/rhinfo/articles/2026/04/l-ia-face-a-linflation-des-cv-quel-futur.aspx" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
+    </div>
+
+    <div class="card">
+      <h3>People Analytics et gestion des talents : Workday / SuccessFactors / Eightfold</h3>
+      <div class="meta"><em>SAP / The Groove</em> · 18 janv. 2026 · Transversal</div>
+      <div class="desc">SuccessFactors People Intelligence (Workforce Composition, risks, remuneration) et l’intégration Eightfold-Workday alertent sur le risque d’attrition et activent la mobilité interne et les plans de développement. <strong>Apport</strong> : rétention ciblée, visibilité compétences.</div>
+      <div class="card-actions"><span class="tag">People Analytics</span><a class="btn" href="https://thegroove.io/blog/unleashing-talent-excellence-the-strategic-impact-of-integrating-eightfold.ai-with-workday" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
+    </div>
+
+    <div class="card">
+      <h3>GPEC 2026 : top plateformes pour grandes entreprises et industrie</h3>
+      <div class="meta"><em>Presticer</em> · 12 juin 2026 · Transversal</div>
+      <div class="desc">Workday (Skills Cloud ML), SAP SuccessFactors (Joule), Lucca (compétences modulaires) dominent le classement pour la cartographie des compétences, la planification stratégique et la conformité réglementaire.</div>
+      <div class="card-actions"><span class="tag">GPEC</span><a class="btn" href="https://www.presticer.fr/2026/06/12/meilleurs-logiciels-gpec-grandes-entreprises-industrie/" target="_blank" rel="noopener">🔗 Lire l’article</a></div>
+    </div>
+
+  </section>
+
+  <section id="risques" class="section-risques">
+    <div class="section-title ico-orange section-orange"><span class="ico ico-orange">⚠️</span> Risques & transformations des métiers</div>
+
+    <div class="card">
+      <h3>Étude interbranche FBF / Roland Berger : l’IA générative dans la banque transforme 9 familles de métiers</h3>
+      <div class="meta"><em>Fédération Bancaire Française</em> · 20 oct. 2025 · Banque · <span class="tag amber">Risque Modéré</span></div>
+      <div class="desc">L’étude montre une transformation profonde sans suppression massive d’emplois : automatisation des tâches administratives/conformité et montée en charge de la supervision des modèles et de la relation augmentée.</div>
+      <div class="card-actions"><span class="tag">Conseillers</span><span class="tag">KYC</span><a class="btn" href="https://www.fbf.fr/fr/communique_de_presse/banques-et-intelligence-artificielle-une-etude-interbranches-sur-leurs-metiers-et-competences/" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Assurance : l’étude OEMA confirme transformation plutôt que destruction d’emplois</h3>
+      <div class="meta"><em>FFA / OEMA</em> · 1 déc. 2024 · Assurance · <span class="tag amber">Risque Modéré</span></div>
+      <div class="desc">L’assurance maintient un rythme de recrutement autour de 20 000 postes/an ; souscription, sinistres et actuariat sont radicalement transformés par des outils d’analyse prédictive sans perte massive d’emplois observée à l’horizon 2030.</div>
+      <div class="card-actions"><span class="tag">Souscription</span><span class="tag">Sinistres</span><a class="btn" href="https://www.metiers-assurance.org/wp-content/uploads/2024/12/OEMA-Au-seuil-de-lIA-Web.pdf" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Baromètre prospectif OEMA 2026 : l’IA, premier facteur de transformation</h3>
+      <div class="meta"><em>France Assureurs</em> · 15 avr. 2026 · Assurance · <span class="tag amber">Risque Modéré</span></div>
+      <div class="desc">Le secteur recherche des profils combinant expertise métier et maîtrise des outils IA : data literacy, conformité algorithmique et supervision d’automatisation deviennent des critères de recrutement.</div>
+      <div class="card-actions"><span class="tag">Données</span><span class="tag">Recrutement</span><a class="btn" href="https://www.franceassureurs.fr/actualites/oema-publication-barometre-prospectif-evolution-metiers-competences-assurance-2026/" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>BCG 2026 : plus d’un emploi sur deux transformé, 10-15 % potentiellement substitués</h3>
+      <div class="meta"><em>BCG</em> · 8 avr. 2026 · Transversal · <span class="tag amber">Risque Modéré</span></div>
+      <div class="desc">Le modèle microéconomique segmente : amplified (IT engineers), substituted (analystes financiers), divergent (agents assurances, IT support) — plus de transformation que de suppression.</div>
+      <div class="card-actions"><span class="tag">Projection</span><a class="btn" href="https://www.bcg.com/publications/2026/ai-will-reshape-more-jobs-than-it-replaces" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>McKinsey 2026 : jusqu’à 30 % des heures automatisables en Europe d’ici 2030</h3>
+      <div class="meta"><em>McKinsey Global Institute</em> · 10 fév. 2026 · Transversal · <span class="tag red">Risque Fort</span></div>
+      <div class="desc">Jusqu’à 12 millions de transitions professionnelles ; exposition maximale dans services clients (67 %), finance/comptabilité (42 %) et fonctions administratives/RH.</div>
+      <div class="card-actions"><span class="tag">Automatisation</span><a class="btn" href="https://www.mckinsey.com/mgi/our-research/a-new-future-of-work-the-race-to-deploy-ai-and-raise-skills-in-europe-and-beyond" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Centre Inffo / OCDE : 4 millions d’emplois exposés, banque-assurance à 50 %</h3>
+      <div class="meta"><em>Centre Inffo</em> · 5 nov. 2025 · Banque / Assurance · <span class="tag red">Risque Fort</span></div>
+      <div class="desc">Bank tellers, téléconseillers et comptables sont les plus exposés ; services administratifs à 70 % d’exposition ; nécessité de dispositifs de transition sectoriels ambitieux.</div>
+      <div class="card-actions"><span class="tag">Exposition</span><a class="btn" href="https://www.centre-inffo.fr/site-centre-inffo/actualites-centre-inffo/le-quotidien-de-la-formation-actualite-formation-professionnelle-apprentissage/articles-2025/intelligence-artificielle-4-millions-demplois-potentiellement-automatises-dici-2030" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>WEF Future of Jobs 2025 : 170 M créations, 92 M suppressions, secteur financier en transition</h3>
+      <div class="meta"><em>WEF</em> · 1 janv. 2025 · Transversal · <span class="tag amber">Risque Modéré</span></div>
+      <div class="desc">Les rôles FinTech Engineer, IA/ML Specialist et développeurs explosent, tandis que bank tellers et data entry clerks déclinent ; les banques et assureurs misent sur l’hybridation.</div>
+      <div class="card-actions"><span class="tag">WEF</span><a class="btn" href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Développeurs juniors / testeurs QA : impact des copilots IA</h3>
+      <div class="meta"><em>Courrier Cadres / secteur IT</em> · 20 janv. 2026 · Informatique · <span class="tag red">Risque Fort</span></div>
+      <div class="desc">Les copilots IA transforment les recrutements juniors IT ; les ESN révisent les profils à l’entrée et réduisent les intégrations de masse au profit de profils hybrides.</div>
+      <div class="card-actions"><span class="tag">ESN</span><a class="btn" href="https://www.courriercadres.fr/article/developpeurs-juniors-impact-copilots-ia-2026" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>OCDE Employment Outlook : 27 % des emplois en haut risque d’automatisation</h3>
+      <div class="meta"><em>OCDE</em> · 14 juin 2023 · Transversal · <span class="tag amber">Risque Modéré</span></div>
+      <div class="desc">Les métiers routiniers de la finance sont particulièrement concernés, mais peu de destructions observées à date malgré une transformation rapide des tâches.</div>
+      <div class="card-actions"><span class="tag">OCDE</span><a class="btn" href="https://www.oecd.org/en/publications/oecd-employment-outlook-2023_08785bba-en.html" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+  </section>
+
+  <section id="dispositifs" class="section-dispositifs">
+    <div class="section-title ico-blue section-blue"><span class="ico ico-blue">🔄</span> Dispositifs d’accompagnement aux mutations</div>
+
+    <div class="alert">🔔 La LoI 3 ANI (transposition ANI 2025) est entrée en vigueur en février 2026 et remplace Pro-A et Transitions collectives par la <strong>période de reconversion</strong>.</div>
+
+    <div class="card">
+      <h3>BPCE : accord GEPP 2025-2028 avec volet IA inédit</h3>
+      <div class="meta"><em>Groupe BPCE / Les Échos</em> · 17 sept. 2025 · Banque · <span class="tag green">En cours de déploiement</span></div>
+      <div class="desc">Premier accord bancaire intégrant l’IA générative dans la GEPP : formation universelle d’ici 2026, dialogue social itératif, principes éthiques, accompagnement des évolutions de postes.</div>
+      <div class="card-actions"><span class="tag">GEPP</span><a class="btn" href="https://www.lesechos.fr/finance-marches/banque-assurances/bpce-se-dote-dun-accord-sur-lemploi-a-lere-de-lintelligence-artificielle-generative-2189048" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>BPCE : 100 % des collaborateurs formés à l’IA d’ici 2026</h3>
+      <div class="meta"><em>RH News Tank</em> · 8 mars 2026 · Banque · <span class="tag green">En cours de déploiement</span></div>
+      <div class="desc">Dans le cadre de l’accord GEPP, la direction RH affiche l’ambition de former 100 % des collaborateurs aux usages responsables de l’IA générative.</div>
+      <div class="card-actions"><span class="tag">Formation IA</span><a class="btn" href="https://rh.newstank.fr/article/view/422207/ia-100-collaborateurs-seront-formes-ici-2026-david-marchal-caisse-epargne.html" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Période de reconversion 2026 : dispositif remplaçant Pro-A et Transitions collectives</h3>
+      <div class="meta"><em>Loi 3 ANI / ADP RH</em> · 1 fév. 2026 · Transversal · <span class="tag blue">Existant</span></div>
+      <div class="desc">Durée 150 à 450 h (extensible jusqu’à 2 100 h/36 mois par accord). CPF mobilisable jusqu’à 50 % interne et OPCO Atlas prend en charge les coûts pédagogiques pour banque/assurance.</div>
+      <div class="card-actions"><span class="tag">Période de reconversion</span><a class="btn" href="https://www.fr.adp.com/ressources/documentations/articles/e/loi-3-ani-la-periode-de-reconversion-entre-en-vigueur.aspx" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>OPCO Atlas 2026 : financement formation IA banque-assurance</h3>
+      <div class="meta"><em>OPCO Atlas</em> · 20 janv. 2026 · Banque / Assurance · <span class="tag green">En cours de déploiement</span></div>
+      <div class="desc">Financement de la période de reconversion et de formations IA : 15 € HT/h plafond, 18 € HT/h pour publics prioritaires, certifications RNCP/CQP mobilisables.</div>
+      <div class="card-actions"><span class="tag">OPCO Atlas</span><a class="btn" href="https://www.opco-atlas.fr/criteres-financement/banque" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Observatoires Métiers Banque + OPCO Atlas : étude IA générative et compétences</h3>
+      <div class="meta"><em>Observatoire Métiers Banque / OPCO Atlas</em> · 10 avr. 2025 · Banque · <span class="tag blue">En projet</span></div>
+      <div class="desc">Étude sur 9 familles de métiers bancaires : compétences émergentes (supervision des modèles, data), recommandations pour une transition partagée.</div>
+      <div class="card-actions"><span class="tag">Observatoire</span><a class="btn" href="https://www.observatoire-metiers-banque.fr/etudes/etude-interbranche-sur-les-impacts-de-lintelligence-artificielle-generative-au-sein-du-secteur-bancaire/" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Accord FFA sur l’emploi des salariés expérimentés incluant l’IA</h3>
+      <div class="meta"><em>France Assureurs / FFA</em> · 25 juin 2025 · Assurance · <span class="tag green">En cours de déploiement</span></div>
+      <div class="desc">Accord branche qui intègre GEPP, analyses de compétences et plans de formation face aux évolutions IA des métiers pour les salariés expérimentés.</div>
+      <div class="card-actions"><span class="tag">FFA</span><a class="btn" href="https://www.franceassureurs.fr/wp-content/uploads/accord-relatif-a-lemploi-des-salaries-experimentes-25-juin-2025.pdf" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Nouvelles postures RH : Chief AI Officer RH, HRBP augmenté, DRH transformation</h3>
+      <div class="meta"><em>ANDRH / Harvard Business Review</em> · 12 janv. 2026 · Transversal · <span class="tag green">En cours de déploiement</span></div>
+      <div class="desc">Émergence de rôles hybrides dédiés à la gouvernance des algorithmes, au people analytics augmenté et au pilotage de la conduite du changement IA dans les groupes bancaires/assurantiels.</div>
+      <div class="card-actions"><span class="tag">Rôles RH</span><a class="btn" href="https://hbr.org/2026/01/could-an-ai-officer-be-the-hr-role-of-the-future" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+  </section>
+
+  <section id="prospective" class="section-prospective">
+    <div class="section-title ico-purple section-purple"><span class="ico ico-purple">🔭</span> Prospective : travail, IA et société</div>
+
+    <div class="card">
+      <h3>WEF — Four Futures for Jobs in the New Economy : AI and Talent in 2030</h3>
+      <div class="meta"><em>WEF</em> · 1 janv. 2026 · Transversal · <span class="tag blue">Moyen — 2 à 5 ans</span></div>
+      <div class="desc">Quatre scénarios pour 2030 : Supercharged Progress, Age of Displacement, Co-Pilot Economy, Stalled Progress. Les services financiers navigueront entre hybridation homme-machine et renforcement de la conformité.</div>
+      <div class="card-actions"><span class="tag">Scenarii 2030</span><a class="btn" href="https://www.weforum.org/publications/four-futures-for-jobs-in-the-new-economy-ai-and-talent-in-2030/" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>EU AI Act : recrutement = système IA à haut risque à compter du 2 août 2026</h3>
+      <div class="meta"><em>European Commission / AI Act</em> · 2 août 2024 / applicable 2026-08-02 · Transversal · <span class="tag green">Court <2 ans</span></div>
+      <div class="desc">Les outils RH (tri de CV, sélection, monitoring de performance) sont classés à haut risque : risque assessments, documentation technique, tests de biais, supervision humaine, logging 6 mois minimum.</div>
+      <div class="card-actions"><span class="tag">AI Act</span><a class="btn" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>CNIL 2026 : contrôles prioritaires sur le recrutement IA et programme travail IA</h3>
+      <div class="meta"><em>CNIL</em> · 18 avr. 2026 · Transversal · <span class="tag green">Court <2 ans</span></div>
+      <div class="desc">Le tri de CV par IA devient priorité de contrôle ; la CNIL finalise un guide RGPD/AI Act pour les systèmes RH avec focus biais algorithmiques, droits des travailleurs, documentation et traçabilité.</div>
+      <div class="card-actions"><span class="tag">CNIL</span><a class="btn" href="https://www.cnil.fr/fr/controles-prioritaires-2026" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Algorithm Bias Auditor / AI Ethics Lead : une réponse réglementaire émergente</h3>
+      <div class="meta"><em>LinkedIn / Seminaire.AI</em> · 1 fév. 2026 · Transversal · <span class="tag green">Court <2 ans</span></div>
+      <div class="desc">Les rôles d’auditeur d’algorithmes RH et compliance IA explosent : vérification de non-discrimination, conformité RGPD/AI Act, traçabilité des décisions automatisées.</div>
+      <div class="card-actions"><span class="tag">Nouveaux métiers</span><a class="btn" href="https://www.linkedin.com/pulse/new-ai-roles-2026-anastasiia-shapovalova-wigmc" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>HBR février 2026 : l’IA n’allège pas le travail, elle l’intensifie</h3>
+      <div class="meta"><em>Harvard Business Review</em> · 14 fév. 2026 · Transversal · <span class="tag green">Court <2 ans</span></div>
+      <div class="desc">Étude ethnographique Berkeley Haas : l’IA élargit les périmètres, augmente la vérification des outputs et brouille les frontières pro/perso, générant risques psychosociaux auto-infligés.</div>
+      <div class="card-actions"><span class="tag">Charge mentale</span><a class="btn" href="https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Grande enquête Ifop 2026 santé mentale : 36 % des utilisateurs d’IA craignent pour leur emploi</h3>
+      <div class="meta"><em>Ifop / Moka.Care / BCG</em> · 1 mars 2026 · Transversal · <span class="tag green">Court <2 ans</span></div>
+      <div class="desc">Étude représentative (n=2 000) : gains de temps perçus mais persistance du stress et de l’anxiété liée à l’IA et à la menace sur l’emploi.</div>
+      <div class="card-actions"><span class="tag">Santé mentale</span><a class="btn" href="https://www.ifop.com/wp-content/uploads/2026/03/rapport-danalyse-grande-enquete-sur-la-sante-mentale-au-travail-2026.pdf" target="_blank" rel="noopener">🔗 Lire</a></div>
+    </div>
+
+  </section>
+
+  <section id="visuels">
+    <div class="section-title">🖼️ Images & schémas analysés</div>
+    <div class="card">
+      <ul>
+        <li><strong>Matrice emploi/automatisation BCG 2026</strong> : segmentation amplified / substituted / divergent applicables aux métiers bancaires et assurantiels (conseillers, actuaires).</li>
+        <li><strong>Pyramide de compétences OBM / OPCO Atlas</strong> : 3 strates (automatisable, hybride, décisionnel/relationnel) pour 9 familles bancaires.</li>
+        <li><strong>Roadmap GEPP BPCE 2025-2028</strong> : phases acculturation 2025 → déploiement 2026 → adaptation 2027-2028.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="signaux">
+    <div class="section-title">📊 Synthèse — 5 signaux faibles à surveiller</div>
+    <div class="card">
+      <ol>
+        <li><strong>Data literacy généralisée</strong> : les cheminées de données deviennent un atout concurrentiel dans banque/assurance.</li>
+        <li><strong>Cadrage social accéléré</strong> : branches professionnelles appelées à négocier GEPP et classification IA.</li>
+        <li><strong>AI Act auditable dès août 2026</strong> : auditer ATS/SIRH avant la deadline pour éviter sanctions.</li>
+        <li><strong>Plans de reclassement avant plans sociaux</strong> : bascule métier (back-office → supervision de modèles, conformité → compliance IA).</li>
+        <li><strong>IA comme risque psychosocial</strong> : ajout d’un volet « IA et santé mentale » dans les DUERP.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="tableau">
+    <div class="section-title">🗺️ Tableau de bord des métiers à risque</div>
+    <div class="responsive-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Secteur</th>
+            <th>Métier</th>
+            <th>Risque IA</th>
+            <th>Horizon</th>
+            <th>Piste de reconversion prioritaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Banque</td><td>Conseiller clientèle</td><td><span class="risk modere">Modéré</span></td><td>Court — 0 à 2 ans</td><td>Relation augmentée, patrimoine, conformité IA</td></tr>
+          <tr><td>Banque</td><td>Analyste crédit / KYC</td><td><span class="risk fort">Fort</span></td><td>Court — 0 à 2 ans</td><td>Analyste risques augmenté, compliance IA</td></tr>
+          <tr><td>Banque</td><td>Back-office / conformité manuelle</td><td><span class="risk fort">Fort</span></td><td>Court — 0 à 2 ans</td><td>Supervision modèles, contrôle IA</td></tr>
+          <tr><td>Banque</td><td>Gestionnaires de patrimoine</td><td><span class="risk faible">Faible</span></td><td>Moyen — 2 à 5 ans</td><td>Conseil haut de gamme, data literacy</td></tr>
+          <tr><td>Assurance</td><td>Souscripteur</td><td><span class="risk modere">Modéré</span></td><td>Court — 0 à 2 ans</td><td>Souscription augmentée, tarif IA</td></tr>
+          <tr><td>Assurance</td><td>Gestionnaire sinistres</td><td><span class="risk fort">Fort</span></td><td>Court — 0 à 2 ans</td><td>Supervision IA sinistres, cas complexes</td></tr>
+          <tr><td>Assurance</td><td>Actuaire</td><td><span class="risk modere">Modéré</span></td><td>Moyen — 2 à 5 ans</td><td>Actuaire augmenté, compliance algorithmique</td></tr>
+          <tr><td>Assurance</td><td>Agent général / relation client</td><td><span class="risk faible">Faible</span></td><td>Moyen — 2 à 5 ans</td><td>Conseiller omnicanal, fidélisation augmentée</td></tr>
+          <tr><td>Informatique</td><td>Développeur junior</td><td><span class="risk fort">Fort</span></td><td>Court — 0 à 2 ans</td><td>Développement pair-à-pair IA</td></tr>
+          <tr><td>Informatique</td><td>Testeur QA manuel</td><td><span class="risk fort">Fort</span></td><td>Court — 0 à 2 ans</td><td>Tests génératifs, observabilité modèles</td></tr>
+          <tr><td>Informatique</td><td>Administrateur systèmes</td><td><span class="risk modere">Modéré</span></td><td>Moyen — 2 à 5 ans</td><td>Cloud + AI ops, superviseur d’agents</td></tr>
+          <tr><td>Informatique</td><td>Intégrateur / déploiement</td><td><span class="risk fort">Fort</span></td><td>Court — 0 à 2 ans</td><td>Ingénieur plateforme IA, prompt opérationnel</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer style="margin-top:60px;padding-top:24px;border-top:1px solid #e5e7eb;color:#6b7280;font-size:.85rem;">
+    Rapport généré le 2026-07-04 — Veille bi-hebdaire IA & Mutations RH — Banque · Assurance · Informatique
+  </footer>
+</div>
+</body>
+</html>
