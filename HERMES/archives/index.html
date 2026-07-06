@@ -211,9 +211,9 @@
       let activePanel = document.getElementById(activeTab.getAttribute('aria-controls'));
 
       function show(panel) {
-        panels.forEach(p => { p.hidden = 'true'; });
+        panels.forEach(p => { p.hidden = true; });
         tabs.forEach(t => { t.setAttribute('aria-selected', 'false'); });
-        panel.hidden = 'false';
+        panel.removeAttribute('hidden');
         activePanel = panel;
         const tab = document.getElementById(panel.getAttribute('aria-labelledby'));
         tab.setAttribute('aria-selected', 'true');
