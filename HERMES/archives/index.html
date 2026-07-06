@@ -69,7 +69,7 @@
       min-height: 120px;
     }
     .panel { display: none; }
-    .panel[hidden="false"] { display: block; }
+    .panel.active { display: block; }
     ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
     li a {
       display: block;
@@ -93,6 +93,11 @@
       border-radius: 999px;
       vertical-align: middle;
     }
+    .last-modified {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #6b7280;
+    }
   </style>
 </head>
 <body>
@@ -102,6 +107,7 @@
       <div>
         <h1>HERMES Archives</h1>
         <div class="subtitle">Accès rapide aux publications classées par typologie</div>
+        <div class="last-modified">Dernière mise à jour : <span id="last-modified"></span></div>
       </div>
     </header>
 
@@ -114,7 +120,7 @@
     </nav>
 
     <div class="panels">
-      <section class="panel" id="panel-mistral" role="tabpanel" aria-labelledby="tab-mistral" hidden="false">
+      <section class="panel active" id="panel-mistral" role="tabpanel" aria-labelledby="tab-mistral">
         <ul>
           <li><a href="MISTRAL-2026-07-06.html">MISTRAL-2026-07-06.html<span class="badge">06/07/2026</span></a></li>
           <li><a href="MISTRAL-2026-07-03.html">MISTRAL-2026-07-03.html<span class="badge">03/07/2026</span></a></li>
@@ -211,9 +217,10 @@
       let activePanel = document.getElementById(activeTab.getAttribute('aria-controls'));
 
       function show(panel) {
-        panels.forEach(p => { p.hidden = true; });
+        panels.forEach(p => { p.hidden = true; p.classList.remove('active'); });
         tabs.forEach(t => { t.setAttribute('aria-selected', 'false'); });
-        panel.removeAttribute('hidden');
+        panel.hidden = false;
+        panel.classList.add('active');
         activePanel = panel;
         const tab = document.getElementById(panel.getAttribute('aria-labelledby'));
         tab.setAttribute('aria-selected', 'true');
@@ -226,6 +233,12 @@
           show(panel);
         });
       });
+    })();
+
+      const mod = document.getElementById('last-modified');
+      if (mod && document.lastModified) {
+        mod.textContent = document.lastModified;
+      }
     })();
   </script>
 </body>
