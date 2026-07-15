@@ -10,146 +10,92 @@
     --muted: #475569;
     --line: #e5e7eb;
     --panel: #ffffff;
-    --panel-ink: #111827;
     --hover: #f8fafc;
     --brand: #0f172a;
-    --brand-2: #334155;
   }
-
   * { box-sizing: border-box; }
   html, body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background: #f6f8fb;
     color: var(--ink);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     font-size: 15px;
-    line-height: 1.4;
+    line-height: 1.45;
     -webkit-font-smoothing: antialiased;
   }
-
-  .wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px;
-  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
   .brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    display: flex; align-items: center; gap: 14px;
     padding: 14px 16px;
-    background: linear-gradient(180deg, #ffffff, #f7f9fc);
+    background: linear-gradient(180deg,#ffffff,#f7f9fc);
     border: 1px solid var(--line);
     border-radius: 14px;
-    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 1px 0 rgba(15,23,42,.04), 0 4px 12px rgba(15,23,42,.06);
     margin-bottom: 18px;
   }
-
-  .brand img {
-    height: 46px;
-    width: auto;
-    display: block;
-  }
-
-  .brand h1 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-  }
+  .brand img { height: 46px; width: auto; display: block; }
+  .brand h1 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: .2px; }
 
   .tabs {
-    display: flex;
-    gap: 6px;
-    padding: 6px;
+    display: flex; gap: 6px; padding: 6px;
     background: #eef1f6;
     border: 1px solid var(--line);
     border-radius: 14px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 6px rgba(15, 23, 42, 0.04);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 2px 6px rgba(15,23,42,.04);
     overflow-x: auto;
   }
-
   .tab {
-    border: 0;
-    background: transparent;
+    border: 0; background: transparent;
     color: var(--muted);
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
+    padding: 10px 14px; border-radius: 10px;
+    font-weight: 600; cursor: pointer;
     white-space: nowrap;
     transition: background 120ms ease, color 120ms ease, box-shadow 120ms ease;
   }
-
   .tab:hover:not(:disabled) { background: #ffffff; color: var(--ink); }
   .tab[aria-selected="true"] {
-    background: #ffffff;
-    color: var(--ink);
-    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06), 0 2px 6px rgba(15, 23, 42, 0.08);
+    background: #ffffff; color: var(--ink);
+    box-shadow: 0 1px 0 rgba(15,23,42,.06), 0 2px 6px rgba(15,23,42,.08);
   }
-  .tab:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-  }
+  .tab:disabled { opacity: .55; cursor: not-allowed; }
 
   .panel {
     margin-top: 14px;
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 14px;
-    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 6px 16px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 1px 0 rgba(15,23,42,.04), 0 6px 16px rgba(15,23,42,.06);
     padding: 18px;
     display: none;
   }
-
   .panel.active { display: block; }
-
   .panel h2 {
     margin: 0 0 12px;
-    font-size: 15px;
-    color: var(--muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
+    font-size: 13px; color: var(--muted);
+    font-weight: 700; text-transform: uppercase; letter-spacing: .18em;
   }
-
-  .empty {
-    color: var(--muted);
-    font-style: italic;
-  }
-
+  .empty { color: var(--muted); font-style: italic; padding: 4px 2px; }
   ul.archive-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 6px;
+    list-style: none; margin: 0; padding: 0; display: grid; gap: 6px;
   }
-
   ul.archive-list li a {
-    display: block;
-    padding: 10px 12px;
-    background: linear-gradient(180deg, #ffffff, #fafbfc);
+    display: block; padding: 10px 12px;
+    background: linear-gradient(180deg,#ffffff,#fafbfc);
     border: 1px solid var(--line);
     border-radius: 10px;
     color: var(--brand);
-    text-decoration: none;
-    font-weight: 600;
+    text-decoration: none; font-weight: 600;
     transition: transform 80ms ease, box-shadow 120ms ease, border-color 120ms ease;
   }
-
   ul.archive-list li a:hover {
     transform: translateY(-1px);
     border-color: #cbd5e1;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 12px rgba(15,23,42,.08);
   }
-
   .footer {
-    margin-top: 18px;
-    color: var(--muted);
-    font-size: 12px;
-    text-align: right;
+    margin-top: 18px; color: var(--muted);
+    font-size: 12px; text-align: right;
   }
 </style>
 </head>
@@ -203,6 +149,7 @@
     <div id="tab-ia" class="panel" role="tabpanel" aria-labelledby="btn-ia">
       <h2>Publications</h2>
       <ul class="archive-list">
+        <li><a href="veille-IA-2026-07-13.html">veille-IA-2026-07-13.html</a></li>
         <li><a href="veille-IA-2026-07-10.html">veille-IA-2026-07-10.html</a></li>
         <li><a href="veille-IA-2026-07-08.html">veille-IA-2026-07-08.html</a></li>
         <li><a href="veille-IA-2026-07-06.html">veille-IA-2026-07-06.html</a></li>
@@ -271,14 +218,13 @@
 
   <script>
     function switchTab(id) {
-      const mapping = { mistral: 'mistral', ia: 'ia', eps: 'eps', rh: 'rh', q: 'q' };
-      const selected = mapping[id];
-      document.querySelectorAll('.tab').forEach(b => {
+      const selected = id;
+      document.querySelectorAll('.tab').forEach(function (b) {
         const active = b.id === 'btn-' + selected;
         b.setAttribute('aria-selected', String(active));
         b.setAttribute('tabindex', active ? '0' : '-1');
       });
-      document.querySelectorAll('.panel').forEach(p => {
+      document.querySelectorAll('.panel').forEach(function (p) {
         p.classList.toggle('active', p.id === 'tab-' + selected);
       });
     }
