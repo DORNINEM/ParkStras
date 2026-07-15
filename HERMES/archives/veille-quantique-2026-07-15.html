@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Informatique Quantique — 2026-07-15</title>
+    <style>
+        :root {
+            --bg: #f6f8fa;
+            --card: #ffffff;
+            --text: #1f2328;
+            --text-secondary: #57606a;
+            --border: #d0d7de;
+            --accent: #0969da;
+            --accent-soft: #ddf4ff;
+            --badge-available: #1a7f37;
+            --badge-available-bg: #dafbe1;
+            --badge-beta: #9a6700;
+            --badge-beta-bg: #fff8c5;
+            --badge-rd: #cf222e;
+            --badge-rd-bg: #ffebe9;
+            --badge-theoretic: #8250df;
+            --badge-theoretic-bg: #f5f0ff;
+            --badge-short: #0969da;
+            --badge-short-bg: #ddf4ff;
+            --badge-mid: #9a6700;
+            --badge-mid-bg: #fff8c5;
+            --badge-long: #cf222e;
+            --badge-long-bg: #ffebe9;
+            --shadow: 0 1px 3px rgba(31,35,40,0.08), 0 4px 12px rgba(31,35,40,0.05);
+            --radius: 14px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2f7 0%, #e8ecf1 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 12px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+        }
+        header p {
+            margin: 8px 0 0;
+            color: var(--text-secondary);
+        }
+
+        section {
+            margin-top: 32px;
+        }
+        section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        section h2 .count {
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31,35,40,0.10), 0 2px 6px rgba(31,35,40,0.06);
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+            line-height: 1.4;
+        }
+        .card h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .card h3 a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .meta .source { font-weight: 600; color: var(--text); }
+        .meta .date { opacity: 0.8; }
+
+        .summary {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+        .badge.available { background: var(--badge-available-bg); color: var(--badge-available); }
+        .badge.beta { background: var(--badge-beta-bg); color: var(--badge-beta); }
+        .badge.rd { background: var(--badge-rd-bg); color: var(--badge-rd); }
+        .badge.theoretic { background: var(--badge-theoretic-bg); color: var(--badge-theoretic); }
+        .badge.short { background: var(--badge-short-bg); color: var(--badge-short); }
+        .badge.mid { background: var(--badge-mid-bg); color: var(--badge-mid); }
+        .badge.long { background: var(--badge-long-bg); color: var(--badge-long); }
+        .badge.tag {
+            background: #eaeef2;
+            color: #424a53;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 16px 12px 40px; }
+            header h1 { font-size: 1.4rem; }
+            .card { padding: 14px 16px; }
+            .badges { margin-top: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚛️ Veille Informatique Quantique — 2026-07-15</h1>
+            <p>Rapport bi-hebdomadaire structuré • 24 articles sélectionnés • Fenêtres 48h / 72h / 7 jours</p>
+        </header>
+
+        <section>
+            <h2>🇫🇷🇪🇺 Marché France & Europe <span class="count">6 articles</span></h2>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/chips-ju-and-pasqal-launch-e50m-57-2m-usd-q-planet-pilot-line-to-industrialize-neutral-atom-quantum-chips/" target="_blank" rel="noopener">Chips JU et Pasqal lancent Q-PLANET, première ligne pilote européenne pour puces quantiques à atomes neutres (50 M€)</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-13</span>
+                </div>
+                <p class="summary">Le consortium européen Chips JU et le startup française Pasqal coordonnent un projet de 50 M€ visant à industrialiser la fabrication de puces quantiques à atomes neutres avec des PDK/ADK ouverts et standardisés, réunissant 28 partenaires dans 11 pays.</p>
+                <div class="badges">
+                    <span class="badge tag">financement</span>
+                    <span class="badge tag">startup</span>
+                    <span class="badge tag">politique</span>
+                    <span class="badge tag">souveraineté</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://parityqc.com/classiq-and-parityqc-partner-to-optimize-and-streamline-quantum-execution" target="_blank" rel="noopener">Classiq et ParityQC s’associent pour optimiser l’exécution des circuits quantiques</a></h3>
+                <div class="meta">
+                    <span class="source">ParityQC / GlobeNewswire</span>
+                    <span class="date">2026-07-15</span>
+                </div>
+                <p class="summary">Le tandem logiciel allemand-israélien Classiq-ParityQC intègre la technologie Parity Twine au sein de la plateforme Classiq pour réduire la complexité des circuits, supprimer les SWAP et optimiser l’exécution sur hardware NISQ et futur tolérant aux pannes. Record QFT sur IBM Quantum Heron.</p>
+                <div class="badges">
+                    <span class="badge tag">startup</span>
+                    <span class="badge tag">partenariat</span>
+                    <span class="badge tag">logiciel</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://thequantuminsider.com/2026/07/13/imec-diraq-eight-qubit-silicon-spin-qubit-array/" target="_blank" rel="noopener">imec et Diraq démontrent un tableau de 8 qubits spin silicium sur plateforme compatible CMOS</a></h3>
+                <div class="meta">
+                    <span class="source">The Quantum Insider</span>
+                    <span class="date">2026-07-13</span>
+                </div>
+                <p class="summary">Le centre de recherche belge imec et la startup Diraq ont réalisé un tableau de 8 qubits spin dans le silicium en utilisant des processus CMOS standards, franchissant une étape vers du hardware quantique manufacturable et scalable en Europe.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">startup</span>
+                    <span class="badge tag">souveraineté</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://www.quixquantum.com/news/quix-quantum-announces-carina" target="_blank" rel="noopener">QuiX Quantum dévoile Carina, architecture photonique universelle pour datacenter</a></h3>
+                <div class="meta">
+                    <span class="source">QuiX Quantum / WebWire</span>
+                    <span class="date">2026-07-14</span>
+                </div>
+                <p class="summary">La startup néerlandaise QuiX Quantum annonce Carina, première architecture photonique universelle commercialement déployable en salle blanche client, conçue pour l’informatique basée sur les mesures avec états de cluster sur puce. DLR QCI a reçu les premiers cœurs matériels.</p>
+                <div class="badges">
+                    <span class="badge tag">startup</span>
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">innovation</span>
+                    <span class="badge tag">photonique</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://qutech.nl/2026/07/07/quantum-inspire-adds-new-open-architecture-quantum-processor-tuna-17/" target="_blank" rel="noopener">QuTech libère Tuna-17, processeur supraconducteur ouvert de 17 qubits</a></h3>
+                <div class="meta">
+                    <span class="source">QuTech</span>
+                    <span class="date">2026-07-07</span>
+                </div>
+                <p class="summary">QuTech met à disposition mondiale et gratuite le processeur Tuna-17 (17 qubits transmon, 24 couplages accordables) sur la plateforme cloud Quantum Inspire, intégré à Qiskit et PennyLane pour les expériences de correction d’erreurs et le calcul NISQ.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">open-source</span>
+                    <span class="badge tag">recherche</span>
+                    <span class="badge tag">souveraineté</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://securityboulevard.com/2026/07/your-encryption-has-an-expiration-date-france-turns-quantum-risk-into-procurement-law/" target="_blank" rel="noopener">L’ANSSI arrêtera la certification des produits sans chiffrement post-quantique à partir de 2027</a></h3>
+                <div class="meta">
+                    <span class="source">Security Boulevard / ANSSI</span>
+                    <span class="date">2026-07-13</span>
+                </div>
+                <p class="summary">Analyse publiée le 13 juillet sur l’annonce France Quantum : l’ANSSI cessera de qualifier les produits de sécurité dépourvus de mécanismes post-quantiques dès 2027, poussant entreprises et administrations à migrer vers des solutions hybrides ML-KEM/ML-DSA d’ici 2030.</p>
+                <div class="badges">
+                    <span class="badge tag">réglementation</span>
+                    <span class="badge tag">souveraineté</span>
+                    <span class="badge tag">post-quantique</span>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <h2>🌍 Monde — Pertinence Europe <span class="count">6 articles</span></h2>
+            <article class="card">
+                <h3><a href="https://today.uconn.edu/2026/07/u-s-national-science-foundation-announces-transformational-award-to-connecticuts-quantum-tech-sector/" target="_blank" rel="noopener">La NSF accorde 15 M$ au Quantum Technologies Engine du Connecticut</a></h3>
+                <div class="meta">
+                    <span class="source">UConn Today</span>
+                    <span class="date">2026-07-14</span>
+                </div>
+                <p class="summary">La NSF attribue un financement initial de 15 M$ (jusqu’à 160 M$ sur dix ans) au Quantum Technologies Engine mené par UConn avec Yale et partenaires, pour détection quantique, communications sécurisées, calcul et matériaux. Ce modèle d’écosystème régional peut inspirer les clusters européens.</p>
+                <div class="badges">
+                    <span class="badge tag">financement</span>
+                    <span class="badge tag">politique</span>
+                    <span class="badge tag">recherche</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://thequantuminsider.com/2026/07/14/logical-qubit-technology-launches-quantum-cloud-platform-at-quantum-day-2026/" target="_blank" rel="noopener">Logical Qubit Technology lance une plateforme cloud quantique supraconductrice</a></h3>
+                <div class="meta">
+                    <span class="source">Logical Qubit Technology / The Quantum Insider</span>
+                    <span class="date">2026-07-14</span>
+                </div>
+                <p class="summary">La startup dévoile une offre cloud avec accès à ses puces AGate (30 et 100 qubits), outils de qubits logiques et contrôle impulsionnel, visant biomédical, chimie, matériaux, IA, finance et logistique. Partenariat stratégique avec Pharmaron pour la pharma.</p>
+                <div class="badges">
+                    <span class="badge tag">cloud</span>
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">startup</span>
+                    <span class="badge tag">applications</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/quantinuum-rolls-royce-riverlane-and-epcc-partner-to-accelerate-fluid-dynamics-simulations/" target="_blank" rel="noopener">Quantinuum, Rolls-Royce, Riverlane et EPCC partenaires pour la simulation de dynamique des fluides</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                </div>
+                <p class="summary">Le partenariat explore des workflows hybrides quantique-classique sur la plateforme Helios de Quantinuum pour accélérer les simulations de dynamique des fluides dans la conception de turbines à gaz, en s’appuyant sur le décodeur Riverlane et le supercalculateur EPCC.</p>
+                <div class="badges">
+                    <span class="badge tag">applications</span>
+                    <span class="badge tag">partenariat</span>
+                    <span class="badge tag">optimisation</span>
+                    <span class="badge tag">industrie</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/nvidia-launches-open-ising-decoder-architecture-to-suppress-quantum-color-code-error-rates-by-347x/" target="_blank" rel="noopener">NVIDIA publie un décodeur IA ouvert pour codes couleurs quantiques</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-13</span>
+                </div>
+                <p class="summary">NVIDIA libère en open-source une famille de modèles décodeurs neuronaux « Ising » intégrés à cuQuantum pour les codes couleurs quantiques, réduisant les taux d’erreur logique jusqu’à 347× et accélérant le décodage de 7,3×. Une avancée clé pour la FTQC pratique.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">open-source</span>
+                    <span class="badge tag">correction-erreurs</span>
+                    <span class="badge tag">IA</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://www.nature.com/articles/s41586-026-10759-2" target="_blank" rel="noopener">Google maîtrise le recalibrage continu du processeur Willow par apprentissage par renforcement</a></h3>
+                <div class="meta">
+                    <span class="source">Nature</span>
+                    <span class="date">2026-07-10</span>
+                </div>
+                <p class="summary">Un agent d’apprentissage par renforcement recalibre en temps réel plus de 1 000 paramètres du processeur Willow en exploitant les signaux de détection d’erreurs du code surface, atteignant un facteur 3,5× de stabilité logique et ~20 % de réduction supplémentaire du taux d’erreur logique.</p>
+                <div class="badges">
+                    <span class="badge tag">jalon</span>
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">correction-erreurs</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://www.bnl.gov/newsroom/news.php?a=223007" target="_blank" rel="noopener">Brookhaven dévoile la transformée quantique d’Hermite (QHT)</a></h3>
+                <div class="meta">
+                    <span class="source">Brookhaven National Lab</span>
+                    <span class="date">2026-07-13</span>
+                </div>
+                <p class="summary">Des chercheurs du BNL et collaborateurs présentent un nouveau primitive quantique efficace — la Quantum Hermite Transform — réalisant la transformée classique d’Hermite sur des états quantiques avec un surcoût logarithmique, ouvrant des perspectives en IA et science des matériaux.</p>
+                <div class="badges">
+                    <span class="badge tag">jalon</span>
+                    <span class="badge tag">algorithmes</span>
+                    <span class="badge tag">IA</span>
+                    <span class="badge tag">open-source</span>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <h2>🔬 Innovations Matérielles & Logicielles <span class="count">6 articles</span></h2>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/nvidia-launches-open-ising-decoder-architecture-to-suppress-quantum-color-code-error-rates-by-347x/" target="_blank" rel="noopener">NVIDIA libère le décodeur « Ising » open-source pour codes couleurs quantiques</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-13</span>
+                    <span class="badge available">Maturité : Disponible</span>
+                </div>
+                <p class="summary">Associé à une publication et intégré à cuQuantum, ce décodeur neuronal 3D-CNN réduit les erreurs logiques de 347× (distance 5/7) et accélère le décodage de 7,3×, contribuant à rendre la correction d’erreurs temps réel praticable sur GPU.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">open-source</span>
+                    <span class="badge tag">correction-erreurs</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/nord-quantique-implements-post-selected-stabilization-to-suppress-gkp-qubit-spam-errors-below-0-1/" target="_blank" rel="noopener">Nord Quantique supprime les erreurs SPAM des qubits GKP bosoniques sous 0,1 %</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-13</span>
+                    <span class="badge rd">Maturité : R&D</span>
+                </div>
+                <p class="summary">En combinant stabilisation post-sélectionnée et QEC autonome, Nord Quantique réduit les erreurs de préparation et mesure de qubits GKP sous le seuil de 0,1 %, ouvrant la voie à des codes bosoniques plus robustes pour l’informatique tolérante aux pannes. Preprint arXiv.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">R&D</span>
+                    <span class="badge tag">correction-erreurs</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/quix-quantum-delivers-carina-core-hardware-to-dlr-qci-for-universal-photonic-computing/" target="_blank" rel="noopener">QuiX Quantum livre Carina à DLR QCI pour l’informatique photonique universelle</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                    <span class="badge beta">Maturité : Beta</span>
+                </div>
+                <p class="summary">L’architecture Carina de QuiX Quantum, basée sur des états de cluster photoniques en salle blanche client standard, est livrée à DLR QCI pour intégration et avancement vers un déploiement commercial en rack. Passage du laboratoire au datacenter.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">photonique</span>
+                    <span class="badge tag">open-source</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/xanadu-and-lockheed-martin-integrate-pennylane-into-quantum-training-program/" target="_blank" rel="noopener">Xanadu et Lockheed Martin intègrent PennyLane dans leur programme de formation quantique</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                    <span class="badge available">Maturité : Disponible</span>
+                </div>
+                <p class="summary">Xanadu intègre son framework PennyLane au sein du Quantum Talent Pipeline de Lockheed Martin pour former aux travaux de ML quantique et d’algorithmes hybrides, étendant l’adoption du framework au secteur aérospatial et défense.</p>
+                <div class="badges">
+                    <span class="badge tag">logiciel</span>
+                    <span class="badge tag">framework</span>
+                    <span class="badge tag">QML</span>
+                    <span class="badge tag">formation</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/chips-ju-and-pasqal-launch-e50m-57-2m-usd-q-planet-pilot-line-to-industrialize-neutral-atom-quantum-chips/" target="_blank" rel="noopener">Chips JU + Pasqal : Q-PLANET lance la ligne pilote de puces à atomes neutres</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-13</span>
+                    <span class="badge rd">Maturité : R&D</span>
+                </div>
+                <p class="summary">Projet de 50 M€ coordonné par Pasqal avec 28 partenaires européens pour développer en open standard les lasers-sur-puce, puces atomes et cellules à vapeur nécessaires à l’industrialisation du quantique à atomes neutres.</p>
+                <div class="badges">
+                    <span class="badge tag">hardware</span>
+                    <span class="badge tag">politique</span>
+                    <span class="badge tag">open-source</span>
+                    <span class="badge tag">startup</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/quantinuum-rolls-royce-riverlane-and-epcc-partner-to-accelerate-fluid-dynamics-simulations/" target="_blank" rel="noopener">Quantinuum, Rolls-Royce, Riverlane et EPCC explorent l’hybride quantique pour la dynamique des fluides</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                    <span class="badge beta">Maturité : Beta</span>
+                </div>
+                <p class="summary">Collaboration multi-annuelle combinant le hardware Helios de Quantinuum, le supercalculateur EPCC et le décodeur Riverlane pour simuler la dynamique des fluides dans la conception de turbines aéronautiques. Fabriquant quantique et grande industrie européenne coopèrent.</p>
+                <div class="badges">
+                    <span class="badge tag">applications</span>
+                    <span class="badge tag">optimisation</span>
+                    <span class="badge tag">cloud</span>
+                    <span class="badge tag">industrie</span>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <h2>🚀 Prospective & Impacts Sectoriels <span class="count">6 articles</span></h2>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/lumi-ai-factory-selects-iqm-to-deploy-superconducting-quantum-computer-for-hybrid-hpc-ai-acceleration/" target="_blank" rel="noopener">LUMI AI Factory choisit IQM pour déployer un supercalculateur quantique hybride LUMI-IQ</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-08</span>
+                    <span class="badge short">Horizon : Court terme <2 ans</span>
+                </div>
+                <p class="summary">L’usine AI LUMI sélectionne IQM pour livrer en 2027 un système supraconducteur de 150 qubits couplé au supercalculateur LUMI Finlande, dédié à l’IA, la découverte de matériaux et la recherche scientifique dans le cadre d’EuroHPC.</p>
+                <div class="badges">
+                    <span class="badge tag">cloud</span>
+                    <span class="badge tag">IA</span>
+                    <span class="badge tag">souveraineté</span>
+                    <span class="badge tag">EuroHPC</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://thequbitreport.com/security-policy/2026/07/08/white-house-quantum-summit-details-over-2-2-billion-in-support-for-2028-fault-tolerant-computing/" target="_blank" rel="noopener">Sommet quantique de la Maison Blanche : plus de 2,2 Md$ pour la FTQC d’ici 2028</a></h3>
+                <div class="meta">
+                    <span class="source">The Qubit Report</span>
+                    <span class="date">2026-07-08</span>
+                    <span class="badge short">Horizon : Court terme <2 ans</span>
+                </div>
+                <p class="summary">Le sommet du 7 juillet 2026 annonce plus de 2,2 milliards de dollars d’engagements fédéraux pour atteindre la FTQC d’ici 2028, sécuriser les chaînes d’approvisionnement et accélérer la transition post-quantique. Les milieux financiers et de la défense sont ciblés en priorité.</p>
+                <div class="badges">
+                    <span class="badge tag">politique</span>
+                    <span class="badge tag">financement</span>
+                    <span class="badge tag">quantum advantage</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/qudora-and-qai-partner-to-integrate-trapped-ion-quantum-computer-into-south-korean-ai-data-center/" target="_blank" rel="noopener">QUDORA et QAI intègrent un processeur quantique à ions piégés dans un datacenter IA sud-coréen</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-09</span>
+                    <span class="badge mid">Horizon : Moyen 2-5 ans</span>
+                </div>
+                <p class="summary">Les deux partenaires déploient du hardware à ions piégés dans un datacenter IA pour workloads hybrides incluant l’équilibrage de portefeuilles financiers et la découverte moléculaire ciblée. Ce cas marque l’entrée du quantique dans l’inférence IA industrielle et la pharma computationnelle.</p>
+                <div class="badges">
+                    <span class="badge tag">finance</span>
+                    <span class="badge tag">pharma</span>
+                    <span class="badge tag">IA</span>
+                    <span class="badge tag">cloud</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/qusecure-places-quprotect-r3-cryptographic-agile-platform-on-aws-marketplace-for-u-s-intelligence-community/" target="_blank" rel="noopener">QuSecure place QuProtect R3 sur AWS Marketplace pour la communauté du renseignement US</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                    <span class="badge short">Horizon : Court terme <2 ans</span>
+                </div>
+                <p class="summary">QuSecure rend disponible sa plateforme crypto-agile post-quantique QuProtect R3 sur AWS GovCloud, automatisant inventaire, remédiation et conformité ML-KEM/ML-DSA/SLH-DSA sans refonte réseau majeure. Un signal fort de déploiement opérationnel du PQC dans le secteur critique.</p>
+                <div class="badges">
+                    <span class="badge tag">cybersécurité</span>
+                    <span class="badge tag">post-quantique</span>
+                    <span class="badge tag">cloud</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/aliro-zerothird-and-cisco-demonstrate-operational-entanglement-based-qkd-on-enterprise-routers/" target="_blank" rel="noopener">Aliro, zerothird et Cisco déploient QKD à intrication opérationnelle sur routeurs d’entreprise</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                    <span class="badge short">Horizon : Court terme <2 ans</span>
+                </div>
+                <p class="summary">Première démonstration live d’un réseau QKD à intrication intégré dans des routeurs de production Cisco, avec chiffrement MACsec quantique et contrôles de sécurité automatisés pour l’infrastructure d’entreprise. Cas d’usage opérationnel des réseaux quantiques.</p>
+                <div class="badges">
+                    <span class="badge tag">cybersécurité</span>
+                    <span class="badge tag">réseaux</span>
+                    <span class="badge tag">QKD</span>
+                </div>
+            </article>
+            <article class="card">
+                <h3><a href="https://quantumcomputingreport.com/quantinuum-rolls-royce-riverlane-and-epcc-partner-to-accelerate-fluid-dynamics-simulations/" target="_blank" rel="noopener">Quantinuum, Rolls-Royce, Riverlane et EPCC explorent l’hybride quantique pour la simulation de turbines</a></h3>
+                <div class="meta">
+                    <span class="source">Quantum Computing Report</span>
+                    <span class="date">2026-07-14</span>
+                    <span class="badge mid">Horizon : Moyen 2-5 ans</span>
+                </div>
+                <p class="summary">En associant le système Helios et le supercalculateur EPCC, le consortium vise à accélérer la simulation de dynamique des fluides pour la conception de turbines aéronautiques, passant de l’émulation classique aux workflows hybrides sur hardware physique.</p>
+                <div class="badges">
+                    <span class="badge tag">optimisation</span>
+                    <span class="badge tag">logistique</span>
+                    <span class="badge tag">industrie</span>
+                    <span class="badge tag">simulation</span>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            Rapport généré automatiquement le 2026-07-15 • Veille Informatique Quantique • Hermes Agent
+        </footer>
+    </div>
+</body>
+</html>
