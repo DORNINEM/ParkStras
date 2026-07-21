@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-20</title>
+  <style>
+    :root {{
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }}
+    .dark {{
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }}
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }}
+    .dark .kpi{{background:linear-gradient(180deg,#0f172a,#0b1220)}}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }}
+    .dark .badge{{background:#111827;color:#e5e7eb;border-color:#374151}}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){{ .grid{grid-template-columns:1fr 1fr} }}
+    .card{{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }}
+    .card-head{{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }}
+    .dark .card-head{{border-bottom-color:#1f2937}}
+    .card-title{{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}}
+    .card-title svg{{width:18px;height:18px}}
+    .pill{{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }}
+    .blue{{background:#dbeafe;color:#1e40af}}
+    .green{{background:#d1fae5;color:#065f46}}
+    .yellow{{background:#fef3c7;color:#92400e}}
+    .card-body{{padding:18px;display:flex;flex-direction:column;gap:12px}}
+    .item{{border-top:1px dashed #eef2f7;padding-top:14px}}
+    .item:first-of-type{{border-top:0;padding-top:0}}
+    .item h3{{margin:0 0 6px;font-size:.95rem;line-height:1.35}}
+    .item .meta{{font-size:.82rem;color:var(--muted)}}
+    .item p{{margin:8px 0 0;font-size:.92rem}}
+    .item a{{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}}
+    .item a:hover{{text-decoration:underline}}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }}
+    .dark .theme-toggle{{background:rgba(255,255,255,.06)}}
+    .arxiv-section{{
+      margin-top:24px; padding:18px; border:1px solid var(--border); background:var(--panel);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }}
+    .arxiv-section h2{{margin:0 0 12px; font-size:1.1rem;}}
+    footer{{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Lundi 20 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-20T07:00:00.000000+00:00">2026-07-20</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">🌗</button>
+    </div>
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value" style="color:var(--accent)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Régulation & droits</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & emploi</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure & compute</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche & agents</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Souveraineté & chips</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Outils & plateformes</span>
+    </div>
+    <div class="grid">
+<article class="card" aria-labelledby="france"><div class="card-head"><div class="card-title" id="france">🇫🇷 France</div><span class="pill blue">5 articles</span></div><div class="card-body">
+
+<div class="item">
+  <h3><a href="https://www.numerama.com/tech/2297077-limprecision-mene-a-lopen-washing-quest-ce-qui-distingue-les-ia-open-source-des-open-weight.html" target="_blank" rel="noopener">L'imprécision mène à « l'open-washing » : qu'est-ce qui distingue les IA open source des open weight ?</a></h3>
+  <div class="meta">Numerama · 19 juillet 2026</div>
+  <p>Article clarifiant les différences entre modèles truly open source (selon critères OSI incluant données et code) et open weight (seulement les poids). Il dénonce l'open-washing par Meta et autres, et aborde souveraineté et sécurité.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.numerama.com/tech/2297337-claude-fable-5-reste-inclus-dans-certains-forfaits-anthropic-mais-avec-des-quotas-divises-par-deux.html" target="_blank" rel="noopener">Claude Fable 5 reste dans les forfaits, mais avec des quotas divisés par deux</a></h3>
+  <div class="meta">Numerama · 20 juillet 2026</div>
+  <p>À compter du 20 juillet 2026, le modèle Claude Fable 5 reste inclus dans les forfaits Max et Team Premium d'Anthropic, mais avec des quotas d'usage limités à 50 % des limites habituelles. Les autres abonnements basculent vers crédits payants.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.numerama.com/cyberguerre/2297355-la-france-accuse-le-fsb-russe-larnaque-delta-sky-club-et-grok-build-dans-la-tourmente-on-vous-raconte-la-semaine-cyberguerre.html" target="_blank" rel="noopener">La France accuse le FSB Russe, l'arnaque Delta Sky Club et Grok Build dans la tourmente : la semaine Cyberguerre</a></h3>
+  <div class="meta">Numerama · 19 juillet 2026</div>
+  <p>Récap hebdomadaire couvrant notamment l'accusation française contre le FSB russe pour piratage à long terme, l'arnaque Delta Sky Club et l'outil Grok Build de xAI qui envoie les dépôts de code utilisateur vers ses serveurs.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.zdnet.fr/actualites/le-patron-de-google-deepmind-veut-un-organisme-dautoregulation-mene-par-les-etats-unis-pour-lia-de-pointe-498612.htm" target="_blank" rel="noopener">L'UE veut ouvrir Android et iOS aux assistants IA concurrents : Google et Apple dénoncent un risque pour la sécurité</a></h3>
+  <div class="meta">ZDNet FR · 20 juillet 2026</div>
+  <p>La Commission européenne exige une ouverture accrue d'Android et d'iOS aux assistants IA concurrents pour l'accès aux mêmes fonctions que Gemini ou Siri. Google et Apple dénoncent un risque pour la sécurité et la vie privée.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.01net.com/actualites/ia-anthropic-accuse-de-collecter-sans-autorisation-des-contenus-de-sites-web.html" target="_blank" rel="noopener">Anthropic accusé de collecter sans autorisation des contenus de sites Web</a></h3>
+  <div class="meta">01net · Date non confirmée</div>
+  <p>Le robot d'indexation d'Anthropic est accusé d'avoir aspiré des sites comme iFixit plus d'un million de fois en 24 heures, en violation des conditions interdisant l'usage pour l'entraînement d'IA.</p>
+</div>
+      </div></article>
+<article class="card" aria-labelledby="europe"><div class="card-head"><div class="card-title" id="europe">🌍 Europe hors France</div><span class="pill green">5 articles</span></div><div class="card-body">
+
+<div class="item">
+  <h3><a href="https://www.politico.eu/article/the-european-parliaments-answer-to-its-ai-worries-more-ai/" target="_blank" rel="noopener">The European Parliament's answer to its AI worries: More AI</a></h3>
+  <div class="meta">POLITICO Europe · 20 juillet 2026</div>
+  <p>Le Parlement européen lance EPGenAI Hub, une plateforme interne offrant un accès contrôlé aux modèles OpenAI, Meta, Anthropic et Mistral pour répondre aux inquiétudes sur la qualité des contenus générés par l'IA et la sécurité des données.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.politico.eu/article/france-germany-want-to-develop-a-palantir-rival/" target="_blank" rel="noopener">France, Germany vow to develop Palantir rival</a></h3>
+  <div class="meta">POLITICO Europe · Date non confirmée</div>
+  <p>Paris et Berlin s'engagent à développer un backbone numérique souverain alternatif au logiciel militaire de Palantir, intégrant IA, sécurité des données et cloud européens.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.euractiv.com/news/greeks-could-land-in-jail-for-removing-ai-deepfake-labels/" target="_blank" rel="noopener">Greece could land in jail for removing AI deepfake labels</a></h3>
+  <div class="meta">EURACTIV · Date non confirmée</div>
+  <p>Un projet de loi grec transpose l'AI Act et prévoit des peines de prison pour suppression des marquages de deepfakes générés par l'IA, visant à renforcer la transparence.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.euractiv.com/news/civil-society-urges-eu-to-make-full-use-of-ai-enforcement-powers/" target="_blank" rel="noopener">Civil society urges EU to make 'full use' of AI enforcement powers</a></h3>
+  <div class="meta">EURACTIV · Date non confirmée</div>
+  <p>Des ONG appellent la Commission à utiliser pleinement ses pouvoirs de contrôle de l'AI Act, permettant dès août de demander des documentations aux développeurs et de procéder à des évaluations de modèles.</p>
+</div>
+<div class="item">
+  <h3><a href="https://www.euractiv.com/news/openai-says-it-backs-eus-ai-transparency-code/" target="_blank" rel="noopener">OpenAI says it backs EU's AI transparency code</a></h3>
+  <div class="meta">EURACTIV · Date non confirmée</div>
+  <p>OpenAI déclare soutenir le code de transparence européen développé sous l'AI Act, mais ne s'est pas encore engagé à le signer. Le code couvre les obligations des fournisseurs de génération d'IA.</p>
+</div>
+      </div></article>
+<article class="card" aria-labelledby="world"><div class="card-head"><div class="card-title" id="world">🌐 Monde</div><span class="pill yellow">6 articles</span></div><div class="card-body">
+
+<div class="item">
+  <h3><a href="https://techcrunch.com/2026/07/19/nonprofit-current-ai-is-racing-to-build-the-world-wide-web-of-ai-free-for-all/" target="_blank" rel="noopener">Nonprofit Current AI is racing to build the World Wide Web of AI, free for all</a></h3>
+  <div class="meta">TechCrunch · 19 juillet 2026</div>
+  <p>L'ONG Current AI, dotée de 400 M$ et soutenue par la France, construit une infrastructure IA publique et ouverte, avec un appareil hors ligne Suno Sutra pour 22 langues indiennes et un chatbot open source.</p>
+</div>
+<div class="item">
+  <h3><a href="https://techcrunch.com/2026/07/19/odyssey-director-christopher-nolan-calls-ai-an-obvious-trojan-horse/" target="_blank" rel="noopener">'Odyssey' director Christopher Nolan calls AI an obvious 'Trojan horse'</a></h3>
+  <div class="meta">TechCrunch · 19 juillet 2026</div>
+  <p>Christopher Nolan décrit l'IA comme un « cheval de Troie » et salue le scepticisme des jeunes qui rejettent les contenus générés par l'IA, appelant à une vigilance plutôt qu'une foi aveugle.</p>
+</div>
+<div class="item">
+  <h3><a href="https://techcrunch.com/2026/07/19/netflix-paid-587m-for-ben-afflecks-ai-filmmaking-startup/" target="_blank" rel="noopener">Netflix paid $587M for Ben Affleck's AI filmmaking startup</a></h3>
+  <div class="meta">TechCrunch · 19 juillet 2026</div>
+  <p>Netflix a versé 587 M$ en espèces pour InterPositive, la startup d'IA de Ben Affleck, spécialisée dans la correction automatique de plans manquants et l'éclairage en post-production.</p>
+</div>
+<div class="item">
+  <h3><a href="https://techcrunch.com/2026/07/19/can-an-apple-lawsuit-derail-openais-hardware-plans/" target="_blank" rel="noopener">Can an Apple lawsuit derail OpenAI's hardware plans?</a></h3>
+  <div class="meta">TechCrunch · 19 juillet 2026</div>
+  <p>Apple attaque OpenAI en justice pour vol de secrets commerciaux et recrutement abusif, ce qui pourrait retarder l'enceinte connectée d'OpenAI et son introduction en bourse.</p>
+</div>
+<div class="item">
+  <h3><a href="https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems" target="_blank" rel="noopener">China's Moonshot AI releases Kimi K3, the largest open-source model ever, rivaling top U.S. systems</a></h3>
+  <div class="meta">VentureBeat · Date non confirmée</div>
+  <p>Moonshot AI dévoile Kimi K3, 2,8 billions de paramètres, 1M de tokens de contexte, performant en codage et tâches agentiques. Les poids complets seront publiés le 27 juillet.</p>
+</div>
+<div class="item">
+  <h3><a href="https://venturebeat.com/ai/the-agent-security-gap-54-of-enterprises-have-already-had-an-ai-agent-incident-and-most-still-let-agents-share-credentials" target="_blank" rel="noopener">54% of enterprises have already had an AI agent incident</a></h3>
+  <div class="meta">VentureBeat · Date non confirmée</div>
+  <p>Une étude montre que plus de la moitié des entreprises ont subi un incident lié à un agent IA, principalement à cause d'identifiants partagés. Seuls 32 % attribuent une identité propre à chaque agent.</p>
+</div>
+      </div></article>
+    </div>
+    <div class="arxiv-section" aria-labelledby="arxiv">
+      <h2 id="arxiv">📚 arXiv — sélection du jour</h2>
+      <div class="card-body">
+
+<div class="item">
+  <h3><a href="https://arxiv.org/abs/2607.16122" target="_blank" rel="noopener">CRAFT: Clustering Rubrics to Diagnose Weak LLM Capabilities and Generate Targeted Fine-Tuning Data</a></h3>
+  <div class="meta">arXiv · cs.AI, cs.LG · 20 juillet 2026</div>
+  <p>Clustering de critères d'évaluation pour diagnostiquer les faiblesses des LLM et générer des données de fine-tuning ciblées. Améliore la performance sur benchmarks financiers et juridiques.</p>
+</div>
+<div class="item">
+  <h3><a href="https://arxiv.org/abs/2607.16112" target="_blank" rel="noopener">Harmonizing AI Safety Thresholds</a></h3>
+  <div class="meta">arXiv · cs.AI · 20 juillet 2026</div>
+  <p>Méthodologie pour harmoniser les seuils de sécurité de l'IA entre entreprises, modélisant les risques de mésusage (cyber/biologique) et les risques de course à la sécurité.</p>
+</div>
+<div class="item">
+  <h3><a href="https://arxiv.org/abs/2607.16038" target="_blank" rel="noopener">SciForge: An AI-Native, Multimodal Workbench for Scientific Discovery</a></h3>
+  <div class="meta">arXiv · cs.AI · 20 juillet 2026</div>
+  <p>Environnement de travail IA natif et multimodal pour la découverte scientifique, intégrant gouvernance, raisonnement multi-modale et workflows agentiques avec supervision humaine.</p>
+</div>
+<div class="item">
+  <h3><a href="https://arxiv.org/abs/2607.16184" target="_blank" rel="noopener">PagedWeight: Efficient MoE LLM Serving with Dynamic Quality-Aware Weight Quantization</a></h3>
+  <div class="meta">arXiv · cs.LG · 20 juillet 2026</div>
+  <p>Quantification dynamique des poids MoE au runtime, permettant jusqu'à 72 % d'économie de mémoire GPU et 1,94× de gain de débit, avec précision équivalente au FP16.</p>
+</div>
+<div class="item">
+  <h3><a href="https://arxiv.org/abs/2607.16169" target="_blank" rel="noopener">When Does Muon Help Agentic Reinforcement Learning?</a></h3>
+  <div class="meta">arXiv · cs.LG, cs.AI · 20 juillet 2026</div>
+  <p>Étude de l'optimiseur Muon en RL agentique à récompenses clairsemées, montrant un gain notable (taux de succès 0,290 → 0,546) sur ALFWorld selon l'estimateur d'avantage.</p>
+</div>
+      </div>
+    </div>
+    <footer>
+      <p>Veille IA quotidienne · généré le Lundi 20 juillet 2026 · template inline moderne · 21 articles</p>
+      <p style="margin-top:6px;opacity:.7">Période filtrée : dernières 24h · arch.: veille-IA-2026-07-20.html</p>
+    </footer>
+  </div>
+</body>
+</html>
