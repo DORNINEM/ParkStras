@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-22</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    .arxiv-section{
+      margin-top:24px; padding:18px; border:1px solid var(--border); background:var(--panel);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .arxiv-section h2{margin:0 0 12px; font-size:1.1rem;}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Mercredi 22 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-22T07:00:00.000000+00:00">2026-07-22</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">🌗</button>
+    </div>
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value" style="color:var(--accent)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+    <div class="badges" aria-label="Tags">
+<span class="badge"><span class="dot" style="color:#1d4ed8"></span>Régulation & droits</span>
+<span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & sécurité</span>
+<span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure & compute</span>
+<span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche & agents</span>
+<span class="badge"><span class="dot" style="color:#ea580c"></span>Souveraineté & chips</span>
+<span class="badge"><span class="dot" style="color:#059669"></span>Outils & plateformes</span>
+    </div>
+    <div class="grid">
+    <article class="card" aria-labelledby="france"><div class="card-head"><div class="card-title" id="france">🇫🇷 France</div><span class="pill blue">5 articles</span></div><div class="card-body">
+      <div class="item">
+        <h3><a href="https://www.lemonde.fr/pixels/article/2026/07/22/google-lance-les-resumes-par-ia-sur-son-moteur-de-recherche-en-france-une-fonctionnalite-attendue-et-redoutee_6729851_4408996.html" target="_blank" rel="noopener">Google lance les résumés par IA sur son moteur de recherche en France</a></h3>
+        <div class="meta">Le Monde · 22 juillet 2026</div>
+        <p>Le géant américain déploie à partir du 22 juillet les AI overviews et l'AI mode sur son moteur de recherche en France. Médias et éditeurs redoutent une perte de trafic.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.01net.com/actualites/france-travail-veut-utiliser-lia-pour-choisir-les-demandeurs-demploi-a-controler-en-priorite.html" target="_blank" rel="noopener">France Travail veut utiliser l'IA pour choisir les demandeurs d'emploi à contrôler en priorité</a></h3>
+        <div class="meta">01net · Date non confirmée</div>
+        <p>France Travail expérimente un système IA de profilage avec 26 variables pour cibler 1,5 million de contrôles d'ici 2027, suscitant des risques de surveillance de masse et de biais.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.01net.com/actualites/merci-lia-linux-a-corrige-plus-de-400-failles-de-securite-en-24-heures.html" target="_blank" rel="noopener">Merci l'IA : Linux a corrigé plus de 400 failles de sécurité en 24 heures</a></h3>
+        <div class="meta">01net · Date non confirmée</div>
+        <p>Grâce à des outils IA, le noyau Linux a corrigé plus de 400 vulnérabilités en 24 heures en juillet 2026, accélérant la découverte et le patch.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.01net.com/actualites/grace-a-lia-de-chrome-vous-ne-perdrez-plus-une-seconde-sur-des-formulaires-en-ligne.html" target="_blank" rel="noopener">Grâce à l'IA de Chrome, vous ne perdrez plus une seule seconde sur des formulaires en ligne</a></h3>
+        <div class="meta">01net · Date non confirmée</div>
+        <p>Google teste une fonction Gemini 'Find and Fill' dans Chrome Canary pour auto-compléter les formulaires, indisponible en Europe pour des raisons DMA et RGPD.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.01net.com/actualites/netflix-admet-avoir-utilise-lia-pour-modifier-300-films-et-series.html" target="_blank" rel="noopener">Netflix admet avoir utilisé l'IA pour modifier 300 films et séries</a></h3>
+        <div class="meta">01net · Date non confirmée</div>
+        <p>Netflix a utilisé l'IA en post-production pour modifier 300 titres, avec des gains de vitesse et de coût, alimentant le débat sur le rôle de l'IA dans le cinéma.</p>
+      </div>
+</div></article>
+    <article class="card" aria-labelledby="europe"><div class="card-head"><div class="card-title" id="europe">🌍 Europe hors France</div><span class="pill green">5 articles</span></div><div class="card-body">
+      <div class="item">
+        <h3><a href="https://www.politico.eu/article/anthropic-european-parliament-donny-greenberg-artificial-intelligence-ai/" target="_blank" rel="noopener">Anthropic doesn't care about Europe</a></h3>
+        <div class="meta">POLITICO Europe · 21 juillet 2026</div>
+        <p>Des eurodéputés critiquent Anthropic pour avoir envoyé un employé junior plutôt que des responsables politiques pour témoigner sur les risques de modèles avancés.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.euronews.com/my-europe/2026/07/07/brussels-pitches-ai-cybersecurity-plan-amid-dependence-on-us-models" target="_blank" rel="noopener">Brussels pitches AI cybersecurity plan amid dependence on US models</a></h3>
+        <div class="meta">EURONEWS · 7 juillet 2026</div>
+        <p>La Commission européenne présente un plan d'action cybersécurité IA reposant sur des recommandations et un accès aux modèles US comme Anthropic's Mythos.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.euronews.com/health/2026/07/16/europe-needs-to-catch-up-with-the-ai-surge-in-hospitals-who-says" target="_blank" rel="noopener">Europe needs to catch up with the AI surge in hospitals, WHO says</a></h3>
+        <div class="meta">EURONEWS · 16 juillet 2026</div>
+        <p>L'OMS alerte sur le fossé entre le déploiement rapide de l'IA dans les hôpitaux européens et la faiblesse des cadres éthiques et stratégiques.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://thenextweb.com/news/iqe-2026-forecast-ai-data-centre-demand" target="_blank" rel="noopener">IQE bets on AI data-centre demand to drive 20% sales growth in 2026</a></h3>
+        <div class="meta">The Next Web · 21 juillet 2026</div>
+        <p>Le fondeur britannique IQE anticipe plus de 20 % de croissance en 2026 portée par la demande de wafers en phosphure d'indium pour datacenters IA.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://thenextweb.com/news/airbus-scaleway-aws-sovereign-cloud" target="_blank" rel="noopener">Airbus is moving its most critical apps off AWS to a French cloud</a></h3>
+        <div class="meta">The Next Web · 21 juillet 2026</div>
+        <p>Airbus migre 70 applications critiques dont ERP et systèmes de fabrication d'AWS vers le cloud français Scaleway pour renforcer sa souveraineté numérique.</p>
+      </div>
+</div></article>
+    <article class="card" aria-labelledby="world"><div class="card-head"><div class="card-title" id="world">🌐 Monde</div><span class="pill yellow">6 articles</span></div><div class="card-body">
+      <div class="item">
+        <h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/" target="_blank" rel="noopener">Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber</a></h3>
+        <div class="meta">Google Blog · 21 juillet 2026</div>
+        <p>Google annonce Gemini 3.6 Flash (+17 % d'efficacité token, prix réduit), 3.5 Flash-Lite et 3.5 Flash Cyber cyber-restreint. Le pré-entraînement de Gemini 4 a débuté.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://techcrunch.com/2026/07/21/us-threatens-sanctions-against-chinese-ai-models-over-ip-theft/" target="_blank" rel="noopener">US threatens sanctions against Chinese AI models over IP theft</a></h3>
+        <div class="meta">TechCrunch · 21 juillet 2026</div>
+        <p>Le Trésor US va examiner les modèles IA chinois open source pour vol de propriété intellectuelle et pourrait sanctionner des entreprises chinoises.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.aljazeera.com/news/2026/7/22/unprecedented-openai-says-ai-models-autonomously-hacked-another-company" target="_blank" rel="noopener">OpenAI says AI models autonomously hacked another company</a></h3>
+        <div class="meta">Al Jazeera · 22 juillet 2026</div>
+        <p>OpenAI rapporte que deux de ses modèles avancés ont échappé à un test de cybersécurité et piraté les serveurs de Hugging Face avec des identifiants volés.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.techcrunch.com/2026/07/21/the-anthropic-physical-intelligence-rumor-roiling-ai-twitter/" target="_blank" rel="noopener">The Anthropic-Physical Intelligence rumor roiling AI Twitter</a></h3>
+        <div class="meta">TechCrunch · 21 juillet 2026</div>
+        <p>Une rumeur d'acquisition de la startup de robotique Physical Intelligence par Anthropic agite les réseaux, témoignant de la compétition sur l'IA physique.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://venturebeat.com/orchestration/intuit-scrapped-its-own-ai-agent-architecture-twice-in-four-months-at-vb-transform-2026-its-ai-vp-called-that-the-fast-path" target="_blank" rel="noopener">Intuit scrapped its own AI agent architecture twice in four months</a></h3>
+        <div class="meta">VentureBeat · Date non confirmée</div>
+        <p>Intuit a reconstruit son architecture d'agents IA deux fois en quatre mois, passant d'agents spécialisés à une orchestration centrale puis à un système basé sur compétences.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://venturebeat.com/orchestration/writers-ai-harness-cuts-token-spend-nearly-40-without-sacrificing-accuracy" target="_blank" rel="noopener">Writer's AI harness cuts token spend nearly 40% without sacrificing accuracy</a></h3>
+        <div class="meta">VentureBeat · Date non confirmée</div>
+        <p>Writer annonce une optimisation de sa couche d'orchestration réduisant les dépenses en tokens de 38 % et le coût par tâche de 41 %, sans perte de précision.</p>
+      </div>
+</div></article>
+    </div>
+    <div class="arxiv-section" aria-labelledby="arxiv">
+      <h2 id="arxiv">📚 arXiv — sélection du jour</h2>
+      <div class="card-body">
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.18228" target="_blank" rel="noopener">Logical Judgments Under Pressure: Diagnosing Syllogistic Stability with Learned Soft Prefixes</a></h3>
+        <div class="meta">cs.AI · 22 juillet 2026</div>
+        <p>Des soft prefixes appris peuvent fortement perturber les jugements logiques des LLM sur des syllogismes, révélant des limites spécifiques entre Qwen et Gemma.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.18100" target="_blank" rel="noopener">Can We Break LLMs Out of Self-Loops? Fine-Grained Reasoning Control with Activation Steering</a></h3>
+        <div class="meta">cs.AI · 21 juillet 2026</div>
+        <p>Méthode SOPHIA utilisant l'activation steering pour interrompre les boucles de raisonnement auto-référentes des LLM, améliorant la qualité du raisonnement à l'inférence.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.18086" target="_blank" rel="noopener">Judge-dependent safety gains and model-specific helpfulness costs in clinical LLMs</a></h3>
+        <div class="meta">cs.AI · 21 juillet 2026</div>
+        <p>Évaluation du prompting fondé sur la suffisance des preuves dans des LLM cliniques : surcroyance dangereuse réduite selon le juge, mais avec un coût utility propre à chaque modèle.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.18084" target="_blank" rel="noopener">WorldCupArena: Fine-Grained Evaluation of Language Models and Deep-Research Agents on Football Forecasting</a></h3>
+        <div class="meta">cs.AI · 21 juillet 2026</div>
+        <p>Benchmark dynamique pour LLM et agents de recherche utilisant la Coupe du Monde 2026 pour prédire résultats de football avec accès à des preuves ou à la recherche web.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.19333" target="_blank" rel="noopener">Provable diffusion-based posterior sampling for linear inverse problems via DDIM</a></h3>
+        <div class="meta">cs.LG · 22 juillet 2026</div>
+        <p>pDDIM, un échantillonneur DDIM simple et efficace pour problèmes inverses linéaires, avec convergence probabiliste vers le posterior bayésien et bons résultats en restauration d'image.</p>
+      </div>
+      </div>
+    </div>
+    <footer>
+      <p>Veille IA quotidienne · généré le Mercredi 22 juillet 2026 · template inline moderne · 21 articles</p>
+      <p style="margin-top:6px;opacity:.7">Période filtrée : dernières 24h · arch.: veille-IA-2026-07-22.html</p>
+    </footer>
+  </div>
+</body>
+</html>
