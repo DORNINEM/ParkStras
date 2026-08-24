@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Veille IA & Mutations RH — Banque · Assurance · Informatique — 2026-08-24</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --bg: #0f1117;
+            --card: #161b26;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-teal: #14b8a6;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --border: #1f2937;
+        }
+        
+        * { margin:0; padding:0; box-sizing:border-box; }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .date-badge {
+            background: var(--card);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .apports { color: var(--accent-teal); }
+        .risques { color: var(--accent-orange); }
+        .accompagnement { color: #3b82f6; }
+        .prospective { color: #8b5cf6; }
+        
+        .article-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 16px;
+        }
+        
+        .article-title {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+        
+        .source {
+            background: #1f2937;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .risk-badge {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .risk-fort { background: #fee2e2; color: #b91c1c; }
+        .risk-modere { background: #fef3c7; color: #92400e; }
+        
+        .status-badge {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .status-existant { background: #d1fae5; color: #065f46; }
+        .status-encours { background: #dbeafe; color: #1e40af; }
+        
+        .horizon-badge {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #ede9fe;
+            color: #5b21b6;
+        }
+        
+        .summary {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin: 12px 0;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        
+        .tag {
+            background: #1f2937;
+            color: #94a3b8;
+            font-size: 11px;
+            padding: 1px 8px;
+            border-radius: 4px;
+        }
+        
+        .link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+        
+        .link:hover { text-decoration: underline; }
+        
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        
+        .dashboard-table th {
+            background: #1f2937;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            color: #e2e8f0;
+        }
+        
+        .dashboard-table td {
+            padding: 14px 16px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+        }
+        
+        .dashboard-table tr:hover {
+            background: #1f2937;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .kpi-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .kpi-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        
+        .last-modified {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            background: var(--card);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            border: 1px solid var(--border);
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 16px; }
+            .article-header { flex-direction: column; }
+            .dashboard-table { font-size: 12px; }
+            .dashboard-table td, .dashboard-table th { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 Veille IA &amp; Mutations RH</h1>
+        <div>
+            <span class="date-badge">24 août 2026 • Bi-hebdomadaire</span>
+        </div>
+    </div>
+    
+    <p style="max-width: 720px; color: #94a3b8; margin-bottom: 40px;">
+        Analyse équilibrée des apports, risques et dispositifs d'accompagnement dans les secteurs <strong>banque</strong>, <strong>assurance</strong> et <strong>informatique</strong>.
+    </p>
+    
+    <!-- PARTIE 1 -->
+    <div class="section">
+        <div class="section-header">
+            <h2 class="apports">🛠️ IA dans les métiers RH : apports &amp; outils</h2>
+            <span style="background:#134e4b; color:#5eead4; padding:2px 10px; border-radius:9999px; font-size:12px; font-weight:600;">6 articles</span>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">Les 12 tendances de l'IA en 2026 qui transforment la fonction RH</div>
+                <div class="article-meta">
+                    <span class="source">Sociabble</span>
+                    <span>19 août 2026</span>
+                </div>
+            </div>
+            <div class="summary">L'IA devient copilote des RH avec IA agentique, gouvernance, expérience collaborateur et formation personnalisée. Outils comme les chatbots et analytics prédictifs transforment recrutement et GPEC.</div>
+            <div class="tags">
+                <span class="tag">#IA</span><span class="tag">#RH</span><span class="tag">#Tendances</span>
+            </div>
+            <a href="https://www.sociabble.com/fr/blog/ai-fr/tendances-ia-rh/" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Transversal</strong></div>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">IA en paie et RH 2026 : remplacement ou opportunité ?</div>
+                <div class="article-meta">
+                    <span class="source">Nextformation</span>
+                    <span>20 août 2026</span>
+                </div>
+            </div>
+            <div class="summary">L'IA automatise jusqu'à 40% des tâches administratives répétitives (saisie, tri CV) mais renforce le rôle stratégique humain en conformité et conseil. Pas de remplacement mais transformation.</div>
+            <div class="tags">
+                <span class="tag">#Paie</span><span class="tag">#RH</span><span class="tag">#Automatisation</span>
+            </div>
+            <a href="https://nextformation.com/blog/booster-ma-carriere/lia-va-t-elle-remplacer-les-gestionnaires-de-paie-et-rh-en-2026" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Transversal</strong></div>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">Recruitment Chatbots &amp; Best ATS 2026</div>
+                <div class="article-meta">
+                    <span class="source">Pin / PinpointHQ</span>
+                    <span>août 2026</span>
+                </div>
+            </div>
+            <div class="summary">Chatbots IA et ATS nouvelle génération : intégration native, matching CV/offre, screening automatique, transcription entretiens et onboarding flow. Consolidation des stacks tech.</div>
+            <a href="https://www.pin.com/blog/recruitment-chatbots/" class="link" target="_blank">🔗 Chatbots →</a>
+            <a href="https://www.pinpointhq.com/insights/best-applicant-tracking-system" class="link" target="_blank">🔗 ATS →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Transversal</strong></div>
+        </div>
+    </div>
+    
+    <!-- PARTIE 2 -->
+    <div class="section">
+        <div class="section-header">
+            <h2 class="risques">⚠️ Risques &amp; transformations des métiers</h2>
+            <span style="background:#431407; color:#fdba74; padding:2px 10px; border-radius:9999px; font-size:12px; font-weight:600;">6 articles</span>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">Et si l’IA conduisait à une baisse des salaires d’ici 5 ans ?</div>
+                <div class="article-meta">
+                    <span class="source">HelloWorkplace</span>
+                    <span>18 août 2026</span>
+                    <span class="risk-badge risk-fort">Fort</span>
+                </div>
+            </div>
+            <div class="summary">Près de 50% des entreprises allemandes anticipent une baisse de salaires pour les juniors liée à l'IA (ifo Institute). L'expérience protège mieux que le diplôme. Impact fort sur services, banque et assurance.</div>
+            <div class="tags">
+                <span class="tag">#Salaires</span><span class="tag">#Juniors</span>
+            </div>
+            <a href="https://www.helloworkplace.fr/etude-impact-ia-salaires/" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Banque / Assurance / Informatique</strong></div>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">Intelligence artificielle et emploi en 2026</div>
+                <div class="article-meta">
+                    <span class="source">Mercato-Emploi</span>
+                    <span class="risk-badge risk-modere">Modéré</span>
+                </div>
+            </div>
+            <div class="summary">166 000 offres IA en France. Création massive d'emplois (ingénieurs ML, prompt engineers) mais transformation forte des développeurs juniors et testeurs QA par les Copilots IA.</div>
+            <a href="https://mercato-emploi.com/intelligence-artificielle-emploi-impact-metiers-opportunites/" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Informatique</strong></div>
+        </div>
+    </div>
+    
+    <!-- PARTIE 3 -->
+    <div class="section">
+        <div class="section-header">
+            <h2 class="accompagnement">🔄 Dispositifs d'accompagnement aux mutations</h2>
+            <span style="background:#1e3a8a; color:#93c5fd; padding:2px 10px; border-radius:9999px; font-size:12px; font-weight:600;">6 articles</span>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">Accord GEPP Groupe BPCE avec volet IA</div>
+                <div class="article-meta">
+                    <span class="source">BPCE</span>
+                    <span class="status-badge status-existant">Existant</span>
+                </div>
+            </div>
+            <div class="summary">Accord unanime 2025-2028 intégrant l'IA générative, dialogue social itératif et accompagnement des carrières expérimentés. Modèle de référence pour le secteur bancaire.</div>
+            <a href="https://newsroom.groupebpce.fr/actualites/le-groupe-bpce-signe-un-accord-sur-la-gestion-des-emplois-et-des-parcours-professionnels-integrant-de-maniere-inedite-un-volet-sur-lintelligence-artificielle-3cba1-7b707.html" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Banque</strong></div>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">Formation IA en entreprise 2026 (banque/assurance +38% productivité)</div>
+                <div class="article-meta">
+                    <span class="source">Nerolia</span>
+                    <span class="status-badge status-existant">Existant</span>
+                </div>
+            </div>
+            <div class="summary">Plans massifs de formation IA. Banque et assurance en tête avec +38% de productivité sur analyse documentaire et conformité après formation des équipes back-office.</div>
+            <a href="https://nerolia-formation.fr/blog/formation-ia-entreprise-guide-complet-2026.html" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Banque / Assurance</strong></div>
+        </div>
+    </div>
+    
+    <!-- PARTIE 4 -->
+    <div class="section">
+        <div class="section-header">
+            <h2 class="prospective">🔭 Prospective : travail, IA et société</h2>
+            <span style="background:#4c1d95; color:#c4b5fd; padding:2px 10px; border-radius:9999px; font-size:12px; font-weight:600;">6 articles</span>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">AI Act et IA RH en PME : report au 2 décembre 2027</div>
+                <div class="article-meta">
+                    <span class="source">Humans Board</span>
+                    <span class="horizon-badge">Moyen terme</span>
+                </div>
+            </div>
+            <div class="summary">L'AI Act classe les systèmes IA RH (recrutement, évaluation, surveillance) comme haut risque (Annexe III). Obligations reportées au 2 déc. 2027. Sanctions jusqu'à 15 M€ ou 3% du CA.</div>
+            <a href="https://humansboard.com/ia-rh-ai-act-aout-2026-pme-eti-obligations-conformite/" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Transversal</strong></div>
+        </div>
+        
+        <div class="article-card">
+            <div class="article-header">
+                <div class="article-title">EU AI Act – Emploi = système à haut risque (Annexe III)</div>
+                <div class="article-meta">
+                    <span class="source">artificialintelligenceact.eu</span>
+                    <span class="horizon-badge">Moyen terme</span>
+                </div>
+            </div>
+            <div class="summary">Recrutement, sélection, évaluation de performance, décisions de contrat/licenciement = haut risque. Risk assessments, bias testing et supervision humaine obligatoires.</div>
+            <a href="https://artificialintelligenceact.eu/what-the-act-means-for-staffing-businesses/" class="link" target="_blank">🔗 Lire l'article →</a>
+            <div style="margin-top:8px; font-size:12px; color:#64748b;">Secteur : <strong>Transversal</strong></div>
+        </div>
+    </div>
+    
+    <!-- KPI -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-value">50%</div>
+            <div style="font-size:13px; color:#94a3b8;">Entreprises anticipant baisse salaires juniors</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">+38%</div>
+            <div style="font-size:13px; color:#94a3b8;">Productivité banque/assurance après formation IA</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">166k</div>
+            <div style="font-size:13px; color:#94a3b8;">Offres d'emploi IA en France (2026)</div>
+        </div>
+    </div>
+    
+    <!-- TABLEAU DE BORD -->
+    <div class="section">
+        <h2 style="margin-bottom:16px;">🗺️ Tableau de bord des métiers à risque</h2>
+        
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>Secteur</th>
+                    <th>Métier</th>
+                    <th>Niveau risque</th>
+                    <th>Horizon</th>
+                    <th>Piste de reconversion prioritaire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Banque</strong></td>
+                    <td>Analyste crédit / KYC</td>
+                    <td><span class="risk-badge risk-fort">Fort</span></td>
+                    <td>Court (2-3 ans)</td>
+                    <td>Compliance IA, auditeur algorithmes</td>
+                </tr>
+                <tr>
+                    <td><strong>Banque</strong></td>
+                    <td>Conseiller clientèle</td>
+                    <td><span class="risk-badge risk-modere">Modéré</span></td>
+                    <td>Moyen (3-5 ans)</td>
+                    <td>HR BP augmenté, relation client IA</td>
+                </tr>
+                <tr>
+                    <td><strong>Assurance</strong></td>
+                    <td>Gestionnaire sinistres</td>
+                    <td><span class="risk-badge risk-fort">Fort</span></td>
+                    <td>Court (2-3 ans)</td>
+                    <td>Actuaire IA, sinistres augmentés</td>
+                </tr>
+                <tr>
+                    <td><strong>Informatique</strong></td>
+                    <td>Développeur junior</td>
+                    <td><span class="risk-badge risk-fort">Fort</span></td>
+                    <td>Court (1-2 ans)</td>
+                    <td>Prompt engineer, AI trainer, agents IA</td>
+                </tr>
+                <tr>
+                    <td><strong>Informatique</strong></td>
+                    <td>Testeur QA</td>
+                    <td><span class="risk-badge risk-fort">Fort</span></td>
+                    <td>Court (1-2 ans)</td>
+                    <td>Auditeur algorithmes, QA IA</td>
+                </tr>
+                <tr>
+                    <td><strong>Transversal</strong></td>
+                    <td>Gestionnaire paie / RH admin</td>
+                    <td><span class="risk-badge risk-modere">Modéré</span></td>
+                    <td>Moyen (3-5 ans)</td>
+                    <td>HR augmenté, SIRH IA, formation literacy</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="footer">
+        Sources principales : Sociabble, HelloWorkplace, BPCE, Nerolia, OECD, EU AI Act official, Humans Board, Pinpoint, Nextformation • 
+        Rapport généré automatiquement le 24 août 2026 • 
+        <span id="last-modified">Dernière mise à jour : 24/08/2026</span>
+    </div>
+    
+    <script>
+        // Mobile optimization note
+        console.log('%c[Veille RH-IA] HTML moderne chargé — design responsive activé', 'color:#64748b');
+    </script>
+</body>
+</html>
