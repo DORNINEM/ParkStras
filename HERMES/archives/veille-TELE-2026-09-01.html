@@ -1,144 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veille Télésurveillance — 1 septembre 2026</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🔒 Veille Télésurveillance & Alarmes — 2026-09-01</title>
   <style>
     :root {
-      --bg: #0f1115;
-      --card: #1a1d23;
-      --text: #e6e8eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --border: #2a2f38;
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
     }
-    header {
-      padding: 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      justify-content: space-between;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
     }
-    header h1 { margin: 0; font-size: 1.4rem; }
-    header .date { color: var(--muted); font-size: 0.95rem; }
-    main { padding: 24px; max-width: 1200px; margin: 0 auto; }
-    .kpis {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
     }
-    .kpi {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
     }
-    .kpi .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
-    .kpi .value { font-size: 1.5rem; font-weight: 700; margin-top: 6px; color: var(--accent); }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
     }
-    .card h2 { margin: 0 0 10px; font-size: 1.1rem; }
-    .card ul { margin: 0; padding-left: 18px; }
-    .card li { margin-bottom: 8px; }
-    .card a { color: var(--accent); text-decoration: none; }
-    .card a:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 20px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 24px; }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>Veille Télésurveillance</h1>
-      <div class="date">Mardi 1 septembre 2026</div>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🔒 Veille Télésurveillance & Alarmes</h1>
+        <p>1 septembre 2026 · Hermes Agent · Collecte sectorielle</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-09-01">1 septembre 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
     </div>
-    <div class="date"> Rapport généré automatiquement</div>
-  </header>
-  <main>
-    <section class="kpis">
+
+    <section class="kpis" aria-label="Résumé">
       <div class="kpi">
-        <div class="label">Ménages équipés FR</div>
-        <div class="value">~8%</div>
+        <div class="label">🇫🇷 France</div>
+        <div class="value">4 actualités</div>
       </div>
       <div class="kpi">
-        <div class="label">Croissance marché FR 2024</div>
-        <div class="value">+8%</div>
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">0 actualités</div>
       </div>
       <div class="kpi">
-        <div class="label">Marché mondial 2025</div>
-        <div class="value">~40 Mds USD</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Projection 2035</div>
-        <div class="value">163 Mds USD</div>
+        <div class="label">🌐 Monde</div>
+        <div class="value">3 actualités</div>
       </div>
     </section>
-    <section class="cards">
-      <article class="card">
-        <h2>Marché & Économie</h2>
-        <ul>
-          <li>Marché français de la télésurveillance résidentielle en croissance à deux chiffres ; Verisure leader.</li>
-          <li>Comparatifs 2026 : Verisure, Sector Alarm, Homiris, Orange et IMA Protect en tête des offres certifiées APSAD.</li>
-          <li>Marché mondial de la sécurité domestique connectée en forte expansion (CAGR ~15 %).</li>
-          <li>Europe (DACH) : virage vers le sans-fil et le cloud ; Ajax certifié EN 50131 Grade 3 en 2025.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h2>Réglementation</h2>
-        <ul>
-          <li>Loi RIPOST : extension de la vidéosurveillance algorithmique jusqu’à 2030 dans les bâtiments publics.</li>
-          <li>Loi n° 2026-798 du 18 août 2026 validée : nouveaux pouvoirs des agents de sécurité privée.</li>
-          <li>L’Étang-Salé (La Réunion) autorisé à 30 caméras de vidéoprotection pour 5 ans.</li>
-          <li>Port de Canet-en-Roussillon : bilan positif de la caméra 360° IA (25/08/2026).</li>
-          <li>UE : rejet du scanning des chats, interdiction des deepfakes non consensuels.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h2>Innovations & Produits</h2>
-        <ul>
-          <li>IMA Protect Télésurveillance Plus+ : produit de l’année 2026, interopérabilité objets tiers.</li>
-          <li>Vidéosurveillance intelligente : proposition parlementaire pour analyse IA des commerces jusqu’à fin 2027 ; Finalease déploie déjà la détection comportementale.</li>
-          <li>APSAD R31 mise à jour (mars 2026) : P3 maillé, cybersécurité des stations, délais de traitement.</li>
-          <li>PME : guides 2026 recommandent 45–80 €/mois, cloud/NVR et accès distant.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h2>Risques & Vulnérabilités</h2>
-        <ul>
-          <li>Brouilleurs Wi-Fi d’origine US utilisés pour neutraliser alarmes connectées et caméras.</li>
-          <li>Cybersécurité menace n° 1 (29 %), vol (26 %) et intrusion/squat (11 %).</li>
-          <li>Arrêt 2G/3G en 2026 : obsolescence de nombreuses alarmes GSM ; migration 4G/5G recommandée.</li>
-          <li>CNCTR : plus de 100 000 demandes de surveillance en 2025 ; données informatiques +38 %.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h2>Études & Livres blancs</h2>
-        <ul>
-          <li>Euralarm : sécurité incendie connectée, cloud, normes EN 50710 et IEC 62443.</li>
-          <li>Securitas Technology : la durabilité est critère clé pour 85 % des répondants ; la biométrie investit fortement.</li>
-          <li>Les Échos Études : étude de marché septembre 2026 sur la télésurveillance résidentielle en France.</li>
-        </ul>
-      </article>
-    </section>
-  </main>
-  <footer>
-    Sources : Securexpert, Clubic, FaceauRisque, 01net, Journal du Geek, Protection Sécurité Magazine, Les Échos Études, IMA Protect, The Conversation, L’Indépendant, Sénat.fr, WeltWoche.
-  </footer>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Sécurité électronique</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Télésurveillance</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>IA & sécurité</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Analyse vidéo</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Détection intrusion</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Biométrie</span>
+    </div>
+    <div class="grid">
+<article class="card" aria-labelledby="sec-france--europe">
+<div class="card-head">
+  <h2 class="card-title" id="sec-france--europe">
+    🇫🇷
+    France & Europe
+  </h2>
+  <span class="pill blue">4 items</span>
+</div>
+<div class="card-body">
+  <div class="item">
+<h3><a href="https://www.lindependant.fr/2026/08/25/sollicitee-par-les-forces-de-lordre-pour-repondre-a-des-requisitions-judiciaires-quel-premier-bilan-de-la-videosurveillance-par-intelligence-13522289.php" target="_blank">« Sollicitée par les forces de l’ordre » : premier bilan de la vidéosurveillance par IA dans le port du littoral catalan</a></h3>
+<div class="meta">L'Indépendant · 25/08/2026 · Analyse vidéo / IA & sécurité</div>
+<p>Le port de Canet-en-Roussillon a déployé une caméra 360° IA qui analyse les plaques minéralogiques, les noms de bateaux et les mouvements nocturnes. Le système a déjà été mobilisé pour des réquisitions judiciaires et des enquêtes de vol, avec des améliorations prévues avec le fournisseur espagnol Qaisc.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zinfos974.com/letang-sale-autorisee-a-installer-30-cameras-de-videoprotection/" target="_blank">L’Étang-Salé autorisée à installer 30 caméras de vidéoprotection pour cinq ans</a></h3>
+<div class="meta">Zinfos974 · 25/08/2026 · Sécurité électronique / Vidéoprotection</div>
+<p>La préfecture de La Réunion a autorisé la commune de L’Étang-Salé à déployer 30 caméras de vidéoprotection sur la voie publique pour cinq ans. L’objectif est la prévention des agressions, vols, trafics et dépôts sauvages, avec destruction des enregistrements après 20 jours et signalisation obligatoire.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.entreprises-occitanie.com/actualites/verisure-va-recruter-60-experts-securite-en-occitanie-dici-fin-2026" target="_blank">Verisure va recruter 60 Experts Sécurité en Occitanie d’ici fin 2026</a></h3>
+<div class="meta">Entreprises Occitanie · 2026 · Télésurveillance / Marché</div>
+<p>Dans le cadre de sa croissance nationale (~1 000 postes), Verisure prévoit 60 recrutements d’Experts Sécurité en CDI et apprentissage en Occitanie d’ici la fin 2026. Le groupe met en avant l’accompagnement par la Verisure Academy et une progression de 10 % de ses effectifs.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.protectionsecurite-magazine.fr/actualite/videosurveillance/nvidia-entre-au-capital-de-verkada" target="_blank">Nvidia entre au capital de Verkada pour accélérer l’IA dans la sécurité physique</a></h3>
+<div class="meta">Protection Sécurité Magazine · 2026 · IA & sécurité / Investissement</div>
+<p>Verkada, spécialiste de la sécurité physique et des opérations propulsées par l’IA, a finalisé un partenariat stratégique avec Nvidia. L’objectif est d’accélérer le déploiement de solutions de vidéosurveillance intelligente et d’analyse prédictive sur infrastructure Edge.</p>
+</div>
+</div>
+</article>
+<article class="card" aria-labelledby="sec-monde-—-pertinence-europe">
+<div class="card-head">
+  <h2 class="card-title" id="sec-monde-—-pertinence-europe">
+    🌍
+    Monde — Pertinence Europe
+  </h2>
+  <span class="pill green">3 items</span>
+</div>
+<div class="card-body">
+  <div class="item">
+<h3><a href="https://www.sdmmag.com/articles/105050-the-future-of-alarm-monitoring-strengthening-our-partnership-with-public-safety" target="_blank">The Future of Alarm Monitoring: Strengthening Partnership With Public Safety</a></h3>
+<div class="meta">SDM Magazine · 2026 · Télésurveillance / Monitoring</div>
+<p>SDM Magazine examine comment les standards AVS-01, le programme ASAP-to-PSAP et l’IA améliorent la précision des alarmes et la réponse des forces de l’ordre. L’article souligne la nécessité d’un partenariat continu entre l’industrie de la sécurité et les services publics pour réduire les fausses alertes.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.sdmmag.com/articles/105051-monitoring-centers-are-evolving-faster-than-ever-the-new-era-of-intelligence-automation-and-proactive-protection" target="_blank">Monitoring Centers Are Evolving Faster Than Ever: The New Era of Intelligence, Automation & Proactive Protection</a></h3>
+<div class="meta">SDM Magazine · 2026 · Télésurveillance / Monitoring</div>
+<p>Les centres de télésurveillance se transforment grâce à l’IA prédictive, au cloud et à l’automatisation. L’article décrit comment le monitoring évolue d’un service réactif vers une protection proactive et génératrice de revenus, avec des retours d’ESX 2026.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.evolutionsecurity.com/ai-in-physical-security-the-integrators-guide-to-what-actually-works/" target="_blank">AI in Physical Security: The Integrator’s Guide to What Actually Works in 2026</a></h3>
+<div class="meta">Evolution Security · 2026 · IA & sécurité / Biométrie</div>
+<p>Guide pratique sur les déploiements concrets de l’IA en sécurité physique en 2026 : analytics vidéo contextuels, détection d’intrusion comportementale, contrôle d’accès biométrique (faciale, empreinte, iris) et intégration avec les systèmes existants. Inclut des retours sur la conformité RGPD et l’AI Act.</p>
+</div>
+</div>
+</article>
+<article class="card" aria-labelledby="sec-innovations-produits--composants">
+<div class="card-head">
+  <h2 class="card-title" id="sec-innovations-produits--composants">
+    🔧
+    Innovations Produits & Composants
+  </h2>
+  <span class="pill yellow">3 items</span>
+</div>
+<div class="card-body">
+  <div class="item">
+<h3><a href="https://ajax.systems/blog/introducing-ajax-response/" target="_blank">Ajax lance Ajax Response, une application dédiée à la gestion des incidents pour les unités d’intervention rapide</a></h3>
+<div class="meta">Ajax Systems · 24/08/2026 · Innovations Produits / Télésurveillance</div>
+<p>Ajax Systems lance l’application mobile Ajax Response le 24 août 2026. Elle permet aux unités d’intervention rapide de recevoir, assigner et mettre à jour le statut des incidents directement depuis Ajax PRO Desktop, sans appels manuels. Une fonctionnalité clé pour les armoires à clés connectées et les systèmes d’alarme hybrides.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.securityworldmarket.com/int/News/Product-News/hikvision-new-deepinviewx-bullet-cameras-powered-by-large-scale-ai-models1" target="_blank">Hikvision lance les caméras bullet DeepinViewX propulsées par des modèles IA grande échelle</a></h3>
+<div class="meta">Security World Market · 2026 · Innovations Produits / Analyse vidéo</div>
+<p>Hikvision dévoile la série DeepinViewX équipée du modèle IA Guanlan. Ces caméras bullet promettent jusqu’à 90 % de fausses alertes en moins, une détection nocturne jusqu’à 120 mètres et une analyse périmétrique étendue. Elles s’adressent à la sécurité des sites critiques et des infrastructures.</p>
+</div>
+<div class="item">
+<h3><a href="https://sen.news/new-dahua-smart-control-panel/" target="_blank">Dahua présente un nouveau panneau de contrôle intelligent intégrant alarme, interphone et caméras</a></h3>
+<div class="meta">sen.news · 2026 · Innovations Produits / Sécurité électronique</div>
+<p>Dahua lance une série de panneaux de contrôle intelligents (7 et 10,1 pouces) qui centralisent le contrôle d’alarme, l’interphone, les aperçus caméras et la surveillance environnementale sur un écran mural tactile. Destiné au résidentiel et au petit tertiaire, il simplifie l’installation et l’usage quotidien.</p>
+</div>
+</div>
+</article>
+<article class="card" aria-labelledby="sec-prospective--technologies-émergentes">
+<div class="card-head">
+  <h2 class="card-title" id="sec-prospective--technologies-émergentes">
+    🚀
+    Prospective & Technologies Émergentes
+  </h2>
+  <span class="pill red">2 items</span>
+</div>
+<div class="card-body">
+  <div class="item">
+<h3><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52026DC0081" target="_blank">Plan d’action européen sur la sécurité des drones et la contre-drone (Drone Security Package)</a></h3>
+<div class="meta">EUR-Lex · Fév 2026 · Prospective / Détection intrusion</div>
+<p>La Commission européenne publie un plan d’action visant à renforcer la sécurité des drones et la contre-drone d’ici Q3 2026 : enregistrement obligatoire des drones, tests de résistance des infrastructures critiques, recommandations de performance pour les systèmes anti-drone et création du forum industriel D-TECT.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.runningbrainsrobotics.com/en/private-security-trends-2026/" target="_blank">Private security trends reshaping the sector in 2026: drones, anti-drones and autonomous patrol robots</a></h3>
+<div class="meta">Running Brains Robotics · 2026 · Prospective / Détection intrusion</div>
+<p>En 2026, la sécurité privée franco-européenne intègre massivement les drones et systèmes anti-drones pour la reconnaissance et la détection d’intrusion, ainsi que des robots de patrouille autonome pour la surveillance périmétrique. L’IA analytique et la résilience face aux menaces hybrides deviennent des critères standards.</p>
+</div>
+</div>
+</article>
+    </div>
+    <footer>
+      <p>Généré le 2026-09-01 par Hermes (veille-télé-surveillance). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-TELE-2026-09-01.md + .html</p>
+      <p>Dernière modification : <span id="lastmod"></span></p>
+      <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+    </footer>
+  </div>
 </body>
 </html>

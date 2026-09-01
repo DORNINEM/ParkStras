@@ -1,35 +1,39 @@
-# Veille Télésurveillance — 1 septembre 2026
+# 🔒 Veille Télésurveillance & Alarmes — 1 septembre 2026
 
-## Vue d'ensemble du jour
-Collecte du jour centrée sur la télésurveillance, la télésécurité, les systèmes d'alarme et la sécurité électronique. Actualités datées du 01/09/2026 et développements récents.
 
-## 1. Marché & Économie
-- **France** : le marché de la télésurveillance résidentielle reste en croissance à deux chiffres ; seuls 8 % des ménages sont équipés. Verisure reste leader.
-- **France** : les comparatifs 2026 placent Verisure en tête (élu Produit et Service Client de l’Année), suivi de Sector Alarm, Homiris, Orange et IMA Protect.
-- **Monde** : le marché mondial de la sécurité domestique connectée devrait atteindre **163 milliards USD d’ici 2035** (CAGR ~15 %).
-- **Europe (DACH)** : les systèmes d’alarme évoluent vers le sans-fil et le cloud ; Ajax Systems a lancé le premier système EN 50131 Grade 3 entièrement sans fil en 2025.
+## 🇫🇷🇪🇺 France & Europe (4 articles)
 
-## 2. Réglementation & Pouvoirs publics
-- **France** : la loi RIPOST étend l’expérimentation de la **vidéosurveillance algorithmique** jusqu’à fin 2030 et l’étend aux bâtiments publics intérieurs.
-- **France** : la CNIL a émis des mises en demeure pour des usages non conformes de VSA et demande plus de transparence.
-- **France** : la loi n° 2026-798 du 18 août 2026, validée par le Conseil constitutionnel, élargit les pouvoirs des agents de sécurité privée.
-- **France** : l’Étang-Salé (La Réunion) est autorisée à installer **30 caméras de vidéoprotection** pour cinq ans.
-- **France (Catalunya)** : le port de Canet-en-Roussillon dresse un premier bilan positif de sa caméra 360° IA pour la surveillance des bateaux et le renfort d’enquêtes judiciaires (25/08/2026).
-- **Europe** : le Parlement européen rejette le scanning obligatoire des chats privés mais vote pour l’interdiction des deepfakes non consensuels.
+- **« Sollicitée par les forces de l’ordre » : premier bilan de la vidéosurveillance par IA dans le port du littoral catalan** | L'Indépendant | 25/08/2026 | Le port de Canet-en-Roussillon a déployé une caméra 360° IA qui analyse les plaques minéralogiques, les noms de bateaux et les mouvements nocturnes. Le système a déjà été mobilisé pour des réquisitions judiciaires et des enquêtes de vol, avec des améliorations prévues avec le fournisseur espagnol Qaisc. | 🔗 [Lien](https://www.lindependant.fr/2026/08/25/sollicitee-par-les-forces-de-lordre-pour-repondre-a-des-requisitions-judiciaires-quel-premier-bilan-de-la-videosurveillance-par-intelligence-13522289.php) | Tags: Analyse vidéo / IA & sécurité
+- **L’Étang-Salé autorisée à installer 30 caméras de vidéoprotection pour cinq ans** | Zinfos974 | 25/08/2026 | La préfecture de La Réunion a autorisé la commune de L’Étang-Salé à déployer 30 caméras de vidéoprotection sur la voie publique pour cinq ans. L’objectif est la prévention des agressions, vols, trafics et dépôts sauvages, avec destruction des enregistrements après 20 jours et signalisation obligatoire. | 🔗 [Lien](https://www.zinfos974.com/letang-sale-autorisee-a-installer-30-cameras-de-videoprotection/) | Tags: Sécurité électronique / Vidéoprotection
+- **Verisure va recruter 60 Experts Sécurité en Occitanie d’ici fin 2026** | Entreprises Occitanie | 2026 | Dans le cadre de sa croissance nationale (~1 000 postes), Verisure prévoit 60 recrutements d’Experts Sécurité en CDI et apprentissage en Occitanie d’ici la fin 2026. Le groupe met en avant l’accompagnement par la Verisure Academy et une progression de 10 % de ses effectifs. | 🔗 [Lien](https://www.entreprises-occitanie.com/actualites/verisure-va-recruter-60-experts-securite-en-occitanie-dici-fin-2026) | Tags: Télésurveillance / Marché
+- **Nvidia entre au capital de Verkada pour accélérer l’IA dans la sécurité physique** | Protection Sécurité Magazine | 2026 | Verkada, spécialiste de la sécurité physique et des opérations propulsées par l’IA, a finalisé un partenariat stratégique avec Nvidia. L’objectif est d’accélérer le déploiement de solutions de vidéosurveillance intelligente et d’analyse prédictive sur infrastructure Edge. | 🔗 [Lien](https://www.protectionsecurite-magazine.fr/actualite/videosurveillance/nvidia-entre-au-capital-de-verkada) | Tags: IA & sécurité / Investissement
 
-## 3. Innovations & Produits
-- **IMA Protect** : l’option **Télésurveillance Plus+** a été élue Produit de l’Année 2026 ; elle connecte des objets tiers (caméras Netatmo, Legrand) aux alarmes pour des scénarios automatisés.
-- **Vidéosurveillance intelligente** : une proposition parlementaire française autorise jusqu’à fin 2027 l’analyse automatisée IA des vidéos de commerces pour détecter le vol à l’étalage ; des acteurs comme Finalease déploient déjà des systèmes de détection comportementale en retail et pharmacie.
-- **Norme APSAD R31** : mise à jour de mars 2026 avec révisions sur P3 maillé, cybersécurité des stations, délais de traitement et sécurité physique des centres de télésurveillance.
-- **PME** : les guides 2026 recommandent des coûts de 45–80 €/mois pour l’intrusion + télésurveillance, avec accent sur le cloud/NVR, l’accès distant et la maintenance préventive.
+## 🌍 Monde — Pertinence Europe (3 articles)
 
-## 4. Risques & Vulnérabilités
-- **Brouilleurs Wi-Fi** : l’usage de brouilleurs 2,4/5 GHz d’origine américaine se répand en France et désactive les notifications d’alarmes connectées et les caméras.
-- **Cybersécurité** : la cybersécurité reste la menace n° 1 (29 %), devant le vol (26 %) et l’intrusion/squat (11 %).
-- **Obsolescence réseaux** : l’arrêt progressif des réseaux 2G/3G en 2026 rend de nombreuses alarmes GSM anciennes incompatibles ; la migration vers 4G/5G ou filaire certifié est urgente pour les sites non mis à niveau.
-- **Renseignement** : la CNCTR a enregistré plus de 100 000 demandes de surveillance en 2025, avec une forte hausse du recueil de données informatiques (+38 %).
+- **The Future of Alarm Monitoring: Strengthening Partnership With Public Safety** | SDM Magazine | 2026 | SDM Magazine examine comment les standards AVS-01, le programme ASAP-to-PSAP et l’IA améliorent la précision des alarmes et la réponse des forces de l’ordre. L’article souligne la nécessité d’un partenariat continu entre l’industrie de la sécurité et les services publics pour réduire les fausses alertes. | 🔗 [Lien](https://www.sdmmag.com/articles/105050-the-future-of-alarm-monitoring-strengthening-our-partnership-with-public-safety) | Tags: Télésurveillance / Monitoring
+- **Monitoring Centers Are Evolving Faster Than Ever: The New Era of Intelligence, Automation & Proactive Protection** | SDM Magazine | 2026 | Les centres de télésurveillance se transforment grâce à l’IA prédictive, au cloud et à l’automatisation. L’article décrit comment le monitoring évolue d’un service réactif vers une protection proactive et génératrice de revenus, avec des retours d’ESX 2026. | 🔗 [Lien](https://www.sdmmag.com/articles/105051-monitoring-centers-are-evolving-faster-than-ever-the-new-era-of-intelligence-automation-and-proactive-protection) | Tags: Télésurveillance / Monitoring
+- **AI in Physical Security: The Integrator’s Guide to What Actually Works in 2026** | Evolution Security | 2026 | Guide pratique sur les déploiements concrets de l’IA en sécurité physique en 2026 : analytics vidéo contextuels, détection d’intrusion comportementale, contrôle d’accès biométrique (faciale, empreinte, iris) et intégration avec les systèmes existants. Inclut des retours sur la conformité RGPD et l’AI Act. | 🔗 [Lien](https://www.evolutionsecurity.com/ai-in-physical-security-the-integrators-guide-to-what-actually-works/) | Tags: IA & sécurité / Biométrie
 
-## 5. Études & Livres blancs
-- **Euralarm** : livre blanc sur la sécurité incendie connectée, intégrant cloud, normes EN 50710 et IEC 62443.
-- **Securitas Technology** : 7e baromètre de la sécurité électronique — la durabilité est un critère clé pour 85 % des répondants ; les investissements en biométrie augmentent fortement.
-- **Les Échos Études** : étude de marché de 120 pages publiée en septembre 2026 sur la télésurveillance résidentielle en France (panorama acteurs, 1 500 particuliers, innovations, assurances).
+## 🔧 Innovations Produits & Composants (3 articles)
+
+- **Ajax lance Ajax Response, une application dédiée à la gestion des incidents pour les unités d’intervention rapide** | Ajax Systems | 24/08/2026 | Ajax Systems lance l’application mobile Ajax Response le 24 août 2026. Elle permet aux unités d’intervention rapide de recevoir, assigner et mettre à jour le statut des incidents directement depuis Ajax PRO Desktop, sans appels manuels. Une fonctionnalité clé pour les armoires à clés connectées et les systèmes d’alarme hybrides. | 🔗 [Lien](https://ajax.systems/blog/introducing-ajax-response/) | Tags: Innovations Produits / Télésurveillance
+- **Hikvision lance les caméras bullet DeepinViewX propulsées par des modèles IA grande échelle** | Security World Market | 2026 | Hikvision dévoile la série DeepinViewX équipée du modèle IA Guanlan. Ces caméras bullet promettent jusqu’à 90 % de fausses alertes en moins, une détection nocturne jusqu’à 120 mètres et une analyse périmétrique étendue. Elles s’adressent à la sécurité des sites critiques et des infrastructures. | 🔗 [Lien](https://www.securityworldmarket.com/int/News/Product-News/hikvision-new-deepinviewx-bullet-cameras-powered-by-large-scale-ai-models1) | Tags: Innovations Produits / Analyse vidéo
+- **Dahua présente un nouveau panneau de contrôle intelligent intégrant alarme, interphone et caméras** | sen.news | 2026 | Dahua lance une série de panneaux de contrôle intelligents (7 et 10,1 pouces) qui centralisent le contrôle d’alarme, l’interphone, les aperçus caméras et la surveillance environnementale sur un écran mural tactile. Destiné au résidentiel et au petit tertiaire, il simplifie l’installation et l’usage quotidien. | 🔗 [Lien](https://sen.news/new-dahua-smart-control-panel/) | Tags: Innovations Produits / Sécurité électronique
+
+## 🚀 Prospective & Technologies Émergentes (2 articles)
+
+- **Plan d’action européen sur la sécurité des drones et la contre-drone (Drone Security Package)** | EUR-Lex | Fév 2026 | La Commission européenne publie un plan d’action visant à renforcer la sécurité des drones et la contre-drone d’ici Q3 2026 : enregistrement obligatoire des drones, tests de résistance des infrastructures critiques, recommandations de performance pour les systèmes anti-drone et création du forum industriel D-TECT. | 🔗 [Lien](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52026DC0081) | Tags: Prospective / Détection intrusion
+- **Private security trends reshaping the sector in 2026: drones, anti-drones and autonomous patrol robots** | Running Brains Robotics | 2026 | En 2026, la sécurité privée franco-européenne intègre massivement les drones et systèmes anti-drones pour la reconnaissance et la détection d’intrusion, ainsi que des robots de patrouille autonome pour la surveillance périmétrique. L’IA analytique et la résilience face aux menaces hybrides deviennent des critères standards. | 🔗 [Lien](https://www.runningbrainsrobotics.com/en/private-security-trends-2026/) | Tags: Prospective / Détection intrusion
+
+## 🖼️ Images & schémas analysés
+
+Aucune image récupérée lors de la collecte automatisée du jour. Seuls des extraits texte ont été exploités.
+
+
+## 📊 Synthèse — 5 signaux faibles
+
+1. **L’IA en périphérie (edge) devient standard** : les fabricants (Hikvision, Hanwha, Ajax) intègrent des modèles grande échelle directement dans les caméras et hubs, réduisant la dépendance au cloud et les fausses alertes.
+2. **Convergence alarme / vidéo / contrôle d’accès** : les panneaux hybrides (Dahua, Ajax) et les apps de réponse (Ajax Response) unifient la gestion des incidents sur une seule interface, accélérant les temps de réponse.
+3. **Régulation algorithmique en tension** : la loi RIPOST étend la VSA jusqu’à 2030, mais des tribunaux (Moirans) continuent de sanctionner les déploiements sans base légale suffisante, créant une incertitude pour les opérateurs.
+4. **Drones et contre-drones entrent dans les standards opérateurs** : le plan européen Drone Security Package et les tendances 2026 font des drones un outil double (menace / riposte) pour la sécurité des sites critiques.
+5. **Cybersécurité des stations de télésurveillance comme critère n°1** : la mise à jour APSAD R31 mars 2026 impose des questionnaires cybersécurité et de la résilience cloud, marquant un tournant réglementaire pour les opérateurs.
