@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Quantique — 2026-09-07</title>
+<style>
+  :root {
+    --bg: #0b0f19;
+    --surface: #111827;
+    --surface-2: #0f172a;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #38bdf8;
+    --accent-2: #818cf8;
+    --ok: #22c55e;
+    --warn: #f59e0b;
+    --badge-bg: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,0.08), transparent),
+                radial-gradient(900px 500px at 90% 10%, rgba(129,140,248,0.07), transparent),
+                var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 28px 22px 60px; }
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand h1 { margin: 0; font-size: 22px; letter-spacing: 0.2px; }
+  .brand .pill {
+    font-size: 12px; color: var(--muted); background: var(--badge-bg);
+    border: 1px solid var(--border); padding: 4px 10px; border-radius: 999px;
+  }
+  .kpis { display: flex; gap: 10px; flex-wrap: wrap; }
+  .kpi {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; min-width: 90px;
+  }
+  .kpi b { display: block; font-size: 20px; color: var(--accent); }
+  .kpi span { font-size: 12px; color: var(--muted); }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  nav a {
+    color: var(--text); text-decoration: none; background: var(--badge-bg);
+    border: 1px solid var(--border); padding: 8px 12px; border-radius: 10px; font-size: 13px;
+  }
+  nav a:hover { border-color: rgba(255,255,255,0.22); }
+  section { margin-bottom: 32px; }
+  h2 {
+    margin: 0 0 14px; font-size: 18px; color: var(--accent-2);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+    border: 1px solid var(--border); border-radius: 14px; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+  .card h3 { margin: 0; font-size: 15px; line-height: 1.35; }
+  .meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; flex-wrap: wrap; }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .summary { font-size: 13.5px; color: #d1d5db; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    background: var(--badge-bg); color: var(--muted); border: 1px solid var(--border);
+    padding: 3px 8px; border-radius: 999px; font-size: 11px;
+  }
+  .maturity, .horizon {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px;
+    background: var(--badge-bg); border: 1px solid var(--border); padding: 4px 10px; border-radius: 999px;
+    color: var(--muted);
+  }
+  .maturity::before, .horizon::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+  }
+  .maturity.Disponible::before { background: var(--ok); }
+  .maturity.Beta::before { background: #60a5fa; }
+  .maturity.R&D::before { background: var(--warn); }
+  .maturity["Théorique"]::before { background: #f87171; }
+  .horizon["Court"]::before { background: var(--ok); }
+  .horizon["Moyen"]::before { background: var(--warn); }
+  .horizon["Long"]::before { background: #f87171; }
+  .images { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+  .images ul { margin: 8px 0 0; padding-left: 18px; color: #d1d5db; font-size: 13.5px; }
+  .signals { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .signal {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+    border: 1px solid var(--border); border-radius: 14px; padding: 14px;
+  }
+  .signal strong { color: var(--accent-2); }
+  footer { margin-top: 30px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div>
+        <h1>⚛️ Veille Informatique Quantique</h1>
+        <div class="pill">2026-09-07 · Bi-hebdomadaire</div>
+      </div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><b>24</b><span>Articles</span></div>
+      <div class="kpi"><b>FR/EU</b><span>Focus marché</span></div>
+      <div class="kpi"><b>R&D</b><span>Majoritaires</span></div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#part1">🇫🇷🇪🇺 Marché</a>
+    <a href="#part2">🌍 Monde</a>
+    <a href="#part3">🔬 Innovations</a>
+    <a href="#part4">🚀 Prospective</a>
+    <a href="#images">🖼️ Visuels</a>
+    <a href="#signaux">📊 Signaux</a>
+  </nav>
+
+  <section id="part1">
+    <h2>🇫🇷🇪🇺 Marché France & Europe</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>France Quantum 2026 : vers l'industrialisation</h3>
+        <div class="meta"><span>IT for Business</span><span>2026-09</span></div>
+        <p class="summary">L'édition 2026 confirme un milliard d'euros supplémentaires sur 2026-2030, portant l'investissement public à plus de 3 Md€ global. La feuille de route recentre les priorités et fixe 1 024 qubits logiques d'ici 2032.</p>
+        <div class="tags"><span class="tag">France 2030</span><span class="tag">PROQCIMA</span><span class="tag">souveraineté</span></div>
+        <div class="meta"><a href="https://www.itforbusiness.fr/france-quantum-2026-vers-lindustrialisation-105378" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Q-PLANET : l'Europe industrialise le quantique à atomes neutres</h3>
+        <div class="meta"><span>Pitas / Pasqal</span><span>2026-09-02</span></div>
+        <p class="summary">Programme européen de 50 M€ coordonné par Pasqal, 28 partenaires dans 11 États membres, sous le Chips Joint Undertaking. Première phase dédiée à la sérialisation des composants critiques lasers, puces et cellules atomiques.</p>
+        <div class="tags"><span class="tag">UE</span><span class="tag">Chips JU</span><span class="tag">atomes neutres</span><span class="tag">Pasqal</span></div>
+        <div class="meta"><a href="https://pitas.com/science-et-technologie/q-planet-europe-informatique-quantique-atomes-neutres-pasqal/" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>1 Md€ supplémentaire dans la stratégie nationale quantique</h3>
+        <div class="meta"><span>info.gouv.fr / DGE</span><span>2026-05-22</span></div>
+        <p class="summary">PROQCIMA doublé à 300 M€ pour 1 024 qubits logiques en 2032. HQI poursuivi à 72,3 M€. La France portera un Quantum Act européen d'ici 2027 pour des achats publics mutualisés et une filière 100% européenne.</p>
+        <div class="tags"><span class="tag">France 2030</span><span class="tag">PROQCIMA</span><span class="tag">HQI</span><span class="tag">souveraineté</span></div>
+        <div class="meta"><a href="https://www.info.gouv.fr/actualite/souverainete-technologique-la-france-investit-1-milliard-d-euros-supplementaire-dans-la-strategie-nationale-quantique" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Nvidia entre au capital d'Alice & Bob</h3>
+        <div class="meta"><span>Info.fr</span><span>2026-05-22</span></div>
+        <p class="summary">NVentures entre au capital dans le prolongement de la Série B de 100 M€. Alice & Bob atteint 130 M€ levés depuis 2020 et confirme son rôle clé dans PROQCIMA, avec Kity installé au CEA en 2027.</p>
+        <div class="tags"><span class="tag">Alice & Bob</span><span class="tag">Nvidia</span><span class="tag">financement</span></div>
+        <div class="meta"><a href="https://info.fr/nvidia-nventures-alice-bob-quantique-france-100-millions/" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Pasqal fait son entrée au Nasdaq</h3>
+        <div class="meta"><span>La Tribune / ZDNet</span><span>2026-08-28 → 2026-09-01</span></div>
+        <p class="summary">Introduction via SPAC Bleichroeder à près de 2 MdUSD, 360 M$ de liquidités, double cotation Euronext Paris visée fin 2026-début 2027. Objectif : doubler la capacité industrielle en 24 mois et produire 13 QPU par an.</p>
+        <div class="tags"><span class="tag">Pasqal</span><span class="tag">Nasdaq</span><span class="tag">SPAC</span><span class="tag">levée</span></div>
+        <div class="meta"><a href="https://www.zdnet.fr/actualites/pasqal-fait-ses-premiers-pas-a-wall-street-le-quantique-francais-change-dechelle-500844.htm" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>EuroQCI : l'infrastructure de communication quantique avance</h3>
+        <div class="meta"><span>Commission européenne</span><span>2026-09</span></div>
+        <p class="summary">Eagle-1 attendu fin 2026, déploiement terrestre et spatial IRIS² en cours, projet NOSTRADAMUS pour tester/certifier la QKD. L'UE sécurise sa souveraineté numérique et ses infrastructures critiques.</p>
+        <div class="tags"><span class="tag">EuroQCI</span><span class="tag">QKD</span><span class="tag">réglementation</span></div>
+        <div class="meta"><a href="https://digital-strategy.ec.europa.eu/fr/policies/european-quantum-communication-infrastructure-euroqci" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="part2">
+    <h2>🌍 Monde — Pertinence Europe</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>IBM Quantum Nighthawk r2 : 120 qubits, 25× le débit</h3>
+        <div class="meta"><span>IBM Quantum Blog / NAND Research</span><span>2026-09-02</span></div>
+        <p class="summary">Processeur disponible sur IBM Quantum Platform avec reset dissipatif haute vitesse, plus de 100 000 circuits/s et une validation sur des circuits à plus de 7 500 portes deux-qubits. Étape clé vers la correction d'erreurs.</p>
+        <div class="tags"><span class="tag">IBM Quantum</span><span class="tag">Nighthawk r2</span><span class="tag">débit</span></div>
+        <div class="meta"><a href="https://www.ibm.com/quantum/blog/nighthawk-r2" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Canada : 195 M$ CAD pour Xanadu et la supply chain photonique</h3>
+        <div class="meta"><span>QuantumWire</span><span>2026-09-05</span></div>
+        <p class="summary">Financement massif dans Project OPTIMISM pour la fabrication photonique à grande échelle. Ce coup d'accélération renforce la pression sur l'UE pour sécuriser sa propre chaîne de valeur quantique.</p>
+        <div class="tags"><span class="tag">Xanadu</span><span class="tag">photonique</span><span class="tag">supply chain</span></div>
+        <div class="meta"><a href="http://quantumwire.com/article/17886132327351.html" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>NEC renonce à construire un ordinateur quantique</h3>
+        <div class="meta"><span>Nikkei Asia</span><span>2026-09-05</span></div>
+        <p class="summary">NEC arrête son développement après des décennies de R&D sur supraconducteurs et annealing, jugeant le retour sur investissement trop lointain. Signal de consolidation du marché et d'impératif de coordination des soutiens publics.</p>
+        <div class="tags"><span class="tag">NEC</span><span class="tag">Japon</span><span class="tag">ROI</span><span class="tag">supraconducteur</span></div>
+        <div class="meta"><a href="https://asia.nikkei.com/business/technology/japan-s-nec-scraps-effort-to-build-a-quantum-computer" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>PsiQuantum et Brookhaven s'associent sur Construct</h3>
+        <div class="meta"><span>QuantumWire</span><span>2026-09-06</span></div>
+        <p class="summary">Partenariat pour accélérer le développement d'algorithmes tolérants aux pannes sur Construct, dans Quantum Genesis ciblant 2028. Axe algorithmique prérequis aux applications quantiques utiles.</p>
+        <div class="tags"><span class="tag">PsiQuantum</span><span class="tag">algorithmes</span><span class="tag">tolérance aux pannes</span></div>
+        <div class="meta"><a href="http://quantumwire.com/article/17887083067379.html" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Q-Day est un problème de préparation, pas une date</h3>
+        <div class="meta"><span>Security Today</span><span>2026-09-01</span></div>
+        <p class="summary">L'article lie l'accélération annoncée par Google sur Q-Day à l'urgence de migrer vers la PQC. Il souligne le risque "harvest now, decrypt later" et la nécessité de flexibilité cryptographique pour les infrastructures européennes.</p>
+        <div class="tags"><span class="tag">Q-Day</span><span class="tag">HN/DL</span><span class="tag">NIST PQC</span><span class="tag">Google</span></div>
+        <div class="meta"><a href="https://securitytoday.com/articles/2026/09/01/q-day-is-a-readiness-problem-not-a-date-on-the-calendar.aspx" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Synthèse hebdomadaire Quantum Computing Weekly — 5 septembre 2026</h3>
+        <div class="meta"><span>The Qubit Report</span><span>2026-09-04</span></div>
+        <p class="summary">Accord Pasqal–KACST en Arabie saoudite, 195 M$ Canada chez Xanadu, IBM Nighthawk r2, Diraq dans un datacenter Equinix. Éléments sur la concurrence des supply chains et les partenariats géopolitiques transposables à l'Europe.</p>
+        <div class="tags"><span class="tag">Pasqal</span><span class="tag">Xanadu</span><span class="tag">IBM</span><span class="tag">neutral-atom</span></div>
+        <div class="meta"><a href="https://thequbitreport.com/quantum-computing-weekly-round-up/2026/09/04/quantum-computing-weekly-round-up-week-ending-september-5-2026/" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="part3">
+    <h2>🔬 Innovations Matérielles & Logicielles</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>MIT "Arm Qubit" : architecture supraconductrice à deux modes</h3>
+        <div class="meta"><span>The Quantum Insider</span><span>2026-09-04</span></div>
+        <p class="summary">Design séparant stockage et couplage/lecture avec "quarton coupler". Simulations : portes CZ à 8,6×10⁻⁵ en 17 ns et lecture en 27 ns. Accepté dans <i>Physical Review Applied</i>. Reste à valider expérimentalement.</p>
+        <div class="tags"><span class="tag">supraconducteur</span><span class="tag">architecture</span><span class="tag">correction d'erreurs</span></div>
+        <div><span class="maturity R&D">R&D</span></div>
+        <div class="meta"><a href="https://thequantuminsider.com/2026/09/04/mit-qubit-design-could-speed-quantum-operations-while-preserving-data/" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Validation expérimentale d'une architecture compacte tolérante aux fautes pour ions piégés</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-09-02</span></div>
+        <p class="summary">Code C4-Helix validé sur Quantinuum Helios à 98 qubits : erreur logique de 4,6×10⁻⁵ par cycle, interface avec un code surface à distance 5. Prototype matériel pour le régime tolérant aux fautes.</p>
+        <div class="tags"><span class="tag">ions piégés</span><span class="tag">correction d'erreurs</span><span class="tag">Quantinuum</span></div>
+        <div><span class="maturity R&D">R&D</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2609.03194" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Bus de navettage cohérent pour qubits de spin en silicium</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-09-02</span></div>
+        <p class="summary">Architecture de bus de navettage supportant portes transversales et distillation d'états magiques. Extension 2D réduisant les erreurs logiques et offrant une connectivité toutes-à-toutes entre qubits logiques.</p>
+        <div class="tags"><span class="tag">silicium</span><span class="tag">spin qubit</span><span class="tag">architecture</span></div>
+        <div><span class="maturity R&D">R&D</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2609.02641" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Parity Twine Networks : optimisation pour atomes neutres</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-09-03</span></div>
+        <p class="summary">Cadre matériel-logiciel réduisant le nombre de portes, la profondeur de circuit et le transport d'atomes. Sur une transformée de Fourier quantique à 30 qubits, fidélité trois ordres de grandeur supérieure aux compilations classiques.</p>
+        <div class="tags"><span class="tag">atomes neutres</span><span class="tag">compilation</span><span class="tag">optimisation</span></div>
+        <div><span class="maturity R&D">R&D</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2609.03583" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>EPCL : benchmark de circuit sans simulation classique</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-09-03</span></div>
+        <p class="summary">Mesure hardware-agnostique basée sur le recouvrement d'états, ne nécessitant ni simulation classique ni référence. Validée sur IBM 8 et 16 qubits ; décroissance EPCL observée avec des portes non Clifford.</p>
+        <div class="tags"><span class="tag">benchmark</span><span class="tag">matériel quantique</span><span class="tag">erreur</span></div>
+        <div><span class="maturity R&D">R&D</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2609.04132" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>QArray+ : simulateur GPU pour réseaux de points quantiques</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-09-03</span></div>
+        <p class="summary">Simulateur physique JAX pour réseaux de points quantiques semiconducteurs. Calcule des diagrammes de stabilité de charge sur grilles 100×100 en quelques secondes sur GPU ; soutient l'apprentissage automatique pour le réglage à grande échelle.</p>
+        <div class="tags"><span class="tag">silicium</span><span class="tag">points quantiques</span><span class="tag">simulateur</span></div>
+        <div><span class="maturity Beta">Beta</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2609.02736" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="part4">
+    <h2>🚀 Prospective & Impacts Sectoriels</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>IBM Quantum Nighthawk r2 — quantum utility documentée</h3>
+        <div class="meta"><span>IBM Quantum Blog / Quantum Computing Report</span><span>2026-09-02</span></div>
+        <p class="summary">Gain 12× sur simulations neutroniques (~60 s), avantage quantique par échantillonnage Clifford dopé. Ces résultats rapprochent le seuil d'utilité pratique pour des charges NISQ industrielles.</p>
+        <div class="tags"><span class="tag">quantum advantage</span><span class="tag">IBM</span><span class="tag">simulation</span></div>
+        <div><span class="horizon Court">Court terme</span></div>
+        <div class="meta"><a href="https://www.ibm.com/quantum/blog/nighthawk-r2" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Titans-QFWP : optimisation hybride de portefeuille</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-08-29</span></div>
+        <p class="summary">Architecture hybride QML par reinforcement learning atteignant un ratio de Calmar de 8,55 sur 468 actions du S&P 500, avec nettement moins de paramètres entraînables que des approches purement classiques.</p>
+        <div class="tags"><span class="tag">finance quantique</span><span class="tag">QML</span><span class="tag">hybrid</span></div>
+        <div><span class="horizon Moyen">Moyen terme</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2608.29093" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>IonQ et Einride : QAOA hybride pour la logistique fret</h3>
+        <div class="meta"><span>arXiv quant-ph</span><span>2026-04</span></div>
+        <p class="summary">Workflow hybride QAOA en warm start améliore jusqu'à +12 % les livraisons et réduit jusqu'à 6 % la distance totale sur données réelles, validé sur hardware ionique 20–32 qubits.</p>
+        <div class="tags"><span class="tag">logistique</span><span class="tag">QAOA</span><span class="tag">supply chain</span></div>
+        <div><span class="horizon Moyen">Moyen terme</span></div>
+        <div class="meta"><a href="https://arxiv.org/abs/2604.11758" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>G7 / CISA — Preparing for the Post-Quantum Era</h3>
+        <div class="meta"><span>CISA / G7 Cyber Security Working Group</span><span>2026-09-03</span></div>
+        <p class="summary">Le G7 appelle à accélérer la migration PQC et fixe des priorités opérationnelles pour les infrastructures critiques. Les algorithmes ciblés : ML-KEM, ML-DSA, SLH-DSA.</p>
+        <div class="tags"><span class="tag">PQC</span><span class="tag">NIST</span><span class="tag">G7</span><span class="tag">PKI</span></div>
+        <div><span class="horizon Court">Court terme</span></div>
+        <div class="meta"><a href="https://www.cisa.gov/resources-tools/resources/preparing-post-quantum-era-call-action" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>Q-CaDD : QML et docking pour la découverte de médicaments</h3>
+        <div class="meta"><span>Nature Scientific Reports</span><span>2026-03-21</span></div>
+        <p class="summary">Workflow hybride intégrant QML et docking moléculaire pour EGFR, atteignant AUC-ROC ≈ 0,76 sur Tox21. Démonstration d'un signal quantique complémentaire dans un workflow réaliste sous contraintes NISQ.</p>
+        <div class="tags"><span class="tag">pharma</span><span class="tag">QML</span><span class="tag">NISQ</span><span class="tag">docking</span></div>
+        <div><span class="horizon Moyen">Moyen terme</span></div>
+        <div class="meta"><a href="https://www.nature.com/articles/s41598-026-44978-4" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+      <article class="card">
+        <h3>McKinsey Quantum Technology Monitor 2026</h3>
+        <div class="meta"><span>McKinsey Quantum Technology</span><span>2026-04-28</span></div>
+        <p class="summary">Plus de 300 entreprises collaborent avec des fournisseurs quantiques ; marché potentiel de 2 700 MdUSD d'ici 2035. Pharma/chimie, finance et logistique sont les secteurs les plus avancés en adoption hybride classique-quantique.</p>
+        <div class="tags"><span class="tag">McKinsey</span><span class="tag">marché</span><span class="tag">adoption</span></div>
+        <div><span class="horizon Moyen">Moyen terme</span></div>
+        <div class="meta"><a href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point" target="_blank" rel="noopener">🔗 Source</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="images">
+    <h2>🖼️ Images & schémas analysés</h2>
+    <div class="images">
+      <p>Aucune image jointe à ce tour. Supports visuels utiles identifiés dans les sources :</p>
+      <ul>
+        <li>IBM Nighthawk r2 : photographie du chip, schéma du reset dissipatif, comparaison de throughput Heron vs Nighthawk.</li>
+        <li>Quantinuum Helios / C4-Helix : architecture du code correcteur compact.</li>
+        <li>McKinsey 2026 : graphiques sectoriels d'adoption et courbes de valeur projetée.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="signaux">
+    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="signals">
+      <div class="signal"><strong>Consolidation du marché hardware</strong> : NEC arrête son projet quantique ; le risque de "quantum winter" augmente pour les acteurs sans cash runway. Les DSI/RSSI doivent éviter la dépendance à un seul fournisseur hardware.</div>
+      <div class="signal"><strong>Supply chain comme champ de bataille</strong> : Q-PLANET et le financement canadien à Xanadu montrent que la bataille future se joue sur la capacité de fabrication. L'UE doit sécuriser sa chaîne d'approvisionnement avant 2030.</div>
+      <div class="signal"><strong>Migration PQC priorité immédiate</strong> : G7/CISA et ANSSI convergent vers une intégration PQC obligatoire dès 2027. Les RSSI doivent finaliser leur inventaire cryptographique cette année.</div>
+      <div class="signal"><strong>Hybridation déjà opérationnelle en logistique</strong> : IonQ/Einride montrent des gains mesurables (+12 % livraisons) sur instances NISQ réalistes. Les directions R&D doivent tester des pilots hybrides bornés sur cas métier.</div>
+      <div class="signal"><strong>"Quantum useful" avant "quantum fault-tolerant"</strong> : IBM documente désormais des avantages utilisateur sur simulations matériaux. L'ère du quantique utile se construit par couches logicielles et algorithmiques, pas seulement par la course aux qubits.</div>
+    </div>
+  </section>
+
+  <footer>
+    Généré automatiquement par Hermes Agent · Veille Quantique bi-hebdomadaire · Date : 2026-09-07 · Sources primaires priorisées · Preprints arXiv signalés
+  </footer>
+</div>
+</body>
+</html>

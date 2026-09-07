@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Mistral AI — 2026-09-07</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille Mistral AI</h1>
+        <p>2026-09-07 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-09-07">2026-09-07</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne · 12 actualités</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">4 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Partenariat public</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Financement</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure</span>
+      <span class="badge"><span class="dot" style="color:#9333aa"></span>IA industrielle</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Souveraineté</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Produits</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>L'État renforce son partenariat avec Mistral : 6 M€ pour les ministères</h3>
+            <div class="meta">Le Monde — 03/09/2026</div>
+            <p>Nouvelles expérimentations dans la cybersécurité, la fraude fiscale et la justice, après le piratage de la DGFiP.</p>
+            <a href="https://www.lemonde.fr/pixels/article/2026/09/03/intelligence-artificielle-l-etat-renforce-son-partenariat-avec-mistral-et-lance-de-nouvelles-experimentations-dans-des-ministeres_6764672_4408996.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Après le piratage des impôts, des ingénieurs Mistral dans les ministères</h3>
+            <div class="meta">01net — 03/09/2026</div>
+            <p>Contrat de marché public non exclusif ; détachement d'ingénieurs, hébergement souverain possible.</p>
+            <a href="https://www.01net.com/actualites/apres-le-piratage-des-impots-des-ingenieurs-de-mistral-vont-sinstaller-dans-les-ministeres.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Financement record : Mistral négocie une levée de 3 Md€</h3>
+            <div class="meta">L'Opinion / Sifted — 01-04/09/2026</div>
+            <p>Valorisation cible autour de 20 Md€ ; tour de table mené par Samsung, Nvidia et ASML.</p>
+            <a href="https://www.lopinion.fr/economie/mistral-ai-leve-des-milliards-bercy-sinquiete-le-paradoxe-de-la-souverainete-numerique" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>"Si l'IA européenne se résume à Mistral, nous sommes fichus"</h3>
+            <div class="meta">AFP / ChatEurope — 03/09/2026</div>
+            <p>Roland Lescure met en garde contre la dépendance à un seul acteur lors d'une visite en Silicon Valley.</p>
+            <a href="https://chateurope.eu/fr/si-l-ia-europeenne-se-resume-a-mistral-nous-sommes-fichus-previent-le-ministre-francais-de-l-economie/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Mistral et GLM 5.2 : le champion européen héberge un modèle chinois</h3>
+            <div class="meta">Rolling Stone FR — 03/09/2026</div>
+            <p>GLM 5.2 de Z.ai est proposé sans modification ; débat sur la souveraineté réelle vs distribution multi-modèles.</p>
+            <a href="https://www.rollingstone.fr/mistral-ai-glm-5-2-virage-champion-europeen-ia/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Europe hors France -->
+      <article class="card" aria-labelledby="europe">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill green">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral et Microsoft scellent un partenariat stratégique à plusieurs milliards</h3>
+            <div class="meta">Microsoft News — 21/07/2026</div>
+            <p>Medium 3.5 et OCR 4 intégrés à Foundry et Copilot ; infrastructure GPU européenne renforcée.</p>
+            <a href="https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>BNP Paribas renforce son partenariat avec Mistral après l'exclusion de Mythos</h3>
+            <div class="meta">01net / Zonebourse — 26/05/2026</div>
+            <p>Déploiements on-premise, KYC, conformité et assistant HelloïZ : un contrat pluriannuel.</p>
+            <a href="https://www.01net.com/actualites/exclue-de-mythos-la-banque-bnp-paribas-choisit-mistral.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Workflows en public preview : ASML, BNP Paribale, France Travail en production</h3>
+            <div class="meta">Mistral AI / IT SOCIAL — 27/04-06/09/2026</div>
+            <p>Orchestration IA durable basée sur Temporal, avec approbation humaine et séparation control/data plane.</p>
+            <a href="https://mistral.ai/fr/news/workflows/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral x HUMAIN : partenariat de plusieurs centaines de millions d'euros en Arabie saoudite</h3>
+            <div class="meta">BFM TV / PRNewswire — 24-25/08/2026</div>
+            <p>Modèles arabophones, cybersécurité, voix ; usage possible des datacenters HUMAIN ; co-go-to-market.</p>
+            <a href="https://www.bfmtv.com/tech/intelligence-artificielle/mistral-champion-francais-de-l-ia-annonce-une-collaboration-strategique-de-plusieurs-centaines-de-millions-d-euros-pour-le-deploiement-de-solutions-en-arabie-saoudite_AN-202608250554.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Shieldstral : Mistral lance un modèle de modération multimodal open weights</h3>
+            <div class="meta">ZDNet FR — 07/08/2026</div>
+            <p>3 Md paramètres, Apache 2.0, texte et image ; dans l'Open Secure AI Alliance avec Nvidia.</p>
+            <a href="https://www.zdnet.fr/actualites/avec-shieldstral-mistral-ai-se-lance-dans-la-moderation-multimodale-499422.htm" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Datacenter des Ulis : 10 MW dédiés à l'inférence, ouverture en Q3 2026</h3>
+            <div class="meta">Mistral AI / Futurum — 28/05/2026</div>
+            <p>Premier site d'inférence propriétaire ; cible de 200 MW fin 2027 et ~1 GW d'ici 2030.</p>
+            <a href="https://mistral.ai/news/ai-now-summit-2026/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Vibe free tier : entraînement activé par défaut, tollé sur Hacker News</h3>
+            <div class="meta">AI Weekly / ByteIota — 02/09/2026</div>
+            <p>Opt-out nécessaire ; API gratuite, Team et Enterprise sont exclus par défaut ; opt-out distinct Le Chat / API.</p>
+            <a href="https://aiweekly.co/alerts/mistral-docs-confirm-vibe-free-tier-trains-on-user-prompts-by-default" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille générée le 2026-09-07 · Sources vérifiées · Archivé dans /Users/manud/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+</body>
+</html>
