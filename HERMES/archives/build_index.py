@@ -48,7 +48,7 @@ nav_btns = []
 panels_html = []
 for pid, nav, panel, has in built:
     if has and not first_set:
-        nav = nav.replace('>', ' class="active">', 1) if 'class=' not in nav.split('>')[0] else nav.replace(' data-panel', ' class="active" data-panel', 1)
+        nav = nav.replace('<button ', '<button class="active" ', 1)
         panel = panel.replace('class="panel"', 'class="panel active"', 1)
         first_set = True
     nav_btns.append(nav)
@@ -97,7 +97,7 @@ footer{{text-align:center;color:var(--muted);font-size:.75rem;padding:1.5rem 1re
 <main>
 {chr(10).join(panels_html)}
 </main>
-<footer>Généré automatiquement — {total} publications</footer>
+<footer>Généré automatiquement — {total} publications · dernière mise à jour : <span id="lastmod"></span></footer>
 <script>
 document.querySelectorAll('nav button').forEach(function(b){{b.addEventListener('click',function(){{
   if(b.disabled)return;
@@ -106,6 +106,10 @@ document.querySelectorAll('nav button').forEach(function(b){{b.addEventListener(
   b.classList.add('active');
   document.getElementById('panel-'+b.dataset.panel).classList.add('active');
 }});}});
+document.addEventListener('DOMContentLoaded',function(){{
+  var el=document.getElementById('lastmod');
+  if(el)el.textContent=document.lastModified;
+}});
 </script>
 </body>
 </html>
