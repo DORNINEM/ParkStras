@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Mistral AI — 2026-09-28</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille Mistral AI</h1>
+        <p>2026-09-28 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-09-28">2026-09-28</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne · 12 actualités</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France &amp; souveraineté</div>
+        <div class="value">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Monde &amp; stratégie</div>
+        <div class="value">2 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🤝 Partenariats &amp; produits</div>
+        <div class="value" style="color:var(--success)">7 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges">
+      <span class="badge"><span class="dot"></span>Fenêtre : 21–28 septembre 2026</span>
+      <span class="badge"><span class="dot"></span>12 actualités avec liens sources</span>
+      <span class="badge"><span class="dot"></span>Collecte Hermes Agent</span>
+    </div>
+
+    <div class="grid">
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+            🇫🇷 France &amp; souveraineté
+          </h2>
+          <span class="pill blue">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>MAIF : l'assureur français choisit Mistral AI aux côtés de Scaleway et Diabolocom pour sa souveraineté numérique</h3>
+            <div class="meta">LeMagIT — 24/09/2026</div>
+            <p>La MAIF a retenu Mistral AI pour étendre ses cas d'usage d'IA générative (assistance aux conseillers, services aux sociétaires), avec Scaleway pour le cloud souverain GPU et Diabolocom pour la relation client multicanale — une nouvelle illustration de la migration des grandes entreprises françaises vers la tech souveraine, un an après BNP Paribas, la Banque Postale et la Caisse des Dépôts.</p>
+            <a href="https://www.lemagit.fr/actualites/366651272/Souverainete-et-independances-numeriques-la-MAIF-choisit-Mistral-Scaleway-et-Diabolocom" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>AI Engineer Paris 2026 : Mistral organise la 2ᵉ édition à Station F, ~1 000 ingénieurs réunis</h3>
+            <div class="meta">ai.engineer / Station F — 23-24/09/2026</div>
+            <p>Deux jours de conférences techniques organisés par Mistral AI à Station F (65+ talks, ~1 000 participants) : agents, context engineering, infrastructures. Au programme retenu par la presse : productivité IA et réorganisation du travail des développeurs, l'agent unifié Vibe, et le data center parisien de 10 MW. Station F a aussi lancé le 23/09 le batch 2 de son programme F/ai, dont Mistral est partenaire fondateur.</p>
+            <a href="https://ai.engineer/paris/2026" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Contexte : Numspot, la « caution souveraineté » de Mistral pour les entreprises françaises</h3>
+            <div class="meta">Usine Digitale / ZDNet — 18/09/2026 (contexte)</div>
+            <p>L'offre Numspot x Mistral (IA managée opérée de bout en bout en France, qualification SecNumCloud en cours) a continué d'alimenter l'actualité en début de semaine, notamment via le ZDNET Morning du 21/09 — une brique clé de la stratégie d'infrastructure souveraine défendue depuis la levée de 3 Md€.</p>
+            <a href="https://www.usine-digitale.fr/intelligence-artificielle/mistral-ai/numspot-la-caution-souverainete-de-mistral-ai-pour-seduire-les-entreprises-francaises.5MAGN33ZKRGM5BTTCFCXUY5SXU.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            🌍 Monde &amp; stratégie (dont contexte européen)
+          </h2>
+          <span class="pill green">2 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>ESA : l'Agence spatiale européenne signe une lettre d'intention avec Mistral pour l'IA appliquée au spatial</h3>
+            <div class="meta">ESA / Usine Digitale — 23-24/09/2026 (LoI signée le 16/09)</div>
+            <p>L'ESA annonce publiquement le 23 septembre la signature (16/09) d'une lettre d'intention avec Mistral : modèles et infrastructure Mistral explorés pour l'observation de la Terre, l'assistance aux ingénieurs et le développement des compétences — un nouveau jalon pour la souveraineté technologique européenne au spatial.</p>
+            <a href="https://www.esa.int/Newsroom/Press_Releases/L_ESA_et_Mistral_renforcent_leur_cooperation_dans_le_domaine_de_l_intelligence_artificielle" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« La saga Mistral : la souveraineté à géométrie variable d'un champion européen »</h3>
+            <div class="meta">Les Echos — fin septembre 2026</div>
+            <p>Nouvel épisode de la série des Echos sur Mistral : entre l'appui de l'Élysée, les partenariats industriels (dont le récent méga-contrat TotalEnergies) et les critiques sur ses choix stratégiques (hébergement de modèles tiers, investors étrangers), la souveraineté de Mistral se joue désormais à plusieurs niveaux — indépendance, données, compute et usage public.</p>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/la-saga-mistral-la-souverainete-a-geometrie-variable-dun-champion-europeen-2253224" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="produits">
+        <div class="card-head">
+          <h2 class="card-title" id="produits">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+            🤝 Produits, rachats &amp; écosystème
+          </h2>
+          <span class="pill yellow">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral rachète Pimento, start-up parisienne de campagnes publicitaires par IA (3ᵉ acquisition de 2026)</h3>
+            <div class="meta">Les Echos / Sifted / Le Figaro / L'Informé — 21-24/09/2026</div>
+            <p>Confirmé le 21-22 septembre : Mistral acquiert Pimento (plateforme Pix AI de création de campagnes, visuels et slogans par IA, 180+ marques clientes). Montant discuté : ~3,8 M€ selon L'Informé, 12,7 M€ cash et actions selon les filings relayés par Sifted. Les fondateurs et l'équipe rejoignent l'ingénierie et le produit pour renforcer Vibe (ex-Le Chat) — 3ᵉ rachat de l'année après Koyeb et Emmi AI, trois semaines après la levée de 3 Md€.</p>
+            <a href="https://www.lesechos.fr/start-up/deals/mistral-signe-une-nouvelle-acquisition-avec-pimento-2252857" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Vibe unifie Chat et Work : bascule Fast/Think, Spreadsheets, Mini App Canvas et Base de connaissances agentique</h3>
+            <div class="meta">Mistral Docs (release notes) — 22/09/2026</div>
+            <p>Grosse mise à jour produit du 22 septembre : les modes Chat et Work fusionnent en une seule expérience Vibe avec bascule rapide/pensée approfondie (déploiement progressif depuis le 14/09), création de feuilles de calcul multi-onglets avec formules (export .xlsx / Google Sheets), Mini App Canvas pour générer apps et dashboards interactifs à partir d'un prompt, et Knowledge Base agentique (successeur de Memories) en preview publique. L'application Android Vibe 2.12.0 est sortie le 21/09.</p>
+            <a href="https://docs.mistral.ai/resources/release-notes" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Vibe CLI 2.25.8 : sessions, projets distants et connecteurs MCP renforcés</h3>
+            <div class="meta">GitHub (mistralai/mistral-vibe) — 23/09/2026</div>
+            <p>Le rythme de releases s'accélère : 2.25.7 (22/09) puis 2.25.8 (23/09) apportent le support des projets distants, l'archivage de sessions, l'amélioration des serveurs MCP et une série de corrections sur le harness et les outils — la riposte de Mistral aux agents de code concurrents (Claude Code, Codex), après les correctifs de sécurité shell de la 2.25.4 du 12/09.</p>
+            <a href="https://github.com/mistralai/mistral-vibe/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Distribution continue : les modèles Mistral s'invitent sur Oracle OCI et chez les hyperscalers</h3>
+            <div class="meta">Oracle Blogs / IBM Docs — septembre 2026</div>
+            <p>Oracle a étendu en septembre son OCI Enterprise AI Model Import à Magistral Small et d'autres modèles Mistral, tandis qu'IBM watsonx ajuste ses cycles de support des modèles Mistral — signe que la stratégie « open-weight partout » de Mistral nourrit une distribution étendue au-delà de La Plateforme, y compris chez les acteurs américains.</p>
+            <a href="https://blogs.oracle.com/ai-and-datascience/whats-new-in-ai-september-2026-edition" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="perfs" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="perfs">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            📊 Performances, benchmarks &amp; indicateurs
+          </h2>
+          <span class="pill blue">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Benchmarks fin septembre : Mistral Medium 3.5 reste le meilleur modèle du catalogue</h3>
+            <div class="meta">BenchLM / vals.ai / AITNT — au 27/09/2026</div>
+            <p>Au 27 septembre, Medium 3.5 128B (open-weight, 256K de contexte, 77,6 % SWE-bench Verified) reste en tête du catalogue avec un BenchAlign de 36,1, devant Mistral Small 4 (34,3) et Mistral Large 3 (34,1). Sur Arena, mistral-medium-3.5 pointe à 1 426 Elo le 26/09. Toujours aucun nouveau modèle frontière depuis l'early access MoE de juillet — Leanstral 1.5 sera retiré le 30/09.</p>
+            <a href="https://benchlm.ai/best/mistral-models" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Adoption mobile : Vibe (ex-Le Chat) solide en France, ~45 K avis sur Google Play</h3>
+            <div class="meta">Similarweb / Google Play — 25/09/2026</div>
+            <p>Les données d'audience du 25 septembre montrent Vibe au top 40 des apps Productivity en France (top ~371 toutes catégories), avec aussi des rangs notables aux Pays-Bas et en Allemagne ; Google Play affiche 1 M+ téléchargements et ~45 000 avis (4,1). Une base solide mais qui reste marginale face à ChatGPT/Gemini — le repositionnement « agent de travail » de Vibe vise précisément à changer cette dynamique.</p>
+            <a href="https://www.similarweb.com/app/google/ai.mistral.chat/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Capacité de calcul : le chantier Campus AI de Fouju (1,4 GW) entre en construction ce mois-ci</h3>
+            <div class="meta">DCmag / Bpifrance Presse / campusia.com — septembre 2026</div>
+            <p>Après l'autorisation préfectorale de fin juillet, la première phase du campus de Fouju (Seine-et-Marne, 1,4 GW à terme, projet porté avec MGX, Bpifrance et NVIDIA) démarre sa construction en septembre : Mistral, client prioritaire avec 96 MW garantis (jusqu'à 200 MW), y croisera fer à partir de 2028 — pièce maîtresse de son objectif de 200 MW de compute d'ici fin 2027 et 1 GW d'ici 2030.</p>
+            <a href="https://dcmag.fr/le-prefet-de-seine-et-marne-a-valide-le-projet-campus-ia-de-fouju-14-gw-et-50-milliards-e/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <footer>
+      Veille générée le 2026-09-28 · Sources vérifiées · Archivé dans /Users/manud/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+</body>
+</html>
