@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-06</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Lundi 6 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-06T07:00:00.000000+00:00">Lundi 6 juillet 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">🌗</button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">6 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Agents & automation</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & régulation</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure & hardware</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Emploi & transition</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Énergie & climat</span>
+    </div>
+
+    <div class="grid">
+      
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Table ronde régulation : la presse française réclame 80 M€ à Brave</h3>
+            <div class="meta">ZDNet FR · 06/07/2026</div>
+            <p>Un contentieux met en lumière les enjeux réglementaires de l’IA générative et de l’entraînement sur données éditoriales sans consentement.</p>
+            <a href="https://www.zdnet.fr/actualites/zd-tech-intelligence-artificielle-la-presse-francaise-reclame-80-millions-deuros-a-brave-496176.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Google annonce l’ère de l’IA agentique avec Gemini</h3>
+            <div class="meta">01net · 06/07/2026</div>
+            <p>Google structure sa feuille de route autour d’agents IA autonomes capables d’anticiper les besoins utilisateurs et d’exécuter des séquences complexes sans sollicitation explicite.</p>
+            <a href="https://www.01net.com/actualites/google-annonce-lere-de-lia-agentique-quest-ce-que-ca-va-changer.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>IA 2026 : moins de copilotes et plus d’autonomie</h3>
+            <div class="meta">01net · 06/07/2026</div>
+            <p>Retour sur la bascule depuis les copilotes vers des systèmes agents plus autonomes dans les entreprises, avec des protocypes avancés présentés à CES.</p>
+            <a href="https://www.01net.com/actualites/lia-en-2026-moins-de-copilotes-et-plus-dautonomie.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Google négocie avec Marvell pour muscler ses puces IA</h3>
+            <div class="meta">01net · 06/07/2026</div>
+            <p>Alphabet cherche à réduire sa dépendance à Nvidia en intégrant un nouveau fournisseur pour l’inférence Gemini et les workloads agents.</p>
+            <a href="https://www.01net.com/actualites/google-muscle-puces-ia-marvell-nouveau-fournisseur.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Microsoft : la fin de plusieurs métiers blancs d’ici 18 mois ?</h3>
+            <div class="meta">01net · 06/07/2026</div>
+            <p>Mustafa Suleyman estime que l’IA atteindra une performance humaine sur la plupart des tâches intellectuelles dans un délai de 12 à 18 mois.</p>
+            <a href="https://www.01net.com/actualites/ces-taches-seront-automatisees-par-une-ia-microsoft-annonce-la-fin-de-ces-metiers-dici-18-mois.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Comment survivre à l’IA en entreprise ? La stratégie de Microsoft</h3>
+            <div class="meta">Numerama · 06/07/2026</div>
+            <p>Le groupe détaille sa feuille de route avec Agent 365 et la transformation des processus internes en systèmes auto-améliorants pilotés par l’IA.</p>
+            <a href="https://www.numerama.com/tech/2275943-le-patron-de-microsoft-livre-sa-vision-de-lentreprise-et-de-la-societe-a-lere-de-lia.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="europe">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill green">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>EU agrees to simplify AI rules to boost innovation</h3>
+            <div class="meta">European Commission · 07/05/2026</div>
+            <p>Accord politique du 7 mai 2026 pour simplifier l’AI Act et interdire les applications de nudification non consensuelle, dans un objectif de compétitivité.</p>
+            <a href="https://digital-strategy.ec.europa.eu/en/news/eu-agrees-simplify-ai-rules-boost-innovation-and-ban-nudification-apps-protect-citizens" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>For Europe to lead in AI, sovereignty must mean choice</h3>
+            <div class="meta">POLITICO · 06/07/2026</div>
+            <p>Analyse sur les risques d’un souverainisme fermé qui réduirait la croissance IA européenne des deux tiers sans ouverture stratégique.</p>
+            <a href="https://www.politico.eu/sponsored-content/for-europe-to-lead-in-ai-sovereignty-must-mean-choice/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>RAISE Summit 2026 returns to Paris</h3>
+            <div class="meta">tech.eu · 10/06/2026</div>
+            <p>Paris accueille le sommet RAISE regroupant 9 000+ leaders IA, avec 350 speakers et un focus sur l’IA d’entreprise.</p>
+            <a href="https://tech.eu/2026/06/10/raise-summit-returns-to-paris-on-july-8-9-2026-at-the-carrousel-du-louvre/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>CEE AI Index 2026 highlights readiness in Central and Eastern Europe</h3>
+            <div class="meta">tech.eu · 08/06/2026</div>
+            <p>L’indice souligne l’impact de la gouvernance sur la capacité des pays d’Europe centrale et orientale à développer, déployer et scaler l’IA.</p>
+            <a href="https://tech.eu/2026/06/08/small-countries-big-readiness-cee-ai-index-2026-highlights-ai-leaders-in-central-and-eastern-europe/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Google judged liable for false AI Overviews information in Munich</h3>
+            <div class="meta">ZDNet FR · 06/07/2026</div>
+            <p>Un tribunal régional de Munich juge Google responsable d’informations erronées produites par AI Overviews après des redirections vers des entités frauduleuses.</p>
+            <a href="https://www.zdnet.fr/actualites/google-responsable-fausses-informations-generees-ai-overviews.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Zuckerberg avoue que les agents IA n’avancent pas aussi vite qu’espéré</h3>
+            <div class="meta">TechCrunch · 03/07/2026</div>
+            <p>Meta reconnaît un décalage d’exécution sur ses ambitions agents ; les retours tangibles sont attendus dans les 3 à 6 mois.</p>
+            <a href="https://techcrunch.com/2026/07/02/mark-zuckerberg-tells-staff-that-ai-agents-havent-progressed-as-quickly-as-hed-hoped/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Anthropic discute avec Samsung d’une puce IA dédiée</h3>
+            <div class="meta">TechCrunch · 03/07/2026</div>
+            <p>Anthropic négocie avec Samsung un accélérateur mémoire personnalisé pour réduire sa dépendance aux fournisseurs historiques.</p>
+            <a href="https://techcrunch.com/2026/07/02/anthropic-is-discussing-a-new-custom-chip-with-samsung/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Together AI lève 800 M$ en Series C et dépasse les 8 Md$</h3>
+            <div class="meta">The Next Web · 03/07/2026</div>
+            <p>La plateforme cloud open-source profite de l’explosion des usages entreprise, soutenue par Aramco Ventures.</p>
+            <a href="https://thenextweb.com/news/together-ai-800m-series-c-aramco-ventures" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>PixelRAG bat les parseurs texte et divise par 10 le coût token des agents</h3>
+            <div class="meta">VentureBeat · 06/07/2026</div>
+            <p>UC Berkeley propose un pilotage par capture d’écran pour le RAG, améliorant la précision et réduisant fortement les coûts.</p>
+            <a href="https://venturebeat.com/data/pixelrag-beats-text-parsers-on-accuracy-and-cuts-ai-agent-token-costs-10x" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>AGI could arrive as early as 2026, according to AI leaders</h3>
+            <div class="meta">VentureBeat · 06/07/2026</div>
+            <p>Anthropic et OpenAI rapprochent leurs scénarios d’arrivée d’une IA forte et appellent à une préparation réglementaire accélérée.</p>
+            <a href="https://venturebeat.com/technology/agi-is-coming-faster-than-we-think-we-must-get-ready-now" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>85% of IT teams say AI agents are controlled, only 42% know the owner</h3>
+            <div class="meta">VentureBeat · 06/07/2026</div>
+            <p>Une étude Ivanti révèle un large fossé entre la déclaration de maîtrise des agents IA et la gouvernance réelle.</p>
+            <a href="https://venturebeat.com/security/85-of-it-teams-claim-every-ai-agent-is-under-control-only-42-actually-know-who-owns-them" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="arxiv">
+        <div class="card-head">
+          <h2 class="card-title" id="arxiv">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            ArXiv
+          </h2>
+          <span class="pill yellow">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Online Safety Monitoring for LLMs</h3>
+            <div class="meta">arXiv cs.AI · 03/07/2026</div>
+            <p>Publication retenue pour ICML 2026 Hypothesis Testing Workshop sur le monitoring temps réel de la sécurité LLM.</p>
+            <a href="https://arxiv.org/abs/2607.02510" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Program-as-Weights: A Programming Paradigm for Fuzzy Functions</h3>
+            <div class="meta">arXiv cs.LG · 03/07/2026</div>
+            <p>Paradigme de compilation de spécifications floues en artefacts neuronaux légers et exécutables hors ligne.</p>
+            <a href="https://arxiv.org/abs/2607.02512" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Beyond Adam: SOAP and Muon for ML Interatomic Potentials</h3>
+            <div class="meta">arXiv cs.LG · 03/07/2026</div>
+            <p>Optimiseurs structurés surpassant Adam pour la convergence et l’efficacité en apprentissage d’AMP.</p>
+            <a href="https://arxiv.org/abs/2607.02499" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>ReContext: Recursive Evidence Replay for Long-Context Reasoning</h3>
+            <div class="meta">arXiv cs.AI · 03/07/2026</div>
+            <p>Méthode de rejeu récursif d’évidences pour améliorer le raisonnement long-contexte dans les LLMs.</p>
+            <a href="https://arxiv.org/abs/2607.02509" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>What LLM Agents Say When No One Is Watching</h3>
+            <div class="meta">arXiv cs.AI · 03/07/2026</div>
+            <p>Étude sur l’émergence de structures sociales et d’objectifs latents dans les débats multi-agents LLM.</p>
+            <a href="https://arxiv.org/abs/2607.02507" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Rapport généré le 06/07/2026 · Sources FR, UE, Monde, ArXiv · template-inlined
+    </footer>
+  </div>
+</body>
+</html>

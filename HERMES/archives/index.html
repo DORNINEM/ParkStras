@@ -1,293 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HERMES Archives</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archives HERMES</title>
 <style>
-  :root {
-    --bg: #f5f6f8;
-    --card: #ffffff;
-    --text: #1f2430;
-    --muted: #6b7280;
-    --accent: #2563eb;
-    --border: #e5e7eb;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
-  .container { max-width: 880px; margin: 0 auto; padding: 0 20px 60px; }
-  header { text-align: center; padding: 40px 0 24px; }
-  header img { max-width: 220px; height: auto; margin-bottom: 16px; }
-  h1 { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.02em; }
-  .subtitle { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
-  nav.tabs {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0; margin-bottom: 28px;
-  }
-  nav.tabs button {
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  nav.tabs button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-  nav.tabs button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-  nav.tabs button:disabled { opacity: 0.45; cursor: not-allowed; }
-  .panel { display: none; }
-  .panel.active { display: block; }
-  .panel-empty {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 32px; text-align: center;
-    color: var(--muted);
-  }
-  ul.file-list { list-style: none; }
-  ul.file-list li {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    margin-bottom: 8px;
-    transition: box-shadow 0.15s ease;
-  }
-  ul.file-list li:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  ul.file-list a {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 18px; text-decoration: none; color: var(--text);
-    font-size: 0.92rem;
-  }
-  ul.file-list a:hover { color: var(--accent); }
-  ul.file-list .date { color: var(--muted); font-size: 0.85rem; white-space: nowrap; margin-left: 16px; }
-  footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 32px 0 0; }
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;background:#f6f7f9;color:#111827}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+header img{height:56px;width:auto}
+h1{font-size:22px;margin:0;color:#0f172a}
+.subtitle{font-size:13px;color:#6b7280;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+a.card{display:block;padding:18px 20px;border:1px solid #e5e7eb;border-radius:14px;background:#fff;color:#0f172a;text-decoration:none;box-shadow:0 4px 14px rgba(15,23,42,.05);transition:border-color .15s}
+a.card:hover{border-color:#c7d2fe;background:#f8faff}
+.card h2{margin:0 0 6px;font-size:16px}
+.card p{margin:0;font-size:13px;color:#6b7280}
+.card .count{display:inline-block;margin-top:10px;font-size:11px;background:#eef2ff;color:#4338ca;padding:2px 8px;border-radius:999px}
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <img src="innovia2.png" alt="Innovia">
-    <h1>HERMES Archives</h1>
-    <p class="subtitle">Publications et veilles archiv&eacute;es</p>
-  </header>
-  <nav class="tabs" id="tabs">
-  <button data-tab="mistral" class="active">Actualités Mistral</button>
-  <button data-tab="ia">Actualités IA global</button>
-  <button data-tab="tele">Veille télésurveillance</button>
-  <button data-tab="rh">Veille IA RH</button>
-  <button data-tab="q">Veille IA Q</button>
-  <button data-tab="diabete">Veille Diabète</button>
-  </nav>
-  <main id="panels">
-  <section class="panel active" id="panel-mistral">
-    <ul class="file-list">
-      <li><a href="MISTRAL-2026-09-28.html"><span>MISTRAL-2026-09-28</span><span class="date">2026-09-28</span></a></li>
-      <li><a href="MISTRAL-2026-09-21.html"><span>MISTRAL-2026-09-21</span><span class="date">2026-09-21</span></a></li>
-      <li><a href="MISTRAL-2026-09-14.html"><span>MISTRAL-2026-09-14</span><span class="date">2026-09-14</span></a></li>
-      <li><a href="MISTRAL-2026-09-07.html"><span>MISTRAL-2026-09-07</span><span class="date">2026-09-07</span></a></li>
-      <li><a href="MISTRAL-2026-08-31.html"><span>MISTRAL-2026-08-31</span><span class="date">2026-08-31</span></a></li>
-      <li><a href="MISTRAL-2026-08-24.html"><span>MISTRAL-2026-08-24</span><span class="date">2026-08-24</span></a></li>
-      <li><a href="MISTRAL-2026-08-17.html"><span>MISTRAL-2026-08-17</span><span class="date">2026-08-17</span></a></li>
-      <li><a href="MISTRAL-2026-08-10.html"><span>MISTRAL-2026-08-10</span><span class="date">2026-08-10</span></a></li>
-      <li><a href="MISTRAL-2026-07-27.html"><span>MISTRAL-2026-07-27</span><span class="date">2026-07-27</span></a></li>
-      <li><a href="MISTRAL-2026-07-20.html"><span>MISTRAL-2026-07-20</span><span class="date">2026-07-20</span></a></li>
-      <li><a href="MISTRAL-2026-07-15.html"><span>MISTRAL-2026-07-15</span><span class="date">2026-07-15</span></a></li>
-      <li><a href="MISTRAL-2026-07-13.html"><span>MISTRAL-2026-07-13</span><span class="date">2026-07-13</span></a></li>
-      <li><a href="MISTRAL-2026-07-06.html"><span>MISTRAL-2026-07-06</span><span class="date">2026-07-06</span></a></li>
-      <li><a href="MISTRAL-2026-07-03.html"><span>MISTRAL-2026-07-03</span><span class="date">2026-07-03</span></a></li>
-      <li><a href="MISTRAL-2026-07-02.html"><span>MISTRAL-2026-07-02</span><span class="date">2026-07-02</span></a></li>
-      <li><a href="MISTRAL-2026-07-01.html"><span>MISTRAL-2026-07-01</span><span class="date">2026-07-01</span></a></li>
-      <li><a href="MISTRAL-2026-06-30.html"><span>MISTRAL-2026-06-30</span><span class="date">2026-06-30</span></a></li>
-      <li><a href="MISTRAL-2026-06-29.html"><span>MISTRAL-2026-06-29</span><span class="date">2026-06-29</span></a></li>
-      <li><a href="MISTRAL-2026-06-28.html"><span>MISTRAL-2026-06-28</span><span class="date">2026-06-28</span></a></li>
-      <li><a href="MISTRAL-2026-06-27.html"><span>MISTRAL-2026-06-27</span><span class="date">2026-06-27</span></a></li>
-      <li><a href="MISTRAL-2026-06-26.html"><span>MISTRAL-2026-06-26</span><span class="date">2026-06-26</span></a></li>
-      <li><a href="MISTRAL-2026-06-25.html"><span>MISTRAL-2026-06-25</span><span class="date">2026-06-25</span></a></li>
-      <li><a href="MISTRAL-2026-06-24.html"><span>MISTRAL-2026-06-24</span><span class="date">2026-06-24</span></a></li>
-      <li><a href="MISTRAL-2026-06-23.html"><span>MISTRAL-2026-06-23</span><span class="date">2026-06-23</span></a></li>
-      <li><a href="MISTRAL-2026-06-22.html"><span>MISTRAL-2026-06-22</span><span class="date">2026-06-22</span></a></li>
-      <li><a href="MISTRAL-2026-06-21.html"><span>MISTRAL-2026-06-21</span><span class="date">2026-06-21</span></a></li>
-      <li><a href="MISTRAL-2026-06-20.html"><span>MISTRAL-2026-06-20</span><span class="date">2026-06-20</span></a></li>
-      <li><a href="MISTRAL-2026-06-19.html"><span>MISTRAL-2026-06-19</span><span class="date">2026-06-19</span></a></li>
-      <li><a href="MISTRAL-2026-06-18.html"><span>MISTRAL-2026-06-18</span><span class="date">2026-06-18</span></a></li>
-      <li><a href="MISTRAL-2026-06-17.html"><span>MISTRAL-2026-06-17</span><span class="date">2026-06-17</span></a></li>
-      <li><a href="MISTRAL-2026-06-16.html"><span>MISTRAL-2026-06-16</span><span class="date">2026-06-16</span></a></li>
-      <li><a href="MISTRAL-2026-06-15.html"><span>MISTRAL-2026-06-15</span><span class="date">2026-06-15</span></a></li>
-      <li><a href="MISTRAL-2026-06-14.html"><span>MISTRAL-2026-06-14</span><span class="date">2026-06-14</span></a></li>
-      <li><a href="MISTRAL-2026-06-13.html"><span>MISTRAL-2026-06-13</span><span class="date">2026-06-13</span></a></li>
-      <li><a href="MISTRAL-2026-06-12.html"><span>MISTRAL-2026-06-12</span><span class="date">2026-06-12</span></a></li>
-      <li><a href="MISTRAL-2026-06-10.html"><span>MISTRAL-2026-06-10</span><span class="date">2026-06-10</span></a></li>
-      <li><a href="MISTRAL-2026-06-09.html"><span>MISTRAL-2026-06-09</span><span class="date">2026-06-09</span></a></li>
-    </ul>
-  </section>
-  <section class="panel" id="panel-ia">
-    <ul class="file-list">
-      <li><a href="veille-IA-2026-09-28.html"><span>veille-IA-2026-09-28</span><span class="date">2026-09-28</span></a></li>
-      <li><a href="veille-IA-2026-09-25.html"><span>veille-IA-2026-09-25</span><span class="date">2026-09-25</span></a></li>
-      <li><a href="veille-IA-2026-09-23.html"><span>veille-IA-2026-09-23</span><span class="date">2026-09-23</span></a></li>
-      <li><a href="veille-IA-2026-09-21.html"><span>veille-IA-2026-09-21</span><span class="date">2026-09-21</span></a></li>
-      <li><a href="veille-IA-2026-09-18.html"><span>veille-IA-2026-09-18</span><span class="date">2026-09-18</span></a></li>
-      <li><a href="veille-IA-2026-09-14.html"><span>veille-IA-2026-09-14</span><span class="date">2026-09-14</span></a></li>
-      <li><a href="veille-IA-2026-09-13.html"><span>veille-IA-2026-09-13</span><span class="date">2026-09-13</span></a></li>
-      <li><a href="veille-IA-2026-09-04.html"><span>veille-IA-2026-09-04</span><span class="date">2026-09-04</span></a></li>
-      <li><a href="veille-IA-2026-09-02.html"><span>veille-IA-2026-09-02</span><span class="date">2026-09-02</span></a></li>
-      <li><a href="veille-IA-2026-08-31.html"><span>veille-IA-2026-08-31</span><span class="date">2026-08-31</span></a></li>
-      <li><a href="veille-IA-2026-08-28.html"><span>veille-IA-2026-08-28</span><span class="date">2026-08-28</span></a></li>
-      <li><a href="veille-IA-2026-08-26.html"><span>veille-IA-2026-08-26</span><span class="date">2026-08-26</span></a></li>
-      <li><a href="veille-IA-2026-08-21.html"><span>veille-IA-2026-08-21</span><span class="date">2026-08-21</span></a></li>
-      <li><a href="veille-IA-2026-08-19.html"><span>veille-IA-2026-08-19</span><span class="date">2026-08-19</span></a></li>
-      <li><a href="veille-IA-2026-08-14.html"><span>veille-IA-2026-08-14</span><span class="date">2026-08-14</span></a></li>
-      <li><a href="veille-IA-2026-08-12.html"><span>veille-IA-2026-08-12</span><span class="date">2026-08-12</span></a></li>
-      <li><a href="veille-IA-2026-08-10.html"><span>veille-IA-2026-08-10</span><span class="date">2026-08-10</span></a></li>
-      <li><a href="veille-IA-2026-07-31.html"><span>veille-IA-2026-07-31</span><span class="date">2026-07-31</span></a></li>
-      <li><a href="veille-IA-2026-07-29.html"><span>veille-IA-2026-07-29</span><span class="date">2026-07-29</span></a></li>
-      <li><a href="veille-IA-2026-07-27.html"><span>veille-IA-2026-07-27</span><span class="date">2026-07-27</span></a></li>
-      <li><a href="veille-IA-2026-07-24.html"><span>veille-IA-2026-07-24</span><span class="date">2026-07-24</span></a></li>
-      <li><a href="veille-IA-2026-07-22.html"><span>veille-IA-2026-07-22</span><span class="date">2026-07-22</span></a></li>
-      <li><a href="veille-IA-2026-07-20.html"><span>veille-IA-2026-07-20</span><span class="date">2026-07-20</span></a></li>
-      <li><a href="veille-IA-2026-07-17.html"><span>veille-IA-2026-07-17</span><span class="date">2026-07-17</span></a></li>
-      <li><a href="veille-IA-2026-07-15.html"><span>veille-IA-2026-07-15</span><span class="date">2026-07-15</span></a></li>
-      <li><a href="veille-IA-2026-07-13.html"><span>veille-IA-2026-07-13</span><span class="date">2026-07-13</span></a></li>
-      <li><a href="veille-IA-2026-07-10.html"><span>veille-IA-2026-07-10</span><span class="date">2026-07-10</span></a></li>
-      <li><a href="veille-IA-2026-07-08.html"><span>veille-IA-2026-07-08</span><span class="date">2026-07-08</span></a></li>
-      <li><a href="veille-IA-2026-07-06.html"><span>veille-IA-2026-07-06</span><span class="date">2026-07-06</span></a></li>
-      <li><a href="veille-IA-2026-07-03.html"><span>veille-IA-2026-07-03</span><span class="date">2026-07-03</span></a></li>
-      <li><a href="veille-IA-2026-07-02.html"><span>veille-IA-2026-07-02</span><span class="date">2026-07-02</span></a></li>
-      <li><a href="veille-IA-2026-07-01.html"><span>veille-IA-2026-07-01</span><span class="date">2026-07-01</span></a></li>
-      <li><a href="veille-IA-2026-06-30.html"><span>veille-IA-2026-06-30</span><span class="date">2026-06-30</span></a></li>
-      <li><a href="veille-IA-2026-06-29.html"><span>veille-IA-2026-06-29</span><span class="date">2026-06-29</span></a></li>
-      <li><a href="veille-IA-2026-06-26.html"><span>veille-IA-2026-06-26</span><span class="date">2026-06-26</span></a></li>
-      <li><a href="veille-IA-2026-06-24.html"><span>veille-IA-2026-06-24</span><span class="date">2026-06-24</span></a></li>
-      <li><a href="veille-IA-2026-06-23.html"><span>veille-IA-2026-06-23</span><span class="date">2026-06-23</span></a></li>
-      <li><a href="veille-IA-2026-06-22.html"><span>veille-IA-2026-06-22</span><span class="date">2026-06-22</span></a></li>
-      <li><a href="veille-IA-2026-06-19.html"><span>veille-IA-2026-06-19</span><span class="date">2026-06-19</span></a></li>
-      <li><a href="veille-IA-2026-06-18.html"><span>veille-IA-2026-06-18</span><span class="date">2026-06-18</span></a></li>
-      <li><a href="veille-IA-2026-06-17.html"><span>veille-IA-2026-06-17</span><span class="date">2026-06-17</span></a></li>
-      <li><a href="veille-IA-2026-06-16.html"><span>veille-IA-2026-06-16</span><span class="date">2026-06-16</span></a></li>
-      <li><a href="veille-IA-2026-06-15.html"><span>veille-IA-2026-06-15</span><span class="date">2026-06-15</span></a></li>
-      <li><a href="veille-IA-2026-06-12.html"><span>veille-IA-2026-06-12</span><span class="date">2026-06-12</span></a></li>
-      <li><a href="veille-IA-2026-06-11.html"><span>veille-IA-2026-06-11</span><span class="date">2026-06-11</span></a></li>
-      <li><a href="veille-IA-2026-06-10.html"><span>veille-IA-2026-06-10</span><span class="date">2026-06-10</span></a></li>
-      <li><a href="veille-IA-2026-06-09.html"><span>veille-IA-2026-06-09</span><span class="date">2026-06-09</span></a></li>
-    </ul>
-  </section>
-  <section class="panel" id="panel-tele">
-    <ul class="file-list">
-      <li><a href="veille-TELE-2026-09-29.html"><span>veille-TELE-2026-09-29</span><span class="date">2026-09-29</span></a></li>
-      <li><a href="veille-TELE-2026-09-24.html"><span>veille-TELE-2026-09-24</span><span class="date">2026-09-24</span></a></li>
-      <li><a href="veille-TELE-2026-09-22.html"><span>veille-TELE-2026-09-22</span><span class="date">2026-09-22</span></a></li>
-      <li><a href="veille-TELE-2026-09-17.html"><span>veille-TELE-2026-09-17</span><span class="date">2026-09-17</span></a></li>
-      <li><a href="veille-TELE-2026-09-15.html"><span>veille-TELE-2026-09-15</span><span class="date">2026-09-15</span></a></li>
-      <li><a href="veille-TELE-2026-09-13.html"><span>veille-TELE-2026-09-13</span><span class="date">2026-09-13</span></a></li>
-      <li><a href="veille-TELE-2026-09-03.html"><span>veille-TELE-2026-09-03</span><span class="date">2026-09-03</span></a></li>
-      <li><a href="veille-TELE-2026-09-01.html"><span>veille-TELE-2026-09-01</span><span class="date">2026-09-01</span></a></li>
-      <li><a href="veille-TELE-2026-08-27.html"><span>veille-TELE-2026-08-27</span><span class="date">2026-08-27</span></a></li>
-      <li><a href="veille-TELE-2026-08-25.html"><span>veille-TELE-2026-08-25</span><span class="date">2026-08-25</span></a></li>
-      <li><a href="veille-TELE-2026-08-20.html"><span>veille-TELE-2026-08-20</span><span class="date">2026-08-20</span></a></li>
-      <li><a href="veille-TELE-2026-08-18.html"><span>veille-TELE-2026-08-18</span><span class="date">2026-08-18</span></a></li>
-      <li><a href="veille-TELE-2026-08-13.html"><span>veille-TELE-2026-08-13</span><span class="date">2026-08-13</span></a></li>
-      <li><a href="veille-TELE-2026-08-11.html"><span>veille-TELE-2026-08-11</span><span class="date">2026-08-11</span></a></li>
-      <li><a href="veille-TELE-2026-08-10.html"><span>veille-TELE-2026-08-10</span><span class="date">2026-08-10</span></a></li>
-      <li><a href="veille-TELE-2026-07-30.html"><span>veille-TELE-2026-07-30</span><span class="date">2026-07-30</span></a></li>
-      <li><a href="veille-TELE-2026-07-28.html"><span>veille-TELE-2026-07-28</span><span class="date">2026-07-28</span></a></li>
-      <li><a href="veille-TELE-2026-07-23.html"><span>veille-TELE-2026-07-23</span><span class="date">2026-07-23</span></a></li>
-      <li><a href="veille-TELE-2026-07-21.html"><span>veille-TELE-2026-07-21</span><span class="date">2026-07-21</span></a></li>
-      <li><a href="veille-TELE-2026-07-16.html"><span>veille-TELE-2026-07-16</span><span class="date">2026-07-16</span></a></li>
-      <li><a href="veille-TELE-2026-07-15.html"><span>veille-TELE-2026-07-15</span><span class="date">2026-07-15</span></a></li>
-      <li><a href="veille-TELE-2026-07-14.html"><span>veille-TELE-2026-07-14</span><span class="date">2026-07-14</span></a></li>
-      <li><a href="veille-TELE-2026-07-09.html"><span>veille-TELE-2026-07-09</span><span class="date">2026-07-09</span></a></li>
-      <li><a href="veille-TELE-2026-07-07.html"><span>veille-TELE-2026-07-07</span><span class="date">2026-07-07</span></a></li>
-      <li><a href="veille-TELE-2026-07-03.html"><span>veille-TELE-2026-07-03</span><span class="date">2026-07-03</span></a></li>
-      <li><a href="veille-TELE-2026-07-02.html"><span>veille-TELE-2026-07-02</span><span class="date">2026-07-02</span></a></li>
-      <li><a href="veille-TELE-2026-06-30.html"><span>veille-TELE-2026-06-30</span><span class="date">2026-06-30</span></a></li>
-    </ul>
-  </section>
-  <section class="panel" id="panel-rh">
-    <ul class="file-list">
-      <li><a href="veille-RH-IA-2026-09-28.html"><span>veille-RH-IA-2026-09-28</span><span class="date">2026-09-28</span></a></li>
-      <li><a href="veille-RH-IA-2026-09-24.html"><span>veille-RH-IA-2026-09-24</span><span class="date">2026-09-24</span></a></li>
-      <li><a href="veille-RH-IA-2026-09-21.html"><span>veille-RH-IA-2026-09-21</span><span class="date">2026-09-21</span></a></li>
-      <li><a href="veille-RH-IA-2026-09-17.html"><span>veille-RH-IA-2026-09-17</span><span class="date">2026-09-17</span></a></li>
-      <li><a href="veille-RH-IA-2026-09-14.html"><span>veille-RH-IA-2026-09-14</span><span class="date">2026-09-14</span></a></li>
-      <li><a href="veille-RH-IA-2026-09-03.html"><span>veille-RH-IA-2026-09-03</span><span class="date">2026-09-03</span></a></li>
-      <li><a href="veille-RH-IA-2026-08-31.html"><span>veille-RH-IA-2026-08-31</span><span class="date">2026-08-31</span></a></li>
-      <li><a href="veille-RH-IA-2026-08-27.html"><span>veille-RH-IA-2026-08-27</span><span class="date">2026-08-27</span></a></li>
-      <li><a href="veille-RH-IA-2026-08-24.html"><span>veille-RH-IA-2026-08-24</span><span class="date">2026-08-24</span></a></li>
-      <li><a href="veille-RH-IA-2026-08-20.html"><span>veille-RH-IA-2026-08-20</span><span class="date">2026-08-20</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-30.html"><span>veille-RH-IA-2026-07-30</span><span class="date">2026-07-30</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-27.html"><span>veille-RH-IA-2026-07-27</span><span class="date">2026-07-27</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-23.html"><span>veille-RH-IA-2026-07-23</span><span class="date">2026-07-23</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-20.html"><span>veille-RH-IA-2026-07-20</span><span class="date">2026-07-20</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-13.html"><span>veille-RH-IA-2026-07-13</span><span class="date">2026-07-13</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-09.html"><span>veille-RH-IA-2026-07-09</span><span class="date">2026-07-09</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-06.html"><span>veille-RH-IA-2026-07-06</span><span class="date">2026-07-06</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-04.html"><span>veille-RH-IA-2026-07-04</span><span class="date">2026-07-04</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-02.html"><span>veille-RH-IA-2026-07-02</span><span class="date">2026-07-02</span></a></li>
-      <li><a href="veille-RH-IA-2026-07-01.html"><span>veille-RH-IA-2026-07-01</span><span class="date">2026-07-01</span></a></li>
-      <li><a href="veille-RH-IA-2026-06-30.html"><span>veille-RH-IA-2026-06-30</span><span class="date">2026-06-30</span></a></li>
-      <li><a href="veille-RH-IA-2026-06-24.html"><span>veille-RH-IA-2026-06-24</span><span class="date">2026-06-24</span></a></li>
-      <li><a href="veille-RH-IA-2026-06-23.html"><span>veille-RH-IA-2026-06-23</span><span class="date">2026-06-23</span></a></li>
-      <li><a href="veille-RH-IA-2026-06-22.html"><span>veille-RH-IA-2026-06-22</span><span class="date">2026-06-22</span></a></li>
-      <li><a href="veille-RH-IA-2026-06-09.html"><span>veille-RH-IA-2026-06-09</span><span class="date">2026-06-09</span></a></li>
-    </ul>
-  </section>
-  <section class="panel" id="panel-q">
-    <ul class="file-list">
-      <li><a href="veille-quantique-2026-09-28.html"><span>veille-quantique-2026-09-28</span><span class="date">2026-09-28</span></a></li>
-      <li><a href="veille-quantique-2026-09-21.html"><span>veille-quantique-2026-09-21</span><span class="date">2026-09-21</span></a></li>
-      <li><a href="veille-quantique-2026-09-14.html"><span>veille-quantique-2026-09-14</span><span class="date">2026-09-14</span></a></li>
-      <li><a href="veille-quantique-2026-09-07.html"><span>veille-quantique-2026-09-07</span><span class="date">2026-09-07</span></a></li>
-      <li><a href="veille-quantique-2026-08-31.html"><span>veille-quantique-2026-08-31</span><span class="date">2026-08-31</span></a></li>
-      <li><a href="veille-quantique-2026-08-24.html"><span>veille-quantique-2026-08-24</span><span class="date">2026-08-24</span></a></li>
-      <li><a href="veille-quantique-2026-07-27.html"><span>veille-quantique-2026-07-27</span><span class="date">2026-07-27</span></a></li>
-      <li><a href="veille-quantique-2026-07-20.html"><span>veille-quantique-2026-07-20</span><span class="date">2026-07-20</span></a></li>
-      <li><a href="veille-quantique-2026-07-15.html"><span>veille-quantique-2026-07-15</span><span class="date">2026-07-15</span></a></li>
-      <li><a href="veille-quantique-2026-07-06.html"><span>veille-quantique-2026-07-06</span><span class="date">2026-07-06</span></a></li>
-      <li><a href="veille-quantique-2026-07-02.html"><span>veille-quantique-2026-07-02</span><span class="date">2026-07-02</span></a></li>
-      <li><a href="veille-quantique-2026-06-29.html"><span>veille-quantique-2026-06-29</span><span class="date">2026-06-29</span></a></li>
-      <li><a href="veille-quantique-2026-06-28.html"><span>veille-quantique-2026-06-28</span><span class="date">2026-06-28</span></a></li>
-      <li><a href="veille-quantique-2026-06-27.html"><span>veille-quantique-2026-06-27</span><span class="date">2026-06-27</span></a></li>
-      <li><a href="veille-quantique-2026-06-23.html"><span>veille-quantique-2026-06-23</span><span class="date">2026-06-23</span></a></li>
-      <li><a href="veille-quantique-2026-01-12.html"><span>veille-quantique-2026-01-12</span><span class="date">2026-01-12</span></a></li>
-    </ul>
-  </section>
-  <section class="panel" id="panel-diabete">
-    <ul class="file-list">
-      <li><a href="veille-diabete-2026-09-30.html"><span>veille-diabete-2026-09-30</span><span class="date">2026-09-30</span></a></li>
-      <li><a href="veille-diabete-2026-09-23.html"><span>veille-diabete-2026-09-23</span><span class="date">2026-09-23</span></a></li>
-      <li><a href="veille-diabete-2026-09-16.html"><span>veille-diabete-2026-09-16</span><span class="date">2026-09-16</span></a></li>
-      <li><a href="veille-diabete-2026-09-15.html"><span>veille-diabete-2026-09-15</span><span class="date">2026-09-15</span></a></li>
-      <li><a href="veille-diabete-2026-09-13.html"><span>veille-diabete-2026-09-13</span><span class="date">2026-09-13</span></a></li>
-      <li><a href="veille-diabete-2026-09-02.html"><span>veille-diabete-2026-09-02</span><span class="date">2026-09-02</span></a></li>
-      <li><a href="veille-diabete-2026-08-26.html"><span>veille-diabete-2026-08-26</span><span class="date">2026-08-26</span></a></li>
-      <li><a href="veille-diabete-2026-08-25.html"><span>veille-diabete-2026-08-25</span><span class="date">2026-08-25</span></a></li>
-      <li><a href="veille-diabete-2026-08-12.html"><span>veille-diabete-2026-08-12</span><span class="date">2026-08-12</span></a></li>
-      <li><a href="veille-diabete-2026-07-08.html"><span>veille-diabete-2026-07-08</span><span class="date">2026-07-08</span></a></li>
-      <li><a href="veille-diabete-2026-06-27.html"><span>veille-diabete-2026-06-27</span><span class="date">2026-06-27</span></a></li>
-    </ul>
-  </section>
-  </main>
-  <footer>HERMES Archives &mdash; g&eacute;n&eacute;r&eacute; automatiquement</footer>
+<div class="wrap">
+<header><img src="innovia2.png" alt="Innovia 2"><div><h1>Archives HERMES</h1><div class="subtitle">Sélectionnez un thème pour voir uniquement ses publications</div></div></header>
+<div class="grid">
+<a class="card" href="index-mistral.html"><h2>Actualités Mistral</h2><p>Actualités sur Mistral AI</p><span class="count">37 publications</span></a>
+<a class="card" href="index-ia.html"><h2>Actualités IA global</h2><p>Veille IA générale, France / Europe / Monde</p><span class="count">47 publications</span></a>
+<a class="card" href="index-tele.html"><h2>Veille télésurveillance</h2><p>Télésurveillance, alarmes et sécurité électronique</p><span class="count">27 publications</span></a>
+<a class="card" href="index-rh.html"><h2>Veille IA RH</h2><p>IA et mutations des métiers RH</p><span class="count">25 publications</span></a>
+<a class="card" href="index-q.html"><h2>Veille IA Q</h2><p>Informatique quantique</p><span class="count">16 publications</span></a>
+<a class="card" href="index-diabete.html"><h2>Veille Diabète</h2><p>Innovations diabète et santé</p><span class="count">11 publications</span></a>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var buttons = document.querySelectorAll('nav.tabs button');
-  var panels = document.querySelectorAll('main .panel');
-  buttons.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      buttons.forEach(function(b) { b.classList.remove('active'); });
-      panels.forEach(function(p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-    });
-  });
-});
-</script>
+<div style="margin-top:30px;font-size:12px;color:#9ca3af">Dernière mise à jour : <span id="lm"></span></div>
+<script>document.getElementById('lm').textContent=document.lastModified;</script>
+</div>
 </body>
 </html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veille Télésurveillance & Alarmes — 2026-07-03</title>
+  <meta name="description" content="Veille sectorielle sécurité électronique, télésurveillance et systèmes d'alarme — édition du 2026-07-03">
+  <style>
+    :root{
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #1e2430;
+      --muted: #5b6372;
+      --accent: #1565c0;
+      --accent-2: #42a5f5;
+      --good: #1e7e34;
+      --border: #d7dde6;
+      --shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+      --card: #ffffff;
+      --tag-bg: #e6f0ff;
+      --tag-text: #0b4f8c;
+      --pill-good: #d4f0df;
+      --pill-good-text: #0a6634;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root{
+        --bg: #0e1117;
+        --panel: #151922;
+        --text: #e8ecf3;
+        --muted: #b6bed0;
+        --accent: #6aa9ff;
+        --accent-2: #8dc1ff;
+        --border: #232938;
+        --shadow: 0 12px 30px rgba(0,0,0,0.35);
+        --card: #151922;
+        --tag-bg: #10213a;
+        --tag-text: #9fd1ff;
+        --pill-good: #122d1f;
+        --pill-good-text: #9de2b8;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      text-rendering: optimizeLegibility;
+    }
+    header {
+      background: linear-gradient(135deg,#083061 0%,#1565c0 100%);
+      color: #fff;
+      padding: 28px 18px 44px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(26px, 3.5vw, 44px);
+      letter-spacing: 0.2px;
+    }
+    header p {
+      margin: 8px 0 0;
+      opacity: 0.92;
+      font-size: 14px;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: -28px auto 48px;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      box-shadow: var(--shadow);
+    }
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: var(--text);
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      margin: 0 6px 8px 0;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    }
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      line-height: 1.35;
+      color: #0b2737;
+    }
+    @media (prefers-color-scheme: dark) {
+      .card h3 { color: #eaf1fb; }
+    }
+    .meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .summary {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .tags { margin-top: 10px; }
+    .actions { margin-top: 8px; }
+    .actions a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .actions a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 28px 14px 60px;
+    }
+    .count {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-left:8px;
+      padding:2px 8px;
+      border-radius:999px;
+      background:var(--pill-good);
+      color: var(--pill-good-text);
+      font-size:12px;
+      font-weight:700;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔒 Veille Télésurveillance & Alarmes</h1>
+    <p>Édition du 2026-07-03 — Sécurité électronique, IA edge, drones/robots, marché France/Europe</p>
+  </header>
+
+  <div class="wrap">
+    <div class="panel">
+      <h2>🇫🇷🇪🇺 Marché France & Europe <span class="count">5</span></h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Verisure devient la 1ère société de télésurveillance certifiée ISO 9001, ISO 14001 et ISO 45001 en France</h3>
+          <p class="meta">Source CP Verisure · 2025-10-23</p>
+          <p class="summary">Triple certification pour l’ensemble des centres de télésurveillance français, créant un standard de crédibilité opérationnelle côté concurrence et assureurs.</p>
+          <div class="tags"><span class="badge">Verisure</span><span class="badge">Certification</span><span class="badge">France</span><span class="badge">Conformité</span></div>
+          <p class="actions"><a href="https://www.verisure.fr/communiques-de-presse" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Verisure dépasse le million de clients en France et étend son offre</h3>
+          <p class="meta">Source CP Verisure · 2025-12</p>
+          <p class="summary">Cap symbolique dépassé en France, avec développement de Verisure Guardian et solutions de protection extérieure proactive.</p>
+          <div class="tags"><span class="badge">Verisure</span><span class="badge">Croissance</span><span class="badge">France</span></div>
+          <p class="actions"><a href="https://www.verisure.com/press-releases/verisure-surpasses-one-million-customers-in-france" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Verisure et Covéa renouvellent leur partenariat jusqu’en 2028</h3>
+          <p class="meta">Source CP Verisure · 2025-07</p>
+          <p class="summary">Partenariat prolongé pour distribuer des offres d’alarme connectée et télésurveillance auprès des assurés MAAF, MMA et GMF.</p>
+          <div class="tags"><span class="badge">Verisure</span><span class="badge">Covéa</span><span class="badge">Partenariat</span><span class="badge">Assurance</span></div>
+          <p class="actions"><a href="https://www.verisure.fr/communiques-de-presse" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Ajax Systems : 55 nouveaux dispositifs et premier système sans fil Grade 3 en 2025</h3>
+          <p class="meta">Source officielle Ajax · 2025-12-31</p>
+          <p class="summary">Diversification vidéo et EN54, usine au Vietnam et 18 prix internationaux : Ajax renforce sa crédibilité face aux acteurs installateurs historiques.</p>
+          <div class="tags"><span class="badge">Ajax</span><span class="badge">Innovation</span><span class="badge">Europe</span><span class="badge">Grade 3</span></div>
+          <p class="actions"><a href="https://ajax.systems/fr/press-page/ajax-systems-in-2025-annual-report/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Sector Alarm France recrute 400 postes et vise le top 3 en 2027</h3>
+          <p class="meta">Source Sectalarm / Infonet · 2025</p>
+          <p class="summary">Croissance à deux chiffres, agences locales renforcées et proximité client assumée comme levier de conquête.</p>
+          <div class="tags"><span class="badge">Sector Alarm</span><span class="badge">Recrutement</span><span class="badge">France</span><span class="badge">Croissance</span></div>
+          <p class="actions"><a href="https://infonet.fr/actualite/nouveautes/sector-alarm-conquete-marche-france-2025/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px;">
+      <h2>🌍 Monde — Pertinence Europe <span class="count">5</span></h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Alarm.com présente AI Deterrence et des solutions périmétriques au CES 2025</h3>
+          <p class="meta">Alarm.com · 2025-01</p>
+          <p class="summary">Détection IA contextualisée avec avertissements vocaux adaptés, floodlights et sirènes : modèle transposable aux offres européennes.</p>
+          <div class="tags"><span class="badge">Alarm.com</span><span class="badge">IA</span><span class="badge">Produit</span><span class="badge">CES 2025</span></div>
+          <p class="actions"><a href="https://investors.alarm.com/news-releases/press-release-details/2025/CES-2025-Alarm.com-Introduces-Award-Winning-AI-Deterrence-AID-and-Perimeter-Solutions-to-Stop-Crime-in-its-Tracks/default.aspx" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Marché nord-américain sécurité résidentielle : 24,65 md USD en 2025</h3>
+          <p class="meta">Expert Market Research · 2025</p>
+          <p class="summary">ADT leader monitoring professionnel ; Honeywell/Resideo fournisseur technologique de référence. Référence pour taille de marché et structure de valeur.</p>
+          <div class="tags"><span class="badge">ADT</span><span class="badge">Honeywell</span><span class="badge">Monitoring</span><span class="badge">Comparaison</span></div>
+          <p class="actions"><a href="https://www.expertmarketresearch.com/reports/north-america-home-security-system-market" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Marché européen sécurité résidentielle : 8,09 md USD, CAG attendu à 7,72 % jusqu’en 2031</h3>
+          <p class="meta">Mordor Intelligence · 2025</p>
+          <p class="summary">Vidéosurveillance à 42 % et installations professionnelles à 62 %, portées par remises assureurs France/Allemagne.</p>
+          <div class="tags"><span class="badge">Marché UE</span><span class="badge">Vidéosurveillance</span><span class="badge">Croissance</span></div>
+          <p class="actions"><a href="https://www.mordorintelligence.com/fr/industry-reports/europe-home-security-system-market" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Sécurité électronique : 74,6 md USD en 2025, 134,6 md USD en 2035</h3>
+          <p class="meta">GM Insights · 2025</p>
+          <p class="summary">L’Europe pèse 15,2 md USD, avec cloud-ready, caméras IA et smart infrastructure comme moteurs.</p>
+          <div class="tags"><span class="badge">Marché mondial</span><span class="badge">Caméras IA</span><span class="badge">UE</span></div>
+          <p class="actions"><a href="https://www.gminsights.com/fr/industry-analysis/electronic-security-market" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>IFSEC Global 2025 : 64 % des caméras réseau seraient IA d’ici 2025</h3>
+          <p class="meta">IFSEC Global · 2025</p>
+          <p class="summary">Whitepaper pointant l’edge AI comme levier n°1 de croissance vidéo surveillance, y compris sur systèmes d’alarme.</p>
+          <div class="tags"><span class="badge">IFSEC 2025</span><span class="badge">Edge AI</span><span class="badge">Caméras IA</span></div>
+          <p class="actions"><a href="https://www.ifsecglobal.com/downloads/whitepaper-video-analytics-re-imagined-the-impact-of-powerful-edge-ai/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px;">
+      <h2>🔧 Innovations Produits & Composants <span class="count">5</span></h2>
+      <div class="cards">
+        <article class="card">
+          <h3>AI Deterrence Alarm.com : dissuasion automatisée par caméra IA</h3>
+          <p class="meta">Alarm.com / CES 2025 · Disponible</p>
+          <p class="summary">Analyse contexte avant message vocal adaptatif, couplé à sirènes et floodlights pour dissuasion proactive résidentielle ou professionnelle.</p>
+          <div class="tags"><span class="badge">Produit</span><span class="badge">IA</span><span class="badge">Dissuasion</span></div>
+          <p class="actions"><a href="https://investors.alarm.com/news-releases/press-release-details/2025/CES-2025-Alarm.com-Introduces-Award-Winning-AI-Deterrence-AID-and-Perimeter-Solutions-to-Stop-Crime-in-its-Tracks/default.aspx" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>IDIS Edge AI Plus : détection foule, objets abandonnés, chute et violence</h3>
+          <p class="meta">IDIS · 2025-05 · Disponible</p>
+          <p class="summary">Caméras 8MP outdoor IP66 avec analytiques embarqués profonds pour déclenchements proactifs sans infrastructure cloud.</p>
+          <div class="tags"><span class="badge">Produit</span><span class="badge">Edge AI</span><span class="badge">Analytique vidéo</span></div>
+          <p class="actions"><a href="https://www.idisglobal.com/index/latest_view/3031" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Hikvision lance les caméras Pro ColorVu 3.0</h3>
+          <p class="meta">Hikvision · 2025-02 · Disponible</p>
+          <p class="summary">Nouvelle génération d’imagerie faible luminosité adaptée à l’intégration alarme et monitoring.</p>
+          <div class="tags"><span class="badge">Produit</span><span class="badge">Hikvision</span><span class="badge">Caméra</span></div>
+          <p class="actions"><a href="https://www.hikvision.com/fr/newsroom/latest-news/2025/hikvision-launches-the-latest-network-cameras-with-colorvu-3-0-technology/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Ajax certifie son 1er système sans fil Grade 3 et ouvre une usine au Vietnam</h3>
+          <p class="meta">Ajax Systems · 2025-12-31 · Disponible</p>
+          <p class="summary">Grade 3 sans fil, expansion EN54 incendie et vidéo : packaging complet pour installation professionnelle européenne.</p>
+          <div class="tags"><span class="badge">Produit</span><span class="badge">Ajax</span><span class="badge">Grade 3</span></div>
+          <p class="actions"><a href="https://ajax.systems/fr/press-page/ajax-systems-in-2025-annual-report/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>VIVOTEK V-series AI + VORTEX AI Hub</h3>
+          <p class="meta">VIVOTEK · 2025-07 · Disponible</p>
+          <p class="summary">Caméras 4K/5MP multi-directionnelles avec analytics edge et hub génératif pour recherche centralisée d’incidents.</p>
+          <div class="tags"><span class="badge">Produit</span><span class="badge">VIVOTEK</span><span class="badge">Edge AI</span></div>
+          <p class="actions"><a href="https://www.vivotek.com/en-US/resource/learning/blog/product-updates-2025-07" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px;">
+      <h2>🚀 Prospective & Technologies Émergentes <span class="count">5</span></h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Marché mondial des robots de surveillance : 11,7 md USD en 2025</h3>
+          <p class="meta">DataIntelo · 2025 · Horizon Moyen 2-5 ans</p>
+          <p class="summary">LiDAR, IA et autonomie pour périmètres industriels et infrastructures critiques.</p>
+          <div class="tags"><span class="badge">Robotique</span><span class="badge">Autonome</span><span class="badge">Prospective</span></div>
+          <p class="actions"><a href="https://dataintelo.com/report/surveillance-robots-market" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Drones sécurité 2025 : marché de plus de 2,5 md USD</h3>
+          <p class="meta">Kritikal Solutions · 2025 · Horizon Court &lt;2 ans — Moyen 2-5 ans</p>
+          <p class="summary">LiDAR, imagerie thermique, edge computing et 5G pour surveillance autonome transposable aux sites industriels européens.</p>
+          <div class="tags"><span class="badge">Drone</span><span class="badge">IA</span><span class="badge">Edge</span><span class="badge">Thermique</span></div>
+          <p class="actions"><a href="https://kritikalsolutions.com/ai-powered-drone-security-systems-smarter-surveillance/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Tendance drones 2025 : LiDAR, radar, contre-drone</h3>
+          <p class="meta">LinkedIn / Catherine Ball · 2025 · Horizon Moyen 2-5 ans</p>
+          <p class="summary">LiDAR et radar deviennent standards pour cartographie, évitement et contre-mesures aériennes.</p>
+          <div class="tags"><span class="badge">Drone</span><span class="badge">LiDAR</span><span class="badge">Contre-drone</span></div>
+          <p class="actions"><a href="https://www.linkedin.com/pulse/drone-industry-2025-tech-trends-catherine-ball-qhptc" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Robots de patrouille autonomes SLAM + LiDAR pour sécurité physique</h3>
+          <p class="meta">GreenbotZ · 2025 · Horizon Moyen 2-5 ans</p>
+          <p class="summary">SLAM, LiDAR et Wi-Fi double bande couvrent patrouille autonome et streaming vidéo temps réel.</p>
+          <div class="tags"><span class="badge">Robotique</span><span class="badge">SLAM</span><span class="badge">LiDAR</span></div>
+          <p class="actions"><a href="https://greenbotz.co/ai-security-patrol-robots-in-2025-complete-expert-guide-roi/" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+        <article class="card">
+          <h3>Fusion multi-capteurs pour détection/classification de drones</h3>
+          <p class="meta">IEEE / MDPI Sensors · 2025 · Horizon Moyen 2-5 ans</p>
+          <p class="summary">Méthode LiDAR + radar + fusion pour contre-UAV ; applicable aux contre-mesures résidentielles et industrielles.</p>
+          <div class="tags"><span class="badge">LiDAR</span><span class="badge">Contre-drone</span><span class="badge">Fusion</span></div>
+          <p class="actions"><a href="https://www.mdpi.com/1424-8220/25/9/2757" target="_blank" rel="noopener">Lire la source ↗</a></p>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px;">
+      <h2>📊 Synthèse — 5 signaux faibles</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>1. Certification IS0 comme levier commercial</h3>
+          <p class="summary">Triple certification Verisure : probable évolution vers des exigences assureurs côté opérateurs européens.</p>
+        </article>
+        <article class="card">
+          <h3>2. L’IA contexte supplante les seuils classiques</h3>
+          <p class="summary">AI Deterrence, analytics IDIS et VIVOTEK préfigurent un abandon progressif des déclenchements fixes au profit d’alertes sémantiques.</p>
+        </article>
+        <article class="card">
+          <h3>3. Partenariats assureurs comme canal scalable</h3>
+          <p class="summary">Modèle Covéa/Verisure réplicable dans d’autres pays européens ; levier principal pour dépasser 10 % d’équipement.</p>
+        </article>
+        <article class="card">
+          <h3>4. IA embarquée sans cloud lourd</h3>
+          <p class="summary">Edge computing + redondance IP/4G/5G + RGPD : avantage différenciant face à des solutions purement américaines.</p>
+        </article>
+        <article class="card">
+          <h3>5. Convergence fixed + mobile security</h3>
+          <p class="summary">Horizon 2-5 ans : intégration attendue des drones/robots aux alarmes existantes, redéfinissant la levée de doute.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Veille quotidienne générée le 2026-07-03 · Sources primaires communiqués de presse et médias spécialisés.
+  </footer>
+</body>
+</html>

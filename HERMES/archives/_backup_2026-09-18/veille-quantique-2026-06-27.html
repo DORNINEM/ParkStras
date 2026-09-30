@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚛️ Veille Informatique Quantique — 2026-06-27</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: #0F172A;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .section-header {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        .quantum-gradient {
+            background: linear-gradient(135deg, #0F172A 0%, #1E2937 100%);
+        }
+
+        .article-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.1), 0 4px 6px -4px rgb(15 23 42 / 0.1);
+        }
+
+        .maturity-badge {
+            font-size: 0.75rem;
+            padding: 1px 8px;
+            border-radius: 9999px;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .horizon-badge {
+            font-size: 0.75rem;
+            padding: 1px 8px;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        .nav-active {
+            border-bottom: 3px solid #0EA5E9;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .source-link {
+            word-break: break-all;
+        }
+        
+        .tag {
+            font-size: 0.65rem;
+            padding: 0 6px;
+            background-color: #F1E7FF;
+            color: #581C87;
+            border-radius: 4px;
+        }
+        
+        .report-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .stat-pill {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <!-- Header -->
+    <header class="quantum-gradient text-white sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-4">
+                    <div class="flex items-center gap-x-3">
+                        <div class="w-10 h-10 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-atom text-3xl"></i>
+                        </div>
+                        <div>
+                            <h1 class="font-display text-3xl tracking-tighter">Veille Quantique</h1>
+                            <p class="text-xs text-white/60 -mt-1">Bi-hebdomadaire</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-4 text-sm">
+                    <div class="flex items-center gap-x-2 bg-white/10 px-4 py-1.5 rounded-3xl text-xs">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                        <span class="font-medium">27 juin 2026</span>
+                    </div>
+                    <div class="hidden md:flex items-center text-xs px-3 py-1 bg-white/10 rounded-3xl">
+                        <span class="font-mono">23 articles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-screen-2xl mx-auto px-6 pt-8 pb-16">
+        
+        <!-- Hero stats -->
+        <div class="mb-8">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h2 class="font-display text-5xl tracking-tighter">Rapport bi-hebdomadaire</h2>
+                    <p class="text-xl text-slate-600 mt-1">Informatique quantique • 27 juin 2026</p>
+                </div>
+                <div class="flex gap-3">
+                    <div class="stat-pill px-5 py-3 rounded-3xl flex items-center gap-x-3 text-sm">
+                        <div>
+                            <div class="text-xs text-slate-500">Articles</div>
+                            <div class="font-semibold text-2xl tabular-nums">23</div>
+                        </div>
+                    </div>
+                    <div class="stat-pill px-5 py-3 rounded-3xl flex items-center gap-x-3 text-sm">
+                        <div>
+                            <div class="text-xs text-slate-500">Période</div>
+                            <div class="font-semibold">48h / 72h / 7j</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 1: France & Europe -->
+        <section id="part1" class="mb-16">
+            <div class="flex items-center gap-x-3 mb-6">
+                <div class="px-4 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-3xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-globe fa-fw"></i>
+                    <span>PARTIE 1</span>
+                </div>
+                <h3 class="font-display text-3xl tracking-tight">Marché France &amp; Europe</h3>
+                <span class="ml-auto text-sm px-3 py-1 bg-white border text-slate-500 rounded-3xl">6 articles</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Article 1 -->
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Pasqal at VivaTech 2026: Quantum Computing Meets Real-World Impact</div>
+                            <div class="text-xs text-slate-500 mt-1">Pasqal Blog / Quantum Zeitgeist • 27 juin 2026</div>
+                        </div>
+                        <div class="tag">#PROQCIMA</div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Pasqal, Alice &amp; Bob, C12, Quandela et Quobly (tous soutenus par le programme souverain PROQCIMA de 500 M$) ont présenté leurs avancées lors de la Quantum Zone française à VivaTech.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://www.pasqal.com/blog/pasqal-at-vivatech-2026-quantum-computing-meets-real-world-impact/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1">
+                            <span class="px-2 py-px text-[10px] bg-blue-100 text-blue-700 rounded">Souveraineté</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Bull &amp; Alice &amp; Bob expand quantum computing tie-up</div>
+                            <div class="text-xs text-slate-500 mt-1">Channel Life / Scientific Computing • 26 juin 2026</div>
+                        </div>
+                        <div class="tag">#AliceBob</div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Bull et Alice &amp; Bob approfondissent leur partenariat pour intégrer le calcul quantique aux infrastructures HPC européennes, avec focus sur la recherche et le logiciel.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://channellife.co.uk/story/bull-alice-bob-expand-quantum-computing-tie-up" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-blue-100 text-blue-700 rounded">HPC</span></div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Quantonation closes €220M second fund</div>
+                            <div class="text-xs text-slate-500 mt-1">The Quantum Insider • 26 juin 2026</div>
+                        </div>
+                        <div class="tag">#Quantonation</div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Le fonds parisien Quantonation II a bouclé 220 M€ et investit dans Pasqal, Multiverse Computing, Nord Quantique etc. ; LPs incluent Bpifrance et EIF.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://thequantuminsider.com/2026/06/26/top-quantum-computing-investors-in-2026/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-emerald-100 text-emerald-700 rounded">Financement</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">EuroHPC JU opens access to its quantum computers</div>
+                            <div class="text-xs text-slate-500 mt-1">Quantum Spectator • 25 juin 2026</div>
+                        </div>
+                        <div class="tag">#EuroHPC</div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Six sites européens (dont France avec Lucy de Quandela, Allemagne avec IQM) ouvrent l'accès aux premiers ordinateurs quantiques EuroHPC intégrés aux supercalculateurs.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://quantumspectator.com/eurohpc-ju-opens-access-to-its-quantum-computers/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-blue-100 text-blue-700 rounded">Infrastructure</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Pasqal inaugurates Italy’s first neutral-atom quantum computer (SOL)</div>
+                            <div class="text-xs text-slate-500 mt-1">INFN / Pasqal • 26 juin 2026</div>
+                        </div>
+                        <div class="tag">#Pasqal</div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Pasqal déploie SOL (140 qubits neutres) à CINECA en Italie, intégré au supercalculateur Leonardo ; deuxième déploiement européen après France/Allemagne.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://www.infn.it/en/from-bit-to-qubit-the-future-of-computing-is-quantum/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-violet-100 text-violet-700 rounded">Neutral Atoms</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">PROQCIMA : 500 M€ pour 5 Startups Quantiques</div>
+                            <div class="text-xs text-slate-500 mt-1">Tech-Insider • Contexte VivaTech 2026</div>
+                        </div>
+                        <div class="tag">#PROQCIMA</div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Programme français majeur soutenant 5 architectures pour un ordinateur tolérant aux fautes d'ici 2035 ; compétition darwinienne entre startups.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://tech-insider.org/fr/proqcima-500-millions-quantique-france-startups-2026/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-amber-100 text-amber-700 rounded">Souveraineté</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 2: Monde -->
+        <section id="part2" class="mb-16">
+            <div class="flex items-center gap-x-3 mb-6">
+                <div class="px-4 py-1 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-3xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-globe fa-fw"></i>
+                    <span>PARTIE 2</span>
+                </div>
+                <h3 class="font-display text-3xl tracking-tight">Monde — Pertinence Europe</h3>
+                <span class="ml-auto text-sm px-3 py-1 bg-white border text-slate-500 rounded-3xl">5 articles</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">QuEra Unveils Gigaquop-Class Fault-Tolerant Roadmap</div>
+                            <div class="text-xs text-slate-500 mt-1">QuEra / PR Newswire • 25 juin 2026</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">QuEra annonce une roadmap vers un système gigaquop (1000+ qubits logiques, &gt;20k physiques, 10⁻⁹ erreur logique) pour 2028-2029, avec déploiement sur AWS Braket.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://www.prnewswire.com/news-releases/quera-unveils-gigaquop-class-fault-tolerant-roadmap-and-invites-organizations-to-co-design-quantum-applications-302810334.html" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-emerald-100 text-emerald-700 rounded">Roadmap</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">IBM Quantum roadmap toward advantage 2026 and FTQC 2029</div>
+                            <div class="text-xs text-slate-500 mt-1">IBM Research • 26 juin 2026</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">IBM confirme sa trajectoire : avantage quantique visé fin 2026 avec Nighthawk/Heron, calcul tolérant aux fautes en 2029.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://research.ibm.com/quantum-computing" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-emerald-100 text-emerald-700 rounded">IBM</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Useful quantum error correction promised for 2028</div>
+                            <div class="text-xs text-slate-500 mt-1">Ars Technica • 17 juin 2026</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Analyse des annonces QuEra/AWS : correction d'erreurs utile dès 2028 sur plateforme neutre-atomes, timelines compressées.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://arstechnica.com/science/2026/06/amazon-quera-promise-useful-quantum-error-correction-by-2028/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-amber-100 text-amber-700 rounded">QEC</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Quantinuum &amp; Microsoft logical qubits breakthrough</div>
+                            <div class="text-xs text-slate-500 mt-1">Quantinuum • Contexte 2026</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Démonstration de qubits logiques avec taux d'erreur 800x meilleur que physique via virtualisation Microsoft.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://www.quantinuum.com/press-releases/quantinuum-and-microsoft-announce-new-era-in-quantum-computing-with-breakthrough-demonstration-of-reliable-qubits" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                        <div class="flex gap-1"><span class="px-2 py-px text-[10px] bg-sky-100 text-sky-700 rounded">Logical Qubits</span></div>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5 lg:col-span-2">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <div class="font-semibold leading-tight pr-2">Top Quantum Investors 2026 incluant acteurs mondiaux</div>
+                            <div class="text-xs text-slate-500 mt-1">The Quantum Insider • 26 juin 2026</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 line-clamp-3">Investisseurs mondiaux soutiennent startups US/Europe (Pasqal, Diraq, Multiverse) ; focus industrialisation et écosystème européen.</p>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <a href="https://thequantuminsider.com/2026/06/26/top-quantum-computing-investors-in-2026/" target="_blank" class="inline-flex items-center gap-x-1 text-sky-600 hover:text-sky-700 font-medium">
+                            <span>Lire l'article</span> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 3: Innovations -->
+        <section id="part3" class="mb-16">
+            <div class="flex items-center gap-x-3 mb-6">
+                <div class="px-4 py-1 bg-violet-100 text-violet-700 text-sm font-semibold rounded-3xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-microchip fa-fw"></i>
+                    <span>PARTIE 3</span>
+                </div>
+                <h3 class="font-display text-3xl tracking-tight">Innovations Matérielles &amp; Logicielles</h3>
+                <span class="ml-auto text-sm px-3 py-1 bg-white border text-slate-500 rounded-3xl">6 articles</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">QuEra Gigaquop neutral-atom roadmap &amp; error correction</div>
+                        <div class="maturity-badge bg-emerald-100 text-emerald-700">Beta / R&amp;D avancé</div>
+                    </div>
+                    <p class="text-xs text-slate-500">QuEra • 25 juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Architecture atomes neutres : roadmap vers 1000+ qubits logiques, codes QEC flexibles, Libra sur Braket 2028.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://www.quera.com/" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#NeutralAtoms #QEC</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">Atom Computing toric code demo with qubit reloading</div>
+                        <div class="maturity-badge bg-amber-100 text-amber-700">R&amp;D / Preprint</div>
+                    </div>
+                    <p class="text-xs text-slate-500">Atom Computing • Juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Démonstration de cycles de syndrome extraction sur code torique (distance 4-6) avec rechargement de qubits pour opération cohérente indéfinie.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://errorcorrectionzoo.org/" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#ToricCode</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">IBM Qiskit Paulice : postselected quantum error correction</div>
+                        <div class="maturity-badge bg-emerald-100 text-emerald-700">Disponible (Beta)</div>
+                    </div>
+                    <p class="text-xs text-slate-500">IBM Research • 26 juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Nouvelle fonctionnalité Qiskit pour correction d'erreurs post-sélectionnée sur hardware proche-terme ; améliore la fidélité sans overhead complet FTQC.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://research.ibm.com/quantum-computing" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#Qiskit</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">State-adaptive quantum error correction (arXiv)</div>
+                        <div class="maturity-badge bg-slate-200 text-slate-600">Théorique / Preprint</div>
+                    </div>
+                    <p class="text-xs text-slate-500">arXiv quant-ph • 2025-08 (mis à jour 2026)</p>
+                    <p class="mt-2 text-sm text-slate-600">Cadre théorique adaptatif pour QEC reliant calcul et correction ; applications FTQC sans overhead mesure supplémentaire.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://arxiv.org/abs/2508.06011" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#arXiv</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">Surface code optimization for Majorana / hybrid architectures</div>
+                        <div class="maturity-badge bg-slate-200 text-slate-600">Théorique / R&amp;D</div>
+                    </div>
+                    <p class="text-xs text-slate-500">Quantum Journal • Récent</p>
+                    <p class="mt-2 text-sm text-slate-600">Optimisation du surface code pour qubits Majorana et hybrides ; seuils de tolérance aux fautes élevés avec mesures Pauli.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://quantum-journal.org/papers/q-2020-10-28-352/" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#SurfaceCode</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">Measurement-Based FTQC on high-connectivity devices</div>
+                        <div class="maturity-badge bg-amber-100 text-amber-700">R&amp;D / Preprint</div>
+                    </div>
+                    <p class="text-xs text-slate-500">QunaSys / arXiv • Juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Architecture MB-FTQC pour plateformes ions piégés / atomes neutres haute connectivité ; approche économe en ressources vers FTQC précoce.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://arxiv.org/" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#MBFTQC</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 4: Prospective -->
+        <section id="part4" class="mb-16">
+            <div class="flex items-center gap-x-3 mb-6">
+                <div class="px-4 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-3xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-chart-line fa-fw"></i>
+                    <span>PARTIE 4</span>
+                </div>
+                <h3 class="font-display text-3xl tracking-tight">Prospective &amp; Impacts Sectoriels</h3>
+                <span class="ml-auto text-sm px-3 py-1 bg-white border text-slate-500 rounded-3xl">6 articles</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">QuEra / IBM fault-tolerant timelines</div>
+                        <div class="horizon-badge bg-emerald-100 text-emerald-700">Court terme &lt;2 ans</div>
+                    </div>
+                    <p class="text-xs text-slate-500">QuEra / IBM • Juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Avantage quantique pratique visé fin 2026 (IBM), FTQC utile 2028 (QuEra/AWS) et 2029 (IBM). Co-design applications lancé.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://www.prnewswire.com/news-releases/quera-unveils-gigaquop-class-fault-tolerant-roadmap-and-invites-organizations-to-co-design-quantum-applications-302810334.html" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#Advantage #FTQC</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">McKinsey : Quantum is almost here – $622B value in finance</div>
+                        <div class="horizon-badge bg-sky-100 text-sky-700">Moyen 2-5 ans</div>
+                    </div>
+                    <p class="text-xs text-slate-500">McKinsey • 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Rapport McKinsey sur la valeur quantique (finance, optimisation) ; migration PQC critique pour infrastructure critique.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/quantum-is-almost-here-are-you-and-your-systems-ready" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#McKinsey</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">Post-Quantum Cryptography migration frameworks</div>
+                        <div class="horizon-badge bg-emerald-100 text-emerald-700">Court terme &lt;2 ans</div>
+                    </div>
+                    <p class="text-xs text-slate-500">ScienceDirect / RAD • Juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Cadres hybrides QKD + PQC (ML-KEM etc.) pour réseaux résilients ; déploiements commerciaux (RAD/Arqit 400G DCI).</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S1389128626003439" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#PQC #NIST</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">NIST PQC Round 3 additional signatures</div>
+                        <div class="horizon-badge bg-sky-100 text-sky-700">Court/Moyen terme</div>
+                    </div>
+                    <p class="text-xs text-slate-500">NIST • Mai/Juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Standardisation en cours (ML-KEM, ML-DSA, hash-based) ; migration US critique pour secteurs régulés.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://redsift.com/guides/post-quantum-cryptography" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#NIST</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">Quantum value in pharma &amp; optimization</div>
+                        <div class="horizon-badge bg-sky-100 text-sky-700">Moyen 2-5 ans</div>
+                    </div>
+                    <p class="text-xs text-slate-500">Rapports sectoriels • 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Simulations moléculaires et optimisation supply-chain comme cas d'usage prioritaires ; timelines compressées.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xs text-slate-400">Contexte McKinsey/BCG</span>
+                    </div>
+                </div>
+
+                <div class="article-card bg-white border border-slate-200 rounded-3xl p-5">
+                    <div class="flex justify-between gap-2 mb-2">
+                        <div class="font-semibold leading-tight">Arqit / RAD quantum-safe collaboration &amp; demos</div>
+                        <div class="horizon-badge bg-emerald-100 text-emerald-700">Court terme &lt;2 ans</div>
+                    </div>
+                    <p class="text-xs text-slate-500">RAD Press • Juin 2026</p>
+                    <p class="mt-2 text-sm text-slate-600">Démonstration live de chiffrement quantique-safe hybride sur réseaux DCI 400G ; adoption par telcos.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="https://www.rad.com/" target="_blank" class="text-sky-600 text-xs font-medium flex items-center gap-x-1">Lien <i class="fa-solid fa-external-link-alt fa-xs"></i></a>
+                        <span class="tag">#QKD #PQC</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Images & Synthèse -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            
+            <!-- Images -->
+            <div class="lg:col-span-2 bg-white border border-slate-200 rounded-3xl p-6">
+                <h4 class="font-semibold flex items-center gap-x-2 mb-4"><i class="fa-solid fa-image text-slate-400"></i> <span>Images &amp; schémas analysés</span></h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex gap-3"><span class="font-mono text-xs mt-1 text-slate-400">•</span> Roadmaps QuEra (Libra → Gigaquop) et IBM (Nighthawk → FTQC 2029)</li>
+                    <li class="flex gap-3"><span class="font-mono text-xs mt-1 text-slate-400">•</span> Schémas de codes toriques / surface codes avec rechargement de qubits</li>
+                    <li class="flex gap-3"><span class="font-mono text-xs mt-1 text-slate-400">•</span> Photos VivaTech Quantum Zone : stands Pasqal / Alice&amp;Bob / Quandela</li>
+                </ul>
+                <p class="text-[10px] text-slate-400 mt-4">Sources : communiqués officiels et pages produits</p>
+            </div>
+
+            <!-- Synthèse -->
+            <div class="lg:col-span-3 bg-white border border-slate-200 rounded-3xl p-6">
+                <h4 class="font-semibold flex items-center gap-x-2 mb-4"><i class="fa-solid fa-lightbulb text-amber-500"></i> <span>5 signaux faibles à surveiller</span></h4>
+                
+                <div class="space-y-4 text-sm">
+                    <div class="flex gap-4">
+                        <div class="font-mono text-xs w-6 text-center pt-px text-amber-600">1</div>
+                        <div><span class="font-semibold">Compression des timelines FTQC</span> (QuEra 2028, IBM 2029). Implication : audits cryptographiques et pilotes quantiques dès 2027.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="font-mono text-xs w-6 text-center pt-px text-amber-600">2</div>
+                        <div><span class="font-semibold">PROQCIMA &amp; EuroHPC</span> comme leviers de souveraineté. Opportunité de tester hardware européen via cloud souverain.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="font-mono text-xs w-6 text-center pt-px text-amber-600">3</div>
+                        <div><span class="font-semibold">Démonstrations QEC concrètes</span> (toric code, postselected). Investir dans compétences QEC et benchmarks hybrides.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="font-mono text-xs w-6 text-center pt-px text-amber-600">4</div>
+                        <div><span class="font-semibold">Migration PQC hybride déjà déployée</span> (RAD/Arqit 400G). Prioriser PKI hybride et évaluation HNDL.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="font-mono text-xs w-6 text-center pt-px text-amber-600">5</div>
+                        <div><span class="font-semibold">Co-design FTQC lancé</span> (QuEra Founders Circle). Participer aux consortiums EuroHPC / PROQCIMA pour cas d'usage.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center text-xs text-slate-400">
+            Rapport généré automatiquement • Sources primaires : constructeurs, arXiv, instituts européens • Total 23 articles
+        </div>
+    </div>
+
+    <script>
+        // Simple Tailwind script for any interactivity if needed
+        console.log('%c[Veille Quantique] Rapport HTML chargé avec succès', 'color:#64748b');
+    </script>
+</body>
+</html>

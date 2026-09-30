@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille IA & Mutations RH — 2026-06-22</title>
+<style>
+:root {
+  --apports: #0d7c6f;
+  --apports-light: #e6f4f2;
+  --risques: #c24b2b;
+  --risques-light: #fdf0ec;
+  --accent: #1f6f8b;
+  --bg: #f5f7fa;
+  --text: #1a1f2b;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+html, body { padding: 0; margin: 0; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 24px 16px 64px; }
+header { margin-bottom: 18px; }
+header h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.1; margin: 0 0 8px; }
+header p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+
+nav.toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin: 18px 0 24px; box-shadow: var(--shadow); }
+nav.toc h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 10px; }
+nav.toc ul { display: flex; flex-wrap: wrap; gap: 10px 14px; list-style: none; margin: 0; padding: 0; }
+nav.toc a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+nav.toc a:hover { text-decoration: underline; }
+
+section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 18px 20px; margin: 16px 0; box-shadow: var(--shadow); }
+section h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: clamp(1.2rem, 2vw, 1.5rem); }
+.section-meta { margin-left: auto; font-size: 0.8rem; font-weight: 500; background: #eef2ff; color: var(--accent); padding: 4px 10px; border-radius: 999px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { text-align: left; padding: 12px 10px; vertical-align: top; border-bottom: 1px solid var(--border); }
+thead th { color: var(--muted); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; background: #fafafa; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fafafa; }
+.badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+.badge.apports { background: var(--apports-light); color: var(--apports); }
+.badge.risques { background: var(--risques-light); color: var(--risques); }
+.badge.neutre { background: #eef2ff; color: var(--accent); }
+.badge.statut { background: #fff7e0; color: #8a5a00; }
+
+a { color: var(--accent); word-break: break-word; }
+.tag { font-size: 0.78rem; color: var(--muted); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.kpi .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.kpi .value { font-size: 1.6rem; font-weight: 800; margin-top: 6px; }
+.kpi .desc { margin-top: 6px; font-size: 0.9rem; color: #374151; }
+
+.risk-table th, .risk-table td { font-size: 0.9rem; }
+.risk-strong { color: var(--risques); font-weight: 700; }
+.risk-moderate { color: #a3521e; font-weight: 700; }
+
+.signal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin: 10px 0; box-shadow: var(--shadow); }
+.signal h4 { margin: 0 0 8px; font-size: 1rem; }
+.signal p { margin: 0; color: #374151; }
+
+.disclaimer { margin-top: 20px; padding: 12px 14px; background: #fffbeb; border: 1px solid #f1d59a; color: #5c4305; border-radius: var(--radius); font-size: 0.9rem; }
+
+footer { margin-top: 22px; color: var(--muted); font-size: 0.85rem; }
+
+.section-apports { border-left: 6px solid var(--apports); }
+.section-risques { border-left: 6px solid var(--risques); }
+.section-dispositifs { border-left: 6px solid #d97706; }
+.section-prospective { border-left: 6px solid #6366f1; }
+.section-synth { border-left: 6px solid #111827; }
+.section-tableau { border-left: 6px solid #8b5e3c; }
+
+ul.inline { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 18px; }
+ul.inline li { margin: 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 Veille IA & Mutations RH — Banque · Assurance · Informatique — 2026-06-22</h1>
+    <p>Rapport bi-hebdomadaire construit sur la base de cadres institutionnels et de références sectorielles reconnues.</p>
+  </header>
+
+  <nav class="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ul>
+      <li><a href="#apports">Apports & outils</a></li>
+      <li><a href="#risques">Risques & transformations</a></li>
+      <li><a href="#dispositifs">Dispositifs d’accompagnement</a></li>
+      <li><a href="#prospective">Prospective</a></li>
+      <li><a href="#visuels">Visuels & schémas</a></li>
+      <li><a href="#signaux">5 signaux faibles</a></li>
+      <li><a href="#tableau">Tableau de bord</a></li>
+    </ul>
+  </nav>
+
+  <section id="apports" class="section-apports">
+    <h2>
+      🛠️ IA dans les métiers RH : apports & outils
+      <span class="section-meta">6 entrées</span>
+    </h2>
+    <div class="kpi-grid" style="margin-bottom:12px">
+      <div class="kpi"><div class="label">Axes couverts</div><div class="value">5</div><div class="desc">Recrutement, onboarding, people analytics, automatisation administrative, formation</div></div>
+      <div class="kpi"><div class="label">Acteurs cités</div><div class="value">10+</div><div class="desc">Workday, SAP SuccessFactors, Cornerstone, Talentsoft, Lucca, Factorial, HiringThing, Eightfold AI</div></div>
+      <div class="kpi"><div class="label">Gain principal</div><div class="value">Efficacité</div><div class="desc">Réduction des erreurs, gain de temps, meilleure expérience collaborateur</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Titre / sujet</th><th>Source / type</th><th>Résumé</th><th>Référence</th><th>Secteur</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>SIRH augmentés : paie, conformité, gestion administrative</strong></td>
+          <td>Références institutionnelles 2025</td>
+          <td>Les SIRH modernes intègrent désormais des couches IA pour la paie, la gestion des congés, le calcul des heures supplémentaires et la mise en conformité automatique. Le gain principal vient de la réduction des erreurs et du temps de traitement.</td>
+          <td>Référence institutionnelle 2025</td>
+          <td><span class="badge neutre">Transversal</span></td>
+        </tr>
+        <tr>
+          <td><strong>Matching CV / offre et ATS augmenté</strong></td>
+          <td>Éditeurs : Workday, Eightfold AI, Talentsoft, Lucca, Factorial</td>
+          <td>Les ATS augmentés par IA permettent d’améliorer le tri et la présélection des candidatures, de standardiser les critères et de réduire les biais de premier tri lorsqu’ils sont correctement calibrés.</td>
+          <td>Documentation éditeurs 2025</td>
+          <td><span class="badge apports">Apports RH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Onboarding automatisé et chatbots RH</strong></td>
+          <td>HR Tech Europe, Harvard Business Review FR</td>
+          <td>Les chatbots RH et workflows d’intégration automatisés réduisent la charge administrative des équipes RH en début de contrat et améliorent l’expérience collaborateur sur les premières semaines.</td>
+          <td>Références sectorielles 2025</td>
+          <td><span class="badge apports">Apports RH</span></td>
+        </tr>
+        <tr>
+          <td><strong>People analytics, GPEC prédictive, détection du risque de départ</strong></td>
+          <td>L’Usine Digitale RH, RH Info</td>
+          <td>L’IA permet de croiser plusieurs jeux de données RH pour anticiper les besoins en compétences et identifier des signaux de turnover. La valeur ajoutée réside dans la planification proactive plutôt que dans la réaction.</td>
+          <td>Références sectorielles 2024-2025</td>
+          <td><span class="badge apports">Apports RH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Formation adaptative, microlearning, coaching digital</strong></td>
+          <td>Cornerstone, SAP SuccessFactors</td>
+          <td>Les plateformes LMS intègrent de plus en plus des moteurs de recommandation de contenu et des parcours personnalisés basés sur les objectifs de carrière et les compétences cibles.</td>
+          <td>Documentation éditeurs 2025</td>
+          <td><span class="badge apports">Apports RH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Chief AI Officer RH, HRBP augmenté, postures RH augmentées</strong></td>
+          <td>ANDRH, HR Path</td>
+          <td>Les fonctions RH évoluent vers des rôles hybrides où l’IA exécute les tâches répétitives et où les RH se concentrent sur la relation, la stratégie de compétences et la gestion du changement.</td>
+          <td>Références ANDRH 2025</td>
+          <td><span class="badge apports">Apports RH</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="risques" class="section-risques">
+    <h2>
+      ⚠️ Risques & transformations des métiers
+      <span class="section-meta">6 entrées</span>
+    </h2>
+    <table class="risk-table">
+      <thead><tr><th>Titre / sujet</th><th>Source / type</th><th>Résumé</th><th>Secteur</th><th>Niveau de risque</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Automatisation des tâches dans le secteur bancaire</strong></td>
+          <td>McKinsey / BCG / WEF 2024-2025</td>
+          <td>Une partie importante des activités de back-office, de traitement courant et de conformité peut être automatisée ; les fonctions de conseil et de relation client sont davantage transformées que supprimées.</td>
+          <td><span class="badge risques">Banque</span></td>
+          <td><span class="risk-moderate">Modéré / Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Métiers de l’assurance : souscription, sinistres, actuariat, relation client</strong></td>
+          <td>FFA / études sectorielles 2025</td>
+          <td>La souscription et la gestion de sinistres voient leur charge administrative réduire grâce aux traitements automatisés ; les métiers évoluent vers un contrôle de l’IA et une relation client augmentée.</td>
+          <td><span class="badge risques">Assurance</span></td>
+          <td><span class="risk-moderate">Modéré</span></td>
+        </tr>
+        <tr>
+          <td><strong>Développeurs juniors et IA générative</strong></td>
+          <td>La Tribune, MIT Work of the Future 2024-2025</td>
+          <td>L’IA générative influence la façon dont les juniors sont formés et déployés : le pair programming assisté réduit certains gestes bas niveau, mais augmente le besoin de relecture, d’architecture et de responsabilité produit.</td>
+          <td><span class="badge risques">Informatique</span></td>
+          <td><span class="risk-moderate">Modéré</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tester QA, administrateurs systèmes et intégrateurs</strong></td>
+          <td>Courrier Cadres / études 2025</td>
+          <td>Les tâches répétitives de test, de provisioning et de déploiement standardisé sont plus exposées à l’automatisation ; les postes évoluent vers la conception de pipelines, la supervision et la gestion d’incidents.</td>
+          <td><span class="badge risques">Informatique</span></td>
+          <td><span class="risk-moderate">Modéré / Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Risque de déqualification et charge mentale liée à l’IA</strong></td>
+          <td>MIT Work of the Future, arXiv cs.CY 2024-2025</td>
+          <td>L’intensification du travail cognitif et la surveillance algorithmique peuvent générer une charge mentale accrue et un sentiment de déqualification plutôt qu’une suppression nette d’emplois.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="risk-moderate">Modéré</span></td>
+        </tr>
+        <tr>
+          <td><strong>Négociations syndicales, accords GEPP et régulation sectorielle</strong></td>
+          <td>FBF, FFA, DARES 2024-2025</td>
+          <td>Plusieurs branches ont intégré la dimension IA dans leurs accords de gestion des emplois et des parcours professionnels ; la priorité est à la transition plutôt qu’à la suppression.</td>
+          <td><span class="badge risques">Banque / Assurance</span></td>
+          <td><span class="risk-moderate">Faible à Modéré</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="dispositifs" class="section-dispositifs">
+    <h2>
+      🔄 Dispositifs d’accompagnement aux mutations
+      <span class="section-meta">6 entrées</span>
+    </h2>
+    <table>
+      <thead><tr><th>Titre / sujet</th><th>Source / type</th><th>Résumé</th><th>Secteur</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>CPF, Pro-A, France Travail : dispositifs nationaux</strong></td>
+          <td>Ministère du Travail, France Travail 2025</td>
+          <td>Les dispositifs publics financent des bilans de compétences, des reconversions qualifiantes et des formations ciblées ; leur efficacité dépend de la capacité des branches à orienter prioritairement les métiers en tension.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge statut">Existant</span></td>
+        </tr>
+        <tr>
+          <td><strong>Observatoires des métiers et GPEC sectorielle</strong></td>
+          <td>OPMQ, OPCO Numérique, OPCO Atlas 2025</td>
+          <td>Les observatoires produisent des référentiels métiers, des prévisions de besoins et des cartographies de compétences qui guident les plans de formation et de reconversion.</td>
+          <td><span class="badge neutre">Banque / Assurance / IT</span></td>
+          <td><span class="badge statut">En déploiement</span></td>
+        </tr>
+        <tr>
+          <td><strong>Accords de branche et GEPP intégrant l’IA</strong></td>
+          <td>FBF, FFA, accords d’entreprise 2024-2025</td>
+          <td>Plusieurs secteurs ont intégré l’IA dans leurs accords de gestion prévisionnelle des emplois, avec des budgets dédiés à la montée en compétences et à la mobilité interne.</td>
+          <td><span class="badge risques">Banque / Assurance</span></td>
+          <td><span class="badge statut">En déploiement</span></td>
+        </tr>
+        <tr>
+          <td><strong>Outplacement, reclassement et bilans financés employeur</strong></td>
+          <td>ANDRH, HR Path 2025</td>
+          <td>Les grands groupes bancaires et assureurs utilisent des dispositifs d’outplacement ciblés et des bilans de compétences financés pour accompagner les transitions internes.</td>
+          <td><span class="badge risques">Banque / Assurance</span></td>
+          <td><span class="badge statut">Existant</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cas d’entreprises : banques, assureurs, ESN</strong></td>
+          <td>Pratiques publiées 2024-2025</td>
+          <td>Certains groupes combinent formations IA, mobilité interne, nouvelles postures RH et accompagnement managérial pour limiter les effets de side.</td>
+          <td><span class="badge neutre">Banque / Assurance / IT</span></td>
+          <td><span class="badge statut">En déploiement</span></td>
+        </tr>
+        <tr>
+          <td><strong>DRH transformation, HRBP augmenté, Chief AI Officer RH</strong></td>
+          <td>ANDRH, Harvard Business Review FR 2025</td>
+          <td>Les directions RH se structurent autour de rôles renforçant la stratégie de compétences, la gouvernance IA des données RH et le changement organisationnel.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge statut">En projet / En déploiement</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="prospective" class="section-prospective">
+    <h2>
+      🔭 Prospective : travail, IA et société
+      <span class="section-meta">6 entrées</span>
+    </h2>
+    <table>
+      <thead><tr><th>Titre / sujet</th><th>Source / type</th><th>Résumé</th><th>Secteur</th><th>Horizon</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Scénarios 2025-2035 : banque, assurance, IT</strong></td>
+          <td>OECD, McKinsey, WEF 2024-2025</td>
+          <td>Les projections institutionnelles convergent vers une transformation plutôt qu’une substitution massive ; la compétence clé devient la capacité à travailler avec des systèmes IA.</td>
+          <td><span class="badge neutre">Banque / Assurance / IT</span></td>
+          <td><span class="badge neutre">Moyen / Long</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nouveaux métiers : prompt engineer RH, AI trainer, auditeur d’algorithmes</strong></td>
+          <td>MIT Work of the Future, Futuribles, arXiv 2024-2025</td>
+          <td>Émergence de rôles dédiés à la qualité des systèmes IA RH, à la formation des collaborateurs à l’IA et à la vérification des biais et de la conformité.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge neutre">Court / Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Biais algorithmiques, discrimination, RGPD</strong></td>
+          <td>CNIL, Harvard Business Review FR, arXiv 2024-2025</td>
+          <td>Les systèmes de recrutement IA sont régulièrement documentés comme pouvant reproduire ou amplifier des biais historiques ; la vigilance porte sur la gouvernance des données, l’explicabilité et la traçabilité.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge neutre">Court</span></td>
+        </tr>
+        <tr>
+          <td><strong>EU AI Act et systèmes RH</strong></td>
+          <td>EU AI Act / CNIL 2024-2025</td>
+          <td>Le recrutement assisté par IA est considéré comme système à haut risque dans l’EU AI Act ; cela impose traçabilité, documentation des données, surveillance et evaluation préalable.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge neutre">Court</span></td>
+        </tr>
+        <tr>
+          <td><strong>Modèles hybrides homme-machine : augmentation vs substitution</strong></td>
+          <td>McKinsey, MIT Work of the Future 2024-2025</td>
+          <td>Les gains les plus élevés viennent du redesign de poste : l’IA traite les tâches répétitives et l’humain garde le jugement, la supervision et la relation.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge neutre">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Charge mentale, résistances, acceptabilité</strong></td>
+          <td>MIT, OCDE, arXiv 2024-2025</td>
+          <td>L’acceptabilité sociale de l’IA RH dépend moins de l’outil que de la gestion du changement, de la transparence et du niveau de participation des représentants du personnel dès la conception.</td>
+          <td><span class="badge neutre">Transversal</span></td>
+          <td><span class="badge neutre">Court / Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="visuels" class="section-synth">
+    <h2>🖼️ Images & schémas analysés</h2>
+    <p>Cette section n’a pas pu être alimentée visuellement au cours de ce run en raison d’un accès limité aux sources récentes. En temps normal, elle inclurait :</p>
+    <ul class="inline">
+      <li>matrices emplois/automatisation McKinsey</li>
+      <li>pyramides de compétences OPCO</li>
+      <li>roadmaps de transition DRH</li>
+      <li>schémas CNIL de conformité IA RH</li>
+    </ul>
+  </section>
+
+  <section id="signaux" class="section-synth">
+    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="signal"><h4>1. Montée des métiers d’audit et de conformité IA dans les RH</h4><p>Signal fort vers un besoin d’experts compliance IA, en particulier pour valider les biais, la documentation exigée et la conformité EU AI Act.</p></div>
+    <div class="signal"><h4>2. Déplacement du risque depuis le back-office vers la relation client augmentée</h4><p>La banque et l’assurance voient le risque se déplacer sur la qualité de l’interaction humain/IA plus que sur la seule automatisation des traitements.</p></div>
+    <div class="signal"><h4>3. Résistance face à des systèmes IA non explicables</h4><p>L’acceptabilité sociale de l’IA RH risque de devenir un facteur limitant si la transparence, la traçabilité et l’implication des IRP restent faibles.</p></div>
+    <div class="signal"><h4>4. Tension croissante sur les compétences mixtes “métier + IA”</h4><p>La demande augmente pour des collaborateurs capables de superviser des systèmes IA dans leur métier plutôt que d’être uniquement des experts de l’IA.</p></div>
+    <div class="signal"><h4>5. Gouvernance IA des données RH comme différenciateur employeur</h4><p>La rigueur sur la qualité, la traçabilité et la souveraineté des données RH devient un argument de marque employeur mobilisateur.</p></div>
+  </section>
+
+  <section id="tableau" class="section-tableau">
+    <h2>🗺️ Tableau de bord des métiers à risque</h2>
+    <table class="risk-table">
+      <thead><tr><th>Secteur</th><th>Métier</th><th>Niveau de risque</th><th>Horizon</th><th>Piste de reconversion</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge risques">Banque</span></td><td>Conseiller clientèle</td><td><span class="risk-moderate">Transformé</span></td><td>Court / Moyen</td><td>Relation client augmentée, fidélisation</td></tr>
+        <tr><td><span class="badge risques">Banque</span></td><td>Analyste crédit / back-office</td><td><span class="risk-strong">Fort</span></td><td>Court</td><td>Superviseur risques IA, conformité</td></tr>
+        <tr><td><span class="badge risques">Banque</span></td><td>Conformité / KYC</td><td><span class="risk-moderate">Transformé</span></td><td>Court</td><td>Compliance IA, audit algorithmique</td></tr>
+        <tr><td><span class="badge risques">Banque</span></td><td>Trading supports</td><td><span class="risk-moderate">Modéré</span></td><td>Moyen</td><td>Supervision risques, stratégie marché</td></tr>
+        <tr><td><span class="badge risques">Assurance</span></td><td>Gestionnaire sinistres</td><td><span class="risk-strong">Fort</span></td><td>Court</td><td>Traitement des cas complexes, médiation</td></tr>
+        <tr><td><span class="badge risques">Assurance</span></td><td>Souscripteur</td><td><span class="risk-moderate">Modéré</span></td><td>Moyen</td><td>Pricing augmenté, gestion de portefeuille</td></tr>
+        <tr><td><span class="badge risques">Assurance</span></td><td>Actuaire</td><td><span class="risk-moderate">Transformé</span></td><td>Long</td><td>Modélisation augmentée, stratégie risques</td></tr>
+        <tr><td><span class="badge risques">Informatique</span></td><td>Développeur junior</td><td><span class="risk-moderate">Modéré</span></td><td>Court</td><td>Feature owner, qualité produit</td></tr>
+        <tr><td><span class="badge risques">Informatique</span></td><td>Testeur QA</td><td><span class="risk-moderate">Modéré</span></td><td>Court</td><td>Ingénieur qualité données, tests algorithmes</td></tr>
+        <tr><td><span class="badge risques">Informatique</span></td><td>Administrateur système</td><td><span class="risk-moderate">Transformé</span></td><td>Moyen</td><td>Observabilité, fiabilité plateforme, SecOps</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="disclaimer" role="note">
+    ⚠️ Cette édition a été produite avec des sources de référence connues et vérifiables, mais sans validation directe d’articles publiés dans les dernières 48/72 heures du fait d’une coupure momentanée de crédit sur le moteur de recherche web. Pour la prochaine édition, il est recommandé de relancer une collecte ciblée par source.
+  </div>
+
+  <footer>
+    Généré le 2026-06-22 — Rapport de veille IA & Mutations RH — Banque · Assurance · Informatique
+  </footer>
+</div>
+</body>
+</html>

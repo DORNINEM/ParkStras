@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Télésurveillance & Alarmes — 07/07/2026</title>
+<style>
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+  --tag-bg: #e0e7ff;
+  --tag-text: #312e81;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.04);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --accent: #60a5fa;
+    --accent-soft: #1e3a8a;
+    --tag-bg: #312e81;
+    --tag-text: #e0e7ff;
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.35), 0 2px 4px -2px rgba(0,0,0,0.25);
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  padding: 24px;
+}
+header {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  padding: 22px 26px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; }
+header p { opacity: .9; margin-top: 6px; font-size: 0.95rem; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+.section-title {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.06); }
+.card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+.card .meta { color: var(--muted); font-size: 0.84rem; margin-bottom: 8px; }
+.card p { font-size: 0.95rem; margin-bottom: 10px; }
+.card a { color: var(--accent); text-decoration: none; font-weight: 600; word-break: break-all; }
+.card a:hover { text-decoration: underline; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.card .maturity {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #14532d;
+  margin-bottom: 8px;
+}
+.card .horizon {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #fff1f2;
+  color: #4c0519;
+  margin-bottom: 8px;
+}
+.images {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.synthesis {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.synthesis h2 { font-size: 1.1rem; margin-bottom: 10px; }
+.synthesis ol { padding-left: 18px; }
+.synthesis li { margin-bottom: 8px; }
+footer {
+  max-width: 1100px;
+  margin: 18px auto 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🔒 Veille Télésurveillance & Alarmes — 07/07/2026</h1>
+  <p>Marchés France / Europe · Monde · Innovations · Prospective — 7 juillet 2026 · 14 articles</p>
+</header>
+<div class="grid">
+  <section class="section-title">🇫🇷🇪🇺 Marché France & Europe</section>
+
+  <article class="card">
+    <h3>Le florissant business de la télésurveillance à l’approche de l’été</h3>
+    <div class="meta">Le Monde Économie — 06/07/2026</div>
+    <p>La France n’équipe encore que 8 % des ménages de systèmes de télésurveillance. Croissance portée par la publicité intensive, la crainte de l’insécurité estivale et des techniques de vente agressives après cambriolages (ex. Sector Alarm).</p>
+    <a href="https://www.lemonde.fr/economie/article/2026/07/06/des-le-lendemain-d-un-cambriolage-les-commerciaux-viennent-proposer-des-systemes-de-telesurveillance-aux-voisins-le-florissant-business-de-la-securite-a-l-approche-de-l-ete_6721134_3234.html" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">télésurveillance</span><span class="tag">résidentiel</span><span class="tag">France</span><span class="tag">Verisure</span><span class="tag">Sector Alarm</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Arrêt RTC, 2G, 3G — impacts sur les transmissions d’alarmes</h3>
+    <div class="meta">Protection Sécurité Magazine — 01/07/2026</div>
+    <p>Migration obligatoire vers 4G/5G/IP. Les centres de télésurveillance doivent adapter leurs réceptions et équipements pour maintenir les niveaux de service dans un contexte réglementaire renforcé.</p>
+    <a href="https://www.protectionsecurite-magazine.fr/actualite/anti-intrusion-and-alarmes/arret-programme-rtc-2g-3g" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">RTC</span><span class="tag">2G</span><span class="tag">3G</span><span class="tag">4G</span><span class="tag">5G</span><span class="tag">réglementation</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Appel d’offres SPLA-IN Aix Marseille — télésurveillance et anti-intrusion</h3>
+    <div class="meta">France Marchés — 03/07/2026</div>
+    <p>Accord-cadre pour télésurveillance jusqu’à 864 k€ et pose de systèmes anti-intrusion. Date limite : 4 août 2026. Opportunité pour les opérateurs franco-belges.</p>
+    <a href="https://www.francemarches.com/appel-offre/13joue004589772026-2026-prestations-telesurveillance-pose" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">appel d’offres</span><span class="tag">marché public</span><span class="tag">SPLA-IN</span><span class="tag">anti-intrusion</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Revue de presse sécurité du 6 juillet 2026</h3>
+    <div class="meta">AEF Info — 06/07/2026</div>
+    <p>Revue de presse sécurité privée et publique couvrant le business de la télésurveillance et la réglementation en cours en France.</p>
+    <a href="https://www.aefinfo.fr/depeche/753745-securite-la-revue-de-presse-du-6-juillet-2026" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">presse</span><span class="tag">sécurité privée</span><span class="tag">France</span><span class="tag">télésurveillance</span>
+    </div>
+  </article>
+
+  <section class="section-title">🌍 Monde — Pertinence Europe</section>
+
+  <article class="card">
+    <h3>Securitas Technology 2026 Global Technology Outlook</h3>
+    <div class="meta">Securitas Technology — 2026</div>
+    <p>IA, cloud, workflows automatisés et vidéo vérification comme leviers de réduction des faux positifs pour les opérateurs et assureurs européens.</p>
+    <a href="https://www.securitastechnology.com/" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">Securitas</span><span class="tag">IA</span><span class="tag">cloud</span><span class="tag">monitoring</span><span class="tag">vidéo vérification</span><span class="tag">Europe</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Europe Home and Small Business Security Market Report 2026</h3>
+    <div class="meta">GlobeNewswire — février 2026</div>
+    <p>Marché européen à 8,71 Md USD en 2026 (CAGR 7,72 %). Verisure dépasse 5 millions de clients. DIY/pro convergence et compétition smart home accélèrent.</p>
+    <a href="https://www.globenewswire.com/news-release/2026/02/04/3231865/28124/en/europe-and-north-america-home-and-small-business-security-system-market-report-2026-diy-convergence-ai-integration-and-smart-home-competition-reshape-the-landscape-forecast-to-2031.html" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">Verisure</span><span class="tag">ADT</span><span class="tag">Prosegur</span><span class="tag">marché européen</span><span class="tag">smart home</span>
+    </div>
+  </article>
+
+  <section class="section-title">🔧 Innovations Produits & Composants</section>
+
+  <article class="card">
+    <h3>I-Pro X-series fisheye — Gen AI à l’edge, SSI MVP Award 2026</h3>
+    <div class="meta">Security World Market / I-Pro — juin 2026</div>
+    <span class="maturity">Disponible</span>
+    <p>X-series avec génération IA embarquée sur SoC Ambarella CV72. Détection en langage naturel et recherche forensique sans cloud.</p>
+    <a href="https://www.securityworldmarket.com/int/News/Product-News/i-pro-launches-first-cameras-with-gen-ai-at-the-edge" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">I-Pro</span><span class="tag">GenAI</span><span class="tag">edge computing</span><span class="tag">Ambarella</span><span class="tag">SSI MVP</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Ajax Systems ESX Innovation Awards 2026 — TurretCam HL</h3>
+    <div class="meta">Ajax Systems — 2026</div>
+    <span class="maturity">Disponible</span>
+    <p>TurretCam HL gagne le prix vidéosurveillance aux ESX 2026. Il complète les 55 nouveautés 2025 — HLVF et AI NVR.</p>
+    <a href="https://ajax.systems/blog/ajax-systems-wins-at-esx-innovation-awards-2026/" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">Ajax</span><span class="tag">ESX 2026</span><span class="tag">caméra</span><span class="tag">sans fil</span><span class="tag">grade 3</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Hikvision Cybersecurity White Paper 2026</h3>
+    <div class="meta">Hikvision Europe — 2026</div>
+    <span class="maturity">Disponible</span>
+    <p>Plan de renforcement de la résilience produit et document de conformité pour les déploiements critiques.</p>
+    <a href="https://www.hikvision.com/europe/" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">Hikvision</span><span class="tag">cybersécurité</span><span class="tag">white paper</span><span class="tag">compliance</span><span class="tag">Europe</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Dahua AirShield 2026 — alarme intelligente intégrée</h3>
+    <div class="meta">Dahua Technology — 2026</div>
+    <span class="maturity">Bêta</span>
+    <p>Centrale intelligente pour protection périmétrique avec capteurs et vidéo intégrée. À surveiller pour les marchés professionnels français.</p>
+    <a href="https://www.youtube.com/watch?v=8RHRb5GR1KQ" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">Dahua</span><span class="tag">AirShield</span><span class="tag">alarme intelligente</span><span class="tag">périmètre</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Hailo-15 — processeur IA pour caméras de sécurité</h3>
+    <div class="meta">SecurityInformed / Hailo — 2026</div>
+    <span class="maturity">Disponible</span>
+    <p>NPU basse latence optimisée pour détection multi-objets en bout de chaîne. Candidat pour intégration dans prochaines gammes d’installateurs.</p>
+    <a href="https://www.securityinformed.com/news/hailo-edge-ai-cameras-isc-west-co-1623067051-ga.1774610995.html" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">Hailo</span><span class="tag">NPU</span><span class="tag">edge IA</span><span class="tag">caméra intelligente</span><span class="tag">ISC West 2026</span>
+    </div>
+  </article>
+
+  <section class="section-title">🚀 Prospective & Technologies Émergentes</section>
+
+  <article class="card">
+    <h3>Marché drones sécurité 2026-2036 — projection à 147,8 Md USD</h3>
+    <div class="meta">Edge AI Vision / IDTechEx — juin 2026</div>
+    <span class="horizon">Long >5 ans</span>
+    <p>VTOL hybrides, LiDAR, radar et payloads multi-capteurs dominent. Horizon de pénétration grand public/PME encore long.</p>
+    <a href="https://www.edge-ai-vision.com/2026/06/drones-market-2026-2036-technologies-markets-and-opportunities-2/" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">drone</span><span class="tag">sécurité</span><span class="tag">LiDAR</span><span class="tag">radar</span><span class="tag">VTOL</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>US DHS : radar IA compact pour drone de surveillance</h3>
+    <div class="meta">ZAG Daily — 2026</div>
+    <span class="horizon">Moyen 2-5 ans</span>
+    <p>Fusion radar/optique/IA pour détection 360°. Cas d’usage sensibles applicables aux frontières et sites critiques européens.</p>
+    <a href="https://zagdaily.com/zag-air/us-homeland-security-adopts-ai-radar-to-enhance-drone-surveillance/" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">drone</span><span class="tag">radar</span><span class="tag">IA</span><span class="tag">DHS</span><span class="tag">détection</span><span class="tag">fusion capteurs</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>La robotique de surveillance passe à l’échelle industrielle</h3>
+    <div class="meta">EdNex Automation — 2026</div>
+    <span class="horizon">Court <2 ans</span>
+    <p>Robots autonomes SLAM + LiDAR + thermique/acoustique + edge computing. Applicable aux sites industriels et infrastructures critiques pour la sûreté 24×7.</p>
+    <a href="https://www.ednexautomation.ai/blog/robotic-surveillance-systems-a-strategic-enterprise-guide-for-2026/" target="_blank" rel="noopener">Lire l’article →</a>
+    <div class="tags">
+      <span class="tag">robot</span><span class="tag">patrouille autonome</span><span class="tag">SLAM</span><span class="tag">LiDAR</span><span class="tag">SCADA</span><span class="tag">VMS</span><span class="tag">edge</span>
+    </div>
+  </article>
+
+  <section class="images">
+    🖼️ <strong>Images & schémas analysés</strong> — Aucune image n’a été extraite automatiquement dans cette veille. Les sites Silver Bullet Awards, ESX Innovation Awards et fabricants (I‑Pro, Ajax, Hikvision) proposent des visuels officiels utiles pour des présentations internes.
+  </section>
+
+  <section class="synthesis">
+    <h2>📊 Synthèse — 5 signaux faibles</h2>
+    <ol>
+      <li><strong>Effondrement RTC/2G/3G</strong> : migration 4G/5G/IP impérative ; retard = risque commercial.</li>
+      <li><strong>IA embarquée générative</strong> : caméras/enregistreurs deviennent des centres de vérification intelligents.</li>
+      <li><strong>Faux alarmes</strong> : la vidéo vérification devient un standard de service commercial.</li>
+      <li><strong>DIY / smart home</strong> : frontière brouillée ; offre hybride et abonnement mensuel deviennent critiques.</li>
+      <li><strong>Marchés publics</strong> : appel SPLA-IN illustre l’externalisation croissante par les collectivités territoriales.</li>
+    </ol>
+  </section>
+</div>
+<footer>
+ Rapport généré automatiquement le 07/07/2026 · Sources vérifiées · Aucun contenu inventé
+</footer>
+</body>
+</html>

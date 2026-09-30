@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-08</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Mercredi 8 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-08T07:00:00.000000+00:00">Mercredi 8 juillet 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">🌗</button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Agents & automation</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & régulation</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure & hardware</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Emploi & transition</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Énergie & climat</span>
+    </div>
+
+    <div class="grid">
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item"><h3>ZD Tech : Intelligence artificielle : la presse française réclame 80 millions d'euros à Brave</h3><div class="meta">ZDNet FR · 06/07/2026</div><p>Un contentieux européen met en lumière les enjeux de l'IA générative et de l'entraînement sur données éditoriales sans consentement.</p><a href="https://www.zdnet.fr/actualites/zd-tech-intelligence-artificielle-la-presse-francaise-reclame-80-millions-deuros-a-brave-496176.htm" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>L'IA en 2026 : moins de copilotes et plus d'autonomie</h3><div class="meta">ZDNet FR · 06/07/2026</div><p>Tendance confirmée vers les agents autonomes et la « Physical AI », au détriment des copilotes classiques dans les entreprises.</p><a href="https://www.zdnet.fr/blogs/green-si/lia-en-2026-moins-de-copilotes-et-plus-dautonomie-488355.htm" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>Comment France Travail déploie l'IA pour accélérer les embauches</h3><div class="meta">ZDNet FR · 06/07/2026</div><p>La DGFiP et France Travail généralisent des outils génératifs pour aider les conseillers, les chercheurs d'emploi et les recruteurs.</p><a href="https://www.zdnet.fr/actualites/voici-comment-france-travail-deploie-lia-pour-accelerer-les-embauches-496561.htm" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>L'Union européenne va imposer des « étiquettes » sur les contenus générés par IA</h3><div class="meta">Numerama · 08/07/2026</div><p>L'AI Act imposera un marquage des contenus synthétiques et deepfakes à partir d'août 2026, avec des défis de mise en œuvre.</p><a href="https://www.numerama.com/politique/2282367-lunion-europeenne-va-imposer-des-etiquettes-sur-les-contenus-generes-par-ia.html" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>Comment France Travail veut passer à l’échelle supérieure sur l’IA</h3><div class="meta">Silicon.fr · 08/07/2026</div><p>Ambition de déploiement massif d'ici fin 2026 avec Mistral AI et les services MatchFT, CoachFT et ChatFT.</p><a href="https://www.silicon.fr/data-ia-1372/comment-france-travail-veut-passer-a-lechelle-superieure-sur-lia-227649" target="_blank" rel="noopener">Lire l’article →</a></div>
+          
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="europe">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill green">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item"><h3>Artificial Intelligence: Council gives final green light to simplify and streamline rules</h3><div class="meta">Consilium · 29/06/2026</div><p>Digital Omnibus VII adoption : report des obligations haut risque à décembre 2027 / août 2028, durcissement contre les contenus intimes non consensuels.</p><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>The EU AI Act just changed. Here is what it actually means</h3><div class="meta">DecisionFocus · 29/06/2026</div><p>Premières modifications substantielles de l'AI Act depuis son adoption en 2024, avec simplification et nouveaux délais pour les acteurs économiques.</p><a href="https://www.decisionfocus.com/articles/eu-ai-act-blog" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>EU Council Formally Adopts AI Omnibus Amending EU AI Act, 29 June 2026</h3><div class="meta">Licentium · 29/06/2026</div><p>Formalisation de l'amendement après approbation du Parlement : nouveaux timelines et interdictions sur la génération non consensuelle.</p><a href="https://www.licentium.io/post/eu-council-formally-adopts-ai-omnibus-amending-eu-ai-act-29-june-2026" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>For Europe to lead in AI, sovereignty must mean choice</h3><div class="meta">POLITICO · 06/07/2026</div><p>Analyse des risques d'un souverainisme fermé qui pourrait réduire la croissance IA européenne des deux tiers sans ouverture stratégique.</p><a href="https://www.politico.eu/sponsored-content/for-europe-to-lead-in-ai-sovereignty-must-mean-choice/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>RAISE Summit 2026 returns to Paris</h3><div class="meta">tech.eu · 10/06/2026</div><p>Sommet IA attendu les 8 et 9 juillet 2026 au Carrousel du Louvre avec près de 9 000 participants et 350 intervenants.</p><a href="https://tech.eu/2026/06/10/raise-summit-returns-to-paris-on-july-8-9-2026-at-the-carrousel-du-louvre/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="world">
+        <div class="card-head">
+          <h2 class="card-title" id="world">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill yellow">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item"><h3>Meta launches Muse Image, a new AI image generator</h3><div class="meta">TechCrunch · 07/07/2026</div><p>Meta Superintelligence Labs lance Muse Image via l'app Meta AI, Instagram Stories et WhatsApp, avec un débat sur l'utilisation des photos publiques.</p><a href="https://techcrunch.com/2026/07/07/meta-rolls-out-muse-a-new-ai-image-generator/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>Why the rise of open source AI isn’t hurting Anthropic … yet</h3><div class="meta">TechCrunch · 07/07/2026</div><p>Les modèles ouverts progressent, mais Frontier Labs gardent la dépense premium ; l'open source prend les charges matures et la frontière garde l'exploration.</p><a href="https://techcrunch.com/2026/07/07/why-the-rise-of-open-source-ai-isnt-hurting-anthropic-yet/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>Discord admits AI moderation bug wrongfully banned users over harmless images</h3><div class="meta">TechCrunch · 07/07/2026</div><p>Bug de modération IA ayant banni plus de 8 000 utilisateurs depuis mai pour des contenus inoffensifs : tableurs, échecs, motifs en grille.</p><a href="https://techcrunch.com/2026/07/07/discord-admits-ai-moderation-bug-wrongfully-banned-users-over-harmless-images/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>Every major tech layoff in 2026 that has name-checked AI</h3><div class="meta">TechCrunch · 06/07/2026</div><p>Tour d'horizon des licenciements chez Microsoft, Oracle, GitLab, Google, Meta ou Cisco explicitement justifiés par l'automatisation IA.</p><a href="https://techcrunch.com/2026/07/06/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>AI poses ‘Hiroshima’-style threat to humanity without global rules, says Cooper</h3><div class="meta">The Guardian · 05/07/2026</div><p>Le gouvernement britannique appelle à des règles internationales urgentes pour contenir les risques existentiels associés aux systèmes avancés.</p><a href="https://www.theguardian.com/politics/2026/jul/05/ai-hiroshima-style-threat-humanity-global-rules-yvette-cooper" target="_blank" rel="noopener">Lire l’article →</a></div>
+          <div class="item"><h3>LLM-as-a-Verifier: A General-Purpose Verification Framework</h3><div class="meta">arXiv · 07/07/2026</div><p>Nouveau framework de vérification par modèle linguistique atteignant l’état de l’art sur Terminal-Bench V2 et SWE-Bench Verified.</p><a href="https://arxiv.org/abs/2607.05391" target="_blank" rel="noopener">Lire l’article →</a></div>
+          
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne — générée le 08/07/2026 — Hermes Agent
+    </footer>
+  </div>
+</body>
+</html>

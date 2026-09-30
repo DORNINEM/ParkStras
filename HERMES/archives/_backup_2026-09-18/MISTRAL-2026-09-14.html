@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Mistral AI — 2026-09-14</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille Mistral AI</h1>
+        <p>2026-09-14 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-09-14">2026-09-14</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne · 12 actualités</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">4 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🤝 Partenariats</div>
+        <div class="value" style="color:var(--success)">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde &amp; stratégie</div>
+        <div class="value">5 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Financement record</span>
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Samsung / semi-conducteurs</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Souveraineté</span>
+      <span class="badge"><span class="dot" style="color:#9333aa"></span>Cloudera / entreprise</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure &amp; compute</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Agents IA</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Levée record de 3 Md€ menée par Samsung : Mistral valorisé plus de 21 Md€</h3>
+            <div class="meta">Les Echos — 08/09/2026</div>
+            <p>La plus grande levée en capital de l'histoire de la tech européenne : Samsung mène la Série D aux côtés du Scaleup Europe Fund (EQT/UE) et de PSG Equity. La valorisation passe de 11,7 à plus de 21 Md€ (~24 Md$), moins de trois ans après la création de l'entreprise.</p>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/la-levee-la-plus-importante-jamais-realisee-en-europe-mistral-valorise-a-pres-de-25-milliards-apres-un-nouveau-tour-de-table-avec-samsung-2250264" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Samsung s'appuie sur Mistral pour son usine à puces : pacte stratégique au sommet France-Corée</h3>
+            <div class="meta">Samsung Newsroom / Yonhap — 08/09/2026</div>
+            <p>Annoncé lors du sommet d'État entre Emmanuel Macron et Lee Jae Myung à Paris : Mistral développera pour Samsung des modèles IA on-premise dédiés à la conception, l'ingénierie et la fabrication de semi-conducteurs. L'investissement stratégique et le contrat industriel sont liés, avec un MOU franco-coréen sur l'IA et le quantique en sus.</p>
+            <a href="https://news.samsung.com/global/samsung-and-mistral-ai-announce-strategic-partnership-for-intelligence-driven-semiconductor-infrastructure" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« La promesse de souveraineté de Mistral à l'épreuve » : le débat français s'intensifie</h3>
+            <div class="meta">Le Figaro / Challenges / Atlantico — 08-10/09/2026</div>
+            <p>La presse économique interroge le paradoxe d'un champion souverain financé par Samsung, Nvidia et ASML (puces, GPU, lithographie). Challenges s'interroge sur le pivot vers l'infrastructure ; Atlantico parle d'« IA souveraine en location » ; Lescure avait averti début septembre qu'« on ne peut pas mettre tous ses œufs dans le même panier ».</p>
+            <a href="https://www.lefigaro.fr/secteur/high-tech/malgre-une-levee-de-3-milliards-d-euros-la-promesse-de-souverainete-de-mistral-ai-a-l-epreuve-20260908" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Après le piratage de la DGFiP, contrat de 6 M€ : des ingénieurs Mistral dans les ministères</h3>
+            <div class="meta">Le Monde / ZDNet FR / 01net — 03-04/09/2026</div>
+            <p>Dans la continuité du plan « Notre IA » (assistant généralisé à ~1 M d'agents publics en juin), l'État signe un marché non exclusif de 6 M€ sur 2026-2027 : cybersécurité post-piratage de la DGFiP, détection de fraudes et traitement des contentieux judiciaires, avec immersion d'ingénieurs Mistral dans les ministères.</p>
+            <a href="https://www.lemonde.fr/pixels/article/2026/09/03/intelligence-artificielle-l-etat-renforce-son-partenariat-avec-mistral-et-lance-de-nouvelles-experimentations-dans-des-ministeres_6764672_4408996.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde & stratégie -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde &amp; stratégie
+          </h2>
+          <span class="pill green">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral lève 3 Md€ : « l'IA souveraine devient un grand marché », l'analyse TechCrunch</h3>
+            <div class="meta">TechCrunch — 08/09/2026</div>
+            <p>Série D à plus de 21 Md€ post-money, co-menée par le Scaleup Europe Fund adossé à la Commission européenne. BlackRock et a16z participent. L'argent servira surtout à la compute, aux data centers et à la recherche frontière, dans un contexte où l'« IA souveraine » devient un vrai marché.</p>
+            <a href="https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>WSJ : la valorisation franchit les 24 Md$, l'ARR vise le milliard</h3>
+            <div class="meta">WSJ / Bloomberg / Reuters — 08/09/2026</div>
+            <p>Le Wall Street Journal chiffre la levée à ~3,48 Md$ et la valorisation au-dessus de 24 Md$, record européen. Mistral revendique plus de 125 clients entreprises (Airbus, HSBC, BMW, ASML, Cisco) et table sur 1 Md$ d'ARR fin 2026, avec ~60 % de revenus européens.</p>
+            <a href="https://www.wsj.com/tech/ai/mistral-ai-exceeds-24-billion-valuation-after-samsung-led-investment-round-ea377b82" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« Il y a une fragmentation du monde sur l'IA » : Arthur Mensch détaille l'usage des fonds</h3>
+            <div class="meta">Les Echos — 09/09/2026</div>
+            <p>Le cofondateur et DG promet des modèles « plus grands et plus rapides très bientôt », une puissance de calcul possédée en propre qui doublera en cinq ans, et assume le positionnement d'« un mélange de Palantir et d'Anthropic » (DAF Johan Bergqvist) face aux géants américains et chinois.</p>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/mistral-il-y-a-une-fragmentation-du-monde-sur-lintelligence-artificielle-2250434" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Cap sur 1 GW de compute d'ici 2030 : l'Europe en joue</h3>
+            <div class="meta">Usine Digitale — 08-11/09/2026</div>
+            <p>Dans la lignée des European Compute Units (août) : data centers en France (Les Ulis 10 MW, 44 MW en région parisienne) et campus de Borlänge en Suède (250 MW en 2027), mutualisation des engagements clients en « centrale d'achat » européenne de calcul, ouverture aux modèles tiers — dont GLM 5.2 de Z.ai.</p>
+            <a href="https://www.usine-digitale.fr/intelligence-artificielle/mistral-ai/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Partenariats & produits -->
+      <article class="card" aria-labelledby="produits" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="produits">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+            Partenariats, produits &amp; performances
+          </h2>
+          <span class="pill yellow">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral x Cloudera : l'IA souveraine directement sur les données de l'entreprise</h3>
+            <div class="meta">Mistral AI / Cloudera / WSJ — 10/09/2026</div>
+            <p>Annoncée à EVOLVE26 : intégration des modèles Mistral (dont Large) à la plateforme hybride Cloudera, qui gère ~30 exaoctets de données clients. Inférence et fine-tuning possibles on-premise, edge ou air-gapped, sans déplacement des données sensibles — deux jours après la levée, un coup d'accélérateur sur les secteurs régulés.</p>
+            <a href="https://mistral.ai/news/mistral-x-cloudera/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Étude de cas : 40 000 lignes de Fortran 77 migrées en C++ par des agents IA</h3>
+            <div class="meta">Mistral AI (blog) — 09/09/2026</div>
+            <p>Migration d'un simulateur de réservoir physique vers C++ via des agents IA : documentation automatique, workflows structurés, harnais de parité numérique et supervision humaine. Une vitrine des capacités agentiques de Mistral Code à destination des industries européennes.</p>
+            <a href="https://mistral.ai/news/legacy-code-modernization/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Medium 3.5, flagship open-weight : 77,6 % sur SWE-bench Verified, 256K de contexte</h3>
+            <div class="meta">Hugging Face / BenchLM — 09-10/09/2026</div>
+            <p>Le modèle dense 128B d'avril 2026 reste la référence ouverte de Mistral : 91,4 % sur τ³-Telecom, compétitif avec Claude Sonnet 4.5 sur le code et l'agentique, self-hostable sur 4 GPU (tarifs API 1,50 $ / 7,50 $ par M tokens). Pas de nouveau modèle frontière en septembre — le prochain MoE se fait toujours attendre depuis l'early access de juillet.</p>
+            <a href="https://huggingface.co/mistralai/Mistral-Medium-3.5-128B" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>AI Engineer Paris les 23-24 septembre à Station F : Mistral s'apprête à recevoir 1 000 ingénieurs</h3>
+            <div class="meta">ai.engineer / Luma / LinkedIn Mistral — 10-12/09/2026</div>
+            <p>Conférence technique organisée par Mistral Events : keynotes, ~30 talks (Mistral, Hugging Face, Black Forest Labs), ~16 ateliers pratiques et expo pour ~1 000 développeurs. L'édition précédente était sold out ; Lélio Renard Lavaud (VP Engineering) ouvrira sur la construction de l'IA de frontière en Europe.</p>
+            <a href="https://ai.engineer/paris/2026" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille générée le 2026-09-14 · Sources vérifiées · Archivé dans /Users/manud/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+</body>
+</html>

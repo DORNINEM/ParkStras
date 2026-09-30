@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚛️ Veille Informatique Quantique — 2026-08-31</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .section-header {
+            background: linear-gradient(90deg, #1e2937, #334155);
+        }
+
+        .quantum-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .quantum-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .maturity-badge {
+            font-size: 0.65rem;
+            padding: 1px 8px;
+            border-radius: 9999px;
+            font-weight: 600;
+            letter-spacing: -.5px;
+        }
+
+        .horizon-badge {
+            font-size: 0.65rem;
+            padding: 1px 8px;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        .nav-active {
+            border-bottom: 3px solid #3b82f6;
+            color: white;
+            font-weight: 600;
+        }
+
+        .metric {
+            background: #0f172a;
+            border: 1px solid #334155;
+        }
+
+        .article-link {
+            transition: color 0.1s ease;
+        }
+        
+        .article-link:hover {
+            color: #60a5fa;
+        }
+
+        .tag {
+            background: #1e2937;
+            color: #64748b;
+            font-size: 0.65rem;
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+
+        .report-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .dark-gradient {
+            background: #0f172a;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-600 flex items-center justify-center">
+                        <i class="fa-solid fa-atom text-white text-3xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-display text-3xl font-semibold tracking-tighter">Veille Quantique</span>
+                        <span class="text-xs text-slate-500 font-mono ml-1">BI-HEBDOMADAIRE</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-6 text-sm">
+                <div class="flex items-center gap-x-2 px-4 py-1.5 bg-slate-900 border border-slate-700 rounded-3xl">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="text-emerald-400 text-xs font-medium">31 août 2026</span>
+                </div>
+                <div class="text-slate-400 text-xs font-mono">24 articles • Sources primaires</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-screen-2xl mx-auto px-8 pt-8 pb-16 report-container">
+        
+        <!-- Hero -->
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <div class="inline-flex items-center px-4 h-8 rounded-3xl bg-blue-950 text-blue-400 text-xs font-semibold tracking-[1px]">RAPPORT BI-HEBDOMADAIRE</div>
+                <h1 class="font-display text-6xl font-semibold tracking-tighter mt-2">Informatique Quantique</h1>
+                <p class="text-slate-400 mt-2 text-xl">Analyse des avancées France / Europe • Monde • Innovations • Impacts sectoriels</p>
+            </div>
+            
+            <div class="text-right">
+                <div class="text-xs text-slate-500">Mis à jour</div>
+                <div class="font-mono text-2xl text-slate-300">2026-08-31</div>
+                <div class="text-[10px] text-slate-500 mt-px">Sources : Nature • IBM • McKinsey • L’Usine Nouvelle • arXiv</div>
+            </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="metric p-5 rounded-3xl">
+                <div class="text-emerald-400 text-xs font-medium">FRANCE & EUROPE</div>
+                <div class="text-4xl font-semibold mt-1">6</div>
+                <div class="text-xs text-slate-400">articles • 48-72h</div>
+            </div>
+            <div class="metric p-5 rounded-3xl">
+                <div class="text-violet-400 text-xs font-medium">MONDE</div>
+                <div class="text-4xl font-semibold mt-1">6</div>
+                <div class="text-xs text-slate-400">articles • pertinence EU</div>
+            </div>
+            <div class="metric p-5 rounded-3xl">
+                <div class="text-amber-400 text-xs font-medium">INNOVATIONS</div>
+                <div class="text-4xl font-semibold mt-1">6</div>
+                <div class="text-xs text-slate-400">matériel & logiciel</div>
+            </div>
+            <div class="metric p-5 rounded-3xl">
+                <div class="text-rose-400 text-xs font-medium">IMPACTS</div>
+                <div class="text-4xl font-semibold mt-1">6</div>
+                <div class="text-xs text-slate-400">prospective 7 jours</div>
+            </div>
+        </div>
+
+        <!-- PARTIE 1 -->
+        <div id="part1" class="mb-12">
+            <div class="flex items-center justify-between mb-5 px-1">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 flex items-center justify-center bg-emerald-900 text-emerald-400 rounded-2xl">
+                        <i class="fa-solid fa-globe fa-fw"></i>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-2xl">Marché France & Europe</span>
+                        <span class="ml-3 text-xs px-3 py-px bg-emerald-900 text-emerald-400 rounded-full">6 articles</span>
+                    </div>
+                </div>
+                <span class="text-xs text-emerald-400 font-mono">48-72h</span>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Article 1 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">Pasqal devient la première entreprise française du secteur à entrer au Nasdaq et empoche 360 millions de dollars</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-emerald-400 text-sm font-medium">Usine Nouvelle</span>
+                                <span class="text-slate-500 text-xs">28 août 2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Pasqal a complété son introduction au Nasdaq via SPAC, levant ~360 M$ en trésorerie pour étendre sa production et sa feuille de route atomes neutres. L'opération valorise la licorne à ~2 Mds$ et en fait le premier pure-player quantique tricolore coté.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Pasqal</span>
+                                <span class="tag">#Nasdaq</span>
+                                <span class="tag">#Atomes neutres</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.usinenouvelle.com/technos-et-innovations/quantique/quantique-pasqal-devient-la-premiere-entreprise-francaise-du-secteur-a-entrer-au-nasdaq-et-empoche-360-millions-de-dollars.DUCEAIJTY5E2ZNK674VRKP53MY.html" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">Quantique : la deeptech française ColibriTD, spécialiste de l’algorithmie quantique, réunit 4 millions d’euros</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-emerald-400 text-sm font-medium">Usine Nouvelle</span>
+                                <span class="text-slate-500 text-xs">27 août 2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">ColibriTD a levé 4 M€ en seed mené par Earlybird VC pour industrialiser sa plateforme d'algorithmes quantiques hardware-agnostic dédiée aux simulations multiphysiques industrielles.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#ColibriTD</span>
+                                <span class="tag">#Financement</span>
+                                <span class="tag">#Algorithmie</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.usinenouvelle.com/industrie-technologie/deeptech/technos-quantique/quantique-la-deeptech-francaise-colibritd-specialiste-de-lalgorithmie-quantique-reunit-4-millions-deuros.WEPWXAGY75H75NN4OEF5WQNJD4.html" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">France 2030 : 1 milliard d’euros investi dans le quantique</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-emerald-400 text-sm font-medium">info.gouv.fr</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Le gouvernement annonce 1 Md€ supplémentaire via France 2030 pour 2026-2030, portant l'effort public total à 1,7 Md€. Le programme PROQCIMA cible 1 024 qubits logiques d'ici 2032.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#France2030</span>
+                                <span class="tag">#PROQCIMA</span>
+                                <span class="tag">#Souveraineté</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.info.gouv.fr/actualite/france-2030-1-milliard-d-euros-investis-dans-le-quantique" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">La Cour des comptes fait le grand bilan du quantique en France, et elle déplore un cruel manque d’argent</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-emerald-400 text-sm font-medium">Clubic</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">La Cour salue l'investissement public mais pointe le sous-capitalisation privé pour l'industrialisation. Elle recommande davantage d'avances remboursables plutôt que des subventions.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Régulation</span>
+                                <span class="tag">#Financement</span>
+                                <span class="tag">#Industrie</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.clubic.com/actualite-621928-la-cour-des-comptes-fait-le-grand-bilan-du-quantique-en-france-et-elle-deplore-un-cruel-manque-argent.html" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">EuroHPC JU lance six appels à projets quantiques totalisant 119 M€</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-emerald-400 text-sm font-medium">The Qubit Report</span>
+                                <span class="text-slate-500 text-xs">25 août 2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">EuroHPC ouvre six appels à projets 2026 totalisant 119 M€ pour plates-formes quantiques complètes (ions piégés, supraconducteurs, atomes neutres) et infrastructures de test intégrées au HPC.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#EuroHPC</span>
+                                <span class="tag">#Europe</span>
+                                <span class="tag">#Financement</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://thequbitreport.com/industry-business/2026/08/25/eurohpc-ju-launches-six-quantum-calls-totaling-e119-million/" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">Investissements secteur Quantique : succès de la clôture du fonds Quantonation II</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-emerald-400 text-sm font-medium">france transactions</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Quantonation Ventures clôture son deuxième fonds quantique à 220 M€, dépassant l'objectif initial de 200 M€, avec des investisseurs internationaux pour soutenir l'industrialisation européenne.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Fonds</span>
+                                <span class="tag">#Investissement</span>
+                                <span class="tag">#Europe</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.francetransactions.com/actus/news-bourse/marches/quantique-fonds-quantonation-audacia.html" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE 2 -->
+        <div id="part2" class="mb-12">
+            <div class="flex items-center justify-between mb-5 px-1">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 flex items-center justify-center bg-violet-900 text-violet-400 rounded-2xl">
+                        <i class="fa-solid fa-globe fa-fw"></i>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-2xl">Monde — Pertinence Europe</span>
+                        <span class="ml-3 text-xs px-3 py-px bg-violet-900 text-violet-400 rounded-full">6 articles</span>
+                    </div>
+                </div>
+                <span class="text-xs text-violet-400 font-mono">48-72h</span>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Article 1 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">IBM quantum computer solves classically intractable problem in 15 minutes</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-violet-400 text-sm font-medium">ScienceDaily</span>
+                                <span class="text-slate-500 text-xs">29 août 2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">IBM et l'Université de Chicago ont exécuté un calcul avec 70 qubits logiques et correction d'erreurs, impossible à reproduire classiquement dans des délais raisonnables, en 15 minutes.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#IBM</span>
+                                <span class="tag">#Avantage quantique</span>
+                                <span class="tag">#Correction d'erreurs</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.sciencedaily.com/releases/2026/08/260829035219.htm" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">A 98-qubit trapped-ion quantum computer with all-to-all connectivity</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-violet-400 text-sm font-medium">Nature</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Quantinuum présente Helios, un processeur à 98 qubits avec connectivité tous-à-tous et opérations haute fidélité pour la science des matériaux et la cryptographie.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Quantinuum</span>
+                                <span class="tag">#Ions piégés</span>
+                                <span class="tag">#Qubits</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://www.nature.com/articles/s41586-026-10676-4" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">Google Research Stabilizes Willow Quantum Processor Using Continuous Reinforcement Learning Control Layers</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-violet-400 text-sm font-medium">Quantum Computing Report</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Google intègre l'apprentissage par renforcement pour la calibration autonome de Willow, améliorant la stabilité logique de 3,5× et réduisant les erreurs de 20 %.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Google</span>
+                                <span class="tag">#Willow</span>
+                                <span class="tag">#Calibration</span>
+                                <span class="tag">#RL</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://quantumcomputingreport.com/google-research-stabilizes-willow-quantum-processor-using-continuous-reinforcement-learning-control-layers/" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">China’s Cyberspace Commission Targets Quantum Technology in 2026–2030 Plan</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-violet-400 text-sm font-medium">The Qubit Report</span>
+                                <span class="text-slate-500 text-xs">26 août 2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Pékin intègre le quantique comme secteur clé dans son plan 2026-2030, accélérant les percées technologiques et la commercialisation par les entreprises publiques et privées.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Chine</span>
+                                <span class="tag">#Politique</span>
+                                <span class="tag">#Stratégie</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://thequbitreport.com/security-policy/2026/08/26/chinas-cyberspace-commission-targets-quantum-technology-in-2026-2030-plan/" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">Chinese scientists push quantum entanglement 4x to 260 miles across fiber</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-violet-400 text-sm font-medium">Interesting Engineering</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Des chercheurs chinois maintiennent l'intrication quantique sur 420 km de fibre optique, progrès clé pour les réseaux de communication quantique longue distance.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Chine</span>
+                                <span class="tag">#Communication quantique</span>
+                                <span class="tag">#Intrication</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://interestingengineering.com/science/china-quantum-entanglement-260-miles" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <div class="font-semibold text-lg leading-tight">Physics — Quantum Hacking Coming Sooner than Expected</div>
+                            <div class="flex items-center gap-x-2 mt-2">
+                                <span class="text-violet-400 text-sm font-medium">APS Physics</span>
+                                <span class="text-slate-500 text-xs">2026</span>
+                            </div>
+                            <p class="mt-3 text-sm text-slate-300 leading-snug">Une étude estime que 500 000 qubits suffiraient à casser RSA/ECC, réduisant d'un facteur 20 les précédentes estimations et raccourcissant le Q-Day.</p>
+                            
+                            <div class="mt-4 flex flex-wrap gap-1.5">
+                                <span class="tag">#Cybersécurité</span>
+                                <span class="tag">#Q-Day</span>
+                                <span class="tag">#NIST PQC</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <a href="https://physics.aps.org/articles/v19/117" target="_blank" 
+                               class="inline-flex items-center gap-x-1.5 text-blue-400 hover:text-blue-300 text-sm font-medium article-link">
+                                <span>Lire</span> <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE 3 -->
+        <div id="part3" class="mb-12">
+            <div class="flex items-center justify-between mb-5 px-1">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 flex items-center justify-center bg-amber-900 text-amber-400 rounded-2xl">
+                        <i class="fa-solid fa-microchip fa-fw"></i>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-2xl">Innovations Matérielles & Logicielles</span>
+                        <span class="ml-3 text-xs px-3 py-px bg-amber-900 text-amber-400 rounded-full">6 articles</span>
+                    </div>
+                </div>
+                <span class="text-xs text-amber-400 font-mono">72h</span>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Article 1 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Extensible universal photonic quantum computing with nonlinearity</div>
+                            <div class="text-amber-400 text-sm mt-1">Nature Photonics • 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">L'architecture Clavina intègre réseaux linéaires-optiques évolutifs et modules non linéaires pour portes universelles, offrant une reconfiguration rapide par rapport aux supraconducteurs fixes.</p>
+                            <span class="inline-block mt-3 maturity-badge bg-orange-800 text-orange-300">R&D</span>
+                        </div>
+                        <a href="https://www.nature.com/articles/s41566-026-01962-8" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Forbes: Quantum Progress From The Lab To The Real World</div>
+                            <div class="text-amber-400 text-sm mt-1">Forbes • 28 août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Revue des avancées hardware 2026 incluant architectures modulaires supercondutrices (IBM, Rigetti) et photoniques (PsiQuantum), avec intégration hybride classique-quantique.</p>
+                            <span class="inline-block mt-3 maturity-badge bg-orange-800 text-orange-300">R&D</span>
+                        </div>
+                        <a href="https://www.forbes.com/sites/chuckbrooks/2026/08/28/quantum-progress-from-the-lab-to-the-real-world/" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">PennyLane v0.45 & Catalyst v0.15 releases</div>
+                            <div class="text-amber-400 text-sm mt-1">PennyLane.ai • 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Xanadu publie PennyLane 0.45 et Catalyst 0.15 mettant l'accent sur la programmation quantique différentiable, les simulateurs Lightning GPU/AMD et l'intégration QML/chimie.</p>
+                            <span class="inline-block mt-3 maturity-badge bg-emerald-800 text-emerald-300">Disponible</span>
+                        </div>
+                        <a href="https://pennylane.ai/" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">CUDA-Q 0.15.1 release</div>
+                            <div class="text-amber-400 text-sm mt-1">PyPI • 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">NVIDIA livre CUDA-Q 0.15.1, framework hybride quantique-classique open-source avec compilateur LLVM, simulateurs GPU cuQuantum et support de backends physiques.</p>
+                            <span class="inline-block mt-3 maturity-badge bg-emerald-800 text-emerald-300">Disponible</span>
+                        </div>
+                        <a href="https://pypi.org/project/cudaq/" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Dynamic surface codes on Google Willow</div>
+                            <div class="text-amber-400 text-sm mt-1">Google Research / arXiv • 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Démonstration expérimentale de codes surface dynamiques (hexagonal, walking, iSWAP) sur Willow, avec suppression d'erreur ~2,15× et flexibilité matérielle accrue.</p>
+                            <span class="inline-block mt-3 maturity-badge bg-orange-800 text-orange-300">R&D</span>
+                        </div>
+                        <a href="https://arxiv.org/abs/2412.14360" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Qiskit roadmap update</div>
+                            <div class="text-amber-400 text-sm mt-1">GitHub • juillet 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">La feuille de route Qiskit 2.x priorise API C pour HPC, tolérance aux pannes et gains de performance, avec la version 2.5 stable.</p>
+                            <span class="inline-block mt-3 maturity-badge bg-emerald-800 text-emerald-300">Disponible</span>
+                        </div>
+                        <a href="https://github.com/Qiskit/qiskit/wiki/Roadmap" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIE 4 -->
+        <div id="part4" class="mb-12">
+            <div class="flex items-center justify-between mb-5 px-1">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 flex items-center justify-center bg-rose-900 text-rose-400 rounded-2xl">
+                        <i class="fa-solid fa-chart-line fa-fw"></i>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-2xl">Prospective & Impacts Sectoriels</span>
+                        <span class="ml-3 text-xs px-3 py-px bg-rose-900 text-rose-400 rounded-full">6 articles</span>
+                    </div>
+                </div>
+                <span class="text-xs text-rose-400 font-mono">7 jours</span>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Article 1 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">GSA Leads the Transition to Quantum-Resistant Technology</div>
+                            <div class="text-rose-400 text-sm mt-1">GSA Blog • 24 août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">L'agence fédérale US modernise FICAM et teste l'intégration de la cryptographie post-quantique dans les identifiants PIV et les accès physiques, avec un sommet PQC prévu en septembre 2026.</p>
+                            <div class="mt-2"><span class="horizon-badge bg-emerald-800 text-emerald-300">Court terme (&lt;2 ans)</span></div>
+                        </div>
+                        <a href="https://www.gsa.gov/blog/2026/08/24/gsa-leads-the-transition-to-quantumresistant-technology" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Banks Can Finish Post-Quantum Migration and Still Be Exposed</div>
+                            <div class="text-rose-400 text-sm mt-1">TechTimes • 26 août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Le Département du Trésor US crée un Quantum-Readiness Task Force pour coordonner la migration bancaire vers la PQC, ciblant les risques fournisseurs et chaîne d'approvisionnement.</p>
+                            <div class="mt-2"><span class="horizon-badge bg-emerald-800 text-emerald-300">Court terme (&lt;2 ans)</span></div>
+                        </div>
+                        <a href="https://www.techtimes.com/articles/325690/20260826/banks-can-finish-post-quantum-migration-still-exposed-treasury-targets-vendors.htm" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Researchers use IBM quantum computer to test drug-docking method</div>
+                            <div class="text-rose-400 text-sm mt-1">The Quantum Insider • 27 août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Une équipe de Singapour démontre une méthode hybride d'amarrage moléculaire sur 5-6 qubits IBM, comparable aux classiques sur petits problèmes mais sans avantage quantique net sur NISQ.</p>
+                            <div class="mt-2"><span class="horizon-badge bg-emerald-800 text-emerald-300">Court terme (&lt;2 ans)</span></div>
+                        </div>
+                        <a href="https://thequantuminsider.com/2026/08/27/researchers-use-ibm-quantum-computer-to-test-drug-docking-method/" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Quantum computing in finance: a literature review and future directions</div>
+                            <div class="text-rose-400 text-sm mt-1">Frontiers in Artificial Intelligence • août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Revue exhaustive couvrant optimisation de portefeuilles, pricing d'options, détection de fraude via QAOA/VQE/quantum annealing, constatant des preuves de concept mais des avantages peu démontrés en conditions réalistes.</p>
+                            <div class="mt-2"><span class="horizon-badge bg-amber-800 text-amber-300">Moyen terme (2-5 ans)</span></div>
+                        </div>
+                        <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2026.1929828/full" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Photonic quantum computing vs classical solvers in portfolio optimization</div>
+                            <div class="text-rose-400 text-sm mt-1">arXiv • août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Comparaison empirique de l'annealeur photonique Dirac-3 contre Gurobi et RL sur l'optimisation factorielle de portefeuille, montrant un avantage quantique étroit en rendement-risque mais une supériorité classique sur la stabilité des queues de risque.</p>
+                            <div class="mt-2"><span class="horizon-badge bg-amber-800 text-amber-300">Moyen terme (2-5 ans)</span></div>
+                        </div>
+                        <a href="https://arxiv.org/abs/2608.14134" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="quantum-card bg-slate-900 border border-slate-700 rounded-3xl p-5">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg leading-tight">Emerging Paradigm of Quantum Machine Learning: Knowledge Insights and Future Prospects</div>
+                            <div class="text-rose-400 text-sm mt-1">IEEE Transactions on Artificial Intelligence • août 2026</div>
+                            <p class="text-sm text-slate-300 mt-2">Revue analysant les tendances QML (kernels quantiques, réservoirs computing), les défis NISQ et les perspectives de mise en œuvre pratique.</p>
+                            <div class="mt-2"><span class="horizon-badge bg-sky-800 text-sky-300">Long terme (&gt;5 ans)</span></div>
+                        </div>
+                        <a href="https://ieeexplore.ieee.org/document/11419129/" target="_blank" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMAGES & SCHÉMAS -->
+        <div class="mb-12">
+            <div class="flex items-center justify-between mb-5 px-1">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 flex items-center justify-center bg-sky-900 text-sky-400 rounded-2xl">
+                        <i class="fa-solid fa-image fa-fw"></i>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-2xl">Images &amp; schémas analysés</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-3xl">
+                    <div class="font-semibold text-sky-400 mb-2">Architecture modulaire cryogénique IBM</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Schéma du couplage de modules cryogéniques vers Starling (2029), illustrant l'approche chaîne-de-blocs pour l'évolutivité au-delà de 1 000 qubits.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-3xl">
+                    <div class="font-semibold text-sky-400 mb-2">Réseau de codes surface dynamiques (Willow)</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Visualisation des motifs hexagonal, walking et iSWAP montrant la suppression d'erreur logarithmique avec la distance du code.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-3xl">
+                    <div class="font-semibold text-sky-400 mb-2">Architecture photonic Clavina</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Diagramme du réseau linéaire-optique avec modules non linéaires pour portes universelles et reconfiguration dynamique.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-3xl">
+                    <div class="font-semibold text-sky-400 mb-2">Courbe de valeur McKinsey 2035</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Projection économique sectorielle des technologies quantiques (2,7 T$), mettant en lumière chimie, pharma, énergie et finance en tête.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-3xl">
+                    <div class="font-semibold text-sky-400 mb-2">Roadmap européenne Quantum Europe Strategy</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Timeline 2025-2030 avec jalon 100 qubits corrigés/plateforme et horizon souveraineté.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-3xl">
+                    <div class="font-semibold text-sky-400 mb-2">Feuille de route Quobly & C12 (PROQCIMA)</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Comparaison des architectures silicium et cat-qubits vers l'industrialisation et l'intégration CMOS-quantique d'ici 2027-2030.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Synthèse -->
+        <div class="mt-16 pt-8 border-t border-slate-700">
+            <h2 class="font-semibold text-xl mb-4 flex items-center gap-x-3">
+                <span>📊 Synthèse — 5 signaux faibles à surveiller</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-5 gap-3 text-sm">
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-3xl">
+                    <div class="font-semibold text-emerald-400">1. Course au FTQC viable</div>
+                    <div class="text-xs mt-2 text-slate-300">Partenariats cloud (AWS-QuEra Libra, Azure-Pasqal) dessinent une concentration oligopolistique. L'accès hybride HPC-quantique devient critique pour les DSI.</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-3xl">
+                    <div class="font-semibold text-emerald-400">2. Forcing réglementaire PQC</div>
+                    <div class="text-xs mt-2 text-slate-300">ANSSI (2027), EO 14412 US (2030/2031) et OMB M-26-15 imposent des deadlines. Les RSSI doivent auditer l'inventaire crypto et déployer l'agilité crypto avant le Q-Day.</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-3xl">
+                    <div class="font-semibold text-emerald-400">3. Hybridation par défaut</div>
+                    <div class="text-xs mt-2 text-slate-300">L'avantage quantique émerge dans des workflows hybrides (QML, chimie, optimisation), non dans des machines isolées. Architecture système à repenser.</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-3xl">
+                    <div class="font-semibold text-emerald-400">4. Montée photonique</div>
+                    <div class="text-xs mt-2 text-slate-300">PsiQuantum, Xanadu et Clavina progressent sans refroidissement massif, menaçant de perturber la domination supraconductrice et ouvrant des voies CMOS.</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-3xl">
+                    <div class="font-semibold text-emerald-400">5. Avantage quantique contesté</div>
+                    <div class="text-xs mt-2 text-slate-300">Plusieurs annonces 2026 ont été reproduites classiquement. Les directions R&D doivent exiger vérifications indépendantes et benchmarks réalistes.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-[10px] text-slate-500">
+            Rapport généré automatiquement • Sources primaires uniquement • 24 articles • 31 août 2026
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#3b82f6');
+        }
+        initializeTailwind();
+        
+        // Keyboard navigation hint
+        console.log('%c[Veille Quantique] Rapport HTML prêt — design moderne responsive activé', 'color:#475569');
+    </script>
+</body>
+</html>

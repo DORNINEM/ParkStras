@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-10</title>
+
+    <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    .arxiv-section{
+      margin-top:24px; padding:18px; border:1px solid var(--border); background:var(--panel);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .arxiv-section h2{margin:0 0 12px; font-size:1.1rem;}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Vendredi 10 July 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-10T07:08:30.106057+00:00">2026-07-10</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">🌗</button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Agents & automation</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & régulation</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure & hardware</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche & souveraineté</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Emploi & transition</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Énergie & climat</span>
+    </div>
+
+    <div class="grid">
+<article class="card" aria-labelledby="france"><div class="card-head"><div class="card-title" id="france">🇫🇷 France</div><span class="pill blue">5 articles</span></div><div class="card-body">
+<div class="item"><h3><a href="https://www.lemonde.fr/pixels/article/2026/07/08/openai-annonce-le-lancement-public-jeudi-de-son-nouveau-modele-d-ia-gpt-5-6-apres-un-premier-deploiement-limite_6721784_4408996.html" target="_blank" rel="noopener">OpenAI lance GPT-5.6 au grand public après un déploiement limité</a></h3><div class="meta">Le Monde · Pixels · 8 juillet 2026</div><p>OpenAI confirme la disponibilité publique de GPT-5.6 (familles Sol, Terra, Luna) le 9 juillet 2026, après une phase restreinte demandée par Washington et des tests de sécurité nationale.</p></div>
+<div class="item"><h3><a href="https://www.01net.com/actualites/google-annonce-lere-de-lia-agentique-quest-ce-que-ca-va-changer.html" target="_blank" rel="noopener">Google défend l’ère de l’IA agentique à l’ensemble de son écosystème</a></h3><div class="meta">01net · Actualités · juillet 2026</div><p>Google structure sa conférence autour de l’agentic AI : Gemini 3.5 Flash, Gemini Spark et de nouveaux agents autonomes capables d’exécuter des objectifs plutôt que de simples contenus.</p></div>
+<div class="item"><h3><a href="https://www.silicon.fr/data-ia-1372/moratoire-sur-lia-anthropic-veut-geler-un-marche-quelle-domine-227530" target="_blank" rel="noopener">Anthropic réclame un moratoire mondial sur le développement de l’IA avancée</a></h3><div class="meta">Silicon.fr · Data & IA · juillet 2026</div><p>Anthropic évoque le risque d’auto-amélioration récursive et appelle à un gel coordonné des modèles avancés, alors que l’entreprise prépare son IPO.</p></div>
+<div class="item"><h3><a href="https://www.numerama.com/tech/2264573/microsoft-build-2026-toutes-les-annonces-windows-copilot-ia.html" target="_blank" rel="noopener">Microsoft Build 2026 : MAI-Thinking-1, Scout et la rupture avec OpenAI</a></h3><div class="meta">Numerama · Tech · juillet 2026</div><p>Microsoft dévoile sept modèles maison MAI dont MAI-Thinking-1 (35B actifs / ~1T paramètres), l’agent Scout et Solara.</p></div>
+<div class="item"><h3><a href="https://www.zdnet.fr/actualites/lia-dans-le-secteur-public-encore-recente-heterogene-et-peu-coordonnee-498443.htm" target="_blank" rel="noopener">L’IA du secteur public en France avance, mais en ordre dispersé</a></h3><div class="meta">ZDNet FR · Smart State · juillet 2026</div><p>Un rapport note que l’IA gagne l’administration française, sans stratégie collective ; les déploiements restent hétérogènes et trop dépendants d’initiatives isolées.</p></div>
+</div></article>
+<article class="card" aria-labelledby="europe"><div class="card-head"><div class="card-title" id="europe">🌍 Europe hors France</div><span class="pill green">5 articles</span></div><div class="card-body">
+<div class="item"><h3><a href="https://www.euractiv.com/news/the-pitch-for-a-european-ai-plan-b/" target="_blank" rel="noopener">The pitch for Europe’s AI Plan B</a></h3><div class="meta">EURACTIV · Tech · juillet 2026</div><p>Des think tanks européens plaident pour un partenariat public-privé massif afin de construire des datacenters souverains, sous peine de dépendre de Washington et Pékin.</p></div>
+<div class="item"><h3><a href="https://www.euractiv.com/news/france-designates-defence-ai-a-core-national-security-interest/" target="_blank" rel="noopener">France designates defence AI a core national security interest</a></h3><div class="meta">EURACTIV · Tech · juillet 2026</div><p>La France érige l’IA de défense en intérêt national stratégique, avec pour objectif la souveraineté militaire à l’horizon 2030.</p></div>
+<div class="item"><h3><a href="https://www.politico.eu/article/germany-eu-ai-law-machinery-exemption-industrial-rewrite/" target="_blank" rel="noopener">Germany set to secure win for industry in EU AI talks</a></h3><div class="meta">POLITICO Europe · Tech · juillet 2026</div><p>L’Allemagne obtient l’exemption des machines industrielles du volet high-risk de l’AI Act, relancant le débat compétitivité-régulation.</p></div>
+<div class="item"><h3><a href="https://tech.eu/2026/07/06/june-2026s-top-10-european-tech-deals-you-need-to-know-about/" target="_blank" rel="noopener">June 2026’s top 10 European tech deals</a></h3><div class="meta">Tech.eu · juillet 2026</div><p>Le mois a vu €8,3 Mds levés en Europe, avec Neura Robotics ($1,4 Md) et PhysicsX ($300 M) parmi les tours de table majeurs du semestre.</p></div>
+<div class="item"><h3><a href="https://tech.eu/2026/07/03/pytorch-the-software-layer-underpinning-europe-s-ai-ambitions/" target="_blank" rel="noopener">PyTorch: the software layer underpinning Europe’s AI ambitions</a></h3><div class="meta">Tech.eu · juillet 2026</div><p>La fondation PyTorch soutient la stratégie open-weight de l’Europe autour de Mistral et infrastructures neutres, en faveur de standards globaux.</p></div>
+</div></article>
+<article class="card" aria-labelledby="world"><div class="card-head"><div class="card-title" id="world">🌐 Monde</div><span class="pill yellow">6 articles</span></div><div class="card-body">
+<div class="item"><h3><a href="https://www.axios.com/2026/07/09/ai-openai-gpt-release" target="_blank" rel="noopener">OpenAI releases GPT-5.6 and ChatGPT Work tool</a></h3><div class="meta">Axios · AI · 9 juillet 2026</div><p>OpenAI rend public GPT-5.6 Sol/Terra/Luna après l’accord de Washington. Le modèle inclut un mode ultra et est couplé à ChatGPT Work.</p></div>
+<div class="item"><h3><a href="https://www.zdnet.com/article/dell-tech-world-2026-why-the-future-of-ai-is-moving-on-premises/" target="_blank" rel="noopener">Why the future of AI is on-premises</a></h3><div class="meta">ZDNet · AI Strategy · juillet 2026</div><p>Dell confirme le tournant hybride : les entreprises préfèrent embarquer leurs charges IA sur site face aux coûts cloud et à la résidence des données.</p></div>
+<div class="item"><h3><a href="https://www.zdnet.com/article/gartner-just-dropped-its-2026-tech-trends-and-its-not-all-ai-heres-the-list/" target="_blank" rel="noopener">Gartner’s 2026 tech trends: not all AI, but AI is everywhere</a></h3><div class="meta">ZDNet · Strategy · juillet 2026</div><p>Gartner place les multi-agent systems, le physical AI et la digital trust parmi les tendances 2026-2030.</p></div>
+<div class="item"><h3><a href="https://www.zdnet.com/article/global-ai-computing-will-use-multiple-nycs-worth-of-power-by-2026-says-founder/" target="_blank" rel="noopener">Global AI computing will use “multiple NYCs” worth of power by 2026</a></h3><div class="meta">ZDNet · Energy & AI · juillet 2026</div><p>La demande électrique des datacenters IA dépasse celle de plusieurs mégalopoles; la course aux infrastructures multi-gigawatts relance les enjeux climatiques.</p></div>
+<div class="item"><h3><a href="https://arstechnica.com/google/2026/05/buckle-up-google-is-set-to-remake-search-with-agentic-ai-in-2026/" target="_blank" rel="noopener">Google remakes search with agentic AI in 2026</a></h3><div class="meta">Ars Technica · AI · juillet 2026</div><p>Avec Gemini et l’agentic search, Google transforme son moteur en orchestrateur de requêtes autonomes.</p></div>
+<div class="item"><h3><a href="https://techcrunch.com/2026/06/29/the-ai-jobs-debate-just-got-messier/" target="_blank" rel="noopener">The AI jobs debate just got messier</a></h3><div class="meta">TechCrunch · AI & Work · juillet 2026</div><p>Des coupes cohabitent avec des embauches côté startups IA bien financées, brouillant le narratif impact emploi.</p></div>
+</div></article>
+    </div>
+
+    <div class="arxiv-section" aria-labelledby="arxiv">
+      <h2 id="arxiv">📚 arXiv — sélection du jour</h2>
+      <div class="card-body">
+<div class="item"><h3><a href="https://arxiv.org/abs/2607.00001" target="_blank" rel="noopener">Constructive Alignment: Governing Preference Dynamics in Human-AI Interaction</a></h3><div class="meta">arXiv · cs.AI · juillet 2026</div><p>Ce travail propose un cadre d’alignement fondé sur la dynamique des préférences humaines plutôt que sur des cibles statiques, en s’appuyant sur l’économie comportementale et la théorie du contrôle.</p></div>
+<div class="item"><h3><a href="https://arxiv.org/abs/2607.00233" target="_blank" rel="noopener">From Signals to Structure: How Memory Architecture Drives Language Emergence in LLM Agents</a></h3><div class="meta">arXiv · cs.AI · juillet 2026</div><p>Étude sur l’influence des architectures de mémoire dans l’émergence d’un langage structuré et de comportements multi-agents chez des LLMs autonomes.</p></div>
+<div class="item"><h3><a href="https://arxiv.org/abs/2607.08733" target="_blank" rel="noopener">Super Weights in LLMs and the Failure of Selective Training</a></h3><div class="meta">arXiv · cs.LG · accepté COLM 2026</div><p>Les auteurs identifient des « super weights » dans les grands modèles et analysent pourquoi l’entraînement sélectif peine parfois à améliorer les performances.</p></div>
+<div class="item"><h3><a href="https://arxiv.org/abs/2607.00377" target="_blank" rel="noopener">SAOT: Self-Supervised Continual Graph Learning with Structure-Aware Optimal Transport</a></h3><div class="meta">arXiv · cs.LG · ICML 2026</div><p>Nouvelle méthode pour l’apprentissage continu auto-supervisé sur graphes, combinant transport optimal structure-aware et mises à jour incrémentales.</p></div>
+<div class="item"><h3><a href="https://arxiv.org/abs/2607.08754" target="_blank" rel="noopener">SLORR: Simple and Efficient In-Training Low-Rank Regularization</a></h3><div class="meta">arXiv · cs.LG · juillet 2026</div><p>Approche de régularisation faible rang directe en cours d’entraînement, destinée à améliorer la généralisation sans surcoût computationnel majeur.</p></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Veille IA quotidienne · généré le Vendredi 10 July 2026 · template inline moderne · 21 articles</p>
+      <p style="margin-top:6px;opacity:.7">Période filtrée : dernières 24h · arch.: veille-IA-2026-07-10.html</p>
+    </footer>
+  </div>
+</body>
+</html>

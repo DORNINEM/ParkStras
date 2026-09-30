@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 22 juin 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,0.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .card-title{font-weight:700;font-size:1.05rem;margin:0}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .news{border-top:1px dashed #eef2f7;padding-top:14px}
+    .news:first-of-type{border-top:0;padding-top:0}
+    .news h3{margin:0 0 6px;font-size:1rem;line-height:1.35}
+    .news .meta{font-size:.82rem;color:var(--muted)}
+    .news p{margin:8px 0 0;font-size:.95rem}
+    .news a{color:#1d4ed8;text-decoration:none;font-weight:600}
+    .news a:hover{text-decoration:underline}
+    .arxiv{border-top:1px dashed #eef2f7;padding-top:14px;margin-top:8px}
+    .arxiv:first-of-type{border-top:0;padding-top:0;margin-top:0}
+    .arxiv h3{margin:0 0 4px;font-size:1rem}
+    .arxiv .meta{font-size:.82rem;color:var(--muted)}
+    .arxiv p{margin:6px 0 0;font-size:.95rem}
+    .arxiv a{color:#1d4ed8;text-decoration:none;font-weight:600}
+    .arxiv a:hover{text-decoration:underline}
+    .note{
+      margin-top:10px;padding:12px 14px;border-radius:14px;
+      background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.92rem;
+    }
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>22 juin 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-06-22">2026-06-22</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Souveraineté numérique</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Sécurité & confiance</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>IA agentique</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche fondamentale</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Edge & robotique</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">🇫🇷 France</h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>Emmanuel Macron appelle à un sursaut européen pour ne pas être « consommateurs d’une technologie faite par d’autres »</h3>
+            <div class="meta">Numerama · 20 juin 2026</div>
+            <p>Lors de la réception VivaTech à l’Élysée, le président a insisté sur la nécessité d’une souveraineté technologique européenne face à la domination américaine et chinoise, citant l’IA comme secteur stratégique.</p>
+            <a href="https://www.numerama.com/tech/2281193-on-sera-des-consommateurs-dune-technologie-faite-par-dautres-emmanuel-macron-appelle-a-un-sursaut-europeen.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Interdite, mais pas pour tout le monde : l’IA Claude Mythos tourne encore pour quelques heureux élus</h3>
+            <div class="meta">Numerama · 20 juin 2026</div>
+            <p>Malgré l’interdiction européenne, des utilisateurs privilégiés ont toujours accès à Claude Mythos, illustrant les tensions entre régulation, diplomatie commerciale et négociations entre Anthropic et l’administration Trump.</p>
+            <a href="https://www.numerama.com/tech/2280377-interdite-mais-pas-pour-tout-le-monde-lia-claude-mythos-tourne-encore-pour-quelques-heureux-elus.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Gouverner les agents IA, la ligne de front de la souveraineté à l’horizon</h3>
+            <div class="meta">ZDNet FR · 21 juin 2026</div>
+            <p>La gouvernance des agents autonomes devient un enjeu critique pour la souveraineté numérique. L’article analyse comment les cadres réglementaires (AI Act, NIS2) doivent évoluer pour encadrer ces systèmes capables d’agir de manière indépendante.</p>
+            <a href="https://www.zdnet.fr/blogs/green-si/gouverner-les-agents-ia-la-ligne-de-front-de-la-souverainete-a-lhorizon-497351.htm" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Yann LeCun juge xAI : c’est « un échec »</h3>
+            <div class="meta">Silicon.fr · 19 juin 2026</div>
+            <p>Le père du LeNet a publiquement critiqué xAI, estimant que l’entreprise n’avait pas tenu ses promesses. Ce jugement ravive les débats sur la compétitivité réelle des acteurs émergents face à OpenAI, Google DeepMind et Anthropic.</p>
+            <a href="https://www.silicon.fr/data-ia-1372/yann-lecun-juge-xai-cest-un-echec-227850" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Midjourney promet de réduire la mortalité mondiale de 30 % grâce à un immense scanner corporel à ultrasons</h3>
+            <div class="meta">Numerama · 19 juin 2026</div>
+            <p>Le générateur d’images par IA Midjourney diversifie ses activités en présentant un projet de scanner médical à ultrasons à grande échelle, mettant en avant une application concrète de l’IA générative dans le diagnostic précoce.</p>
+            <a href="https://www.numerama.com/sciences/2278697-midjourney-promet-de-reduire-la-mortalite-mondiale-de-30-grace-a-un-immense-scanner-corporel-a-ultrasons.html" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">🌐 Monde</h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>When the Trump administration cracks down on Anthropic, who benefits?</h3>
+            <div class="meta">TechCrunch AI · 21 juin 2026</div>
+            <p>Les récentes restrictions imposées à Anthropic par l’administration Trump redessinent le paysage de l’IA américaine. Les rivaux (OpenAI, Google DeepMind, xAI) pourraient en tirer parti, tandis que le secteur s’interroge sur l’arme des contrôles à l’exportation.</p>
+            <a href="https://techcrunch.com/2026/06/21/when-the-trump-administration-cracks-down-on-anthropic-who-benefits/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Beyond Siri: practical AI features coming to your iPhone in iOS 27</h3>
+            <div class="meta">TechCrunch AI · 21 juin 2026</div>
+            <p>Au-delà de l’overhaul de Siri, iOS 27 intégrera des fonctionnalités IA concrètes : amélioration de la recherche photo, transcription et automatisation domestique. Apple se positionne ainsi comme un acteur massif de l’IA embarquée.</p>
+            <a href="https://techcrunch.com/2026/06/21/beyond-siri-here-are-the-practical-ai-features-coming-to-your-iphone-in-ios-27/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Nobel laureate John Jumper is leaving DeepMind for rival Anthropic</h3>
+            <div class="meta">TechCrunch AI · 20 juin 2026</div>
+            <p>Le lauréat du Nobel John Jumper, figure clé de DeepMind, rejoint Anthropic. Ce transfert de talent exceptionnel souligne la concentration des meilleurs experts sur les systèmes de fondation et les questions d’alignement.</p>
+            <a href="https://techcrunch.com/2026/06/20/nobel-laureate-john-jumper-is-leaving-deepmind-for-rival-anthropic/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>A startup claims it broke through a bottleneck that’s holding back LLMs</h3>
+            <div class="meta">MIT Tech Review · 19 juin 2026</div>
+            <p>La startup Subquadratic affirme avoir résolu un goulot d’étranglement computationnel freinant les LLMs. Si confirmée, cette percée permettrait des entraînements et inférences nettement plus rapides et moins coûteux.</p>
+            <a href="https://www.technologyreview.com/2026/06/19/a-startup-claims-it-broke-through-a-bottleneck-thats-holding-back-llms/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>MosaicLeaks: Can your research agent keep a secret?</h3>
+            <div class="meta">Hugging Face Blog · 18 juin 2026</div>
+            <p>Ce billet explore la sécurité des agents IA de recherche et leur capacité à préserver la confidentialité des données sensibles. Il propose des cadres d’évaluation et des correctifs pour limiter les fuites dans les workflows autonomes.</p>
+            <a href="https://huggingface.co/blog/mosaicleaks" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>From the Hugging Face Hub to robot hardware with Strands Agents and LeRobot</h3>
+            <div class="meta">Hugging Face Blog · 17 juin 2026</div>
+            <p>Hugging Face détaille comment ses agents Strands et la bibliothèque LeRobot permettent de déployer des modèles depuis le Hub directement sur du matériel robotique, accélérant la robotique ouverte.</p>
+            <a href="https://huggingface.co/blog/strands-agents-lerobot" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Europe + ArXiv full width -->
+    <div class="grid">
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">🌍 Europe hors France</h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="news">
+            <h3>Former Palantir healthcare head raises £10M for NHS AI agent startup</h3>
+            <div class="meta">Tech.eu · 21 juin 2026</div>
+            <p>Une startup londonienne fondée par un ancien dirigeant de Palantir Healthcare a levé 9,7 M£ pour développer des agents IA au service du NHS, illustrant la confiance des investisseurs dans l’IA appliquée à la santé publique en Europe.</p>
+            <a href="https://tech.eu/2026/06/21/former-palantir-healthcare-head-raises-gbp10m-for-nhs-ai-agent-startup/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>OneSoil secures €1M to expand AI-powered farming assistant</h3>
+            <div class="meta">Tech.eu · 21 juin 2026</div>
+            <p>La startup suisse OneSoil a obtenu 1 M€ pour étendre son assistant agricole basé sur l’IA, aidant les agriculteurs à optimiser les intrants via des recommandations de précision.</p>
+            <a href="https://tech.eu/2026/06/21/onesoil-secures-eur1m-to-expand-ai-powered-farming-assistant/" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Nearly 60% of TikTok videos shown to new users are AI slop, study finds</h3>
+            <div class="meta">The Next Web · 21 juin 2026</div>
+            <p>Une étude de Kapwing sur plus de 10 000 vidéos TikTok révèle que près de 60 % du contenu proposé aux nouveaux utilisateurs est généré par IA et de faible qualité, interrogeant sur la modération des plateformes.</p>
+            <a href="https://thenextweb.com/news/tiktok-ai-slop-59-percent-new-users-kapwing-study" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Amazon says human-in-the-loop AI oversight is failing because humans stop paying attention</h3>
+            <div class="meta">The Next Web · 21 juin 2026</div>
+            <p>Un dirigeant d’Amazon Security estime que la supervision humaine des systèmes IA n’est pas le rempart attendu : les humains se déconcentrent avec le temps, remettant en cause un principe central de gouvernance IA.</p>
+            <a href="https://thenextweb.com/news/amazon-human-in-the-loop-ai-governance-normalization-deviance" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+          <div class="news">
+            <h3>Agents IA : Bruxelles dégaine une mesure d’urgence contre Meta</h3>
+            <div class="meta">Silicon.fr · 21 juin 2026</div>
+            <p>La Commission européenne a adopté une mesure provisoire visant Meta pour pratiques abusives liées aux agents IA, illustrant la tension croissante entre régulateurs et plateformes sur les systèmes autonomes à grande échelle.</p>
+            <a href="https://www.silicon.fr/business-1367/agents-ia-bruxelles-degaine-une-mesure-durgence-contre-meta-227584" target="_blank" rel="noreferrer">Lire l’article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="arxiv" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="arxiv">🔬 ArXiv — Tendances de la semaine</h2>
+          <span class="pill yellow">Semaine du 15 au 22 juin 2026</span>
+        </div>
+        <div class="card-body">
+          <div class="arxiv">
+            <h3>Sovereign Execution Brokers: Enforcing Certificate-Bound Authority in Agentic Control Planes</h3>
+            <div class="meta">ArXiv cs.AI · 18 juin 2026</div>
+            <p>Introduction des *Sovereign Execution Brokers* (SEB), une couche d’exécution liant l’autorité des agents autonomes à des certificats éphémères et révocables. En séparant proposition, admission et exécution, SEB empêche les mutations non autorisées dans les infrastructures cloud et Kubernetes. Prototype évalué sur AWS et Kubernetes.</p>
+            <a href="http://arxiv.org/abs/2606.20520v1" target="_blank" rel="noreferrer">Voir le papier →</a>
+          </div>
+          <div class="arxiv">
+            <h3>Calibration Without Comprehension: Diagnosing the Limits of Fine-Tuning LLMs for Vulnerability Detection</h3>
+            <div class="meta">ArXiv cs.CR, cs.AI · 18 juin 2026</div>
+            <p>En testant 8 LLMs et 15 variantes fine-tunées sur 834 échantillons de noyau Linux, les auteurs montrent que les modèles plafonnent à ~52 % de détection de vulnérabilités et < 1,3 % de classification CWE exacte. Fine-tuning ajuste seulement le seuil de sortie, pas la compréhension sous-jacente.</p>
+            <a href="http://arxiv.org/abs/2606.20502v1" target="_blank" rel="noreferrer">Voir le papier →</a>
+          </div>
+          <div class="arxiv">
+            <h3>Multi-Task Bayesian In-Context Learning</h3>
+            <div class="meta">ArXiv cs.LG, cs.AI · 18 juin 2026</div>
+            <p>Les auteurs proposent un cadre d’apprentissage bayésien multitâche où l’encodeur apprend à s’adapter à de nouvelles distributions à partir d’un préfixe contextuel. Sur des tâches de prédiction spatio-temporelle, leur méthode atteint la performance d’oracles bayésiens tout en étant nettement plus rapide.</p>
+            <a href="http://arxiv.org/abs/2606.20538v1" target="_blank" rel="noreferrer">Voir le papier →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · 22 juin 2026 · Sauvegarde Hermes : ~/dev/ParkStras/HERMES/archives/veille-IA-2026-06-22.html
+    </footer>
+  </div>
+</body>
+</html>

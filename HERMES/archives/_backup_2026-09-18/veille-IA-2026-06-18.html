@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille IA du 18 juin 2026</title>
+<style>
+  :root {
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --text: #1a1d23;
+    --muted: #5b6573;
+    --border: #e5e8ee;
+    --accent: #2563eb;
+    --accent-2: #0ea5e9;
+    --accent-3: #7c3aed;
+    --tag-bg: #eef2ff;
+    --tag-text: #3730a3;
+    --success: #16a34a;
+    --warning: #d97706;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin: 0;
+    opacity: 0.75;
+  }
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 32px 20px;
+  }
+  .section {
+    margin-bottom: 40px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: transform 0.04s ease, box-shadow 0.04s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .source {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .date {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: #eff6ff;
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    line-height: 1.35;
+  }
+  .summary {
+    color: #334155;
+    font-size: 0.98rem;
+    margin: 0 0 14px;
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  .trends {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 22px 24px;
+  }
+  .trend-item {
+    display: flex;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .trend-item:first-child { margin-top: 0; }
+  .trend-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .trend-text h4 {
+    margin: 0 0 5px;
+    font-size: 1.05rem;
+  }
+  .trend-text p {
+    margin: 0;
+    color: #334155;
+    font-size: 0.97rem;
+  }
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 10px 20px 30px;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📡 Veille IA quotidienne</h1>
+  <p>Rapport du 18 juin 2026 — généré automatiquement</p>
+</header>
+
+<div class="container">
+
+  <section class="section">
+    <h2 class="section-title">
+      🇫🇷 Actualités IA en France
+      <span class="badge">5 articles</span>
+    </h2>
+    <div class="grid">
+      <article class="card">
+        <div class="meta">
+          <span class="source">01net</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">ChatGPT ne détient plus la majorité du marché de l’IA, c’est une première historique</h3>
+        <p class="summary">ChatGPT chute sous les 50% de parts de marché en mai 2026 (46,4 %), pour la première fois depuis son lancement. La baisse s’explique par la défiance provoquée par le partenariat avec le Pentagone et la montée de Gemini (27,7 %).</p>
+        <a class="link" href="https://www.01net.com/actualites/chatgpt-ne-detient-plus-la-majorite-du-marche-de-lia-cest-une-premiere-historique.html" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">Numerama</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">La Chine dévoile GLM-5.2, un modèle gratuit qui rivalise avec Claude Opus 4.8 et GPT-5.5</h3>
+        <p class="summary">Z.ai sort GLM-5.2, un modèle ouvert à 744 Mds de paramètres disponible gratuitement. Il égale ou surpasse GPT-5.5 sur des benchmarks de codage, avec un contexte de 1 million de tokens sous licence MIT.</p>
+        <a class="link" href="https://www.numerama.com/tech/2278511-le-timing-est-cruel-la-chine-devoile-glm-5-2-un-modele-gratuit-qui-rivalise-avec-claude-opus-4-8-et-gpt-5-5.html" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">01net</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">655 millions d’euros pour l’IA : le coup de force de la France à VivaTech</h3>
+        <p class="summary">Le Premier ministre annonce 655 MEUR supplémentaires pour l’IA dans le cadre de France 2030, avec notamment un chatbot Mistral pour un million d’agents de l’État. L’initiative s’inscrit dans un contexte de tensions croissantes avec les entreprises américaines.</p>
+        <a class="link" href="https://www.01net.com/actualites/655-millions-deuros-pour-lia-le-coup-de-force-de-la-france-a-vivatech-vire-limbroglio-geopolitique.html" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">Numerama</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">Google dévoile l’Open Knowledge Format, sa réponse au casse-tête du contexte pour les agents IA</h3>
+        <p class="summary">Google Cloud présente l’Open Knowledge Format, un standard ouvert visant à résoudre le problème du contexte pour les agents IA en permettant aux données externes d’être partagées et comprises de manière standardisée.</p>
+        <a class="link" href="https://www.numerama.com/tech/2278019-google-devoile-lopen-knowledge-format-sa-reponse-au-casse-tete-du-contexte-pour-les-agents-ia.html" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">Numerama</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">Guillermo del Toro déteste l’IA au cinéma et recadre Hollywood</h3>
+        <p class="summary">Le réalisateur Guillermo del Toro qualifie l’IA dans le cinéma de « stupidité naturelle » et prévient contre l’émergence d’un « illettrisme visuel ». Il appelle Hollywood à résister aux outils d’IA.</p>
+        <a class="link" href="https://www.numerama.com/pop-culture/2278423-guillermo-del-toro-deteste-lia-au-cinema-et-recadre-hollywood.html" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">
+      🌍 Actualités IA en Europe hors France
+      <span class="badge">5 articles</span>
+    </h2>
+    <div class="grid">
+      <article class="card">
+        <div class="meta">
+          <span class="source">Politico Tech Europe</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">West plays nice on AI in bid to shut out China</h3>
+        <p class="summary">G7 et grands patrons de l’IA se sont accordés à Évian pour définir des standards communs sur les modèles d’IA frontière et contenir la concurrence chinoise. Une large alliance entre démocraties se dessine malgré les divergences entre Europe et Washington.</p>
+        <a class="link" href="https://www.politico.eu/article/ai-artificial-intelligence-anthropic-china-g7/" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">The Next Web EU</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">Europe frets over American AI as the tech world descends on France</h3>
+        <p class="summary">La dépendance de l’Europe aux IA américaines s’est rappelée à tous après l’interdiction d’Anthropic pour les non-Américains, relançant les appels à la souveraineté numérique. Mistral est présenté en champion européen, mais son poids seul reste insuffisant.</p>
+        <a class="link" href="https://thenextweb.com/news/europe-ai-sovereignty-g7-vivatech" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">Tech.eu</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">Former Palantir employees raise $60M for AI enterprise startup Conduct</h3>
+        <p class="summary">La start-up londonienne Conduct, fondée par d’anciens de Palantir, spécialisée dans la modernisation des ERP via l’IA, a levé 60 M$ en série A avec une participation stratégique de SAP pour soutenir l’expansion européenne et américaine.</p>
+        <a class="link" href="https://tech.eu/2026/06/17/former-palantir-employees-raise-60m-for-ai-enterprise-startup-conduct/" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">Tech.eu</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">NeuralTrust closes $20M to expand AI agent security platform</h3>
+        <p class="summary">La plateforme espagnole NeuralTrust, dédiée à la sécurisation des agents IA en entreprise, a levé 20 M$ en seed pour étendre sa présence en Europe. Elle propose des outils de gouvernance, détection de menaces et surveillance en temps réel pour répondre à des régulations comme l’AI Act.</p>
+        <a class="link" href="https://tech.eu/2026/06/17/neuraltrust-closes-20m-to-expand-ai-agent-security-platform/" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">EURACTIV</span>
+          <span class="date">Juin 2026</span>
+        </div>
+        <h3 class="title">US decision to block Mythos access fuels European calls for sovereignty</h3>
+        <p class="summary">La décision américaine de bloquer l’accès aux modèles d’Anthropic alimente les appels européens à la souveraineté numérique. Les efforts pour développer des « AI gigafactories » s’intensifient en réponse aux restrictions transatlantiques.</p>
+        <a class="link" href="https://www.euractiv.com/news/us-decision-to-block-mythos-access-fuels-european-calls-for-sovereignty/" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">
+      🌐 Actualités IA mondiales majeures
+      <span class="badge">6 articles</span>
+    </h2>
+    <div class="grid">
+      <article class="card">
+        <div class="meta">
+          <span class="source">ArXiv cs.AI</span>
+          <span class="date">18 juin 2026</span>
+        </div>
+        <h3 class="title">NAVI-Orbital : première démonstration en orbite d’un modèle vision-langage zéro-shot</h3>
+        <p class="summary">Des chercheurs présentent la première démonstration en orbite d’un modèle vision-langage zéro-shot pour l’observation autonome de la Terre, ouvrant la voie à des systèmes d’observation terrestre autonomes capables d’interpréter des images sans entraînement spécifique sur l’orbite.</p>
+        <a class="link" href="https://arxiv.org/abs/2606.18271" target="_blank" rel="noopener">Voir le papier →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">ArXiv cs.AI</span>
+          <span class="date">18 juin 2026</span>
+        </div>
+        <h3 class="title">CaVe-VLM-CoT : un framework modulaire interprétable pour réduire les hallucinations des modèles vision-langage</h3>
+        <p class="summary">Une nouvelle approche agentique-RAG améliore la citation étape par étape et la vérification des faits dans les modèles vision-langage, atteignant 87,1 % de précision et 56,6 % de CaVeScore avec 23 métriques composantes pour évaluer la qualité de récupération.</p>
+        <a class="link" href="https://arxiv.org/abs/2606.18385" target="_blank" rel="noopener">Voir le papier →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">ArXiv cs.AI</span>
+          <span class="date">18 juin 2026</span>
+        </div>
+        <h3 class="title">CEO-Bench : les agents d’IA peuvent-ils jouer le long jeu ?</h3>
+        <p class="summary">Un nouveau benchmark évalue la capacité des agents d’IA à planifier et exécuter des stratégies sur de longs horizons temporels, avec des implications directes pour la productivité logicielle et la collaboration homme-IA.</p>
+        <a class="link" href="https://arxiv.org/abs/2606.18543" target="_blank" rel="noopener">Voir le papier →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">MIT Tech Review</span>
+          <span class="date">11 juin 2026</span>
+        </div>
+        <h3 class="title">Google DeepMind s’inquiète de l’explosion des risques quand des millions d’agents IA vont interagir</h3>
+        <p class="summary">Google DeepMind finance des recherches sur les scénarios dangereux potentiels engendrés par l’interaction massive de millions d’agents IA différents, dans le premier programme académique dédié aux risques systémiques des systèmes multi-agents.</p>
+        <a class="link" href="https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">TechCrunch</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">L’IA risque de faire augmenter le prix des iPhone et autres produits Apple</h3>
+        <p class="summary">Tim Cook avertit que la demande explosive liée à l’IA provoque des pénuries de puces mémoire et quadruple les coûts, rendant inévitables des hausses de prix pour l’iPhone et d’autres appareils.</p>
+        <a class="link" href="https://techcrunch.com/2026/06/17/ai-is-hurting-apple-in-more-ways-than-one-it-may-force-iphone-price-increases/" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+
+      <article class="card">
+        <div class="meta">
+          <span class="source">Hugging Face Blog</span>
+          <span class="date">17 juin 2026</span>
+        </div>
+        <h3 class="title">Cohere lance North Mini Code, son premier modèle dédié aux développeurs</h3>
+        <p class="summary">Cohere dévoile North Mini Code, un modèle de code de 30 milliards de paramètres disponible en open source sur Hugging Face et optimisé pour les tâches d’ingénierie logicielle et de codage agentique sous licence Apache 2.0.</p>
+        <a class="link" href="https://huggingface.co/blog/CohereLabs/introducing-north-mini-code" target="_blank" rel="noopener">Lire l’article →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">
+      📈 Tendances émergentes de la semaine — ArXiv cs.AI / cs.LG
+      <span class="badge">3 papiers marquants</span>
+    </h2>
+    <div class="trends">
+      <div class="trend-item">
+        <div class="trend-icon">1</div>
+        <div class="trend-text">
+          <h4>FinAcumen — Mémoire évolutive pour les agents financiers multimodaux</h4>
+          <p><strong>arXiv:</strong> <a href="https://arxiv.org/abs/2606.17642" target="_blank" rel="noopener">2606.17642</a> · <strong>Date:</strong> 16 juin 2026<br>
+          Ce travail montre que les agents peuvent accumuler et réutiliser de l’expérience de raisonnement financier dans une banque mémoire persistante. Implication pratique directement exploitable : des assistants d’analyse financière plus fiables, capables de capitaliser sur leurs erreurs passées sans réentraînement.</p>
+        </div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-icon">2</div>
+        <div class="trend-text">
+          <h4>SpatialWorld — Benchmark du raisonnement spatial interactif</h4>
+          <p><strong>arXiv:</strong> <a href="https://arxiv.org/abs/2606.09669" target="_blank" rel="noopener">2606.09669</a> · <strong>Date:</strong> 8 juin 2026<br>
+          Ce benchmark révèle que même les meilleurs modèles actuels plafonnent autour de 15-17% de succès sur des tâches spatiales interactives complexes. Implication : il reste un long chemin à parcourir avant de confier des tâches physiques réelles à des agents autonomes.</p>
+        </div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-icon">3</div>
+        <div class="trend-text">
+          <h4>OSGuard — Benchmark de sécurité pour agents informatiques</h4>
+          <p><strong>arXiv:</strong> <a href="https://arxiv.org/abs/2606.15034" target="_blank" rel="noopener">2606.15034</a> · <strong>Date:</strong> 13 juin 2026<br>
+          OSGuard distingue les jugements locaux de garde-fous des exécutions de bout en bout, et expose des failles persistantes dans la sécurité réelle des agents. Implication : toute adoption professionnelle d’agents « ordinateur » doit inclure des audits de comportement terminal, pas seulement des vérifications ponctuelles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">
+      🔑 Résumé exécutif — 5 tendances clés
+    </h2>
+    <div class="trends">
+      <div class="trend-item">
+        <div class="trend-icon">1</div>
+        <div class="trend-text">
+          <h4>Fragmentation accélérée du marché de l’IA grand public</h4>
+          <p>La chute de ChatGPT sous les 50% et l’arrivée massive de modèles gratuits et ouverts (GLM-5.2, North Mini Code) tirent les prix à la baisse et changent la donne pour les acheteurs et les entreprises.</p>
+        </div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-icon">2</div>
+        <div class="trend-text">
+          <h4>Souveraineté numérique européenne en première ligne</h4>
+          <p>Entre restrictions américaines sur Anthropic et annonces d’investissements massifs (France 2030, AI gigafactories), l’Europe tente de construire une alternative stratégique tout en réglant ses problèmes d’accès aux GPU et au cloud.</p>
+        </div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-icon">3</div>
+        <div class="trend-text">
+          <h4>Standardisation du contexte et de la mémoire des agents</h4>
+          <p>Google propose l’Open Knowledge Format, pendant que la recherche ArXiv explore la mémoire évolutive (FinAcumen, MemVerse). Les architectures d’agents deviennent plus structurées et moins ad hoc.</p>
+        </div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-icon">4</div>
+        <div class="trend-text">
+          <h4>Sécurité des agents comme priorité industrielle</h4>
+          <p>NeuralTrust lève 20M$, OSGuard est publié, et DeepMind étudie les risques systémiques multi-agents : la sécurité ne se limite plus aux garde-fous ponctuels mais inclut désormais supervision continue et certification des tiers.</p>
+        </div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-icon">5</div>
+        <div class="trend-text">
+          <h4>Embodied AI et robustesse réelle</h4>
+          <p>La démonstration spatiale NAVI-Orbital et le benchmark SpatialWorld montrent que l’IA sort des laboratoires textuels vers des environnements physiques, révélant à la fois des percées et des limites importantes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  Rapport généré le 18 juin 2026 · Sources : LeMonde, 01net, ZDNet FR, Silicon.fr, Numerama, Tech.eu, EURACTIV, The Next Web EU, Politico Tech Europe, TechCrunch, MIT Tech Review, ArXiv, Hugging Face Blog.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-27</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    .arxiv-section{
+      margin-top:24px; padding:18px; border:1px solid var(--border); background:var(--panel);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .arxiv-section h2{margin:0 0 12px; font-size:1.1rem;}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Monday 27 July 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-27T07:05:45.000000+00:00">2026-07-27</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">🌗</button>
+    </div>
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value" style="color:var(--accent)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Agents & autonomie</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & sécurité</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Infrastructure & compute</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche & modèles</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Économie & marchés</span>
+      <span class="badge"><span class="dot" style="color:#059669"></span>Outils & plateformes</span>
+    </div>
+    <div class="grid">
+    <article class="card" aria-labelledby="france"><div class="card-head"><div class="card-title" id="france">🇫🇷 France</div><span class="pill blue">5 articles</span></div><div class="card-body">
+      <div class="item">
+        <h3><a href="https://www.zdnet.fr/actualites/pourquoi-les-agents-dia-nont-pas-reussi-en-2025-486388.htm" target="_blank" rel="noopener">Pourquoi les agents d'IA n'ont pas réussi en 2025</a></h3>
+        <div class="meta">ZDNet FR · Date non confirmée</div>
+        <p>Les agents d'IA n'ont pas décollé en 2025 en raison d'obstacles liés aux systèmes existants et à l'architecture. Les entreprises qui ont réussi ont pu surmonter ces défis malgré les attentes élevées.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.zdnet.fr/actualites/lia-pourrait-enfin-etre-rentable-pour-les-entreprises-en-2026-grace-a-un-element-inattendu-486608.htm" target="_blank" rel="noopener">L'IA pourrait enfin être rentable pour les entreprises en 2026 grâce à un élément inattendu</a></h3>
+        <div class="meta">ZDNet FR · 2026</div>
+        <p>Selon les analystes, l'IA entrera dans une nouvelle phase en 2026 permettant aux entreprises d'en tirer davantage profit. En 2025, le potentiel d'optimisation des opérations n'a pas été pleinement exploité, avec seulement 14 % des entreprises ayant déployé des solutions selon Deloitte.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.zdnet.fr/actualites/ia-au-bureau-cette-habitude-anodine-met-votre-entreprise-en-danger-sans-que-vous-le-sachiez-selon-la-dgsi-487610.htm" target="_blank" rel="noopener">IA au bureau : cette habitude anodine met votre entreprise en danger selon la DGSI</a></h3>
+        <div class="meta">ZDNet FR · Date non confirmée</div>
+        <p>Le recours croissant aux technologies d'intelligence artificielle représente un potentiel de croissance mais aussi un risque pour les entreprises. La DGSI alerte sur des habitudes anodines qui peuvent compromettre la sécurité sans conscience des utilisateurs.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.01net.com/actualites/linventeur-du-web-devoile-charlie-lia-qui-vous-comprend-vraiment.html" target="_blank" rel="noopener">L'inventeur du web dévoile Charlie, l'IA qui vous comprend vraiment</a></h3>
+        <div class="meta">01net · Date non confirmée</div>
+        <p>Tim Berners-Lee introduit Charlie, une IA personnelle conçue pour vraiment comprendre et servir les utilisateurs individuels plutôt que les intérêts des plateformes.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.numerama.com/tech/2275943-le-patron-de-microsoft-livre-sa-vision-de-lentreprise-et-de-la-societe-a-lere-de-lia.html" target="_blank" rel="noopener">Comment survivre à l'IA en entreprise ? La stratégie de Microsoft</a></h3>
+        <div class="meta">Numerama · Date non confirmée</div>
+        <p>Le PDG de Microsoft livre sa vision pour les entreprises et la société à l'ère de l'IA, notant que le développement de l'IA augmente la valeur des contributions humaines.</p>
+      </div>
+      </div></article>
+    <article class="card" aria-labelledby="europe"><div class="card-head"><div class="card-title" id="europe">🌍 Europe hors France</div><span class="pill green">5 articles</span></div><div class="card-body">
+      <div class="item">
+        <h3><a href="https://tech.eu/2026/07/23/kausable-raises-eur12m-to-rethink-how-ai-learns/" target="_blank" rel="noopener">kausable raises €12M to rethink how AI learns</a></h3>
+        <div class="meta">tech.eu · 23 juillet 2026</div>
+        <p>La startup européenne kausable lève 12 M€ en seed pour développer des « world models » causaux entraînés sur données synthétiques, ciblant robotique et santé.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://tech.eu/2026/07/22/openai-and-datadog-leaders-back-ai-deployment-startup-arrakis/" target="_blank" rel="noopener">OpenAI and Datadog leaders back AI deployment startup Arrakis</a></h3>
+        <div class="meta">tech.eu · 22 juillet 2026</div>
+        <p>La startup londonienne Arrakis sort du stealth avec près de 40 M$ pour aider les entreprises industrielles à concevoir, construire et déployer des agents IA.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://euractiv.com/fr/news/au-sommet-sur-lia-la-reglementation-est-passee-de-mode/" target="_blank" rel="noopener">Au sommet sur l'IA, la réglementation est passée de mode</a></h3>
+        <div class="meta">EURACTIV · Date non confirmée</div>
+        <p>Au sommet sur l'IA, les discussions ont priorisé la croissance et la compétitivité plutôt que la sécurité, la durabilité et une régulation stricte de l'intelligence artificielle.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://euractiv.com/fr/news/le-royaume-uni-et-les-etats-unis-refusent-de-signer-la-declaration-de-paris-sur-lia/" target="_blank" rel="noopener">Le Royaume-Uni et les États-Unis refusent de signer la déclaration de Paris sur l'IA</a></h3>
+        <div class="meta">EURACTIV · Date non confirmée</div>
+        <p>Seuls 61 pays sur plus de 100 ont signé la déclaration phare du sommet de Paris sur l'IA, le Royaume-Uni et les États-Unis ayant refusé de l'endosser.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://thenextweb.com/news/europe-wants-to-lead-the-world-in-trustworthy-ai-heres-how" target="_blank" rel="noopener">Europe wants to lead the world in trustworthy AI — here’s how</a></h3>
+        <div class="meta">The Next Web · Date non confirmée</div>
+        <p>L'Union européenne se positionne comme un leader mondial de l'IA éthique et de confiance grâce à son AI Act, qui régule l'IA selon des niveaux de risque tout en promouvant l'innovation.</p>
+      </div>
+      </div></article>
+    <article class="card" aria-labelledby="world"><div class="card-head"><div class="card-title" id="world">🌐 Monde</div><span class="pill yellow">6 articles</span></div><div class="card-body">
+      <div class="item">
+        <h3><a href="https://techcrunch.com/2026/07/25/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/" target="_blank" rel="noopener">Monday.com is the latest tech company to blame AI for layoffs</a></h3>
+        <div class="meta">TechCrunch · 25 juillet 2026</div>
+        <p>Monday.com annonce des licenciements d'environ 20% de ses effectifs dans le cadre d'une restructuration liée à sa stratégie de croissance basée sur l'IA, avec au moins 20 autres entreprises ayant fait des annonces similaires en 2026.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://techcrunch.com/2026/07/23/runway-bets-on-ai-model-routing-as-generative-media-gets-crowded/" target="_blank" rel="noopener">Runway launches AI model router as generative media gets crowded</a></h3>
+        <div class="meta">TechCrunch · 23 juillet 2026</div>
+        <p>Runway lance un Media Router qui sélectionne automatiquement le meilleur modèle génératif image, vidéo ou audio selon les priorités de qualité, vitesse ou coût, se positionnant comme infrastructure pour les médias génératifs.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems" target="_blank" rel="noopener">China's Moonshot AI releases Kimi K3, the largest open-source model ever</a></h3>
+        <div class="meta">VentureBeat · 27 juillet 2026</div>
+        <p>Moonshot AI publie Kimi K3, un modèle open-source de 2,8 billions de paramètres qui performe comparativement aux meilleurs systèmes propriétaires américains, avec les poids complets prévus pour le 27 juillet 2026.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://venturebeat.com/technology/googles-gemini-3-6-flash-model-cuts-ai-agent-token-costs-by-up-to-65-on-long-horizon-engineering-tasks-and-3-5-pro-is-on-the-way" target="_blank" rel="noopener">Google's Gemini 3.6 Flash model cuts AI agent token costs by up to 65%</a></h3>
+        <div class="meta">VentureBeat · 27 juillet 2026</div>
+        <p>Google DeepMind publie Gemini 3.6 Flash en juillet 2026, annonçant jusqu'à 65% de réduction des coûts en tokens pour les tâches d'agents IA sur des missions d'ingénierie à long horizon.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://thenextweb.com/news/xi-jinping-keynote-world-ai-conference-shanghai-2026" target="_blank" rel="noopener">Xi Jinping will give the keynote at China's flagship AI conference in Shanghai 2026</a></h3>
+        <div class="meta">The Next Web · Date non confirmée</div>
+        <p>Xi Jinping prononcera le discours d'ouverture de la World Artificial Intelligence Conference 2026 à Shanghai du 17 au 20 juillet, parallèlement à une réunion de haut niveau sur la gouvernance mondiale de l'IA.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://techcrunch.com/2026/07/21/jack-dorsey-is-taking-on-slack-with-buzz-a-group-chat-platform-for-teams-and-their-ai-agents/" target="_blank" rel="noopener">Jack Dorsey is taking on Slack with Buzz</a></h3>
+        <div class="meta">TechCrunch · 21 juillet 2026</div>
+        <p>Jack Dorsey annonce Buzz, une application de discussion open-source et décentralisée intégrant utilisateurs humains et agents IA dans le même espace de travail, visant à concurrencer Slack.</p>
+      </div>
+      </div></article>
+    </div>
+    <div class="arxiv-section" aria-labelledby="arxiv">
+      <h2 id="arxiv">📚 arXiv — sélection du jour (Monday 27 July 2026)</h2>
+      <div class="card-body">
+            <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.22520" target="_blank" rel="noopener">The Regression Tax: Decomposing Why Skills Help and Hurt LLM Agents</a></h3>
+        <div class="meta">cs.AI · 26 juillet 2026 · </div>
+        <p>Ajouter des compétences procédurales aux agents LLM cause souvent des régressions en raison de l'osmose des descriptions, du déplacement d'ancrage et de vérification. L'article plaide pour évaluer les gains nets plutôt que les taux de succès agrégés.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.22465" target="_blank" rel="noopener">TRACE-ROUTER: Task-Consistent and Adaptive Online Routing for Agentic AI</a></h3>
+        <div class="meta">cs.AI · 26 juillet 2026 · </div>
+        <p>TRACE-Router est un framework de routage au niveau des tâches utilisant des bandits contextuels pour affecter les LLM une fois par tâche agentique, optimisant précision et latence et améliorant les Pareto sur tau2-Bench et Terminal-Bench.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.22445" target="_blank" rel="noopener">Dynamic Capability Scoping for Enterprise AI Agents</a></h3>
+        <div class="meta">cs.AI · 26 juillet 2026 · </div>
+        <p>Propose un scope dynamique de capacités pour agents IA enterprise via une architecture à trois sources (plafonds de rôle, classifieur de contexte, prohibitions de politique) et un dataset synthétique de 600 prompts validé.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.22393" target="_blank" rel="noopener">SceneActBench: Can Agents Act on the 3D Scenes They See?</a></h3>
+        <div class="meta">cs.AI · 26 juillet 2026 · </div>
+        <p>Benchmark pour évaluer si les agents VLM peuvent percevoir et agir efficacement dans des scènes 3D multi-objets, avec cinq tâches en boucle unifiée et 520 cas évaluant onze configurations VLM.</p>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2607.22385" target="_blank" rel="noopener">Agentic Root Cause Analysis through Evidence-Grounded Reasoning</a></h3>
+        <div class="meta">cs.AI · 26 juillet 2026 · </div>
+        <p>AgentRCA est un framework agentique zero-shot combinant un jumeau numérique data-driven et un LLM augmenté par outils pour une analyse causale itérative et traçable dans les systèmes industriels.</p>
+      </div>
+      </div>
+    </div>
+    <footer>
+      <p>Veille IA quotidienne · généré le Monday 27 July 2026 · template inline moderne · 21 articles</p>
+      <p style="margin-top:6px;opacity:.7">Période filtrée : dernières 24h · arch.: veille-IA-2026-07-27.html</p>
+    </footer>
+  </div>
+</body>
+</html>

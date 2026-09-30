@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Télésurveillance & Alarmes — 2026-07-15</title>
+<style>
+  :root {
+    --bg: #f4f7fa;
+    --panel: #ffffff;
+    --border: #dce3ea;
+    --accent: #2563eb;
+    --accent-2: #1d4ed8;
+    --muted: #475569;
+    --text: #0f172a;
+    --shadow: 0 10px 30px rgba(15,23,42,0.08);
+    --tag-bg: #e8eef7;
+    --tag-text: #1e40af;
+    --divider: #e2e8f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1220;
+      --panel: #111827;
+      --border: #1f2b3d;
+      --accent: #60a5fa;
+      --accent-2: #3b82f6;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --tag-bg: #0f2444;
+      --tag-text: #93c5fd;
+      --divider: #1e293b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  header {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    padding: 22px 26px;
+    background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(37,99,235,0.02));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 700; font-size: 22px; letter-spacing: -0.2px;
+  }
+  .brand span { font-size: 26px; }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  main {
+    max-width: 1100px;
+    margin: 18px auto 40px;
+    padding: 0 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; }
+  }
+  section {
+    grid-column: 1 / -1;
+  }
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 18px; margin: 6px 4px 10px;
+  }
+  .section-title .icon { font-size: 20px; }
+  .count {
+    margin-left: auto;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    transition: transform .08s ease, border-color .2s ease;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    color: var(--muted); font-size: 12px; margin-bottom: 10px;
+  }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .summary {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .empty {
+    background: var(--panel);
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    padding: 16px 18px;
+    color: var(--muted);
+    font-size: 14px;
+    box-shadow: var(--shadow);
+  }
+  .divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: var(--divider);
+    margin: 6px 0;
+  }
+  footer {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    padding: 0 18px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .maturity, .horizon {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span>🔒</span>Veille Télésurveillance & Alarmes</div>
+  <div class="sub">Mise à jour : 2026-07-15 — Cadre : marché France/Europe, actualités transposables, innovations et prospective</div>
+</header>
+<main>
+  <section>
+    <div class="section-title"><span class="icon">🇫🇷🇪🇺</span> Marché France & Europe <span class="count">6</span></div>
+    <div class="card">
+      <h3>Verisure franchit le million de protégés en France et prône le « droit à la sécurité » pour tous</h3>
+      <div class="meta">CroissanceInvestissement · 2026-02-18 · <a href="https://croissanceinvestissement.com/verisure-franchit-le-million-de-proteges-en-france-et-prone-le-droit-a-la-securite-pour-tous/" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Verisure dépasse le seuil symbolique d’un million de foyers et entreprises protégés en France, avec plus de 50 % de parts de demande en 2024 et un CA résidentiel en hausse de plus de 10 % en 2024. Le groupe accentue sa conquête territoriale, notamment à La Réunion, et déploie des offres adressées aux jeunes adultes, femmes et seniors.</div>
+      <div class="tags">
+        <span class="tag">Verisure</span>
+        <span class="tag">France</span>
+        <span class="tag">croissance</span>
+        <span class="tag">million de clients</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Verisure enregistre un nombre record d’installations et une forte croissance au T4</h3>
+      <div class="meta">fr.investing.com · 2025-10-31 · <a href="https://fr.investing.com/news/stock-market-news/verisure-enregistre-un-nombre-record-dinstallations-et-une-forte-croissance-au-t4-93CH-3267930" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Sur le Q4 2025, Verisure annonce 224 000 nouvelles installations (+5,9 % en glissement annuel) et une croissance de 12,4 % du revenu récurrent annuel. La guidance 2026 table sur une croissance ARR d’environ 10 % avec une marge d’EBIT ajusté supérieure à 26 %.</div>
+      <div class="tags">
+        <span class="tag">Verisure</span>
+        <span class="tag">résultats</span>
+        <span class="tag">revenu récurrent</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>ITQ se renforce dans la télésurveillance</h3>
+      <div class="meta">Protection Sécurité Magazine · 2025-01 · <a href="https://www.protectionsecurite-magazine.fr/actualite/anti-intrusion-and-alarmes/itq-se-renforce-dans-la-telesurveillance" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">ITQ Group acquiert les centres de télésurveillance non bancaires Télés (Dijon) et CI2T (Pennes-Mirabeau) auprès de Critel, portant sa base de contrats à près de 30 000 et confortant sa place parmi les cinq acteurs BtoB français.</div>
+      <div class="tags">
+        <span class="tag">acquisition</span>
+        <span class="tag">marché France</span>
+        <span class="tag">télésurveillance BtoB</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>VPS poursuit sa croissance</h3>
+      <div class="meta">Protection Sécurité Magazine · 2025-03 · <a href="https://www.protectionsecurite-magazine.fr/actualite/anti-intrusion-and-alarmes/vps-poursuit-sa-croissance" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">VPS France absorbe Iris Télésurveillance, structure APSAD P3 disposant d’environ 10 000 abonnés potentiels et de plus de 3 000 alarmes actives. L’intégration étend les offres de sécurité temporaire et de télésurveillance professionnelle.</div>
+      <div class="tags">
+        <span class="tag">VPS</span>
+        <span class="tag">acquisition</span>
+        <span class="tag">télésurveillance professionnelle</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>La montée en puissance d’Atraltech</h3>
+      <div class="meta">Protection Sécurité Magazine · 2025 · <a href="https://www.protectionsecurite-magazine.fr/actualite/anti-intrusion-and-alarmes/la-montee-en-puissance-datraltech" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Indépendant depuis 2023, Atraltech (Daitem, Diagral) accélère avec plus de 100 recrutements, des investissements R&D, deux usines et le lancement de l’offre Atral Service de télésurveillance. Le groupe prépare la migration 2G/3G vers la 4G/5G pour les alarmes sans fil.</div>
+      <div class="tags">
+        <span class="tag">Atraltech</span>
+        <span class="tag">4G/5G</span>
+        <span class="tag">fabricant français</span>
+        <span class="tag">Diagral</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>ADT, Origin AI et Verisure signent un accord commercial de long terme autour de l’IA</h3>
+      <div class="meta">Security World Market · 2026-02 · <a href="https://www.securityworldmarket.com/na/News/Business-News/adt-origin-ai-and-verisure-sign-long-term-agreement-on-ai-security1" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Dans le sillage de l’acquisition d’Origin AI par ADT, les trois partenaires scellent un contrat pluriannuel de cinq ans renouvelable, d’environ 30 M$, pour déployer la technologie de détection IA d’Origin AI auprès des clients européens et latino-américains de Verisure.</div>
+      <div class="tags">
+        <span class="tag">ADT</span>
+        <span class="tag">Verisure</span>
+        <span class="tag">IA</span>
+        <span class="tag">partenariat</span>
+        <span class="tag">Origin AI</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-title"><span class="icon">🌍</span> Monde — Pertinence Europe <span class="count">4</span></div>
+    <div class="empty">Aucune actualité datée du 15/07/2026 dans cette section.</div>
+    <div class="card">
+      <h3>ADT acquiert Origin AI pour 170 M$</h3>
+      <div class="meta">Security World Market · 2023-base · <a href="https://www.securityworldmarket.com/me/News/Business-News/adt-acquires-origin-ai-for-us-170-million1" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">ADT finalise le rachat d’Origin AI pour compléter son offre de sécurité résidentielle et smart-home par une technologie de détection de présence IA sans caméra, basée sur plus de 200 brevets et destinée à être commercialisée à grande échelle en 2027.</div>
+      <div class="tags">
+        <span class="tag">ADT</span>
+        <span class="tag">acquisition</span>
+        <span class="tag">IA</span>
+        <span class="tag">sans caméra</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>SDM Top 100 des installateurs-dépanneurs 2025 : ADT numéro 1</h3>
+      <div class="meta">SDM Magazine · 2025 · <a href="https://www.sdmmag.com/articles/104215-sdm-top-100-security-dealers-of-2025" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">ADT reste le leader nord-américain avec 4,9 Mds$ de CA brut, 359 M$ de revenu récurrent mensuel et 6,4 millions d’abonnés. Le rapport analyse la résilience du monitoring professionnel et la croissance de la vérification vidéo aux États-Unis.</div>
+      <div class="tags">
+        <span class="tag">ADT</span>
+        <span class="tag">chiffres</span>
+        <span class="tag">monitoring</span>
+        <span class="tag">États-Unis</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Le marché résidentiel d’alarmes en Espagne croît de 8 % au T1 2025</h3>
+      <div class="meta">Security World Market · 2025-Q1 · <a href="https://www.securityworldmarket.com/int/News/Business-News/spanish-residential-alarm-market-sees-8-growth-first-quarter-2025" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Le marché espagnol profite de la dynamique du joint-venture Movistar Prosegur Alarmas et de la concurrence accrue avec Verisure et ADT, dans un contexte de hausse de la demande en solutions professionnellement monitorées.</div>
+      <div class="tags">
+        <span class="tag">Prosegur</span>
+        <span class="tag">Espagne</span>
+        <span class="tag">croissance marché</span>
+        <span class="tag">joint-venture</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Shari Wilson, directrice monitoring ADT, élue Manager of the Year 2025</h3>
+      <div class="meta">SDM Magazine · 2025 · <a href="https://www.sdmmag.com/articles/104962-1-on-1-with-a-winner-shari-wilson-2025-monitoring-center-manager-of-the-year" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">ADT confirme son excellence opérationnelle dans les centres de surveillance avec les TMA Excellence Awards, mettant en avant la formation, la conformité et la performance du dispatching multilingue et santé.</div>
+      <div class="tags">
+        <span class="tag">ADT</span>
+        <span class="tag">centre de surveillance</span>
+        <span class="tag">excellence opérationnelle</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-title"><span class="icon">🔧</span> Innovations Produits & Composants <span class="count">5</span></div>
+    <div class="empty">Aucune actualité datée du 15/07/2026 dans cette section.</div>
+    <div class="card">
+      <h3>Resideo dévoile la série First Alert CX4 : caméras IA 8 MP avec stockage edge et chiffrement AES-256</h3>
+      <div class="meta">Resideo newsroom · 2025-03 · Disponible · <a href="https://www.resideo.com/us/en/corporate/newsroom/all-articles/Resideo-introduces-first-alert-cx4-camera-series/" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Prévues en Q3 2025, les CX4 intègrent l’analyse intelligente embarquée (personnes, véhicules, paquets, animaux), l’enregistrement continu en périphérie et le chiffrement AES-256 avec démarrage sécurisé. Elles s’intègrent aux centrales ProSeries et VISTA Hybrid via Total Connect 2.0.</div>
+      <div class="tags">
+        <span class="tag">Resideo</span>
+        <span class="tag">caméra IA</span>
+        <span class="tag">edge</span>
+        <span class="tag">AES-256</span>
+        <span class="tag">stockage local</span>
+        <span class="maturity">Disponible</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Reolink lance ReoNeura AI et le floodlight 360° TrackFlex WiFi lors de GITEX Global 2025</h3>
+      <div class="meta">Zawya · 2025-04 · Disponible · <a href="https://www.zawya.com/en/press-release/companies-news/reolink-concludes-a-dynamic-presence-at-gitex-global-2025-with-reoneura-ai-and-trackflex-floodlight-wifi-hjlx25k3" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">ReoNeura AI associe détection objet avancée, recherche vidéo en langage naturel et analytics locaux, tandis que le TrackFlex Floodlight WiFi est une caméra PTZ 4K 360° avec floodlight intégré, IA auto-tracking, enregistrement 4G et ColorX pour sites résidentiels et professionnels distants.</div>
+      <div class="tags">
+        <span class="tag">Reolink</span>
+        <span class="tag">PTZ 4K</span>
+        <span class="tag">auto-tracking</span>
+        <span class="tag">4G</span>
+        <span class="tag">IA</span>
+        <span class="maturity">Disponible</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Hanwha Vision présente le SoC Wisenet 9 pour caméras de surveillance IA</h3>
+      <div class="meta">asmag · 2025-04 · Disponible · <a href="https://www.asmag.com/showpost/34995.aspx" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Le nouveau SoC embarque deux NPUs dédiés pour l’IA temps réel embarquée, l’amélioration d’image, la détection d’objets, le comptage personnes/véhicules, la réidentification et le masquage de confidentialité pour applications professionnelles.</div>
+      <div class="tags">
+        <span class="tag">Hanwha Vision</span>
+        <span class="tag">SoC</span>
+        <span class="tag">dual NPU</span>
+        <span class="tag">détection temps réel</span>
+        <span class="tag">edge</span>
+        <span class="maturity">Disponible</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>DMP étend sa gamme VUE Plus avec la technologie AlarmVision</h3>
+      <div class="meta">Security Info Watch · 2025 · Disponible · <a href="https://www.securityinfowatch.com/video-surveillance/product/55388926/digital-monitoring-products-dmp-dmp-expands-vue-camera-portfolio-with-new-vue-plus-models-featuring-alarmvision-technology" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Les caméras VUE Plus intègrent l’analyse embarquée et un accès direct au panneau d’intrusion pour la vérification vidéo zonale, l’audio bidirectionnel et une meilleure discrimination des menaces, réduisant les fausses alarmes en centre de télésurveillance.</div>
+      <div class="tags">
+        <span class="tag">DMP</span>
+        <span class="tag">vidéo-vérification</span>
+        <span class="tag">intégration centrale d’alarme</span>
+        <span class="maturity">Disponible</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Ajax Systems annonce le hub hybride Superior 2 avec 4G Jeweller</h3>
+      <div class="meta">ajax.systems · 2025-11-21 · Disponible · <a href="https://ajax.systems/blog/special-event-2025/" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Le Superior Hub Hybrid 2 succède aux gammes Baseline et Superior pour assurer une communication 4G fiable avec module Jeweller, et s’inscrit dans l’offre EN 50131 Grade 2/3 pour installations professionnelles en Europe.</div>
+      <div class="tags">
+        <span class="tag">Ajax</span>
+        <span class="tag">centrale hybride</span>
+        <span class="tag">4G</span>
+        <span class="tag">EN50131</span>
+        <span class="maturity">Disponible</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-title"><span class="icon">🚀</span> Prospective & Technologies Émergentes <span class="count">4</span></div>
+    <div class="empty">Aucune actualité datée du 15/07/2026 dans cette section.</div>
+    <div class="card">
+      <h3>Nouvelles règles contre-UAS et acte SAFER SKIES</h3>
+      <div class="meta">DroneLife · 2026-07-07 · <a href="https://dronelife.com/2026/07/07/counter-uas-rules-safer-skies-act/" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Les décrets et ordonnances exécutives accélèrent l’application de l’acte SAFER SKIES pour former et certifier les agences fédérales et locales à la détection et la mitigation de drones menaçants. Cette dynamique impacte les déploiements de sécurité drone et robots sur infrastructures critiques en Europe et Amérique du Nord.</div>
+      <div class="tags">
+        <span class="tag">drones</span>
+        <span class="tag">contre-UAS</span>
+        <span class="tag">SAFER SKIES</span>
+        <span class="tag">réglementation</span>
+        <span class="horizon">Court <2 ans</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Marché des robots de sécurité : de 22,9 Mds$ en 2026 à 63,8 Mds$ en 2033</h3>
+      <div class="meta">Persistence Market Research · 2026-base · <a href="https://www.persistencemarketresearch.com/market-research/security-robot-market.asp" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Les robots aériens et terrestres intègrent fusion de capteurs LiDAR, radar, thermique et acoustique pour une patrouille autonome 360°. La croissance à 15,8 % CAGR est tirée par les infrastructures critiques, la logistique et la détection d’intrusion périmétrique.</div>
+      <div class="tags">
+        <span class="tag">robot de sécurité</span>
+        <span class="tag">marché</span>
+        <span class="tag">LiDAR</span>
+        <span class="tag">patrouille autonome</span>
+        <span class="horizon">Court/Moyen 2-5 ans</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Guerre des drones autonomes en Ukraine et dilemme dual-use en robotique open-source</h3>
+      <div class="meta">IEEE Spectrum · 2025/2026 · <a href="https://spectrum.ieee.org/autonomous-drone-warfare" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">IEEE publie deux analyses majeures : l’usage opérationnel de drones de surveillance autonomes, de robots terrestres thermiques et de capacités d’essaim en Ukraine ; et les risques de navigation autonome de ciblage et d’essaim issus de la robotique open-source pour la sécurité intérieure.</div>
+      <div class="tags">
+        <span class="tag">drones</span>
+        <span class="tag">robots autonomes</span>
+        <span class="tag">dual-use</span>
+        <span class="tag">sécurité intérieure</span>
+        <span class="horizon">Moyen 2-5 ans</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Wi-Fi Sensing multimodal pour la détection d’intrusion</h3>
+      <div class="meta">arXiv · 2025 · <a href="https://arxiv.org/abs/2505.06682" target="_blank" rel="noopener">Lien</a></div>
+      <div class="summary">Deux études 2025 montrent l’intérêt du Wi-Fi CSI multimodal et multibande sub-6 GHz / mmWave pour une détection humaine précise, un suivi de mouvement et une identification de personnes sans caméra, avec des applications prometteuses pour les alarmes sans caméra et le contrôle d’accès.</div>
+      <div class="tags">
+        <span class="tag">Wi-Fi Sensing</span>
+        <span class="tag">CSI</span>
+        <span class="tag">détection intrusion</span>
+        <span class="tag">recherche académique</span>
+        <span class="horizon">Court/Moyen <3 ans</span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  Veille Télésurveillance & Alarmes — généré le 2026-07-15 — Sources primaires, presse spécialisée et acteurs ; anti-loop curation appliquée.
+</footer>
+</body>
+</html>

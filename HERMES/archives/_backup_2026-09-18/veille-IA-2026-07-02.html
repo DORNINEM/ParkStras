@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-07-02</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>Jeudi 2 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-02T07:00:00.000000+00:00">Jeudi 2 juillet 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Modèles frontière</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Géopolitique & régulation</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>Industrialisation IA</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Emploi & sécurité</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Google lance ses résumés par IA en France</h3>
+            <div class="meta">Numerama · 01/07/2026</div>
+            <p>Google déploie des résumés générés par IA dans ses résultats de recherche en France, avec un risque réel de réduction du trafic vers les sites sources et les éditeurs.</p>
+            <a href="https://www.numerama.com/tech/2287953-adieu-les-sites-web-google-lance-ses-resumes-par-ia-en-france.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Le Monde bloque toujours la collecte automatique</h3>
+            <div class="meta">Source directe · 02/07/2026</div>
+            <p>Aucune collecte réussie depuis lemonde.fr dans la fenêtre de traitement : cause identifiée = blocage CAPTCHA. Pas de contenu publié.</p>
+          </div>
+          <div class="item">
+            <h3>La presse française réclame 80 millions d’euros à Brave pour l’IA</h3>
+            <div class="meta">ZDNet FR · 01/07/2026</div>
+            <p>Le consortium de la presse française attaque Brave devant la justice pour utilisation non autorisée de contenus dans ses résumés IA et son index de recherche.</p>
+            <a href="https://www.zdnet.fr/actualites/zd-tech-intelligence-artificielle-la-presse-francaise-reclame-80-millions-deuros-a-brave-496176.htm" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>OpenAI estime que 14 % des emplois sont à haut risque en Europe</h3>
+            <div class="meta">01net · 01/07/2026</div>
+            <p>Le dernier rapport d’OpenAI évalue l’impact de l’IA sur l’emploi européen : 14 % des métiers très exposés, 27 % réorganisés.</p>
+            <a href="https://www.01net.com/actualites/openai-devoile-ses-conclusions-sur-limpact-de-lia-sur-lemploi-combien-de-metiers-risquent-de-disparaitre-en-europe.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>France Travail veut passer à l’échelle supérieure sur l’IA d’ici fin 2026</h3>
+            <div class="meta">Silicon.fr · 01/07/2026</div>
+            <p>Après 93 millions d’euros cumulés depuis 2017, l’opérateur prévoit un nouvel effort d’investissement pour industrialiser ses services d’IA générative.</p>
+            <a href="https://www.silicon.fr/data-ia-1372/comment-france-travail-veut-passer-a-lechelle-superieure-sur-lia-227649" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Anthropic réactive Claude Fable 5 et Mythos 5 dans le monde entier</h3>
+            <div class="meta">Numerama / TechCrunch · 01/07/2026</div>
+            <p>Après 19 jours de restrictions d’export américaines, les modèles les plus avancés d’Anthropic redeviennent accessibles globalement avec des gardes de sécurité renforcées.</p>
+            <a href="https://www.numerama.com/tech/2288725-claude-fable-5-et-mythos-5-sont-de-retour-anthropic-retablit-lacces-dans-le-monde-entier.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>OpenAI introduit GPT-5.6 en trois versions : Sol, Terra et Luna</h3>
+            <div class="meta">Numerama · 01/07/2026</div>
+            <p>OpenAI riposte à Anthropic avec une gamme segmentée : GPT-5.6 Sol, Terra et Luna, adaptés à des usages différenciés de l’entreprise à la recherche.</p>
+            <a href="https://www.numerama.com/tech/2286787-openai-devoile-gpt-5-6-sol-terra-et-luna-trois-versions-pour-repondre-a-anthropic.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>OpenAI publie l’impact de l’IA sur l’emploi : 14 % des emplois européens menacés</h3>
+            <div class="meta">01net · 01/07/2026</div>
+            <p>Le laboratoire d’IA dresse un panorama stable pour l’Europe mais appelle à adapter la formation et les stratégies d’entreprise.</p>
+            <a href="https://www.01net.com/actualites/openai-devoile-ses-conclusions-sur-limpact-de-lia-sur-lemploi-combien-de-metiers-risquent-de-disparaitre-en-europe.html" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Venice AI devient licorne après une levée de 65 millions de dollars</h3>
+            <div class="meta">TechCrunch · 01/07/2026</div>
+            <p>La plateforme IA centrée sur la confidentialité dépasse la barre du milliard de valorisation en restant rentable et sans stockage des données utilisateurs.</p>
+            <a href="https://techcrunch.com/2026/07/01/venice-ai-becomes-a-unicorn-with-65m-series-a-as-its-privacy-first-ai-platform-takes-off/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Constructive Alignment : aligner l’IA sur l’évolution des préférences humaines</h3>
+            <div class="meta">arXiv cs.AI · 01/07/2026</div>
+            <p>Un article fondateur ré-encadre l’alignement IA comme un problème de contrôle sur l’évolution des préférences humaines à long terme, plutôt que satisfaction statique.</p>
+            <a href="https://arxiv.org/abs/2607.00001" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Bounded Morality : modéliser l’espace du calcul moral fini</h3>
+            <div class="meta">arXiv cs.AI · 01/07/2026</div>
+            <p>Les auteurs proposent un cadre formel de la moralité bornée par la largeur et la profondeur inférentielle, ouvrant la voie à une montée en charge raisonnée de l’éthique computationnelle.</p>
+            <a href="https://arxiv.org/abs/2607.00002" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Europe full width -->
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>L’UE approuve la simplification des règles de l’IA</h3>
+            <div class="meta">Conseil de l’UE · 29/06/2026</div>
+            <p>Le Conseil européen donne un feu vert final au paquet de simplification du Règlement IA, dans la lignée des délais d’application d’août 2026 pour les systèmes à haut risque.</p>
+            <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>L’UE face au retard des lignes directrices « IA à haut risque »</h3>
+            <div class="meta">EURACTIV · 01/07/2026</div>
+            <p>La Commission européenne accommode un délai supplémentaire pour les orientations sur les systèmes à haut risque, freinant la mise en œuvre conforme de l’AI Act.</p>
+            <a href="https://www.euractiv.com/news/late-guidance-on-high-risk-ai-systems-lands-in-draft/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>L’UE explore de nouvelles possibilités d’opposition à l’entraînement par IA</h3>
+            <div class="meta">EURACTIV · 01/07/2026</div>
+            <p>Bruxelles étudie des mécanismes renforcés pour permettre aux ayants droit de refuser l’usage de leurs contenus pour l’entraînement de modèles IA, au-delà du `robots.txt`.</p>
+            <a href="https://www.euractiv.com/news/eu-eyes-more-ways-to-opt-out-of-ai-training/" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Portugal ouvre Amália, son premier modèle IA national open source</h3>
+            <div class="meta">The Next Web · 30/06/2026</div>
+            <p>Lisbonne publie Amália, un modèle multilingue européen construit sur EuroLLM-9B, visant services publics et souveraineté linguistique.</p>
+            <a href="https://thenextweb.com/news/portugal-open-source-ai-model-amalia" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Le plan « AI gigafactories » européen trébuche sur les retards et le financement</h3>
+            <div class="meta">The Next Web · 01/07/2026</div>
+            <p>L’appel d’offres européen pour des hubs d’IA massifs se heurte aux reports et à la souscription inégale, réduisant le nombre de centres éligibles d’ici 2028.</p>
+            <a href="https://thenextweb.com/news/eu-ai-data-centre-gigafactory-delays-funding-stumble" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ArXiv full width -->
+      <article class="card" aria-labelledby="arxiv" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="arxiv">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            ArXiv (cs.AI / cs.LG)
+          </h2>
+          <span class="pill yellow">2 items sélectionnés</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Language-Critique Imitation Learning from Suboptimal Demonstrations</h3>
+            <div class="meta">arXiv · 01/07/2026</div>
+            <p>Introduction d’un apprentissage par imitation à partir de démonstrations sous-optimales enrichi par des critiques langagières structurées, dépassant les approches scalaires sur des tâches de manipulation et navigation.</p>
+            <a href="https://arxiv.org/abs/2607.01225" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+          <div class="item">
+            <h3>Right in the Right Way : LM Training with Verifiable Rewards and Human Demonstrations</h3>
+            <div class="meta">arXiv · 01/07/2026</div>
+            <p>Cadre d’apprentissage par RL avec récompenses vérifiables et démonstrations humaines : amélioration de l’humain-likeness, réduction du reward hacking tout en conservant les gains de précision.</p>
+            <a href="https://arxiv.org/abs/2607.01181" target="_blank" rel="noopener">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · Jeudi 2 juillet 2026 · Archive locale : ~/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+
+  <script>
+    const key = 'veille-ia-theme';
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(key);
+      if (saved === 'dark') document.body.classList.add('dark');
+    });
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      localStorage.setItem(key, document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
