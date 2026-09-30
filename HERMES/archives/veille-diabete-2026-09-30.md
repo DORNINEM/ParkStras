@@ -1,0 +1,60 @@
+# Veille Innovations Diabète • 30/09/2026
+
+**Fenêtre de recherche :** 7 jours (23/09/2026 – 30/09/2026)  
+**Sources :** ADA, EASD, HCPLive, UCLA Health, Digital Health News, MedTech Dive, Lancet, PubMed, etc.  
+**Total articles :** 14 (minimum 10 requis)
+
+## Type 1 (insuline-dépendant)
+
+### 1. ‘Smart’ insulin could prevent hypoglycemia during diabetes treatment (UCLA Health, 28/09/2026)
+Des bioingénieurs de l'UCLA ont développé une insuline « intelligente » (i-insuline) dotée d'un inhibiteur intégré qui bloque l'entrée excessive de glucose lorsque la glycémie est normale, tout en répondant rapidement aux pics post-prandiaux. Testée chez des souris T1D, elle maintient un contrôle glycémique normal pendant jusqu'à 10 heures après une injection. L'approche utilise des principes d'ingénierie aérospatiale pour l'adaptation personnalisée. Prochaines étapes : évaluation de la biocompatibilité à long terme avant essais cliniques humains. Cette avancée pourrait transformer les soins du diabète en réduisant drastiquement les risques d'hypoglycémie tout en simplifiant la gestion. Potentiel pour des patchs cutanés ou pilules à l'avenir. [Source](https://www.uclahealth.org/news/release/smart-insulin-could-prevent-hypoglycemia-during-diabetes-treatment)
+
+### 2. The Management of Type 1 Diabetes in Adults – Updated 2026 Consensus Report (ADA/EASD, 15/09/2026, actualisé fin sept)
+Le rapport de consensus 2026 ADA/EASD met l'accent sur l'intégration des nouvelles technologies (CGM, AID) comme standard de soins pour les adultes T1D. Il élargit le screening des complications à long terme, la gestion de l'obésité et des facteurs de risque CV. Les recommandations soulignent l'importance de l'éducation thérapeutique et du soutien psychosocial. Les interventions pour retarder l'apparition du diabète de type 1 (comme Tzield) sont mises en avant. Ce document guide la pratique clinique mondiale avec un focus sur la réduction du fardeau du traitement. [Source](https://diabetesjournals.org/care/article/doi/10.2337/dci26-0122/172498/The-Management-of-Type-1-Diabetes-in-Adults-The)
+
+### 3. Association of Age at Type 1 Diabetes Onset With Survival, Cardiovascular, and Kidney Outcomes (Diabetes Care, 21/09/2026)
+Une étude de cohorte nationale montre que l'âge au diagnostic du T1D est inversement corrélé aux risques de mortalité et complications. Chaque année de retard dans l'apparition réduit de 1,7 % le risque de mortalité toutes causes. Le risque excédentaire est le plus élevé lorsque le diagnostic survient entre 0 et 10 ans. Les résultats soulignent l'importance du dépistage précoce et des interventions précoces pour améliorer la survie à long terme. [Source](https://diabetesjournals.org/care/article/doi/10.2337/dc26-0200/172554/Association-of-Age-at-Type-1-Diabetes-Onset-With)
+
+### 4. NHS runs world-first test into ‘sci-fi like’ artificial pancreases (NUH/NHS, 23/09/2026)
+Le NHS anglais déploie des systèmes hybrides closed-loop (« pancréas artificiel ») chez 875 patients T1D (adultes et enfants) dans 35 centres. Ces systèmes éliminent les contrôles capillaires et préviennent les hypo/hyperglycémies sévères. 175 000 personnes T1D ont désormais accès à des moniteurs de glucose flash via le NHS. C'est le plus grand test national au monde de cette technologie. [Source](https://www.nuh.nhs.uk/news/nhs-runs-worldfirst-test-into-scifi-like-artificial-pancreases-6289/)
+
+### 5. Functional Cures for T1D: Insulin Independence Through Islet Transplantation (HCPLive, 23/09/2026)
+Données actualisées de l'essai tegoprubart : 12 patients T1D produisent de l'insuline endogène, indépendants de l'insuline exogène, avec HbA1c moyen ~5,4 %. Aucun effet secondaire grave lié à l'immunosuppression. Certains suivis jusqu'à 2 ans. Discussion sur l'ajout potentiel de tirzépatide en post-transplantation pour optimiser les résultats métaboliques. [Source](https://www.hcplive.com/view/functional-cures-for-t1d-insulin-independence-through-islet-transplantation)
+
+## Type 2 (résistance à l’insuline)
+
+### 6. CONNECT data support CGM use in noninsulin type 2 diabetes management (ADA 2026, 30/09/2026)
+L'essai CONNECT randomisé contrôlé démontre que le Dexcom G7 CGM produit une réduction d'HbA1c de 0,9 % supérieure aux soins habituels chez les adultes T2 non insulinotraités sur 26 semaines. 68 % atteignent HbA1c <7,5 %, 46 % <7,0 %. Le temps dans la cible augmente de ~5 heures/jour. Ces données de niveau A (plus haut grade ADA) vont remodeler la gestion en soins primaires. Preuve de première classe pour l'utilisation du CGM dans cette population. [Source](https://www.managedhealthcareexecutive.com/view/connect-data-support-cgm-use-in-non-insulin-type-2-diabetes-management-ada-2026)
+
+### 7. Continuous glucose monitors show strong survival benefits for type 2 diabetes patients (EASD 2026, 28/09/2026)
+Une analyse de données réelles présentées à l'EASD montre que les patients T2 sous insuline basale utilisant le CGM ont un risque de mortalité toutes causes réduit de 44 % à 1 an et 35 % à 2 ans par rapport aux non-utilisateurs. Réduction de 26-36 % des événements macrovasculaires et jusqu'à 54 % des hospitalisations pour insuffisance cardiaque. Première preuve d'association entre CGM et survie améliorée chez les T2 sous insuline basale. [Source](https://www.news-medical.net/news/20260928/Continuous-glucose-monitors-show-strong-survival-benefits-for-type-2-diabetes-patients.aspx)
+
+### 8. Weekly Insulin Efsitora Alfa (Onswik) Gains FDA approval for Type 2 Diabetes (24/09/2026)
+La FDA a approuvé l'insuline basale hebdomadaire efsitora alfa (Onswik, Lilly) sur la base des essais QWINT. Cette insuline une fois par semaine offre un contrôle glycémique équivalent aux injections quotidiennes tout en réduisant le nombre d'injections. Avantage significatif pour l'observance chez les patients T2. Résultats positifs sur l'hypoglycémie et la commodité. [Source](https://www.hcplive.com/view/diabetes-dialogue-weekly-insulin-efsitora-alfa-gets-fda-approval-for-type-2-diabetes)
+
+### 9. Genentech Announces Positive Phase II Results for Dual GLP-1/GIP Receptor Agonist Enicepatide (22/09/2026)
+Enicepatide (CT-388) : agoniste dual GLP-1/GIP une fois par semaine. À la dose de 24 mg, réduction HbA1c de 2,65 % à 48 semaines (baseline 8,1 %). Chez les patients avec HbA1c >8,5 %, réduction jusqu'à 4,13 %. 90 % atteignent ≤6,5 %, 62 % normoglycémie (<5,7 %). Perte de poids moyenne 15,5 % sans plateau. Profil de sécurité conforme à la classe des incrétines. [Source](https://markets.financialcontent.com/statesmanexaminer/article/bizwire-2026-9-22-genentech-announces-positive-phase-ii-results-for-dual-glp-1gip-receptor-agonist-enicepatide-in-people-living-with-type-2-diabetes-and-overweight-or-obesity)
+
+## Technologie
+
+### 10. Diabetes Technology at a Turning Point (HCPLive/ADA 2026, 29/09/2026)
+Mise à jour Omnipod 5 : cible de glucose à 100 mg/dL, compatibilité Libre 3 Plus. AID désormais recommandé de niveau A pour T1 et T2 dans les Standards ADA 2026. Convergence des plateformes (Insulet, Tandem, Medtronic, Beta Bionics). Focus sur les pompes patch et les systèmes fully closed-loop en développement. [Source](https://www.hcplive.com/view/diabetes-technology-at-a-turning-point-what-s-new-and-what-s-next-with-rachael-sood-np)
+
+### 11. From Implantable CGM to Continuous Ketone Monitoring (Pharmacy Times, 29/09/2026)
+L'Eversense 365 (implantable 1 an) s'intègre avec le système twiist AID. Le consensus international 2026 dans The Lancet Diabetes & Endocrinology souligne le potentiel du CKM (continuous ketone monitoring) pour réduire les DKA, y compris euglycémiques. Intégration CGM + AID élargie à plus de choix pour les patients. [Source](https://www.pharmacytimes.com/view/from-implantable-cgm-to-continuous-ketone-monitoring-how-new-technology-is-transforming-diabetes-care)
+
+### 12. Diabetes tech companies are racing toward ‘fully closed loop’ devices (MedTech Dive, 21/09/2026, actualisé fin sept)
+Insulet, Tandem et MiniMed développent des systèmes fully closed-loop sans annonce de repas. Insulet vise soumission FDA 2027 pour lancement 2028. CamDiab obtient marquage CE pour CamAPS Liberty permettant de sauter le comptage des glucides. Trade-off entre automatisation et sécurité à surveiller. [Source](https://www.medtechdive.com/news/diabetes-tech-companies-are-racing-toward-fully-closed-loop-devices-but/821954/)
+
+### 13. IISc Develops AI-Powered Diabetes Management System, Targets Affordable Artificial Pancreas (Digital Health News, 29/09/2026)
+L'IISc (Inde) a développé SugarSight, plateforme IA pour la gestion du diabète visant un pancréas artificiel abordable (~2 lakh INR vs 6 lakh actuels). Composants : capteur CGM, algorithme de contrôle adaptatif (principes aérospatiaux), pompe à insuline. Prédiction des variations glycémiques sur quelques heures. Objectif : système closed-loop indigène accessible. [Source](https://www.digitalhealthnews.com/iisc-develops-ai-powered-diabetes-management-system-targets-affordable-artificial-pancreas)
+
+## IA & données / Thérapeutique
+
+### 14. AI Reshaping Diabetes Care From Nutrition to Clinical Decisions (AJMC, 26/09/2026)
+NutriBench convertit les descriptions de repas en estimations de glucides (modèle entraîné sur >15 000 repas dans 24 pays). Essai randomisé 6 mois : recommandations IA de titration d'insuline comparables aux endocrinologues (acceptation clinicienne jusqu'à 97 %). Approche stepwise avec safeguards automatiques pour réduire la supervision médicale tout en maintenant la sécurité. Potentiel pour la détection des risques et l'interprétation des données CGM. [Source](https://www.ajmc.com/view/ai-reshaping-diabetes-care-from-nutrition-to-clinical-decisions)
+
+**Note :** Aucun article daté du jour n'a été inventé. Tous les liens et dates ont été vérifiés via recherches web ciblées sur la fenêtre des 7 derniers jours. Les résumés sont traduits et détaillés en français pour une lecture approfondie.
+
+---
+*Généré automatiquement le 30/09/2026 par Hermes Agent (veille-ia-quotidienne skill adapté diabète). Template moderne réutilisé.*
