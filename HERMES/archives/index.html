@@ -144,11 +144,58 @@ footer .lm { color: var(--cyan); }
   position: absolute; bottom: 26px; font-family: var(--font-mono); font-size: 11px;
   letter-spacing: .3em; text-transform: uppercase; color: var(--dim); z-index: 2;
 }
+
+/* ------------------------------------------------ vortex de fond permanent */
+#vortex-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+#vortex-bg .ring {
+  position: absolute; left: 50%; top: 170px;
+  width: 0; height: 0; border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+#vortex-bg .r1 {
+  width: 420px; height: 420px;
+  border: 2px solid transparent;
+  border-top-color: rgba(64,220,255,.22); border-right-color: rgba(64,220,255,.05);
+  animation: spin 14s linear infinite;
+}
+#vortex-bg .r2 {
+  width: 580px; height: 580px;
+  border: 2px solid transparent;
+  border-left-color: rgba(255,179,71,.16); border-bottom-color: rgba(255,179,71,.04);
+  animation: spin 22s linear infinite reverse;
+}
+#vortex-bg .r3 {
+  width: 760px; height: 760px;
+  border: 2px solid transparent;
+  border-top-color: rgba(64,220,255,.12); border-left-color: rgba(64,220,255,.03);
+  animation: spin 32s linear infinite;
+}
+#vortex-bg .r4 {
+  width: 960px; height: 960px;
+  border: 2px solid transparent;
+  border-right-color: rgba(255,179,71,.08); border-bottom-color: rgba(64,220,255,.05);
+  animation: spin 46s linear infinite reverse;
+}
+#vortex-bg .core {
+  position: absolute; left: 50%; top: 170px; width: 520px; height: 520px;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(64,220,255,.09) 0%, transparent 62%);
+  animation: pulse 5s ease-in-out infinite;
+}
+@keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
 </style>
 </head>
 <body>
 <div class="corner tl"></div><div class="corner tr"></div>
 <div class="corner bl"></div><div class="corner br"></div>
+
+<div id="vortex-bg" aria-hidden="true">
+  <div class="ring r4"></div><div class="ring r3"></div>
+  <div class="ring r2"></div><div class="ring r1"></div>
+  <div class="core"></div>
+</div>
 
 <div id="vortex" onclick="this.classList.remove('open')">
   <div class="ring r4"></div><div class="ring r3"></div>
