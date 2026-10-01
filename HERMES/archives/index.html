@@ -50,7 +50,8 @@ body::after {
 #clock { color: var(--amber); }
 
 header.main { text-align: center; margin-bottom: 50px; }
-header.main img { height: 110px; filter: drop-shadow(0 0 22px rgba(64,220,255,.35)); margin-bottom: 10px; }
+header.main img { height: 165px; filter: drop-shadow(0 0 22px rgba(64,220,255,.35)); margin-bottom: 10px; cursor: zoom-in; transition: transform .25s; }
+header.main img:hover { transform: scale(1.03); }
 header.main h1 {
   font-size: 30px; letter-spacing: .42em; text-transform: uppercase; font-weight: 700;
   color: var(--text); text-shadow: 0 0 24px rgba(64,220,255,.5);
@@ -109,11 +110,53 @@ footer {
   color: var(--dim); letter-spacing: .2em; text-transform: uppercase;
 }
 footer .lm { color: var(--cyan); }
+
+/* ------------------------------------------------ lightbox vortex */
+#vortex {
+  position: fixed; inset: 0; z-index: 50; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(1,4,9,.92); backdrop-filter: blur(10px);
+}
+#vortex.open { display: flex; animation: vfade .35s ease; }
+@keyframes vfade { from { opacity: 0; } to { opacity: 1; } }
+#vortex .ring {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  border: 2px solid transparent;
+}
+#vortex .r1 { width: 46vmin; height: 46vmin; border-top-color: rgba(64,220,255,.75); border-right-color: rgba(64,220,255,.15); animation: spin 3.2s linear infinite; box-shadow: 0 0 45px rgba(64,220,255,.25); }
+#vortex .r2 { width: 62vmin; height: 62vmin; border-left-color: rgba(255,179,71,.55); border-bottom-color: rgba(255,179,71,.12); animation: spin 5s linear infinite reverse; }
+#vortex .r3 { width: 80vmin; height: 80vmin; border-top-color: rgba(64,220,255,.30); border-left-color: rgba(64,220,255,.06); animation: spin 7.5s linear infinite; }
+#vortex .r4 { width: 100vmin; height: 100vmin; border-right-color: rgba(255,179,71,.18); border-bottom-color: rgba(64,220,255,.10); animation: spin 10s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+#vortex .core {
+  position: absolute; width: 58vmin; height: 58vmin; border-radius: 50%;
+  background: radial-gradient(circle, rgba(64,220,255,.16) 0%, transparent 65%);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { transform: scale(1); opacity:.8; } 50% { transform: scale(1.07); opacity:1; } }
+#vortex img {
+  position: relative; z-index: 2; max-width: 82vw; max-height: 80vh;
+  border: 1px solid var(--line); box-shadow: 0 0 80px rgba(64,220,255,.28);
+  cursor: zoom-out; animation: vzoom .4s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes vzoom { from { transform: scale(.82); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+#vortex .hint {
+  position: absolute; bottom: 26px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--dim); z-index: 2;
+}
 </style>
 </head>
 <body>
 <div class="corner tl"></div><div class="corner tr"></div>
 <div class="corner bl"></div><div class="corner br"></div>
+
+<div id="vortex" onclick="this.classList.remove('open')">
+  <div class="ring r4"></div><div class="ring r3"></div>
+  <div class="ring r2"></div><div class="ring r1"></div>
+  <div class="core"></div>
+  <img src="innovia2.png" alt="Logo Innov'IA">
+  <div class="hint">CLIQUEZ POUR FERMER</div>
+</div>
 
 <div class="wrap">
   <div id="topbar">
@@ -170,6 +213,12 @@ footer .lm { color: var(--cyan); }
 setInterval(() => {
   document.getElementById("clock").textContent = new Date().toLocaleTimeString("fr-FR");
 }, 1000);
+
+/* lightbox vortex au clic sur le logo */
+document.querySelector("header.main img").addEventListener("click", (e) => {
+  e.stopPropagation();
+  document.getElementById("vortex").classList.add("open");
+});
 document.getElementById("lm").textContent = document.lastModified;
 </script>
 </body>
