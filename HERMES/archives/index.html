@@ -2,37 +2,175 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<title>HERMES Archives — Terminal Général</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Archives HERMES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;background:#f6f7f9;color:#111827}
-.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
-header{display:flex;align-items:center;gap:16px;margin-bottom:26px}
-header img{height:56px;width:auto}
-h1{font-size:22px;margin:0;color:#0f172a}
-.subtitle{font-size:13px;color:#6b7280;margin-top:2px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-a.card{display:block;padding:18px 20px;border:1px solid #e5e7eb;border-radius:14px;background:#fff;color:#0f172a;text-decoration:none;box-shadow:0 4px 14px rgba(15,23,42,.05);transition:border-color .15s}
-a.card:hover{border-color:#c7d2fe;background:#f8faff}
-.card h2{margin:0 0 6px;font-size:16px}
-.card p{margin:0;font-size:13px;color:#6b7280}
-.card .count{display:inline-block;margin-top:10px;font-size:11px;background:#eef2ff;color:#4338ca;padding:2px 8px;border-radius:999px}
+:root {
+  --bg: #010409; --line: rgba(64,220,255,.18); --cyan: #40dcff; --amber: #ffb347;
+  --text: #cfeaff; --dim: #4d7c99;
+  --font-hud: "Rajdhani", sans-serif; --font-mono: "Share Tech Mono", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh; color: var(--text); font-family: var(--font-hud);
+  background:
+    radial-gradient(1100px 650px at 50% 30%, rgba(20,60,100,.35) 0%, transparent 60%),
+    var(--bg);
+  overflow-x: hidden; position: relative;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5; z-index: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(64,220,255,.028) 0 1px, transparent 1px 3px),
+    linear-gradient(rgba(64,220,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,220,255,.045) 1px, transparent 1px);
+  background-size: 100% 3px, 52px 52px, 52px 52px;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  box-shadow: inset 0 0 220px rgba(0,0,0,.85);
+}
+.wrap { position: relative; z-index: 1; max-width: 1150px; margin: 0 auto; padding: 46px 26px 70px; }
+
+.corner { position: fixed; width: 46px; height: 46px; pointer-events: none; z-index: 5; }
+.corner::before { content: ""; position: absolute; inset: 0; border: 2px solid var(--cyan); opacity: .55; }
+.corner.tl { top: 14px; left: 14px; } .corner.tl::before { border-right: 0; border-bottom: 0; }
+.corner.tr { top: 14px; right: 14px; } .corner.tr::before { border-left: 0; border-bottom: 0; }
+.corner.bl { bottom: 14px; left: 14px; } .corner.bl::before { border-right: 0; border-top: 0; }
+.corner.br { bottom: 14px; right: 14px; } .corner.br::before { border-left: 0; border-top: 0; }
+
+#topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+  letter-spacing: .28em; text-transform: uppercase; margin-bottom: 44px;
+}
+#topbar .sys { color: var(--cyan); text-shadow: 0 0 12px rgba(64,220,255,.8); }
+#clock { color: var(--amber); }
+
+header.main { text-align: center; margin-bottom: 50px; }
+header.main img { height: 74px; filter: drop-shadow(0 0 22px rgba(64,220,255,.35)); margin-bottom: 16px; }
+header.main h1 {
+  font-size: 30px; letter-spacing: .42em; text-transform: uppercase; font-weight: 700;
+  color: var(--text); text-shadow: 0 0 24px rgba(64,220,255,.5);
+}
+header.main .sub {
+  font-family: var(--font-mono); font-size: 12px; color: var(--dim);
+  letter-spacing: .3em; text-transform: uppercase; margin-top: 8px;
+}
+header.main .sub b { color: var(--cyan); }
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px; margin-bottom: 46px;
+}
+.card {
+  position: relative; display: block; text-decoration: none; color: var(--text);
+  background: linear-gradient(135deg, rgba(64,220,255,.10), rgba(6,14,24,.85) 45%);
+  border: 1px solid var(--line); padding: 20px 20px 16px;
+  backdrop-filter: blur(6px);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  transition: border-color .18s, background .18s, transform .18s;
+  animation: materialize .5s cubic-bezier(.2,.9,.3,1) backwards;
+}
+.card:nth-child(1){animation-delay:.02s}.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.14s}.card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.26s}.card:nth-child(6){animation-delay:.32s}
+@keyframes materialize {
+  0% { transform: translateX(-24px) skewX(-4deg); opacity: 0; filter: brightness(3); }
+  60% { filter: brightness(1.6); }
+  100% { transform: none; opacity: 1; filter: none; }
+}
+.card:hover {
+  border-color: rgba(64,220,255,.55); transform: translateY(-3px);
+  background: linear-gradient(135deg, rgba(64,220,255,.18), rgba(6,14,24,.9) 45%);
+  box-shadow: 0 0 30px rgba(64,220,255,.15);
+}
+.tag {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .3em;
+  color: var(--dim); margin-bottom: 8px;
+}
+.card h2 {
+  font-size: 19px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cyan); text-shadow: 0 0 14px rgba(64,220,255,.5); margin-bottom: 6px;
+}
+.card p { font-size: 13.5px; color: #9fd4f5; opacity: .8; line-height: 1.45; }
+.card .meta {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 14px;
+  border-top: 1px solid var(--line); padding-top: 10px;
+}
+.card .count { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: .2em; }
+.card .arrow { color: var(--cyan); font-size: 16px; transition: transform .18s; }
+.card:hover .arrow { transform: translateX(5px); }
+
+footer {
+  text-align: center; font-family: var(--font-mono); font-size: 11px;
+  color: var(--dim); letter-spacing: .2em; text-transform: uppercase;
+}
+footer .lm { color: var(--cyan); }
 </style>
 </head>
 <body>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+
 <div class="wrap">
-<header><img src="innovia2.png" alt="Innovia 2"><div><h1>Archives HERMES</h1><div class="subtitle">Sélectionnez un thème pour voir uniquement ses publications</div></div></header>
-<div class="grid">
-<a class="card" href="index-mistral.html"><h2>Actualités Mistral</h2><p>Actualités sur Mistral AI</p><span class="count">38 publications</span></a>
-<a class="card" href="index-ia.html"><h2>Actualités IA global</h2><p>Veille IA générale, France / Europe / Monde</p><span class="count">48 publications</span></a>
-<a class="card" href="index-tele.html"><h2>Veille télésurveillance</h2><p>Télésurveillance, alarmes et sécurité électronique</p><span class="count">28 publications</span></a>
-<a class="card" href="index-rh.html"><h2>Veille IA RH</h2><p>IA et mutations des métiers RH</p><span class="count">26 publications</span></a>
-<a class="card" href="index-q.html"><h2>Veille IA Q</h2><p>Informatique quantique</p><span class="count">17 publications</span></a>
-<a class="card" href="index-diabete.html"><h2>Veille Diabète</h2><p>Innovations diabète et santé</p><span class="count">12 publications</span></a>
+  <div id="topbar">
+    <span class="sys">◈ HERMES — TERMINAL D'ARCHIVES</span>
+    <span id="clock">--:--:--</span>
+  </div>
+
+  <header class="main">
+    <img src="innovia2.png" alt="Innovia">
+    <h1>Archives</h1>
+    <div class="sub">Sélectionnez un module de veille · <b>169 publications indexées</b></div>
+  </header>
+
+  <div class="grid">
+<a class="card" href="index-mistral.html">
+  <div class="tag">MISTRAL</div>
+  <h2>Actualités Mistral</h2>
+  <p>Lancements, performances, partenaires</p>
+  <div class="meta"><span class="count">38 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-ia.html">
+  <div class="tag">IA</div>
+  <h2>Veille IA Global</h2>
+  <p>France · Europe · Monde</p>
+  <div class="meta"><span class="count">48 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-tele.html">
+  <div class="tag">TELE</div>
+  <h2>Télésurveillance</h2>
+  <p>Alarmes · biométrie · vidéo</p>
+  <div class="meta"><span class="count">28 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-rh.html">
+  <div class="tag">RH</div>
+  <h2>Veille IA RH</h2>
+  <p>Mutations des métiers</p>
+  <div class="meta"><span class="count">26 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-q.html">
+  <div class="tag">Q</div>
+  <h2>Veille Quantique</h2>
+  <p>Computing · recherche</p>
+  <div class="meta"><span class="count">17 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-diabete.html">
+  <div class="tag">DIABETE</div>
+  <h2>Veille Diabète</h2>
+  <p>Innovations santé</p>
+  <div class="meta"><span class="count">12 ARCHIVES</span><span class="arrow">▸</span></div>
+</a>
+  </div>
+
+  <footer>
+    Système local · GitHub Pages · dernière mise à jour : <span class="lm" id="lm">--</span>
+  </footer>
 </div>
-<div style="margin-top:30px;font-size:12px;color:#9ca3af">Dernière mise à jour : <span id="lm"></span></div>
-<script>document.getElementById('lm').textContent=document.lastModified;</script>
-</div>
+
+<script>
+setInterval(() => {
+  document.getElementById("clock").textContent = new Date().toLocaleTimeString("fr-FR");
+}, 1000);
+document.getElementById("lm").textContent = document.lastModified;
+</script>
 </body>
 </html>
