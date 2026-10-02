@@ -4,42 +4,110 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Veille Diabète — Archives HERMES</title>
+
 <style>
-*{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;background:#f6f7f9;color:#111827}
-.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
-header{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-header img{height:90px;width:auto}
-h1{font-size:22px;margin:0;color:#0f172a}
-.subtitle{font-size:13px;color:#6b7280;margin-top:2px}
-ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-li a{display:block;padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;color:#0f172a;text-decoration:none;font-size:14px}
-li a:hover{border-color:#c7d2fe;background:#f8faff}
-.badge{float:right;font-size:11px;color:#6b7280;background:#f3f4f6;padding:2px 8px;border-radius:999px}
-.back{display:inline-block;margin-bottom:18px;color:#4f46e5;text-decoration:none;font-size:14px}
-.count{font-size:13px;color:#6b7280;margin-bottom:16px}
+:root {
+  --bg: #010409; --line: rgba(64,220,255,.18); --cyan: #40dcff; --amber: #ffb347;
+  --text: #cfeaff; --dim: #4d7c99;
+  --font-hud: "Rajdhani", sans-serif; --font-mono: "Share Tech Mono", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh; color: var(--text); font-family: var(--font-hud);
+  background:
+    radial-gradient(1100px 650px at 50% 30%, rgba(20,60,100,.35) 0%, transparent 60%),
+    var(--bg);
+  padding: 30px 26px 60px; position: relative;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5; z-index: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(64,220,255,.028) 0 1px, transparent 1px 3px),
+    linear-gradient(rgba(64,220,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,220,255,.045) 1px, transparent 1px);
+  background-size: 100% 3px, 52px 52px, 52px 52px;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  box-shadow: inset 0 0 220px rgba(0,0,0,.85);
+}
+.wrap { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; }
+
+.back {
+  position: fixed; top: 16px; left: 16px; z-index: 10;
+  font-family: var(--font-mono); font-size: 20px; color: var(--dim);
+  text-decoration: none; padding: 6px 14px;
+  border: 1px solid transparent; transition: all .18s; letter-spacing: 0;
+}
+.back:hover { color: var(--cyan); border-color: var(--line); text-shadow: 0 0 12px rgba(64,220,255,.8); }
+
+header {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  margin: 18px auto 34px; text-align: center;
+}
+header img { height: 96px; filter: drop-shadow(0 0 20px rgba(64,220,255,.3)); }
+h1 {
+  font-size: 24px; letter-spacing: .38em; text-transform: uppercase; font-weight: 700;
+  color: var(--text); text-shadow: 0 0 20px rgba(64,220,255,.5);
+}
+.meta-line {
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+  letter-spacing: .28em; text-transform: uppercase;
+}
+.meta-line b { color: var(--cyan); }
+ul { list-style: none; max-width: 760px; margin: 0 auto; }
+li {
+  border: 1px solid var(--line); border-left: 3px solid var(--cyan);
+  background: linear-gradient(135deg, rgba(64,220,255,.08), rgba(6,14,24,.85) 45%);
+  margin-bottom: 12px; transition: border-color .18s, transform .18s, box-shadow .18s;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  backdrop-filter: blur(6px);
+}
+li:hover {
+  border-color: rgba(64,220,255,.5); transform: translateX(4px);
+  box-shadow: 0 0 24px rgba(64,220,255,.12);
+}
+li a {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 14px 18px; text-decoration: none; color: var(--text);
+}
+li .t { font-size: 16px; font-weight: 600; letter-spacing: .05em; }
+li:hover .t { color: var(--cyan); }
+li .d {
+  font-family: var(--font-mono); font-size: 11px; color: var(--amber);
+  letter-spacing: .18em; white-space: nowrap;
+}
+footer {
+  text-align: center; font-family: var(--font-mono); font-size: 11px;
+  color: var(--dim); letter-spacing: .2em; text-transform: uppercase; margin-top: 40px;
+}
+footer a { color: var(--cyan); text-decoration: none; }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 </head>
 <body>
+<a class="back" href="index.html" title="Retour au terminal général">&#8592;</a>
 <div class="wrap">
-<header><img src="innovia2.png" alt="Innovia 2"><div><h1>Veille Diabète</h1><div class="subtitle">Archives HERMES — veille-diabete-*.html</div></div></header>
-<a class="back" href="index.html">← Retour à l'accueil</a>
-<div class="count">11 publications</div>
+<header><img src="innovia2.png" alt="Innovia 2"><div><h1>Veille Diabète</h1></div></header>
+
 <ul>
-<li><a href="veille-diabete-2026-09-30.html">veille-diabete-2026-09-30.html<span class="badge">30/09/2026</span></a></li>
-<li><a href="veille-diabete-2026-09-23.html">veille-diabete-2026-09-23.html<span class="badge">23/09/2026</span></a></li>
-<li><a href="veille-diabete-2026-09-16.html">veille-diabete-2026-09-16.html<span class="badge">16/09/2026</span></a></li>
-<li><a href="veille-diabete-2026-09-15.html">veille-diabete-2026-09-15.html<span class="badge">15/09/2026</span></a></li>
-<li><a href="veille-diabete-2026-09-13.html">veille-diabete-2026-09-13.html<span class="badge">13/09/2026</span></a></li>
-<li><a href="veille-diabete-2026-09-02.html">veille-diabete-2026-09-02.html<span class="badge">02/09/2026</span></a></li>
-<li><a href="veille-diabete-2026-08-26.html">veille-diabete-2026-08-26.html<span class="badge">26/08/2026</span></a></li>
-<li><a href="veille-diabete-2026-08-25.html">veille-diabete-2026-08-25.html<span class="badge">25/08/2026</span></a></li>
-<li><a href="veille-diabete-2026-08-12.html">veille-diabete-2026-08-12.html<span class="badge">12/08/2026</span></a></li>
-<li><a href="veille-diabete-2026-07-08.html">veille-diabete-2026-07-08.html<span class="badge">08/07/2026</span></a></li>
-<li><a href="veille-diabete-2026-06-27.html">veille-diabete-2026-06-27.html<span class="badge">27/06/2026</span></a></li>
+<li><a href="veille-diabete-2026-09-30.html"><span class="t">Veille diabete 2026 09 30</span><span class="d">30/09/2026</span></a></li>
+<li><a href="veille-diabete-2026-09-23.html"><span class="t">Veille diabete 2026 09 23</span><span class="d">23/09/2026</span></a></li>
+<li><a href="veille-diabete-2026-09-16.html"><span class="t">Veille diabete 2026 09 16</span><span class="d">16/09/2026</span></a></li>
+<li><a href="veille-diabete-2026-09-15.html"><span class="t">Veille diabete 2026 09 15</span><span class="d">15/09/2026</span></a></li>
+<li><a href="veille-diabete-2026-09-13.html"><span class="t">Veille diabete 2026 09 13</span><span class="d">13/09/2026</span></a></li>
+<li><a href="veille-diabete-2026-09-02.html"><span class="t">Veille diabete 2026 09 02</span><span class="d">02/09/2026</span></a></li>
+<li><a href="veille-diabete-2026-08-26.html"><span class="t">Veille diabete 2026 08 26</span><span class="d">26/08/2026</span></a></li>
+<li><a href="veille-diabete-2026-08-25.html"><span class="t">Veille diabete 2026 08 25</span><span class="d">25/08/2026</span></a></li>
+<li><a href="veille-diabete-2026-08-12.html"><span class="t">Veille diabete 2026 08 12</span><span class="d">12/08/2026</span></a></li>
+<li><a href="veille-diabete-2026-07-08.html"><span class="t">Veille diabete 2026 07 08</span><span class="d">08/07/2026</span></a></li>
+<li><a href="veille-diabete-2026-06-27.html"><span class="t">Veille diabete 2026 06 27</span><span class="d">27/06/2026</span></a></li>
 </ul>
 <div style="margin-top:30px;font-size:12px;color:#9ca3af">Dernière mise à jour : <span id="lm"></span></div>
 <script>document.getElementById('lm').textContent=document.lastModified;</script>
 </div>
+<footer>Terminal général : <a href="index.html">index.html</a> · dernière mise à jour <span id="lm"></span></footer>
+<script>document.getElementById("lm").textContent = document.lastModified;</script>
 </body>
 </html>
