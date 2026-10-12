@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 08 juillet 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .purple{background:#ede9fe;color:#5b21b6}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .location{font-size:.75rem;padding:2px 8px;border-radius:6px;background:#f1f5f9;color:#475569;margin-right:6px}
+    .dark .location{background:#1e2937;color:#94a3b8}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+    .section-title{margin-top:32px;margin-bottom:12px;font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:10px}
+    .empty-note{font-style:italic;color:var(--muted);padding:12px 0}
+  </style>
+</head>
+<body class="dark">
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🩺 Veille Innovations Diabète</h1>
+        <p>08 juillet 2026 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-07-08">08 juillet 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">Type 1</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Type 2</div>
+        <div class="value" style="color:var(--success)">6 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Sources</div>
+        <div class="value">Monde dominant</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Immunothérapie & cellules souches</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>CGM & technologies</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>GLP-1 & complications</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Approbations réglementaires</span>
+    </div>
+
+    <!-- TYPE 1 -->
+    <div class="section-title">
+      <span style="font-size:1.4rem">🩸</span> 
+      <span>Type 1 (T1D)</span>
+    </div>
+    <div class="grid">
+      <!-- France T1 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">0 item</span>
+        </div>
+        <div class="card-body">
+          <div class="empty-note">Aucune actualité datée du 08/07/2026 n’a été identifiée dans les sources FR (Fédération Française des Diabétiques, Nice Matin, RFI, etc.).</div>
+        </div>
+      </article>
+
+      <!-- Europe T1 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe (hors France)
+          </h2>
+          <span class="pill blue">0 item</span>
+        </div>
+        <div class="card-body">
+          <div class="empty-note">Aucune actualité datée du 08/07/2026 n’a été identifiée dans les sources Europe (NICE, Diabeloop, EURACTIV, etc.).</div>
+        </div>
+      </article>
+
+      <!-- Monde T1 -->
+      <article class="card" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Engineering New Clues to Type 1 Diabetes (Diabetes Research Institute)</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • 14h ago</div>
+            <p>Researchers using engineering-based models to investigate how lymph node environments may drive type 1 diabetes.</p>
+            <a href="https://news.med.miami.edu/engineering-type-1-diabetes-research-dri/" target="_blank">Voir l’article →</a>
+          </div>
+          <div class="item">
+            <h3>Breakthrough stem cell therapy reprograms the immune system (MUSC)</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • 17h ago</div>
+            <p>Engineered stem cell therapy reversed new-onset T1D in mice by shifting the immune system away from attacking insulin-producing cells. Published in Molecular Therapy.</p>
+            <a href="https://scitechdaily.com/breakthrough-diabetes-treatment-reprograms-the-immune-system-instead-of-replacing-insulin/" target="_blank">Voir l’article →</a>
+          </div>
+          <div class="item">
+            <h3>FDA Approves Tzield for Children With New Stage 3 Type 1 Diabetes</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • 1 day ago</div>
+            <p>Extension of teplizumab approval to pediatric population.</p>
+          </div>
+          <div class="item">
+            <h3>CGM reduces complications and mortality in T1D adults (nationwide cohort)</h3>
+            <div class="meta"><span class="location">🌍 Monde</span> • recent</div>
+            <p>CGM users showed significantly lower rates of DKA, ESKD, CVD and all-cause mortality.</p>
+          </div>
+          <div class="item">
+            <h3>Vertex zimislecel beta cell therapy update</h3>
+            <div class="meta"><span class="location">🇬🇧 UK / Monde</span> • 1 day ago</div>
+            <p>Latest results from 12 patients with severe hypos (Diabetes UK).</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- TYPE 2 -->
+    <div class="section-title">
+      <span style="font-size:1.4rem">💊</span> 
+      <span>Type 2 (T2D)</span>
+    </div>
+    <div class="grid">
+      <!-- France T2 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill purple">0 item</span>
+        </div>
+        <div class="card-body">
+          <div class="empty-note">Aucune actualité datée du 08/07/2026 n’a été identifiée dans les sources FR (INTERCEPT T2D mentionné mais pas de nouvelle publication du jour).</div>
+        </div>
+      </article>
+
+      <!-- Europe T2 -->
+      <article class="card">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe (hors France)
+          </h2>
+          <span class="pill purple">0 item</span>
+        </div>
+        <div class="card-body">
+          <div class="empty-note">Aucune actualité datée du 08/07/2026 n’a été identifiée dans les sources Europe.</div>
+        </div>
+      </article>
+
+      <!-- Monde T2 -->
+      <article class="card" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>GLP-1 receptor agonists reduce deaths, amputations in T2D with PAD</h3>
+            <div class="meta"><span class="location">🌍 Monde</span> • recent</div>
+            <p>Independent research published in Journal of the American Heart Association shows clear benefits.</p>
+          </div>
+          <div class="item">
+            <h3>Continuous Glucose Monitoring Beyond Intensive Insulin Therapy in T2D (Cureus)</h3>
+            <div class="meta"><span class="location">🌍 Monde</span> • 17h ago</div>
+            <p>Evidence review on OTC CGM devices, equity and clinical implementation.</p>
+            <a href="https://www.cureus.com/articles/507985-continuous-glucose-monitoring-beyond-intensive-insulin-therapy-in-type-2-diabetes-evidence-over-the-counter-devices-equity-and-clinical-implementation" target="_blank">Voir l’article →</a>
+          </div>
+          <div class="item">
+            <h3>Next-generation Omnipod 6 improves time in range in T2D adults</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • 13h ago</div>
+            <p>Presented at recent conference (Healio).</p>
+          </div>
+          <div class="item">
+            <h3>Early diabetes drug treatment links to better survival (Korean study)</h3>
+            <div class="meta"><span class="location">🇰🇷 Corée</span> • recent</div>
+            <p>Starting antidiabetic medication within 12 months of diagnosis threshold associated with lower 5-year mortality.</p>
+          </div>
+          <div class="item">
+            <h3>Early Insulin Initiation in Type 2 Diabetes (Frontiers)</h3>
+            <div class="meta"><span class="location">🌍 Monde</span> • 2 days ago</div>
+            <p>Review on efficacy, safety and β-cell preservation.</p>
+          </div>
+          <div class="item">
+            <h3>The Hepatitis-Diabetes Connection (American Diabetes Association)</h3>
+            <div class="meta"><span class="location">🇺🇸 USA</span> • 1 day ago</div>
+            <p>Discussion on screening, detection and treatment links between hepatitis and T2D risk.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille Innovations Diabète · 08 juillet 2026 · Généré par Hermes Agent · Template moderne figé (thème sombre persistant) · template-inlined
+    </footer>
+  </div>
+
+  <script>
+    const key = 'veille-diabete-theme';
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(key);
+      if (saved === 'dark') document.body.classList.add('dark');
+      if (!document.body.classList.contains('dark')) {
+        document.body.classList.add('dark'); // force dark par défaut
+      }
+    });
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      localStorage.setItem(key, document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

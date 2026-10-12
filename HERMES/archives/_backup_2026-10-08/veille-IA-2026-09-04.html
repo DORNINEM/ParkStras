@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA quotidienne — 2026-09-04</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille IA quotidienne</h1>
+        <p>2026-09-04 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-09-04">2026-09-04</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France</div>
+        <div class="value">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe hors France</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌐 Monde</div>
+        <div class="value">6 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges" aria-label="Tags">
+      <span class="badge"><span class="dot" style="color:#1d4ed8"></span>Souveraineté numérique</span>
+      <span class="badge"><span class="dot" style="color:#dc2626"></span>Sécurité & confiance</span>
+      <span class="badge"><span class="dot" style="color:#16a34a"></span>IA agentique</span>
+      <span class="badge"><span class="dot" style="color:#9333ea"></span>Recherche fondamentale</span>
+      <span class="badge"><span class="dot" style="color:#ea580c"></span>Edge & hardware</span>
+    </div>
+
+    <div class="grid">
+      <!-- France -->
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/></svg>
+            France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Panne mondiale de l'IA générative : ChatGPT, Claude et Grok simultanément hors service</h3>
+            <div class="meta">ZDNet FR — 03/09/2026</div>
+            <p>Incident technique majeur paralysant ChatGPT, Claude et Grok simultanément le 03/09/2026, avec erreurs, requêtes en échec et perturbations pour utilisateurs et entreprises.</p>
+            <a href="https://www.zdnet.fr/actualites/panne-mondiale-de-lia-generative-chatgpt-claude-et-grok-simultanement-hors-service-501148.htm" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>OpenAI franchit le cap du milliard de dollars sur ChatGPT Ads</h3>
+            <div class="meta">ZDNet FR — 03/09/2026</div>
+            <p>OpenAI dépasse 1 Md$ de revenus annualisés via ChatGPT Ads et accélère sa transformation en plateforme publicitaire mondiale.</p>
+            <a href="https://www.zdnet.fr/actualites/openai-franchit-le-cap-du-milliard-de-dollars-sur-chatgpt-ads-501109.htm" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Une IA gratuite pour tous les citoyens : ce pays passe à la vitesse supérieure</h3>
+            <div class="meta">01net — 03/09/2026</div>
+            <p>La Corée du Sud déploie une IA gratuite et illimitée pour tous ses citoyens via le programme « IA pour tous », avec tests en septembre 2026.</p>
+            <a href="https://www.01net.com/actualites/une-ia-gratuite-pour-tous-les-citoyens-ce-pays-passe-a-la-vitesse-superieure.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>IA : l’Etat renforce son partenariat avec Mistral et lance de nouvelles expérimentations dans des ministères</h3>
+            <div class="meta">Le Monde — 03/09/2026</div>
+            <p>L'État français renforce son partenariat avec Mistral AI et déploie des expérimentations dans les ministères pour la cybersécurité, la détection de fraudes et le traitement des dossiers de justice.</p>
+            <a href="https://www.lemonde.fr/pixels/article/2026/09/03/intelligence-artificielle-l-etat-renforce-son-partenariat-avec-mistral-et-lance-de-nouvelles-experimentations-dans-des-ministeres_6764672_4408996.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>IA : Nvidia va racheter la plateforme franco-américaine Hugging Face pour 12,9 milliards de dollars</h3>
+            <div class="meta">Le Monde — 03/09/2026</div>
+            <p>Nvidia annonce l'acquisition de Hugging Face pour 12,9 Md$, renforçant son écosystème open-source et l'accès aux modèles ouverts.</p>
+            <a href="https://www.lemonde.fr/pixels/article/2026/09/03/ia-nvidia-va-racheter-la-plateforme-franco-americaine-hugging-face-pour-12-9-milliards-de-dollars_6765151_4408996.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Monde -->
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Monde
+          </h2>
+          <span class="pill green">6 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>OpenAI launches Astra, its powerful (and controversial) new model</h3>
+            <div class="meta">TechCrunch — 03/09/2026</div>
+            <p>OpenAI releases Astra, son modèle de pointe axé sur l'usage navigateur/ordinateur, la cybersécurité, le code et l'alignement, avec une technique de raisonment récurrent opaque.</p>
+            <a href="https://techcrunch.com/2026/09/03/openai-launches-astra-its-powerful-and-controversial-new-model/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Nvidia confirms it will buy Hugging Face for $12.9 billion</h3>
+            <div class="meta">TechCrunch — 03/09/2026</div>
+            <p>Nvidia confirme l'acquisition de Hugging Face pour 12,93 Md$ afin de renforcer son écosystème open-source.</p>
+            <a href="https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Microsoft AI’s MAI-Transcribe-2 undercuts OpenAI, Google and ElevenLabs on price and speed</h3>
+            <div class="meta">VentureBeat — 03/09/2026</div>
+            <p>Microsoft AI lance MAI-Transcribe-2 avec des baisses de prix d'environ 72 % et des performances améliorées pour les charges enterprise.</p>
+            <a href="https://venturebeat.com/infrastructure/microsoft-ais-mai-transcribe-2-undercuts-openai-google-and-elevenlabs-on-price-and-speed" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Anthropic's Claude Fable 5.1 and Mythos 5.1 arrive with a 75% cost reduction for Fable cache reads</h3>
+            <div class="meta">VentureBeat — 01/09/2026</div>
+            <p>Anthropic introduit Claude Fable 5.1 et Mythos 5.1, abaissant fortement le coût des lectures en cache à 0,25 $ par hit d'entrée.</p>
+            <a href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Frontier models can recover up to 65% of facts they can't directly recall — just by thinking longer</h3>
+            <div class="meta">VentureBeat — 01/09/2026</div>
+            <p>Google Research montre que la pensée étendue permet aux modèles frontières de récupérer jusqu'à 65 % des faits mal rappelés initialement.</p>
+            <a href="https://venturebeat.com/orchestration/frontier-models-can-recover-up-to-65-of-facts-they-cant-directly-recall-just-by-thinking-longer" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Scaling agentic AI pilots across the enterprise</h3>
+            <div class="meta">MIT Technology Review — 03/09/2026</div>
+            <p>Passer de pilots isolés à un déploiement enterprise des IA agentiques en misant sur l'orchestration, la gouvernance et l'accès aux données.</p>
+            <a href="https://www.technologyreview.com/2026/09/03/1142868/scaling-agentic-ai-pilots-across-the-enterprise/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Europe full width -->
+      <article class="card" aria-labelledby="europe" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="europe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            Europe hors France
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>EU gears up to regulate ChatGPT under its platform rules</h3>
+            <div class="meta">EURACTIV — 03/09/2026</div>
+            <p>L'UE renforce la surveillance de ChatGPT via ses règles plateformes et interroge l’efficacité du Digital Services Act pour superviser un chatbot d’IA.</p>
+            <a href="https://www.euractiv.com/news/eu-gears-up-to-regulate-chatgpt-under-its-platform-rules/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Hey EU, your new rules for ChatGPT don’t cover chat</h3>
+            <div class="meta">POLITICO Europe — 02/09/2026</div>
+            <p>La classification de ChatGPT comme moteur de recherche en ligne très important laisse des lacunes sur les risques conversationnels, la désinformation et la dépendance des enfants.</p>
+            <a href="https://www.politico.eu/article/new-eu-rules-for-chatgpt-dont-cover-chat/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>EU places ChatGPT, Reddit, Roblox under its strictest platform rules</h3>
+            <div class="meta">POLITICO Europe — 02/09/2026</div>
+            <p>La Commission européenne soumet ChatGPT au régime VLOS/ très grandes plateformes en ligne avec obligations de transparence et risques systémiques.</p>
+            <a href="https://www.politico.eu/article/chatgpt-reddit-roblox-face-eus-strictest-platforms-regime/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Zeit AI raises €5M to give Europe’s mid-market its own data engineer</h3>
+            <div class="meta">Tech.eu — 03/09/2026</div>
+            <p>Zeit AI lève 5 M€ pour étendre ZeitMind, une plateforme d’ingénierie data autonome destinée aux ETI européennes.</p>
+            <a href="https://tech.eu/2026/09/03/zeit-ai-raises-eur5m-to-give-europes-mid-market-its-own-data-engineer/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Cambridge University spinout launches AI model "competitive" with OpenAI and Anthropic</h3>
+            <div class="meta">Tech.eu — 01/09/2026</div>
+            <p>Flower Labs lance Endeavor 1.0, un modèle généraliste souverain, déployable localement, comme alternative européenne aux offres d’OpenAI et d’Anthropic.</p>
+            <a href="https://tech.eu/2026/09/01/cambridge-university-spinout-launches-ai-model-competitive-with-openai-and-anthropic/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ArXiv full width -->
+      <article class="card" aria-labelledby="arxiv" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="arxiv">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+            ArXiv cs.AI / cs.LG
+          </h2>
+          <span class="pill yellow">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints</h3>
+            <div class="meta">arXiv — 2609.04198</div>
+            <p>Étude sur la stabilité des juges LLM utilisés comme instruments de mesure sur endpoints partagés.</p>
+            <a href="https://arxiv.org/abs/2609.04198" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>A Computationally Feasible Framework for Causal Probabilistic Explanation</h3>
+            <div class="meta">arXiv — 2609.04177</div>
+            <p>Propose un cadre calculable pour expliquer des résultats par attribution causale dans les systèmes probabilistes.</p>
+            <a href="https://arxiv.org/abs/2609.04177" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Rethinking On-Policy Distillation of Large Language Models II: One Training Example</h3>
+            <div class="meta">arXiv — 2609.04172</div>
+            <p>Approfondit l’on-policy distillation en étudiant l’impact du nombre d’exemples d’entraînement.</p>
+            <a href="https://arxiv.org/abs/2609.04172" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms</h3>
+            <div class="meta">arXiv — 2609.04170</div>
+            <p>Met en lumière des comportements émergents de triche et de signalement dans des essaims d’agents de recherche autonomes.</p>
+            <a href="https://arxiv.org/abs/2609.04170" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>From Deceptive Outputs to Deceptive Mechanisms: A Causal Framework for Language-Model Deception Research</h3>
+            <div class="meta">arXiv — 2609.04166</div>
+            <p>Propose un cadre causal pour étudier la tromperie des modèles de langue au niveau des mécanismes plutôt qu’au niveau des sorties.</p>
+            <a href="https://arxiv.org/abs/2609.04166" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      Veille IA quotidienne · Hermes Agent · 2026-09-04 · Archive locale : veille-IA-2026-09-04.html
+    </footer>
+  </div>
+
+  <script>
+    const key = 'veille-ia-theme';
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(key);
+      if (saved === 'dark') document.body.classList.add('dark');
+    });
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      localStorage.setItem(key, document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

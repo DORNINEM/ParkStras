@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Mistral AI — 2026-09-21</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille Mistral AI</h1>
+        <p>2026-09-21 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-09-21">2026-09-21</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne · 12 actualités</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France &amp; souveraineté</div>
+        <div class="value">4 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Monde &amp; stratégie</div>
+        <div class="value">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🤝 Partenariats &amp; produits</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges">
+      <span class="badge"><span class="dot"></span>Fenêtre : 14–21 septembre 2026</span>
+      <span class="badge"><span class="dot"></span>12 actualités avec liens sources</span>
+      <span class="badge"><span class="dot"></span>Collecte Hermes Agent</span>
+    </div>
+
+    <div class="grid">
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+            🇫🇷 France &amp; souveraineté
+          </h2>
+          <span class="pill blue">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Numspot : une offre d'IA souveraine managée 100 % hébergée en France avec Mistral</h3>
+            <div class="meta">ZDNet FR / Clubic / Usine Digitale — 18/09/2026</div>
+            <p>Lancée le 18 septembre, l'offre intégrée Numspot x Mistral combine modèles Mistral, GPU, orchestration, stockage et sécurité dans un cloud entièrement opéré en France, avec qualification SecNumCloud (ANSSI) en cours. Une « caution souveraineté » destinée aux entreprises françaises et au secteur public.</p>
+            <a href="https://www.zdnet.fr/actualites/numspot-ajoute-de-lia-souveraine-managee-avec-mistral-ai-503763.htm" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Mistral AI dément un piratage de son code source</h3>
+            <div class="meta">Numerama — 18/09/2026</div>
+            <p>Après la publication les 16-17 septembre d'une prétendue vente du code source par le hacker « mrwho » (avec un échantillon « webstral », prototype d'agent de navigation web), Mistral a mené une enquête interne et affirme n'avoir trouvé aucune preuve de compromission de ses systèmes.</p>
+            <a href="https://www.numerama.com/cyberguerre/2335249-mistral-ai-dement-un-piratage-de-son-code-source.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« La saga Mistral : le champion qui pourrait abandonner la course à l'IA » — le débat stratégique français s'intensifie</h3>
+            <div class="meta">Les Echos — 17/09/2026</div>
+            <p>Analyse de fond des Echos sur le pivot de Mistral : moins de course aux modèles frontière, plus d'infrastructure, d'hébergement et de modèles spécialisés — jusqu'à accueillir des modèles tiers, dont chinois. Un débat qui traverse aussi Challenges et la presse économique depuis la levée de 3 Md€.</p>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/la-saga-mistral-le-champion-qui-pourrait-abandonner-la-course-a-lia-2251972" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Contexte : l'État déploie des ingénieurs Mistral dans les ministères (marché de 6 M€)</h3>
+            <div class="meta">Le Monde / ActuIA / Ouest-France — 03/09/2026 (contexte)</div>
+            <p>Dans la continuité du plan « Notre IA » (assistant généralisé à ~1 M d'agents publics en juin), l'État a signé un marché non exclusif de 6 M€ (2026-2027) : cybersécurité post-piratage de la DGFiP, détection de fraudes par Bercy et traitement des contentieux judiciaires, avec immersion d'ingénieurs dans les ministères. La semaine écoulée a vu ces expérimentations rester au cœur de l'actualité publique.</p>
+            <a href="https://www.lemonde.fr/pixels/article/2026/09/03/intelligence-artificielle-l-etat-renforce-son-partenariat-avec-mistral-et-lance-de-nouvelles-experimentations-dans-des-ministeres_6764672_4408996.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            🌍 Monde &amp; stratégie (contexte de la semaine précédente)
+          </h2>
+          <span class="pill green">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Contexte : la levée record de 3 Md€ menée par Samsung, valorisation &gt; 21 Md€</h3>
+            <div class="meta">TechCrunch / Reuters / WSJ / Bpifrance — 08/09/2026 (contexte)</div>
+            <p>Série D de 3 Md€ (~3,5 Md$) menée par Samsung avec le Scaleup Europe Fund (EQT/UE) et PSG Equity : plus grande levée en capital de l'histoire de la tech européenne, valorisation &gt; 21 Md€ (~24 Md$). Objectif 1 Md$ d'ARR, 125+ clients entreprises, et 1 GW de compute européen d'ici 2030.</p>
+            <a href="https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Contexte : Samsung s'appuie sur Mistral pour ses semi-conducteurs</h3>
+            <div class="meta">Samsung Newsroom — 08/09/2026 (contexte)</div>
+            <p>Partenariat stratégique annoncé avec l'investissement de la Série D : déploiement des modèles Mistral (dont Mistral Large) en on-premise pour la conception, la fabrication et l'ingénierie de puces. Le lien investissement/contrat industriel alimente le débat sur l'indépendance du champion français.</p>
+            <a href="https://news.samsung.com/global/samsung-and-mistral-ai-announce-strategic-partnership-for-intelligence-driven-semiconductor-infrastructure" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Contexte : Mistral x Cloudera, l'IA souveraine directement sur les données de l'entreprise</h3>
+            <div class="meta">Mistral AI / Cloudera — 10/09/2026 (contexte)</div>
+            <p>Intégration des modèles Mistral à la plateforme de données hybride Cloudera (~30 exaoctets gérés) : inférence et fine-tuning on-premise, edge ou air-gapped, sans déplacement des données sensibles. Un accélérateur pour les secteurs régulés européens.</p>
+            <a href="https://mistral.ai/news/mistral-x-cloudera/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="partenariats" style="grid-column: 1 / -1">
+        <div class="card-head">
+          <h2 class="card-title" id="partenariats">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+            🤝 Partenariats, produits &amp; performances
+          </h2>
+          <span class="pill yellow">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>TotalEnergies : méga-contrat de 100 M€ sur trois ans pour des modèles IA de frontière dédiés aux géosciences</h3>
+            <div class="meta">TotalEnergies / Bloomberg / Le Parisien — 15/09/2026</div>
+            <p>Partenariat de plus de 100 M€ sur trois ans : développement de modèles de frontière propriétaires entraînés sur un siècle de données géosciences pour l'exploration et l'ingénierie des réservoirs, avec un laboratoire scientifique conjoint. L'IA agentique et l'infrastructure souveraine européenne de Mistral mises en avant.</p>
+            <a href="https://totalenergies.com/newsroom/totalenergies-annonce-un-partenariat-avec-mistral-en-vue-de-developper-des-modeles-de-frontiere-dintelligence-artificielle-dedies-a-lexploration-et-a-lingenierie-des-reservoirs/?lang=fra" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Mistral x Mozilla : Mistral Small 4 intégré au Firefox Smart Window beta</h3>
+            <div class="meta">Mozilla Blog / Mistral AI — 16/09/2026</div>
+            <p>Mozilla choisit Mistral Small 4 pour son assistant de navigation IA (Smart Window beta) en France, aux États-Unis et au Canada, avec zéro rétention de données et une approche multilingue — une alternative ouverte aux IA des GAFAM, l'UK et l'Allemagne suivant.</p>
+            <a href="https://mistral.ai/news/mistral-x-mozilla/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>SDK Python 2.10.1 : opérations d'index managé sur l'API Mistral</h3>
+            <div class="meta">PyPI / GitHub — 15/09/2026</div>
+            <p>Nouvelle version du SDK officiel ajoutant la gestion des index managés (RAG) via l'API, avec des changements breaking sur les configs de pipelines, les définitions de judges et les champs de réponse requis. Suivi le 16/09 du Mistral CLI 0.6.0 (activation de capacités, caching, erreurs améliorées).</p>
+            <a href="https://pypi.org/project/mistralai/2.10.1" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Mistral Vibe 2.25.5 : l'agent IA gagne historique de sous-agents, MCP et tâches planifiées</h3>
+            <div class="meta">GitHub (mistralai/mistral-vibe) — 18/09/2026</div>
+            <p>Mise à jour majeure de l'agent Vibe (CLI, IDE, desktop) : historique de conversations des sous-agents, activation de skills, connecteurs MCP enrichis, suivi de todos et boucles planifiées — la riposte de Mistral sur le front des agents de code face à Claude Code et Codex.</p>
+            <a href="https://raw.githubusercontent.com/mistralai/mistral-vibe/main/CHANGELOG.md" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Benchmarks mi-septembre : Medium 3.5 et Ministral 3 toujours en tête du catalogue</h3>
+            <div class="meta">BenchLM / Hugging Face — 18/09/2026</div>
+            <p>Au 18 septembre, le classement BenchLM place Ministral 3 14B (Reasoning) en tête (47,6) devant Mistral Large 3 (45,5) ; Medium 3.5 (128B, open-weight, 77,6 % SWE-bench Verified, 256K de contexte) reste le flagship ouvert. Toujours pas de nouveau modèle frontière depuis l'early access MoE de juillet — Leanstral 1.5 sera retiré le 30/09.</p>
+            <a href="https://benchlm.ai/providers/mistral" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <footer>
+      Veille générée le 2026-09-21 · Sources vérifiées · Archivé dans /Users/manud/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+</body>
+</html>

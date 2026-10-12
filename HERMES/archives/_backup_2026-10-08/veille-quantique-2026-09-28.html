@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Quantique — 2026-09-28</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --accent: #0e7490;
+            --accent-light: #06b6d4;
+            --border: #e2e8f0;
+            --tag-bg: #e0f2fe;
+            --tag-text: #0369a1;
+            --maturity-disponible: #059669;
+            --maturity-beta: #d97706;
+            --maturity-rd: #dc2626;
+            --maturity-theorique: #7c3aed;
+            --horizon-court: #dc2626;
+            --horizon-moyen: #d97706;
+            --horizon-long: #059669;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #164e63 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "⚛";
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; position: relative; }
+        header p { font-size: 1rem; opacity: 0.8; position: relative; }
+        .summary-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.95);
+        }
+        .summary-bar .container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .stat { font-size: 0.875rem; color: var(--text-secondary); }
+        .stat strong { color: var(--accent); font-weight: 600; }
+        main { margin-top: 2rem; }
+        section { margin-bottom: 3rem; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .section-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+        .section-header .count {
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.25rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; color: var(--text); }
+        .card-meta { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+        .card-summary { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
+        .card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        .card a:hover { text-decoration: underline; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+        .maturity {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.75rem;
+        }
+        .maturity::before { content: ""; width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .maturity.disponible { color: var(--maturity-disponible); }
+        .maturity.disponible::before { background: var(--maturity-disponible); }
+        .maturity.beta { color: var(--maturity-beta); }
+        .maturity.beta::before { background: var(--maturity-beta); }
+        .maturity.rd { color: var(--maturity-rd); }
+        .maturity.rd::before { background: var(--maturity-rd); }
+        .maturity.theorique { color: var(--maturity-theorique); }
+        .maturity.theorique::before { background: var(--maturity-theorique); }
+        .horizon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.75rem;
+            margin-left: auto;
+        }
+        .horizon::before { content: ""; width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .horizon.court { color: var(--horizon-court); }
+        .horizon.court::before { background: var(--horizon-court); }
+        .horizon.moyen { color: var(--horizon-moyen); }
+        .horizon.moyen::before { background: var(--horizon-moyen); }
+        .horizon.long { color: var(--horizon-long); }
+        .horizon.long::before { background: var(--horizon-long); }
+        .maturity-row { display: flex; align-items: center; gap: 1rem; margin-top: 0.75rem; }
+        .half-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow);
+        }
+        .half-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+        .half-section ul { list-style: none; padding: 0; }
+        .half-section li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .half-section li:last-child { border-bottom: none; }
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .signal {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .signal-num {
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .signal p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 1rem; }
+            header { padding: 2rem 1rem; }
+            header h1 { font-size: 1.4rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .signals-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚛️ Veille Informatique Quantique — 2026-09-28</h1>
+        <p>Rapport bi-hebdomadaire : marché, innovations, prospective et impacts sectoriels</p>
+    </header>
+
+    <div class="summary-bar">
+        <div class="container">
+            <span class="stat"><strong>24</strong> articles analysés</span>
+            <span class="stat"><strong>4</strong> parties</span>
+            <span class="stat">Sources primaires : Quantum Flagship, ANSSI, McKinsey, ENISA, NIST, arXiv, IEEE, Nature</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- PARTIE 1 -->
+        <section>
+            <div class="section-header">
+                <span>🇫🇷🇪🇺</span>
+                <h2>Marché France &amp; Europe</h2>
+                <span class="count">6 articles</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+<div class="card-title">Pasqal publie ses résultats S1 2026 : ~313 M€ de trésorerie post-SPAC, croissance de 14 %, registres de 1 024 atomes</div>
+<div class="card-meta">Quantum Computing Report — 26/09/2026</div>
+<div class="card-summary">Le leader français des atomes neutres (Nasdaq : PSQL) annonce un CA S1 de 4,87 M€ (+13,7 %), tiré par les services QPU (+34 %), une trésorerie post-SPAC de ~312,9 M€ et un carnet de 70,4 M€. Jalons : registres de 1 024 atomes, applications à qubits logiques, intégration NVIDIA CUDA-Q, premier QPU à atomes neutres d'Italie déployé pour le supercalculateur Leonardo. Perte d'exploitation de 59,2 M€ (charges d'actions + frais d'IPO).</div>
+<a href="https://quantumcomputingreport.com/pasqal-reports-h1-2026-financial-results-e312-9m-post-spac-cash-balance-14-revenue-growth-and-1000-atom-scale/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">financement</span><span class="tag">startup</span><span class="tag">France</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">ETSI publie le TR 104 171 : limitations et vulnérabilités des QRNG</div>
+<div class="card-meta">Quantum Computing Report (couvrant ETSI) — 26/09/2026</div>
+<div class="card-summary">Lignes directrices couvrant tout le cycle de vie des QRNG (source d'entropie, min-entropie, extraction, monitoring, résistance aux canaux auxiliaires). Cadre « Entropy Zero Trust » (TL-0 à TL-3), priorités de normalisation (FIPS 140-3, intégration QRNG + PQC ML-KEM/ML-DSA). Pertinent pour la certification souveraine européenne (ANSSI/UE). Note : le rapport sous-jacent date de mars 2026.</div>
+<a href="https://quantumcomputingreport.com/etsi-identifies-technical-limitations-and-implementation-vulnerabilities-in-quantum-random-number-generators-etsi-tr-104-171/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">réglementation</span><span class="tag">souveraineté</span><span class="tag">post-quantique</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">Q-SAFE Solutions dévoile une plateforme quantique-sure « carrier-grade » UE-27 conforme EuroQCI</div>
+<div class="card-meta">Quantum Computing Report (communiqué openPR) — 26/09/2026</div>
+<div class="card-summary">Intégration QKD + PQC + gestion hybride des clés dans un système souverain conforme EuroQCI, sur fibre lit sans dark fiber dédiée (ETSI GS QKD 004/014, dispositifs approuvés UE/OTAN). Démonstration au QCI Days 2026 à Padoue (28-30/09). Communiqué — non vérifié par un tiers.</div>
+<a href="https://quantumcomputingreport.com/q-safe-solutions-unveils-eu-27-carrier-grade-quantum-safe-network-platform/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">souveraineté</span><span class="tag">EuroQCI</span><span class="tag">post-quantique</span><span class="tag">partenariat</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">La Commission européenne valide eCAUSIS : Creotech Quantum prépare la commercialisation de son QKD</div>
+<div class="card-meta">Quantum Computing Report (annonce Creotech) — 25/09/2026</div>
+<div class="card-summary">Validation technique et financière du projet eCAUSIS (Horizon Europe / Digital Europe / EuroQCI, 6,98 M€ dont 4,52 M€ UE) coordonné par Creotech avec AIT et Fraunhofer HHI. Le module QKD BB84 decoy (PCIe, KMS AURORA conforme ETSI) passe en production : 1 000 modules/an visés (objectif 10 000). Jalon d'industrialisation d'EuroQCI.</div>
+<a href="https://quantumcomputingreport.com/european-commission-approves-ecausis-results-as-creotech-quantum-prepares-qkd-system-for-commercial-rollout/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">EuroQCI</span><span class="tag">politique</span><span class="tag">partenariat</span><span class="tag">startup</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">Qambria AG (Zurich) lève 2,4 M$ en pre-seed pour le contrôle classique du quantique tolérant aux pannes</div>
+<div class="card-meta">Quantum Computing Report (Signalbase/Syntropy) — 25/09/2026</div>
+<div class="card-summary">La startup zurichoise (Syntropy, Qbeat Ventures, Kensho VC, BC Growth Equity, QAI Ventures) développe une couche logicielle de contrôle modality-neutral pour intégrer les QPU dans les nœuds HPC (ordonnancement, décodage QEC sub-microseconde). Licence IP sans fabrication de matériel. Communiqué — non vérifié par un tiers.</div>
+<a href="https://quantumcomputingreport.com/qambria-secures-2-4m-pre-seed-funding-to-commercialize-sub-microsecond-classical-control-infrastructure-for-fault-tolerant-quantum-systems/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">financement</span><span class="tag">startup</span><span class="tag">Europe</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">Oxford Quantum Circuits nomme Simon Phillips Chief Product Officer</div>
+<div class="card-meta">Quantum Computing Report (communiqué OQC) — ~26/09/2026</div>
+<div class="card-summary">Le CTO depuis 2019 devient CPO pour piloter la commercialisation de la plateforme « Quantum-AI Data Center » après la série C de 260 M£ (JPMorgan, AMD). Communiqué — non vérifié par un tiers ; date QCR non horodatée (incertaine).</div>
+<a href="https://quantumcomputingreport.com/whos-news-strategic-appointments-at-d-wave-quantum-oxford-quantum-circuits-and-bifrost-electronics/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">startup</span><span class="tag">Europe</span><span class="tag">partenariat</span></div>
+
+</div>
+            </div>
+        </section>
+
+        <!-- PARTIE 2 -->
+        <section>
+            <div class="section-header">
+                <span>🌍</span>
+                <h2>Monde — Pertinence Europe</h2>
+                <span class="count">6 articles</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+<div class="card-title">BlueQubit revendique un premier avantage quantique « vanilla » en RCS sur les processeurs IBM <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 23/09/2026</div>
+<div class="card-summary">Échantillonnage direct de circuits aléatoires sur le 120-qubits Nighthawk r2 (ibm_phoenix) : 61 qubits, portes CZ natives, cloud standard sans calibration spécifique. Estimateurs mirror et XEB patché concordants ; coût classique estimé &gt; 10^27 opérations (&gt; un siècle sur Frontier) contre 19 s quantiques pour un million d'échantillons. Première revendication sur un processeur commercialement accessible.</div>
+<a href="https://arxiv.org/abs/2609.28657" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">jalon</span><span class="tag">avantage quantique</span><span class="tag">préprint arXiv</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">IonQ installera le premier QPU on-premise du NVIDIA Accelerated Quantum Research Center</div>
+<div class="card-meta">IonQ (communiqué) — 23/09/2026</div>
+<div class="card-summary">Le Superion 256 (6e génération, ions piégés) sera installé en 2027 au NVAQC de Boston, connecté à un cluster GB200 NVL72 via NVQLink et orchestré par CUDA-Q. Cibles : finance, matériaux, découverte de médicaments. Modèle QPU-GPU transposable aux centres HPC européens (EuroHPC).</div>
+<a href="https://www.ionq.com/news/ionq-to-advance-quantum-supercomputing-by-bringing-first-qpu-to-nvidia-accelerated-quantum-research-center" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">jalon</span><span class="tag">partenariat</span><span class="tag">hybride</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">La Chine franchit 98 % d'efficacité de transmission sur un routeur quantique cohérent (QRAM)</div>
+<div class="card-meta">Global Times — 26/09/2026</div>
+<div class="card-summary">Équipes chinoises : routage quantique cohérent pour QRAM « bucket-brigade » sur l'ordinateur supraconducteur Origin Wukong, jusqu'à 98 % d'efficacité de transmission. Brique clé pour la mémoire quantique adressable — résultat non encore vérifié par les pairs (source étatique).</div>
+<a href="https://www.globaltimes.cn/page/202609/1369709.shtml" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">jalon</span><span class="tag">QRAM</span><span class="tag">Chine</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">Le DOE américain publie une feuille de route nationale du calcul quantique (rapport SCAC)</div>
+<div class="card-meta">Fermilab News (rapport SCAC) — 25/09/2026</div>
+<div class="card-summary">Approche « science-first » : prouver l'utilité scientifique validée indépendamment avant toute facility nationale, Grand Challenges 2026-2028 (cible 50-100 qubits logiques ; chimie, matériaux, fusion). Modèle de gouvernance directement comparable aux feuilles de route EuroHPC/Quantum Flagship.</div>
+<a href="https://news.fnal.gov/2026/09/doe-releases-national-quantum-computing-roadmap-following-field-wide-effort-led-by-scac-subcommittee/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">politique</span><span class="tag">roadmap</span><span class="tag">États-Unis</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">Les superviseurs financiers européens (ESAs) : le Q-Day pourrait précéder la viabilité commerciale du quantique</div>
+<div class="card-meta">Decrypt (rapport EBA/EIOPA/ESMA) — 24-27/09/2026</div>
+<div class="card-summary">Le Comité mixte des ESAs alerte : la cryptographie des communications financières, transactions et blockchains pourrait être compromise avant toute utilité commerciale du quantique (harvest now, decrypt later inclus). Stratégies PQC attendues des États membres d'ici fin 2026. Impact direct : DORA, migration PQC des banques et crypto-acteurs européens.</div>
+<a href="https://decrypt.co/379167/q-day-could-arrive-before-quantum-computers-are-commercially-useful-eu-warns" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">menaces</span><span class="tag">post-quantique</span><span class="tag">réglementation</span><span class="tag">Europe</span></div>
+
+</div>
+<div class="card">
+<div class="card-title">Google fixe son objectif de migration cryptographique post-quantique à 2029</div>
+<div class="card-meta">Google Security Blog — mars 2026 (couverture relancée 22-27/09)</div>
+<div class="card-summary">Échéance de préparation PQC 2029, plus agressive que les cibles gouvernementales usuelles, justifiée par les avancées hardware et les estimations de factorisation. Priorité signatures/authentification (Android 17 : ML-DSA, Verified Boot, Keystore). Hors fenêtre 48 h stricte, retenu comme référence de calibration pour les calendriers de migration hybride.</div>
+<a href="https://blog.google/innovation-and-ai/technology/safety-security/cryptography-migration-timeline/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">post-quantique</span><span class="tag">migration</span><span class="tag">calendrier</span></div>
+
+</div>
+            </div>
+        </section>
+
+        <!-- PARTIE 3 -->
+        <section>
+            <div class="section-header">
+                <span>🔬</span>
+                <h2>Innovations Matérielles &amp; Logicielles</h2>
+                <span class="count">6 articles</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+<div class="card-title">Codes qLDPC non-abéliens avec « fontaine à états magiques » à surcharge quasi-constante <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 25/09/2026</div>
+<div class="card-summary">Unification des codes de Sipser-Spielman et des théories de jauge tordues de Dijkgraaf-Witten via la cohomologie des faisceaux : nouvelle classe de codes qLDPC à ordre topologique non-abélien D4. Application : magic state fountain par gauging de mesure, surcharge quasi-constante pour la distillation de T. Construction mathématique, sans implémentation matérielle.</div>
+<a href="https://arxiv.org/abs/2609.31541" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">correction d'erreurs</span><span class="tag">qLDPC</span><span class="tag">topologique</span><span class="tag">préprint arXiv</span></div>
+<div class="maturity-row"><span class="maturity theorique">Théorique</span></div>
+</div>
+<div class="card">
+<div class="card-title">QAOA pour le repacking de chaînes latérales de protéines — pipeline hybride contraint-préservant <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 25/09/2026</div>
+<div class="card-summary">Pipeline hybride de repacking de chaînes latérales sur backbones AlphaFold2, encodé QUBO (NP-dur). Ansatz contraint-préservant (W-state + mélangeur XY cyclique en anneau) garantissant la validité one-hot des rotamères sans pénalité, scaling linéaire. Benchmarks sur simulateurs, pas de run QPU.</div>
+<a href="https://arxiv.org/abs/2609.31077" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">QAOA</span><span class="tag">algorithmes</span><span class="tag">benchmark</span><span class="tag">préprint arXiv</span></div>
+<div class="maturity-row"><span class="maturity rd">R&amp;D</span></div>
+</div>
+<div class="card">
+<div class="card-title">Workflows hybrides Quantum-HPC opérationnels sur Fugaku (VQE + QPE multi-QPU) <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 25/09/2026</div>
+<div class="card-summary">Système hybride Fugaku + QPUs Quantinuum Reimei et ibm_kobe orchestré par Tierkreis. Démonstrations : états excités biomoléculaires (Fugaku + Reimei en simulateur) et énergie fondamentale via VQE + QPE coordonnés entre les deux QPUs. Exemple concret d'orchestration multi-plateformes HPC-quantique.</div>
+<a href="https://arxiv.org/abs/2609.31528" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">cloud quantique</span><span class="tag">accès hybride</span><span class="tag">VQE</span><span class="tag">QPE</span><span class="tag">préprint arXiv</span></div>
+<div class="maturity-row"><span class="maturity beta">Beta</span></div>
+</div>
+<div class="card">
+<div class="card-title">Plateforme photonique intégrée LiTaO3 hybride pour nœuds de réseau quantique longue distance <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 25/09/2026</div>
+<div class="card-summary">Architecture hybride lithium tantalate couche mince combinant photonique intégrée et mémoires quantiques AFC à ions terres rares — alternative à la photonique diamant difficilement intégrable. Cible : nœuds de réseau quantique scalables au-delà des preuves de concept.</div>
+<a href="https://arxiv.org/abs/2609.31598" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">photonique</span><span class="tag">mémoire quantique</span><span class="tag">réseau quantique</span><span class="tag">préprint arXiv</span></div>
+<div class="maturity-row"><span class="maturity rd">R&amp;D</span></div>
+</div>
+<div class="card">
+<div class="card-title">DRDO (Inde) s'allie à Zero mK India pour un réfrigérateur à dilution 20 mK souverain</div>
+<div class="card-meta">The Quantum Insider — 25/09/2026</div>
+<div class="card-summary">Premier accord deep-tech du DRDO avec Zero mK India pour un réfrigérateur à dilution indigène à 20 mK, brique critique dominée par Bluefors/Oxford Instruments. Enjeu de souveraineté cryogénique — écho direct aux débats d'approvisionnement européens.</div>
+<a href="https://thequantuminsider.com/2026/09/25/drdo-zero-mk-india-20-mk-dilution-refrigerator/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">hardware</span><span class="tag">cryogénie</span><span class="tag">dilution refrigerator</span><span class="tag">souveraineté</span></div>
+<div class="maturity-row"><span class="maturity rd">R&amp;D</span></div>
+</div>
+<div class="card">
+<div class="card-title">Rails à l'échelle atomique guidant les vortex supraconducteurs (NIMS/MANA, Japon)</div>
+<div class="card-meta">The Quantum Insider (NIMS/MANA) — 26/09/2026</div>
+<div class="card-summary">Des marches de surface à l'échelle atomique agissent comme rails guidant les vortex dans des supraconducteurs ultramins : déplacement jusqu'à 1 000× plus facile, accordable par température et champ. Pertinent pour le bruit vortex dans les circuits supraconducteurs. Observation fondamentale, pas de dispositif.</div>
+<a href="https://thequantuminsider.com/2026/09/26/mana-reveals-atomic-scale-rails-for-guiding-superconducting-vortices/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">supraconducteurs</span><span class="tag">matériaux</span><span class="tag">vortex</span></div>
+<div class="maturity-row"><span class="maturity rd">R&amp;D</span></div>
+</div>
+            </div>
+        </section>
+
+        <!-- PARTIE 4 -->
+        <section>
+            <div class="section-header">
+                <span>🚀</span>
+                <h2>Prospective &amp; Impacts Sectoriels</h2>
+                <span class="count">6 articles</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+<div class="card-title">Avantage quantique revendiqué sur hardware commercial accessible (BlueQubit/IBM Nighthawk r2) <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 23/09/2026</div>
+<div class="card-summary">Première revendication d'avantage quantique « vanilla » en RCS sur un processeur publiquement accessible (61 qubits, 36 cycles). Si elle résiste à la contestation classique (tensor networks), la timeline de l'avantage pratique se resserre — réévaluation des hypothèses de migration et de planification R&amp;D.</div>
+<a href="https://arxiv.org/abs/2609.28657" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">avantage quantique</span><span class="tag">benchmark</span><span class="tag">préprint arXiv</span></div>
+<div class="maturity-row"><span class="horizon court">Court terme &lt;2 ans</span></div>
+</div>
+<div class="card">
+<div class="card-title">Finance quantique : optimisation de portefeuilles de prêts par algorithmes variationnels <em>(préprint arXiv — non vérifié par les pairs)</em></div>
+<div class="card-meta">arXiv quant-ph — 24/09/2026</div>
+<div class="card-summary">Framework variationnel (Pauli Correlation Encoding) pour l'optimisation de portefeuilles de prêts sur données réelles de microfinance (jusqu'à 1 500 variables), résultats à moins de 10 % des simulations sur hardware supraconducteur réel. Trajectoire QAOA/VQE vers des cas d'usage financiers, complémentaire des pilotes JPMorgan-Quantinuum et CaixaBank-D-Wave.</div>
+<a href="https://arxiv.org/abs/2609.30195" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">finance quantique</span><span class="tag">optimisation</span><span class="tag">QAOA</span><span class="tag">préprint arXiv</span></div>
+<div class="maturity-row"><span class="horizon moyen">Moyen 2-5 ans</span></div>
+</div>
+<div class="card">
+<div class="card-title">Pharma : Phasecraft et NVIDIA accélèrent de 15× les simulations moléculaires quantiques (Q4Bio)</div>
+<div class="card-meta">The Quantum Insider — 14/09/2026</div>
+<div class="card-summary">Plus grande base connue de 3 000+ émulations moléculaires VQE sur 13 systèmes, speedup de simulation de 15× (Hopper + cuQuantum) sous Wellcome Leap Q4Bio. Le bottleneck passe de la théorie à l'engineering logiciel hybride pour la découverte de médicaments.</div>
+<a href="https://thequantuminsider.com/2026/09/14/phasecraft-nvidia-quantum-simulation-drug-discovery/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">pharma</span><span class="tag">simulation moléculaire</span><span class="tag">VQE</span><span class="tag">hybride</span></div>
+<div class="maturity-row"><span class="horizon moyen">Moyen 2-5 ans</span></div>
+</div>
+<div class="card">
+<div class="card-title">Logistique &amp; souveraineté : l'étude QED-C révèle une dépendance massive aux supply chains transfrontalières</div>
+<div class="card-meta">QED-C (rapport, Quantum World Congress) — 23/09/2026</div>
+<div class="card-summary">Enquête internationale (160 entreprises, 15 pays, QuIC/QIC/UKQuantum/Q-STAR/KQIA) : 90 % des entreprises quantiques dépendent d'au moins un fournisseur étranger (fournisseurs dans 36 pays, clients dans 49) ; hubs : US, Allemagne, UK, Canada, Japon. Implication majeure pour la planification industrielle européenne.</div>
+<a href="https://quantumconsortium.org/global-study-finds-quantum-industry-deeply-dependent-oncross-border-supply-chains/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">logistique</span><span class="tag">supply chain</span><span class="tag">souveraineté</span><span class="tag">rapport institutionnel</span></div>
+<div class="maturity-row"><span class="horizon court">Court terme &lt;2 ans</span></div>
+</div>
+<div class="card">
+<div class="card-title">Cybersécurité post-quantique : les superviseurs financiers UE fixent un cap de migration fin 2026</div>
+<div class="card-meta">EBA/EIOPA/ESMA (couverture Decrypt/CoinDesk) — 23-24/09/2026</div>
+<div class="card-summary">Le Comité mixte des ESAs avertit que la menace quantique sur la cryptographie financière et les blockchains pourrait se matérialiser avant la viabilité commerciale du quantique ; stratégies PQC attendues d'ici fin 2026 (NIST ML-KEM/ML-DSA, DORA). Inventaire cryptographique et migration PKI hybride deviennent un sujet de conformité.</div>
+<a href="https://decrypt.co/379167/q-day-could-arrive-before-quantum-computers-are-commercially-useful-eu-warns" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">post-quantique</span><span class="tag">cybersécurité</span><span class="tag">réglementation</span><span class="tag">rapport institutionnel</span></div>
+<div class="maturity-row"><span class="horizon court">Court terme &lt;2 ans</span></div>
+</div>
+<div class="card">
+<div class="card-title">IA quantique / gouvernance : le DOE conditionne sa future facility à la preuve d'utilité scientifique</div>
+<div class="card-meta">DOE / SCAC (Fermilab) — 25/09/2026</div>
+<div class="card-summary">La roadmap SCAC impose des Grand Challenges 2026-2028 avec validation indépendante (50-100 qubits logiques ; chimie, matériaux, fusion) avant tout financement d'un user facility. Discipline de promesses à suivre côté européen ; le gain QML mesurable reste non démontré.</div>
+<a href="https://news.fnal.gov/2026/09/doe-releases-national-quantum-computing-roadmap-following-field-wide-effort-led-by-scac-subcommittee/" target="_blank" rel="noopener">🔗 Lire l'article</a>
+<div class="tags"><span class="tag">politique</span><span class="tag">QML</span><span class="tag">gouvernance</span><span class="tag">rapport institutionnel</span></div>
+<div class="maturity-row"><span class="horizon moyen">Moyen 2-5 ans</span></div>
+</div>
+            </div>
+        </section>
+
+        <!-- IMAGES -->
+        <section>
+            <div class="section-header">
+                <span>🖼️</span>
+                <h2>Images &amp; schémas analysés</h2>
+            </div>
+            <div class="half-section">
+                <ul>
+                    <li>Aucun visuel (architecture processeur, courbe de fidélité, roadmap constructeur) n'a pu être extrait et analysé de manière fiable dans la fenêtre — pages sources consultées (arXiv, communiqués, presse) en texte uniquement. La roadmap la plus structurée reste celle du rapport SCAC (3 phases, jalons 2026-2028-2035), consultée en texte.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SYNTHESE -->
+        <section>
+            <div class="section-header">
+                <span>📊</span>
+                <h2>Synthèse — 5 signaux faibles à surveiller</h2>
+            </div>
+            <div class="signals-grid">
+                <div class="signal"><div class="signal-num">1</div><p>Avantage quantique « accessible au cloud » revendiqué (BlueQubit/IBM) : si la revendication résiste à la contestation classique, le calendrier d'avantage utile se rapproche — intégrer des benchmarks indépendants (QUOPS, RCS) dans la veille DSI et réévaluer les dépendances cryptographiques dès maintenant.</p></div><div class="signal"><div class="signal-num">2</div><p>Les régulateurs financiers UE passent de la recommandation au calendrier (ESAs, PQC fin 2026) : inventorier la cryptographie (CBOM) et planifier la migration PKI hybride ML-KEM/ML-DSA ; la pression réglementaire s'étendra probablement au-delà de la finance.</p></div><div class="signal"><div class="signal-num">3</div><p>La souveraineté matérielle s'étend à la cryogénie (DRDO/Zero mK) et aux modules QKD industrialisés (Creotech/eCAUSIS) : cartographier les dépendances supply chain (90 % de fournisseurs étrangers selon QED-C) et sécuriser les composants critiques européens.</p></div><div class="signal"><div class="signal-num">4</div><p>L'intégration QPU-HPC devient le modèle dominant (IonQ×NVIDIA, QuEra×HPE, Fugaku+Tierkreis, Pasqal×Leonardo) : préparer une architecture hybride classique-quantique (orchestration CUDA-Q/Tierkreis) plutôt qu'un accès cloud quantique isolé.</p></div><div class="signal"><div class="signal-num">5</div><p>La correction d'erreurs progresse des codes surface vers les qLDPC à faible surcharge (fontaines d'états magiques) : suivre la trajectoire de distillation de T et les jalons « 50-100 qubits logiques 2028 » (SCAC, Infleqtion) en distinguant résultats peer-reviewed et preprints.</p></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Rapport généré automatiquement le 2026-09-28 — Sources : Quantum Flagship, The Quantum Insider, McKinsey, BCG, ENISA, NIST, ANSSI, IBM, Microsoft, D-Wave, Quantinuum, PsiQuantum, Pasqal, Qiskit, NVIDIA, arXiv, Nature, Google Research Blog, CNN.</p>
+    </footer>
+</body>
+</html>

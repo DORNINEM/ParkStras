@@ -1,0 +1,305 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Informatique Quantique — 2026-10-05</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.violet{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tag{display:inline-block;margin:8px 6px 0 0;padding:2px 8px;border-radius:8px;font-size:.72rem;background:rgba(99,102,241,.10);color:var(--accent-2);border:1px solid rgba(99,102,241,.25)}
+    .maturite,.horizon{display:inline-block;margin:8px 6px 0 0;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700}
+    .m-b{background:rgba(16,185,129,.14);color:#059669;border:1px solid rgba(16,185,129,.4)}
+    .m-r{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .m-t{background:rgba(239,68,68,.12);color:#dc2626;border:1px solid rgba(239,68,68,.35)}
+    .m-d{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-c{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-m{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .h-l{background:rgba(139,92,246,.14);color:#7c3aed;border:1px solid rgba(139,92,246,.4)}
+    .flag{color:#b45309;font-weight:600;font-size:.8rem}
+    .synthese{margin-top:22px}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .signal{border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:var(--panel)}
+    .signal b{color:var(--accent-2)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+      .kpis{grid-template-columns:repeat(4,1fr)}
+    }
+  </style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>⚛️ Veille Informatique Quantique</h1>
+      <p>France &amp; Europe • Monde • Matériel &amp; Logiciel • Prospective — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-05">5 octobre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🇫🇷🇪🇺 France &amp; Europe</div><div class="value">6</div></div>
+    <div class="kpi"><div class="label">🌍 Monde</div><div class="value">6</div></div>
+    <div class="kpi"><div class="label">🔬 Innovations</div><div class="value">6</div></div>
+    <div class="kpi"><div class="label">🚀 Prospective</div><div class="value">6</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 24 articles</span>
+    <span class="pill green">📅 5 octobre 2026</span>
+    <span class="pill yellow">🔬 arXiv/preprints : 4 (signalés ⚠️)</span>
+    <span class="pill violet">🔎 Fenêtres : 48 h (P1-P3, étendues 7 j) / 7 j (P4)</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷🇪🇺 Marché France &amp; Europe</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.oezratty.net/wordpress/2026/actualites-quantiques-de-septembre-2026/" target="_blank">Actualités quantiques de septembre 2026 (podcast Quantum #84)</a></h3>
+          <div class="meta">Opinions Libres (Olivier Ezratty) • 04/10/2026</div>
+          <p>Rétrospective mensuelle de l'écosystème quantique français et européen de septembre : PEPR Quantique Synergy 2026 (9-11 sept), introduction en bourse de Pasqal au Nasdaq et pivot vers le civil après son retrait du programme de défense LSQUARE/PROQCIMA, vente d'un ordinateur quantique par Quandela au Vietnam, progrès de Quobly sur les qubits au silicium avec STMicroelectronics et CEA-Leti, projet de logiciel souverain Aliquante (Thales, Bull, CEA) et partenariat Alice &amp; Bob-CEA. <span class="flag">Note de la veille : seuls 2 articles de cette section datent des 48 dernières heures ; les 4 suivants complètent avec les plus récents des 7 derniers jours.</span></p>
+          <span class="tag">France</span><span class="tag">Pasqal</span><span class="tag">Quandela</span><span class="tag">Quobly</span><span class="tag">PROQCIMA</span><span class="tag">souveraineté</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.bfmtv.com/economie/patrimoine/placements-epargne/des-lasers-un-super-congelateur-et-des-atomes-pieges-dans-le-vide-on-a-visite-l-usine-de-pasqal-le-champion-francais-de-l-ordinateur-quantique-et-on-n-a-pas-tout-compris_GN-202610030057.html" target="_blank">On a visité l'usine de Pasqal, le champion français de l'ordinateur quantique</a></h3>
+          <div class="meta">BFMTV • 03/10/2026</div>
+          <p>Reportage dans l'usine de Pasqal à Palaiseau : processeurs quantiques à atomes neutres (rubidium piégé par lasers, cryostats, ultra-vide). Premier champion quantique français coté au Nasdaq (PSQL, août 2026, ~360 M$ levés, valorisation ~2 Md$), la société affiche un chiffre d'affaires S1 2026 de 4,9 M€ (+14 %) pour une perte nette de 53,2 M€, avec 312,9 M€ de trésorerie et une capacité de production de 13 machines/an ; une double cotation Euronext Paris est envisagée en 2027.</p>
+          <span class="tag">France</span><span class="tag">Pasqal</span><span class="tag">Nasdaq</span><span class="tag">atomes neutres</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://seekingalpha.com/news/4649855-iqm-receives-buy-rating-due-to-its-on-prem-quantum-computer-shipments-td-cowen" target="_blank">TD Cowen initie la couverture d'IQM Quantum Computers avec un avis Achat</a></h3>
+          <div class="meta">Seeking Alpha / Barron's • 02/10/2026</div>
+          <p>TD Cowen lance la couverture boursière d'IQM (IQMX, Finlande) avec un rating Achat, saluant son leadership mondial sur les ordinateurs quantiques on-premise livrés aux clients, sa feuille de route haute fidélité et un TCAC projeté supérieur à 60 % (plus de 150 M$ de revenus visés d'ici 2028). Le groupe multiplie les contrats (Brésil, Japon, LUMI) et annonce un plan d'intéressement actions (~18,2 M€).</p>
+          <span class="tag">Europe</span><span class="tag">Finlande</span><span class="tag">IQM</span><span class="tag">bourse</span><span class="tag">HPC</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://alice-bob.com/newsroom/alice-bob-new-approach-stabilising-cats/" target="_blank">Alice &amp; Bob et l'ENS Lyon stabilisent les qubits de chat par polarisation continue (DC)</a></h3>
+          <div class="meta">Alice &amp; Bob (communiqué) / Quantum Computing Report • 01/10/2026</div>
+          <p>Démonstration expérimentale de stabilisation de qubits de chat par une simple polarisation continue (~1 µV) sur un SQUID, remplaçant les pompes micro-ondes : dissipation multi-photons (1, 2 et 4 photons), taux d'échange jusqu'à 18,5 MHz, moins de chaleur et des puces plus compactes. Confirmé par tomographie de Wigner : une étape vers des qubits cat plus fiables et le calcul tolérant aux fautes.</p>
+          <span class="tag">France</span><span class="tag">Alice &amp; Bob</span><span class="tag">ENS Lyon</span><span class="tag">qubits de chat</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantuminternetalliance.org/2026/10/01/qia-enters-phase-to-build-full-stack-quantum-networks/" target="_blank">L'UE alloue 47,5 M€ au Quantum Internet Alliance pour un prototype d'internet quantique full-stack</a></h3>
+          <div class="meta">Quantum Internet Alliance / Jornal Económico • 01/10/2026</div>
+          <p>La Commission européenne a accordé 47,5 M€ au consortium Quantum Internet Alliance (plus de 50 institutions) pour sa phase SGA 2 de 42 mois : un prototype complet et programmable d'internet quantique, incluant l'interconnexion de deux réseaux métropolitains via fibre longue distance et répéteurs quantiques. Kick-off à Lisbonne les 30 septembre-1er octobre avec plus de 100 chercheurs. Avancée majeure pour la souveraineté européenne en communication quantique, en lien avec EuroQCI.</p>
+          <span class="tag">Europe</span><span class="tag">Quantum Internet Alliance</span><span class="tag">EuroQCI</span><span class="tag">répéteurs quantiques</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.globenewswire.com/news-release/2026/09/28/3369765/0/en/index.html" target="_blank">Pasqal : évolution de son cadre de collaboration avec les autorités publiques françaises</a></h3>
+          <div class="meta">Pasqal (communiqué GlobeNewswire) • 28/09/2026</div>
+          <p>Pasqal (NASDAQ: PSQL) annonce la fin de sa participation au programme de défense LSQUARE (volet du PROQCIMA piloté par la DGA) après avoir atteint tous les objectifs de la première phase. L'entreprise se recentre sur le calcul quantique commercial et la R&amp;D fault-tolerant (FTQC) à atomes neutres. Un rebalancement notable pour la souveraineté quantique française, en cohérence avec l'accélération France 2030 (1 Md€ supplémentaires en mai 2026, cible de 1024 qubits logiques d'ici 2032).</p>
+          <span class="tag">France</span><span class="tag">Plan France 2030</span><span class="tag">PROQCIMA</span><span class="tag">défense</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌍 Monde — Pertinence Europe</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/us-department-of-energy-releases-national-quantum-roadmap-establishing-2028-fault-tolerance-milestones/" target="_blank">Le DOE publie une feuille de route quantique nationale fixant des jalons de tolérance aux pannes pour 2028</a></h3>
+          <div class="meta">Quantum Computing Report • 02/10/2026</div>
+          <p>Le rapport « Path to an Integrated Quantum Future » vise un calcul quantique corrigé d'erreurs scientifiquement pertinent dès 2028, avec un changement de métrique majeur : abandon du simple comptage de qubits physiques au profit de l'utilité scientifique démontrée (chimie quantique, médicaments, matériaux, fusion). Trois phases pour intégrer les QPU comme coprocesseurs des infrastructures HPC/IA. Transposabilité européenne : modèle directement opposable aux feuilles de route Quantum Flagship/EuroHPC.</p>
+          <span class="tag">politique quantique</span><span class="tag">correction d'erreurs</span><span class="tag">HPC hybride</span><span class="tag">États-Unis</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://markets.ft.com/data/announce/detail?dockey=600-202610010700BIZWIRE_USPRX____20261001_BW196673-1" target="_blank">D-Wave lance le programme bêta de son simulateur gate-model, orienté correction d'erreurs</a></h3>
+          <div class="meta">Business Wire (via Financial Times) • 01/10/2026</div>
+          <p>D-Wave (NASDAQ: QBTS) ouvre l'accès anticipé à son simulateur quantique gate-model, bâti sur sa technologie supraconductrice dual-rail conçue pour détecter les erreurs et réaliser une correction à surcoût matériel réduit. Bêta-testeurs : BBVA (finance), FirstQFM, Florida Atlantic University et le centre de supercalcul de Jülich (Allemagne). Implication directe du JSC dans la co-développement error-aware et pont avec les infrastructures HPC européennes (Jupiter).</p>
+          <span class="tag">D-Wave</span><span class="tag">gate-model</span><span class="tag">Jülich</span><span class="tag">supraconducteur</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://thequantuminsider.com/2026/10/03/helmut-katzgraber-55north-why-materials-simulation-beats-optimization-for-near-term-quantum/" target="_blank">Helmut Katzgraber (55North) : la simulation de matériaux battra l'optimisation à court terme</a></h3>
+          <div class="meta">The Quantum Insider • 03/10/2026</div>
+          <p>Entretien avec l'ex-responsable quantique d'AWS, désormais VC au fonds danois 55North : les applications les plus prometteuses à court/moyen terme sont la simulation de matériaux, de chimie et de pharma, pas l'optimisation. Il aborde la compétitivité européenne et les modèles de déploiement cloud vs on-premise. Lecture stratégique pour orienter la R&amp;D et le financement du quantique dans l'UE vers la simulation.</p>
+          <span class="tag">simulation moléculaire</span><span class="tag">capital-risque</span><span class="tag">compétitivité européenne</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://scitechdaily.com/scientists-break-3-world-records-with-giant-atoms-built-for-quantum-computing/" target="_blank">Trois records mondiaux d'atomes de Rydberg circulaires à température ambiante (Stuttgart)</a></h3>
+          <div class="meta">SciTechDaily / Université de Stuttgart (Nature Communications) • 04/10/2026</div>
+          <p>Trois records internationaux pour les atomes de Rydberg circulaires : durée de vie (≈11 ms, ×20 vs état de l'art), plus grande orbite contrôlée (n=103, ~1,1 µm) et temps de stockage en pinces optiques (133 ms), le tout à température ambiante sans cryogénie grâce à une suppression de Purcell du rayonnement de corps noir. Publié dans Nature Communications (preprint arXiv:2510.27471). Percée allemande qui renforce la plateforme atomes neutres concurrente de QuEra/Pasqal.</p>
+          <span class="tag">atomes neutres</span><span class="tag">Rydberg</span><span class="tag">Allemagne</span><span class="tag">Nature Communications</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/silicon-quantum-computing-and-schneider-electric-advance-energy-grid-forecasting-via-watermelon-quantum-enhanced-ai-system/" target="_blank">SQC et Schneider Electric passent la prévision énergétique quantique-hybride en phase 2 (A$3,6 M)</a></h3>
+          <div class="meta">Quantum Computing Report • 03/10/2026</div>
+          <p>SQC et Schneider Electric décrochent A$3,6 M en phase 2 du programme australien Critical Technologies Challenge pour déployer leur système Watermelon™ — générateur de caractéristiques quantiques sur QPU phosphore-dans-silicon — dans des réseaux d'énergie distribuée avec UNSW Sydney. Résultats phase 1 : +20 % de précision moyenne (jusqu'à +41 %) sur 12 mois. L'acteur français Schneider valide un cas d'usage répliquable sur le réseau électrique européen.</p>
+          <span class="tag">IA quantique</span><span class="tag">Schneider Electric</span><span class="tag">énergie</span><span class="tag">Australie</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.cloudflare.com/press/press-releases/2026/cloudflare-announces-public-certificate-authority-for-the-post-quantum-web/" target="_blank">Cloudflare annonce une autorité de certification publique pour le web post-quantique</a> <span class="flag">[7 derniers jours]</span></h3>
+          <div class="meta">Cloudflare (communiqué) • 29/09/2026</div>
+          <p>Cloudflare devient une autorité de certification publique ouverte, avec certificats traditionnels et certificats post-quantiques Merkle Tree (MTC) — production visée au T1 2027 — et acquisition de matéri de racine GlobalSign pour une reconnaissance immédiate sur le web legacy. Contexte : migration vers les algorithmes PQC du NIST avant l'arrivée d'ordinateurs quantiques capables de casser RSA/ECC. Enjeu majeur pour la souveraineté PKI européenne et la conformité eIDAS/EUCS.</p>
+          <span class="tag">post-quantique</span><span class="tag">PKI</span><span class="tag">certificats</span><span class="tag">cybersécurité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🔬 Innovations Matérielles &amp; Logicielles</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://alice-bob.com/newsroom/alice-bob-new-approach-stabilising-cats/" target="_blank">Alice &amp; Bob et l'ENS Lyon : stabilisation des qubits chat par polarisation DC</a> <span class="flag">[7 derniers jours]</span></h3>
+          <div class="meta">Alice &amp; Bob (communiqué) • 30/09/2026 • couverture TQI du 01/10/2026</div>
+          <p>Stabilisation de qubits chat supraconducteurs via une simple polarisation en tension continue (~1,1 µV) appliquée à un SQUID, au lieu d'une pompe micro-ondes paramétrique : échanges à deux photons d'environ 3 MHz (jusqu'à 18,5 MHz), processus multi-photons sélectifs (1-, 2-, 4-photons) et termes Kerr parasites dynamiquement moyennés. Simplifie le hardware et réduit la dissipation thermique. <span class="flag">⚠️ Preprint arXiv:2608.31154 non évalué par les pairs.</span></p>
+          <span class="maturite m-r">R&amp;D</span><span class="tag">qubits chat</span><span class="tag">SQUID</span><span class="tag">supraconducteurs</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://github.com/Qiskit/qiskit/releases/tag/2.6.0rc1" target="_blank">Sortie de Qiskit 2.6.0rc1 : API C, tolérance aux pannes et performances</a></h3>
+          <div class="meta">Qiskit (GitHub / PyPI) • 02/10/2026</div>
+          <p>IBM a publié la première release candidate du jalon Qiskit 2.6 (gel des fonctionnalités le 3 septembre, release stable attendue vers le 15 octobre 2026). Priorités : enrichissements de l'API C, pipelines orientés tolérance aux pannes, indépendance vis-à-vis de Python, performances et Backend V3. Pré-release à réserver aux tests ; la branche stable reste la 2.5.x.</p>
+          <span class="maturite m-b">Beta</span><span class="tag">Qiskit</span><span class="tag">API C</span><span class="tag">open source</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumzeitgeist.com/quantum-codes-constant-overhead-injection-scheme/" target="_blank">Injection à overhead constant dans les codes quantiques : une première théorique de Berkeley</a></h3>
+          <div class="meta">Quantum Zeitgeist / arXiv:2609.39345, UC Berkeley • 03/10/2026</div>
+          <p>Louis Golowich et Venkatesan Guruswami proposent le premier schéma tolérant aux pannes pour injecter et éjecter des états quantiques dans des codes correcteurs d'erreurs à taux constant (overhead constant en espace et en temps), à partir de produits hypergraphes de codes LDPC classiques, sous bruit localement stochastique. Résultat clé pour connecter des qubits physiques « nus » aux codes LDPC sans explosion des ressources. <span class="flag">⚠️ Preprint arXiv non évalué par les pairs ; travail théorique sans démonstration matérielle.</span></p>
+          <span class="maturite m-t">Théorique</span><span class="tag">codes LDPC</span><span class="tag">injection d'états</span><span class="tag">correction d'erreurs</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumzeitgeist.com/quantum-pseudorandom-error-correction-codes-construction/" target="_blank">Codes quantiques pseudo-aléatoires : correction d'erreurs + sécurité cryptographique (Hon Hai / Kyoto)</a></h3>
+          <div class="meta">Quantum Zeitgeist / arXiv:2609.38986, Hon Hai Research Institute • 03/10/2026</div>
+          <p>Min-Hsiu Hsieh et Shogo Yamada définissent les « quantum pseudorandom error-correcting codes » (QPRC), analogues quantiques des codes pseudo-aléatoires classiques : sous l'hypothèse de dureté du LPN quantique, des codes isométriques pseudo-aléatoires qui corrigent un bruit local allant jusqu'à o(n·log log n / log n) tout en paraissant aléatoires — utile pour protéger des données quantiques en mémoire ou en communication. <span class="flag">⚠️ Preprint arXiv non évalué par les pairs ; contribution théorique.</span></p>
+          <span class="maturite m-t">Théorique</span><span class="tag">codes pseudo-aléatoires</span><span class="tag">cryptographie quantique</span><span class="tag">LPN</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/us-department-of-energy-releases-national-quantum-roadmap-establishing-2028-fault-tolerance-milestones/" target="_blank">Le DOE publie sa feuille de route : ordinateur quantique corrigé d'erreurs scientifiquement pertinent d'ici 2028</a></h3>
+          <div class="meta">Quantum Computing Report / rapport SCAC (US DOE) • 02/10/2026</div>
+          <p>Feuille de route en trois phases visant une capacité de calcul quantique corrigée d'erreurs et scientifiquement pertinente dès 2028, avec des cibles indicatives de 50 à plus de 100 qubits logiques et une intégration HPC/IA. Ce cadre guide le Quantum Genesis Q Competition du DOE (jusqu'à 215 M$) et déplace l'évaluation du progrès du simple compte de qubits physiques vers l'utilité scientifique démontrée.</p>
+          <span class="maturite m-r">R&amp;D</span><span class="tag">DOE</span><span class="tag">qubits logiques</span><span class="tag">feuille de route</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.uni-paderborn.de/en/news-item/161540" target="_blank">Photons quasi indiscernables à 90 % via cascade biexcitonique contrôlée par cavité (Paderborn / Bâle / Bochum)</a></h3>
+          <div class="meta">Université de Paderborn — Physical Review Letters • 02/10/2026</div>
+          <p>Génération de photons uniques et de paires de photons quasi indiscernables à partir de boîtes quantiques semi-conductrices en contrôlant la décroissance biexcitonique dans un résonateur optique (effet Purcell) : visibilité d'interférence à deux photons de 90 ± 2 % (photons XX, ~80 % pour X), contre ~60 % sans cavité. Directement pertinent pour les calculateurs et réseaux quantiques photoniques. ✅ Évalué par les pairs (PRL 2026).</p>
+          <span class="maturite m-r">R&amp;D</span><span class="tag">photonique</span><span class="tag">boîtes quantiques</span><span class="tag">indiscernabilité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🚀 Prospective &amp; Impacts Sectoriels</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://news.uark.edu/articles/82980/d-wave-partners-with-u-of-a-to-establish-quantum-supply-chain-initiative-at-walton-college" target="_blank">D-Wave s'associe à l'Université de l'Arkansas pour une initiative quantique dédiée à la supply chain</a></h3>
+          <div class="meta">University of Arkansas News (Walton College) • 05/10/2026</div>
+          <p>Annoncée lors du salon CSCMP EDGE 2026, la collaboration entre D-Wave et le Supply Chain Management Research Center de Walton College crée un fonds de recherche dédié à l'optimisation quantique des chaînes d'approvisionnement : routage de transport, conception de réseaux logistiques, allocation d'inventaires, ordonnancement et résilience. D-Wave rejoint le programme partenaires du SCMRC (+25 entreprises) : l'optimisation hybride quantique-classique sort des seuls pilotes.</p>
+          <span class="horizon h-c">Court terme</span><span class="tag">logistique</span><span class="tag">supply chain</span><span class="tag">quantum annealing</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://thequantuminsider.com/2026/10/03/helmut-katzgraber-55north-why-materials-simulation-beats-optimization-for-near-term-quantum/" target="_blank">Katzgraber (55North) : la simulation de matériaux bat l'optimisation à court terme</a></h3>
+          <div class="meta">The Quantum Insider • 03/10/2026</div>
+          <p>Entretien avec Helmut Katzgraber, ex-responsable quantique d'AWS, désormais associé du fonds 55North : les applications les plus prometteuses à court et moyen terme relèvent de la simulation quantique de matériaux, de chimie et de pharma. Il plaide pour des produits autour de cas d'usage étroits mais à forte valeur (ex. matériaux fortement corrélés pour les batteries) et analyse la compétitivité européenne et les modèles de déploiement cloud/on-premise.</p>
+          <span class="horizon h-m">Moyen terme</span><span class="tag">simulation quantique</span><span class="tag">pharma</span><span class="tag">matériaux</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://thequantuminsider.com/2026/10/02/quantum-computing-could-cut-industrial-emissions-without-an-ai-sized-footprint-bcg-finds/" target="_blank">Le quantique pourrait réduire les émissions industrielles sans empreinte énergétique de niveau IA, selon le BCG</a></h3>
+          <div class="meta">The Quantum Insider (étude BCG) • 02/10/2026</div>
+          <p>Une étude BCG estime que les technologies quantiques pourraient éviter 3 à 7 milliards de tonnes d'émissions annuelles via les batteries, la capture de carbone et la chimie industrielle — près d'un dixième des émissions mondiales au point médian. Seuls 10 à 15 % de ce potentiel seraient réalisés d'ici 2040 (cycles de remplacement des équipements industriels longs), pour des solutions commercialement viables vers 2035. L'empreinte énergétique du quantique resterait marginale (~0,09 Gt en 2040), contrairement à l'IA.</p>
+          <span class="horizon h-l">Long terme</span><span class="tag">chimie</span><span class="tag">énergie</span><span class="tag">climat</span><span class="tag">BCG</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.waseda.jp/top/en/news/89735" target="_blank">NEC, Taiho Pharmaceutical et Waseda sélectionnés par NEDO pour une immunothérapie anticancéreuse assistée du quantique</a></h3>
+          <div class="meta">Waseda University (communiqué) • 02/10/2026</div>
+          <p>Un consortium NEC / Taiho Pharmaceutical / Japanese Foundation for Cancer Research / AIST / Waseda est retenu dans le programme de démonstration à grande échelle de NEDO pour construire une plateforme de calcul combinant quantique, IA et immunologie afin de concevoir et valider des candidats néoantigènes pour l'immunothérapie du cancer. Le calcul quantique passe de la preuve de concept moléculaire à la démonstration industrielle dans le pipeline de conception de médicaments.</p>
+          <span class="horizon h-m">Moyen terme</span><span class="tag">pharma</span><span class="tag">immunothérapie</span><span class="tag">NEC</span><span class="tag">NEDO</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://arxiv.org/abs/2609.36479" target="_blank">QML pour la sécurité réseau : noyaux quantiques compétitifs mais pas d'avantage uniforme</a> <span class="flag">⚠️ preprint arXiv</span></h3>
+          <div class="meta">arXiv quant-ph (2609.36479) • 29/09/2026</div>
+          <p>Évaluation systématique des QSVM à noyaux quantiques sur des tâches réelles de cybersécurité (KDD Cup 1999, CICIDS2017, BoT-IoT) : les noyaux quantiques égalent ou dépassent les baselines classiques dans certains cas, mais restent inférieurs aux kernels RBF dans d'autres. À court terme, le QML doit être traité comme une alternative dépendante du jeu de données, pas comme un remplacement supérieur. Les auteurs proposent à plus long terme un avantage mémoire via le « quantum oracle sketching » (QOS) pour la classification en flux.</p>
+          <span class="horizon h-c">Court terme</span><span class="tag">QML</span><span class="tag">kernel methods</span><span class="tag">cybersécurité</span><span class="tag">benchmark</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://decrypt.co/379167/q-day-could-arrive-before-quantum-computers-are-commercially-useful-eu-warns" target="_blank">L'UE met en garde : le Q-Day pourrait arriver avant toute viabilité commerciale du quantique</a> <span class="flag">[hors fenêtre — 24 sept.]</span></h3>
+          <div class="meta">Decrypt (autorités européennes ESA/EBA/EIOPA/ESMA) • 24/09/2026</div>
+          <p>Dans son évaluation automnale des risques, le comité conjoint des trois autorités européennes de supervision financière avertit qu'un ordinateur quantique capable de casser la cryptographie pourrait exister avant toute application commerciale rentable du quantique. Le rapport souligne le risque « harvest now, decrypt later » et recommande d'adopter une stratégie de migration post-quantique (ML-KEM, ML-DSA, SLH-DSA) d'ici fin 2026, les actifs à haut risque devant être migrés vers 2030.</p>
+          <span class="horizon h-c">Court terme</span><span class="tag">post-quantique</span><span class="tag">PQC</span><span class="tag">régulation UE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="synthese">
+    <h2>🖼️ Images &amp; schémas analysés</h2>
+    <div class="card"><div class="card-body">
+      <div class="item"><p>Aucune image n'a été extraite et analysée directement cette semaine (sources essentiellement textuelles). Visuels pertinents accessibles dans les sources liées :</p>
+      <p style="margin-top:8px">• <b>Roadmap DOE en 3 phases</b> (« Path to an Integrated Quantum Future ») — jalons 2028 vers le fault-tolerance (rapport SCAC, Quantum Computing Report)<br>
+      • <b>Photo de l'usine Pasqal</b> (Palaiseau) — cryostats et bancs lasers d'atomes neutres (BFMTV)<br>
+      • <b>Diagramme de stabilisation des qubits chat</b> — polarisation DC sur SQUID, tomographie de Wigner (blog Alice &amp; Bob)<br>
+      • <b>Courbes de visibilité d'indiscernabilité photonique</b> — 90 % XX vs ~60 % sans cavité (Université de Paderborn / PRL)</p></div>
+    </div></div>
+  </div>
+
+  <div class="synthese">
+    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="signal"><b>1. Bascule des métriques d'évaluation quantique.</b> Le DOE abandonne le comptage de qubits au profit de l'utilité scientifique démontrée (chimie, matériaux, fusion) pour 2028. Implication : les DSI doivent exiger des preuves d'utilité applicative dans les roadmaps fournisseurs, et l'UE (EuroHPC/Quantum Flagship) pourrait s'aligner.</div>
+    <div class="signal"><b>2. Industrialisation et financiarisation du quantique français.</b> Pasqal coté au Nasdaq quitte le volet défense LSQUARE/PROQCIMA pour se recentrer sur le civil et le FTQC ; IQM est couvert en bourse ; D-Wave s'associe à une business school sur la supply chain. Implication : le quantique passe des programmes publics aux cas d'usage commerciaux — les industriels doivent identifier leurs premiers ateliers hybrides QPU/HPC.</div>
+    <div class="signal"><b>3. La correction d'erreurs devient le centre de gravité produit.</b> Qiskit 2.6 oriente ses pipelines vers la tolérance aux pannes, D-Wave ouvre un simulateur gate-model error-aware avec Jülich, et les travaux théoriques (injection LDPC, codes pseudo-aléatoires) comblent les trous de la stack. Implication : la fenêtre « harvest now, decrypt later » se précise à l'horizon 2028-2030.</div>
+    <div class="signal"><b>4. Pression régulatrice post-quantique croissante en Europe.</b> Autorités financières UE (migration PQC d'ici fin 2026, actifs critiques vers 2030), Cloudflare CA post-quantique, ANSSI en fil rouge. Implication : RSSI — lancer sans attendre l'inventaire cryptographique, le plan de migration PKI et les tests de protocoles hybrides (ML-KEM/ML-DSA).</div>
+    <div class="signal"><b>5. La simulation bat l'optimisation comme premier moteur de valeur.</b> Katzgraber (55North), le programme NEDO anticancer et l'étude BCG climat convergent : la valeur à court/moyen terme est dans la simulation moléculaire et matériaux, pas dans l'optimisation générique. Implication : directions R&amp;D — prioriser les partenariats orientés simulation (chimie, batteries, pharma) plutôt que les POOC sur-glorifiés.</div>
+  </div>
+
+  <footer>
+    <p>Généré le 2026-10-05 par Hermes (veille-quantique). Template Jarvis inline (cards, KPIs, badges maturité/horizon, responsive). Fichier : veille-quantique-2026-10-05.md + .html</p>
+    <p>24 articles — sources primaires privilégiées (Nature Communications, Physical Review Letters, arXiv, communiqués fabricants). Preprints arXiv non évalués par les pairs signalés ⚠️.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>

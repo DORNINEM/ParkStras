@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Mistral AI — 2026-10-05</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille Mistral AI</h1>
+        <p>2026-10-05 · Hermes Agent</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-10-05">2026-10-05</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne · 11 actualités</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🇫🇷 France &amp; souveraineté</div>
+        <div class="value">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🌍 Europe &amp; international</div>
+        <div class="value">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🤖 Modèles, produits &amp; écosystème</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges">
+      <span class="badge"><span class="dot"></span>Fenêtre : 28 septembre – 5 octobre 2026</span>
+      <span class="badge"><span class="dot"></span>11 actualités avec liens sources</span>
+      <span class="badge"><span class="dot"></span>Collecte Hermes Agent</span>
+    </div>
+
+    <div class="grid">
+      <article class="card" aria-labelledby="france">
+        <div class="card-head">
+          <h2 class="card-title" id="france">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+            🇫🇷 France &amp; souveraineté
+          </h2>
+          <span class="pill blue">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Portée par Mistral AI, la French Tech signe son plus gros mois de levées de fonds depuis 2023</h3>
+            <div class="meta">Maddyness — 01/10/2026</div>
+            <p>En septembre 2026, les startups françaises ont levé un record de 3,29 Md€ en 47 opérations, porté à 91 % par la série D de 3 Md€ de Mistral AI. Hors Mistral, l'activité retombe à 289 M€ (-60 % sur un an) — signe d'une concentration extrême du capital autour du champion tricolore.</p>
+            <a href="https://www.maddyness.com/2026/10/01/portee-par-mistral-ai-la-french-tech-signe-son-plus-gros-mois-de-levees-de-fonds-depuis-2023/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Malgré 3 Md€ levés, la promesse de souveraineté de Mistral AI est mise à l'épreuve</h3>
+            <div class="meta">Le Figaro — 30/09/2026</div>
+            <p>Après la levée de 3 Md€ menée par Samsung (valorisation &gt; 21 Md€), Le Figaro examine les contradictions de la stratégie souveraine de Mistral : investisseurs non européens (Samsung, BlackRock), partenariats avec des acteurs américains (Microsoft, Nvidia) et pression sur les livrables infrastructure. Le test de la souveraineté commence maintenant.</p>
+            <a href="https://www.lefigaro.fr/en/business/despite-raising-3-billion-mistral-ai-s-promise-of-sovereignty-is-put-to-the-test-20260930" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« Mistral : comment le leader européen de l'IA a changé de stratégie » (2/3)</h3>
+            <div class="meta">Les Echos (article + podcast La Story) — 02/10/2026</div>
+            <p>Deuxième volet de la saga des Echos : comment Mistral est passé du pur labo de modèles à une stratégie d'infrastructure et de souveraineté (data centers, contrats TotalEnergies, Airbus, Microsoft/Nvidia), entre croissance rapide et besoins en capital inédits pour un acteur européen.</p>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/mistral-comment-le-leader-europeen-de-lia-a-change-de-strategie-2254898" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="monde">
+        <div class="card-head">
+          <h2 class="card-title" id="monde">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            🌍 Europe &amp; international
+          </h2>
+          <span class="pill green">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral ouvre un hub à Munich pour accélérer son passage à l'échelle industrielle</h3>
+            <div class="meta">Maddyness / heise / mistral.ai — 28/09/2026</div>
+            <p>Mistral annonce un hub à Munich dédié à l'IA physique et à l'IA industrielle : équipes de recherche spécialisées et ingénieurs appliqués, avec BMW (simulations de crash sur plus d'1 Po de données), Siemens Energy et un partenariat de recherche avec la TUM (jumeaux numériques aérodynamiques). Une déclinaison du programme Large Industry Model, dans la continuité du rachat d'Emmi AI, et un tremplin vers l'objectif de 1 GW de compute européen en 2030.</p>
+            <a href="https://www.maddyness.com/2026/09/28/ia-mistral-ouvre-une-antenne-a-munich-pour-accelerer-son-passage-a-lechelle-industrielle/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Maroc : les premières briques d'IA du partenariat avec Mistral livrées en open source (darija)</h3>
+            <div class="meta">MMSP / Le Matin / La Vie éco — 29/09/2026</div>
+            <p>Le ministère marocain de la Transition numérique et Mistral annoncent deux modèles issus de leur partenariat (Maroc Digital 2030 / AI Made in Morocco) : un classifieur d'identification des dialectes arabes centré sur la darija, et un modèle de reconnaissance vocale Voxtral adapté à la darija, capable de gérer l'alternance arabe/français/anglais. Les deux briques seront publiées en open source pour administrations, startups et chercheurs.</p>
+            <a href="https://lematin.ma/hi-tech/le-maroc-et-mistral-developpent-des-outils-dia-en-darija/367585" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Mistral recrute au Canada pour développer son activité d'IA souveraine</h3>
+            <div class="meta">The Logic — début octobre 2026</div>
+            <p>Mistral ouvre des postes de chercheurs, développeurs, ingénieurs de déploiement et commerciaux au Canada (bureaux prévus à Montréal et Toronto) pour servir des clients souverains dans la finance, l'énergie, l'industrie et le secteur public, dont le Québec. Première implantation d'envergure hors Europe/EU pour son offre souveraine.</p>
+            <a href="https://thelogic.co/news/mistral-sovereign-ai-canada/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="modeles">
+        <div class="card-head">
+          <h2 class="card-title" id="modeles">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            🤖 Modèles &amp; déclarations
+          </h2>
+          <span class="pill yellow">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Arthur Mensch (CNBC) : le prochain modèle de Mistral « combinera significativement » l'écart avec les labs américains</h3>
+            <div class="meta">Journal du Geek / Refrance — 30/09–01/10/2026</div>
+            <p>Dans un entretien CNBC de fin septembre, le CEO de Mistral affirme que la levée de 3 Md€ permettra d'entraîner des modèles plus larges et qu'un modèle de nouvelle génération réduira « de manière très significative » le retard sur OpenAI et les leaders américains — tout en poursuivant l'objectif de souveraineté européenne des données et du compute.</p>
+            <a href="https://www.journaldugeek.com/2026/09/30/le-grand-coup-de-mistral-une-nouvelle-ia-francaise-arrive-et-elle-devrait-enfin-bousculer-les-concurrents-americains/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Mensch s'en prend à OpenAI et Anthropic : « le débat sécurité de l'IA couvre la négligence des concurrents »</h3>
+            <div class="meta">CNBC / la Repubblica — 29–30/09/2026</div>
+            <p>Toujours dans l'interview CNBC, Arthur Mensch estime que le débat américain sur la sécurité de l'IA sert de paravent à la négligence d'OpenAI et Anthropic, prône de meilleurs contrôles sur les agents IA et positionne Mistral comme l'alternative européenne responsable, en open-weight, du développement agentique.</p>
+            <a href="https://www.cnbc.com/2026/09/29/mistral-ai-safety-openai-anthropic.html" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Analyse : « What happened to Mistral after Medium 3.5 ? »</h3>
+            <div class="meta">thinkreview.dev — 03/10/2026</div>
+            <p>Une analyse qui fait le point sur l'absence de nouveau modèle frontière généraliste depuis Medium 3.5 (avril 2026) : les sorties récentes sont plus étroites (Leanstral, OCR 4.1), l'effort s'est déplacé vers l'infrastructure et les partenariats industriels. Utile pour situer la promesse du « prochain grand modèle » de Mensch.</p>
+            <a href="https://thinkreview.dev/blog/what-happened-to-mistral" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="produits">
+        <div class="card-head">
+          <h2 class="card-title" id="produits">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+            🤝 Produits &amp; écosystème
+          </h2>
+          <span class="pill blue">2 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Vibe : la migration des organisations Enterprise démarre le 1er octobre</h3>
+            <div class="meta">Mistral Docs — au 01/10/2026</div>
+            <p>Conformément aux release notes du 22 septembre, la bascule des organisations Enterprise vers l'expérience Vibe unifiée (fusion Chat + Work, spreadsheets, Mini App Canvas, base de connaissances agentique) démarre le 1er octobre, avec une fenêtre de migration de six mois.</p>
+            <a href="https://docs.mistral.ai/resources/release-notes" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Dépréciations du 30 septembre : OCR 4.0 et Leanstral 1.5 retirés du catalogue</h3>
+            <div class="meta">Releasebot / Mistral Updates — 30/09/2026</div>
+            <p>Au 30 septembre, Mistral a retiré OCR 4.0 et Leanstral 1.5 de sa plateforme, redirigeant les utilisateurs vers OCR 4.1 et GLM 5.3 (Z.ai) à prix identique — une rationalisation du catalogue qui précède l'arrivée attendue du modèle de nouvelle génération.</p>
+            <a href="https://releasebot.io/updates/mistral/mistral" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <footer>
+      Veille générée le 2026-10-05 · Sources vérifiées · Archivé dans /Users/manud/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+</body>
+</html>

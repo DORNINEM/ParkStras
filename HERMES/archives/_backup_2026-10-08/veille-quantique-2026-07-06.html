@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>⚛️ Veille Informatique Quantique — 2026-07-06</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1a1d23;
+    --muted: #5a6072;
+    --accent: #0d47a1;
+    --accent2: #1565c0;
+    --border: #e3e7ef;
+    --tag-bg: #eef2fb;
+    --tag-text: #1e4a8f;
+    --badge-dispo: #e6f4ea;
+    --badge-dispo-text: #137333;
+    --badge-beta: #e8f0fe;
+    --badge-beta-text: #1967d2;
+    --badge-rd: #fef7e0;
+    --badge-rd-text: #b06000;
+    --badge-theo: #f1f3f4;
+    --badge-theo-text: #5f6368;
+    --badge-court: #e6f4ea;
+    --badge-court-text: #137333;
+    --badge-moyen: #fef7e0;
+    --badge-moyen-text: #b06000;
+    --badge-long: #fce8e6;
+    --badge-long-text: #c5221f;
+    --shadow: 0 2px 8px rgba(16,24,40,0.06);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    background: linear-gradient(180deg, #e9eef5 0%, #f5f7fa 40%);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 12px;
+  }
+  .title {
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 6px;
+  }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid #dbe6f7;
+  }
+  .article {
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  .article:first-child { border-top: none; padding-top: 4px; }
+  .article-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem .75rem;
+  }
+  .article-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .article-title:hover { text-decoration: underline; }
+  .article-meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .article p { margin: .5rem 0 .25rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid #dbe6f7;
+  }
+  .badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .badge.dispo { background: var(--badge-dispo); color: var(--badge-dispo-text); border-color: #b1e6c1; }
+  .badge.beta { background: var(--badge-beta); color: var(--badge-beta-text); border-color: #bcd4fb; }
+  .badge.rd { background: var(--badge-rd); color: var(--badge-rd-text); border-color: #f3d7a1; }
+  .badge.theo { background: var(--badge-theo); color: var(--badge-theo-text); border-color: #d7d9dc; }
+  .badge.court { background: var(--badge-court); color: var(--badge-court-text); border-color: #b1e6c1; }
+  .badge.moyen { background: var(--badge-moyen); color: var(--badge-moyen-text); border-color: #f3d7a1; }
+  .badge.long { background: var(--badge-long); color: var(--badge-long-text); border-color: #f3bdb9; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .maturity-note, .horizon-note { font-size: 0.82rem; color: var(--muted); }
+  .weak-signals {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .weak-signals h2 { margin-bottom: 8px; }
+  .weak-signals li { margin: 8px 0; }
+  .weak-signals strong { color: var(--accent2); }
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 640px) {
+    .article-header { flex-direction: column; align-items: flex-start; }
+    main { padding: 10px 12px 30px; }
+    section { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="title">⚛️ Veille Informatique Quantique — <span id="date">2026-07-06</span></div>
+  <div class="meta">Rapport bi-hebdomadaire — marché France/Europe & monde, innovations matérielles/logicielles, prospective sectorielle.</div>
+</header>
+<main>
+  <section aria-labelledby="s1">
+    <h2 id="s1">🇫🇷🇪🇺 Marché France & Europe <span class="pill">6 articles</span></h2>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.info.gouv.fr/actualite/france-2030-1-milliard-d-euros-investis-dans-le-quantique" target="_top" rel="noopener">France 2030 : 1 milliard d'euros investis dans le quantique</a>
+        <span class="article-meta">info.gouv.fr — 2026-06</span>
+      </div>
+      <p>L’État complète le Plan Quantique par un nouvel apport d’un milliard d’euros visant hardware, logiciels, infrastructures et capteurs d’ici 2030, confortant la souveraineté industrielle.</p>
+      <div class="tags"><span class="tag">financement</span><span class="tag">politique</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.mourant.com/news/mourant-advises-iqm-on-us1-8-billion-quantum-business-combination/" target="_top" rel="noopener">IQM réalise une fusion à 1,8 Md$ : première société quantique européenne cotée</a>
+        <span class="article-meta">Mourant / The Quantum Insider — 2026-07-01</span>
+      </div>
+      <p>Le finlandais IQM fusionne avec Real Asset Acquisition Corp et devient le premier acteur quantique européen accédant aux marchés financiers. L’opération doit financer la correction d’erreurs et le scaling commercial.</p>
+      <div class="tags"><span class="tag">financement</span><span class="tag">startup</span><span class="tag">souveraineté</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.quobly.io/press-releases/quobly-secures-e115-million-series-a-to-bring-silicon-based-quantum-computers-to-market/" target="_top" rel="noopener">Quobly lève 115 M€ en série A pour industrialiser ses qubits silicium</a>
+        <span class="article-meta">Quobly / Sifted / HPCwire — 2026-06</span>
+      </div>
+      <p>Soutenu par Bpifrance, STMicroelectronics et SEALSQ, Quobly vise un déploiement cloud fin 2026 puis intégration HPC en 2027, renforçant l’axe silicium de l’écosystème français.</p>
+      <div class="tags"><span class="tag">financement</span><span class="tag">startup</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.pasqal.com/newsroom/credit-agricole-cib-and-pasqal-advance-their-strategic-partnership-to-deploy-quantum-computing-applied-to-finance/" target="_top" rel="noopener">Pasqal et Crédit Agricole CIB étendent leur partenariat finance/quantique</a>
+        <span class="article-meta">Pasqal — 2026-06-30</span>
+      </div>
+      <p>Roadmap 2026-2028 autour d’algorithmes quantiques inspirés, tests hardware et déploiements hybrides, avec des cas d’usage de production visés en risque marchés et optimisation d’ici 2028.</p>
+      <div class="tags"><span class="tag">partenariat</span><span class="tag">applications</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://alice-bob.com/newsroom/alice-bob-funded-to-build-fault-tolerant-qunatum-computer-proqcima/" target="_top" rel="noopener">Alice & Bob officiellement retenue dans PROQCIMA avec 500 M€</a>
+        <span class="article-meta">Alice & Bob — 2026</span>
+      </div>
+      <p>Quatre startups françaises dont Alice & Bob sont sélectionnées pour développer des prototypes tolérants aux fautes, avec pour cible 128 qubits logiques en 2030 puis systèmes scalés en 2035.</p>
+      <div class="tags"><span class="tag">politique</span><span class="tag">financement</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.reuters.com/legal/litigation/france-stop-certifying-products-without-quantum-safe-encryption-2026-06-16/" target="_top" rel="noopener">ANSSI acte la migration post-quantique des certifications : 2027</a>
+        <span class="article-meta">Reuters / ANSSI — 2026-06</span>
+      </div>
+      <p>ANSSI annonce l’arrêt des certifications sécurité sans chiffrement quantique-résistant à compter de 2027, avec recommandation d’achat quantique-sûr d’ici 2030 pour les organisations.</p>
+      <div class="tags"><span class="tag">réglementation</span><span class="tag">souveraineté</span><span class="tag">post-quantique</span></div>
+    </article>
+  </section>
+
+  <section aria-labelledby="s2">
+    <h2 id="s2">🌍 Monde — Pertinence Europe <span class="pill">6 articles</span></h2>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.nature.com/articles/s41586-024-08449-y" target="_top" rel="noopener">Google Willow franchit le seuil de tolérance aux fautes en surface code</a>
+        <span class="article-meta">Nature — 2024-12</span>
+      </div>
+      <p>Jump Willow (105 qubits) atteint une correction d’erreurs en dessous du seuil du surface code avec suppression exponentielle et facteur ~2 par incrément de distance de code, dépassant la longévité des qubits physiques.</p>
+      <div class="article-meta">Préprint arXiv associé : <a href="https://arxiv.org/abs/2408.13687" target="_top" rel="noopener">https://arxiv.org/abs/2408.13687</a></div>
+      <div class="tags"><span class="tag">jalon</span><span class="tag">menaces</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.ibm.com/quantum/blog/large-scale-ftqc" target="_top" rel="noopener">IBM Kookaburra avance vers le FTQC à grande échelle avec qLDPC</a>
+        <span class="article-meta">IBM Quantum — attendu 2026</span>
+      </div>
+      <p>Premier module de processeur intégrant mémoire qLDPC et unité logique, visant une réduction d’environ 90 % du surcoût en qubits physiques par rapport au surface code ; pierre angulaire de la roadmap IBM vers 200 qubits logiques d’ici 2029.</p>
+      <div class="article-meta">Complément IEEE Spectrum : <a href="https://spectrum.ieee.org/ibm-quantum-error-correction-starling" target="_top" rel="noopener">https://spectrum.ieee.org/ibm-quantum-error-correction-starling</a></div>
+      <div class="tags"><span class="tag">jalon</span><span class="tag">applications</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.quantinuum.com/blog/introducing-helios-the-most-accurate-quantum-computer-in-the-world" target="_top" rel="noopener">Quantinuum Helios : 48 qubits logiques corrigés en mode beyond-breakeven</a>
+        <span class="article-meta">Quantinuum — 2026</span>
+      </div>
+      <p>Grâce à 98 qubits piégés et une forte connectivité, Helios dépasse le seuil de rentabilité logique avec décodage en temps réel ; la plateforme illustre la route alternative aux supraconducteurs vers la tolérance aux fautes.</p>
+      <div class="tags"><span class="tag">jalon</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://blog.cloudflare.com/post-quantum-eo-2026/" target="_top" rel="noopener">Décret post-quantique US : 2030/2031 accélèrent la pression normative mondiale</a>
+        <span class="article-meta">Cloudflare / analyse EO — 2026-06</span>
+      </div>
+      <p>L’Executive Order juin 2026 fixe 2030 pour l’établissement de clés et 2031 pour l’authentification ; l’Europe doit harmoniser ses jalons ETSI/ENISA, impactant RSSI et plans de migration PKI.</p>
+      <div class="tags"><span class="tag">post-quantique</span><span class="tag">menaces</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.nccoe.nist.gov/applied-cryptography/migration-to-pqc" target="_top" rel="noopener">NIST NCCoE publie le guide de migration PQC ; CISA référence les catégories produits</a>
+        <span class="article-meta">NIST / CISA — 2026</span>
+      </div>
+      <p>Les guides NCCoE et CISA clarifient les implementations de ML-KEM, ML-DSA et SLH-DSA dans PKI et HSM, offrant des repères opérationnels pour RSSI et DSI en phase d’inventaire cryptographique.</p>
+      <div class="tags"><span class="tag">post-quantique</span><span class="tag">menaces</span></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point" target="_top" rel="noopener">McKinsey Quantum Technology Monitor 2026 : 300 entreprises adoptantes et 2 700 Md$ en 2035</a>
+        <span class="article-meta">McKinsey — 2026-04</span>
+      </div>
+      <p>Le rapport confirme une bascule commerciale avec un retour sur investissement attendu dans la pharma et la finance ; il souligne l’urgence sécuritaire face à Q-Day et le sous-dimensionnement des budgets de migration.</p>
+      <div class="tags"><span class="tag">applications</span><span class="tag">menaces</span></div>
+    </article>
+  </section>
+
+  <section aria-labelledby="s3">
+    <h2 id="s3">🔬 Innovations Matérielles & Logicielles <span class="pill">6 articles</span></h2>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.nature.com/articles/s41586-024-08449-y" target="_top" rel="noopener">Google Willow : surface code en dessous du seuil</a>
+        <span class="article-meta">Nature — 2024-12</span>
+      </div>
+      <p>Démonstration matérielle couplée à une stack de décodage logicielle ; distance 5 et 7, suppression exponentielle des erreurs. Référence pour tout benchmark de plateformes NISQ/fault-tolerant.</p>
+      <div class="badges"><span class="badge rd">R&amp;D</span></div>
+      <div class="maturity-note">Maturité : R&amp;D</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.ibm.com/quantum/blog/large-scale-ftqc" target="_top" rel="noopener">IBM Kookaburra : qLDPC en mémoire quantique et traitement logique</a>
+        <span class="article-meta">IBM — 2026 attendu</span>
+      </div>
+      <p>Premier module intégrant code qLDPC avec unité logique et mémoire quantique, ouvrant un chemin vers le scaling sans les surcoûts massifs du surface code classique.</p>
+      <div class="badges"><span class="badge beta">Beta</span></div>
+      <div class="maturity-note">Maturité : Beta</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://arxiv.org/abs/2606.06062" target="_top" rel="noopener">Barbell codes : qLDPC adaptés aux connectivités supraconductrices</a>
+        <span class="article-meta">arXiv quant-ph — 2026-06</span>
+      </div>
+      <p>Préprint proposant une famille de codes qLDPC calqués sur les contraintes physiques réelles des processeurs ; l’overhead est réduit sans dégrader le seuil de tolérance aux fautes.</p>
+      <div class="badges"><span class="badge theo">Théorique</span></div>
+      <div class="maturity-note">Maturité : Théorique (préprint arXiv)</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://pennylane.ai/blog/2026/01/pennylane-release-0-44/" target="_top" rel="noopener">PennyLane v0.44 : QRAM templates, ressources FTQC, VQE/QAOA</a>
+        <span class="article-meta">Xanadu — 2026-01</span>
+      </div>
+      <p>Mise à jour apportant des templates QRAM, circuits IQP, estimation de ressources FTQC et support variatif ; accélère le prototypage hybride classique-quantique.</p>
+      <div class="badges"><span class="badge dispo">Disponible</span></div>
+      <div class="maturity-note">Maturité : Disponible</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://nvidia.github.io/cuda-quantum/blogs/blog/2026/03/16/cudaq-0-14/" target="_top" rel="noopener">CUDA-Q 0.14 : support macOS, Application Hub, cudaq-realtime</a>
+        <span class="article-meta">NVIDIA — 2026-03</span>
+      </div>
+      <p>Solution hybride GPU+QPU avec latence réduite, intégration d’exemples QAOA/VQE/chimie et support macOS, abaissant le coût d’entrée aux workflows quantiques hybrides.</p>
+      <div class="badges"><span class="badge beta">Beta</span></div>
+      <div class="maturity-note">Maturité : Beta</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.nature.com/articles/s41586-024-07107-7" target="_top" rel="noopener">IBM qLDPC bivariate bicycle : seuil comparable au surface code, overhead ~10× plus faible</a>
+        <span class="article-meta">Nature — 2024-10</span>
+      </div>
+      <p>IBM démontre la faisabilité de codes qLDPC avec 12 qubits logiques en 288 qubits physiques, suggérant un levier majeur pour réduire la taille nécessaire au FTQC.</p>
+      <div class="badges"><span class="badge rd">R&amp;D</span></div>
+      <div class="maturity-note">Maturité : R&amp;D</div>
+    </article>
+  </section>
+
+  <section aria-labelledby="s4">
+    <h2 id="s4">🚀 Prospective &amp; Impacts Sectoriels <span class="pill">6 articles</span></h2>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point" target="_top" rel="noopener">McKinsey Quantum Technology Monitor 2026 : point de bascule commercial</a>
+        <span class="article-meta">McKinsey — 2026-04</span>
+      </div>
+      <p>Plus de 300 entreprises adoptent le quantique ; McKinsey table sur 2,7 trillions USD de valeur d’ici 2035, mais alerte sur le sous-investissement dans la migration post-quantique.</p>
+      <div class="badges"><span class="badge moyen">Moyen 2-5 ans</span></div>
+      <div class="horizon-note">Horizon : Moyen 2-5 ans</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://blog.cloudflare.com/post-quantum-eo-2026/" target="_top" rel="noopener">Q-Day accéléré : EO US juin 2026 et migration PQC</a>
+        <span class="article-meta">Cloudflare / NIST / ENISA — 2026-06</span>
+      </div>
+      <p>Les avancées matérielles raccourcissent l’horizon 2030 ; RSSI/DSI doivent prioriser inventaires PKI/HSM, hybridation et plans de migration post-quantique d’urgence.</p>
+      <div class="badges"><span class="badge court">Court &lt;2 ans</span></div>
+      <div class="horizon-note">Horizon : Court terme &lt;2 ans</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://entangledfuture.com/guides/quantum-computing-use-cases-by-industry/" target="_top" rel="noopener">Finance quantique : optimisation de portefeuilles et pricing d’options</a>
+        <span class="article-meta">Entangled Future / BCG / Pasqal — 2026</span>
+      </div>
+      <p>Les cas d’usage avancés utilisent des algorithmes hybrides QAOA/VQE ; partenariats banques-quantique se multiplient, horizon production réelle 2027-2029.</p>
+      <div class="badges"><span class="badge moyen">Moyen 2-5 ans</span></div>
+      <div class="horizon-note">Horizon : Moyen 2-5 ans</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://entangledfuture.com/guides/quantum-computing-use-cases-by-industry/" target="_top" rel="noopener">Pharma / chimie computationnelle : simulation moléculaire cible 2028-2033</a>
+        <span class="article-meta">McKinsey / Entangled Future — 2026</span>
+      </div>
+      <p>La simulation de molécules et le pliage de protéines promettent des accélérations décisives, conditionnées aux plateformes tolérantes aux fautes encore en maturation.</p>
+      <div class="badges"><span class="badge moyen">Moyen 2-5 ans</span></div>
+      <div class="horizon-note">Horizon : Moyen 2-5 ans</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.mdpi.com/2078-2489/16/8/693" target="_top" rel="noopener">QML : état 2026 — avantages théoriques pharma, finance, logistique</a>
+        <span class="article-meta">arXiv / FutureMarkets — 2026</span>
+      </div>
+      <p>Les preprints QML continuent de formaliser des speedups théoriques pour l’optimisation, la finance et la logistique ; aucun avantage pratique avéré hors démonstrations académiques en 2026.</p>
+      <div class="badges"><span class="badge long">Long &gt;5 ans</span></div>
+      <div class="horizon-note">Horizon : Long &gt;5 ans</div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <a class="article-title" href="https://www.mdpi.com/2078-2489/16/8/693" target="_top" rel="noopener">Logistique supply chain quantique : routes, planification, hybrides</a>
+        <span class="article-meta">MDPI / PostQuantum — 2026</span>
+      </div>
+      <p>L’optimisation de routes et la planification commencent à être testées sur annealers/NISQ ; les cas concrets ont besoin de solveurs hybrides pour produire un ROI mesurable.</p>
+      <div class="badges"><span class="badge moyen">Moyen 2-5 ans</span></div>
+      <div class="horizon-note">Horizon : Court/Moyen 2-5 ans</div>
+    </article>
+  </section>
+
+  <section class="weak-signals" aria-labelledby="s5">
+    <h2 id="s5">📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <ol>
+      <li><strong>Migration PQC accélérée par les RSSI</strong> — ANSSI 2027 + EO US juin 2026 + NIST FIPS 203-205 créent une fenêtre critique ; les DSI doivent invariabiliser l’inventaire PKI/HSM d’ici 2026.</li>
+      <li><strong>Consolidation capitalistique des startups quantiques européennes</strong> — IQM cotée, Quobly en Série A, Pasqal prépare sa cotation ; cartographier la dépendance hardware avant 2028.</li>
+      <li><strong>qLDPC comme breaking change matériel-logiciel</strong> — Roadmaps IBM Kookaburra et codes arXiv bouleversent l’architecture QEC ; anticiper la co-évolution stacks matériel/logiciel.</li>
+      <li><strong>Hybridation classique-quantique comme norme</strong> — CUDA-Q 0.14 et Qiskit 2.x renforcent les workflows hybride GPU+QPU ; évaluer l’intégration avec les infrastructures HPC existantes.</li>
+      <li><strong>Finance quantique en production à horizon rapproché</strong> — Les partenariats banques/Pasqal et rapports McKinsey accréditent une industrialisation 2027-2029 ; prioriser les pilotes hybrides de risque/d’optimisation.</li>
+    </ol>
+  </section>
+</main>
+<footer>
+  Rapport généré le 2026-07-06 — veille quantique bi-hebdomadaire. Sources : Nature, arXiv quant-ph, IBM, NIST, ENISA, McKinsey, info.gouv.fr, Mourant, Quobly, Pasqal, Alice &amp; Bob, Quantinuum, Cloudflare, The Quantum Insider, HPCwire, Sifted, Entangled Future, MDPI, Xanadu, CUDA-Q, IEEE Spectrum.
+</footer>
+</body>
+</html>

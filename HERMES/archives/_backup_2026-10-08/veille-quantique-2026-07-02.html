@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Informatique Quantique — 2026-07-02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --text: #eaeaea;
+            --text-muted: #a0a0a0;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+            --tag-bg: #2a2a4a;
+            --success: #4ecca3;
+            --warning: #f9ca24;
+            --info: #3498db;
+            --beta: #e67e22;
+            --rd: #9b59b6;
+            --theoretical: #95a5a6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--primary) 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border-bottom: 3px solid var(--highlight);
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, var(--highlight) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle { font-size: 1.1em; color: var(--text-muted); font-weight: 300; }
+        .date-badge {
+            display: inline-block;
+            background: var(--highlight);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        .section { margin-bottom: 50px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section-title { font-size: 1.8em; font-weight: 600; }
+        .article-count {
+            background: var(--highlight);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--highlight);
+        }
+        .article-card:hover {
+            transform: translateX(5px);
+            border-color: var(--highlight);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.2);
+        }
+        .article-title { font-size: 1.25em; font-weight: 600; margin-bottom: 10px; }
+        .article-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            color: var(--text-muted);
+        }
+        .source-badge {
+            background: var(--accent);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .date-badge-article {
+            background: var(--tag-bg);
+            color: var(--text-muted);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+        .article-summary { line-height: 1.7; margin-bottom: 15px; font-size: 0.95em; }
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .article-link { color: var(--highlight); text-decoration: none; font-weight: 500; font-size: 0.9em; }
+        .article-link:hover { color: #ff6b81; text-decoration: underline; }
+        .article-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            background: var(--tag-bg);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .maturity-badge, .horizon-badge {
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .maturity-disponible { background: var(--success); color: #000; }
+        .maturity-beta { background: var(--beta); color: #000; }
+        .maturity-rd { background: var(--rd); color: #fff; }
+        .maturity-theorique { background: var(--theoretical); color: #000; }
+        .horizon-court { background: var(--success); color: #000; }
+        .horizon-moyen { background: var(--warning); color: #000; }
+        .horizon-long { background: var(--info); color: #fff; }
+        .visual-section, .visual-item, .visual-title, .visual-desc { color: var(--text); }
+        .visual-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .visual-item { padding: 15px 0; border-bottom: 1px solid var(--border); }
+        .visual-item:last-child { border-bottom: none; }
+        .visual-title { font-weight: 600; margin-bottom: 5px; }
+        .visual-desc { color: var(--text-muted); font-size: 0.95em; }
+        .signals-section {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary) 100%);
+            border: 2px solid var(--highlight);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        .signal-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            background: var(--bg);
+            border-left: 4px solid var(--highlight);
+            border-radius: 8px;
+        }
+        .signal-item:last-child { margin-bottom: 0; }
+        .signal-title { font-size: 1.1em; font-weight: 600; color: var(--highlight); margin-bottom: 8px; }
+        .signal-desc { line-height: 1.7; }
+        .disclaimer {
+            background: var(--card-bg);
+            border: 1px solid var(--warning);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 40px;
+            color: var(--warning);
+            font-size: 0.9em;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .section-title { font-size: 1.5em; }
+            .article-header { flex-direction: column; }
+            .container { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚛️ Veille Informatique Quantique</h1>
+        <div class="subtitle">Rapport bi-hebdomadaire — Marché, innovations et prospective</div>
+        <div class="date-badge">2026-07-02</div>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🇫🇷🇪🇺 Marché France & Europe</div>
+                <div class="article-count">6 articles</div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Financement] Quobly lève 115 M€ pour accélérer dans les puces quantiques sur silicium</div>
+                <div class="article-meta">
+                    <span class="source-badge">Le Monde Informatique</span>
+                    <span class="date-badge-article">2026-07-01</span>
+                </div>
+                <div class="article-summary">
+                    La startup française Quobly annonce une levée de fonds de 115 M€ en série A pour accélérer le développement et l'industrialisation de ses puces quantiques à spin de silicium et ses systèmes Alloy, avec des premiers déploiements cloud et HPC visés dès 2027.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.lemondeinformatique.fr/actualites/lire-quobly-leve-115-meteuro-pour-accelerer-dans-les-puces-quantiques-sur-silicium-100341.html" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#levée de fonds</span>
+                        <span class="tag">#startups</span>
+                        <span class="tag">#silicium</span>
+                        <span class="tag">#france quantique</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Programme public] France Adds €1.55 Billion for Quantum and Semiconductor Development</div>
+                <div class="article-meta">
+                    <span class="source-badge">The Quantum Insider</span>
+                    <span class="date-badge-article">2026-05-25</span>
+                </div>
+                <div class="article-summary">
+                    Le Président Macron annonce une rallonge de 1 Md€ supplémentaires pour le programme quantique dans le cadre de France 2030, lors d'une visite au CEA de Saclay, pour accélérer l'innovation et la souveraineté européenne.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://thequantuminsider.com/2026/05/25/emmanuel-macron-announces-1-55-billion-euros-more-for-quantum-and-semiconductors/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#france 2030</span>
+                        <span class="tag">#programme public</span>
+                        <span class="tag">#souveraineté</span>
+                        <span class="tag">#CEA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Réglementation] France To Stop Certifying Products Without Quantum-Safe Encryption</div>
+                <div class="article-meta">
+                    <span class="source-badge">Reuters</span>
+                    <span class="date-badge-article">2026-06-16</span>
+                </div>
+                <div class="article-summary">
+                    L'ANSSI annonce qu'elle cessera de certifier les produits de sécurité dépourvus de chiffrement résistant à l'ordinateur quantique à partir de 2027, avec comme objectif que les entreprises n'achètent plus que des produits quantiques-résistants d'ici 2030.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.reuters.com/legal/litigation/france-stop-certifying-products-without-quantum-safe-encryption-2026-06-16/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#ANSSI</span>
+                        <span class="tag">#réglementation</span>
+                        <span class="tag">#PQC</span>
+                        <span class="tag">#cybersécurité</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Infrastructure] Lucy, un jalon quantique de plus dans la stratégie française de calcul hybride</div>
+                <div class="article-meta">
+                    <span class="source-badge">Silicon.fr</span>
+                    <span class="date-badge-article">2026-04-14</span>
+                </div>
+                <div class="article-summary">
+                    L'ordinateur quantique photonique Lucy de Quandela a été inauguré au TGCC (Très Grand Centre de Calcul du CEA), couplé au supercalculateur Joliot-Curie dans le cadre de l'initiative nationale de calcul hybride quantique-HPC.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.silicon.fr/business-1367/lucy-calcul-hybride-226716" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#TGCC</span>
+                        <span class="tag">#Quandela</span>
+                        <span class="tag">#hybride classique-quantique</span>
+                        <span class="tag">#eurohpc</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Programme public] National Research Programme Quantum (PEPR Quantique)</div>
+                <div class="article-meta">
+                    <span class="source-badge">CNRS</span>
+                    <span class="date-badge-article">2026 (programme en cours)</span>
+                </div>
+                <div class="article-summary">
+                    Doté de 150 M€ sur 2022-2028 dans le cadre de France 2030, le PEPR Quantique, piloté par le CEA, le CNRS et Inria, soutient la recherche académique en calcul quantique, communication quantique, cryptographie post-quantique et capteurs.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.cnrs.fr/en/our-research/france-2030/pepr/quantum" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#PEPR</span>
+                        <span class="tag">#france 2030</span>
+                        <span class="tag">#CNRS</span>
+                        <span class="tag">#recherche académique</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Réglementation] France announces new export controls on semiconductors and quantum equipment</div>
+                <div class="article-meta">
+                    <span class="source-badge">Hogan Lovells</span>
+                    <span class="date-badge-article">2024-03-15 (en vigueur)</span>
+                </div>
+                <div class="article-summary">
+                    Depuis mars 2024, la France impose des licences d'exportation pour les ordinateurs quantiques, les technologies et logiciels associés, et les semiconducteurs avancés vers les pays non-UE, renforçant la souveraineté technologique européenne.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.hoganlovells.com/en/publications/france-announces-new-export-controls-on-semi-conductors-and-quantum-equipment-and-technology" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#export control</span>
+                        <span class="tag">#réglementation</span>
+                        <span class="tag">#souveraineté</span>
+                        <span class="tag">#dual-use</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🌍 Monde — Pertinence Europe</div>
+                <div class="article-count">6 articles</div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Hardware] IBM Commits More Than $10 Billion to Quantum Computing Roadmap</div>
+                <div class="article-meta">
+                    <span class="source-badge">IBM Newsroom</span>
+                    <span class="date-badge-article">2026-06-02</span>
+                </div>
+                <div class="article-summary">
+                    IBM annonce un investissement de plus de 10 Md$ sur cinq ans pour soutenir sa feuille de route quantique, visant un avantage quantique démontrable d'ici fin 2026 avec des systèmes comme Nighthawk (120 qubits), puis un calcul tolérant aux fautes à grande échelle d'ici 2029.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://newsroom.ibm.com/2026-06-02-ibm-commits-more-than-10-billion-to-quantum-computing" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#IBM</span>
+                        <span class="tag">#investissement</span>
+                        <span class="tag">#qubits logiques</span>
+                        <span class="tag">#roadmap</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Hardware / Topologique] Microsoft Unveils Majorana 2 Topological Quantum Chip</div>
+                <div class="article-meta">
+                    <span class="source-badge">Microsoft</span>
+                    <span class="date-badge-article">2026-06-03</span>
+                </div>
+                <div class="article-summary">
+                    Microsoft présente Majorana 2, une puce de qubits topologiques avec une fiabilité 1 000 fois supérieure aux générations précédentes et des temps de cohérence dépassant les 20 secondes, grâce à une nouvelle pile matérielle, visant un système tolérant aux fautes d'ici 2029.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://news.microsoft.com/source/features/innovation/majorana-2-microsoft-discovery-agentic-ai/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#Microsoft</span>
+                        <span class="tag">#Majorana</span>
+                        <span class="tag">#topologique</span>
+                        <span class="tag">#correction d'erreurs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Cloud / Partenariat] AWS Deepens Collaboration with QuEra for Fault-Tolerant Quantum Computing</div>
+                <div class="article-meta">
+                    <span class="source-badge">AWS Blog</span>
+                    <span class="date-badge-article">2026-06-15</span>
+                </div>
+                <div class="article-summary">
+                    AWS annonce un partenariat stratégique élargi avec QuEra pour fournir le système Libra à atomes neutres aux clients d'Amazon Braket d'ici 2028, en s'appuyant sur des avancées récentes en correction d'erreurs pour les réseaux d'atomes de Rydberg.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://aws.amazon.com/blogs/quantum-computing/aws-deepens-strategic-collaboration-with-quera-to-bring-fault-tolerant-quantum-computing-to-amazon-braket/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#AWS</span>
+                        <span class="tag">#Amazon Braket</span>
+                        <span class="tag">#atomes neutres</span>
+                        <span class="tag">#cloud quantique</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Finance / Réglementation] ESMA TRV Risk Analysis : Quantum Computing in Financial Markets</div>
+                <div class="article-meta">
+                    <span class="source-badge">ESMA</span>
+                    <span class="date-badge-article">2026-05 (rapport)</span>
+                </div>
+                <div class="article-summary">
+                    L'ESMA publie un rapport d'analyse des risques quantiques pour les marchés financiers, examinant les applications de l'optimisation quantique pour la gestion de portefeuille et le règlement des transactions, ainsi que les enjeux de migration vers le post-quantique.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.esma.europa.eu/sites/default/files/2026-05/ESMA50-481369926-33801_TRV_Risk_Analysis_Quantum_Computing_in_Financial_Markests.pdf" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#ESMA</span>
+                        <span class="tag">#finance</span>
+                        <span class="tag">#réglementation</span>
+                        <span class="tag">#europe</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Pharma] Quantum-centric supercomputing simulates 12,635-atom protein complex</div>
+                <div class="article-meta">
+                    <span class="source-badge">IBM Quantum Blog</span>
+                    <span class="date-badge-article">2026 (annonce récente)</span>
+                </div>
+                <div class="article-summary">
+                    Cleveland Clinic, RIKEN et IBM utilisent un supercalculateur quanto-centrique avec jusqu'à 94 qubits pour effectuer la plus grande simulation hétérogène à ce jour d'un complexe protéine-ligand de plus de 12 000 atomes, ouvrant la voie à des simulations moléculaires réalistes pour la découverte de médicaments.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.ibm.com/quantum/blog/cleveland-clinic-riken-chemistry" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#IBM</span>
+                        <span class="tag">#pharma</span>
+                        <span class="tag">#simulation moléculaire</span>
+                        <span class="tag">#protein folding</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Cybersécurité / Marché] McKinsey Quantum Technology Monitor 2026 : A Commercial Tipping Point</div>
+                <div class="article-meta">
+                    <span class="source-badge">McKinsey</span>
+                    <span class="date-badge-article">2026-06 (rapport)</span>
+                </div>
+                <div class="article-summary">
+                    Le rapport McKinsey 2026 constate que plus de 300 entreprises adoptent le calcul quantique avec des investissements atteignant 12,6 Md$ en 2025, et projette jusqu'à 2 700 Md$ de valeur économique d'ici 2035, les secteurs services financiers et pharmacie tirant le plus vite parti des POC.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#McKinsey</span>
+                        <span class="tag">#investissement</span>
+                        <span class="tag">#quantum advantage</span>
+                        <span class="tag">#market</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🔬 Innovations Matérielles & Logicielles</div>
+                <div class="article-count">6 articles</div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Hardware / Topologique] Microsoft Unveils Majorana 2 Topological Quantum Chip</div>
+                <div class="article-meta">
+                    <span class="source-badge">Microsoft</span>
+                    <span class="date-badge-article">2026-06-03</span>
+                    <span class="maturity-badge maturity-beta">Beta</span>
+                </div>
+                <div class="article-summary">
+                    Deuxième génération de processeur topologique avec fiabilité 1 000× supérieure et cohérence >20 s, ouvrant la voie vers le seuil de tolérance aux fautes en 2029.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://news.microsoft.com/source/features/innovation/majorana-2-microsoft-discovery-agentic-ai/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#Majorana</span>
+                        <span class="tag">#topologique</span>
+                        <span class="tag">#correction d'erreurs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Hardware / Photonique] QuiX Quantum Launches Dedalo Photonic Architecture</div>
+                <div class="article-meta">
+                    <span class="source-badge">Quantum Computing Report</span>
+                    <span class="date-badge-article">2026-06</span>
+                    <span class="maturity-badge maturity-rd">R&D</span>
+                </div>
+                <div class="article-summary">
+                    Dedalo est une architecture photonique tolérante aux fautes exploitant des qubits logiques à base unique sur circuits intégrés photoniques en nitrure de silicium, ciblant l'intégration modulaire en datacenter.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://quantumcomputingreport.com/quix-quantum-launches-dedalo-photonic-architecture-to-address-photon-loss-via-single-basis-logical-quubits/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#photonique</span>
+                        <span class="tag">#correction d'erreurs</span>
+                        <span class="tag">#PIC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Hardware / Supraconducteur] Dell World 2026 : Quantum-Classical Hybrid Demo with Equal1</div>
+                <div class="article-meta">
+                    <span class="source-badge">Le Monde Informatique</span>
+                    <span class="date-badge-article">2026-03</span>
+                    <span class="maturity-badge maturity-beta">Démonstrateur</span>
+                </div>
+                <div class="article-summary">
+                    Dell présente un serveur PowerEdge intégré à un processeur quantique silicium/germanium de 6 qubits dans un cryostat miniaturisé, illustrant la voie vers l'intégration CMOS-quantique hybride en rack 42U.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.lemondeinformatique.fr/actualites/lire-dell-world-2026-les-futurs-serveurs-poweredge-se-devoilent-100216.html" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#Dell</span>
+                        <span class="tag">#hybride classique-quantique</span>
+                        <span class="tag">#silicium-germanium</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Logiciel / Erreurs] Qiskit Paulice pour la correction d'erreurs post-sélectionnée</div>
+                <div class="article-meta">
+                    <span class="source-badge">IBM Quantum Blog</span>
+                    <span class="date-badge-article">2026-06-25</span>
+                    <span class="maturity-badge maturity-disponible">Disponible</span>
+                </div>
+                <div class="article-summary">
+                    IBM publie l'addon Qiskit Paulice, qui insère des vérifications de Pauli spatio-temporelles à basse surcharge pour la détection d'erreurs et une post-sélection en temps réel sur hardware NISQ, étape vers la correction d'erreurs complète tolérante aux fautes.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.ibm.com/quantum/blog/qiskit-paulice" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#Qiskit</span>
+                        <span class="tag">#correction d'erreurs</span>
+                        <span class="tag">#NISQ</span>
+                        <span class="tag">#IBM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Logiciel / Frameworks] État des lieux des frameworks quantiques en 2026</div>
+                <div class="article-meta">
+                    <span class="source-badge">The Quantum Insider</span>
+                    <span class="date-badge-article">2026-06-19</span>
+                    <span class="maturity-badge maturity-disponible">Disponible</span>
+                </div>
+                <div class="article-summary">
+                    Panorama des frameworks quantiques majeurs : Qiskit v2.x avec mitigation d'erreurs accélérée HPC, PennyLane avec des tutoriels sur les surface codes, Cirq, Q#, CUDA-Q de NVIDIA, et la bibliothèque Stim pour simulations de codes correcteurs.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://thequantuminsider.com/2026/06/19/state-of-quantum-computing-programming-languages/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#Qiskit</span>
+                        <span class="tag">#PennyLane</span>
+                        <span class="tag">#CUDA-Q</span>
+                        <span class="tag">#frameworks</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Cloud / Logistique / Error Correction] PennyLane Demo — Surface Codes & Lattice Surgery</div>
+                <div class="article-meta">
+                    <span class="source-badge">PennyLane/Xanadu</span>
+                    <span class="date-badge-article">2026-06</span>
+                    <span class="maturity-badge maturity-disponible">Disponible (tutoriel)</span>
+                </div>
+                <div class="article-summary">
+                    Tutoriel PennyLane mis à jour en juin 2026 couvrant les codes de surface pour le calcul tolérant aux fautes : code torique, chirurgie de réseau pour opérations logiques CNOT/T, et compromis volume/actif en QEC.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://pennylane.ai/demos/tutorial_game_of_surface_codes" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#PennyLane</span>
+                        <span class="tag">#surface codes</span>
+                        <span class="tag">#QEC</span>
+                        <span class="tag">#tutoriel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🚀 Prospective & Impacts Sectoriels</div>
+                <div class="article-count">6 articles</div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Quantum Advantage / Pharma] Quantum-centric supercomputing simulates 12,635-atom protein complex</div>
+                <div class="article-meta">
+                    <span class="source-badge">IBM Quantum Blog</span>
+                    <span class="date-badge-article">2026-06</span>
+                    <span class="horizon-badge horizon-court">Court terme <2 ans</span>
+                </div>
+                <div class="article-summary">
+                    La simulation de 12 635 atomes sur 94 qubits, couplée à un supercalculateur classique, constitue un signal fort vers l'avantage quantique biochimique d'ici 2027-2029.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.ibm.com/quantum/blog/cleveland-clinic-riken-chemistry" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#quantum advantage</span>
+                        <span class="tag">#pharma</span>
+                        <span class="tag">#simulation moléculaire</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Finance Quantique / Réglementation] ESMA TRV Risk Analysis — Quantum Computing in Financial Markets</div>
+                <div class="article-meta">
+                    <span class="source-badge">ESMA</span>
+                    <span class="date-badge-article">2026-05</span>
+                    <span class="horizon-badge horizon-court">Court terme <2 ans</span>
+                </div>
+                <div class="article-summary">
+                    Les banques européennes explorent le quantique pour l'optimisation de portefeuilles, le pricing dérivés et la gestion des risques ; le rapport appelle à anticiper la transition post-quantique sur les protocoles cryptographiques.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.esma.europa.eu/sites/default/files/2026-05/ESMA50-481369926-33801_TRV_Risk_Analysis_Quantum_Computing_in_Financial_Markests.pdf" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#finance quantique</span>
+                        <span class="tag">#réglementation</span>
+                        <span class="tag">#europe</span>
+                        <span class="tag">#portfolio optimization</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Cybersécurité / Marché] PQC Migration Deadlines by Country — Complete 2026 Global Guide</div>
+                <div class="article-meta">
+                    <span class="source-badge">Encryption Consulting</span>
+                    <span class="date-badge-article">2026</span>
+                    <span class="horizon-badge horizon-court">Court terme <2 ans</span>
+                </div>
+                <div class="article-summary">
+                    Les délais de migration PQC sont détaillés pour chaque pays : l'ANSSI exige des schémas hybrides (ML-KEM combiné à FrodoKEM et hybrid ML-DSA pour signatures) avec déploiement en 2026, cas à haut risque d'ici 2030, et transition complète d'ici 2035.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.encryptionconsulting.com/pqc-migration-deadlines-by-country/" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#NIST PQC</span>
+                        <span class="tag">#ANSSI</span>
+                        <span class="tag">#ML-KEM</span>
+                        <span class="tag">#hybrid</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Procédé / Pharma] Quantum-machine-assisted drug discovery</div>
+                <div class="article-meta">
+                    <span class="source-badge">npj Drug Discovery (Nature)</span>
+                    <span class="date-badge-article">2026-02</span>
+                    <span class="horizon-badge horizon-moyen">Moyen terme 2-5 ans</span>
+                </div>
+                <div class="article-summary">
+                    Cette revue explore l'intégration du calcul quantique dans l'ensemble du cycle de développement de médicaments : simulation moléculaire, interactions drogue-cible, et optimisation clinique.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.nature.com/articles/s44386-025-00033-2" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#pharma</span>
+                        <span class="tag">#molecular simulation</span>
+                        <span class="tag">#drug discovery</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[QML / Science] Practical quantum advantage for spatiotemporal chaos forecasting</div>
+                <div class="article-meta">
+                    <span class="source-badge">Science Advances</span>
+                    <span class="date-badge-article">2026-06</span>
+                    <span class="horizon-badge horizon-long">Long terme >5 ans</span>
+                </div>
+                <div class="article-summary">
+                    Un article présente un framework QIML hybride démontrant un avantage quantique pratique pour la prévision à long terme des systèmes chaotiques haute-dimensionnels, en combinant un génératif quantique ponctuel et une prédiction classique.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.science.org/doi/10.1126/sciadv.aec5049" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#QML</span>
+                        <span class="tag">#quantum advantage</span>
+                        <span class="tag">#Science Advances</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-title">[Finance / Investissement] McKinsey Quantum Technology Monitor 2026 : commercial tipping point</div>
+                <div class="article-meta">
+                    <span class="source-badge">McKinsey</span>
+                    <span class="date-badge-article">2026-06</span>
+                    <span class="horizon-badge horizon-court">Court <2 ans</span>
+                </div>
+                <div class="article-summary">
+                    Plus de 300 entreprises adoptent le quantique avec 12,6 Md$ investis en 2025, et des retombées attendues de 2 700 Md$ d'ici 2035. Les services financiers et la pharmacie tirent le plus vite parti des POC.
+                </div>
+                <div class="article-footer">
+                    <a class="article-link" href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point" target="_blank" rel="noopener">🔗 Lien</a>
+                    <div class="article-tags">
+                        <span class="tag">#McKinsey</span>
+                        <span class="tag">#market</span>
+                        <span class="tag">#quantum advantage</span>
+                        <span class="tag">#POC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🖼️ Images & Schémas Analysés</div>
+                <div class="article-count">5 visuels</div>
+            </div>
+            <div class="visual-section">
+                <div class="visual-item">
+                    <div class="visual-title">Architecture de Qubits Topologiques (Microsoft Majorana 2)</div>
+                    <div class="visual-desc">La coupe transversale met en évidence des nanostructures avec des particules de Majorana, matérialisant la promesse topologique d'une erreur intrinsèque réduite.</div>
+                </div>
+                <div class="visual-item">
+                    <div class="visual-title">Carte des Acteurs Hardware Quantiques 2026 (The Quantum Insider)</div>
+                    <div class="visual-desc">Cartographie visuelle répertoriant plus d'une vingtaine de sociétés fabricant des puces quantiques, catégorisées par architecture : supraconducteurs, photoniques, atomes neutres, silicium, topologiques.</div>
+                </div>
+                <div class="visual-item">
+                    <div class="visual-title">Roadmap IBM Quantum (Heron → Nighthawk → Kookaburra → Starling)</div>
+                    <div class="visual-desc">Feuille de route détaillant la transition des processeurs bruyants vers les systèmes logiquement corrigés, jalons 2026-2029.</div>
+                </div>
+                <div class="visual-item">
+                    <div class="visual-title">Graphique ESMA — Risques cryptographiques quantiques</div>
+                    <div class="visual-desc">Chronologie de déploiement de la cryptographie post-quantique dans les infrastructures KYC/PSD2, avec recommandations de déploiement hybride.</div>
+                </div>
+                <div class="visual-item">
+                    <div class="visual-title">Diagramme de codes de surface et chirurgie de réseau (PennyLane)</div>
+                    <div class="visual-desc">Tutoriel illustrant le codage topologique, les stabilisateurs et les opérations logiques via chirurgie de réseau pour CNOT et T en surface code.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section signals-section">
+            <div class="section-header" style="border-bottom:2px solid var(--highlight);">
+                <div class="section-title">📊 Synthèse — 5 signaux faibles à surveiller</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-title">1. Accélération de l'investissement public français (France 2030 + PROQCIMA)</div>
+                <div class="signal-desc">Le doublement de l'enveloppe France 2030 et le PROQCIMA positionnent la France comme un acteur structurant de l'écosystème quantique européen. Une DSI/RSSI peut anticiper des opportunités de co-développement avec ces acteurs PROQCIMA.</div>
+            </div>
+            <div class="signal-item">
+                <div class="signal-title">2. Déploiement réglementaire accéléré de la PQC (pont ANSSI 2027)</div>
+                <div class="signal-desc">L'ANSSI exige des produits quantiques-résistants dès 2027, avec une obligation de déploiement hybride (ML-KEM + FrodoKEM) d'ici 2035. Les RSSI doivent initier un inventaire cryptographique complet avant fin 2026.</div>
+            </div>
+            <div class="signal-item">
+                <div class="signal-title">3. Convergence hardware/logiciel : chips intégrées classique-quantique</div>
+                <div class="signal-desc">Les annonces Dell+Equal1 et QuEra+AWS annoncent des serveurs hybr classique-quantique rackables d'ici 2027-2028. Pour les directions R&D, le cloud quantique hybride deviendra une ressource IT ordinaire.</div>
+            </div>
+            <div class="signal-item">
+                <div class="signal-title">4. Pharma : premiers cas quantiques validés expérimentalement</div>
+                <div class="signal-desc">La simulation de 12 635 atomes et la découverte d'inhibiteurs de KRAS valident l'apport du quantique au drug design. Les directions R&D biotech/pharma peuvent évaluer des partenariats avec IBM Quantum ou PolarisQB.</div>
+            </div>
+            <div class="signal-item">
+                <div class="signal-title">5. QML en transition : du théorique au "quantum-informed" hybride</div>
+                <div class="signal-desc">La controverse scientifique sur l'avantage net du QML pur se clarifie : les travaux récents convergent vers des modèles hybrides où le quantum apporte une valeur ajoutée au classique. Les directions R&D IA doivent adopter une posture hybride et surveiller les benchmarks indépendants.</div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>⚠️ Disclaimer :</strong> Certains articles cités n'ont pas été validés par relecture par les pairs au moment de la rédaction de ce rapport. Les annonces startup reposent sur des communiqués de presse et méritent une vérification des jalons techniques avant décision d'investissement.
+        </div>
+    </div>
+
+    <footer>
+        <p>Rapport généré automatiquement le 2026-07-02 — Veille bi-hebdomadaire Informatique Quantique</p>
+    </footer>
+</body>
+</html>

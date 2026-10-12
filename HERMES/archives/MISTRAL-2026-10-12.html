@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Mistral AI — 12 octobre 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;font-size:.82rem;
+    }
+    .dark .badge{background:#111827;color:#e5e7eb;border-color:#374151}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--border); background:var(--panel);
+      border-radius: var(--radius); overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:16px 18px;border-bottom:1px solid #f1f5f9;
+    }
+    .dark .card-head{border-bottom-color:#1f2937}
+    .card-title{font-weight:700;font-size:1.05rem;margin:0;display:inline-flex;align-items:center;gap:8px}
+    .card-title svg{width:18px;height:18px}
+    .pill{
+      font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
+    }
+    .blue{background:#dbeafe;color:#1e40af}
+    .green{background:#d1fae5;color:#065f46}
+    .yellow{background:#fef3c7;color:#92400e}
+    .red{background:#fee2e2;color:#7f1d1d}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .item{border-top:1px dashed #eef2f7;padding-top:14px}
+    .item:first-of-type{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.95rem;line-height:1.35}
+    .item .meta{font-size:.82rem;color:var(--muted)}
+    .item p{margin:8px 0 0;font-size:.92rem}
+    .item a{color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .item a:hover{text-decoration:underline}
+    .controls{display:flex;justify-content:flex-end;margin:10px 0 4px}
+    .theme-toggle{
+      border:1px solid var(--border); background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .dark .theme-toggle{background:rgba(255,255,255,.06)}
+    footer{
+      margin-top:34px;text-align:center;color:var(--muted);font-size:.82rem;
+    }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🤖 Veille Mistral AI</h1>
+        <p>12 octobre 2026 · Hermes Agent · rattrapage hebdomadaire</p>
+      </div>
+      <div style="text-align:right">
+        <time datetime="2026-10-12">12 octobre 2026</time>
+        <div style="font-size:.8rem;opacity:.8;margin-top:6px">Format : HTML moderne · 12 actualités</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Basculer thème sombre / clair">
+        🌗
+      </button>
+    </div>
+
+    <section class="kpis" aria-label="Résumé">
+      <div class="kpi">
+        <div class="label">🤖 Modèles &amp; benchmarks</div>
+        <div class="value">4 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">⚡ Infrastructure &amp; souveraineté</div>
+        <div class="value">3 actualités</div>
+      </div>
+      <div class="kpi">
+        <div class="label">🧩 Produits &amp; écosystème</div>
+        <div class="value" style="color:var(--success)">5 actualités</div>
+      </div>
+    </section>
+
+    <div class="badges">
+      <span class="badge"><span class="dot"></span>Fenêtre : 6 – 12 octobre 2026</span>
+      <span class="badge"><span class="dot"></span>12 actualités avec liens sources</span>
+      <span class="badge"><span class="dot"></span>Collecte Hermes Agent</span>
+    </div>
+
+    <div class="grid">
+      <article class="card" aria-labelledby="modeles">
+        <div class="card-head">
+          <h2 class="card-title" id="modeles">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            🤖 Modèles &amp; benchmarks
+          </h2>
+          <span class="pill yellow">4 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral lance Mistral Large 4 « Le Chonk », son premier modèle de frontière à 1 000 milliards de paramètres</h3>
+            <div class="meta">Mistral.ai / Numerama — 06/10/2026</div>
+            <p>Le 6 octobre, Mistral a dévoilé la préversion publique de Mistral Large 4, surnommé « Le Chonk » : un modèle nativement multimodal d'environ 1 000 milliards de paramètres (49–52 milliards actifs, architecture MoE), entraîné from scratch sur les data centers européens de l'entreprise. Disponible via l'API et Le Chat/Vibe ; les poids ouverts sont annoncés pour le 27 octobre après les évaluations de sécurité.</p>
+            <a href="https://mistral.ai/news/mistral-large-4/" target="_blank" rel="noopener">Lire la source →</a>
+            <a href="https://www.numerama.com/tech/2347595-mistral-relance-la-france-dans-la-course-a-lia-et-devoile-le-chonk-un-modele-de-frontiere-a-1000-milliards-de-parametres.html" target="_blank" rel="noopener" style="margin-left:12px">Source FR (Numerama) →</a>
+          </div>
+          <div class="item">
+            <h3>Reuters : Mistral affirme que son modèle dépasse certains rivaux chinois et comble l'écart avec les leaders</h3>
+            <div class="meta">Reuters — 06/10/2026</div>
+            <p>Le CEO Arthur Mensch revendique pour Large 4 de meilleures performances que la plupart des modèles open-weight, notamment en cybersécurité, et un rattrapage significatif sur les modèles de frontière en code et finance. Publication publique prévue le 27 octobre après tests avec des experts et des autorités.</p>
+            <a href="https://www.reuters.com/world/china/mistral-ceo-says-new-ai-model-beats-chinese-ones-some-areas-2026-10-06/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« Mistral Large 4 est-il surcoté ? » : ce que disent les benchmarks indépendants</h3>
+            <div class="meta">Frandroid — début octobre 2026</div>
+            <p>L'analyse française relève un sans-faute en open-weight sur le juridique (15,8 % Harvey, n°1 open) et la cybersécurité (82 % CyberGym), mais note des retards sur le code agentique (Terminal-Bench) face aux leaders chinois et aux modèles fermés. Un lancement solide, à cadrer avant d'annoncer l'égalité avec les géants américains.</p>
+            <a href="https://www.frandroid.com/culture-tech/3278907_mistral-large-4-est-il-surcote-voici-ce-que-disent-les-benchmarks-independants" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>VentureBeat : les benchmarks de Le Chonk passés au crible des leaderboards publics</h3>
+            <div class="meta">VentureBeat — 07/10/2026</div>
+            <p>VentureBeat confronte les chiffres annoncés (93 % Cybench, 82 % CyberGym-E2E, 61,7 % DeepSWE, indice Artificial Analysis 38) aux leaderboards publics : excellent en cyber et juridique, mais le coding reste dominé par les modèles chinois. Les poids ouverts sortiront sous une licence spécifique fin octobre.</p>
+            <a href="https://venturebeat.com/technology/mistral-debuts-large-4-le-chonk-a-1-trillion-parameter-text-output-model-with-high-benchmarks-planned-for-open-weights-release" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="infra">
+        <div class="card-head">
+          <h2 class="card-title" id="infra">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+            ⚡ Infrastructure &amp; souveraineté
+          </h2>
+          <span class="pill green">3 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Mistral Large 4 : l'IA européenne quitte les clouds américains, pas leurs puces</h3>
+            <div class="meta">Le Nouvel Économiste — début octobre 2026</div>
+            <p>Le modèle a été entraîné sur les data centers européens de Mistral avec ~4 000 GPU Nvidia. L'entreprise finance son expansion infrastructure par des prêts adossés à Bpifrance, avec un cap de 200 MW de capacité fin 2027 et des ambitions bien supérieures à terme.</p>
+            <a href="https://www.lenouveleconomiste.fr/mistral-large-4-lia-europeenne-quitte-les-clouds-americains-pas-leurs-puces-142007/" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Campus AI double son objectif de capacité en France à 3 GW</h3>
+            <div class="meta">ChannelNews / Bpifrance — octobre 2026</div>
+            <p>La JV Campus AI (MGX, Bpifrance, Mistral AI, Nvidia) relève son ambition à 3 GW de capacité de calcul en France, autour du site phare de Fouju (Seine-et-Marne, 1,4 GW), où Mistral est client ancre avec jusqu'à 200 MW — le socle de son objectif de 1 GW de compute souverain d'ici 2030.</p>
+            <a href="https://www.channelnews.fr/campus-ai-double-son-objectif-de-capacite-en-france-a-3-gw-156992" target="_blank" rel="noopener">Lire la source →</a>
+            <a href="https://presse.bpifrance.fr/?p=244586" target="_blank" rel="noopener" style="margin-left:12px">Complément Bpifrance →</a>
+          </div>
+          <div class="item">
+            <h3>Mistral Compute : mégawatts annoncés vs capacité réellement raccordée</h3>
+            <div class="meta">btw.media — octobre 2026</div>
+            <p>Enquête sur l'écart entre la communication (plafond de 1,4 GW pour le campus Fouju lié à Bpifrance, raccordements échelonnés) et la capacité effective : 44 MW financés près de Paris avec 13 800 GPU Nvidia via de la dette incluant Bpifrance. Utile pour relativiser les annonces de la semaine.</p>
+            <a href="https://btw.media/en/mistral-compute-power-capacity" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="produits">
+        <div class="card-head">
+          <h2 class="card-title" id="produits">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+            🧩 Produits &amp; écosystème
+          </h2>
+          <span class="pill blue">5 items</span>
+        </div>
+        <div class="card-body">
+          <div class="item">
+            <h3>Vibe 2.26.1 : le CLI Rust gagne proxy, gestion de plugins et mode narrateur</h3>
+            <div class="meta">Freedom.Tech / GitHub — 09/10/2026</div>
+            <p>La release du 9 octobre ajoute au CLI Vibe (Rust) la configuration proxy/SSL, la gestion des plugins, un mode « narrator », les entrées multi-lignes et des améliorations de gestion de session, plus divers correctifs.</p>
+            <a href="https://freedom.tech/posts/2026-10-09-mistral-vibe-2-26-1/" target="_blank" rel="noopener">Lire la source →</a>
+            <a href="https://github.com/mistralai/mistral-vibe/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="margin-left:12px">Changelog officiel →</a>
+          </div>
+          <div class="item">
+            <h3>Vibe mobile (ex-Le Chat) passe en 2.14.0 sur iOS et Android</h3>
+            <div class="meta">AppBrain / APKMirror — 08–09/10/2026</div>
+            <p>L'application mobile de l'agent Mistral, rebaptisée Vibe, a été mise à jour en version 2.14.0 (8–9 octobre) avec « diverses corrections et améliorations », après la 2.13.0 du 6 octobre publiée au moment du lancement de Large 4.</p>
+            <a href="https://www.appbrain.com/app/vibe-by-mistral-ex-le-chat/ai.mistral.chat" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Managed Deployments en préversion publique dans Mistral Studio</h3>
+            <div class="meta">Mistral Docs (release notes) — 09/10/2026</div>
+            <p>Annoncé le 9 octobre : Managed Deployments permet d'exécuter des Workflows sans gérer d'infrastructure (préversion publique), tandis que le déploiement progressif des simplifications Vibe se poursuit en octobre.</p>
+            <a href="https://docs.mistral.ai/resources/release-notes" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>Les Echos : récit de l'ascension du leader européen de l'IA</h3>
+            <div class="meta">Les Echos — 12/10/2026</div>
+            <p>À l'occasion du lancement de Large 4, Les Echos publient un récit complet de l'ascension de Mistral, de la levée de 3 Md€ au positionnement de champion européen face aux géants américains et chinois.</p>
+            <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/mistral-recit-de-lascension-du-leader-europeen-de-lia-2256315" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+          <div class="item">
+            <h3>« From models to megawatts » : la stratégie intégrée de Mistral décryptée</h3>
+            <div class="meta">fw.media — 07/10/2026</div>
+            <p>Analyse du positionnement de Mistral qui combine modèles (Large 4), infrastructure (data centers, partenariat Samsung pour des modèles on-premises dédiés à la conception de semi-conducteurs) et applications, adossé à la levée de 3 Md€ et à l'objectif de souveraineté européenne.</p>
+            <a href="https://www.fw.media/from-models-to-megawatts-mistral-ai-is-building-its-place-in-the-ai-industry/587" target="_blank" rel="noopener">Lire la source →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <footer>
+      Veille générée le 12 octobre 2026 · Sources vérifiées · Archivée dans ~/dev/ParkStras/HERMES/archives/
+    </footer>
+  </div>
+</body>
+</html>
