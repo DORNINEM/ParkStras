@@ -104,6 +104,15 @@ header.main .sub b { color: var(--cyan); }
 .card .count { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: .2em; }
 .card .arrow { color: var(--cyan); font-size: 16px; transition: transform .18s; }
 .card:hover .arrow { transform: translateX(5px); }
+.card.obsolete { opacity: .62; border-style: dashed; }
+.card.obsolete:hover { opacity: .85; }
+.badge-obsolete {
+  position: absolute; top: 10px; right: 12px;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: .22em;
+  color: #ffb347; border: 1px dashed #ffb347; padding: 3px 8px;
+  background: rgba(255,179,71,.08); text-transform: uppercase;
+}
+.badge-obsolete::before { content: "⚠ "; }
 
 footer {
   text-align: center; font-family: var(--font-mono); font-size: 11px;
@@ -218,10 +227,11 @@ footer .lm { color: var(--cyan); }
   </header>
 
   <div class="grid">
-<a class="card" href="index-mistral.html">
+<a class="card obsolete" href="index-mistral.html">
+  <div class="badge-obsolete">Obsolète — fusionné dans IA Global</div>
   <div class="tag">MISTRAL</div>
   <h2>Actualités Mistral</h2>
-  <p>Lancements, performances, partenaires</p>
+  <p>Archives gelées · la veille continue dans <b>Veille IA Global</b> (rubrique Focus Mistral)</p>
   <div class="meta"><span class="count">16 ARCHIVES</span><span class="arrow">▸</span></div>
 </a><a class="card" href="index-ia.html">
   <div class="tag">IA</div>
