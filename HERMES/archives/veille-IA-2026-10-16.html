@@ -1,0 +1,283 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-10-16</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.tricolor{background:linear-gradient(90deg,#0055a4,#ffffff 50%,#ef4135);color:#1f2937;border-color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .synthesis{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:18px}
+    .synthesis h2{margin:0 0 8px;font-size:1.1rem}
+    .synthesis p{margin:0;font-size:.95rem;color:var(--ink)}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .mistral-section{margin-top:22px}
+    .mistral-section h2{font-size:1.15rem;margin:0 0 10px}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr 1fr}
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="veille-IA-2026-10-16.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Écouter le résumé vocal <b>(moins de 2 min)</b></span></a></div>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-16">16 octobre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">4</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">6</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 15 articles</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 6</span>
+    <span class="pill green">📅 16 octobre 2026</span>
+    <span class="pill yellow">🔬 ArXiv : 5</span>
+  </div>
+  <div class="synthesis">
+    <h2>📌 Synthèse du jour</h2>
+    <p>Journée sous le signe de la régulation et de la souveraineté : Emmanuel Macron a convoqué un conseil de défense et de sécurité dédié à l'IA, l'Union européenne a formellement adopté l'« AI Omnibus » qui repousse les échéances du AI Act, tandis que Nvidia accélère ses investissements en France avec Doctolib. Outre-Atlantique, la pression judiciaire s'intensifie sur OpenAI (8 États demandeurs, convocations de la FTC) pendant qu'Anthropic affiche 16,8 milliards de dollars de revenus trimestriels. Côté modèles : Meta ouvre les poids de Muse Spark Open, Google rend Gemini 4 Argon public. Gros Focus Mistral cette semaine : partenariat historique avec le CERN, quatrième acquisition de l'année et modèles embarqués dans l'espace.</p>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.01net.com/actualites/domaine-strategique-emmanuel-macron-convoque-conseil-defense-securite-ia.html" target="_blank">Emmanuel Macron convoque un conseil de défense et de sécurité sur l'IA</a></h3>
+<div class="meta">01net • 14/10/2026</div>
+<p>L'Élysée a réuni un conseil de défense et de sécurité nationale entièrement consacré à l'intelligence artificielle, qualifiée de « domaine stratégique » au même titre que le nucléaire ou l'espace. Objectifs : renforcer la souveraineté française et européenne, cartographier les risques de sécurité pour les secteurs publics et privés, et coordonner la position nationale au niveau de l'UE.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/nvidia-injecte-des-milliards-dans-lia-europeenne-et-cible-doctolib-et-la-france-505813.htm" target="_blank">Nvidia prend une participation dans Doctolib pour accélérer l'IA en santé</a></h3>
+<div class="meta">ZDNet France • 15/10/2026</div>
+<p>De passage à Paris, Jensen Huang a annoncé une prise de participation minoritaire de Nvidia dans Doctolib, ainsi que des investissements dans trois autres startups françaises (Pigment, Genesis AI, Entalpic). Doctolib entend accélérer ses modèles d'IA européens pour les assistants patients et soignants, en gardant la maîtrise des données de santé en Europe.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/zdnet-morning-15-10-2026-investissement-de-nvidia-en-france-cashback-bouygues-telecom-recrutement-it-la-maitrise-de-la-pile-ia-505843.htm" target="_blank">Nvidia injecte 10 milliards de dollars dans l'IA européenne, avec la France en ligne de mire</a></h3>
+<div class="meta">ZDNet France • 15/10/2026</div>
+<p>Le ZDNet Morning du 15 octobre revient sur le plan d'investissement de 10 milliards de dollars de Nvidia pour l'écosystème IA européen, dont une large part cible la France. L'édition note aussi un basculement du recrutement IT : la maîtrise de la « pile IA » complète devient une compétence centrale.</p>
+</div>
+<div class="item">
+<h3><a href="https://lcp.fr/actualites/un-moment-de-bascule-civilisationnelle-les-deputes-appeles-a-agir-pour-preserver-l" target="_blank">Exception culturelle française face à l'IA : les députés appelés à agir</a></h3>
+<div class="meta">LCP • 14/10/2026</div>
+<p>À l'Assemblée nationale, éditeurs et parlementaires ont alerté sur un « moment de bascule civilisationnelle » face à l'IA générative. Ils réclament une législation protégeant les secteurs culturels : droits voisins perpétuels, encadrement de l'exploitation des données culturelles par les fournisseurs de modèles et mesures contre la substitution des contenus IA.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.01net.com/actualites/google-corrige-37-nouvelles-failles-chrome-lia-accelere-encore-la-cadence-des-mises-a-jour.html" target="_blank">Google corrige 37 nouvelles failles Chrome : l'IA accélère la cadence des mises à jour</a></h3>
+<div class="meta">01net • 15/10/2026</div>
+<p>Google a publié une nouvelle mise à jour de Chrome corrigeant 37 vulnérabilités dont 7 critiques, deuxième vague de patchs en une semaine. L'IA (notamment l'agent Big Sleep) accélère la découverte de failles — et mécaniquement la fréquence des correctifs, un rythme qui s'annonce comme la nouvelle norme de la cybersécurité.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.bsigroup.com/en-GB/insights-and-media/media-centre/press-releases/2026/october/eu-ai-act-ai-omnibus-adopted/" target="_blank">L'UE adopte formellement l'« AI Omnibus », le AI Act amendé</a></h3>
+<div class="meta">BSI Group • 13/10/2026</div>
+<p>Le règlement (UE) 2026/1744, dit « AI Omnibus », a été formellement adopté le 13 octobre. Il amende le AI Act : report des obligations pour les systèmes à haut risque de l'annexe III à décembre 2027 (et août 2028 pour l'annexe I), nouvelles pratiques interdites et allègements pour PME et startups (plafonds d'amendes réduits, documentation simplifiée, priorité aux sandboxes).</p>
+</div>
+<div class="item">
+<h3><a href="https://www.technology.org/2026/10/13/eu-ai-act-deadlines-after-the-digital-omnibus-what-applies-from-december-2026-to-august-2028/" target="_blank">AI Act après l'Omnibus : ce qui s'applique de décembre 2026 à août 2028</a></h3>
+<div class="meta">Technology.org • 13/10/2026</div>
+<p>Tour d'horizon des échéances remaniées : les règles sur les IA à haut risque autonome repoussées au 2 décembre 2027, les systèmes embarqués à août 2028, tandis que de nouvelles interdictions visant certaines IA génératives et les obligations de marquage entrent en vigueur dès décembre 2026. Les petites entreprises de taille intermédiaire bénéficient d'allègements étendus.</p>
+</div>
+<div class="item">
+<h3><a href="https://agenceurope.eu/en/bulletin/article/13961/10/enisa-tests-mistral-cybersecurity-models-including-latest-ml4" target="_blank">ENISA teste les modèles de cybersécurité de Mistral, dont le ML4</a></h3>
+<div class="meta">Agence Europe • 15/10/2026</div>
+<p>L'Agence européenne pour la cybersécurité (ENISA) mène des tests sur les modèles cyber de Mistral AI, dont le récent ML4, pour identifier les vulnérabilités. L'initiative s'inscrit dans les programmes européens d'évaluation de l'IA appliquée à la sécurité et illustre la place croissante du champion français dans l'écosystème européen.</p>
+</div>
+<div class="item">
+<h3><a href="https://theairankings.com/daily/2026-10-15/" target="_blank">L'UE interroge OpenAI et Anthropic sur les incidents de sécurité de leurs agents</a></h3>
+<div class="meta">The AI Rankings • 15/10/2026</div>
+<p>Les régulateurs européens ont adressé des questions à OpenAI et Anthropic concernant des incidents de sécurité impliquant leurs agents IA, dans le cadre de la surveillance croissante de Bruxelles sur l'agentique. Une pression réglementaire qui s'ajoute aux convocations de la FTC outre-Atlantique.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://theairankings.com/daily/2026-10-15/" target="_blank">Anthropic annonce 16,8 milliards de dollars de revenus trimestriels</a></h3>
+<div class="meta">The AI Rankings • 15/10/2026</div>
+<p>Anthropic a présenté aux investisseurs un chiffre d'affaires trimestriel de 16,8 milliards de dollars, en hausse de 45 %, avec des bénéfices ajustés positifs — un préambule à une introduction en bourse. Des chiffres qui alimentent en parallèle le débat sur une possible bulle de l'IA, dans un contexte de ventes de titres technologiques.</p>
+</div>
+<div class="item">
+<h3><a href="https://aipolicydaily.org/archive/daily/2026-10-15/" target="_blank">Huit États américains poursuivent OpenAI sur la sécurité des enfants dans ChatGPT</a></h3>
+<div class="meta">AI Policy Daily • 15/10/2026</div>
+<p>Huit États américains ont déposé des plaintes distinctes en protection du consommateur contre OpenAI, accusant l'entreprise d'avoir vendu ChatGPT comme sûr pour les enfants alors que le chatbot aurait orienté certains mineurs vers des contenus d'automutilation et trompé les parents sur les garde-fous.</p>
+</div>
+<div class="item">
+<h3><a href="https://postcutoff.com/news/" target="_blank">La FTC convoque OpenAI et Anthropic sur leurs incidents de sécurité</a></h3>
+<div class="meta">PostCutoff • 15/10/2026</div>
+<p>La FTC a émis des demandes civiles d'investigation à l'encontre d'OpenAI et d'Anthropic, exigeant des documents sur les incidents de sécurité et les pratiques de sauvegarde de leurs systèmes. Même jour : la fondation Simons accorde 15 millions de dollars à un programme de recherche mathématique mené avec les deux laboratoires.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.bloomberg.com/news/articles/2026-10-15/meta-releases-open-ai-model-while-keeping-its-best-tech-closed" target="_blank">Meta publie les poids de Muse Spark Open, mais garde ses meilleurs modèles fermés</a></h3>
+<div class="meta">Bloomberg • 15/10/2026</div>
+<p>Meta a publié les poids de Muse Spark Open (816 milliards de paramètres), un modèle ouvert dédié au code et aux agents, exécutable sur deux Mac Studio. La firme conserve toutefois fermés ses modèles les plus avancés (Muse Wonder) pour monétiser ses investissements — un positionnement hybride qui redessine sa stratégie open source.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.pymnts.com/news/artificial-intelligence/2026/meta-raises-its-ai-game-as-google-opens-gemini-4-argon/" target="_blank">Google ouvre Gemini 4 Argon au public</a></h3>
+<div class="meta">PYMNTS • 13/10/2026</div>
+<p>Google a ouvert publiquement Gemini 4 Argon, son dernier modèle frontalier, avec des scores de premier plan sur les tâches financières, juridiques et fiscales à un prix de lancement agressif. Une riposte directe aux lancements rapprochés de Meta (Muse Wonder) et aux modèles d'agents concurrents.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-october-15-2026/" target="_blank">NVIDIA : Nemotron 3.5 Super VL et cuPotential, l'IA multimodale permanente</a></h3>
+<div class="meta">The Neuron • 15/10/2026</div>
+<p>NVIDIA a étendu sa famille ouverte Nemotron avec 3.5 Super VL, un modèle multimodal conçu pour des agents IA « toujours actifs », et dévoilé cuPotential, une bibliothèque CUDA-X de simulation moléculaire pour agents scientifiques. Le fondeur intègre aussi ses logiciels IA directement dans les chaînes de fabrication de semi-conducteurs.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="mistral-section">
+    <h2>🇫🇷 Focus Mistral</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><a href="https://www.reuters.com/science/cern-mistral-partner-build-ai-foundation-models-physics-2026-10-15/" target="_blank">CERN × Mistral AI : un partenariat pour un « Large Physics Model »</a></h3>
+<div class="meta">Reuters • 15/10/2026</div>
+<p>Le CERN et Mistral AI ont signé une déclaration d'intention pour un partenariat stratégique de long terme autour de modèles de fondation pour la découverte scientifique. Premier projet : « Flare », un grand modèle de physique entraîné sur des milliards de collisions simulées du LHC. Le CERN ouvre ses données scientifiques massives, Mistral apporte sa capacité d'entraînement européenne.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/avec-new-material-mistral-boucle-sa-quatrieme-acquisition-de-lannee-2257143" target="_blank">Mistral boucle sa quatrième acquisition de l'année avec New Material</a></h3>
+<div class="meta">Les Echos • 15/10/2026</div>
+<p>Mistral AI a racheté la société britannique New Material, sa quatrième acquisition de 2026, pour intégrer une expertise en design à ses solutions IA « mission-critical » destinées aux entreprises et à l'industrie. Une stratégie de croissance externe qui renforce l'offre verticale du champion français en Europe.</p>
+</div>
+<div class="item">
+<h3><a href="https://analyticsindiamag.com/ai-news/mistral-ai-models-run-aboard-first-satellite-of-50-satellite-ai-constellation" target="_blank">Les modèles Mistral embarqués dans le premier satellite d'une constellation de 50</a></h3>
+<div class="meta">Analytics India Magazine • 14/10/2026</div>
+<p>Le premier satellite de la constellation IA d'Orbitworks et Loft Orbital (50 satellites prévus) embarque des modules NVIDIA exécutant les modèles Ministral 3 de Mistral pour analyser les données d'observation de la Terre directement en orbite et délivrer des alertes quasi immédiates, sans passer par le sol.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.bankinfosecurity.com/mistral-touts-le-chonk-as-capable-european-sovereign-model-a-33032" target="_blank">« Le Chonk » présenté comme le modèle souverain européen de référence</a></h3>
+<div class="meta">BankInfoSecurity • 12/10/2026</div>
+<p>Mistral met en avant son modèle ML4 (Large 4, surnommé « le Chonk », 1 000 milliards de paramètres) comme alternative souveraine européenne open weights aux modèles américains et chinois, avec des performances fortes en cybersécurité — un argument qui a convaincu ENISA de le tester. Les poids seront publiés fin octobre.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/zd-tech-couts-et-ecologie-le-divorce-brutal-entre-ecosia-et-mistral-ai-505713.htm" target="_blank">Divorce brutal entre Ecosia et Mistral AI : coûts et écologie</a></h3>
+<div class="meta">ZDNet France • 14/10/2026</div>
+<p>Après cinq mois de partenariat, le moteur de recherche allemand Ecosia a rompu avec Mistral AI : coûts trop élevés, performance insuffisante et questions sur l'énergie nucléaire utilisée. Ecosia s'est tourné vers des modèles open weights chinois moins chers via un agrégateur européen — un rappel que les clients enterprise restent exigeants sur le rapport qualité-prix.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.frandroid.com/culture-tech/3278907_mistral-large-4-est-il-surcote-voici-ce-que-disent-les-benchmarks-independants" target="_blank">Mistral Large 4 est-il surcoté ? Les benchmarks indépendants tranchent</a></h3>
+<div class="meta">Frandroid • 14/10/2026</div>
+<p>Les évaluations indépendantes (Artificial Analysis, Vals.ai) confirment le bond en avant de Large 4 par rapport aux précédents modèles de Mistral, avec de solides résultats en droit et cybersécurité — mais le modèle reste derrière certains modèles frontaliers fermés sur l'ensemble des tâches. Un positionnement réaliste pour le « meilleur modèle ouvert hors de Chine ».</p>
+</div>
+    </div></div>
+  </div>
+  <div class="arxiv-section">
+    <h2>📚 ArXiv (cs.AI &amp; cs.LG)</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.22350" target="_blank">FDE-Gym: The Last Mile of AI Delivery</a></h3>
+<div class="meta">15/10/2026 • cs.AI, cs.CL</div>
+<p>Un benchmark de 95 tâches de livraison de bout en bout issues de scénarios clients réels, où les agents doivent clarifier des exigences ambiguës, opérer dans des systèmes réels et découvrir des contraintes non exprimées. Le meilleur des 13 modèles testés plafonne à 0,56 de score moyen : le « dernier kilomètre » de la livraison IA reste un goulot.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.22344" target="_blank">MLExpert: Towards a Generalist Agentic Model for Autonomous Machine Learning Engineering</a></h3>
+<div class="meta">15/10/2026 • cs.AI, cs.LG</div>
+<p>MLExpert, un modèle agentique MoE de 35 milliards de paramètres entraîné par SFT hiérarchique et RL, automatise les tâches longues d'ingénierie machine learning : le taux de médailles sur MLE-Bench Lite bondit de 37,9 % à 72,7 %, rivalisant avec des modèles frontaliers bien plus gros.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.22331" target="_blank">KnowGPO: Knowledge-Grouped Policy Optimization for Search Agents</a></h3>
+<div class="meta">15/10/2026 • cs.AI, cs.CL</div>
+<p>Un framework d'apprentissage par renforcement pour agents de recherche profonde qui regroupe les trajectoires selon les connaissances acquises plutôt que les observations de surface, offrant des récompenses de processus plus fines. Gains de 3,8 à 4,2 points sur Xbench et GAIA face aux supervisions classiques.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.22319" target="_blank">A team of Gemini 4 Argon agents beats Minecraft</a></h3>
+<div class="meta">15/10/2026 • cs.AI, cs.MA</div>
+<p>Quatre agents Gemini 4 Argon ont coordonné par chat et mémoire partagée la défaite de l'Ender Dragon dans un Minecraft en bac à sable, écrivant 2 783 programmes en 27 heures — première complétion de bout en bout par des agents IA sans outils spécifiques écrits par des humains.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.22280" target="_blank">LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents</a></h3>
+<div class="meta">15/10/2026 • cs.AI, cs.HC</div>
+<p>Un framework sans entraînement qui utilise l'incertitude latente d'un modèle faible pour router les requêtes, escalader vers des agents forts à l'exécution et superviser en mode ombre après transfert. Meilleur taux de succès sur OSWorld tout en réduisant les coûts face aux modèles frontaliers permanents.</p>
+</div>
+    </div></div>
+  </div>
+  <footer>
+    <p>Généré le 2026-10-16 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-10-16.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
