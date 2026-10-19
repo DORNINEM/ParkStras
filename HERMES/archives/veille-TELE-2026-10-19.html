@@ -1,0 +1,245 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Télésurveillance &amp; Sécurité électronique — 19 octobre 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .prosp-section{margin-top:22px}
+    .prosp-section h2{font-size:1.1rem;margin:0 0 10px}
+    table{width:100%;border-collapse:collapse;font-size:.9rem}
+    th,td{padding:10px 12px;border-top:1px solid var(--border);text-align:left;vertical-align:top}
+    th{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;border-top:0}
+    td:first-child{font-weight:600;width:30%}
+    td:nth-child(2){width:18%;font-weight:600;color:var(--accent)}
+    .horizon-court{color:var(--success);font-weight:700}
+    .horizon-moyen{color:var(--warn);font-weight:700}
+    .horizon-long{color:var(--danger);font-weight:700}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr 1fr}
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-TELE-2026-10-19.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Écouter le résumé vocal <b>(moins de 2 min)</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🛡️ Veille Télésurveillance &amp; Sécurité électronique</h1>
+      <p>Alarmes, vidéoprotection IA, biométrie, intrusion — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-19">19 octobre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">8</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">2</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">1</div></div>
+<div class="kpi"><div class="label">🔮 Prospective / signaux</div><div class="value">6 + 5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 11 articles</span>
+    <span class="pill green">📅 12–19 octobre 2026</span>
+    <span class="pill yellow">🛡️ Sécurité électronique</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France — Cybersécurité, réglementation &amp; terrain</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lefigaro.fr/societes/une-cyberattaque-a-touche-les-infrastructures-frigorifiques-de-centaines-de-supermarches-cooperative-u-et-intermarche-20261012" target="_blank">Cyberattaque : les infrastructures frigorifiques de centaines de supermarchés touchées (U, Intermarché, Leclerc, Carrefour)</a></h3>
+<div class="meta">Le Figaro • 12/10/2026</div>
+<p>Une cyberattaque à distance a visé les logiciels de surveillance frigorifique (Danfoss) de centaines de magasins, montant les températures jusqu'à 50 °C et provoquant des pertes de denrées de plusieurs millions d'euros. Une enquête judiciaire pour cybermalveillance est ouverte. Un cas d'école pour tous les équipements de contrôle à distance — alarmes et vidéorecords compris.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.20minutes.fr/high-tech/4253899-20261013-cyberattaque-ascenseurs-alarmes-apres-frigos-supermarches-equipements-peuvent-etre-vulnerables" target="_blank">Ascenseurs ou alarmes : après les frigos de supermarchés, quels équipements peuvent être vulnérables ?</a></h3>
+<div class="meta">20 Minutes • 13/10/2026</div>
+<p>Après l'attaque contre les régulateurs frigorifiques, des experts alertent sur la vulnérabilité d'autres systèmes connectés pilotés à distance : ascenseurs, alarmes, vidéosurveillance. Le point commun : des équipements de monitoring exposés à Internet avec des accès peu ou pas protégés.</p>
+</div>
+<div class="item">
+<h3><a href="https://armees.com/cybersecurite-le-sgdsn-victime-dune-attaque-informatique/" target="_blank">Cybersécurité : le SGDSN victime d'une attaque informatique</a></h3>
+<div class="meta">Armees.com • 16/10/2026</div>
+<p>Le site du Secrétariat général de la défense et de la sécurité nationales a été rendu inaccessible plus de quatre heures par une attaque par déni de service le 13 octobre, sans fuite de données ni intrusion détectée. Un rappel que même les entités les plus sensibles restent des cibles de perturbation.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.silicon.fr/cybersecurite-1371/nis2-la-loi-attend-les-attaquants-non-229628" target="_blank">NIS2 : la loi attend, les attaquants non</a></h3>
+<div class="meta">Silicon.fr • 17/10/2026</div>
+<p>Deux ans après la date limite de transposition (17 octobre 2024), la France n'a toujours pas transposé NIS2 : le projet de loi a été retiré de l'agenda parlementaire le 6 octobre, sans nouvelle date. Environ 15 000 entités resteront sous surveillance ANSSI élargie — la chaîne d'approvisionnement, l'interconnexion des équipements et les incidents récents (supermarchés) montrent que le risque n'attend pas la loi.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.ici.fr/hauts-de-france/nord-59/lille/56-gardes-a-vue-en-cours-exploitation-des-videosurveillances-la-justice-mobilisee-apres-les-violences-a-lille-2747377" target="_blank">Violences à Lille : 56 gardes à vue, exploitation massive des vidéosurveillances</a></h3>
+<div class="meta">ICI (Hauts-de-France) • 18/10/2026</div>
+<p>Après les violences du 17 octobre, la justice a exploité les images de vidéosurveillance de la ville, du réseau de métro et des drones pour instruire les dossiers de pillage. La vidéo publique, croisée entre plusieurs capteurs, s'impose comme la pièce maîtresse de la réponse judiciaire.</p>
+</div>
+<div class="item">
+<h3><a href="https://fr.news.yahoo.com/mobilisation-17-octobre-v%C3%AAtements-anti-040736500.html" target="_blank">Vêtements anti-IA : les manifestants peuvent-ils camoufler la surveillance algorithmique ?</a></h3>
+<div class="meta">Yahoo Actualités • 18/10/2026</div>
+<p>À la veille de la mobilisation du 17 octobre, des vêtements à motifs perturbateurs — censés tromper la détection algorithmique — ont fait leur apparition. Les experts rappellent leur efficacité limitée mais réelle, et surtout l'émergence d'une contre-surveillance citoyenne qui nourrira le débat public sur la vidéoprotection algorithmique (loi Ripost).</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lindependant.fr/2026/10/14/securite-urbaine-les-forces-de-lordre-doccitanie-et-de-catalogne-lachent-leurs-drones-13597342.php" target="_blank">Sécurité urbaine : les forces de l'ordre d'Occitanie et de Catalogne lâchent leurs drones</a></h3>
+<div class="meta">L'Indépendant • 14/10/2026</div>
+<p>Depuis mi-octobre, policiers et gendarmes d'Occitanie sont autorisés à utiliser des drones de vidéoprotection urbaine sur des zones définies dans 22 communes (lutte contre les rodéos notamment), jusqu'en décembre. Le drone devient un capteur vidéo mobile de la sécurité du quotidien, avec son lot d'exigences d'encadrement.</p>
+</div>
+<div class="item">
+<h3><a href="https://infos-media-nantes.fr/?p=32374" target="_blank">Orvault : une trentaine de nouvelles caméras de vidéoprotection annoncées pour 2028</a></h3>
+<div class="meta">Infos Média Nantes • octobre 2026</div>
+<p>La commune d'Orvault annonce une trentaine de caméras de vidéoprotection supplémentaires d'ici 2028, dans le prolongement d'expérimentations antérieures, malgré l'opposition municipale. La diffusion se poursuit dans la couronne des grandes métropoles, avec un débat récurrent sur l'efficacité et la conformité.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France — Vidéovigilance &amp; menaces hybrides</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://2eu.brussels/index.php/en/news/eu-expands-external-border-drone-and-counter-drone-funding-beyond-half-a-billion-euros" target="_blank">L'UE élargit son financement drones et contre-drones aux frontières au-delà d'un demi-milliard d'euros</a></h3>
+<div class="meta">2EU Brussels • 13/10/2026</div>
+<p>La Commission a sélectionné 16 États membres et la Norvège pour un paquet de 130 M€ consacré aux drones de surveillance et systèmes anti-drones aux frontières extérieures. Cumulé avec les financements antérieurs, l'appui européen dépasse désormais un demi-milliard d'euros — un marché de vidéovigilance frontalière en plein essor pour les intégrateurs.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.rtl.be/actu/belgique/societe/inflation-du-nombre-de-drones-et-de-cyberattaques-contre-notre-pays-constate-le/2026-10-15/article/803404" target="_blank">Cyberattaques et drones en Belgique : la police s'adapte</a></h3>
+<div class="meta">RTL Belgique • 15/10/2026</div>
+<p>Le chef de la police fédérale belge constate l'inflation des survols de drones suspects et des cyberattaques visant le pays et appelle à adapter doctrines et moyens. Deux menaces hybrides qui convergent avec les priorités françaises : protection des sites sensibles et maîtrise de l'espace aérien basse altitude.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde — Industriels de l'intrusion</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://ajax.systems/blog/category/releases/" target="_blank">Ajax Systems : chiffrement avancé des archives vidéo et Ajax Cloud Storage pour caméras filaires</a></h3>
+<div class="meta">Ajax Systems • 15/10/2026</div>
+<p>Le fabricant ukrainien a publié mi-octobre deux mises à jour ciblant les projets à haut risque : le chiffrement avancé des archives vidéo (15/10) et la prise en charge des caméras filaires par Ajax Cloud Storage (14/10). Le durcissement de la chaîne vidéo — stockage, transport, chiffrement — devient un argument produit de premier plan face aux exigences croissantes de cybersécurité.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="prosp-section">
+    <h2>🔮 Prospective — tendances de fond</h2>
+    <div class="card"><div class="card-body" style="padding-top:4px">
+<table>
+<thead><tr><th>Tendance de fond</th><th>Horizon</th><th>Ce qu'il faut en retenir</th></tr></thead>
+<tbody>
+<tr><td>La surveillance à distance devient une surface d'attaque générique (frigos, alarmes, ascenseurs)</td><td><span class="horizon-court">Court terme (&lt; 2 ans)</span></td><td>L'attaque contre les régulateurs frigorifiques vaut pour tout équipement IP piloté à distance. Les parcs installés mal segmentés représentent une dette de cybersécurité immédiatement monnayable en audits et mises à niveau.</td></tr>
+<tr><td>NIS2 : la transposition piétine, la mise en conformité s'impose quand même</td><td><span class="horizon-court">Court terme (&lt; 2 ans)</span></td><td>Deux ans de retard, mais la directive finira par s'appliquer à ~15 000 entités. Les intégrateurs et CTS qui documenteront dès maintenant inventaires, politique de correctifs et gestion d'incidents prendront une longueur décisive.</td></tr>
+<tr><td>Le drone s'installe comme capteur standard de la vidéoprotection</td><td><span class="horizon-court">Court terme (&lt; 2 ans)</span></td><td>Occitanie, frontières de l'UE : le drone vidéo quitte l'expérimentation. La compétence « opérateur drone + cadre réglementaire » devient une offre de service pour les installateurs et exploitants.</td></tr>
+<tr><td>La vidéo comme preuve pivot de la chaîne pénale</td><td><span class="horizon-moyen">Moyen terme (2-5 ans)</span></td><td>Lille : l'exploitation judiciaire massive des images (ville, métro, drones) s'impose. La qualité, la conservation et l'extractibilité légale des enregistrements deviennent des critères de contrat pour les exploitants et CTS.</td></tr>
+<tr><td>Contre-surveillance citoyenne et débat d'acceptabilité</td><td><span class="horizon-moyen">Moyen terme (2-5 ans)</span></td><td>Les vêtements anti-IA sont anecdotiques mais symptomatiques : l'efficacité réelle de la vidéoprotection algorithmique sera disputée publiquement. Les acteurs qui mesureront et publieront leur taux de détection utile préempteront le débat.</td></tr>
+<tr><td>Durcissement de la chaîne vidéo (chiffrement, cloud sécurisé)</td><td><span class="horizon-long">Long terme (&gt; 5 ans)</span></td><td>Chiffrement des archives chez Ajax, cloud géré pour caméras filaires : la vidéo de sécurité tend vers les standards de la cybersécurité d'entreprise. À terme, la conformité du flux vidéo sera auditée comme n'importe quel SI.</td></tr>
+</tbody>
+</table>
+    </div></div>
+  </div>
+  <div class="prosp-section">
+    <h2>🧭 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3>1. Tout équipement « piloté à distance » est une porte d'entrée — l'alarme ne fait pas d'exception</h3>
+<p>Les frigos de supermarchés n'ont été que le prétexte : les transmetteurs IP, centrales connectées et NVR exposés naïvement sont structurellement menacés. <b>Implication intégrateur :</b> packager un audit récurrent « exposition Internet » dans les contrats de maintenance (inventaire des accès distants, VPN/MFA au lieu d'ouvertures de ports, segmentation).</p>
+</div>
+<div class="item">
+<h3>2. La preuve vidéo devient le pivot de la réponse judiciaire — la chaîne de conservation devient un produit</h3>
+<p>Lille a exploité en quelques jours les flux ville + métro + drones. <b>Implication CTS :</b> garantir traçabilité, horodatage et extraction légale des séquences ; documenter la chaîne de conservation des enregistrements comme argument commercial auprès des collectivités et des assureurs.</p>
+</div>
+<div class="item">
+<h3>3. Le drone bascule de l'exception au standard de la vidéoprotection</h3>
+<p>Occitanie, financement UE massif : le capteur aérien mobile s'ajoute durablement aux réseaux fixes. <b>Implication intégrateur :</b> développer l'offre « drone + réseau fixe » (intégration flux vidéo, exploitation partagée) et sécuriser les compétences réglementaires avant que le marché ne se structure.</p>
+</div>
+<div class="item">
+<h3>4. L'extension des parcs municipaux se poursuit dans les villes moyennes — la valeur migre vers l'exploitation</h3>
+<p>Orvault rejoint Nérac et Bergerac : les petites et moyennes communes équipent, avec des budgets contraints. <b>Implication installateur :</b> le renouvellement du marché se jouera moins dans l'installation que dans l'exploitation (maintenance, conformité CNIL, supervision d'images) — contractualiser le récurrent dès l'installation.</p>
+</div>
+<div class="item">
+<h3>5. La contre-surveillance citoyenne annonce un débat d'efficacité sur la vidéoprotection algorithmique</h3>
+<p>Les vêtements anti-IA du 17 octobre sont marginaux mais le questionnement sur l'efficacité réelle des VSA s'installera dans la presse et chez les élus. <b>Implication CTS et intégrateurs français :</b> instrumenter leurs propres taux de levée de doute utile et de résultats, pour pouvoir démontrer objectivement la valeur des systèmes avant que le doute organisationnel ne s'installe.</p>
+</div>
+    </div></div>
+  </div>
+  <footer>
+    <p>Généré le 19 octobre 2026 par Hermes (veille-telesurveillance). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-TELE-2026-10-19.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
