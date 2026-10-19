@@ -1,5 +1,13 @@
 # Veille Informatique Quantique — 19 octobre 2026
 
+## Synthèse — 5 signaux faibles à surveiller
+
+1. La correction d'erreurs passe du labo au produit, côté européen aussi. Alice & Bob décode ses codes LDPC-cat sur GPU (NVQLink) pendant que Google publie la magic state cultivation dans Science et que Classiq lance un Fault Tolerance Engine. Implication DSI/RSSI : la pile « fault-tolerant » se verticalise (hardware + décodeur + orchestrateur) — surveiller les offres intégrées dès leurs betas.
+2. Les États européens se dotent de calendriers PQC contraignants. Directive allemande BMI/BSI (inventaire fin 2026, haut risque 2030, large 2035) et recommandations TLS hybrides du NCSC britannique encadrent désormais ce qu'ANSSI préconise depuis 2024. Implication RSSI : l'inventaire cryptographique devient une échéance réglementaire, plus une bonne pratique.
+3. La finance hiérarchise les fournisseurs quantiques. L'upgrade Morgan Stanley de Quantinuum, l'horizon de trading quantique d'HSBC (2-4 ans) et le partenariat CGI-D-Wave logistique montrent un marché qui passe des pilotes aux sélections de prestataires. Implication DSI : intégrer les feuilles de route QEC des fournisseurs dans les critères d'achat.
+4. L'infrastructure quantique européenne avance par le réseau. Les 47,5 M€ QIA (internet quantique full-stack) et la livraison D-Wave en Lombardie dessinent une stratégie UE centrée sur la connectivité et la distribution géographique des QPU. Implication directions R&D : les répéteurs et interconnexions quantiques sont le prochain actif stratégique.
+5. Le QML reste en attente de preuve d'avantage — exiger des benchmarks. Le benchmark QSVM fraude (arXiv) et l'extraction de features de Kipu sur QuEra montrent des gains applicatifs réels sans avantage fondamental démontré. Implication gouvernance : traiter chaque cas d'usage QML comme un pilot à mesurer contre baselines classiques, avec preprints arXiv systématiquement signalés.
+
 ## Actualités
 
 1. **Tsuga, Dillico, Quandela... Qui sont les « meilleures » deeptech 2026 selon Bercy ?**
