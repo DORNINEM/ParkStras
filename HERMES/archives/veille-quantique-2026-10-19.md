@@ -1,5 +1,7 @@
 # Veille Informatique Quantique — 19 octobre 2026
 
+## Actualités
+
 1. **Tsuga, Dillico, Quandela... Qui sont les « meilleures » deeptech 2026 selon Bercy ?**
    Le gouvernement a dévoilé la 3e promotion French Tech 2030 : environ 80 start-up deeptech lauréates dont la start-up quantique photonique Quandela, aux côtés d'acteurs IA, espace et cyber. Soutien d'État renforcé sur un an (visibilité, partenariats, accès financements publics et privés) plutôt que subventions directes ; la promo affiche 1,5 Md€ levés cumulés. Signal fort de la politique d'autonomie technologique française incluant le quantique.
 
