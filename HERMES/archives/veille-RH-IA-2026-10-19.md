@@ -1,5 +1,13 @@
 # Veille IA & Mutations RH — Banque · Assurance · Informatique — 19 octobre 2026
 
+## Synthèse — 5 signaux faibles à surveiller
+
+1. L'entrée des jeunes comme variable d'ajustement — le recul massif des CDI juniors et de l'alternance (Syntec -18,5 %, développeurs -42 %) crée un déficit de vivier : dans 3-5 ans, il manquera des profils médians expérimentés. Pour un DRH banque/assurance/ESN : réintroduire des parcours d'intégration « protégés » de l'IA et des missions formatrices.
+2. La donnée RH comme goulot d'étranglement — 46 % des DRH n'ont pas les données consolidées pour piloter la rétention par l'IA : le chantier prioritaire n'est pas l'outil mais la qualité du socle de données (référentiels, historiques de carrière).
+3. La fenêtre de conformité IA Act se referme — obligations « haut risque » repoussées au 2 décembre 2027 pour le recrutement : c'est le moment de cartographier les systèmes RH concernés et de contractualiser avec les éditeurs (voir rachat SnapAI par HR Path, argument conformité).
+4. L'assurance, modèle de résistance ? — ROMA 2026 montre une transformation du contenu des métiers sans destruction de postes : la détection de fraude et l'analyse de données absorbent les gains, mais les recrutements -8,3 % signalent le début du même ajustement qu'en banque.
+5. Désalignement des perceptions — le fossé public/experts (75 % vs 28 % d'automatisation attendue, Anthropic) alimente sentiment de menace et résistances : communication interne transparente et refonte des fiches de poste (95 % des salariés font déjà de l'IA « hors fiche de poste ») avant d'annoncer de nouveaux outils.
+
 1. **HR Path accélère sa stratégie IA avec l'acquisition de SnapAI**
    [lien](https://www.prnewswire.com/news-releases/hr-path-accelere-sa-strategie-en-intelligence-artificielle-avec-lacquisition-de-snapai-302903581.html)
    Le leader français des logiciels RH renforce ses solutions IA avec l'achat de SnapAI, avec une mise en avant explicite de la conformité AI Act pour le recrutement et l'évaluation. Un signal de la montée en puissance de la « gouvernance des outils RH à haut risque » comme argument commercial des éditeurs SIRH.
