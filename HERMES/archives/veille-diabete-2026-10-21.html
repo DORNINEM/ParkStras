@@ -1,0 +1,238 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 21 octobre 2026</title>
+  <style>
+    :root {
+      --bg:#010409; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --accent:#40dcff; --accent-2:#7bffb2; --success:#10b981; --warn:#ffb347; --danger:#ef4444;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background: radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent), radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent), var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#0f172a,#0b1220);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#40dcff;color:#010409;border-color:#40dcff}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#ffb347;color:#010409;border-color:#ffb347}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#0f172a,#0b1220);border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    .footer p{margin:4px 0}
+    @media (min-width: 860px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (min-width: 1080px){ .grid{grid-template-columns:1fr 1fr 1fr} }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-10-21.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Écouter le résumé vocal <b>(moins de 2 min)</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🩺 Veille Innovations Diabète</h1>
+      <p>Sources FR prioritaires • Technologies, recherche, Big Pharma • Généré par Hermes</p>
+    </div>
+    <time datetime="2026-10-21">21 octobre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🇫🇷 France</div><div class="value">7</div></div>
+    <div class="kpi"><div class="label">🌍 Europe</div><div class="value">2</div></div>
+    <div class="kpi"><div class="label">🌐 Monde</div><div class="value">5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 10 articles</span>
+    <span class="pill green">📅 21 octobre 2026</span>
+    <span class="pill yellow">🔬 Prospective : 4</span>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2608571" target="_blank">Le Dexcom G7 bénéficie aux patients DT2 non insulinotraités (NEJM)</a></h3>
+          <div class="meta">NEJM / Reuters / Dexcom • 14-15/10/2026</div>
+          <p>L'étude CONNECT (NEJM) démontre avec un niveau de preuve A que le CGM Dexcom G7 apporte un bénéfice majeur aux adultes DT2 ne prenant pas d'insuline. HbA1c réduite de 1,6 point (vs 0,7 dans le groupe contrôle), soit +0,9 point de différence. Temps en cible +5 heures/jour. Adhésion 97 %. Bénéfice indépendant de l'âge, sexe, origine, BMI, revenu ou traitements (y compris GLP-1). Ces données de niveau A soutiennent l'utilisation plus précoce du CGM et pourraient influencer les remboursements européens et Medicare.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.chuv.ch/fr/ial/ial-home/liste-des-actualites/detail/news/64050-nouvelle-piste-de-therapie-cellulaire-contre-le-diabete-de-type-1" target="_blank">Nouvelle piste de thérapie cellulaire contre le DT1 (CHUV)</a></h3>
+          <div class="meta">CHUV • 20/03/2026 (actualisé)</div>
+          <p>Le Pr Yannick Muller (CHUV) modifie génétiquement des lymphocytes T régulateurs (Tregs) pour qu'ils reconnaissent les antigènes des cellules β pancréatiques. En transposant le récepteur TCR et le CD8 des lymphocytes cytotoxiques dans les Tregs, l'infiltration dans les îlots de Langerhans est fortement améliorée. Cette stratégie renforce les thérapies cellulaires existantes en exploitant les fonctions protectrices des Tregs (Nobel 2025). La spécificité du TCR détermine la migration tissulaire des Tregs.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.diab-ecare.fr/la-recherche" target="_blank">Innovations et dispositifs disponibles à DIAB-eCARE</a></h3>
+          <div class="meta">DIAB-eCARE • octobre 2026</div>
+          <p>Boucles fermées hybrides (Dexcom G7 + Omnipod 5 / Tandem CIQ, 780G + Simplera, FSL3 + CamAPS), nouveaux capteurs (Dexcom G7, FSL3, Dexcom ONE+, Simplera Sync remboursé depuis mai 2026), greffe d'îlots, stylos NovoPen 6, pompes patch Medtrum Nano et Ypsopump. Protocole ELEVATE (oct. 2026) pour la pompe FLEX avec annonce facultative des glucides.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://aproposdassurance.fr/capteur-glucose-continu-remboursement/" target="_blank">Remboursement des capteurs CGM en 2026</a></h3>
+          <div class="meta">A Propos d'Assurance • 12/10/2026</div>
+          <p>Libre 2 Plus / Select (15 jours, 24 capteurs/an dès 2 ans), Dexcom ONE+ (10 jours, 36 capteurs/an dès 2 ans), Guardian 4 (forfait mensuel dès 7 ans) remboursés sans entente préalable pour les patients sous insulinothérapie intensifiée ou non atteignant les objectifs. MiniMed 780G + Simplera Sync remboursé depuis mai 2026 pour le DT1.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.sciencesetavenir.fr/sante/les-diabetes-de-type-2-les-plus-graves-identifies-par-une-analyse-de-sang_195331" target="_blank">Une simple prise de sang identifie les DT2 les plus graves (Inserm / Cell)</a></h3>
+          <div class="meta">Sciences et Avenir / Inserm • 14/10/2026</div>
+          <p>Une étude Inserm (Cell) montre que trois paramètres sanguins (monocytes, neutrophiles, lymphocytes) identifient quatre endotypes de DT2. Deux profils inflammatoires (~20 % des patients) sont associés à un risque 2× plus élevé de complications CV/rénales et 2-3× plus élevé de décès à 4 ans. Un site web permet de classer les patients. Les profils disparaissent sous anti-IL-1 ou après chirurgie bariatrique.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://francais.medscape.com/viewarticle/sexe-et-diab%C3%A8tre-lever-tabou-2026a1000ztt" target="_blank">La FFD lève le tabou sur la santé sexuelle</a></h3>
+          <div class="meta">FFD / Medscape • 14/10/2026</div>
+          <p>Campagne nationale « Diabètes et santé sexuelle : parlons-en sans tabou ! ». 50 % des 4,5 millions de diabétiques français concernés (dysfonction érectile 50-70 % des hommes, sécheresse vaginale chez les femmes). La dysfonction érectile peut précéder les complications CV. Quatre vidéos spécifiques pour les femmes disponibles.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lemoniteurdespharmacies.fr/nouvelles-missions/entretiens-et-bilans/entretien-diabete-le-contenu-se-precise-avant-un-deploiement-en-2027" target="_blank">La HAS favorable à l'accompagnement pharmaceutique des DT2 (sous conditions)</a></h3>
+          <div class="meta">Le Moniteur des Pharmacies / HAS • 14-15/10/2026</div>
+          <p>Avis favorable au guide d'accompagnement et à la fiche de suivi pour l'entretien « diabète » (3 entretiens, 7 thématiques). Déploiement prévu courant 2027. La HAS demande de traiter toutes les thématiques sur 3 entretiens, d'adopter une posture partenariale et d'intégrer le dépistage de la détresse psychologique. Rémunération à négocier.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌍 Europe &amp; Monde</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://bourse.fortuneo.fr/actualites/diabete-de-type-1-l-union-europeenne-approuve-un-premier-traitement-de-fond-2966796" target="_blank">Sanofi obtient l'approbation européenne pour Teizeild (premier traitement modificateur du DT1)</a></h3>
+          <div class="meta">Sanofi / Commission européenne • janvier 2026 (actualisé)</div>
+          <p>Teizeild (anticorps monoclonal anti-CD3) est le premier traitement modificateur du DT1 au stade 2 approuvé dans l'UE (adultes et enfants >8 ans). Il ralentit la progression vers le stade 3 d'environ deux ans (étude TN-10). Avancée historique vers la prévention et la modification de l'histoire naturelle du DT1.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.nuh.nhs.uk/news/nhs-runs-worldfirst-test-into-scifi-like-artificial-pancreases-6289" target="_blank">Tests mondiaux du « pancréas artificiel » hybride (NHS Angleterre)</a></h3>
+          <div class="meta">NUH / NHS • octobre 2026</div>
+          <p>L'Angleterre déploie le premier test national au monde du système hybride en boucle fermée (HCL) sur près de 1 000 adultes et enfants DT1 dans 35 centres NHS. Le système ajuste automatiquement l'insuline, élimine les piqûres au doigt et réduit drastiquement les hypo/hyperglycémies sévères.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.digitalhealthnews.com/iisc-develops-ai-powered-diabetes-management-system-targets-affordable-artificial-pancreas" target="_blank">Système de pancréas artificiel abordable développé en Inde (IISc)</a></h3>
+          <div class="meta">Digital Health News • octobre 2026</div>
+          <p>L'IISc a développé SugarSight, une plateforme IA qui prédit les variations glycémiques et vise un pancréas artificiel indigène à ~2 200 € (contre 6 600 € pour les systèmes commerciaux). Capteur CGM + algorithme adaptatif + pompe. Techniques issues de l'aérospatiale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arxiv-section">
+    <h2>🔬 Prospective &amp; Recherche</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.uclahealth.org/news/release/smart-insulin-could-prevent-hypoglycemia-during-diabetes-treatment" target="_blank">Insuline « intelligente » i-insulin pour prévenir les hypoglycémies (UCLA)</a></h3>
+            <div class="meta">UCLA Health • octobre 2026 • Source : PNAS</div>
+            <p>Des bioingénieurs de l'UCLA ont développé une insuline « intelligente » (i-insulin) intégrant un inhibiteur du transporteur de glucose. Elle empêche un excès d'entrée de glucose lorsque la glycémie est normale tout en répondant rapidement aux hyperglycémies postprandiales. Testée sur souris DT1 : glycémie normale jusqu'à 10 heures. Technologie brevetée, prochaines étapes : biocompatibilité avant essais cliniques. Potentiel patch ou comprimé.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.pharmacytimes.com/view/engineered-stem-cell-therapy-reverses-new-onset-t1d-in-mice-by-reprogramming-t-cells" target="_blank">Thérapie par cellules souches AAT-MSC inverse le DT1 récent chez la souris (MUSC)</a></h3>
+            <div class="meta">Pharmacy Times • octobre 2026</div>
+            <p>Une perfusion unique de cellules souches mésenchymateuses surexprimant l'alpha-1 antitrypsine (AAT-MSCs) a inversé le DT1 récent chez >60 % des souris NOD femelles à la semaine 5 et maintenu la rémission chez 54 % à la semaine 10. Le mécanisme renforce les Tregs et reprogramme les CD8 autoréactifs vers un état moins destructeur. Approche cellulaire prometteuse à combiner avec d'autres immunomodulateurs.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.nuh.nhs.uk/news/nhs-runs-worldfirst-test-into-scifi-like-artificial-pancreases-6289" target="_blank">Tests mondiaux du « pancréas artificiel » hybride en boucle fermée (NHS)</a></h3>
+            <div class="meta">NUH / NHS • octobre 2026</div>
+            <p>L'Angleterre déploie le premier test national au monde du système hybride en boucle fermée (HCL) sur près de 1 000 adultes et enfants DT1 dans 35 centres NHS. Le système mesure la glycémie en continu et ajuste automatiquement l'insuline via la pompe, éliminant les piqûres au doigt et réduisant drastiquement les hypo/hyperglycémies sévères. Étape vers le pancréas artificiel pleinement automatisé.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.digitalhealthnews.com/iisc-develops-ai-powered-diabetes-management-system-targets-affordable-artificial-pancreas" target="_blank">Pancréas artificiel abordable développé en Inde (IISc SugarSight)</a></h3>
+            <div class="meta">Digital Health News • octobre 2026</div>
+            <p>L'Indian Institute of Science a développé SugarSight, une plateforme IA de gestion du diabète qui prédit les variations glycémiques et vise un pancréas artificiel indigène à ~2 200 € (contre 6 600 € actuellement). Capteur CGM + algorithme de contrôle adaptatif + pompe. Techniques d'apprentissage adaptatif issues de l'aérospatiale pour une personnalisation précise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Généré le 21 octobre 2026 par Hermes (veille-diabete). Template Jarvis inline (dark theme, KPIs, cartes responsive). Fichiers : veille-diabete-2026-10-21.md + .html. Sources FR prioritaires • Résumés ~20 lignes • Widget EDO activé.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </div>
+</div>
+
+<!-- EDO JARVIS widget (réservé veille diabète — à coller juste avant </body>) -->
+<div id="edo-widget" title="EDO — cœur de la veille">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+</body></html>

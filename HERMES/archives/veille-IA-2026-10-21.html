@@ -1,0 +1,263 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-10-21</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.tricolor{background:linear-gradient(90deg,#0055a4,#ffffff 50%,#ef4135);color:#1f2937;border-color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr 1fr}
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-IA-2026-10-21.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Écouter le résumé vocal <b>(moins de 2 min)</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-21">21 octobre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">4</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">6</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 15 articles</span>
+    <span class="pill green">📅 21 octobre 2026</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 3</span>
+    <span class="pill yellow">🔬 ArXiv : 4</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.boursorama.com/bourse/actualites/credit-agricole-s-allie-a-mistral-pour-un-deploiement-industriel-de-l-ia-9b4da15ba7c71a9ab6984bdb9789f990" target="_blank">Crédit Agricole s'allie à Mistral pour un déploiement industriel de l'IA</a></h3>
+<div class="meta">Boursorama • 20/10/2026</div>
+<p>Le groupe Crédit Agricole a annoncé un partenariat stratégique entre sa nouvelle entité Crédit Agricole Artificial Intelligence et Mistral AI pour industrialiser le déploiement de l'IA à l'échelle du groupe. Projets prioritaires : un agent conversationnel pour les clients des caisses régionales, la transformation agentique des processus et la cybersécurité. Les LLM de Mistral seront adaptés aux données de la banque, avec à la clé une consommation de calcul et un impact environnemental réduits — le tout en soulignant la souveraineté technologique française et européenne.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.latribune.fr/article/tech/intelligence-artificielle/16379106805600/octave-klaba-ovhcloud-nous-allons-apporter-sur-le-marche-un-llm-tres-en-avance-sur-son-temps" target="_blank">OVHcloud : « Nous allons apporter sur le marché un LLM très en avance sur son temps »</a></h3>
+<div class="meta">La Tribune • 20/10/2026</div>
+<p>Dans une interview exclusive à La Tribune, Octave Klaba annonce qu'OVHcloud achève l'entraînement de son premier LLM maison, dont la v1 sera publiée en open source fin novembre. Le patron du champion français du cloud décrit une architecture innovante (mécanismes d'attention, traitement des tokens, compression de données) « très en avance sur son temps », d'abord pensée pour les usages internes : cybersécurité, génération de code et IA agentique. Il en profite pour tancer Mistral, qu'il qualifie plutôt d'« ESN de l'IA » — un duel français qui s'annonce.</p>
+</div>
+<div class="item">
+<h3><a href="https://news.microsoft.com/source/emea/2026/10/satya-nadella-a-paris-linnovation-de-microsoft-transforme-lia-en-resultats-concrets-pour-les-entreprises-et-la-recherche-scientifique-en-france/?lang=fr" target="_blank">Satya Nadella à Paris : l'IA de Microsoft passe aux résultats concrets en France</a></h3>
+<div class="meta">Microsoft Source • 20/10/2026</div>
+<p>De passage à Paris pour sa tournée Frontier Tour, le PDG de Microsoft a présenté les innovations IA — agents, cloud souverain — et leurs résultats mesurables chez des organisations françaises : Saint-Gobain pour la recherche accélérée, Stellantis et Publicis pour les opérations, sans oublier la deeptech française Arlequin AI. Une démonstration de la façon dont l'IA agentique transforme déjà l'industrie et la recherche scientifique en France.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/actualites/lire-73-des-pmo-utilisent-l-ia-mais-moins-de-10-anticipent-les-risques-100859.html" target="_blank">73 % des PMO utilisent l'IA, mais moins de 10 % anticipent les risques</a></h3>
+<div class="meta">Le Monde Informatique • 20/10/2026</div>
+<p>Selon la deuxième édition de l'Observatoire PMO du groupe Virage, publiée le 20 octobre, 73 % des directions de projets utilisent régulièrement l'IA — surtout pour automatiser le reporting et les tâches répétitives. Mais moins de 10 % l'emploient pour l'anticipation des risques ou la simulation de scénarios. La confidentialité et la souveraineté des données restent les principaux freins, et l'intégration aux outils de gestion de portefeuille reste limitée.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.latribune.fr/article/tech/intelligence-artificielle/14912157253811/il-n-y-aura-pas-besoin-de-moratoire-rte-assure-pouvoir-absorber-lexplosion-des-data-centers-en-france" target="_blank">« Il n'y aura pas besoin de moratoire » : RTE assure pouvoir absorber l'explosion des data centers</a></h3>
+<div class="meta">La Tribune • octobre 2026</div>
+<p>Le gestionnaire du réseau électrique français affirme pouvoir absorber la demande exponentielle des data centers IA, qui représentent désormais 57 % (18 GW) des raccordements industriels en file d'attente. La règle du « premier arrivé, premier servi » laissera place au « premier prêt, premier servi » dès le 1er janvier 2027, avec profils de consommation précis et engagements financiers exigés des opérateurs — de quoi contrer la spéculation sans moratoire.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/nvidia-sallie-a-lallemagne-pour-batir-la-future-ia-des-usines-506112.htm" target="_blank">Nvidia s'allie à l'Allemagne pour bâtir la future IA des usines</a></h3>
+<div class="meta">ZDNet • 20/10/2026</div>
+<p>Le gouvernement allemand a officialisé une alliance stratégique avec Nvidia pour déployer l'IA au cœur de ses usines. Au programme : IA physique, jumeaux numériques et données industrielles dans des secteurs comme l'automobile et la mécanique. Un coup majeur pour l'industrie européenne qui accélère sa transformation IA face à la Chine et aux États-Unis.</p>
+</div>
+<div class="item">
+<h3><a href="https://tech.eu/2026/10/20/nvidia-invests-in-four-german-startups-as-part-of-10bn-european-investment-pledge/" target="_blank">Nvidia investit dans quatre startups allemandes (Agile Robots, Avelios Medical, Mirelo…)</a></h3>
+<div class="meta">Tech.eu • 20/10/2026</div>
+<p>Dans le prolongement de son engagement de près de 10 milliards de dollars en Europe, Nvidia a annoncé des investissements dans des startups allemandes de l'IA : Agile Robots (robotique et humanoïdes), Avelios Medical (systèmes hospitaliers natifs IA) et Mirelo (IA générative audio/vidéo). Les annonces ont été faites à l'occasion du sommet « Invest in Germany ».</p>
+</div>
+<div class="item">
+<h3><a href="https://www.eu-startups.com/2026/10/london-based-surgical-intelligence-company-xrlabs-raises-e7-48-million-to-bring-ai-into-the-operating-room/" target="_blank">XRlabs lève 7,48 M€ pour embarquer l'IA au bloc opératoire</a></h3>
+<div class="meta">EU-Startups • 20/10/2026</div>
+<p>Cette startup londonienne de « surgical intelligence » fondée par un neurochirurgien développe un copilote chirurgical basé sur la vision par ordinateur et le deep learning, pour une visualisation et un suivi du flux opératoire en temps réel. Son tour d'amorçage de 7,48 M€ (8,4 M$) est mené par Playground Global avec Eka Ventures.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.eu-startups.com/2026/10/copenhagues-plinto-raises-e2-9-million-to-help-finance-teams-catch-and-fix-errors-with-ai-agents/" target="_blank">Plinto (Copenhague) lève 2,9 M€ pour ses agents IA de la finance</a></h3>
+<div class="meta">EU-Startups • 20/10/2026</div>
+<p>La danoise Plinto construit des agents IA qui automatisent le contrôle des transactions financières, détectent les écarts par rapport aux contrats et règles, et aident à corriger les erreurs en temps réel pour les équipes finance. Levée de 2,9 M€ en pré-amorçage menée par People Ventures et Emblem.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.reuters.com/technology/us-banning-chinese-ai-deepseek-government-agency-it-systems-2026-10-19/" target="_blank">Les États-Unis bannissent DeepSeek des systèmes informatiques fédéraux civils</a></h3>
+<div class="meta">Reuters • 19-20/10/2026</div>
+<p>Le département de la Sécurité intérieure (DHS) a ordonné la suppression des produits DeepSeek — et de tout service tiers s'appuyant sur ce modèle — des systèmes des agences fédérales civiles, et interdit tout nouvel achat. Motif invoqué : de multiples vecteurs de menace, dont le transfert potentiel de données vers la Chine. L'ordre a été publié au Federal Register le 20 octobre, au nom du Federal Acquisition Supply Chain Security Act.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.marktechpost.com/2026/10/20/deepseek-deepinfer-open-source-inference-framework/" target="_blank">DeepSeek open-source DeepInfer, le moteur qui fait tourner ses modèles</a></h3>
+<div class="meta">MarkTechPost • 20/10/2026</div>
+<p>DeepSeek publie sous licence Apache 2.0 DeepInfer, son framework d'inférence haute performance utilisé en production pour DeepSeek-V4.1-Flash (ainsi que « deepseek-recipe »). Le code prend en charge les GPU NVIDIA SM100 et les NPU Huawei Ascend 950, avec kernels optimisés, parallélisme MoE, décodage spéculatif DSpark et sorties structurées — construit sur les idées de vLLM, SGLang et TensorRT-LLM. Un geste ouvert qui sert aussi la souveraineté matérielle chinoise.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.numerama.com/cyberguerre/2356515-supervision-humaine-minimale-larmee-americaine-veut-envoyer-des-agents-ia-pirater-ses-ennemis.html" target="_blank">« Supervision humaine minimale » : l'armée américaine veut envoyer des agents IA pirater ses ennemis</a></h3>
+<div class="meta">Numerama • 20/10/2026</div>
+<p>Selon une enquête de The Intercept (documents du 19 octobre), le Cyber Command de l'armée américaine développe la plateforme ECHOTRIBBLE : des agents IA autonomes capables d'explorer des réseaux adverses, de s'y propager comme un ver, de neutraliser des cibles puis de s'effacer — avec une supervision humaine minimale. Les experts alertent sur l'imprévisibilité de tels agents et le risque de dommages collatéraux aux réseaux civils.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-gpt-61-sol-is-dramatically-better-at-migrating-legacy-code/" target="_blank">GPT-6.1 Sol : 86,6 % en migration COBOL, OpenAI s'attaque aux langages legacy</a></h3>
+<div class="meta">BleepingComputer • 20/10/2026</div>
+<p>OpenAI annonce que GPT-6.1 Sol atteint 86,6 % de précision sur ses tests de migration COBOL (conversion fidèle vers C++, Java, Kotlin, Python ou Rust) à faible effort de raisonnement — contre 5,4 % pour GPT-5.6 Sol — et 97,9 % à effort élevé, avec un coût inférieur de 39 %. Les résultats de MultiLangBench sur 20 langages sont également publiés, avec open-source du benchmark SQLite. Un enjeu majeur : le COBOL fait encore tourner plus de 40 % des banques et 95 % des transactions ATM.</p>
+</div>
+<div class="item">
+<h3><a href="https://the-decoder.com/elevenlabs-releases-two-new-speech-to-speech-models-designed-for-real-time-ai-conversations/" target="_blank">ElevenLabs lance Eleven Realtime : des modèles speech-to-speech pour agents vocaux</a></h3>
+<div class="meta">The Decoder • 20/10/2026</div>
+<p>ElevenLabs dévoile Eleven Realtime v1 Mini et v1 Max, deux modèles de bout en bout entrée audio / sortie parlée qui intègrent écoute, tour de parole, raisonnement et synthèse sans composants séparés. Le v1 Max affiche 98,8 % sur Big Bench Audio avec un premier son en 0,57 seconde ; plus de 90 langues et 17 000 voix supportées. Disponibles via ElevenAgents et une API Realtime compatible OpenAI.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.presse-citron.net/chatgpt-vient-il-de-tuer-powerpoint-cette-nouvelle-fonctionnalite-genere-des-presentations-a-partir-de-vos-discussions-avec-lia/" target="_blank">ChatGPT Slides : OpenAI s'attaque à PowerPoint</a></h3>
+<div class="meta">Presse-Citron • 20/10/2026</div>
+<p>OpenAI a déployé ChatGPT Slides, qui génère des présentations modifiables à partir d'une conversation, d'un document ou d'un simple prompt, avec édition directe sur les diapositives, commentaires et collaboration en temps réel, et mises à jour automatiques depuis les retours. Le déploiement concerne d'abord les abonnés Pro, Business et Enterprise — un nouveau front dans la productivité bureautique.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="arxiv-section">
+    <h2>🇫🇷 Focus Mistral</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><a href="https://mistral.ai/news/voxtral-3/" target="_blank">Voxtral 3 : Mistral lance ses modèles de parole et un SDK d'agents vocaux en 50+ langues</a></h3>
+<div class="meta">Mistral AI • 20/10/2026</div>
+<p>Mistral publie Voxtral 3, une suite de modèles speech-to-text et text-to-speech de pointe en plus de 50 langues, avec transcription temps réel sous 500 ms et synthèse expressive contextuelle. L'ensemble s'accompagne d'un SDK d'agents vocaux intégrant écoute, raisonnement, appel d'outils et parole dans un pipeline à faible latence, disponible via une API hébergée en Europe ou en auto-hébergement pour les usages souverains.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.boursorama.com/bourse/actualites/credit-agricole-s-allie-a-mistral-pour-un-deploiement-industriel-de-l-ia-9b4da15ba7c71a9ab6984bdb9789f990" target="_blank">Crédit Agricole × Mistral : l'IA française entre en banque à l'échelle industrielle</a></h3>
+<div class="meta">Boursorama • 20/10/2026</div>
+<p>Le partenariat signé le 20 octobre entre Crédit Agricole Artificial Intelligence et Mistral AI est une nouvelle démonstration du modèle « Mistral entreprise » : LLM adaptés aux données du groupe, agent conversationnel pour les clients, transformation agentique des processus et cybersécurité — avec l'argument souveraineté en première ligne, alors qu'OVHcloud critique frontalement son positionnement (voir rubrique France).</p>
+</div>
+<div class="item">
+<h3><a href="https://mistral.ai/news/timestral/" target="_blank">Prochaine échéance : l'ouverture des poids de Mistral Large 4 « Le Chonk » le 27 octobre</a></h3>
+<div class="meta">Mistral AI / Reuters • 06-20/10/2026</div>
+<p>Rappel du calendrier : le modèle trillionaire Mistral Large 4, en accès gardé depuis le 6 octobre, doit voir ses poids ouverts publiés le 27 octobre après les revues de sécurité avec les partenaires et gouvernements. Une étape clé du positionnement open weight européen face aux modèles fermés américains et aux poids ouverts chinois. Pas d'autre actualité Mistral significative depuis l'édition de lundi (Timestral, CERN « Flare » et Voxtral 3 mis à part).</p>
+</div>
+    </div></div>
+  </div>
+  <div class="arxiv-section">
+    <h2>📚 ArXiv (cs.AI &amp; cs.LG)</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.28629" target="_blank">GBClaw: An agentic AI framework for atomistic grain boundary research</a></h3>
+<div class="meta">2610.28629</div>
+<p>Les agents IA ont du mal à s'étendre aux investigations mécanistiques de domaine. GBClaw est un framework agentique dédié à l'étude de la structure et de la déformation des joints de grains — la majorité des interfaces réelles des matériaux polycristallins — pour automatiser la découverte mécanistique en science des matériaux.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.28626" target="_blank">UniWALM: Unified World Action Language Model for Embodied Robot Control</a></h3>
+<div class="meta">2610.28626</div>
+<p>Un modèle unique apprend vidéo, action et langage dans une représentation partagée, chaque modalité servant à la fois de signal de conditionnement et de cible d'apprentissage. L'hypothèse testée : la génération conjointe du langage enrichit cette représentation et améliore la manipulation robotique et les comportements dépendant de la mémoire.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.28619" target="_blank">Adaptive Multi-Token Prediction: How far should we go?</a></h3>
+<div class="meta">2610.28619</div>
+<p>La prédiction multi-tokens accélère le décodage en proposant plusieurs tokens vérifiés en une seule passe, mais l'horizon optimal varie selon le contexte. Les auteurs formulent le choix d'horizon comme un problème de contrôle en ligne, appris depuis les retours de vérification, pour arbitrer gains d'amortissement et calcul gaspillé.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.28632" target="_blank">Joints, Camera, Action! Co-Generating 3D Motion and Video for Arbitrary Rigs</a></h3>
+<div class="meta">2610.28632</div>
+<p>Un modèle qui co-génère directement la vidéo et le mouvement 3D pour n'importe quel rig fourni, avec une caméra qui enregistre ce mouvement dans la scène 3D — là où les modèles vidéo existants ne restituent qu'une animation en pixels, non rejouable en mouvement 3D.</p>
+</div>
+    </div></div>
+  </div>
+  <footer>
+    <p>Généré le 2026-10-21 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-10-21.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
