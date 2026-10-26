@@ -32,27 +32,24 @@ Semaine dominée par trois fils : d'abord l'exploitation massive de la vidéopro
    - Source : BFM TV — 19/10/2026 — https://www.bfmtv.com/tech/cybersecurite/reconnaissance-faciale-videosurveillance-algorithmique-qu-est-ce-qui-est-autorise-en-france-pour-surveiller-les-manifestations_AV-202610190407.html
    - Résumé : Le article fait le point après les manifestations d'octobre : la loi Ripost prolonge l'expérimentation de vidéoprotection algorithmique (détection d'événements par IA) jusqu'à fin 2030 sur les sites à risque, mais la reconnaissance faciale en temps réel reste strictement encadrée et la CNIL opposée aux traitements biométriques généralisés. Un cadre à connaître pour toute offre de vidéoprotection intelligente.
 
-5. **L'option Télésurveillance Plus+ d'IMA Protect élue Produit de l'Année 2026**
-   - Source : IMA Protect (source primaire) — 22/10/2026 — https://www.ima.eu/en/ima-protects-telesurveillance-plus-option-voted-product-year-2026
-   - Résumé : L'option de télésurveillance de IMA Protect, qui relie l'alarme professionnelle à des objets connectés tiers (caméras, éclairage, thermostats Netatmo/Legrand), a été élue Produit de l'Année 2026 sur des critères d'innovation et de simplicité d'usage. Signe que la convergence alarme/maison connectée s'impose comme standard du marché grand public et des professionnels.
 
 ### 🌍 Europe hors France
 
-6. **CVC étudie une offre pour reprendre Verisure en privé, un an après son introduction en bourse**
+5. **CVC étudie une offre pour reprendre Verisure en privé, un an après son introduction en bourse**
    - Source : Reuters — 21/10/2026 — https://www.reuters.com/legal/transactional/cvc-explores-verisure-take-private-bid-year-after-listing-ft-reports-2026-10-21/
    - Résumé : Le fonds CVC évaluerait une reprise en privé de Verisure, valorisée environ 9,7 milliards d'euros (contre 13,7 milliards à l'IPO), alors même que le leader européen de l'alarme surveillée poursuit sa croissance opérationnelle en Europe et en Amérique latine. Une consolidation qui redessine l'actionnariat du premier acteur de la télésurveillance européenne.
 
-7. **Securitas : le T3 2026 confirme la montée en puissance de la technologie dans la sécurité**
+6. **Securitas : le T3 2026 confirme la montée en puissance de la technologie dans la sécurité**
    - Source : Quartr — 23/10/2026 — https://quartr.com/events/securitas-secu-q3-2026_3YwfAO1h
    - Résumé : Securitas publie un chiffre d'affaires T3 de 38,6 MdSEK avec 3 % de croissance organique ajustée et une marge opérationnelle ajustée de 8,2 %. Sa branche Technology & Solutions atteint 35 % des ventes avec 6 % de croissance réelle : la vidéo et les solutions électroniques connectées tirent désormais la marge du groupe de sécurité, au-delà de la garde humaine.
 
 ### 🌐 Monde
 
-8. **La police des parcs américains loue des remorques de caméras de surveillance pilotées par IA à Washington**
+7. **La police des parcs américains loue des remorques de caméras de surveillance pilotées par IA à Washington**
    - Source : The Guardian — 21/10/2026 — https://www.theguardian.com/us-news/2026/oct/21/park-police-surveillance-cameras-washington-dc
    - Résumé : L'US Park Police a attribué un contrat de 343 000 $ pour louer des remorques de vidéoprotection mobiles IA de LiveView Technologies, avec caméras thermiques et visuelles, détection de comportements (immigration, agitation) et lecture de plaques. Le modèle de la « vidéoprotection mobile à la demande » gagne les forces de l'ordre — un segment que les intégrateurs français voient aussi émerger pour les chantiers et événements.
 
-9. **Le marché mondial de la vidéoprotection va atteindre 88,1 milliards de dollars en 2031**
+8. **Le marché mondial de la vidéoprotection va atteindre 88,1 milliards de dollars en 2031**
    - Source : GlobeNewswire — 19/10/2026 — https://www.globenewswire.com/news-release/2026/10/19/3383312/0/en/global-video-surveillance-market-size-share-trends-and-forecast-2026-2031-ai-analytics-vsaas-and-ip-based-systems-propel-market-to-us-88-1bn-by-2031.html
    - Résumé : Une étude de marché projette 88,1 Md$ en 2031, portée par l'analytique IA, le VSaaS (vidéo en tant que service) et les systèmes IP ; l'Asie-Pacifique domine (Chine en tête du segment), l'Amérique du Nord arrive seconde. La trajectoire confirme le basculement du marché vers des offrescloud + IA, ce qui implique pour les installateurs une montée en compétence réseau et abonnements.
 
@@ -80,7 +77,7 @@ Semaine dominée par trois fils : d'abord l'exploitation massive de la vidéopro
 
 ## 🔮 Prospective — tendances de fond
 
-- **IA embarquée dans les centrales d'alarme et vérification automatique** — *Horizon : Court terme (<2 ans)*. Vérification photo/vidéo à l'alarme, filtrage IA des fausses alertes au niveau du détecteur, Analyse vidéo à la périphérie (edge) comme les plateformes US type Robox AI : la levée de doute humaine sera de plus en plus assistée — voire précédée — par l'IA embarquée. (https://www.ima.eu/en/ima-protects-telesurveillance-plus-option-voted-product-year-2026 • https://telecomreseller.com/2026/10/19/how-robox-ai-turns-security-cameras-into-retail-loss-prevention-tools/)
+- **IA embarquée dans les centrales d'alarme et vérification automatique** — *Horizon : Court terme (<2 ans)*. Vérification photo/vidéo à l'alarme, filtrage IA des fausses alertes au niveau du détecteur, Analyse vidéo à la périphérie (edge) comme les plateformes US type Robox AI : la levée de doute humaine sera de plus en plus assistée — voire précédée — par l'IA embarquée. (https://telecomreseller.com/2026/10/19/how-robox-ai-turns-security-cameras-into-retail-loss-prevention-tools/)
 - **Cybersécurité des équipements connectés comme prérequis du métier** — *Horizon : Court terme (<2 ans)*. L'épisode des frigos piratés (ANSSI) annonce l'extension des exigences de type NIS2 / loi résilience à tout objet connecté de sécurité : durcissement des mots de passe, cloisonnement réseau, MàJ de sécurité contractualisées. Les installateurs devront prouver l'hygiène cyber de leurs installations. (https://www.numerama.com/cyberguerre/2358171-des-defauts-de-securisation-elementaires-suite-au-piratage-des-frigos-des-consignes-de-base-ignorees-depuis-trop-longtemps.html • https://www.generation-nt.com/actualites/cyberattaque-frigos-supermarches-anssi-defauts-2083209)
 - **Convergence alarme/vidéo/cloud et offres par abonnement** — *Horizon : Moyen terme (2-5 ans)*. Le marché (88 Md$ en 2031, VSaaS en moteur) et les stratégies d'IMA, Verisure ou Securitas Technology montrent que la valeur migre vers l'abonnement logiciel + surveillance, pas vers le matériel. Les intégrateurs devront structurer des offres de service récurrentes. (https://www.globenewswire.com/news-release/2026/10/19/3383312/0/en/global-video-surveillance-market-size-share-trends-and-forecast-2026-2031-ai-analytics-vsaas-and-ip-based-systems-propel-market-to-us-88-1bn-by-2031.html • https://quartr.com/events/securitas-secu-q3-2026_3YwfAO1h)
 - **Consolidation financière du secteur de la télésurveillance européenne** — *Horizon : Moyen terme (2-5 ans)*. Verisure repris en privé par CVC, ADT Espagne cédée à Sector Alarm : les fonds voient la télésurveillance comme un actif de rendement. À terme, pression sur les marges distributeurs et rachat des indépendants. (https://www.reuters.com/legal/transactional/cvc-explores-verisure-take-private-bid-year-after-listing-ft-reports-2026-10-21/ • https://www.asadria.com/en/johnson-controls-sells-adt-spain-to-sector-alarm-for-98-million/)
