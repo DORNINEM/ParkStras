@@ -1,0 +1,320 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Informatique Quantique — 26 octobre 2026</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.violet{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tag{display:inline-block;margin:8px 6px 0 0;padding:2px 8px;border-radius:8px;font-size:.72rem;background:rgba(99,102,241,.10);color:var(--accent-2);border:1px solid rgba(99,102,241,.25)}
+    .maturite,.horizon{display:inline-block;margin:8px 6px 0 0;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700}
+    .m-b{background:rgba(16,185,129,.14);color:#059669;border:1px solid rgba(16,185,129,.4)}
+    .m-r{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .m-t{background:rgba(239,68,68,.12);color:#dc2626;border:1px solid rgba(239,68,68,.35)}
+    .m-d{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-c{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-m{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .h-l{background:rgba(139,92,246,.14);color:#7c3aed;border:1px solid rgba(139,92,246,.4)}
+    .flag{color:#b45309;font-weight:600;font-size:.8rem}
+    .note{border:1px dashed var(--border);border-radius:14px;padding:10px 14px;margin:10px 18px 16px;color:var(--muted);font-size:.85rem;background:var(--panel)}
+    .visuels{margin-top:22px}
+    .visuels h2{font-size:1.1rem;margin:0 0 10px}
+    .synthese{margin-top:22px}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .signal{border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:var(--panel)}
+    .signal b{color:var(--accent-2)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+      .kpis{grid-template-columns:repeat(4,1fr)}
+    }
+  </style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>⚛️ Veille Informatique Quantique</h1>
+      <p>France &amp; Europe • Monde • Matériel &amp; Logiciel • Prospective — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-26">26 octobre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🇫🇷🇪🇺 France &amp; Europe</div><div class="value">8</div></div>
+    <div class="kpi"><div class="label">🌍 Monde</div><div class="value">6</div></div>
+    <div class="kpi"><div class="label">🔬 Innovations</div><div class="value">6</div></div>
+    <div class="kpi"><div class="label">🚀 Prospective</div><div class="value">6</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 26 articles</span>
+    <span class="pill green">📅 26 octobre 2026</span>
+    <span class="pill yellow">🔬 arXiv/preprints : 5 (signalés ⚠️)</span>
+    <span class="pill violet">🔎 Fenêtres : 48 h (P1-P2) / 72 h (P3) / 7 j (P4)</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷🇪🇺 Marché France &amp; Europe</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.merca2.es/2026/10/24/telefonica-iqm-ordenador-cuantico-madrid-2480215/" target="_blank">Telefónica et IQM installent le premier ordinateur quantique de Madrid à l'Université polytechnique</a></h3>
+          <div class="meta">merca2 • 24/10/2026</div>
+          <p>Telefónica et l'européen IQM déploieront avant fin 2026 un ordinateur quantique IQM Spark (5 qubits supraconducteurs) sur site à l'Universidad Politécnica de Madrid : premier système quantique de la Communauté de Madrid et troisième en Espagne via leur partenariat. Ouvert aux universités, hôpitaux, centres de recherche et startups pour tester des algorithmes et des cas d'usage industriels, il renforce l'écosystème quantique ibérique et européen.</p>
+          <span class="tag">Espagne</span><span class="tag">IQM</span><span class="tag">partenariat</span><span class="tag">infrastructures</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://shattered.io/fr/qkd-vs-pqc-quatre-agences-europeennes-2026/" target="_blank">QKD vs PQC : quatre agences européennes (dont l'ANSSI) priorisent le post-quantique</a></h3>
+          <div class="meta">Shattered.io • 24/10/2026</div>
+          <p>Analyse des positions convergentes de quatre agences européennes de cybersécurité (ANSSI en France, BSI en Allemagne, Pays-Bas, Suède) qui jugent la distribution de clés quantiques (QKD) pas assez mature pour un déploiement de production et privilégient la migration vers la cryptographie post-quantique, avec des échéances 2030 pour les systèmes à haut risque et 2035 pour le reste. Les projets EuroQCI sont repositionnés comme démonstrateurs plutôt qu'infrastructure opérationnelle. Directement utile pour les feuilles de route conformité/PQC des acteurs français.</p>
+          <span class="tag">réglementation</span><span class="tag">ANSSI</span><span class="tag">cryptographie post-quantique</span><span class="tag">EuroQCI</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.accessnewswire.com/newsroom/en/business-and-professional-services/investor-alert-pomerantz-law-firm-investigates-claims-on-behalf-1240230" target="_blank">Pasqal sous le coup d'une enquête d'actionnaires après sa sortie du programme PROQCIMA</a></h3>
+          <div class="meta">AccessNewswire • 25/10/2026</div>
+          <p>Le cabinet Pomerantz annonce une enquête sur d'éventuelles fraudes aux valeurs mobilières visant Pasqal (cotée à New York), après son communiqué du 28 septembre 2026 mettant fin à sa participation au programme français LSQUARE/PROQCIMA — annonce qui avait fait chuter le titre de 8,36 %. Un épisode qui illustre la tension entre cotation internationale et programmes souverains français pour la pépite d'atomes neutres.</p>
+          <span class="tag">Pasqal</span><span class="tag">marché</span><span class="tag">bourse</span><span class="tag">PROQCIMA</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://thequbitreport.com/security-policy/2026/10/25/qdnl-convenes-benelux-qci-partners-to-advance-euroqci-qkd-priorities/" target="_blank">EuroQCI : QDNL rassemble les partenaires Benelux-QCI pour structurer les priorités QKD</a></h3>
+          <div class="meta">The Qubit Report • 25/10/2026</div>
+          <p>Le 22 octobre à Utrecht, QDNL a réuni les partenaires Benelux-QCI (Pays-Bas, Belgique, Luxembourg, Grèce) autour des priorités QKD d'EuroQCI : montée en compétences, engagement des utilisateurs finaux, démonstrateurs et standards européens, avec un focus sur les fibres transfrontalières et la gestion de clés open source. L'infrastructure européenne de communication quantique passe des pilotes à une structuration par blocs régionaux — un modèle suivi de près par la France.</p>
+          <span class="tag">EuroQCI</span><span class="tag">QKD</span><span class="tag">programmes publics</span><span class="tag">partenariat</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://thequantuminsider.com/2026/10/24/mehmet-sanliol-evercore-why-quantum-valuations-hinge-on-2030-revenue-multiples-and-consolidation/" target="_blank">Marché du quantique : les valorisations dépendront des multiples de revenus 2030 et de la consolidation (Evercore)</a></h3>
+          <div class="meta">The Quantum Insider • 24/10/2026</div>
+          <p>Entretien avec Mehmet Sanliol (Evercore) sur la valorisation des sociétés quantiques cotées, désormais indexée sur des multiples de revenus projetés 2030-2035, le rôle de la consolidation dans un secteur où les démos seules ne suffisent plus, et les parcours d'introduction en Bourse (IPO/SPAC). Éclairage utile pour situer la valorisation des acteurs européens (Pasqal cotée à New York, IQM…) et le risque de concentration du marché.</p>
+          <span class="tag">marché</span><span class="tag">financement</span><span class="tag">consolidation</span><span class="tag">valorisation</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://channellife.co.uk/story/quobly-sipearl-team-up-on-european-quantum-computing" target="_blank">Quobly et SiPearl s'allient sur le calcul quantique-HPC souverain européen</a></h3>
+          <div class="meta">ChannelLife • 23/10/2026</div>
+          <p>Les Français Quobly (qubits de spin silicium) et SiPearl (processeur HPC souverain Rhea1) ont signé un protocole d'accord le 23 octobre pour intégrer les serveurs SiPearl aux systèmes quantiques de Quobly et bâtir des architectures hybrides HPC-quantique européennes souveraines. Un couplage concret entre la feuille de route processeur européen et l'industrie quantique tricolore.</p>
+          <span class="tag">France</span><span class="tag">Quobly</span><span class="tag">SiPearl</span><span class="tag">HPC hybride</span><span class="tag">souveraineté</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.techniques-ingenieur.fr/actualite/breves-afp/la-plateforme-de-mesure-dediee-au-quantique-est-operationnelle-154151/" target="_blank">La plateforme de mesure dédiée au quantique MetriQs-France est opérationnelle</a> <em>(complément fenêtre 7 jours)</em></h3>
+          <div class="meta">Techniques de l'Ingénieur (brève AFP) • 23/10/2026</div>
+          <p>La plateforme MetriQs-France, dotée de 13 M€ via France 2030, a été inaugurée à Trappes : elle donne à la France des instruments de mesure de référence pour la qualité des qubits et des technologies quantiques, en collaboration avec le CEA, le CNRS, les startups Alice &amp; Bob et C12 ainsi que Thales. Maillon clé de la souveraineté métrologique de l'écosystème quantique français.</p>
+          <span class="tag">France 2030</span><span class="tag">métrologie</span><span class="tag">CEA/CNRS</span><span class="tag">Alice &amp; Bob</span><span class="tag">C12</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://alice-bob.com/newsroom/alice-bob-results/" target="_blank">Alice &amp; Bob livre les premiers résultats de la Phase 1 du programme PROQCIMA</a> <em>(complément fenêtre 7 jours)</em></h3>
+          <div class="meta">Alice &amp; Bob (communiqué de presse) • 20/10/2026</div>
+          <p>Alice &amp; Bob publie les résultats de la Phase 1 de PROQCIMA (cadre d'achat de la stratégie quantique française liée à France 2030, qui réunit aussi Pasqal, Quandela, Quobly et C12, objectif : prototypes à 1 000 qubits logiques d'ici 2032) : trois démonstrateurs cat-qubit opérationnels (deux puces 6 qubits, une 12 qubits), portes CNOT à bruit biaisé, cycles de code de répétition et première porte non-Clifford sur qubits chat. Taux d'erreur logique encore au-dessus du seuil, avec un jumeau numérique identifiant les pistes d'amélioration.</p>
+          <span class="tag">France</span><span class="tag">Alice &amp; Bob</span><span class="tag">PROQCIMA</span><span class="tag">Plan France 2030</span><span class="tag">cat-qubits</span>
+        </div>
+      </div>
+      <div class="note">📌 Note de la veille : la fenêtre stricte 48 h (24-26/10, week-end) a produit 5 annonces à substance ; deux compléments du 23/10 (MetriQs-France) et du 20/10 (Alice &amp; Bob / PROQCIMA) ont été retenus dans la fenêtre 7 jours. Rien de neuf du 19 au 26/10 chez Atos Quantum, Multiverse Computing, ParityQC et Qilimanjaro.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌍 Monde — Pertinence Europe</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://insidecybersecurity.com/daily-news/oncd-cisa-officials-urge-agencies-prioritize-post-quantum-cryptography-transition" target="_blank">ONCD, CISA : les agences fédérales appelées à prioriser la transition post-quantique</a></h3>
+          <div class="meta">Inside Cybersecurity • 26/10/2026</div>
+          <p>Les responsables de l'ONCD et de la CISA exhortent les agences fédérales américaines à prioriser la transition vers les algorithmes post-quantiques du NIST, face au risque d'ordinateurs quantiques capables de casser la cryptographie actuelle. Pertinent pour les organisations européennes exposées aux échanges avec les administrations américaines : la dynamique de migration s'accélère à l'approche des échéances 2030-2035.</p>
+          <span class="tag">cybersécurité</span><span class="tag">NIST PQC</span><span class="tag">Q-Day</span><span class="tag">migration</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://circleid.com/posts/g7-cyber-agencies-urge-immediate-post-quantum-migration-planning" target="_blank">G7 : les agences cyber appellent à une planification immédiate de la migration post-quantique</a></h3>
+          <div class="meta">CircleID • 25/10/2026</div>
+          <p>Le groupe de travail cyber du G7 (incluant France, Allemagne, Italie et l'UE) appelle à une planification immédiate de la migration depuis la cryptographie à clé publique vulnérable au quantique, en s'appuyant sur la RFC 10024 de l'IETF pour le TLS hybride et les standards NIST. Message direct pour la souveraineté numérique européenne et les opérateurs d'importance vitale.</p>
+          <span class="tag">G7</span><span class="tag">post-quantique</span><span class="tag">TLS hybride</span><span class="tag">Europe</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/arqit-invests-in-sirius-to-scale-tactical-edge-quantum-safe-networking-following-nato-contract-selection/" target="_blank">Arqit investit dans Sirius pour le réseau quantum-safe tactique après sa sélection OTAN</a></h3>
+          <div class="meta">Quantum Computing Report • 24/10/2026</div>
+          <p>Arqit (Royaume-Uni), sélectionné sur un contrat de l'OTAN, investit dans Sirius Computer pour fournir du chiffrement quantum-safe aux communications militaires tactiques sans refonte matérielle. Première application défense d'envergure de la cryptographie post-quantique en Europe, au moment où les inquiétudes autour du « harvest now, decrypt later » montent dans les appareils de sécurité occidentaux.</p>
+          <span class="tag">OTAN</span><span class="tag">défense</span><span class="tag">quantum-safe</span><span class="tag">Europe</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://vir.com.vn/quandela-and-quanova-partner-to-deploy-vietnams-first-quantum-computer-163640.html" target="_blank">Quandela et Quanova s'associent pour déployer le premier ordinateur quantique du Vietnam</a></h3>
+          <div class="meta">VIR (Vietnam Investment Review) • 24/10/2026</div>
+          <p>Quanova a retenu le système photonique MosaiQ de la française Quandela pour un programme de recherche et d'enseignement à l'université Quang Trung (soutenu par Nam A Bank) : premier ordinateur quantique du Vietnam. Première exportation d'un QPU français en Asie du Sud-Est — la filière photonique française se positionne sur les marchés émergents, utile à la lecture de la stratégie internationale des acteurs tricolores.</p>
+          <span class="tag">Quandela</span><span class="tag">Vietnam</span><span class="tag">photonique</span><span class="tag">export</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/google-quantum-ai-launches-150k-kaggle-competition-to-compress-fault-tolerant-quantum-circuits-using-ai-agents/" target="_blank">Google Quantum AI lance une compétition Kaggle à 150 000 $ pour compresser des circuits quantiques tolérants aux fautes avec des agents IA</a></h3>
+          <div class="meta">Quantum Computing Report • 23/10/2026</div>
+          <p>Compétition Kaggle (du 22 octobre 2026 au 20 janvier 2027) : utiliser des agents d'IA pour compresser des circuits quantiques tolérants aux fautes, « kickmix » et vérifiables classiquement, au service d'applications en énergie de fusion, optimisation et chimie quantique. Illustration de la convergence IA/quantique au cœur de la feuille de route de correction d'erreurs de Google.</p>
+          <span class="tag">Google Quantum AI</span><span class="tag">IA quantique</span><span class="tag">correction d'erreurs</span><span class="tag">applications</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://thequantuminsider.com/2026/10/19/quantinuum-reports-a-10x-reduction-in-logical-error-rate-on-helios/" target="_blank">Quantinuum : fidélité logique record de 99,9995 % sur Helios</a> <em>(complément fenêtre 7 jours)</em></h3>
+          <div class="meta">The Quantum Insider • 19/10/2026</div>
+          <p>Quantinuum annonce un record mondial de fidélité logique de 99,9995 % sur son système à ions piégés Helios (code couleur, distance 7, erreur logique de 5×10⁻⁶), soit 10× mieux que son propre record de septembre et ~100× au-delà des meilleures plateformes d'autres modalités, avec suppression d'erreur 12× par incrément de distance. Trajectoire revendiquée vers son ordinateur tolérant aux fautes Apollo en 2029 ; la communauté y lit aussi une accélération potentielle de l'échéance Q-Day (résultat fabricant, non encore publié en revue).</p>
+          <span class="tag">Quantinuum</span><span class="tag">correction d'erreurs</span><span class="tag">fidélité logique</span><span class="tag">Q-Day</span>
+        </div>
+      </div>
+      <div class="note">📌 Note de la veille : la fenêtre stricte 48 h est couverte par 3 items (ONCD/CISA, G7, Arqit/OTAN) ; trois compléments remontant au 19-23/10 conservés pour leur forte pertinence Europe. Peu d'annonces constructeurs majeures (IBM, Microsoft, Amazon) dans la seule fenêtre de 48 h ; actualité dominante de la période : la cybersécurité post-quantique.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🔬 Innovations Matérielles &amp; Logicielles</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.nature.com/articles/s41534-026-01383-z" target="_blank">Certification device-independent de fermions de Majorana</a></h3>
+          <div class="meta">npj Quantum Information (Nature Portfolio) • 24/10/2026</div>
+          <p>Papier théorique : de nouvelles inégalités de Bell généralisées permettent une certification device-independent de fermions de Majorana (comme générateurs d'algèbre de Clifford multi-qubits), avec une nouvelle équivalence pour le self-testing. Pertinent pour valider les plateformes topologiques type Majorana sans faire confiance au device. Peer-reviewed (npj QI).</p>
+          <span class="maturite m-t">Théorique</span><span class="tag">topologique</span><span class="tag">Majorana</span><span class="tag">certification</span><span class="tag">peer-reviewed</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.engadget.com/2292950/how-quantum-computer-stays-running-extreme-cold/" target="_blank">Comment les réfrigérateurs à dilution maintiennent les ordinateurs quantiques en fonctionnement</a></h3>
+          <div class="meta">Engadget • 25/10/2026</div>
+          <p>Article de fond sur la chaîne cryogénique des ordinateurs quantiques : systèmes modulaires IBM descendant sous 15 mK, et verrou principal du scaling — la chaleur injectée par le câblage de contrôle à mesure que le nombre de qubits augmente. Bonne synthèse du goulot d'étranglement hardware cryogénique actuel.</p>
+          <span class="maturite m-d">Disponible</span><span class="tag">cryogénie</span><span class="tag">réfrigérateurs à dilution</span><span class="tag">câblage</span><span class="tag">IBM</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://nvidianews.nvidia.com/news/nvidia-runs-record-simulation-of-fault-tolerant-quantum-computing-at-julich-supercomputing-centre" target="_blank">NVIDIA franchit un record de simulation quantique tolérante aux fautes à 104 qubits sur le supercalculateur européen JUPITER</a></h3>
+          <div class="meta">NVIDIA Newsroom (via The Qubit Report) • 23/10/2026</div>
+          <p>NVIDIA a simulé un calcul quantique tolérant aux fautes à l'échelle de 104 qubits sur JUPITER (centre de supercalcul de Jülich, Allemagne) avec CUDA-Q et cuQuantum, sous bruit réaliste, validant des techniques de magic state cultivation qui pourraient réduire de ~90 % le nombre de qubits physiques requis. Premier record de ce type établi sur un supercalculateur européen — coopération UE/industrie à suivre.</p>
+          <span class="maturite m-r">R&amp;D</span><span class="tag">simulation</span><span class="tag">CUDA-Q</span><span class="tag">magic states</span><span class="tag">JUPITER</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/seeqc-and-nvidia-demonstrate-50-qec-latency-and-error-rate-reduction-via-digital-pre-decoder-architecture/" target="_blank">SEEQC et NVIDIA : −50 % de latence de décodage QEC via un pré-décodeur numérique sur puce</a></h3>
+          <div class="meta">Quantum Computing Report (annonce SEEQC) • 22/10/2026</div>
+          <p>SEEQC annonce l'intégration de son pré-décodeur chip-based avec les modèles Ising de NVIDIA via NVQLink : réduction d'environ 50 % de la latence de décodage QEC et des taux d'erreurs logiques, en simulation. <span class="flag">⚠️ Annonce fabricant, résultats simulés, non vérifiés par les pairs ; à suivre sur données réelles.</span></p>
+          <span class="maturite m-r">R&amp;D</span><span class="tag">correction d'erreurs</span><span class="tag">décodage</span><span class="tag">CMOS</span><span class="tag">NVQLink</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumcomputingreport.com/quandela-demonstrates-live-hybrid-photonic-gpu-qpu-architecture-via-nvidia-nvqlink-at-gtc-berlin/" target="_blank">Quandela démontre une architecture hybride photonique GPU-QPU en direct via NVQLink (GTC Berlin)</a></h3>
+          <div class="meta">Quantum Computing Report • 23/10/2026</div>
+          <p>Quandela a présenté à NVIDIA GTC Berlin un démonstrateur hybride IA-quantique en conditions réelles, intégrant son QPU photonique à des systèmes NVIDIA DGX via NVQLink et la plateforme CUDA-Q, pour des workflows hybrides et du reservoir computing. Le logiciel de couplage GPU-QPU devient un champ d'innovation où l'acteur français est en première ligne.</p>
+          <span class="maturite m-r">R&amp;D</span><span class="tag">photonique</span><span class="tag">NVQLink</span><span class="tag">CUDA-Q</span><span class="tag">hybride</span><span class="tag">Quandela</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.ibm.com/quantum/blog/qiskit-2-6-release-summary" target="_blank">Qiskit SDK v2.6 : extension du C API (pass-manager, QPY natif, opérations custom)</a></h3>
+          <div class="meta">IBM Quantum Blog • 22/10/2026</div>
+          <p>Qiskit 2.6.0/2.6.1 (PyPI : 16 et 22/10) étend le C API : framework de pass-manager, sérialisation QPY v18 native et opérations hardware customs sans Python, vers une pile quantique « Python-optional » pour l'intégration HPC (C, C++, Julia). Suite directe de la 2.6.0 couverte la semaine dernière ; la pile logicielle se prépare aux architectures hybrides HPC.</p>
+          <span class="maturite m-d">Disponible</span><span class="tag">Qiskit</span><span class="tag">framework</span><span class="tag">C API</span><span class="tag">HPC</span>
+        </div>
+      </div>
+      <div class="note">📌 Note de la veille : trois items confirmés dans la fenêtre 72 h (npj QI 24/10, Engadget 25/10, Quandela 23/10) ; trois compléments du 22/10 (NVIDIA JUPITER, SEEQC, Qiskit) conservés dans la fenêtre 7 jours. Le résultat RIKEN sur qubits de spin, déjà couvert dans la veille du 19/10, n'est pas repris. Statut peer-review : npj QI publié ; SEEQC = annonce fabricant en simulation (signalée ⚠️) ; Qiskit = release logicielle.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🚀 Prospective &amp; Impacts Sectoriels</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://arxiv.org/abs/2610.32595" target="_blank">The Compendium of Super-Quadratic Computational Quantum Advantages</a></h3>
+          <div class="meta">arXiv quant-ph 2610.32595 (Algorithmiq/IBM, incl. R. Somma) • 23/10/2026</div>
+          <p>Compilation structurée des problèmes présentant des perspectives crédibles d'avantage quantique super-quadratique. Au-delà d'un catalogue, elle identifie les caractéristiques structurelles requises (chargeabilité efficace des données classiques, profondeurs de circuit tolérables, structure algébrique du problème) pour qu'un speedup théorique se traduise en avantage pratique — et réfute implicitement les annonces d'avantage prématurées. Les cas d'usage industriels super-quadratiques restent un horizon au-delà de 5 ans. <span class="flag">⚠️ Preprint arXiv non validé par les pairs.</span></p>
+          <span class="horizon h-l">Long &gt;5 ans</span><span class="tag">avantage quantique</span><span class="tag">algorithmie</span><span class="tag">timeline</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://arxiv.org/abs/2610.27929" target="_blank">Constant-Depth Quantum Barrier Option Pricing via a Static Bivariate Oracle Framework</a></h3>
+          <div class="meta">arXiv quant-ph 2610.27929 • 20/10/2026</div>
+          <p>Méthode quantique à profondeur constante pour le pricing d'options à barrière, évitant la discrétisation séquentielle des trajectoires du Monte-Carlo classique. L'oracle bivarié statique réduit fortement le nombre de qubits et de portes tout en maintenant la précision sur matériel bruité — un progrès face au verrou principal de l'estimation d'amplitude (QAE) en finance, qui exigeait des circuits trop profonds pour le NISQ. <span class="flag">⚠️ Preprint arXiv non validé par les pairs.</span></p>
+          <span class="horizon h-m">Moyen 2-5 ans</span><span class="tag">finance quantique</span><span class="tag">pricing d'options</span><span class="tag">Monte-Carlo quantique</span><span class="tag">NISQ</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://arxiv.org/abs/2610.32968" target="_blank">Distributed Quantum-Centric Supercomputing with Multi-Layered Generative Learning for Intermolecular Interactions</a></h3>
+          <div class="meta">arXiv quant-ph 2610.32968 • 23/10/2026</div>
+          <p>Cadre distribué combinant apprentissage génératif multi-couches et supercalcul quantique-centrique pour simuler les interactions intermoléculaires (dimères et hexamères d'eau) avec une réduction significative des exigences en qubits. Dans la lignée des travaux IBM/Cleveland Clinic/RIKEN sur les protéines (~12 600 atomes), une étape vers la chimie computationnelle pertinente pour la découverte de médicaments — systèmes traités encore loin des cibles biologiques réelles. <span class="flag">⚠️ Preprint arXiv non validé par les pairs.</span></p>
+          <span class="horizon h-l">Long &gt;5 ans</span><span class="tag">pharma</span><span class="tag">chimie computationnelle</span><span class="tag">simulation moléculaire</span><span class="tag">supercalcul hybride</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://quantumzeitgeist.com/quantum-logistics-climate-ieee-quantum-week-2026/" target="_blank">Quantum computing for logistics à IEEE Quantum Week 2026 : résultats mitigés face aux solveurs classiques</a></h3>
+          <div class="meta">QuantumZeitgeist (couverture QCE26, Toronto) • 20/10/2026</div>
+          <p>Retour sur les articles consacrés à l'optimisation logistique quantique à QCE26 : QAOA et recuit quantique testés sur du scheduling ferroviaire, du routage de véhicules et de la livraison camion-drone. Verdict sans concession : résultats mixtes, les solveurs classiques restant compétitifs ou supérieurs sur les cas réels. En miroir, D-Wave (initiative supply chain avec l'université de l'Arkansas) et SuperQ (logistique militaire en conditions dégradées) misent sur le déploiement opérationnel. La logistique reste un banc d'essai, pas encore un marché.</p>
+          <span class="horizon h-m">Moyen 2-5 ans</span><span class="tag">logistique</span><span class="tag">supply chain</span><span class="tag">QAOA</span><span class="tag">recuit quantique</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://blog.cloudflare.com/post-quantum-geo-key-manager/" target="_blank">Cloudflare lance PQ GeoKey Manager : post-quantique et clés géo-fencées (ML-KEM + X25519)</a></h3>
+          <div class="meta">Cloudflare Blog • 23/10/2026</div>
+          <p>Cloudflare lance en bêta fermée son PQ GeoKey Manager : les clés de déchiffrement sont enveloppées avec un schéma hybride ML-KEM-768 + X25519 (HPKE) pour n'être décapulables que par les serveurs de la géographie choisie par le client, jalonnant la migration PKI souveraine. Disponibilité générale prévue au T1 2027 ; s'ajoutent le support opt-in de ML-KEM et ML-DSA dans Workers et le ML-KEM hybride dans IPsec — en phase avec les échéances fédérales US (key establishment fin 2030, signatures 2031, dépréciation visée 2035, NIST IR 8547).</p>
+          <span class="horizon h-c">Court terme &lt;2 ans</span><span class="tag">post-quantique</span><span class="tag">ML-KEM</span><span class="tag">ML-DSA</span><span class="tag">migration PKI</span><span class="tag">protocoles hybrides</span>
+        </div>
+        <div class="item">
+          <h3><a href="https://arxiv.org/abs/2610.26833" target="_blank">Supervised Learning with Quantum Hamiltonian Embeddings</a></h3>
+          <div class="meta">arXiv quant-ph 2610.26833 (démonstration sur processeurs IBM Heron) • 19/10/2026</div>
+          <p>Cadre QML encodant les données d'entraînement classiques dans un hamiltonien paramétré dont l'état fondamental approximé définit le classifieur. Apports : garanties prouvables (bornes de généralisation) — rare en QML, souvent dominé par les arguments d'expressivité — et démonstration expérimentale scalable sur IBM Heron. À mettre en regard des études négatives récentes (aucune supériorité systématique du QML sur données réelles) : le champ progresse surtout sur le front théorique. <span class="flag">⚠️ Preprint arXiv non validé par les pairs.</span></p>
+          <span class="horizon h-l">Long &gt;5 ans</span><span class="tag">IA quantique</span><span class="tag">QML</span><span class="tag">kernel methods</span><span class="tag">IBM Heron</span>
+        </div>
+      </div>
+      <div class="note">📌 Repère prospectif complémentaire (20/10, McKinsey « Three horizons for business ») : 1 300 à 2 700 Md$ de valeur économique d'ici 2035 (pharma/chimie et finance en tête), sur des investissements equity record de 13,3 Md$ en 2025.</div>
+    </div>
+  </div>
+
+  <div class="visuels">
+    <h2>🖼️ Images &amp; schémas analysés</h2>
+    <div class="card"><div class="card-body">
+      <p style="margin:0;font-size:.92rem">Collecte text-first : aucun visuel n'a été extrait et analysé pixel par pixel lors de cette exécution. Visuels disponibles aux sources et contextualisés dans le rapport : schéma du chiffrement hybride ML-KEM-768 + X25519 du PQ GeoKey Manager (Cloudflare), diagramme du pré-décodeur chip-based SEEQC/NVQLink, architecture du supercalculateur JUPITER de Jülich (NVIDIA), et schéma des puces cat-qubit 6 et 12 qubits des démonstrateurs PROQCIMA d'Alice &amp; Bob.</p>
+    </div></div>
+  </div>
+
+  <div class="synthese">
+    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="signal"><b>1. La migration post-quantique bascule de la doctrine au déploiement produit.</b> Cloudflare (GeoKey ML-KEM), l'appel du G7, la pression ONCD/CISA et la position des quatre agences européennes (QKD non mature, PQC prioritaire) convergent. Implication RSSI : l'inventaire cryptographique devient une échéance réglementaire 2030/2035, à lancer maintenant — et la QKD ne doit pas être traitée comme une alternative de production.</div>
+    <div class="signal"><b>2. La fidélité logique devient le terrain de records qui compte, plus le nombre de qubits.</b> Quantinuum (99,9995 %), SEEQC (décodage QEC −50 %), Alice &amp; Bob (première porte non-Clifford sur cat-qubits) : la pile fault-tolerante se verticalise (hardware + décodeur + orchestration). Implication DSI/R&amp;D : évaluer les fournisseurs sur leur feuille de route QEC et leurs jalons vérifiés, pas sur leur décompte de qubits.</div>
+    <div class="signal"><b>3. Le couplage HPC-quantique souverain se construit en Europe cette semaine.</b> Quobly/SiPearl, record de simulation NVIDIA sur JUPITER (Jülich), plateforme métrologique MetriQs-France, démonstrateur NVQLink de Quandela : l'Europe investit dans l'hybride souverain. Implication directions R&amp;D : les architectures hybrides GPU-QPU seront le point d'entrée industriel du quantique bien avant la fault-tolerance complète.</div>
+    <div class="signal"><b>4. Le financement du quantique entre dans l'ère de la reddition de comptes.</b> Enquête d'actionnaires sur Pasqal après sa sortie de PROQCIMA, valorisations indexées sur des multiples de revenus 2030-2035 (Evercore) : les démos ne suffisent plus, la consolidation est anticipée. Implication directions stratégiques : sécuriser les partenaires quantiques par des engagements contractuels multi-années, pas par la seule promesse technologique.</div>
+    <div class="signal"><b>5. La géographie du quantique s'élargit par les déploiements nationaux et l'export.</b> Madrid (Telefónica/IQM), Vietnam (Quandela/Quanova), structuration Benelux-QCI d'EuroQCI : les écosystèmes émergents se dotalent de QPU via des partenariats croisés. Implication DSI : cartographier les offres d'accès cloud souveraines (Espagne, Italie, Asie) comme alternatives ou compléments aux plateformes US.</div>
+  </div>
+
+  <footer>
+    <p>Généré le 26 octobre 2026 par Hermes (veille-quantique). Template Jarvis inline (cards, KPIs, badges maturité/horizon, responsive). Fichier : veille-quantique-2026-10-26.md + .html</p>
+    <p>26 articles — sources primaires privilégiées (npj Quantum Information, arXiv, communiqués fabricants, blogs officiels Cloudflare/NIST). Preprints arXiv et annonces fabricants non validés par les pairs signalés ⚠️.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>

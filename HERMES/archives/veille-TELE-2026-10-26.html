@@ -1,0 +1,266 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Télésurveillance & Sécurité électronique — 2026-10-26</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .synthese{margin:26px 0 0}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .item ul{margin:6px 0 0;padding-left:20px;font-size:.88rem}
+    .item li{margin:2px 0;word-break:break-all}
+    .item a.src{color:var(--accent-2);text-decoration:none;word-break:break-all}
+    .item a.src:hover{text-decoration:underline}
+    .signal-title{color:var(--warn);font-weight:700}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr 1fr}
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-TELE-2026-10-26.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🛡️ Veille Télésurveillance &amp; Sécurité électronique</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-26">26 octobre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">2</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">2</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 9 articles</span>
+    <span class="pill green">📅 26 octobre 2026</span>
+    <span class="pill yellow">⚖️ 4 entrées juridique &amp; réglementaire</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.numerama.com/cyberguerre/2358171-des-defauts-de-securisation-elementaires-suite-au-piratage-des-frigos-des-consignes-de-base-ignorees-depuis-trop-longtemps.html" target="_blank">Cyberattaque des frigos de supermarchés : l'ANSSI pointe des « défauts de sécurisation élémentaires »</a></h3>
+<div class="meta">Numerama • 21/10/2026</div>
+<p>L'ANSSI a expliqué au Sénat que les attaques contre les contrôleurs de froid industriel (Danfoss, Copeland, Dixell) de centaines de magasins français ont réussi par simple exposition directe à internet et mots de passe par défaut ou faibles, sans faille avancée. Un rappel utile : tout équipement de sécurité connecté (central, passerelle, enregistreur) est exposé au même risque sans hygiène de base.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.leparisien.fr/faits-divers/videosurveillance-reseaux-sociaux-empreintes-comment-la-police-remonte-la-piste-des-pilleurs-du-17-octobre-20-10-2026-CEA7VKI62ZA5RLPVFAN3QQHWE4.php" target="_blank">Vidéosurveillance, réseaux sociaux, empreintes : comment la police remonte la piste des pilleurs du 17 octobre</a></h3>
+<div class="meta">Le Parisien • 20/10/2026</div>
+<p>Les unités d'expertise vidéo de la police parisienne exploitent systématiquement les caméras publiques, de transport (RATP/SNCF) et commerciales, croisées avec réseaux sociaux et relevés d'empreintes, pour identifier les pillards. Une démonstration du rôle central des images de vidéoprotection dans l'enquête moderne — et de la valeur probante d'archives vidéo bien conservées.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.01net.com/actualites/la-police-utilise-citadel-une-ia-surpuissante-pour-traquer-les-pilleurs-du-17-octobre.html" target="_blank">La police utilise Citadel, une IA « surpuissante » pour traquer les pilleurs du 17 octobre</a></h3>
+<div class="meta">01net • 23/10/2026</div>
+<p>La police française mobilise l'outil Citadel de la start-up Orasio, capable d'analyser des milliers d'heures de vidéos (surveillance et réseaux sociaux) pour identifier suspects et véhicules, sans reconnaissance faciale. Un exemple concret d'IA d'analyse vidéo « par le comportement », qui annonce les outils qui irrigueront aussi les centres de supervision professionnels.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.bfmtv.com/tech/cybersecurite/reconnaissance-faciale-videosurveillance-algorithmique-qu-est-ce-qui-est-autorise-en-france-pour-surveiller-les-manifestations_AV-202610190407.html" target="_blank">Reconnaissance faciale, vidéoprotection algorithmique : ce qui est autorisé en France pour surveiller les manifestations</a></h3>
+<div class="meta">BFM TV • 19/10/2026</div>
+<p>Après les manifestations d'octobre, le point sur le cadre : la loi Ripost prolonge l'expérimentation de vidéoprotection algorithmique (détection d'événements par IA) jusqu'à fin 2030 sur les sites à risque, mais la reconnaissance faciale en temps réel reste strictement encadrée et la CNIL opposée aux traitements biométriques généralisés. Un cadre à connaître pour toute offre de vidéoprotection intelligente.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.ima.eu/en/ima-protects-telesurveillance-plus-option-voted-product-year-2026" target="_blank">L'option Télésurveillance Plus+ d'IMA Protect élue Produit de l'Année 2026</a></h3>
+<div class="meta">IMA Protect • 22/10/2026</div>
+<p>L'option de télésurveillance de IMA Protect, qui relie l'alarme professionnelle à des objets connectés tiers (caméras, éclairage, thermostats Netatmo/Legrand), a été élue Produit de l'Année 2026 sur des critères d'innovation et de simplicité d'usage. Signe que la convergence alarme/maison connectée s'impose comme standard du marché grand public et des professionnels.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.reuters.com/legal/transactional/cvc-explores-verisure-take-private-bid-year-after-listing-ft-reports-2026-10-21/" target="_blank">CVC étudie une offre pour reprendre Verisure en privé, un an après son introduction en bourse</a></h3>
+<div class="meta">Reuters • 21/10/2026</div>
+<p>Le fonds CVC évaluerait une reprise en privé de Verisure, valorisée environ 9,7 milliards d'euros (contre 13,7 milliards à l'IPO), alors même que le leader européen de l'alarme surveillée poursuit sa croissance opérationnelle en Europe et en Amérique latine. Une consolidation qui redessine l'actionnariat du premier acteur de la télésurveillance européenne.</p>
+</div>
+<div class="item">
+<h3><a href="https://quartr.com/events/securitas-secu-q3-2026_3YwfAO1h" target="_blank">Securitas : le T3 2026 confirme la montée en puissance de la technologie dans la sécurité</a></h3>
+<div class="meta">Quartr • 23/10/2026</div>
+<p>Securitas publie un chiffre d'affaires T3 de 38,6 MdSEK avec 3 % de croissance organique ajustée et une marge opérationnelle ajustée de 8,2 %. Sa branche Technology &amp; Solutions atteint 35 % des ventes avec 6 % de croissance réelle : la vidéo et les solutions électroniques connectées tirent désormais la marge du groupe, au-delà de la garde humaine.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.theguardian.com/us-news/2026/oct/21/park-police-surveillance-cameras-washington-dc" target="_blank">La police des parcs américains loue des remorques de caméras de surveillance pilotées par IA à Washington</a></h3>
+<div class="meta">The Guardian • 21/10/2026</div>
+<p>L'US Park Police a attribué un contrat de 343 000 $ pour louer des remorques de vidéoprotection mobiles IA de LiveView Technologies, avec caméras thermiques et visuelles, détection de comportements et lecture de plaques. Le modèle de la « vidéoprotection mobile à la demande » gagne les forces de l'ordre — un segment que les intégrateurs français voient aussi émerger pour les chantiers et événements.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.globenewswire.com/news-release/2026/10/19/3383312/0/en/global-video-surveillance-market-size-share-trends-and-forecast-2026-2031-ai-analytics-vsaas-and-ip-based-systems-propel-market-to-us-88-1bn-by-2031.html" target="_blank">Le marché mondial de la vidéoprotection va atteindre 88,1 milliards de dollars en 2031</a></h3>
+<div class="meta">GlobeNewswire • 19/10/2026</div>
+<p>Une étude de marché projette 88,1 Md$ en 2031, portée par l'analytique IA, le VSaaS (vidéo en tant que service) et les systèmes IP ; l'Asie-Pacifique domine, l'Amérique du Nord arrive seconde. La trajectoire confirme le basculement du marché vers des offres cloud + IA, ce qui implique pour les installateurs une montée en compétence réseau et abonnements.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="synthese">
+    <h2>⚖️ Juridique &amp; Réglementaire</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3>Loi Ripost : la vidéoprotection algorithmique prolongée jusqu'à fin 2030 et élargie (France)</h3>
+<div class="meta">Lexing • 07/10/2026 + BFM TV • 19/10/2026 — <a class="src" href="https://www.lexing.law/avocats/videoprotection-algorithmique-elargissement-du-cadre/2026/10/07/" target="_blank">article Lexing</a> • <a class="src" href="https://www.bfmtv.com/tech/cybersecurite/reconnaissance-faciale-videosurveillance-algorithmique-qu-est-ce-qui-est-autorise-en-france-pour-surveiller-les-manifestations_AV-202610190407.html" target="_blank">article BFM TV</a></div>
+<p>La loi d'août 2026 prolonge et élargit le cadre de la vidéoprotection algorithmique (détection d'événements par IA, pas de reconnaissance faciale en temps réel) à de nouveaux bâtiments publics et événements, avec autorisations plafonnées dans le temps. Pour un installateur ou un intégrateur : toute offre d'analyse vidéo IA sur la voie publique doit être calquée sur ce cadre (finalités, durée, sites éligibles) ; pour un centre de télésurveillance, la levée de doute reste du ressort humain et documenté.</p>
+</div>
+<div class="item">
+<h3>Catalogne : circulaire contraignante 1/2026 sur la vidéosurveillance augmentée par l'IA (Europe/Espagne)</h3>
+<div class="meta">DataGuidance + APDCAT • 19/10/2026 — <a class="src" href="https://www.dataguidance.com/news/spain-apdcat-approves-binding-circular-video" target="_blank">DataGuidance</a> • <a class="src" href="https://www.apdcat.cat/ca/actualitat/noticies/2026/CircularVideovigilancia" target="_blank">APDCAT</a></div>
+<p>La circulaire met à jour les règles catalanes de vidéoprotection pour couvrir explicitement les systèmes IA, les drones et les caméras embarquées, avec exigences de minimisation, transparence et conformité AI Act. Concrètement, un intégrateur opérant en Espagne (ou pour un client espagnol) doit revoir ses notices d'installation et ses registres de traitement : le niveau d'exigence documentaire devient comparable à celui d'un système « haut risque ».</p>
+</div>
+<div class="item">
+<h3>AI Act : le règlement (UE) 2026/1744 fixe les échéances de la vidéosurveillance intelligente (Europe)</h3>
+<div class="meta">Blog Sécurité Securitas • Octobre 2026 — <a class="src" href="https://www.securitas.fr/actualites-et-ressources/blog-securite/ai-act-20261744-ce-qui-change-pour-la-videosurveillance-intelligente/" target="_blank">article Securitas</a></div>
+<p>Les obligations de transparence s'appliquent depuis août 2026 et les exigences « haut risque » pour la biométrie et la vidéoprotection des infrastructures critiques prendront effet en décembre 2027. Pour un fournisseur de VMS/analytics ou un centre de télésurveillance : c'est la fenêtre pour cartographier ses fonctions IA (détection, classification, identification), documenter la supervision humaine et anticiper l'audit avant fin 2027.</p>
+</div>
+<div class="item">
+<h3>Télésurveillance à domicile : droits d'accès, de copie et d'effacement sur les enregistrements audio/vidéo (France)</h3>
+<div class="meta">Kohen Avocats • 20/10/2026 — <a class="src" href="https://kohenavocats.fr/2026/10/20/telesurveillance-alarme-ecoute-domicile-levee-doute-copie-effacement-resiliation-2026/" target="_blank">article Kohen Avocats</a></div>
+<p>L'analyse rappelle que les opérateurs de télésurveillance accèdent à l'audio/vidéo du domicile lors de la levée de doute dans un cadre strict (code de la sécurité intérieure, RGPD, jurisprudence), et que l'abonné peut exiger copie des enregistrements, effacement et résiliation. Pour un centre de télésurveillance : process de réception des demandes RGPD, durée de conservation des relevés de levée de doute et information claire des abonnés à renforcer — sous peine de contentieux croissants.</p>
+</div>
+    </div></div>
+    <h2 style="margin-top:26px">🔮 Prospective — tendances de fond</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3>IA embarquée dans les centrales d'alarme et vérification automatique — <em>Court terme (&lt;2 ans)</em></h3>
+<p>Vérification photo/vidéo à l'alarme, filtrage IA des fausses alertes au niveau du détecteur, analyse vidéo à la périphérie (edge) comme les plateformes US type Robox AI : la levée de doute humaine sera de plus en plus assistée — voire précédée — par l'IA embarquée.</p>
+</div>
+<div class="item">
+<h3>Cybersécurité des équipements connectés comme prérequis du métier — <em>Court terme (&lt;2 ans)</em></h3>
+<p>L'épisode des frigos piratés (ANSSI) annonce l'extension des exigences de type NIS2 / loi résilience à tout objet connecté de sécurité : durcissement des mots de passe, cloisonnement réseau, mises à jour contractualisées. Les installateurs devront prouver l'hygiène cyber de leurs installations.</p>
+</div>
+<div class="item">
+<h3>Convergence alarme/vidéo/cloud et offres par abonnement — <em>Moyen terme (2-5 ans)</em></h3>
+<p>Le marché (88 Md$ en 2031, VSaaS en moteur) et les stratégies d'IMA, Verisure ou Securitas Technology montrent que la valeur migre vers l'abonnement logiciel + surveillance, pas vers le matériel. Les intégrateurs devront structurer des offres de service récurrentes.</p>
+</div>
+<div class="item">
+<h3>Consolidation financière du secteur de la télésurveillance européenne — <em>Moyen terme (2-5 ans)</em></h3>
+<p>Verisure repris en privé par CVC, ADT Espagne cédée à Sector Alarm : les fonds voient la télésurveillance comme un actif de rendement. À terme, pression sur les marges distributeurs et rachat des indépendants.</p>
+</div>
+<div class="item">
+<h3>Vidéoprotection algorithmique encadrée et pérennisée — <em>Moyen terme (2-5 ans)</em></h3>
+<p>La loi Ripost (jusqu'à 2030) et l'AI Act (décembre 2027) dessinent un cadre durable : IA de détection d'événements autorisée, biométrie en temps réel restreinte. Les offres « intelligentes » conformes seront un avantage concurrentiel durable.</p>
+</div>
+    </div></div>
+    <h2 style="margin-top:26px">🧭 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><span class="signal-title">1. L'IA d'analyse vidéo comportementale (sans reconnaissance faciale) devient l'outil d'enquête standard</span></h3>
+<p>Implication : se former aux outils d'exploitation vidéo augmentée — la preuve vidéo IA arrive chez les clients professionnels.</p>
+<ul><li><a class="src" href="https://www.01net.com/actualites/la-police-utilise-citadel-une-ia-surpuissante-pour-traquer-les-pilleurs-du-17-octobre.html" target="_blank">01net</a></li><li><a class="src" href="https://www.leparisien.fr/faits-divers/videosurveillance-reseaux-sociaux-empreintes-comment-la-police-remonte-la-piste-des-pilleurs-du-17-octobre-20-10-2026-CEA7VKI62ZA5RLPVFAN3QQHWE4.php" target="_blank">Le Parisien</a></li><li><a class="src" href="https://www.huffingtonpost.fr/france/article/adn-videosurveillance-et-reseaux-sociaux-apres-le-17-octobre-comment-les-pilleurs-vont-etre-recherches_341919.html" target="_blank">HuffPost</a></li></ul>
+</div>
+<div class="item">
+<h3><span class="signal-title">2. La conformité (RGPD, AI Act, circulaires nationales) devient un critère d'achat des systèmes de vidéosurveillance IA</span></h3>
+<p>Implication : documenter la conformité dès l'offre, c'est un argument de vente.</p>
+<ul><li><a class="src" href="https://www.dataguidance.com/news/spain-apdcat-approves-binding-circular-video" target="_blank">DataGuidance</a></li><li><a class="src" href="https://www.securitas.fr/actualites-et-ressources/blog-securite/ai-act-20261744-ce-qui-change-pour-la-videosurveillance-intelligente/" target="_blank">Securitas</a></li><li><a class="src" href="https://kohenavocats.fr/2026/10/20/telesurveillance-alarme-ecoute-domicile-levee-doute-copie-effacement-resiliation-2026/" target="_blank">Kohen Avocats</a></li></ul>
+</div>
+<div class="item">
+<h3><span class="signal-title">3. L'hygiène cyber des équipements connectés (alarmes IP, NVR, IoT) passe sous surveillance de l'ANSSI</span></h3>
+<p>Implication : durcir systématiquement les accès (mots de passe, VLAN, mises à jour) et le contractualiser avec le client.</p>
+<ul><li><a class="src" href="https://www.numerama.com/cyberguerre/2358171-des-defauts-de-securisation-elementaires-suite-au-piratage-des-frigos-des-consignes-de-base-ignorees-depuis-trop-longtemps.html" target="_blank">Numerama</a></li><li><a class="src" href="https://www.generation-nt.com/actualites/cyberattaque-frigos-supermarches-anssi-defauts-2083209" target="_blank">Génération-NT</a></li><li><a class="src" href="https://www.lebigdata.fr/cyberattaque-des-supermarches-une-deuxieme-vague-fait-monter-les-frigos-a-150-c" target="_blank">LeBigData</a></li></ul>
+</div>
+<div class="item">
+<h3><span class="signal-title">4. Consolidation financière accélérée du marché de l'alarme surveillée</span></h3>
+<p>Implication : les indépendants et centres modestes seront courtisés (ou pressés) ; anticiper valorisation et partenariats.</p>
+<ul><li><a class="src" href="https://www.reuters.com/legal/transactional/cvc-explores-verisure-take-private-bid-year-after-listing-ft-reports-2026-10-21/" target="_blank">Reuters</a></li><li><a class="src" href="https://www.asadria.com/en/johnson-controls-sells-adt-spain-to-sector-alarm-for-98-million/" target="_blank">A&amp;S Adria</a></li><li><a class="src" href="https://www.capital.fr/entreprises-marches/pourquoi-le-secteur-de-l-alarme-connectee-est-en-plein-boom-1530945" target="_blank">Capital</a></li></ul>
+</div>
+<div class="item">
+<h3><span class="signal-title">5. Vidéoprotection mobile et temporaire (remorques, caméras à la demande) étendue aux manifestations et événements</span></h3>
+<p>Implication : nouveau segment de location/supervision à saisir par les intégrateurs et centres de télésurveillance.</p>
+<ul><li><a class="src" href="https://www.theguardian.com/us-news/2026/oct/21/park-police-surveillance-cameras-washington-dc" target="_blank">The Guardian</a></li><li><a class="src" href="https://www.bfmtv.com/tech/cybersecurite/reconnaissance-faciale-videosurveillance-algorithmique-qu-est-ce-qui-est-autorise-en-france-pour-surveiller-les-manifestations_AV-202610190407.html" target="_blank">BFM TV</a></li></ul>
+</div>
+    </div></div>
+  </div>
+  <footer>
+    <p>Généré le 26 octobre 2026 par Hermes (veille-telesurveillance). Template moderne inline (KPIs, cartes responsive). Fichiers : veille-TELE-2026-10-26.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
