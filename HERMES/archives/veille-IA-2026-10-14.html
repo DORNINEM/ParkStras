@@ -41,6 +41,10 @@
     }
     .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
     .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
     .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
     .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
@@ -70,10 +74,8 @@
     footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
     footer p{margin:4px 0}
     @media (min-width: 860px){
-      .grid{grid-template-columns:1fr 1fr}
     }
     @media (min-width: 1080px){
-      .grid{grid-template-columns:1fr 1fr 1fr}
     }
   </style>
 <style>
@@ -109,9 +111,9 @@
     <time datetime="2026-10-14">14 octobre 2026</time>
   </header>
   <div class="kpis">
-<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
-<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">5</div></div>
-<div class="kpi"><div class="label">🌐 Monde</div><div class="value">6</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">6</div></div>
   </div>
   <div class="badges">
     <span class="pill blue">📰 16 articles</span>
@@ -123,8 +125,7 @@
     <strong>Synthèse :</strong> journée dense. En France, Jensen Huang est venu à Paris annoncer des investissements de Nvidia dans quatre start-ups françaises tandis qu'Emmanuel Macron réunit un conseil de défense sur la sécurité de l'IA. Côté Europe, l'« AI Omnibus » vient d'être formellement adopté et repousse les échéances de l'AI Act. Dans le monde, Google déploie massivement Gemini 4 Argon, Meta contre-attaque avec Muse Wonder, et Anthropic durcit ses défenses contre les attaques de distillation. Le Focus Mistral revient sur Large 4 « Le Chonk », le refroidissement allemand et le partenariat marocain.
   </div>
   <div class="grid">
-<div class="card">
-<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card" id="zone-france"><div class="card-head"><div class="card-title">🇫🇷 France</div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.lefigaro.fr/secteur/high-tech/l-ia-est-une-formidable-nouvelle-pour-l-europe-parce-qu-elle-remet-les-compteurs-a-zero-le-message-optimiste-du-pdg-de-nvidia-jenseng-huang-a-paris-20261013" target="_blank">« L'IA est une formidable nouvelle pour l'Europe parce qu'elle remet les compteurs à zéro » : le message optimiste de Jensen Huang à Paris</a></h3>
@@ -153,7 +154,7 @@
 </div>
 </div>
 </div>
-<div class="card">
+<div class="card" id="zone-europe">
 <div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
 <div class="card-body">
 <div class="item">
@@ -183,7 +184,7 @@
 </div>
 </div>
 </div>
-<div class="card">
+<div class="card" id="zone-monde">
 <div class="card-head"><div class="card-title">🌐 Monde</div></div>
 <div class="card-body">
 <div class="item">

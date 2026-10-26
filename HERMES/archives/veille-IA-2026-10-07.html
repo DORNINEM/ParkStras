@@ -34,6 +34,10 @@
       border-radius:14px; padding:14px 16px;
     }
     .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
     .kpi .value{font-family:'Share Tech Mono',monospace;font-size:1.25rem;margin-top:6px;font-weight:700;color:var(--cyan)}
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
     .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
@@ -92,9 +96,9 @@
     <time datetime="2026-10-07">07 octobre 2026</time>
   </header>
   <div class="kpis">
-    <div class="kpi"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
-    <div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">4</div></div>
-    <div class="kpi"><div class="label">🌐 Monde</div><div class="value">5</div></div>
+    <div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+    <div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">5</div></div>
   </div>
   <div class="badges">
     <span class="pill blue">📰 14 articles</span>
@@ -103,7 +107,7 @@
   </div>
   <div class="grid">
     <div class="card">
-      <div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
       <div class="card-body">
         <div class="item">
           <h3><a href="https://www.zdnet.fr/actualites/le-chonk-avec-son-nouveau-modele-mistral-ai-voit-les-choses-en-gros-505222.htm" target="_blank">Le Chonk : avec son nouveau modèle, Mistral AI voit les choses en gros</a></h3>

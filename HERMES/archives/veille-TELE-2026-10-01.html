@@ -41,6 +41,10 @@
     }
     .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
     .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
     .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
     .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
@@ -69,11 +73,9 @@
     footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
     footer p{margin:4px 0}
     @media (min-width: 860px){
-      .grid{grid-template-columns:1fr 1fr}
       .kpis{grid-template-columns:repeat(4,1fr)}
     }
     @media (min-width: 1080px){
-      .grid{grid-template-columns:1fr 1fr 1fr}
     }
   </style>
 <style>
