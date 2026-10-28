@@ -1,0 +1,226 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 28 octobre 2026</title>
+  <style>
+    :root {
+      --bg:#010409; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --accent:#40dcff; --accent-2:#7bffb2; --warn:#ffb347; --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background: radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent), radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent), var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#0f172a,#0b1220);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#40dcff;color:#010409;border-color:#40dcff}
+    .pill.green{background:#7bffb2;color:#010409;border-color:#7bffb2}
+    .pill.yellow{background:#ffb347;color:#010409;border-color:#ffb347}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#0f172a,#0b1220);border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    .footer p{margin:4px 0}
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-10-28.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🩺 Veille Innovations Diabète</h1>
+      <p>Sources FR prioritaires • Technologies, recherche, Big Pharma — généré par Hermes</p>
+    </div>
+    <time datetime="2026-10-28">28 octobre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-france')" title="Aller à la section France"><div class="label">🇫🇷 France</div><div class="value">6</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-europe')" title="Aller à la section Europe"><div class="label">🌍 Europe / Suisse</div><div class="value">3</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-monde')" title="Aller à la section Monde"><div class="label">🌐 Monde</div><div class="value">4</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 9 articles + Prospective</span>
+    <span class="pill green">📅 28 octobre 2026</span>
+    <span class="pill yellow">🔬 4 cartes recherche</span>
+  </div>
+
+  <div class="grid">
+    <!-- France -->
+    <div class="card">
+      <div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-body">
+        </div>
+
+    <!-- Europe / Suisse -->
+    <div class="card">
+      </div>
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe / Suisse</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.hug.ch/medias/communique-presse/diabete-gel-protecteur-pour-futur-sans-injections-insuline" target="_blank">Diabète : un gel protecteur pour un futur sans injections d’insuline</a></h3>
+          <div class="meta">HUG / UNIGE • 23/10/2026</div>
+          <p>Amniogel : hydrogel avec vasculature artificielle permettant la survie de greffons d’îlots pendant 100 jours chez la souris. Prochaine étape : greffons plus grands pour application clinique humaine.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.aponet.de/artikel/typ-2-diabetes-blutzuckersensor-hilft-auch-ohne-insulin-34100" target="_blank">Capteurs CGM bénéfiques même sans insuline dans le DT2 (NEJM)</a></h3>
+          <div class="meta">aponet.de / NEJM • 27/10/2026</div>
+          <p>Essai CONNECT (Dexcom G7) : HbA1c réduit de 0,9 point supplémentaire vs contrôle ; +5 heures/jour dans la cible. Bénéfice indépendant de l’âge, IMC ou traitements.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.upday.com/fr/des-chercheurs-testent-un-nouveau-dispositif-contre-le-diabete-qui-abaisse-la/khd96d9" target="_blank">Dispositif « Echo » : abaissement électronique de la glycémie chez la souris</a></h3>
+          <div class="meta">ETH Zurich / upday • 27/10/2026</div>
+          <p>Catalyseur implantable convertissant l’excès de glucose en gluconate excrété. Normalisation en 1 heure et perte de poids sur 6 semaines chez des souris DT2.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monde -->
+    <div class="card">
+      <div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.24matins.es/novedades-sobre-pancreas-y-diabetes-descubre-el-mapa-celular-420337" target="_blank">Atlas cellulaire inédit du pancréas : nouvelles pistes pour le DT2</a></h3>
+          <div class="meta">24matins / Cell Metabolism • 24/10/2026</div>
+          <p>Plus de 4 millions de cellules analysées du fœtus à l’adulte. Mosaïque de sous-populations de cellules bêta et altérations spécifiques sous stress métabolique chez les patients DT2.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.hcplive.com/view/diabetes-dialogue-2026-american-diabetes-association-standards-of-care" target="_blank">Mises à jour technologiques et recommandations ADA 2026</a></h3>
+          <div class="meta">HCPLive • Octobre 2026</div>
+          <p>Dexcom G7 15 jours, mise à jour Omnipod 5 (cible 100 mg/dL), AID recommandé Level A dans le DT2, suppression des barrières peptide C/auto-anticorps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prospective & Recherche -->
+  <div class="arxiv-section">
+    <h2>🔬 Prospective &amp; Recherche</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Cellules souches pour restaurer la production d’insuline</div></div>
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.uclahealth.org/news/article/stem-cells-being-researched-help-with-type-1-diabetes" target="_blank">Essais cliniques de cellules souches « éduquées » (UCLA Health)</a></h3>
+            <div class="meta">UCLA Health • 26/10/2026 • Source : UCLA Health</div>
+            <p>Des cellules souches modifiées pour se comporter comme des cellules bêta sont testées chez des patients DT1. Résultats préliminaires encourageants : un participant a repris une production d’insuline endogène. Phase élargie en cours avec 27 sites internationaux.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Transplantation d’îlots avec immunosuppression innovante</div></div>
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.breakthrought1d.org/for-the-media/press-releases/breakthrough-t1d-funded-clinical-trial-testing-islet-cell-transplantation-with-eledons-tegoprubart-expands-to-include-people-with-type-1-diabetes-and-kidney-disease/" target="_blank">Tegoprubart protège les îlots et la fonction rénale (Breakthrough T1D)</a></h3>
+            <div class="meta">Breakthrough T1D • 21/10/2026 • Source : Breakthrough T1D</div>
+            <p>Essai multicentrique testant la transplantation d’îlots avec tegoprubart chez des patients DT1 et insuffisance rénale. 12 patients déjà sevrés d’insuline externe avec glycémie stable. Objectif : élargir l’accès à la thérapie tout en préservant les reins.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Édition génomique et encapsulation hydrogel</div></div>
+        <div class="card-body">
+          <div class="item">
+            <h3><a href="https://www.breakthrought1d.org/grants/belgium/brussels-capital-region/genome-editing-of-stem-cell-derived-human-islets-to-prevent-autoimmune-attack-and-improve-resistance-in-transplantation-devices/" target="_blank">Îlots édit és résistants au rejet et au stress (Breakthrough T1D)</a></h3>
+            <div class="meta">Breakthrough T1D • Octobre 2026 • Source : Breakthrough T1D</div>
+            <p>Projet d’édition génomique d’îlots dérivés de cellules souches pour résister au manque d’oxygène, à l’inflammation et au rejet immunitaire. Testés dans des dispositifs récupérables pour une thérapie sans immunosuppresseurs à vie.</p>
+          </div>
+          <div class="item">
+            <h3><a href="https://www.breakthrought1d.org/es/grants/canada/ontario/clinical-translation-of-allartas-immune-protective-hydrogel-encapsulation-for-islet-transplantation-in-t1d/" target="_blank">LifeSpheres : capsules hydrogel immune-protectrices (Allarta)</a></h3>
+            <div class="meta">Breakthrough T1D • Octobre 2026 • Source : Breakthrough T1D</div>
+            <p>Essai de phase 1/2 évaluant des capsules hydrogel protégeant les îlots transplantés tout en permettant le passage de nutriments et d’insuline. Objectif : production endogène d’insuline sans immunosuppresseurs systémiques.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Généré le 28 octobre 2026 par Hermes (veille-diabete). Template moderne inline (dark theme, cards, KPIs). Fichiers : veille-diabete-2026-10-28.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </div>
+</div>
+
+<!-- EDO JARVIS widget (réservé veille diabète — à coller juste avant </body>) -->
+<div id="edo-widget" title="EDO — cœur de la veille">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+</body></html>
