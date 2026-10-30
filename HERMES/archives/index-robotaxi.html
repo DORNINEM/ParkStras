@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille Robotaxi & Emploi — Archives HERMES</title>
+
+<style>
+:root {
+  --bg: #010409; --line: rgba(64,220,255,.18); --cyan: #40dcff; --amber: #ffb347;
+  --text: #cfeaff; --dim: #4d7c99;
+  --font-hud: "Rajdhani", sans-serif; --font-mono: "Share Tech Mono", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh; color: var(--text); font-family: var(--font-hud);
+  background:
+    radial-gradient(1100px 650px at 50% 30%, rgba(20,60,100,.35) 0%, transparent 60%),
+    var(--bg);
+  padding: 30px 26px 60px; position: relative;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5; z-index: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(64,220,255,.028) 0 1px, transparent 1px 3px),
+    linear-gradient(rgba(64,220,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,220,255,.045) 1px, transparent 1px);
+  background-size: 100% 3px, 52px 52px, 52px 52px;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  box-shadow: inset 0 0 220px rgba(0,0,0,.85);
+}
+.wrap { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; }
+
+.back {
+  position: fixed; top: 16px; left: 16px; z-index: 10;
+  font-family: var(--font-mono); font-size: 20px; color: var(--dim);
+  text-decoration: none; padding: 6px 14px;
+  border: 1px solid transparent; transition: all .18s; letter-spacing: 0;
+}
+.back:hover { color: var(--cyan); border-color: var(--line); text-shadow: 0 0 12px rgba(64,220,255,.8); }
+
+header {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  margin: 18px auto 34px; text-align: center;
+}
+header img { height: 96px; filter: drop-shadow(0 0 20px rgba(64,220,255,.3)); }
+h1 {
+  font-size: 24px; letter-spacing: .38em; text-transform: uppercase; font-weight: 700;
+  color: var(--text); text-shadow: 0 0 20px rgba(64,220,255,.5);
+}
+.meta-line {
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+  letter-spacing: .28em; text-transform: uppercase;
+}
+.meta-line b { color: var(--cyan); }
+ul { list-style: none; max-width: 760px; margin: 0 auto; }
+li {
+  border: 1px solid var(--line); border-left: 3px solid var(--cyan);
+  background: linear-gradient(135deg, rgba(64,220,255,.08), rgba(6,14,24,.85) 45%);
+  margin-bottom: 12px; transition: border-color .18s, transform .18s, box-shadow .18s;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  backdrop-filter: blur(6px);
+}
+li:hover {
+  border-color: rgba(64,220,255,.5); transform: translateX(4px);
+  box-shadow: 0 0 24px rgba(64,220,255,.12);
+}
+li a {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 14px 18px; text-decoration: none; color: var(--text);
+}
+li .t { font-size: 16px; font-weight: 600; letter-spacing: .05em; }
+li:hover .t { color: var(--cyan); }
+li .d {
+  font-family: var(--font-mono); font-size: 11px; color: var(--amber);
+  letter-spacing: .18em; white-space: nowrap;
+}
+footer {
+  text-align: center; font-family: var(--font-mono); font-size: 11px;
+  color: var(--dim); letter-spacing: .2em; text-transform: uppercase; margin-top: 40px;
+}
+footer a { color: var(--cyan); text-decoration: none; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<a class="back" href="index.html" title="Retour au terminal général">&#8592;</a>
+<div class="wrap">
+<header><img src="innovia2.png" alt="Innovia 2"><div><h1>Veille Robotaxi &amp; Emploi <span style="color:var(--amber);font-size:.75em;letter-spacing:.1em">[DEMO]</span></h1></div></header>
+
+<ul>
+<li><a href="veille-ROBOTAXI-2026-10-30.html"><span class="t">[DEMO] Robotaxi &amp; Emploi — éd. comparée (GLM)</span><span class="d">30/10/2026</span></a></li>
+<li><a href="veille-ROBOTAXI-2026-10-30-deepseek.html"><span class="t">[DEMO] Robotaxi &amp; Emploi — éd. DeepSeek</span><span class="d">30/10/2026</span></a></li>
+<li><a href="veille-ROBOTAXI-2026-10-27.html"><span class="t">[DEMO] Robotaxi &amp; Emploi — Conduite autonome</span><span class="d">27/10/2026</span></a></li>
+</ul>
+<div style="margin-top:30px;font-size:12px;color:#9ca3af">Dernière mise à jour : <span id="lm"></span></div>
+<script>document.getElementById('lm').textContent=document.lastModified;</script>
+</div>
+<footer>Terminal général : <a href="index.html">index.html</a> · dernière mise à jour <span id="lm"></span></footer>
+<script>document.getElementById("lm").textContent = document.lastModified;</script>
+
+<!-- EDO JARVIS widget -->
+<div id="edo-widget" title="EDO — cœur de la passerelle">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+
+</body>
+</html>
