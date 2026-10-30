@@ -1,0 +1,249 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Alsace — 2026-10-30</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .synth{border:1px solid var(--border);background:var(--panel);border-radius:14px;padding:14px 18px;margin:8px 0 18px;font-size:.95rem}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .weak-section{margin-top:22px}
+    .weak-section h2{font-size:1.1rem;margin:0 0 10px}
+    .weak{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow);padding:8px 18px}
+    .dark .weak{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .weak .w-item{border-top:1px solid var(--border);padding:14px 0}
+    .weak .w-item:first-child{border-top:0}
+    .weak .w-item p{margin:0 0 6px;font-size:.92rem}
+    .weak .w-item ul{margin:0;padding-left:18px}
+    .weak .w-item li{font-size:.8rem;word-break:break-all}
+    .weak .w-item li a{color:var(--accent-2);text-decoration:none}
+    .weak .w-item li a:hover{text-decoration:underline}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-10-30.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🚀 Veille Alsace — Économie · Innovation &amp; IA · Territoires</h1>
+      <p>Actualité régionale Alsace / Grand Est — généré par Hermes (skill veille-alsace + veille-html)</p>
+    </div>
+    <time datetime="2026-10-30">30 octobre 2026</time>
+  </header>
+  <div class="synth">
+    <strong>Synthèse.</strong> La semaine alsacienne est portée par la décarbonation industrielle (centrale biomasse de Lilly à Fegersheim), la structuration de l'emploi industriel dans le Haut-Rhin (guichet unique État–CCI pour 4 000 emplois) et la modernisation logistique (nouvelle plateforme Puma / ID Logistics à Vendenheim). Côté innovation, le festival Strasbourg Art Photography s'ouvre à l'IA et à l'animation, tandis que le data center Microsoft de Petit-Landau reste contesté après son autorisation préfectorale. Sur le front institutionnel, la simulation de la contribution budgétaire 2027 (CPEB) place l'Eurométropole de Strasbourg et l'agglomération de Saint-Louis parmi les plus sollicitées d'Alsace, et la mobilisation du 24 octobre est restée calme.
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🏭 Économie &amp; entreprises</div><div class="value">5</div></div>
+    <div class="kpi"><div class="label">💡 Innovation &amp; IA</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">🏛️ Territoires &amp; institutions</div><div class="value">3</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 30/10/2026</span>
+    <span class="pill yellow">📍 Alsace / Grand Est</span>
+    <span class="pill">🪟 Fenêtre 23–30 octobre 2026</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🏭 Économie &amp; entreprises</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://alsace-industrie.com/actualites/2026/10/lilly-inaugure-une-centrale-biomasse-a-fegersheim-qui-vise-80-de-gaz-en" target="_blank">Lilly inaugure une centrale biomasse à Fegersheim, qui vise 80 % de gaz en moins</a></h3>
+<div class="meta">ICI Alsace / Alsace Industrie • 27/10/2026</div>
+<p>Lilly a inauguré le 27 octobre une centrale biomasse sur son site de Fegersheim (Bas-Rhin), qui doit réduire de 80 % la consommation de gaz de l'usine. L'investissement est évalué à environ 13 M€ selon ICI Alsace (10 M€ selon Actulabo, qui l'attribue au prestataire ÉS Énergétiques). Un signal concret de décarbonation de l'industrie pharmaceutique alsacienne.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lalsace.fr/economie/2026/10/27/pour-accompagner-la-creation-de-4-000-emplois-dans-le-sud-alsace-l-etat-et-la-cci-lancent-un-dispositif-inedit" target="_blank">Haut-Rhin : pour accompagner la création de 4 000 emplois, l'État et la CCI Sud Alsace lancent leur dispositif</a></h3>
+<div class="meta">L'Alsace • 27/10/2026</div>
+<p>Porté par l'État et la CCI Sud Alsace, le dispositif « Emploi et compétences » ouvrira un guichet unique début 2027 pour accompagner la création annoncée d'environ 4 000 emplois industriels et logistiques dans le Haut-Rhin, à horizon 2031. Six entreprises sont concernées (Stellantis, Amazon, Microsoft, Blue Solutions, EDF, DP World) : 1,38 Md€ d'investissements déjà réalisés au premier semestre 2026 et quelque 6 Md€ annoncés au total. La CCI investira dans la formation.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.dna.fr/economie/2026/10/25/puma-modernise-sa-chaine-logistique-en-alsace-avec-id-logistics" target="_blank">Puma modernise sa chaîne logistique en Alsace avec ID Logistics</a></h3>
+<div class="meta">DNA • 25/10/2026</div>
+<p>Puma et ID Logistics ont inauguré le 21 octobre, dans l'Écoparc rhénan de Vendenheim (Bas-Rhin), une plateforme logistique de 41 000 m² dédiée au marché français. Équipée d'un système robotisé AutoStore (70 000 bacs, 98 robots), elle traite près d'un million de colis par an et jusqu'à 57 000 lignes de commande par jour, avec 100 à 150 collaborateurs selon la saison. Le partenariat est reconduit pour six ans.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lalsace.fr/economie/2026/10/25/creee-il-y-a-280-ans-a-mulhouse-dmc-renoue-le-fil-de-l-histoire" target="_blank">280 ans après sa création à Mulhouse, DMC renoue le fil de l'histoire</a></h3>
+<div class="meta">L'Alsace • 25/10/2026</div>
+<p>Le groupe textile DMC, né à Mulhouse en 1746 et toujours leader mondial du fil à broder, fête ses 280 ans. Sous pavillon anglais (fonds Lion Capital depuis 2018), il emploie près de 200 personnes entre le site de production mulhousien et le centre logistique d'Illzach, avec plus de 40 % de clients ayant moins de 45 ans et la moitié de sa production destinée au marché américain. La diversification vers les loisirs créatifs et les réseaux sociaux porte le renouveau d'une entreprise qui a failli disparaître en 2008.</p>
+</div>
+<div class="item">
+<h3><a href="https://alsace-industrie.com/actualites/2026/10/glaces-alba-projette-une-extension-de-500-000-a-vieux-thann" target="_blank">Glaces Alba projette une extension de 500 000 € à Vieux-Thann</a></h3>
+<div class="meta">France 3 Grand Est / Alsace Industrie • 26/10/2026</div>
+<p>La PME familiale Glaces Alba, à Vieux-Thann (Haut-Rhin), prévoit 500 000 € d'investissement pour agrandir son unité de production : ateliers climatisés et chambres froides, après un été où ses ventes ont progressé de 17 %. L'entreprise compte une vingtaine de salariés ; surface, calendrier et créations d'emplois ne sont pas encore précisés.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">💡 Innovation &amp; IA</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.dna.fr/culture-loisirs/2026/10/27/ia-films-d-animation-le-festival-strasbourg-art-photography-explore-de-nouveaux-champs" target="_blank">IA, films d'animation : le festival Strasbourg Art Photography explore « de nouveaux champs »</a></h3>
+<div class="meta">DNA • 27/10/2026</div>
+<p>Pour ses dix ans, le festival Strasbourg Art Photography (association Art Propulsion) mise sur quatre temps forts, dont une exposition en ligne d'images créées exclusivement par intelligence artificielle et, nouveauté, l'entrée de la vidéo et du film d'animation. Une dizaine d'artistes seront exposés en ville de novembre à janvier et une cinquantaine en ligne, la galerie en ligne attirant, selon son président, près de 1 000 visiteurs par jour.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.dna.fr/societe/2026/10/24/le-club-des-jeunes-fortifies-ils-oeuvrent-pour-une-onde-de-choc-numerique" target="_blank">Neuf-Brisach : le club des Jeunes Fortifiés œuvre pour une onde de choc numérique</a></h3>
+<div class="meta">DNA • 24/10/2026</div>
+<p>À Neuf-Brisach (Haut-Rhin), l'association Les Jeunes Fortifiés, officiellement créée le 27 mai 2026, rassemble dix membres de 19 à 26 ans qui mettent le digital et le multimédia au service de la cité de Vauban et de ses environs. Un exemple d'appropriation locale du numérique par la jeune génération.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lalsace.fr/pour-sortir/loisirs/Stage-ateliers-cours/Autres-loisirs/Alsace/Bas-rhin/Strasbourg/2026/10/27/Ai_lab-pratiquer-l-intelligence-artificielle" target="_blank">« AI_Lab : pratiquer l'intelligence artificielle » au Shadok</a></h3>
+<div class="meta">L'Alsace / Le Shadok • 27/10/2026</div>
+<p>Le Shadok à Strasbourg a accueilli le 27 octobre un atelier « AI_Lab » d'initiation et de maîtrise de l'IA générative, mené par Paddock Academy, ouvert aux débutants comme aux utilisateurs réguliers et gratuit. Ce rendez-vous mensuel participatif témoigne de la diffusion des usages de l'IA dans la métropole strasbourgeoise.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.dna.fr/economie/2026/10/26/centre-de-donnees-a-petit-landau-une-association-allemande-critique-l-arrete-prefectoral" target="_blank">Data center de Microsoft à Petit-Landau : autorisé par le préfet, une association allemande critique</a></h3>
+<div class="meta">DNA / L'Alsace / France 3 Grand Est • 26/10/2026</div>
+<p>Le préfet du Haut-Rhin a signé le 15 octobre un arrêté autorisant l'exploitation du futur centre de données de Microsoft à Petit-Landau et Hombourg (36 ha, environ 2 Md€, 150 à 200 emplois, travaux envisagés fin 2027 pour une mise en service vers 2029). Le 26 octobre, l'association allemande de protection de la nature Nabu Freiburg a fait part de sa « vive inquiétude », alors que les opposants — qui rappellent l'avis défavorable de la Mission régionale d'autorité environnementale du Grand Est — annoncent des recours.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🏛️ Territoires &amp; institutions</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.dna.fr/economie/2026/10/29/une-simulation-en-ligne-de-la-contribution-progressive-a-l-effort-budgetaire-strasbourg-et-saint-louis-tres-impactees" target="_blank">Budget 2027 : Strasbourg, Saint-Louis et les communes voisines très fortement mises à contribution</a></h3>
+<div class="meta">DNA • 29/10/2026</div>
+<p>D'après la simulation mise en ligne par Intercommunalités de France, l'Eurométropole de Strasbourg et ses communes membres seraient les plus sollicitées d'Alsace par la nouvelle « Contribution progressive à l'effort budgétaire » (CPEB) prévue pour 2027 : 22,76 M€ au total, soit 1,87 % de leurs recettes réelles de fonctionnement. La communauté d'agglomération de Saint-Louis est proportionnellement plus touchée (2,21 %). Le sujet s'inscrit dans l'examen du projet de loi de finances 2027.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.ami-hebdo.com/actualite-11571-mobilisation-du-24-octobre-en-alsace-rassemblements-calmes-a-strasbourg-et-mulhouse-malgre-la-tension" target="_blank">Mobilisation du 24 octobre en Alsace : rassemblements calmes à Strasbourg et Mulhouse</a></h3>
+<div class="meta">Ami-Hebdo • 29/10/2026</div>
+<p>La mobilisation du samedi 24 octobre en Alsace s'est déroulée sans les débordements redoutés après les violences du 17 octobre : rassemblements nombreux mais globalement encadrés à Strasbourg et Mulhouse. En amont, la CCI Alsace Eurométropole avait activé un dispositif d'urgence pour une vingtaine de commerces dégradés, avec prêt à taux zéro et adhésion au dispositif d'alerte Vigicommerce.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lesechos.fr/pme-regions/grand-est/a-strasbourg-le-conseil-metropolitain-de-leconomie-se-met-en-route-2259383" target="_blank">À Strasbourg, le conseil métropolitain de l'économie se met en route</a></h3>
+<div class="meta">Les Échos • 27/10/2026</div>
+<p>Le Conseil métropolitain de l'économie de l'Eurométropole de Strasbourg, voulu par sa présidente Catherine Trautmann et présidé par Nathalie Roos, s'est officiellement installé le 23 octobre. Issu d'une enquête auprès des entreprises du territoire (765 réponses complètes, note de 6,87/10 pour entreprendre), il doit structurer le dialogue entre la collectivité et le monde économique pour bâtir son avenir économique.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="weak-section">
+    <h2>📡 Signaux faibles</h2>
+    <div class="weak">
+      <div class="w-item">
+        <p><strong>Reprise de Fibre Excellence : l'alsacien Soprema toujours dans le dossier.</strong> Alors que l'usine de pâte à papier de Saint-Gaudens (Haute-Garonne) se dirige vers une liquidation judiciaire, le groupe alsacien Soprema affirme ne pas s'être retiré et confirme son intention d'y implanter une unité de panneaux isolants.</p>
+        <ul>
+          <li><a href="https://www.dna.fr/economie/2026/10/28/reprise-de-fibre-excellence-producteur-de-pate-a-papier-le-groupe-alsacien-soprema-ne-s-est-pas-retire-du-dossier" target="_blank">dna.fr</a></li>
+          <li><a href="https://www.ladepeche.fr/2026/10/30/fibre-excellence-notre-priorite-est-de-rassurer-les-salaries-le-plan-du-repreneur-pour-sauver-lusine-et-ses-229-salaries-13627895.php" target="_blank">ladepeche.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Ernst Découpage Emboutissage (Niederbronn-les-Bains) cherche un repreneur.</strong> En redressement judiciaire, l'entreprise (35 salariés, presses de 40 à 400 tonnes) fait l'objet d'un appel à candidatures ; les offres de reprise sont attendues avant le 9 novembre 2026.</p>
+        <ul>
+          <li><a href="https://www.adira.com/actualites/ernst-specialiste-de-lemboutissage-recherche-un-candidat-repreneur/" target="_blank">adira.com</a></li>
+          <li><a href="https://alsace-industrie.com/actualites/2026/10/ernst-decoupage-emboutissage-offres-de-reprise-attendues-avant-le-9" target="_blank">alsace-industrie.com</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Technocentre de Fessenheim : EDF doit revoir sa copie.</strong> L'Autorité environnementale demande à l'opérateur public une meilleure compensation pour la perte de 10 hectares de zones humides sur le projet d'usine de recyclage de métaux très faiblement radioactifs.</p>
+        <ul>
+          <li><a href="https://www.lesechos.fr/pme-regions/grand-est/projet-de-technocentre-a-fessenheim-edf-doit-revoir-sa-copie-2259798" target="_blank">lesechos.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Grand Ried d'Alsace : trois scénarios pour préserver l'eau.</strong> Les élus de la Commission locale de l'eau ont validé trois projets pour préserver les zones humides emblématiques du centre de l'Alsace, entre Strasbourg et Colmar.</p>
+        <ul>
+          <li><a href="https://www.lesechos.fr/pme-regions/grand-est/des-scenarios-pour-preserver-le-grand-ried-d-alsace-2259116" target="_blank">lesechos.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Voies navigables de France centralise ses services rhénans à Gambsheim.</strong> Après la modernisation de ses écluses sur le Rhin, l'opérateur regroupe plusieurs services dans le Bas-Rhin, un signal discret d'intégration des infrastructures transfrontalières.</p>
+        <ul>
+          <li><a href="https://www.lesechos.fr/pme-regions/grand-est/voies-navigables-de-france-centralise-ses-services-rhenans-a-gambsheim-2259570" target="_blank">lesechos.fr</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Généré le 30 octobre 2026 par Hermes (veille-alsace + veille-html). Template classique inline (cards, badges date, liens sources cliquables, signaux faibles sourcés). Fichiers : veille-ALSACE-2026-10-30.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
