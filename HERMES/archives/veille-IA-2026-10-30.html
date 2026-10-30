@@ -1,0 +1,242 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-10-30</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.tricolor{background:linear-gradient(90deg,#0055a4,#ffffff 50%,#ef4135);color:#1f2937;border-color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,#veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-IA-2026-10-30.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-10-30">30 octobre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">4</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 30 octobre 2026</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 3</span>
+    <span class="pill yellow">🔬 ArXiv : 3</span>
+  </div>
+  <div class="grid">
+<div class="card" id="zone-france"><div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/le-chonk-de-mistral-ai-devoile-ses-poids-506829.htm" target="_blank">Mistral Large 4 « Le Chonk » : les poids ouverts enfin publiés</a></h3>
+<div class="meta">ZDNet France • 29/10/2026</div>
+<p>Mistral AI a publié la version à poids ouverts de son modèle Mistral Large 4, surnommé « Le Chonk ». L'entreprise revendique des performances de pointe sur le code, la cybersécurité et d'autres benchmarks, en insistant sur l'efficacité et les options de déploiement local.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.channelnews.fr/orange-cyberdefense-sallie-a-mistral-ai-pour-renforcer-ses-services-de-cybersecurite-159915" target="_blank">Orange Cyberdefense s'allie à Mistral AI pour renforcer ses services de cybersécurité</a></h3>
+<div class="meta">ChannelNews • 29/10/2026</div>
+<p>Orange Cyberdefense devient le premier partenaire européen de conception de services de sécurité managés du programme de Mistral AI : une variante spécialisée de Large 4 sera intégrée aux tests d'intrusion, audits et investigations d'incidents, sur les data centers européens de Mistral — argument de souveraineté à l'appui.</p>
+</div>
+<div class="item">
+<h3><a href="https://presse.economie.gouv.fr/nar-anne-le-henanff-organise-avec-roland-lescure-la-premiere-edition-du-bercy-de-la-cyber-jeudi-29-octobre-2026/" target="_blank">Anne Le Hénanff et Roland Lescure lancent la première édition du « Bercy de la Cyber »</a></h3>
+<div class="meta">presse.economie.gouv.fr • 29/10/2026</div>
+<p>La ministre déléguée chargée de l'Intelligence artificielle et du Numérique organise avec Roland Lescure la première édition du « Bercy de la Cyber » : tables rondes sur la cybersécurité des TPE/PME et du secteur financier, réglementation, et réseau de 25 stands de startups et PME françaises de la cyber sélectionnées.</p>
+</div>
+<div class="item">
+<h3><a href="https://incyber.org/article/biometrie-id4us-integre-french-tech-2030/" target="_blank">Biométrie : ID4US intègre French Tech 2030</a></h3>
+<div class="meta">InCyber • 29/10/2026</div>
+<p>La startup grenobloise de biométrie ID4US rejoint la promotion 2026 de French Tech 2030 dans la catégorie cybersécurité : environ 80 sociétés deeptech stratégiques (dont un fort contingent IA) sélectionnées par la Mission French Tech pour bénéficier d'un accompagnement renforcé d'un an, adossé à l'État et à Bpifrance.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.challenges.fr/entreprise/tech-numerique/il-y-avait-beaucoup-de-pressions-pour-que-nous-sortions-de-nouveaux-modeles-guillaume-lample-lhomme-discret-qui-orchestre-le-grand-retour-de-mistral_646623" target="_blank">Guillaume Lample, l'homme discret qui orchestre le grand retour de Mistral</a></h3>
+<div class="meta">Challenges • 28/10/2026</div>
+<p>Le cofondateur et directeur scientifique de Mistral AI revient sur la genèse de Mistral Large 4 : la pression subie pour sortir de nouveaux modèles, le pari du renforcement learning et l'ambition de fixer le rythme des modèles ouverts face à la concurrence américaine et chinoise.</p>
+</div>
+</div>
+</div>
+<div class="card" id="zone-europe"><div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.zdnet.fr/tribune/philippe-peter-senior-director-emea-chez-sprinklr-les-entreprises-europeennes-se-trompent-de-debat-sur-lai-act-mais-aussi-decheance-506506.htm" target="_blank">« Les entreprises européennes se trompent de débat sur l'AI Act — mais aussi d'échéance »</a></h3>
+<div class="meta">ZDNet France (tribune) • 28/10/2026</div>
+<p>Philippe Peter, senior director EMEA chez Sprinklr, estime que les entreprises européennes se focalisent sur les mauvais sujets de l'AI Act (supervision humaine obligatoire, nationalité des fournisseurs) au détriment de la gouvernance flexible et de la souveraineté des données — et rappelle que l'Omnibus a repoussé la plupart des obligations « haut risque ».</p>
+</div>
+<div class="item">
+<h3><a href="https://2eu.brussels/en/news/european-commission-receives-ai-companies-responses-to-requests-whose-deadlines-have-passed-and-assesses-submissions" target="_blank">AI Act : la Commission reçoit les réponses des entreprises à ses demandes d'information</a></h3>
+<div class="meta">2EU Brussels • 28/10/2026</div>
+<p>Selon le point de presse du 28 octobre, la plupart des réponses aux demandes d'information de l'AI Office — adressées à plus de 30 entreprises sur les questions de sécurité, sûreté et droit d'auteur — ont été reçues et sont en cours d'analyse ; certains délais ont été prolongés.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.heise.de/en/news/Mistral-Large-4-Model-weights-released-coding-performance-improves-11505097.html" target="_blank">Mistral Large 4 : les poids publiés, la performance en code progresse (écho européen)</a></h3>
+<div class="meta">heise online • 29/10/2026</div>
+<p>Le média allemand heise confirme la publication des poids de Mistral Large 4 après un entraînement supplémentaire qui améliore les benchmarks de code, avec des points forts en codage agentique et cyberdéfense et une inscription dans l'infrastructure européenne — un signal pour l'écosystème IA du continent.</p>
+</div>
+</div>
+</div>
+<div class="card" id="zone-monde"><div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" target="_blank">Google DeepMind lance Gemini 4 Carbon, son modèle frontal orienté cybersécurité</a></h3>
+<div class="meta">Google Blog • 28/10/2026</div>
+<p>Gemini 4 Carbon vise les capacités agentiques de long-horizon et la cybersécurité : première place de l'Artificial Analysis Intelligence Index v5.0 (59) et 88,2 % sur SEC-bench Pro pour la détection de vulnérabilités.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/microsoft-azure-explose-les-compteurs-48-mais-la-facture-de-lia-salourdit-506763.htm" target="_blank">Microsoft : Azure décolle grâce à l'IA, mais la facture des data centers s'alourdit</a></h3>
+<div class="meta">ZDNet France • 29/10/2026</div>
+<p>Microsoft publie des résultats dépassant les attentes grâce à une croissance d'Azure portée par l'IA, mais les investissements massifs dans les data centers pèsent sur ses finances, malgré des prévisions relevées.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/oracle-et-openai-sallient-pour-traquer-les-failles-de-securite-de-lia-en-entreprise-506660.htm" target="_blank">Oracle et OpenAI s'allient pour traquer les failles de sécurité de l'IA en entreprise</a></h3>
+<div class="meta">ZDNet France • 28/10/2026</div>
+<p>Annoncé à l'Oracle AI World : le partenariat renforcé vise à auditer et sécuriser les modèles d'IA déployés en production dans les environnements d'entreprise.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/ces-fonctionnalites-de-claude-enterprise-vous-permettent-de-suivre-le-retour-sur-investissement-de-lia-506810.htm" target="_blank">Claude Enterprise : des fonctionnalités pour suivre le retour sur investissement de l'IA</a></h3>
+<div class="meta">ZDNet France • 29/10/2026</div>
+<p>Anthropic ajoute à Claude Enterprise des outils de suivi de l'usage et du ROI de l'IA, conçus pour aider les entreprises à justifier le coût de l'offre enterprise face aux budgets de plus en plus scrutés.</p>
+</div>
+</div>
+</div>
+  </div>
+<div class="arxiv-section">
+    <h2>🇫🇷 Focus Mistral</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><a href="https://www.numerama.com/tech/2363685-mistral-large-4-est-disponible-en-poids-ouverts-ce-qui-a-change-depuis-sa-presentation.html" target="_blank">Mistral Large 4 est disponible en poids ouverts : ce qui a changé depuis sa présentation</a></h3>
+<div class="meta">Numerama • 29/10/2026</div>
+<p>Mistral publie l'intégralité des poids ouverts de son modèle Large 4 (1 000 milliards de paramètres) sur Hugging Face, après sa présentation début octobre : gains majeurs en codage agentique et entraînement sur l'infrastructure européenne, au service de la souveraineté.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.latribune.fr/article/tech/intelligence-artificielle/1239517926291914/large-4-comment-mistral-a-rattrape-les-ia-chinoises-en-code" target="_blank">Large 4 : comment Mistral a rattrapé les IA chinoises en code</a></h3>
+<div class="meta">La Tribune • 29/10/2026</div>
+<p>Après un entraînement supplémentaire de trois semaines (renforcement learning et tests partenaires), Large 4 rivalise avec les meilleurs modèles chinois comme GLM-5.3 en code, en utilisant moins de jetons.</p>
+</div>
+<div class="item">
+<h3><a href="https://fr.euronews.com/2026/10/29/mistral-publie-son-dernier-modele-dia-donnant-aux-societes-plus-de-controle-sur-leur-cyber" target="_blank">Mistral publie son dernier modèle d'IA, donnant aux sociétés plus de contrôle sur leur cybersécurité</a></h3>
+<div class="meta">Euronews (français) • 29/10/2026</div>
+<p>Euronews souligne l'angle souveraineté : un modèle téléchargeable, déployable on-premise, positionné comme alternative européenne aux modèles américains et chinois pour les usages sensibles comme la cyberdéfense.</p>
+</div>
+    </div></div>
+  </div>
+<div class="arxiv-section">
+    <h2>📚 ArXiv (cs.AI &amp; cs.LG)</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.40637" target="_blank">world2vec: Mechanistic world models through latent dynamics learning</a></h3>
+<div class="meta">arXiv:2610.40637 • 29/10/2026</div>
+<p>world2vec propose des modèles du monde mécanistes appris par dynamiques latentes, dans la lignée de la vague actuelle des « world models ».</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.40565" target="_blank">Gym-Anything for Robotics: Scaling physical simulations with digital agents</a></h3>
+<div class="meta">arXiv:2610.40565 • 29/10/2026</div>
+<p>Gym-Anything utilise des agents numériques pour générer et démultiplier les simulations physiques robotiques, afin d'élargir la couverture d'entraînement des politiques robotiques.</p>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.40613" target="_blank">TextSeal2: Distortion-Free LLM Watermarking with Copula Mixing and Memoryless Races</a></h3>
+<div class="meta">arXiv:2610.40613 • 29/10/2026</div>
+<p>TextSeal2 combine mélange par copules et « courses sans mémoire » pour un filigranage de modèles de langage sans distorsion de la qualité du texte généré.</p>
+</div>
+    </div></div>
+  </div>
+<footer>
+    <p>Généré le 2026-10-30 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-10-30.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
