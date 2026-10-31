@@ -1,0 +1,248 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Alsace — 2026-10-31</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .synth{border:1px solid var(--border);background:var(--panel);border-radius:14px;padding:14px 18px;margin:8px 0 18px;font-size:.95rem}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .weak-section{margin-top:22px}
+    .weak-section h2{font-size:1.1rem;margin:0 0 10px}
+    .weak{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow);padding:8px 18px}
+    .dark .weak{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .weak .w-item{border-top:1px solid var(--border);padding:14px 0}
+    .weak .w-item:first-child{border-top:0}
+    .weak .w-item p{margin:0 0 6px;font-size:.92rem}
+    .weak .w-item ul{margin:0;padding-left:18px}
+    .weak .w-item li{font-size:.8rem;word-break:break-all}
+    .weak .w-item li a{color:var(--accent-2);text-decoration:none}
+    .weak .w-item li a:hover{text-decoration:underline}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  </style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-10-31.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🚀 Veille Alsace — Économie · Innovation &amp; IA · Territoires</h1>
+      <p>Actualité régionale Alsace / Grand Est — généré par Hermes (skill veille-alsace + veille-html)</p>
+    </div>
+    <time datetime="2026-10-31">31 octobre 2026</time>
+  </header>
+  <div class="synth">
+    <strong>Synthèse.</strong> La semaine alsacienne est dominée par la conflictualité sociale et budgétaire. L'« acte III » de la mobilisation contre la vie chère du samedi 31 octobre s'annonce très encadré, les centres-villes de Strasbourg, Mulhouse et Colmar étant interdits aux rassemblements non déclarés et les couvre-feux pour les mineurs reconduits à Mulhouse et alentour. En parallèle, la Région Grand Est supprime sa subvention de fonctionnement aux 43 missions locales du Grand Est, une décision qui fragilise l'accompagnement de 83 000 jeunes et inquiète particulièrement le Sémaphore à Mulhouse. Côté industrie, BASF prépare un tour de vis sur son site chimique de Chalampé (Haut-Rhin) dans le cadre de son programme d'économies CoreShift, tandis qu'Électricité de Strasbourg annonce le redémarrage « avant la fin de l'année » de sa centrale géothermique de Rittershoffen, arrêtée depuis les séismes de décembre 2025. Sur le front numérique, la CTS révèle le vol des données de 230 000 comptes clients et des journalistes des DNA dénoncent une introduction « sauvage et débridée » de l'IA. Enfin, la recherche strasbourgeoise reste moteur : la chaire AIARD (INSA/ICube) ouvre son site public, la biotech AdipoPharma franchit une étape clinique et le Nobel de chimie d'Henri Kagan trouve un écho à Strasbourg.
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🏭 Économie &amp; entreprises</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">💡 Innovation &amp; IA</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">🏛️ Territoires &amp; institutions</div><div class="value">4</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 31/10/2026</span>
+    <span class="pill yellow">📍 Alsace / Grand Est</span>
+    <span class="pill">🪟 Fenêtre 24–31 octobre 2026</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🏭 Économie &amp; entreprises</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesechos.fr/industrie-services/industrie-lourde/chimie-basf-projette-un-tour-de-vis-sur-son-site-alsacien-de-chalampe-2260247" target="_blank">Chimie : BASF projette un tour de vis sur son site alsacien de Chalampé</a></h3>
+<div class="meta">Les Échos • 30/10/2026</div>
+<p>Les efforts d'économies du chimiste allemand BASF touchent désormais la France : après 8 600 suppressions de postes dans le monde depuis début 2024, le groupe prépare un tour de vis sur son site de Chalampé (Haut-Rhin), dans le cadre du programme « CoreShift » présenté en mai, qui vise une réduction des coûts fixes pouvant atteindre 20 % d'ici 2028-2029. Un plan qui intervient alors que BASF a enregistré une dépréciation sur son usine de HMD (chaîne polyamide 6,6) à Chalampé, confrontée à la faiblesse du marché automobile européen et à la pression des importations.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.rue89strasbourg.com/geothermie-centrale-rittershoffen-redemarrer-seismes-400484" target="_blank">Un an après les séismes, Électricité de Strasbourg veut redémarrer sa centrale de Rittershoffen</a></h3>
+<div class="meta">Rue89 Strasbourg • 27/10/2026</div>
+<p>Électricité de Strasbourg annonce avoir mis au point une nouvelle méthode d'exploitation de sa centrale de géothermie profonde de Rittershoffen (Bas-Rhin), qu'elle veut redémarrer « avant la fin de l'année », moins d'un an après les séismes qui avaient entraîné sa mise à l'arrêt en décembre 2025. L'opérateur entend ainsi éviter un nouvel épisode sismique comparable. Un enjeu énergétique et d'acceptabilité important pour la filière géothermique alsacienne.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lesechos.fr/pme-regions/grand-est/les-plateformes-touristiques-en-plein-boom-dans-le-grand-est-2259900" target="_blank">Les plateformes touristiques en plein boom dans le Grand Est</a></h3>
+<div class="meta">Les Échos • 29/10/2026</div>
+<p>Les réservations touristiques en ligne continuent de progresser fortement dans le Grand Est : les deux départements du Bas-Rhin et du Haut-Rhin captent à eux seuls près de la moitié de ces réservations, confortant la place de l'Alsace comme première destination de la région. Une dynamique qui profite aux plateformes de réservation et aux hébergeurs locaux.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.dna.fr/economie/2026/10/30/baisse-du-prix-du-diesel-des-ce-samedi-les-stations-concernees-dans-la-region" target="_blank">Alsace : TotalEnergies baisse le prix du diesel dès samedi, 22 stations concernées dans la région</a></h3>
+<div class="meta">DNA / L'Alsace • 30/10/2026</div>
+<p>En lien avec le déstockage gouvernemental de stocks stratégiques (dix millions de barils de gazole), TotalEnergies a annoncé le 30 octobre une baisse du prix du diesel à 2,15 €/L dès le samedi 31 octobre dans ses 705 stations « Access » de France, soit 24 heures avant les autres distributeurs et 15 à 60 centimes sous les tarifs alsaciens affichés la veille. En Alsace, 22 stations sont concernées : 13 dans le Bas-Rhin (dont trois à Strasbourg) et 9 dans le Haut-Rhin (dont trois à Mulhouse). Le plafond de 2,25 €/L est maintenu dans tout le réseau.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">💡 Innovation &amp; IA</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://icube.unistra.fr/en/news/aiard-un-nouveau-site-pour-decouvrir-lia-au-service-de-linvention/" target="_blank">AIARD : un nouveau site pour découvrir l'IA au service de l'invention</a></h3>
+<div class="meta">Laboratoire ICube / INSA Strasbourg – Université de Strasbourg • 27/10/2026</div>
+<p>La chaire AIARD (Artificial Intelligence Augmented R&amp;D), pilotée par Denis Cavallucci à l'INSA Strasbourg et au laboratoire ICube, dévoile un nouveau site présentant son écosystème de recherche sur l'IA appliquée aux processus d'invention : sept outils d'aide à l'invention assistée par IA (Finder, TRIZBench, ARIZ-Copilot, FusionMind, PatentSpark, HiveScan, TRIZApp), douze modèles « patembed » cumulant plus de 23 000 téléchargements sur Hugging Face, le benchmark PatenTEB et le jeu de données DAPFAM. La chaire s'appuie sur douze partenaires industriels et le soutien de la Région Grand Est, de la Ville et de l'Eurométropole de Strasbourg et de l'INSA.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.rue89strasbourg.com/journalistes-ia-dna-inquietude-degout-credit-mutuel-399260" target="_blank">Poussés vers la sortie, des journalistes des DNA dénoncent l'arrivée « sauvage et débridée » de l'IA</a></h3>
+<div class="meta">Rue89 Strasbourg • 27/10/2026</div>
+<p>Entre « inquiétude, colère et dégoût », des journalistes des Dernières Nouvelles d'Alsace décrivent le plan « EBRA 2030 » de leur actionnaire principal, le Crédit Mutuel, qui prévoit les « départs volontaires » d'une cinquantaine de journalistes et une mise en place jugée « sauvage et débridée » de l'intelligence artificielle dans la rédaction. Un cas d'école alsacien des tensions entre restructurations de presse et déploiement de l'IA.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.satt.fr/en/nouvelle-avancee-pour-la-startup-adipopharma-propulsee-par-conectus/" target="_blank">AdipoPharma (Strasbourg) : la molécule PATAS entre en étude clinique de phase 1b</a></h3>
+<div class="meta">SATT Conectus / Conectus Alsace • 29/10/2026</div>
+<p>La biotech strasbourgeoise AdipoPharma, créée en 2017, franchit une nouvelle étape : sa molécule PATAS, destinée aux patients atteints de diabète de type 2, entre en étude clinique de phase 1b. Issue des travaux de Vincent Marion (Inserm – Université de Strasbourg), la molécule cible directement la résistance à l'insuline, là où les traitements existants agissent surtout sur la régulation de la glycémie. Le projet, mûri par la SATT Conectus, illustre le transfert de technologie de la recherche publique alsacienne vers l'innovation thérapeutique.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lalsace.fr/science-et-technologie/2026/10/30/les-travaux-du-prix-nobel-de-chimie-henri-kagan-trouvent-un-echo-a-strasbourg" target="_blank">Nobel de chimie : les travaux d'Henri Kagan trouvent un écho à Strasbourg</a></h3>
+<div class="meta">DNA / L'Alsace • 30/10/2026</div>
+<p>L'attribution du prix Nobel de chimie au Français Henri Kagan a fait réagir la communauté strasbourgeoise : le chimiste Stéphane Bellemin-Laponnaz, qui travaille sur un thème de recherche proche, et Jean-Marie Lehn, prix Nobel de chimie 1987 et toujours actif à l'Institut de science et d'ingénierie supramoléculaire de Strasbourg, saluent un chercheur « humble » et une récompense « attendue depuis longtemps ». Kagan, venu à plusieurs reprises à Strasbourg avant les années 2000, y a marqué des générations de chercheurs.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🏛️ Territoires &amp; institutions</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.dna.fr/faits-divers-justice/2026/10/30/le-troisieme-samedi-de-mobilisation-s-annonce-tres-encadre-en-alsace" target="_blank">Alsace : actions à Strasbourg, manifestations à Mulhouse et Colmar... de nouvelles mobilisations ce samedi</a></h3>
+<div class="meta">DNA / L'Alsace / ICI Alsace • 30/10/2026</div>
+<p>Pour l'« acte III » de la mobilisation contre la vie chère du samedi 31 octobre, l'Alsace s'annonce très encadrée : deux manifestations ont été déclarées à 14 h par la CGT Educ'action, à Colmar et à Mulhouse, toutes deux hors centre-ville. Aucune manifestation n'ayant été déclarée à Strasbourg à la veille, la préfecture du Bas-Rhin a rappelé que rassemblements et « sit-in » restent interdits sans déclaration préalable, tout en proposant un itinéraire évitant l'ellipse insulaire. Dans le Haut-Rhin, les manifestations non déclarées sont interdites dans le centre de Colmar de 11 h à minuit et à Mulhouse de 6 h à 18 h ; le maire de Mulhouse reconduit un couvre-feu pour les mineurs non accompagnés à partir du 30 octobre à 21 h, comme à Wittelsheim, Sausheim et Pfastatt. Plusieurs « sit-in » sont annoncés devant les mairies (Altkirch, Mulhouse, Colmar, Sélestat, Molsheim, Strasbourg, Saverne, Haguenau).</p>
+</div>
+<div class="item">
+<h3><a href="https://france3-regions.franceinfo.fr/grand-est/haut-rhin/mulhouse/on-fait-un-trait-sur-l-accompagnement-des-jeunes-la-suppression-des-subventions-2026-inquiete-la-mission-locale-de-mulhouse-3437304.html" target="_blank">Missions locales du Grand Est : la Région supprime ses subventions pour 2026</a></h3>
+<div class="meta">France 3 Grand Est / 20 Minutes / Rue89 Strasbourg • 26–29/10/2026</div>
+<p>Après une baisse de 43 % de sa contribution en 2025, la Région Grand Est a notifié en octobre aux 43 missions locales la suppression de l'intégralité de sa subvention de fonctionnement pour 2026 (environ 10 % de leur budget, jusqu'à 6,3 M€ au total). La Région invoque le fait que l'insertion professionnelle n'est pas une compétence obligatoire et renvoie à l'État et au projet de loi de finances 2027, tout en assurant attribuer 3,7 M€ fléchés vers des actions de formation cette année — soit la moitié de 2025. À Mulhouse, l'association Sémaphore, qui accompagne 4 500 jeunes de 16 à 25 ans par an, redoute des licenciements et l'arrêt de ses cours de français pour les étrangers ; le réseau régional (1 100 salariés, 83 000 jeunes) évoque « l'hypothèse de la disparition de certaines missions locales ».</p>
+</div>
+<div class="item">
+<h3><a href="https://www.dna.fr/transport/2026/10/28/230-000-clients-de-la-cts-victimes-d-un-vol-de-donnees" target="_blank">Piratage : 230 000 clients de la CTS victimes d'un vol de données</a></h3>
+<div class="meta">DNA / L'Alsace / France Info • 28/10/2026</div>
+<p>La Compagnie des transports strasbourgeois (CTS) a révélé le 28 octobre avoir été victime d'une « exfiltration de données concernant environ 230 000 comptes clients », soit près de 40 % de ses abonnés Badgéo : noms, prénoms, dates de naissance, adresses et identifiants ont été dérobés, via une « utilisation illicite » de son site internet (une API détournée), vraisemblablement dans la nuit du 18 au 19 octobre. Les données bancaires et les mots de passe n'ont pas fuité, mais la CTS appelle à la vigilance face au risque d'hameçonnage. Un signalement a été fait à la CNIL et une plainte sera déposée au tribunal de Strasbourg.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.ami-hebdo.com/actualite-11576-parc-des-expositions-de-strasbourg-la-crc-epingle-l-achat-et-la-revente-de-halls-temporaires" target="_blank">Parc des expositions de Strasbourg : la CRC épingle l'achat et la revente des halls temporaires</a></h3>
+<div class="meta">Ami-Hebdo / Chambre régionale des comptes Grand Est • 29/10/2026</div>
+<p>Outre l'explosion du coût du nouveau parc des expositions de Strasbourg (PEX), livré en août 2022 pour 127 M€ TTC, soit 48 % de plus que prévu, la Chambre régionale des comptes a épinglé « une opération précipitée, irrégulière et coûteuse » pour les halls provisoires. Selon le rapport, l'acquisition de ces halls dans le cadre d'un avenant au contrat de délégation de service public et leur revente ont été entachées de nombreuses irrégularités, la revente du premier hall ayant été réalisée à un prix huit fois inférieur à son prix d'achat (700 000 € contre 5,5 M€).</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="weak-section">
+    <h2>📡 Signaux faibles</h2>
+    <div class="weak">
+      <div class="w-item">
+        <p><strong>Strasbourg : l'« acte 2 » de la réforme du stationnement.</strong> Annoncée le 27 octobre pour une délibération au conseil municipal du 2 novembre, la mesure prévoit la gratuité des 30 premières minutes de stationnement en voirie (toutes zones) à compter du 4 janvier 2027, une tarification au quart d'heure et 38 nouvelles « places violettes » dès le 31 octobre — pour un manque à gagner annuel de 500 000 € pour la Ville.</p>
+        <ul>
+          <li><a href="https://www.dna.fr/politique/2026/10/27/gratuite-places-violettes-la-ville-ouvre-l-acte-2-de-la-reforme-du-stationnement" target="_blank">dna.fr</a></li>
+          <li><a href="https://www.strasbourg.eu/-/stationnement-la-ville-veut-ameliorer-le-quotidien" target="_blank">strasbourg.eu</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Interreg Rhin supérieur : 13 nouveaux projets transfrontaliers financés.</strong> Le Comité de suivi du programme a approuvé 19,5 M€ de fonds européens pour treize projets, notamment des mobilités du quotidien : « Sundgomobich 2 » (nouvelles lignes de bus Sundgau–Bâle, dont un express Dannemarie–Bâle Saint-Jean dès septembre 2027) et l'analyse des données de trafic de l'Eurodistrict trinational de Bâle. Près de 98 % de l'enveloppe 2021-2027 est désormais engagée.</p>
+        <ul>
+          <li><a href="https://www.interreg-rhin-sup.eu/actualites/category/programme/" target="_blank">interreg-rhin-sup.eu</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Marché-gare de Strasbourg : la directrice de la Samins révoquée.</strong> Le conseil d'administration de la Samins, qui gère le marché-gare, a écarté sa directrice. Son président Paul Meyer, adjoint à la maire, invoque une rupture de confiance managériale, mais l'enquête de Rue89 Strasbourg voit surtout, dans cette éviction, la volonté de la nouvelle majorité de retirer l'empreinte écologiste de l'établissement.</p>
+        <ul>
+          <li><a href="https://www.rue89strasbourg.com/directrice-samins-double-jeu-socialistes-strasbourg-400852" target="_blank">rue89strasbourg.com</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Alsapan (Erstein) : 35 M€ d'investissement d'ici 2027 et 75 CDI annoncés.</strong> Le fabricant de meubles en kit et de plans de travail, qui emploie environ 604 salariés à Erstein, modernise ses lignes pour absorber la montée en charge de son client Ikea, dans un plan de 50 M€ réparti sur quatre sites français (dont 75 créations de CDI à Erstein).</p>
+        <ul>
+          <li><a href="https://alsace-industrie.com/entreprises/alsapan-erstein" target="_blank">alsace-industrie.com</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>« Stade vers l'emploi » à Dannemarie : recruter par le sport.</strong> Dans le Sundgau, l'opération « Stade vers l'emploi » a invité candidats et employeurs à faire connaissance sur un terrain de sport avant de parler poste, un format de recrutement décalé qui se diffuse dans le Sud-Alsace.</p>
+        <ul>
+          <li><a href="https://www.ami-hebdo.com/actualite-11560-dannemarie-lle-sport-pour-recruter-avec-stade-vers-l-emploi" target="_blank">ami-hebdo.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Généré le 31 octobre 2026 par Hermes (veille-alsace + veille-html). Template classique inline (cards, badges date, liens sources cliquables, signaux faibles sourcés). Fichiers : veille-ALSACE-2026-10-31.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
