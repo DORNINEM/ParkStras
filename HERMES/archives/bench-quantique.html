@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Bench quantique — 3 modèles</title>
+<style>
+:root{--bg:#010409;--panel:#0b1220;--ink:#e6f1ff;--muted:#8fb3cc;--accent:#40dcff;--border:rgba(64,220,255,.22)}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,'Segoe UI',sans-serif;padding:26px;line-height:1.6}
+h1{color:var(--accent);font-size:21px;letter-spacing:.08em}
+h2{color:var(--accent);font-size:15px;margin-top:26px}
+table{border-collapse:collapse;width:100%;margin-top:14px}
+th,td{border:1px solid var(--border);padding:8px 10px;font-size:13px;text-align:left;vertical-align:top}
+th{background:rgba(64,220,255,.08);color:var(--accent)}
+.note{color:var(--muted);font-size:12.5px;margin-top:18px}
+.g{color:#3ddc97}.b{color:#ff6b6b}
+</style></head><body>
+<h1>Benchmark quantique — même sujet, 3 modèles (02/11/2026)</h1>
+<p class="note">Profil démo isolé · même prompt, même skill veille-quantique, même fenêtre 7 jours ·
+critère discriminant du thème : distinguer un record annoncé d'un jalon vérifié</p>
+<table><tr><th>Modèle</th><th>Mots</th><th>Articles</th><th>Liens uniques</th><th>URL 404</th><th>Murs 403</th>
+<th>Qualité de fond</th></tr>
+<tr><td><b>deepseek</b></td><td>2713</td><td>15</td><td>12</td>
+ <td style="color:#3ddc97">0</td><td style="color:#ffb347">2</td>
+ <td style="font-size:12px">Note le record comme théorique (« aucun de ces qubits n&rsquo;existe »), dates réglementaires exactes (NIST IR 8547 : 2030 / 2031 / 2035), notion de crypto-agilité</td></tr>
+<tr><td><b>glm</b></td><td>1330</td><td>14</td><td>11</td>
+ <td style="color:#3ddc97">0</td><td style="color:#ffb347">0</td>
+ <td style="font-size:12px">Même rigueur en deux fois moins de mots : « la mesure remplace la vitesse » (fidélité logique Quantinuum 99,9995 %), implications DSI / R&amp;D concrètes, 0 lien problématique</td></tr>
+<tr><td><b>grok</b></td><td>650</td><td>11</td><td>7</td>
+ <td style="color:#3ddc97">0</td><td style="color:#ffb347">3</td>
+ <td style="font-size:12px">Le plus faible : présente le calcul d&rsquo;Alice &amp; Bob comme un « démonstrateur validé », implications génériques (« auditer », « évaluer »), seulement 7 sources</td></tr></table>
+<h2>Verdict</h2>
+<p><b class="g">DeepSeek</b> — le plus dense et le plus rigoureux sur ce thème : il qualifie explicitement le calcul
+d'Alice &amp; Bob de <i>record de ressources théorique, pas une démonstration</i>, donne les échéances opposables du NIST
+(2030 / 2031 / 2035) et introduit la crypto-agilité comme critère d'achat.<br>
+<b class="g">GLM</b> — la même exigence en deux fois moins de mots : il recentre sur « la mesure remplace la vitesse »
+(fidélité logique, correction d'erreur) et ses 5 signaux ont tous une implication exploitable.</p>
+<p><b class="b">Grok</b> — ne répond pas à l'exigence du thème : il présente un calcul théorique comme un démonstrateur
+validé, ses « implications » restent des recommandations génériques, et il ne mobilise que 7 sources.</p>
+<p class="note">Aucune URL cassée dans les trois tirages sur ce thème — le défaut de liens inventés observé sur l'IA
+(5 × 404) est donc un risque par exécution, pas une fatalité : d'où le garde-fou <code>veille_link_check.py</code>
+désormais branché avant chaque publication.</p>
+</body></html>

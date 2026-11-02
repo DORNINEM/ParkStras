@@ -1,0 +1,207 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Synthèse — Tests de modèles sur les veilles — 2 novembre 2026</title>
+<style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.violet{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tag{display:inline-block;margin:8px 6px 0 0;padding:2px 8px;border-radius:8px;font-size:.72rem;background:rgba(99,102,241,.10);color:var(--accent-2);border:1px solid rgba(99,102,241,.25)}
+    .maturite,.horizon{display:inline-block;margin:8px 6px 0 0;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700}
+    .m-b{background:rgba(16,185,129,.14);color:#059669;border:1px solid rgba(16,185,129,.4)}
+    .m-r{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .m-t{background:rgba(239,68,68,.12);color:#dc2626;border:1px solid rgba(239,68,68,.35)}
+    .m-d{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-c{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-m{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .h-l{background:rgba(139,92,246,.14);color:#7c3aed;border:1px solid rgba(139,92,246,.4)}
+    .flag{color:#b45309;font-weight:600;font-size:.8rem}
+    .note{border:1px dashed var(--border);border-radius:14px;padding:10px 14px;margin:10px 18px 16px;color:var(--muted);font-size:.85rem;background:var(--panel)}
+    .visuels{margin-top:22px}
+    .visuels h2{font-size:1.1rem;margin:0 0 10px}
+    .synthese{margin-top:22px}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .signal{border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:var(--panel)}
+    .signal b{color:var(--accent-2)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .kpis{grid-template-columns:repeat(4,1fr)}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal-src{margin-top:8px;font-size:12.5px;color:var(--muted);}
+    .signal-src a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+    .signal-src a:hover{color:var(--accent-2);border-bottom-color:var(--accent-2);}
+
+    /* ajouts synthèse */
+    .resu{display:grid;gap:10px;margin-top:12px;}
+    .resu .row{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:start;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+    .resu .modele{font-weight:700;color:var(--ink);}
+    .resu .mes{color:var(--muted);font-size:13.5px;}
+    table.cmp{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px;}
+    table.cmp th,table.cmp td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;color:var(--ink);}
+    table.cmp th{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:11.5px;}
+    table.cmp td.num{text-align:right;font-variant-numeric:tabular-nums;}
+    .src-list{columns:2;column-gap:26px;font-size:13px;color:var(--muted);}
+    .src-list li{margin:0 0 5px;}
+</style>
+</head><body>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+<div class="wrap">
+<header>
+<div>
+<h1>🧪 Synthèse — Tests de modèles sur les veilles</h1>
+<p>12 veilles comparées · 4 thèmes × 3 modèles · mesures réelles (contenu, liens testés un par un, dates, coût en tokens)</p>
+<p class="note">Chiffres relevés sur les tirages des 1<sup>er</sup> et 2 novembre 2026 — aucun chiffre estimé.</p>
+</div>
+<div style="text-align:right"><a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)"><span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span></a><time datetime="2026-11-02">2 novembre 2026</time></div>
+</header>
+
+<div class="kpis">
+<div class="kpi"><div class="label">Tirages comparés</div><div class="value">12</div></div>
+<div class="kpi"><div class="label">Thèmes testés</div><div class="value">4</div></div>
+<div class="kpi"><div class="label">Modèles en lice</div><div class="value">3</div></div>
+<div class="kpi"><div class="label">Liens morts chez GLM</div><div class="value">0</div></div>
+<div class="kpi"><div class="label">Modèles retenus</div><div class="value">2</div></div>
+</div>
+
+<div class="card"><div class="card-head"><div class="card-title">🔬 Protocole</div></div><div class="card-body">
+<p>Chaque modèle a produit une veille complète avec le <b>même skill, le même prompt et la même fenêtre de 7 jours</b>, dans un profil isolé (démo) pour ne rien publier pendant les tests. Pour chaque tirage :</p>
+<ul>
+<li>volume rédigé (mots), nombre d'articles, nombre de liens sources ;</li>
+<li><b>chaque URL testée en HTTP</b> — un 404 est un lien mort, un 401/403/406 est un mur anti-bot (page réelle, accès refusé aux robots) et ne compte pas comme lien cassé ;</li>
+<li>dates de publication citées, comparées à la fenêtre de 7 jours ;</li>
+<li>coût réel en tokens (entrée, sortie, cache lu) et en dollars, relevé par exécution.</li>
+</ul>
+<p class="note">Fichiers bruts : <code>~/.hermes/profiles/demo/archives/compare/</code> — 12 veilles (.md + .html), comparatif.json, journaux de bench.</p>
+</div></div>
+
+<div class="card"><div class="card-head"><div class="card-title">📊 Résultats par thème</div></div><div class="card-body">
+<p>Tous les tirages ont produit une page HTML complète. Ce qui départage les modèles, c'est ce qu'ils mettent <i>dans</i> les liens et les dates.</p>
+</div></div>
+<div class="card"><div class="card-head"><div class="card-title">🗞️ IA global <span class="note">— tirage du 01/11/2026</span></div></div><div class="card-body"><div class="resu"><div class="row"><div class="modele">DeepSeek v4.1 Flash</div><div class="mes">1958 mots · 16 liens · <b class="m-r">3 URL inventées (404)</b> · 0 date hors fenêtre</div></div><div class="row"><div class="modele">GLM 5.3 Flash</div><div class="mes">1223 mots · 17 liens · <b class="m-d">0 lien mort</b> · 1 date hors fenêtre (24/10)</div></div><div class="row"><div class="modele">Grok 4.3</div><div class="mes">853 mots · 6 liens · <b class="m-r">aucun lien rattaché aux articles</b></div></div></div></div></div><div class="card"><div class="card-head"><div class="card-title">🎥 Télésurveillance <span class="note">— tirage du 01/11/2026</span></div></div><div class="card-body"><div class="resu"><div class="row"><div class="modele">DeepSeek v4.1 Flash</div><div class="mes">1920 mots · <b class="m-d">12 articles sourcés</b> · 0 lien mort · 0 date hors fenêtre</div></div><div class="row"><div class="modele">GLM 5.3 Flash</div><div class="mes">1224 mots · 10 articles sourcés · 0 lien mort · 0 date hors fenêtre</div></div><div class="row"><div class="modele">Grok 4.3</div><div class="mes">986 mots · 5 articles sourcés · <b class="m-r">3 dates hors fenêtre</b> (05/10, 07/10, 19/10)</div></div></div></div></div><div class="card"><div class="card-head"><div class="card-title">⚛️ Quantique <span class="note">— tirage du 02/11/2026</span></div></div><div class="card-body"><div class="resu"><div class="row"><div class="modele">DeepSeek v4.1 Flash</div><div class="mes">2713 mots · 12 liens · 1 lien en échec (iqm.tech) · 17 dates · 0 hors fenêtre</div></div><div class="row"><div class="modele">GLM 5.3 Flash</div><div class="mes">1330 mots · 11 liens · <b class="m-d">0 lien mort</b> · 15 dates · 0 hors fenêtre</div></div><div class="row"><div class="modele">Grok 4.3</div><div class="mes">650 mots · 7 liens uniques · <b class="m-r">0 date citée</b> (invérifiable)</div></div></div></div></div><div class="card"><div class="card-head"><div class="card-title">🐴 Diabète <span class="note">— tirage du 02/11/2026</span></div></div><div class="card-body"><div class="resu"><div class="row"><div class="modele">DeepSeek v4.1 Flash</div><div class="mes">2361 mots · 9 liens · <b class="m-d">0 date hors fenêtre</b> · 1×403 (mur anti-bot)</div></div><div class="row"><div class="modele">GLM 5.3 Flash</div><div class="mes">1245 mots · 9 liens · <b class="m-r">3 dates hors fenêtre</b> (22/09, 14/10, 23/10)</div></div><div class="row"><div class="modele">Grok 4.3</div><div class="mes">732 mots · 6 liens uniques · <b class="m-r">2 dates hors fenêtre dont 07/01/2026</b></div></div></div></div></div>
+
+<div class="card"><div class="card-head"><div class="card-title">🧬 Profil des trois modèles</div></div><div class="card-body"></div></div>
+<div class="card"><div class="card-head"><div class="card-title"><span class="pill m-b">DeepSeek v4.1 Flash</span></div></div><div class="card-body"><ul><li>Le plus <b>riche</b> : 35 à 43 appels API par veille, contre 9-10 pour Grok — il cherche beaucoup plus.</li><li>Le seul à avoir produit des <b>URL inexistantes</b> (3 × 404 sur actuia.com en IA).</li><li>Respecte la fenêtre temporelle (0 date hors fenêtre sur télé et diabète).</li></ul></div></div><div class="card"><div class="card-head"><div class="card-title"><span class="pill m-d">GLM 5.3 Flash</span></div></div><div class="card-body"><ul><li><b>Zéro lien mort sur les 4 thèmes</b> : les sources qu'il cite existent.</li><li>Deux fois plus concis (1200-1400 mots) sans perdre d'article : moins de relectures, moins cher.</li><li>Meilleur raisonnement sur le quantique : distingue <i>record théorique</i> et <i>jalon vérifié</i>.</li></ul></div></div><div class="card"><div class="card-head"><div class="card-title"><span class="pill m-r">Grok 4.3</span></div></div><div class="card-body"><ul><li><b>Le plus léger</b> (650-986 mots, 9-10 appels) — et le moins fiable pour autant.</li><li>Peu de recherches = peu de sources : 4 articles en télésurveillance contre 12 pour DeepSeek.</li><li><b>Dates fausses</b> : 3 hors fenêtre en télé, 2 en diabète (jusqu'à janvier 2026), aucune date en quantique.</li><li>Non facturé au token (abonnement xAI) : un faux avantage, il est déjà payé.</li></ul></div></div>
+
+<div class="card"><div class="card-head"><div class="card-title">✅ Décisions et critère décisif, veille par veille</div></div><div class="card-body">
+<table class="cmp"><thead><tr><th>Veille</th><th>Modèle retenu</th><th>Pourquoi celui-là</th></tr></thead><tbody><tr><td><b>RH</b></td><td>DeepSeek v4.1 Flash</td><td>Richesse éditoriale ; son défaut connu (URL inventées) est neutralisé par le contrôle de liens bloquant avant publication.</td></tr><tr><td><b>Télésurveillance</b></td><td>DeepSeek v4.1 Flash</td><td>12 articles sourcés et 0 date hors fenêtre — la densité attendue sur ce thème.</td></tr><tr><td><b>IA global</b></td><td>GLM 5.3 Flash</td><td>Fiabilité des sources : 10 articles tous vérifiables, contre 9 dont 3 liens fictifs chez DeepSeek.</td></tr><tr><td><b>Quantique</b></td><td>GLM 5.3 Flash</td><td>Exactitude du raisonnement (record vs jalon) + 0 lien mort + moitié moins de volume pour un résultat plus sûr.</td></tr><tr><td><b>Diabète</b></td><td>DeepSeek v4.1 Flash</td><td>Rigueur de la fenêtre, non négociable en médical : 0 date hors fenêtre contre 3 (GLM) et 2 dont janvier 2026 (Grok).</td></tr></tbody></table>
+<p class="note">Grok 4.3 est écarté partout : dernier sur les quatre thèmes. Il reste un modèle de comparaison, pas de production.</p>
+</div></div>
+
+<div class="card"><div class="card-head"><div class="card-title">💸 Coût mesuré sur ces mêmes tirages</div></div><div class="card-body">
+<table class="cmp"><thead><tr><th rowspan="2">Thème</th><th colspan="4" style="text-align:center">DeepSeek v4.1 Flash</th><th colspan="4" style="text-align:center">GLM 5.3 Flash</th></tr>
+<tr><th>entrée</th><th>sortie</th><th>cache</th><th>coût</th><th>entrée</th><th>sortie</th><th>cache</th><th>coût</th></tr></thead><tbody><tr><td>Télésurveillance</td><td class="num">107 026</td><td class="num">47 605</td><td class="num">2 758 400</td><td class="num"><b>0,047 $</b></td><td class="num">149 213</td><td class="num">20 224</td><td class="num">716 032</td><td class="num"><b>0,043 $</b></td></tr><tr><td>IA global</td><td class="num">114 927</td><td class="num">28 719</td><td class="num">1 120 896</td><td class="num"><b>0,031 $</b></td><td class="num">102 088</td><td class="num">13 203</td><td class="num">334 464</td><td class="num"><b>0,026 $</b></td></tr><tr><td>Quantique</td><td class="num">255 901</td><td class="num">32 086</td><td class="num">1 110 656</td><td class="num"><b>0,048 $</b></td><td class="num">148 521</td><td class="num">13 508</td><td class="num">356 352</td><td class="num"><b>0,032 $</b></td></tr><tr><td>Diabète</td><td class="num">184 306</td><td class="num">22 677</td><td class="num">835 072</td><td class="num"><b>0,035 $</b></td><td class="num">67 777</td><td class="num">10 419</td><td class="num">358 144</td><td class="num"><b>0,021 $</b></td></tr></tbody></table>
+<p class="note">Grok 4.3 passe par un abonnement xAI : aucun coût par token n'est facturé, il n'est donc pas « gratuit » mais déjà payé. Les chiffres d'entrée cumulent tous les appels API d'une exécution — dont la relecture du contexte : c'est pourquoi le cache lu est très supérieur au texte final. La sortie, elle, correspond au contenu réellement rédigé.</p>
+</div></div>
+
+<div class="card"><div class="card-head"><div class="card-title">⚠️ Limite de cette synthèse</div></div><div class="card-body">
+<p>Le choix du modèle n'explique pas tout. Le défaut repéré le 2 novembre — <b>des signaux faibles sans aucune source</b> — touchait <b>les trois modèles</b> et plusieurs semaines d'archives : c'était un manque de consigne, corrigé dans les prompts et les skills, plus un contrôle automatique désormais bloquant.</p>
+<p>Autrement dit : le modèle détermine <i>combien il cherche</i> et <i>s'il cite honnêtement</i> ; la structure et la présence des liens se règlent au niveau du prompt et du contrôle. Les deux leviers sont nécessaires — c'est la combinaison des deux qui a produit les 12 veilles ci-dessus.</p>
+</div></div>
+
+<div class="card"><div class="card-head"><div class="card-title">🔗 Traçabilité — comparatifs publiés</div></div><div class="card-body">
+<ul class="src-list">
+<li><a href="bench-compare.html">Comparatif IA + Télésurveillance</a> (6 tirages)</li>
+<li><a href="bench-quantique.html">Comparatif Quantique</a> (3 tirages)</li>
+<li><a href="bench-diabete.html">Comparatif Diabète</a> (3 tirages)</li>
+</ul>
+<p class="note">Ces trois pages détaillent chaque tirage tirage par tirage (volume, liens, dates, sections manquantes). Les 12 veilles brutes et le fichier de métriques restent sur le poste, dans le dossier de comparaison du profil démo.</p>
+</div></div>
+
+<p class="note" style="text-align:center;margin:26px 0">Synthèse produite par ORAC (Hermes) le 2 novembre 2026 — page statique, thème sombre par défaut, bascule clair/sombre enregistrée par navigateur.</p>
+</div>
+</body></html>

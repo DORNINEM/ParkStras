@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Bench diabète — 3 modèles</title>
+<style>
+:root{--bg:#010409;--panel:#0b1220;--ink:#e6f1ff;--muted:#8fb3cc;--accent:#40dcff;--border:rgba(64,220,255,.22)}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,'Segoe UI',sans-serif;padding:26px;line-height:1.6}
+h1{color:var(--accent);font-size:21px;letter-spacing:.08em}
+h2{color:var(--accent);font-size:15px;margin-top:26px}
+table{border-collapse:collapse;width:100%;margin-top:14px}
+th,td{border:1px solid var(--border);padding:8px 10px;font-size:13px;text-align:left;vertical-align:top}
+th{background:rgba(64,220,255,.08);color:var(--accent)}
+.note{color:var(--muted);font-size:12.5px;margin-top:18px}
+.g{color:#3ddc97}.b{color:#ff6b6b}
+</style></head><body>
+<h1>Benchmark diabète — même sujet, 3 modèles (02/11/2026)</h1>
+<p class="note">Profil démo isolé · même prompt, même skill veille-diabete, même fenêtre 7 jours · exigences du thème :
+sources françaises en priorité, distinguer un résultat d'essai d'un communiqué, section Prospective &amp; Recherche, 5 signaux faibles</p>
+<table><tr><th>Modèle</th><th>Mots</th><th>Entrées</th><th>Sources FR</th><th>URL 404</th><th>Dates hors fenêtre</th>
+<th>Qualité de fond</th></tr>
+<tr><td><b>deepseek</b></td><td>2361</td><td>9</td><td>8/9 (89 %)</td>
+ <td style="color:#3ddc97">0</td><td style="color:#3ddc97">0</td>
+ <td style="font-size:12px">Le plus complet et le mieux sourcé : ANSM (FreeStyle Libre 3), FFD, Le Quotidien du Médecin, La Voix du Nord ; puis EASD (54 % de rémission à 6 mois), Zimislecel, ACHIEVE-4, JNMG, PEPR MAGIC. <b>Zéro date hors fenêtre.</b> Signaux avec implication patient ET soignant. 3 sources vérifiées : le titre servi correspond bien à l'article annoncé.</td></tr>
+<tr><td><b>glm</b></td><td>1245</td><td>6</td><td>6/9 (67 %)</td>
+ <td style="color:#3ddc97">0</td><td style="color:#ff6b6b">3</td>
+ <td style="font-size:12px">Correct et pertinent (mise à jour ANSM, gliptines en ALD, JMD 2026, essai DARE, iLet en vie réelle), mais deux fois moins de matière. Dates anciennes citées de façon transparente (« en ligne le 14/10, relayé le 30/10 ») — donc pas de dissimulation, mais la fenêtre 7 jours n'est pas tenue au sens strict.</td></tr>
+<tr><td><b>grok</b></td><td>732</td><td>4</td><td>6/6 (100 %)</td>
+ <td style="color:#3ddc97">0</td><td style="color:#ff6b6b">2</td>
+ <td style="font-size:12px">Le plus faible — et de loin : <b>4 entrées seulement</b>, essentiellement des documents de référence (chiffres Santé publique France, recommandation HAS, rapport ANSM de janvier, plaquette CHU) plutôt que de l'actualité fraîche. C'est le modèle actuellement épinglé sur cette veille.</td></tr></table>
+<h2>Verdict</h2>
+<p><b class="g">DeepSeek</b> — gagne sur ce thème : 9 articles contre 6 et 4, 89 % de sources françaises, <b>aucune date hors fenêtre</b>,
+une section Prospective &amp; Recherche nourrie de vrais essais (rémission à 54 %, thérapie cellulaire, orforglipron oral) et des signaux
+faibles qui donnent une implication au patient <i>et</i> au soignant. Trois de ses sources ont été ouvertes : le titre servi correspond exactement
+à l'article annoncé — donc pas d'URL inventée comme cela avait pu arriver sur un tirage IA.</p>
+<p><b class="g">GLM</b> — bon second, pertinent et honnête sur ses dates, mais moitié moins de matière.</p>
+<p><b class="b">Grok</b> — échoue aussi ici, malgré son épinglage actuel sur cette veille : 4 entrées, majoritairement des documents
+institutionnels (dont un rapport ANSM de janvier 2026) au lieu d'actualité fraîche. Après la télésurveillance, l'IA et le quantique,
+c'est le quatrième thème où il arrive dernier.</p>
+</body></html>

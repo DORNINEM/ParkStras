@@ -1,0 +1,47 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Bench modèles veilles — 01/11/2026</title>
+<style>body{background:#010409;color:#cfeaff;font-family:-apple-system,'Segoe UI',sans-serif;padding:28px}
+h1{color:#40dcff;font-size:22px;letter-spacing:.1em}table{border-collapse:collapse;width:100%;margin-top:18px}
+th,td{border:1px solid rgba(64,220,255,.2);padding:8px 10px;font-size:13px;text-align:left}
+th{background:rgba(64,220,255,.08);color:#40dcff}.note{color:#4d7c99;font-size:12px;margin-top:14px;line-height:1.6}
+.good{color:#3ddc97}.bad{color:#ff6b6b}</style></head><body>
+<h1>Benchmark modèles — même sujet, 3 modèles (01/11/2026)</h1>
+<p style="font-size:13px;color:#ffb347">Profil démo isolé · 2 thèmes × 3 modèles · même prompt, même skill, même fenêtre 7 jours</p>
+<table><tr><th>Thème</th><th>Modèle</th><th>Mots</th><th>Articles</th><th>Liens uniques</th><th>Liens cassés (404)</th><th>Murs anti-bot (401/403/406)</th><th>Dates hors fenêtre</th><th>Sections ##</th></tr>
+<tr><td>IA</td><td><b>deepseek</b></td><td>1958</td><td>9</td>
+<td>16 <span style="color:#4d7c99">(dans actus : 9)</span></td>
+<td style="color:#ff6b6b">5</td>
+<td style="color:#ffb347">2</td><td style="color:#3ddc97">—</td>
+<td>5</td></tr>
+<tr><td>IA</td><td><b>glm</b></td><td>1223</td><td>10</td>
+<td>17 <span style="color:#4d7c99">(dans actus : 10)</span></td>
+<td style="color:#3ddc97">0</td>
+<td style="color:#ffb347">1</td><td style="color:#ff6b6b">2026-10-24</td>
+<td>5</td></tr>
+<tr><td>IA</td><td><b>grok</b></td><td>853</td><td>9</td>
+<td>6 <span style="color:#4d7c99">(dans actus : 0)</span></td>
+<td style="color:#3ddc97">0</td>
+<td style="color:#ffb347">1</td><td style="color:#3ddc97">—</td>
+<td>5</td></tr>
+<tr><td>TELE</td><td><b>deepseek</b></td><td>1920</td><td>12</td>
+<td>19 <span style="color:#4d7c99">(dans actus : 12)</span></td>
+<td style="color:#3ddc97">0</td>
+<td style="color:#ffb347">4</td><td style="color:#3ddc97">—</td>
+<td>6</td></tr>
+<tr><td>TELE</td><td><b>glm</b></td><td>1224</td><td>9</td>
+<td>17 <span style="color:#4d7c99">(dans actus : 10)</span></td>
+<td style="color:#3ddc97">0</td>
+<td style="color:#ffb347">3</td><td style="color:#3ddc97">—</td>
+<td>6</td></tr>
+<tr><td>TELE</td><td><b>grok</b></td><td>986</td><td>4</td>
+<td>10 <span style="color:#4d7c99">(dans actus : 5)</span></td>
+<td style="color:#3ddc97">0</td>
+<td style="color:#ffb347">3</td><td style="color:#ff6b6b">2026-10-05, 2026-10-07, 2026-10-19</td>
+<td>6</td></tr>
+</table>
+<div class="note">
+<b>Lecture</b> — « Liens cassés (404) » = URL réellement inexistante : c'est le signal le plus grave (URL inventée ou slug erroné).
+Les murs anti-bot (Reuters, Marketwatch, El Periódico…) ne sont pas des liens morts : les pages existent mais refusent les robots.<br><br>
+<b>Verdict provisoire</b> — <span class="good">DeepSeek</span> : le plus riche (1 900+ mots, 12 articles en télé) et le plus discipliné sur les dates, MAIS 3 URL 404 réelles (actuia.com) dans l'édition IA → validation des liens obligatoire.
+<span class="good">GLM</span> : structure et sourçage propres, dates annoncées dans le texte, 1 seul mur anti-bot, 10 articles en IA — le plus fiable sur la traçabilité.
+<span class="bad">Grok</span> : le plus faible sur ces thèmes — édition IA avec 9 articles et AUCUN lien source dans les actualités, édition télé avec 3 dates hors fenêtre (05/10, 07/10, 19/10).
+</div></body></html>
