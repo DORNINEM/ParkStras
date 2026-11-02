@@ -208,7 +208,7 @@ function hvToggleTheme(e){if(e)e.preventDefault();
   hvPaint();}
 function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
   var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
-  if(!i||!t)return; i.textContent=dark?'☀️':'??';
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
   t.textContent=dark?'Mode clair':'Mode sombre';}
 document.addEventListener('DOMContentLoaded',hvPaint);
 </script>
