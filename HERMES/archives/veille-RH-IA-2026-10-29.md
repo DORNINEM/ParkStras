@@ -8,7 +8,7 @@
    🔗 https://www.lemondeinformatique.fr/actualites/lire-recrutement-62-des-candidats-doutent-qu-un-humain-lise-encore-leur-cv-100880.html
 
 2. **Les salariés à l'aise avec l'IA sont les plus enclins à partir** | Helloworkplace (étude Wellhub) | 23/10/2026 | L'étude Wellhub montre que les salariés les plus avancés sur l'IA, davantage exposés à une hausse de charge de travail, sont paradoxalement les plus enclins à quitter l'entreprise. Angle direct pour le people analytics et la détection du risque de départ des profils IA rares, cœur de cible banque/assurance. | Tags : churn, people analytics, rétention | Secteur : transversal
-   🔗 https://www.helloworkplace.fr/actualites/les-salaries-a-l-aise-avec-l-ia-sont-les-plus-enclins-a-partir-225549
+   🔗 https://www.helloworkplace.fr/expert-ia-fidelisation-retention-etude-wellhub/
 
 3. **Adoption de l'IA : comment accompagner ces 7 profils de salariés ?** | Helloworkplace (Cognizant Research) | 27/10/2026 | Cognizant Research dresse une typologie de 7 profils de salariés face à l'IA et invite à adapter l'accompagnement à chaque posture — base utile pour des parcours de formation personnalisés et le plan de développement des compétences. Article réservé aux abonnés. | Tags : accompagnement, typologies salariés, formation | Secteur : transversal
    🔗 https://www.helloworkplace.fr/theme/intelligence-artificielle/ (accès abonnés)
@@ -89,10 +89,19 @@ Aucune infographie directement exploitable publiée dans la fenêtre. Visuels de
 ## 📊 Synthèse — 5 signaux faibles à surveiller
 
 1. **La suppression nette s'installe dans la banque européenne** : Barclays officialise ~5 000 coupes au nom de l'IA et HSBC va jusqu'à ~20 000, alors que les banques françaises restent muettes. Implication pour un DRH de groupe bancaire : préparer la traçabilité des décisions d'emploi et le dialogue social avant que l'effet de domino ne franchisse les frontières.
+  Sources (signaux) : https://www.lefigaro.fr/societes/avec-l-adoption-de-l-ia-la-banque-britannique-barclays-va-supprimer-environ-5000-emplois-20261022 · https://www.franceinfo.fr/replay-radio/le-brief-eco/le-secteur-bancaire-directement-touche-par-l-intelligence-artificielle_8233156.html
+
 2. **Le back-office bancaire est le premier front, la relation client résiste** : les tâches administratives standardisées (scoring, KYC documentaire) sont automatisées en priorité, les rôles complexes et réglementés tiennent. Implication : cibler les dispositifs de reconversion sur les fonctions d'exécution dès 2027, pas sur les métiers relationnels.
+  Sources (signaux) : https://www.lefigaro.fr/societes/de-nombreuses-taches-administratives-peuvent-etre-remplacees-dans-les-banques-les-reductions-de-postes-liees-a-l-ia-s-intensifient-20261022
+
 3. **La pyramide des compétences IT se désarticule** : chez Anthropic, la part des juniors dans les embauches passe de 27 % à 9 % ; chez Microsoft, 60 000 départs volontaires sur fond d'IA. Implication pour une DRH d'ESN : reconstruire des parcours d'entrée (alternance, montée en compétences sur la revue de code IA) sous peine de pénurie de seniors à 5 ans.
+  Sources (signaux) : https://fr.themedialeader.com/chez-anthropic-claude-reduit-la-part-des-profils-juniors/ · https://www.ictjournal.ch/news/2026-10-27/microsoft-reorganise-ses-effectifs-sur-fond-dia-avec-60000-salaries-eligibles-au
+
 4. **L'assurance française résiste mais recrute moins** : emploi en hausse (162 700 salariés, OEMA) mais recrutements en ralentissement et négociations sociales sur l'IA chez les grands groupes européens. Implication : activer les financements formation (IA-tlas OPCO Atlas, période de reconversion) pendant que l'emploi tient, pas après.
+  Sources (signaux) : https://www.lassuranceenmouvement.com/2026/10/28/assurance-et-ia-quels-effets-sur-lemploi/ · https://www.lassuranceenmouvement.com/2026/10/26/assurance-le-prompt-nouvelle-competence-de-lintermediaire/
+
 5. **L'encadrement réglementaire des outils RH se précise à échéance fixe** : recrutement classé haut risque de l'AI Act avec obligations repoussées au 2 décembre 2027, RGPD applicable d'ores et déjà, et France Travail qui algorithmise le contrôle des demandeurs d'emploi. Implication : cartographier dès maintenant les fonctions IA des SIRH et constituer le dossier « haut risque » (journalisation, supervision humaine, information CSE) avant l'échéance.
+  Sources (signaux) : https://myrhline.com/type-tribune/outil-recrutement-ia-haut-risque/ · https://www.mediapart.fr/journal/economie-et-social/231026/france-travail-deploie-discretement-des-outils-d-ia-pour-controler-les-demandeurs-d-emploi
 
 ## 🗺️ Tableau de bord des métiers à risque
 

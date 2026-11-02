@@ -94,11 +94,25 @@ L'IA agentique s'invite dans les systèmes de vidéosécurité : filtrage des fa
 ## Synthèse — 5 signaux faibles à surveiller
 
 1. **La 2G devient un argument commercial d'obsolescence, pas qu'un problème technique.** Somfy ferme les serveurs d'alarmes anciennes en invoquant la fin du réseau. *Implication installateur/CTS : auditer dès maintenant le parc clients (transmetteurs ET cloud des alarmes connectées) et transformer la migration 4G en offre de renouvellement contractualisée, avant que la concurrence ne le fasse.*
+  Sources (signaux) : https://journaldesseniors.20minutes.fr/actualite/je-pensais-que-l-alarme-de-la-maison-appelait-toujours-mon-telephone-ce-qui-s-arrete-le-20-octobre-dans-43-departements-paris-compris/ · https://www.igen.fr/domotique/2026/09/somfy-invoque-la-fin-de-la-2g-pour-couper-les-serveurs-dedies-ses-anciennes-alarmes-158347
+
+
 
 2. **Les plans d'installation des systèmes de sécurité sont devenus une cible de rançongiciel.** L'exemple vaudois (caméras, alarmes, détecteurs revendus sur le darknet) montre que la donnée « conception » d'un site vaut de l'or pour un cambrioleur. *Implication intégrateur : chiffrer et cloisonner les plans et configurations clients, et intégrer ce scénario dans les engagements de NIS2/assurance cyber.*
+  Sources (signaux) : https://www.silicon.fr/cybersecurite-1371/nis2-ce-quil-faut-attendre-du-projet-de-loi-examine-a-lassemblee-nationale-229520 · https://www.itforbusiness.fr/panorama-nis2-un-defaut-dinventaire-plus-quune-incapacite-a-remedier-107749
+
+
 
 3. **La détection se déplace vers la caméra, le centre ne juge plus que des alertes qualifiées.** Guanlan (-90 % de fausses alarmes), GuardVision, agentic AI : l'IA embarquée devient la norme produit. *Implication CTS : renégocier les volumes d'alertes et les SLA, et former les opérateurs à la levée de doute vidéo sur flux « pré-analysés » plutôt qu'au traitement brut.*
+  Sources (signaux) : https://fairsonline.org/hikvisions-guanlan-ai-cuts-false-alarms-90-storage-costs-50 · https://www.comparethecloud.net/news/verisure-expands-guardvision-outdoor-ai-detector-to-12-markets-after-data-shows-it-prevents-more-tha · https://securitytoday.com/articles/2026/09/print/how-video-security-is-moving-from-alarm-noise-to-operator-trust.aspx
+
+
 
 4. **La conformité RGPD/AI Act devient un livrable facturable.** Avertissements AEPD en Espagne, cadre Ripost jusqu'en 2030, réserves du Conseil constitutionnel : chaque projet municipal ou privé IA exigera AIPD, information du public et contrôle humain documentés. *Implication intégrateur français : packager une offre « conformité vidéoprotection IA » (analyse d'impact, notices, procédures) — peu d'installateurs savent la vendre aujourd'hui.*
+  Sources (signaux) : https://www.digitalsecuritymagazine.com/2026/10/07/videovigilancia-ia-aepd-radvierte-uso-analisis-automatizados/ · https://lesnews.ca/intelligence-artificielle/surveillance-video-avec-ia-securite-renforcee-ou-etat-de-surveillance/
+
+
 
 5. **La télésurveillance grand public se domestique en plateforme domotique notée par les consommateurs.** IMA Protect lauréat « Produit de l'Année » avec scénarios caméras/thermostats/éclairage : le critère d'achat devient l'écosystème connecté, pas la seule réactivité du centre. *Implication installateur : s'allier ou s'ouvrir aux écosystèmes (Netatmo, Legrand, Matter) pour ne pas se faire disqualifier sur les comparatifs grand public.*
+  Sources (signaux) : https://www.ima.eu/fr/loption-telesurveillance-plus-dima-protect-elue-produit-de-lannee-2026
+

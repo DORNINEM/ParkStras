@@ -3,10 +3,19 @@
 ## Synthèse — 5 signaux faibles à surveiller
 
 1. La correction d'erreurs passe du labo au produit, côté européen aussi. Alice & Bob décode ses codes LDPC-cat sur GPU (NVQLink) pendant que Google publie la magic state cultivation dans Science et que Classiq lance un Fault Tolerance Engine. Implication DSI/RSSI : la pile « fault-tolerant » se verticalise (hardware + décodeur + orchestrateur) — surveiller les offres intégrées dès leurs betas.
+  Sources (signaux) : https://alice-bob.com/newsroom/alice-bob-decodes/ · https://thequantuminsider.com/2026/10/16/google-demonstrates-method-to-cut-errors-in-quantum-computings-magic-states/ · https://www.sdxcentral.com/news/ntt-docomo-taps-classiq-to-bring-quantum-software-to-enterprise-customers/
+
 2. Les États européens se dotent de calendriers PQC contraignants. Directive allemande BMI/BSI (inventaire fin 2026, haut risque 2030, large 2035) et recommandations TLS hybrides du NCSC britannique encadrent désormais ce qu'ANSSI préconise depuis 2024. Implication RSSI : l'inventaire cryptographique devient une échéance réglementaire, plus une bonne pratique.
+  Sources (signaux) : https://thequantuminsider.com/2026/10/16/transition-post-quantum-cryptography-national-eu-roadmap-guideline/ · https://www.ncsc.gov.uk/blogs/post-quantum-updates-to-our-tls-guidance
+
 3. La finance hiérarchise les fournisseurs quantiques. L'upgrade Morgan Stanley de Quantinuum, l'horizon de trading quantique d'HSBC (2-4 ans) et le partenariat CGI-D-Wave logistique montrent un marché qui passe des pilotes aux sélections de prestataires. Implication DSI : intégrer les feuilles de route QEC des fournisseurs dans les critères d'achat.
+  Sources (signaux) : https://www.fool.com/investing/2026/10/18/quantinuum-vs-ionq-why-wall-street-firm-better/ · https://www.moneycontrol.com/news/business/banks/ai-agents-could-trade-bonds-using-quantum-computing-within-years-says-hsbc-executive-14053068.html · https://portalerp.com/es/articulo/cgi-y-d-wave-llevan-la-computacion-cuantica-a-la-logistica-y-la-industria
+
 4. L'infrastructure quantique européenne avance par le réseau. Les 47,5 M€ QIA (internet quantique full-stack) et la livraison D-Wave en Lombardie dessinent une stratégie UE centrée sur la connectivité et la distribution géographique des QPU. Implication directions R&D : les répéteurs et interconnexions quantiques sont le prochain actif stratégique.
+  Sources (signaux) : https://qutech.nl/2026/10/16/qutech-coordinates-european-effort-to-build-worlds-first-full-stack-quantum-internet-prototype/ · https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Delivers-Italys-First-Annealing-Quantum-Computer/default.aspx
+
 5. Le QML reste en attente de preuve d'avantage — exiger des benchmarks. Le benchmark QSVM fraude (arXiv) et l'extraction de features de Kipu sur QuEra montrent des gains applicatifs réels sans avantage fondamental démontré. Implication gouvernance : traiter chaque cas d'usage QML comme un pilot à mesurer contre baselines classiques, avec preprints arXiv systématiquement signalés.
+  Sources (signaux) : https://arxiv.org/abs/2610.17027 · https://quantumcomputingreport.com/kipu-quantum-demonstrates-neutral-atom-quantum-feature-extraction-for-molecular-toxicity-classification-on-quera-hardware/
 
 ## Actualités
 
@@ -75,3 +84,32 @@
 
 22. **Le NCSC (Royaume-Uni) met à jour ses recommandations TLS post-quantique**
    Le NCSC met à jour ses recommandations TLS : adoption de configurations hybrides post-quantique/traditionnelles et PQC pur basées sur ML-KEM (RFC 10024), et recommandation de migrer dès maintenant vers TLS 1.3 pour soutenir les activités PQC prioritaires d'ici 2031. Document officiel concret de déploiement de la migration PKI/protocoles hybrides côté NIST PQC.
+
+## 🔗 Sources du rapport
+
+Les liens ci-dessous sont ceux des articles de cette édition (récupérés depuis la page HTML, où chaque carte porte sa source) ; le .md archivé en était dépourvu.
+
+- **Tsuga, Dillico, Quandela... Qui sont les « meilleures » deeptech 2026 selon Bercy ?** — https://www.latribune.fr/article/tech/start-up/6634534981228/tsuga-dillico-quandela-qui-sont-les-meilleures-deeptech-2026-selon-bercy
+- **QuTech coordonne l'effort européen de premier prototype full-stack d'internet quantique** — https://qutech.nl/2026/10/16/qutech-coordinates-european-effort-to-build-worlds-first-full-stack-quantum-internet-prototype/
+- **Qilimanjaro : 19,6 M€ pour industrialiser ses ordinateurs quantiques à fluxonium** — https://www.hpcwire.com/off-the-wire/qilimanjaro-secures-e19-6m-to-expand-quantum-computing-production/
+- **Multiverse Computing lance Comet 60B en collaboration avec NVIDIA** — https://www.globenewswire.com/news-release/2026/10/15/3381915/0/en/multiverse-computing-launches-comet-60b-in-collaboration-with-nvidia-multimodal-capabilities-at-half-the-parameters.html
+- **Alice &amp; Bob décode ses codes LDPC-cat sur GPU avec NVIDIA NVQLink** — https://alice-bob.com/newsroom/alice-bob-decodes/
+- **Post-quantique : la menace avance masquée, les entreprises à petits pas** — https://www.solutions-numeriques.com/post-quantique-la-menace-avance-masquee-les-entreprises-a-petits-pas/
+- **Morgan Stanley relève Quantinuum, nouveau « top pick » quantique devant IonQ** — https://www.fool.com/investing/2026/10/18/quantinuum-vs-ionq-why-wall-street-firm-better/
+- **Google Quantum AI démontre la « magic state cultivation » sur Willow, percée publiée dans Scien** — https://thequantuminsider.com/2026/10/16/google-demonstrates-method-to-cut-errors-in-quantum-computings-magic-states/
+- **L'Allemagne publie des lignes directrices nationales de migration cryptographique post-quantiqu** — https://thequantuminsider.com/2026/10/16/transition-post-quantum-cryptography-national-eu-roadmap-guideline/
+- **D-Wave livre le premier ordinateur quantique à recuit d'Italie (Advantage2) en Lombardie** — https://ir.dwavequantum.com/news/news-details/2026/D-Wave-Delivers-Italys-First-Annealing-Quantum-Computer/default.aspx
+- **IonQ et l'université de Cambridge ouvrent un Quantum Innovation Centre au Ray Dolby Centre** — https://www.ionq.com/news/ionq-and-the-university-of-cambridge-open-the-ionq-quantum-innovation-centre-at-cavendish-laboratorys-ray-dolby-centre
+- **Qiskit 2.6.0 : nouvelle version stable du SDK quantique d'IBM** — https://pypi.org/project/qiskit/
+- **Suppression d'erreurs logiques dans un code de surface sur un processeur IBM accessible via le ** — https://arxiv.org/abs/2610.23840
+- **NTT DoCoMo Business s'associe à Classiq pour distribuer sa plateforme quantique aux entreprises** — https://www.sdxcentral.com/news/ntt-docomo-taps-classiq-to-bring-quantum-software-to-enterprise-customers/
+- **ORCA Computing lance le PT-3, nouvelle génération de son ordinateur quantique photonique** — https://thequantuminsider.com/2026/10/15/orca-computing-launches-pt-3-the-latest-generation-of-its-photonic-quantum-computers/
+- **RIKEN : contrôle parallèle haute-fidélité de 5 qubits au spin en silicium via une seule ligne m** — https://www.riken.jp/en/news_pubs/research_news/pr/2026/20261015_2/index.html
+- **Google déclare avoir levé l'un des plus grands goulets du calcul quantique — où en est la timel** — https://decrypt.co/381102/google-cracked-quantum-computing-biggest-bottlenecks
+- **Benchmark de SVM à noyaux quantiques pour la détection de fraude bancaire : réalités de perform** — https://arxiv.org/abs/2610.17027
+- **HSBC : des agents IA pourraient trader des obligations via le calcul quantique d'ici quelques a** — https://www.moneycontrol.com/news/business/banks/ai-agents-could-trade-bonds-using-quantum-computing-within-years-says-hsbc-executive-14053068.html
+- **Kipu Quantum : extraction de features quantique sur atomes neutres pour la toxicologie molécula** — https://quantumcomputingreport.com/kipu-quantum-demonstrates-neutral-atom-quantum-feature-extraction-for-molecular-toxicity-classification-on-quera-hardware/
+- **CGI et D-Wave apportent le calcul quantique à la logistique et à l'industrie** — https://portalerp.com/es/articulo/cgi-y-d-wave-llevan-la-computacion-cuantica-a-la-logistica-y-la-industria
+- **Le NCSC (Royaume-Uni) met à jour ses recommandations TLS post-quantique** — https://www.ncsc.gov.uk/blogs/post-quantum-updates-to-our-tls-guidance
+
+_Complété le 02/11/2026 : le .md de cette édition ne contenait aucun lien, la page HTML si._

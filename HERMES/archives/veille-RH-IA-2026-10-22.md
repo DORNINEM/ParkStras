@@ -155,10 +155,19 @@ Aucune infographie exploitable publiée dans la fenêtre. Les visuels de référ
 ## 📊 Synthèse — 5 signaux faibles à surveiller
 
 1. **La « porte d'entrée » se referme** : −28 % de recrutements juniors dans les métiers exposés (Banque de France/LIFT). Implication DRH : repenser les référentiels de poste entry-level et créer des parcours d'apprentissage assistés par IA, faute de quoi la pyramide des compétences se vide.
+  Sources (signaux) : https://alliancy.fr/les-recrutements-des-jeunes-decrochent-dans-les-metiers-exposes-0bdbad4a-ca35-421a-9436-cdf2b4deefc3
+
 2. **La conflictualité sociale sur l'IA devient négociable** : manif bancaire en Espagne, accord bloqué dans la fonction publique française. Implication : anticiper l'ouverture de négociations GEPP/IA avant les échéances conventionnelles 2027 plutôt que les subir.
+  Sources (signaux) : https://www.infobae.com/espana/2026/10/15/los-trabajadores-de-la-banca-exigen-mejoras-laborales-a-las-grandes-entidades-reparto-de-beneficios-fines-de-semana-mas-largos-y-frenar-a-la-inteligencia-artificial/ · https://acteurspublics.fr/articles/laccord-social-sur-lia-mal-parti-dans-la-fonction-publique-force-ouvriere-en-position-darbitre/
+
 3. **Les agents IA RH passent de la promesse au produit général disponible** (Oracle, PageUp, Hireology). Implication : auditer dès maintenant les usages agentiques prévus chez les éditeurs SIRH au titre de l'IA Act (recrutement = haut risque, obligations décalées à décembre 2027 via le Digital Omnibus).
+  Sources (signaux) : https://www.oracle.com/news/announcement/oracle-introduces-claw-powered-fusion-agentic-applications-for-hr-2026-10-20/ · https://www.pageuppeople.com/news/pageup-launches-candidate-agent-at-hr-tech-2026/ · https://www.prnewswire.com/news-releases/hireology-launches-ai-hiring-intelligence-suite-ai-match-customers-see-20-reduction-in-time-to-hire-302915657.html
+
 4. **Le déficit de confiance croisé candidats/recruteurs** (étude Hellowork : 61 % vs 93 % d'usage de l'IA, méfiance mutuelle). Implication : formaliser une politique de transparence sur l'usage de l'IA dans le recrutement, faute de quoi la marque employeur en pâtit.
+  Sources (signaux) : https://www.helloworkplace.fr/etude-hellowork-candidat-recruteur-2026-ia/
+
 5. **L'émergence du « coût caché » de l'IA** : 15 % des postes portent des charges IA implicites non rémunérées (Oyster) et le risque de désapprentissage documenté côté chercheurs. Implication : suivre la dérive de la charge de travail et intégrer la « littératie IA » dans les plans de formation, y compris pour les profils seniors.
+  Sources (signaux) : https://www.oysterhr.com/library/new-oyster-research-ai-is-changing-the-workforce-faster-than-jobs-can-keep-up · https://www.lesnumeriques.com/intelligence-artificielle/on-perd-la-competence-et-on-devient-dependant-deleguer-a-l-ia-nous-rend-moins-capables-alerte-une-chercheuse-n263578.html
 
 ## 🗺️ Tableau de bord des métiers à risque
 

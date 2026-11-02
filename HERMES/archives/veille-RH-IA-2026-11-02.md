@@ -89,10 +89,19 @@ Aucun schéma de données exploitable cette semaine : les visuels rencontrés da
 ## 📊 Synthèse — 5 signaux faibles à surveiller
 
 1. **La conformité AI Act du recrutement devient un sujet de contentieux avant même l'échéance de décembre 2027** — deux sources distinctes cette semaine (MyRHLine le 26/10, Focus RH le 30/10) rappellent que le Code du travail et le RGPD s'appliquent déjà, avec des suspensions judiciaires d'outils IA faute d'information-consultation du CSE (arrêt du 21 mai 2026). *Implication DRH : sécuriser dès maintenant la consultation du CSE et la documentation de la supervision humaine sur tout ATS/matching augmenté, sans attendre le calendrier européen.*
+  Sources (signaux) : https://www.focusrh.com/tribunes/avec-l-ai-act-les-rh-entrent-dans-une-nouvelle-ere-de-responsabilite-par-emily-johnson-36511.html · https://myrhline.com/type-tribune/outil-recrutement-ia-haut-risque/ · https://hashtagavocats.com/peut-on-utiliser-une-ia-pour-trier-les-candidatures-a-un-emploi/
+
 2. **Le canal « formation » se déplace du contenu vers la preuve de compétence** — la tribune Focus RH du 28/10 (« faire système ») et l'exigence de maîtrise des outils IA dès l'entrée (étude Numeum/KPMG sur les ESN) convergent : les référentiels et l'évaluation réelle des acquis remplacent le comptage d'heures. *Implication : faire évoluer le plan de développement des compétences vers une logique de preuves (mises en situation métier, évaluation par les pairs).*
+  Sources (signaux) : https://www.focusrh.com/tribunes/qui-formera-les-talents-de-demain-le-vrai-defi-est-de-faire-systeme-par-aurelie-cordier-caillot-36506.html · https://numeum.fr/intelligence-artificielle/ia-cloud-numeum-renforce-les-cooperations-entre-france-et-norvege/
+
 3. **Le contrôle des travailleurs de l'IA devient un risque juridique européen** — cinq plaintes noyb contre Outlier/Scale AI (28/10) sur la surveillance des sous-traitants qui entraînent les modèles. *Implication : vérifier les clauses de sous-traitance et les dispositifs de contrôle (télétravail, métriques) de vos prestataires d'annotation et de vos propres outils de supervision.*
+  Sources (signaux) : https://www.socialmag.news/28/10/2026/outlier-scale-ai-plaintes-surveillance-travailleurs-ia-octobre-2026/
+
 4. **Le pilote public du rythme de déploiement entre à l'agenda** — la Chine impose une évaluation des risques pour l'emploi et une information préalable des salariés (23/10), quand le plan français « Impulsion IA 2027 » mise sur le dialogue social et un Observatoire Dares au T1 2027. *Implication : anticiper un cadre de « gestion du rythme » (phases pilotes, information des IRP, indicateurs de charge) plutôt qu'un déploiement en une seule vague.*
+  Sources (signaux) : https://www.socialmag.news/28/10/2026/chine-ia-emploi-anticiper-suppressions-postes-reconversion-octobre-2026/ · https://www.dialogue-social.fr/articles-par-themes/tous-les-articles/ia-au-travail-le-plan-impulsion-ia-2027-mise-sur-le-dialogue-social-1/
+
 5. **La fonction finance entre dans la zone de risque des juniors** — après les développeurs et les fonctions support, l'entrée de gamme de la finance (saisie, contrôle, consolidation) est désormais documentée comme exposée (Option Finance, 29/10). *Implication : ouvrir dès maintenant les viviers alternance/stages de la filière finance vers des missions d'analyse et de contrôle augmenté, faute de quoi le recrutement de cadres à 5 ans s'assèchera, comme le modélise arXiv 2610.33102.*
+  Sources (signaux) : https://www.optionfinance.fr/carrieres/lia-rebat-les-cartes-pour-les-juniors-dans-la-fonction-finance.html
 
 ## 🗺️ Tableau de bord des métiers à risque
 

@@ -7,7 +7,7 @@
 ### Vidéoprotection algorithmique : la loi RIPOST prolonge l'expérimentation jusqu'en 2030
 **Source :** Sopra Steria (perspectives) | **Date :** octobre 2026 | **Tags :** réglementation, VSA, IA, espace public
 Point d'étape sur la loi RIPOST de 2026, qui prolonge jusqu'en 2030 l'expérimentation de la vidéoprotection algorithmique et l'élargit aux bâtiments publics et à la voie publique. L'auteur appelle à un cadre pérenne pour l'analyse IA des images en temps réel, notamment pour la détection précoce de risques sécuritaires et climatiques — au-delà de la logique d'expérimentations successives.
-🔗 https://www.soprasteria.fr/perspectives/details/videoprotection-algorithmique---sortir-de-l-impasse
+🔗 https://www.fnms.fr/videosurveillance-algorithmique-la-loi-ripost-promulguee-apres-la-reserve-du-conseil-constitutionnel/
 
 ### IA et vidéosurveillance : où en est le cadre RGPD et AI Act après la loi Ripost ?
 **Source :** DonnéesPersonnelles.fr | **Date :** octobre 2026 | **Tags :** juridique, RGPD, AI Act, caméras augmentées
@@ -115,10 +115,20 @@ Analyse juridique : en France, un employeur ne peut pas imposer unilatéralement
 ## 📊 Synthèse — 5 signaux faibles
 
 1. **La 2G devient un déclencheur de renouvellement de parcs** — extinction Orange (sept.–oct. 2026), coupure annoncée des serveurs Somfy Myfox/Protexiom au 31 mars 2027, migration des communicateurs vers IP/4G : l'écosystème installateur a un chantier de migration massif à qualifer pour l'hiver, avec un risque de grogne grand public sur l'obsolescence logicielle.
+  Sources (signaux) : https://www.it-matelec.fr/blog/reglementation-alarmes-2026/ · https://www.igen.fr/domotique/2026/09/somfy-invoque-la-fin-de-la-2g-pour-couper-les-serveurs-dedies-ses-anciennes-alarmes-158347
+
 2. **La protection sort de la maison** — Verisure (Défense Active en Belgique, GuardVision Outdoor à l'échelle de 12 marchés, IA entraînée sur 6,4 M d'abonnés) pousse la détection extérieure proactive et la dissuasion à distance avant effraction ; c'est le nouveau standard concurrentiel de l'alarme monitorée.
+  Sources (signaux) : https://www.sudinfo.be/id1200976/article/2026-10-01/un-nouveau-systeme-dalarme-debarque-en-belgique-pour-intervenir-avant-meme-quun · https://news.cision.com/verisure-plc/r/verisure-expands-roll-out-of-award-winning-ai-powered-guardvision--outdoor-video-detector--further-r,c4403543 · https://www.bloomberg.com/news/articles/2026-09-28/verisure-bets-on-ai-partnerships-to-counter-disruption-concerns
+
 3. **Le vidéo-monitoré par IA devient un segment autonome** — ALDER AI aux États-Unis, Hanwha BLAZE, recherche sémantique et détection d'anomalies non supervisée (RMTA-Net) : les acteurs se structurent autour de la vidéo vérifiée par IA plutôt que de l'alarme réactive, et la recherche académique alimente vite le produit.
+  Sources (signaux) : https://www.securitysystemsnews.com/article/alder-launches-ai-focused-security-business-centered-on-monitored-video · https://www.asadria.com/en/blaze-has-arrived-hanwha-vision-introduces-a-new-ai-platform-for-video-surveillance/ · https://scienmag.com/memory-guided-ai-learns-what-normal-looks-like-to-spot-surveillance-anomalies/
+
 4. **La vidéoprotection publique s'installe dans la durée** — loi RIPOST (horizon 2030) et autorisations préfectorales quinquennales (Remiremont, Le Lude) donnent un cadre stable, mais l'exigence de conformité RGPD/AI Act et la traçabilité des images (15 jours) deviennent le critère d'achat des collectivités.
+  Sources (signaux) : https://www.fnms.fr/videosurveillance-algorithmique-la-loi-ripost-promulguee-apres-la-reserve-du-conseil-constitutionnel/ · https://actu.fr/pays-de-la-loire/le-lude_72176/notre-priorite-cest-la-securite-au-lude-les-cameras-de-videoprotection-redemarrent_64859152.html · https://remiremontvallees.com/2026/09/25/remiremont-le-dispositif-de-videoprotection-va-etre-renforce/
+
 5. **La biométrie entre dans l'ère anti-deepfake et du consentement dur** — certification IDEMIA zéro attaque sur 900 tests, appels de l'Agence des droits fondamentaux de l'UE à un cadre strict, rappel des juges et de la CNIL sur la biométrie au travail : la conformité anti-spoofing et le consentement sont désormais des prérequis commerciaux, pas des options.
 
 ---
 *Généré le 2026-10-06 par Hermes — veille-tele-surveillance. 17 articles, sources vérifiées, fenêtre 7 jours.*
+  Sources (signaux) : https://www.idemia.com/fr/communique-de-presse/le-sdk-webcapture-didemia-public-security-obtient-une-certification-independante-pour-la-securite-contre-les-deepfakes-et-les-attaques-par-fraude-biometrique-2026-10-05 · https://agenceurope.eu/fr/bulletin/article/13952/20/lagence-de-lue-appelle-a-un-cadre-juridique-complet-pour-lutilisation-de-lidentification-biometrique-a-distance-par-les-forces-de-lordre · https://kohenavocats.fr/2026/10/05/employeur-badgeuse-empreinte-pointeuse-biometrique-refuser-cnil-juge-reparation-2026/
+
