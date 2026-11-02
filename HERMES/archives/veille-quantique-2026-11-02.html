@@ -124,6 +124,15 @@
 @media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
 </style>
 </head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-quantique-2026-11-02.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
 <div class="wrap">
   <header>
     <div>
