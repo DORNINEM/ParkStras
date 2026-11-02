@@ -2,13 +2,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Veille Télésurveillance &amp; Sécurité électronique — 8 octobre 2026</title>
-  <style>
-    :root {
-      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
-      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
-      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
-      --radius:18px;
-    }
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
     .dark {
       --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
       --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
@@ -36,7 +49,7 @@
     header time{font-variant-numeric: tabular-nums}
     .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
     .kpi{
-      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
       border-radius:14px; padding:14px 16px;
     }
     .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
@@ -48,11 +61,11 @@
     .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
     .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
-    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
     .pill.green{background:#10b981;color:#fff;border-color:#10b981}
     .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
     .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
     .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
     .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
     .card-title{font-size:1.05rem;font-weight:700}
@@ -74,13 +87,20 @@
     }
     @media (min-width: 1080px){
     }
-  </style>
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
 <style>
 #veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
 #veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
  text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
  background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
- border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,var(--ink));
  animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
 #veille-audio-banner .vab-link:hover{transform:scale(1.02);}
 #veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
@@ -205,4 +225,24 @@
     <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
   </footer>
 </div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=dark?'☀️':'??';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
 </body></html>

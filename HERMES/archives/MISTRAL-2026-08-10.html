@@ -3,7 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Veille Mistral AI – 10 août 2026</title>
-<style>
+<style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
 body{font-family:Arial,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;color:#111}
 a{color:#0b5cff;text-decoration:none}
 ul{list-style:none;padding:0}
@@ -12,6 +31,13 @@ li{margin:0.9rem 0;padding:0.7rem;border:1px solid #e5e5e5;border-radius:10px}
 .date{font-size:0.8rem;color:#777}
 h1{font-size:1.4rem}
 p.updated{font-size:0.85rem;color:#666}
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
 </style>
 </head>
 <body>
@@ -24,5 +50,25 @@ p.updated{font-size:0.85rem;color:#666}
 <li><strong>4. <a href="https://www.usine-digitale.fr/intelligence-artificielle/mistral-ai/mistral-ai-lance-forge-un-service-de-creation-de-modele-dia-sur-mesure-pour-les-grandes-entreprises.NFBAALPLMNEO7ECP62HMAC35JY.html" target="_blank">Mistral AI lance Forge, un service de création de modèle d’IA sur-mesure pour les grandes entreprises</a></strong><br/><span class="source">L'Usine Digitale</span> – <span class="date">Tue, 17 Mar 2026 00:00:00 +0100</span></li>
 <li><strong>5. <a href="https://www.iliad.fr/en/actualites/article/free-france-s-first-telco-to-include-a-premium-ai-assistant-in-its-mobile-plans-le-chat-pro-developed-by-mistral-ai" target="_blank">Free intègre un assistant IA premium Le Chat Pro développé par Mistral AI dans ses forfaits mobiles</a></strong><br/><span class="source">Iliad / Free</span> – <span class="date">Tue, 10 Feb 2025 00:00:00 +0100</span></li>
 </ul>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=dark?'☀️':'??';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
 </body>
 </html>

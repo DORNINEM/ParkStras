@@ -7,16 +7,26 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
         
-        :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
-            --teal: #14b8a6;
-            --orange: #f97316;
-            --red: #ef4444;
-            --green: #22c55e;
-        }
+        :root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -255,7 +265,14 @@
             .header { padding: 28px 20px; }
             .article-card { padding: 18px; }
         }
-    </style>
+    
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
 </head>
 <body>
     <div class="header">
@@ -758,5 +775,25 @@
         Total articles : 24 • Focus banque, assurance, informatique • 
         <a href="https://github.com/ParkStras/HERMES" target="_blank">ParkStras/HERMES</a>
     </div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=dark?'☀️':'??';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
 </body>
 </html>

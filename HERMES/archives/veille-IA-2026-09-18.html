@@ -4,11 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🤖 Veille IA Quotidienne — 18 septembre 2026</title>
-<style>
-  :root {
-    --bg: #f5f7fa; --panel: #ffffff; --border: #e2e8f0; --text: #1e293b;
-    --secondary: #64748b; --accent: #2563eb; --accent-light: #dbeafe;
-    --shadow: 0 2px 8px rgba(0,0,0,0.06); --radius: 12px;
+<style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f5f7fa;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#2563eb;
+    --accent-2:#6366f1;
+    --border:#e2e8f0;
+    --shadow:0 2px 8px rgba(0,0,0,0.06);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -41,6 +55,13 @@
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
   .tag { font-size: 0.72rem; font-weight: 500; color: var(--secondary); background: var(--bg); border: 1px solid var(--border); padding: 3px 8px; border-radius: 999px; }
   footer { margin-top: 24px; color: var(--secondary); font-size: 0.85rem; }
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
 </style>
 </head>
 <body>
@@ -232,5 +253,25 @@
       <p><em>template-inlined — gabarit reconstruit depuis l'archive veille-IA-14 septembre 2026 (templates/ absent du dépôt)</em></p>
     </div>
   </footer>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=dark?'☀️':'??';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
 </body>
 </html>
