@@ -1,0 +1,291 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 2 novembre 2026</title>
+  <style>
+    :root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background: radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent), radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent), var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius:18px; color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#0f172a,#0b1220);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#40dcff;color:#010409;border-color:#40dcff}
+    .pill.green{background:#7bffb2;color:#010409;border-color:#7bffb2}
+    .pill.yellow{background:#ffb347;color:#010409;border-color:#ffb347}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#0f172a,#0b1220);border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:#e5e7eb}
+    html[data-theme="light"] .item p{color:#1f2937}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    .footer p{margin:4px 0}
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-11-02.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🩺 Veille Innovations Diabète</h1>
+      <p>Sources FR prioritaires • Technologies, capteurs MCG, pompes &amp; pancréas artificiel, recherche, Big Pharma — généré par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-02">2 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-france')" title="Aller à la section France"><div class="label">🇫🇷 France</div><div class="value">8</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-europe')" title="Aller à la section Europe / Suisse"><div class="label">🌍 Europe / Suisse</div><div class="value">2</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-monde')" title="Aller à la section Monde"><div class="label">🌐 Monde</div><div class="value">2</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 2 novembre 2026</span>
+    <span class="pill yellow">🔬 4 cartes Prospective</span>
+  </div>
+
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lequotidiendumedecin.fr/actu-medicale/2026-une-annee-des-consensus-dans-le-diabete" target="_blank">2026, une année de consensus dans le diabète</a></h3>
+<div class="meta">Le Quotidien du Médecin • 30/10/2026</div>
+<p>L'automne 2026 est marqué, en diabétologie, par une accélération sans précédent des recommandations. Le Quotidien du Médecin dresse le tableau de cette « année de consensus » : la prise en charge ne se résume plus à une affaire de glycémie. Quatre inflexions structurent cette évolution. D'abord, traiter plus tôt : la mise à jour 2026 du consensus commun American Diabetes Association – European Association for the Study of Diabetes (ADA-EASD) fait évoluer les pratiques au-delà du seul contrôle du sucre. Ensuite, protéger les organes avant l'apparition des complications, et non plus après. Le message central de cette mise à jour est explicite : dans le diabète de type 2 (DT2), la protection des organes doit commencer sans attendre. Concrètement, le recours aux iSGLT2 et/ou aux agonistes du GLP-1 peut désormais être préconisé dès le diagnostic du DT2, indépendamment de l'HbA1c initiale, au titre d'une protection cardio-rénale. Le journal insiste également sur l'affinement des objectifs thérapeutiques, désormais plus individualisés selon le profil du patient. Le troisième axe consiste à s'intéresser à des atteintes longtemps négligées, qu'elles soient rénales, nerveuses, oculaires ou dermatologiques. Enfin, la revue met l'accent sur l'encadrement de l'utilisation des traitements fondés sur le GLP-1 autour de la grossesse, un sujet qui avait émergé comme point de vigilance lors des congrès de l'année. Cette synthèse confirme que la décennie en cours déplace le centre de gravité de la diabétologie : l'objectif n'est plus seulement de faire baisser un chiffre, mais de prévenir les atteintes d'organes sur le long terme.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.egora.fr/medical/congres/diabete-de-type-1-linnovation-en-continu" target="_blank">Diabète de type 1 : l'innovation en continu</a></h3>
+<div class="meta">Egora / JNMG 2026 • 29/10/2026</div>
+<p>Compte rendu des Journées nationales de médecine générale (JNMG 2026), d'après la session « Où en est-on dans la prise en charge du diabète de type 1 en 2026 ? ». En France, 300 000 patients vivent avec un diabète de type 1 (DT1) et 20 % d'entre eux sont équipés d'une pompe à insuline, remboursée depuis 2021. « On parlait alors du pancréas artificiel, mais ce n'est pas le cas. Cependant, la boucle semi-fermée est une vraie révolution technologique », a salué la Dre Chloé Amouyal, endocrinologue à la Pitié-Salpêtrière (AP-HP) et maîtresse de conférences à Sorbonne Université. Les cinq systèmes disponibles aujourd'hui associent trois briques : un capteur qui mesure en continu le glucose dans le liquide interstitiel, une pompe qui délivre l'insuline en sous-cutané et un algorithme qui ajuste automatiquement la dose. Les résultats sont tangibles : le temps passé dans la cible glycémique atteint 76 %, le risque d'hypoglycémie sévère chute (1 % chez les patients sous boucle semi-fermée depuis deux ans, contre 4 % chez les autres, selon l'Observatoire de la boucle fermée en France portant sur 2 741 patients) et l'incidence de la rétinopathie a diminué de 67 % sur un suivi de 4,9 ans. Revers de la médaille : la boucle semi-fermée ne réduit pas le risque d'acidocétose (0,94 % de patients concernés sur deux ans), le cathéter pouvant s'obstruer sans alerte précoce. Le patient doit donc conserver ses réflexes en cas d'hyperglycémie prolongée et continuer à annoncer glucides et activité physique — même si certains algorithmes deviennent auto-apprenants. Autre avancée majeure, le dépistage précoce : les auto-anticorps anti-insuline, anti-GAD65, anti-IA2 et anti-ZnT8 apparaissent plusieurs années avant les symptômes et leur dosage est recommandé chez les apparentés du premier degré de 2 à 45 ans (risque de 8 % si le père est atteint, 4 % si c'est la mère, 30 % si les deux parents le sont). Le teplizumab, premier traitement autorisé pour retarder le stade 3, a montré dans l'étude TN-10 un délai médian de 48,4 mois contre 24,4 mois sous placebo ; il bénéficie depuis avril d'une autorisation d'accès précoce chez l'adulte et l'enfant à partir de 8 ans.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.federationdesdiabetiques.org/federation/actualites/information-de-securite-de-lansm-nouvelle-mise-a-jour-des-applications-freestyle-libre-3-et-libre-abbott-actualisation-au-27-octobre-2026" target="_blank">Information de sécurité de l'ANSM : nouvelle mise à jour des applications FreeStyle Libre 3 et Libre (Abbott)</a></h3>
+<div class="meta">Fédération Française des Diabétiques • 29/10/2026</div>
+<p>L'Agence nationale de sécurité du médicament et des produits de santé (ANSM) a été informée par Abbott Diabetes Care de la mise à disposition d'une nouvelle version des applications FreeStyle Libre 3 et Libre. Cette information remplace les consignes publiées le 22 octobre dernier et concerne directement les utilisateurs de capteurs de glucose. Le problème est identifié précisément : Abbott avait publié le 19 octobre une mise à jour de sécurité pour ses deux applications, mais la société a constaté depuis que cette mise à jour provoquait, chez certains utilisateurs, une perte de signal prolongée — le capteur perdait la connexion avec l'application et ne se reconnectait plus. La nouvelle mise à jour corrige à la fois la vulnérabilité de sécurité initialement communiquée et cette perte de signal. Sont concernées les versions 3.3.1 à 3.6.8 de l'application FreeStyle Libre 3 (mise à jour à effectuer vers une version à partir de 3.6.10) et les versions 1.4.0 à 1.4.1 de l'application Libre (vers une version commençant par 1.4.2). Les identifiants uniques de dispositif (IUD) sont fournis dans l'information, consultables dans la section « À propos » des applications. La consigne est claire : mettre à jour immédiatement son application. Cette mise à jour n'affecte pas la session de capteur en cours, ne fait perdre aucune donnée existante et n'oblige pas à attendre le prochain changement de capteur — aucune action n'est requise du côté du capteur lui-même. Cette actualisation du 27 octobre, relayée par la Fédération le 29 octobre, illustre la vigilance continue nécessaire sur les applications de mesure continue du glucose, désormais critiques dans la gestion quotidienne de la maladie.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.federationdesdiabetiques.org/federation/actualites/laccompagnement-entre-patients-vivant-avec-un-diabete-visioconference-le-4-novembre-a-18-h-30" target="_blank">L'accompagnement entre patients vivant avec un diabète : visioconférence le 4 novembre à 18 h 30</a></h3>
+<div class="meta">Fédération Française des Diabétiques • 28/10/2026</div>
+<p>À l'occasion de la Journée Mondiale du Diabète 2026, la Fédération Française des Diabétiques propose une visioconférence en direct sur le thème « Parler de mon diabète avec quelqu'un qui le vit aussi : qu'est-ce que ça change ? ». Rendez-vous le mercredi 4 novembre à 18 h 30, en direct sur les réseaux sociaux de la Fédération (Facebook, LinkedIn et YouTube), pour une durée d'environ une heure. Vivre avec un diabète implique de composer avec des interrogations, des doutes ou des émotions qui ne sont pas toujours faciles à partager ; l'accompagnement entre patients offre un espace pour en parler avec une personne vivant elle aussi avec la maladie. Au sein de la Fédération et de ses associations fédérées, cet accompagnement est assuré par des Bénévoles Patients Experts (BPE), formés à l'éducation thérapeutique du patient, à l'écoute et à une posture bienveillante. Au programme de ce direct : Philippe Raclet, vice-président en charge de l'animation du réseau et BPE au sein de l'AFD 21 25 70, présentera les actions d'accompagnement menées par les associations fédérées (Café Diabète, Élan Solidaire, ligne Écoute Solidaire) ; Marie Laure Lumediluna, présidente de l'AFD 13-83 d'Aix-Pays de Provence et représentante régionale, partagera son expérience ; et Arnaud Bubeck, responsable du Diabète LAB de la Fédération, exposera les enseignements de l'étude sur l'impact de l'accompagnement proposé par la Fédération. Trois questions structureront les échanges : ce qui distingue l'accompagnement entre patients du suivi médical, ce qu'est un Bénévole Patient Expert, et les dispositifs concrets proposés par les associations fédérées. La visioconférence est ouverte à tous — personnes diabétiques, proches, bénévoles et professionnels — et les questions pourront être posées en direct dans le chat. Elle est à vocation pédagogique et informative ; toute question d'ordre médical doit être adressée à un professionnel de santé.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.boursorama.com/bourse/actualites/diabete-et-obesite-le-retatrutide-d-eli-lilly-surpasse-l-ozempic-en-phase-3-650a21862775db0791da3ceba10cc820" target="_blank">Diabète et obésité : le Retatrutide d'Eli Lilly surpasse l'Ozempic en phase 3</a></h3>
+<div class="meta">Boursorama / Zonebourse • 28/10/2026</div>
+<p>Le géant américain Eli Lilly a franchi une étape clinique et commerciale majeure dans le secteur très disputé des incrétines. Le groupe pharmaceutique a dévoilé des résultats positifs de phase 3 issus d'un essai comparatif direct évaluant le retatrutide face à l'Ozempic injectable (2 mg) de Novo Nordisk, chez des adultes atteints de diabète de type 2. À l'issue de 80 semaines d'évaluation, la molécule expérimentale a atteint son critère d'évaluation principal ainsi que tous ses critères secondaires clés, surclassant la dose maximale autorisée d'Ozempic tant sur le plan glycémique que pondéral. Dans le détail, les deux doses testées de retatrutide ont réduit l'hémoglobine glyquée d'une moyenne de 2,2 %, contre 1,8 % pour l'Ozempic. Les participants traités avec le retatrutide ont perdu en moyenne 19,5 % de leur poids à la dose de 9 mg et 20,9 % à 12 mg, soit plus du double des 9,4 % constatés sous Ozempic. Le traitement a également généré des améliorations plus marquées sur la pression artérielle systolique, les triglycérides et le cholestérol non-HDL, trois paramètres du risque cardiométabolique. Le fabricant du Mounjaro et du Foundayo entend ainsi consolider son positionnement stratégique sur le marché des maladies cardiométaboliques. Selon Kenneth Custer, vice-président exécutif et président de Lilly Cardiometabolic Health, ces données comparatives pourraient « modifier le paradigme de traitement » du diabète de type 2 et de l'obésité si le médicament obtient les approbations réglementaires nécessaires — un point essentiel, le retatrutide restant à ce stade une molécule expérimentale non autorisée.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.boursorama.com/bourse/actualites/un-juge-americain-refuse-de-bloquer-les-publicites-pour-le-medicament-amaigrissant-d-eli-lilly-et-se-prononce-contre-novo-nordisk-5a179ac7a9508c3eda27ef96eed0a09d" target="_blank">Un juge américain refuse de bloquer les publicités d'Eli Lilly et se prononce contre Novo Nordisk</a></h3>
+<div class="meta">Boursorama / Reuters • 26/10/2026</div>
+<p>Un juge fédéral américain a rejeté la demande de Novo Nordisk visant à empêcher Eli Lilly de poursuivre la diffusion de publicités pour des médicaments amaigrissants que le laboratoire danois jugeait fausses et trompeuses. En jeu : des marchés représentant des dizaines de milliards de dollars de chiffre d'affaires annuel. Le juge de district Zahid Quraishi, siégeant à Trenton dans le New Jersey, a estimé que Novo Nordisk ne méritait pas d'injonction préliminaire, faute d'avoir démontré que les publicités d'Eli Lilly menaçaient ses ventes ou portaient atteinte à sa réputation. Il a qualifié l'allégation de préjudice irréparable d'« insuffisante pour justifier la mesure extraordinaire » sollicitée ; sa décision de 25 pages a été rendue à l'issue d'une audience de deux jours tenue fin août. Novo Nordisk avait intenté l'action en juillet, affirmant que les publicités pour l'anti-obésité Zepbound et l'antidiabétique Mounjaro enfreignaient les lois fédérales et étatiques relatives à la publicité mensongère et à la concurrence déloyale, en comparant des doses plus élevées de ces produits à des doses plus faibles des Wegovy et Ozempic de Novo Nordisk. L'une des publicités affirmait en voix off, avec mention écrite, que les utilisateurs de Zepbound perdaient en moyenne 23 kg contre 15 kg avec Wegovy. Le tribunal a relevé que les publicités de Lilly n'avaient eu, tout au plus, qu'un impact négligeable sur le marché entre avril et juillet. Novo Nordisk s'est dit « déçu » tout en soulignant que le jugement ne tranche pas la question de la véracité des publicités et que le litige se poursuit ; Eli Lilly a nié toute faute et salué la décision. Le dossier éclaire aussi un particularisme américain : les États-Unis sont l'un des rares pays à autoriser la publicité directe auprès des consommateurs pour les médicaments délivrés sur ordonnance.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.ladepeche.fr/2026/10/31/le-diabete-aborde-sous-langle-de-la-prevention-et-du-theatre-13628949.php" target="_blank">Le diabète abordé sous l'angle de la prévention et du théâtre</a></h3>
+<div class="meta">La Dépêche du Midi • 31/10/2026</div>
+<p>Les 6 et 7 novembre, le Grand Ouest Toulousain Agglomération et ses partenaires de santé proposent deux rendez-vous gratuits, à La Salvetat-Saint-Gilles et à Lévignac, pour mieux comprendre le diabète, prévenir ses complications et changer le regard porté sur la maladie. La démarche assume un parti pris original : associer prévention et culture pour sensibiliser le grand public, plutôt que de s'en tenir aux seuls supports médicaux. Le vendredi 6 novembre à 20 heures, à la salle Boris-Vian de La Salvetat-Saint-Gilles, sera jouée la pièce « Je t'ai dans la peau » de Michel Decroocq, mise en scène par Isabelle Matras, portée par la compagnie L'espace d'un moment et conçue avec l'association Diabète Ensemble. Le spectacle s'appuie sur les témoignages et les écrits de patients, qui participent eux-mêmes à la représentation ; à travers les émotions, les difficultés et les espoirs du quotidien, il entend briser les tabous et favoriser le dialogue autour de la maladie. La pièce sera rejouée le samedi 7 novembre à 15 heures, à la salle Argyle-Lavat de Lévignac. Le même lieu accueillera, de 10 heures à 13 heures, une matinée de sensibilisation intitulée « Diabète : je teste, j'apprends, j'agis ». Les professionnels de la Maison de santé pluridisciplinaire y tiendront six stands consacrés au dépistage et à la prévention : mesure de la glycémie, alimentation, gestion du stress, santé visuelle, hygiène dentaire et prévention des complications des pieds. Ce format de proximité, adossé au théâtre puis à des ateliers pratiques, illustre la stratégie de dépistage de terrain développée en région à l'approche du 14 novembre, Journée mondiale du diabète.</p>
+</div>
+<div class="item">
+<h3><a href="https://lejournaldemayotte.yt/articles/rediab-lance-le-mois-du-diabete-ce-lundi-a-mamoudzou" target="_blank">Mois du diabète : lancement des actions de RéDiab à Mayotte</a></h3>
+<div class="meta">Le Journal de Mayotte • 30/10/2026</div>
+<p>À Mayotte, le diabète de type 2 demeure une menace sanitaire majeure, qui progresse souvent sans symptômes apparents. L'association RéDiab Ylang 976 lance le Mois du diabète avec une rencontre inaugurale le 2 novembre, de 9 h à 13 h (impasse Saïd Hassani M'Nagnochi à Mamoudzou), destinée à donner la parole aux praticiens de terrain. Les résultats de l'enquête nutritionnelle EpiMay 2025 rappellent la vulnérabilité de l'île : l'obésité, principal terreau de la maladie, concerne près d'une femme sur deux et un quart des hommes. Face aux complications lourdes d'un diagnostic tardif, le mot d'ordre reste l'anticipation, avec la campagne « Même quand ça va, je vérifie ». Le Dr Assef Zabi, médecin référent de RéDiab Ylang 976, reviendra sur l'état des lieux épidémiologique de Mayotte, tandis que le Dr Breno Speckhann, diabétologue au Centre hospitalier de Mayotte, exposera les nouvelles options thérapeutiques. Les questions de l'alimentation, de l'activité physique et des représentations culturelles qui freinent le dépistage seront débattues lors d'une table ronde pluridisciplinaire programmée à 10 h 55. Cette journée inaugurale servira de rampe de lancement aux initiatives coordonnées avec l'Agence régionale de santé (ARS) : Mathieu Epinoux y présentera le dispositif de dépistage gratuit qui se déploiera dans les pharmacies partenaires de l'île du 2 au 30 novembre. Autre date clé pour la population, le samedi 14 novembre, un Village Santé s'installera sur le terrain de football de Chirongui, de 8 h à 12 h, pour proposer bilans glycémiques et conseils personnalisés.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe / Suisse</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.passeportsante.net/actualites/2026?doc=implant-suisse-nouvelle-piste-diabete" target="_blank">Diabète : cet implant expérimental en graphène pourrait éliminer une partie du sucre en excès</a></h3>
+<div class="meta">PasseportSanté • 29/10/2026</div>
+<p>Des chercheurs de l'École polytechnique fédérale de Zurich (EPFZ) et de l'Université de Bâle ont développé un implant sous-cutané de nouvelle génération, destiné à transformer une partie du sucre circulant dans le sang en une substance rapidement éliminée par l'organisme. Le dispositif est constitué de graphène et recouvert de particules d'or et de platine ; il vise à convertir l'excès de glucose en un acide évacué par le corps, agissant donc directement sur le métabolisme du sucre plutôt que sur sa seule mesure. Les travaux ont été publiés dans la revue Science le 22 octobre 2026 et s'inscrivent, souligne PasseportSanté, dans une phase strictement exploratoire : efficacité, sécurité et tolérance doivent encore être évaluées sur le long terme. L'ambition affichée est de proposer, à terme, une alternative ou un complément aux approches actuelles — hygiène de vie, médicaments et insuline — pour les personnes qui peinent à équilibrer leur glycémie par les moyens classiques, notamment dans le diabète de type 2 et l'obésité. Le média français assortit sa présentation de plusieurs réserves explicites : le prototype n'a été testé qu'en laboratoire, les données manquent sur la tolérance à long terme, sur la durée d'efficacité et sur les risques de rejet, et aucune adoption clinique ne peut être envisagée avant des essais prolongés. Ce type d'implant électrochimique rejoint une ligne de recherche plus large sur les dispositifs actifs capables de moduler la glycémie sans passage par l'insuline exogène, déjà illustrée en Suisse par les travaux du groupe de Martin Fussenegger à l'ETH Zurich.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.radiolac.ch/podcasts/passion-locale-29-10-2026-1131/" target="_blank">Le diabète ? La 29e Journée romande pour mieux s'informer se tiendra le 7 novembre aux HUG</a></h3>
+<div class="meta">Radio Lac (Suisse) • 29/10/2026</div>
+<p>La 29e Journée romande du diabète aura lieu le 7 novembre aux Hôpitaux universitaires de Genève, avec des conférences et des ateliers animés par des spécialistes pour mieux informer le public. Interrogée par Radio Lac, Patricia Legler, de la Fondation pour la recherche sur le diabète, explique pourquoi le diabète de type 2 concerne une part aussi importante de la population suisse. Plusieurs facteurs se conjuguent : le vieillissement de la population, puisque le risque augmente avec l'âge ; le manque d'activité physique, dans un quotidien passé devant les écrans ; une alimentation riche en produits transformés et en boissons sucrées ; et, enfin, l'hérédité ainsi que des facteurs sociaux et personnels. L'anticipation repose sur des mesures simples : mieux s'alimenter, surveiller son équilibre, pratiquer une activité physique et faire mesurer sa glycémie en pharmacie. Les signes d'alerte classiques — soif intense, besoin fréquent d'uriner, fatigue extrême, troubles de la vision — apparaissent toutefois tardivement : avant cela, la personne peut n'avoir aucun symptôme, et un état prédiabétique peut durer cinq à sept ans, ce qui rend la prévention déterminante. Sur les traitements, Patricia Legler décrit des avancées sur deux plans : une médecine beaucoup plus personnalisée, avec des associations de médicaments, et une action qui ne porte plus seulement sur la glycémie mais aussi sur les complications potentielles, notamment cardiaques et neurologiques. L'inscription à la journée du 7 novembre est gratuite mais obligatoire, afin de permettre une organisation adaptée à l'accueil du public.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.securities.io/fr/dexcom-raises-2026-outlook-as-q3-revenue-grows-11-to-1-344-billion/" target="_blank">Dexcom relève ses perspectives 2026 : chiffre d'affaires trimestriel en hausse de 11 %, à 1,344 milliard de dollars</a></h3>
+<div class="meta">Securities.io (d'après Dexcom) • 29/10/2026</div>
+<p>Dexcom, l'un des deux grands fabricants mondiaux de capteurs de glucose en continu, a publié le 29 octobre 2026 ses résultats du troisième trimestre clos le 30 septembre. Le chiffre d'affaires atteint 1,344 milliard de dollars, en hausse de 11 % par rapport aux 1,209 milliard enregistrés un an plus tôt. Le chiffre d'affaires organique, qui exclut les effets de change et les activités autres que la mesure continue du glucose acquises ou cédées sur douze mois, ressort à 1,346 milliard de dollars, également en progression de 11 %. La croissance est nettement plus forte aux États-Unis (+14 %, à 969,8 millions de dollars) qu'à l'international (+5 %, à 374,7 millions). Les ventes via distributeurs représentent l'essentiel de l'activité, à 1 148,0 millions de dollars, contre 196,5 millions en vente directe. Sur les neuf premiers mois de 2026, le chiffre d'affaires totalise 3 844,8 millions de dollars, contre 3 402,4 millions un an plus tôt. La rentabilité s'améliore sensiblement : la marge brute GAAP passe de 60,5 % à 64,3 %, le résultat opérationnel de 20,1 % à 24,3 % du chiffre d'affaires, et le résultat net GAAP s'établit à 275,1 millions de dollars (0,72 dollar par action), contre 283,8 millions un an plus tôt — un recul attribuable à des produits financiers exceptionnels en 2025. L'EBITDA ajusté grimpe à 435,2 millions de dollars. Sur cette base, Dexcom relève ses perspectives pour l'ensemble de l'exercice 2026 et autorise un nouveau programme de rachat d'actions pouvant atteindre 1,0 milliard de dollars, dans un contexte de déploiement du capteur G7 15 jours et de refonte de l'expérience Stelo.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.healio.com/news/endocrinology/20261030/automated-insulin-delivery-system-improves-glycemic-outcomes-in-pediatric-type-1-diabetes" target="_blank">Chez les jeunes atteints de diabète de type 1, le pancréas bionique iLet fait chuter l'HbA1c</a></h3>
+<div class="meta">Healio / Diabetes Technology &amp; Therapeutics • 30/10/2026</div>
+<p>Un système d'administration automatisée de l'insuline améliore substantiellement le temps passé dans la cible glycémique et l'HbA1c chez les jeunes atteints de diabète de type 1, selon des données publiées dans Diabetes Technology &amp; Therapeutics et rapportées par Healio. Le pancréas bionique iLet (Beta Bionics) est un dispositif d'administration automatisée qui remplace le comptage des glucides et le calcul manuel des bolus par une simple annonce qualitative des repas. Dans une étude de vie réelle monocentrique menée chez 71 jeunes de 6 à 21 ans (âge moyen 13,2 ans, 53,5 % de garçons) ayant débuté le dispositif entre octobre 2023 et décembre 2025, les chercheurs ont observé des améliorations importantes sur de multiples paramètres glycémiques. À trois mois, le temps passé dans la cible 70-180 mg/dL progresse de 22,4 points de pourcentage et l'HbA1c recule de 1,8 point (p &lt; 0,0001 pour les deux) ; le temps passé au-dessus de 250 mg/dL diminue de 26 points et la glycémie moyenne baisse de 58 mg/dL. Pour les 35 patients disposant de données à un an, l'HbA1c passe de 9,6 % à 7,6 % et le temps dans la cible de 27,7 % à 55,8 %. Les gains les plus spectaculaires concernent les patients dont l'HbA1c de départ était supérieure ou égale à 9,5 % : baisse de 3 points d'HbA1c et hausse de 31,2 points du temps dans la cible. Ceux dont l'HbA1c initiale était inférieure à 7,5 % l'ont maintenue tout en améliorant leur temps dans la cible. Pour Elizabeth R. Sullivan-Ingram, première autrice de l'étude, ces résultats « soulignent la valeur potentielle d'une administration automatisée simplifiée dans les soins pédiatriques courants ».</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class="arxiv-section">
+    <h2>🔬 Prospective &amp; Recherche</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Recherche &amp; essais précoces</div></div>
+        <div class="card-body">
+<div class="item">
+<h3><a href="https://www.trialnet.org/events-news/blog/stop-t1d-study-open-for-enrollment" target="_blank">STOP-T1D : une immunothérapie à faible dose testée avant l'apparition du diabète</a></h3>
+<div class="meta">TrialNet (États-Unis) • Octobre 2026</div>
+<p>Les chercheurs du réseau TrialNet testent l'antithymocyte globuline (ATG) à faible dose, une immunothérapie, pour déterminer si elle peut retarder ou prévenir le diabète de type 1 chez les personnes à haut risque de diagnostic clinique (stade 3) dans les deux ans. STOP-T1D est la première étude à tester cette immunothérapie chez des personnes à haut risque : une précédente étude TrialNet menée chez des patients récemment diagnostiqués avait montré que l'ATG à faible dose préservait la production d'insuline et améliorait l'équilibre glycémique à long terme pendant deux ans. L'ATG est utilisé depuis près de vingt ans comme traitement de référence pour prévenir et traiter le rejet de greffe rénale. « Les données précliniques et cliniques montrent que l'ATG à faible dose peut ralentir la progression du diabète de type 1 », explique le Dr Michael Haller, président de l'étude. L'essai prévoit d'inclure 114 personnes de 12 à 35 ans, dont deux tiers recevront l'ATG et un tiers un placebo, en deux perfusions intraveineuses sur deux jours, avec un suivi d'au moins 24 mois.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.managedhealthcareexecutive.com/view/international-guidance-new-european-data-back-type-1-diabetes-screening-for-all-children" target="_blank">Dépistage du diabète de type 1 chez tous les enfants : un consensus international se dessine</a></h3>
+<div class="meta">Managed Healthcare Executive (d'après EASD Milan 2026 et Diabetologia) • 21/10/2026</div>
+<p>Près des deux tiers des enfants chez qui un diabète de type 1 à un stade précoce a été détecté dans le cadre d'un programme de dépistage conduit dans huit pays européens n'avaient ni parent ni frère ou sœur atteint de la maladie, ont rapporté des chercheurs lors du congrès annuel de l'Association européenne pour l'étude du diabète (EASD) à Milan. Ces données sont arrivées quelques semaines après la publication, dans Diabetologia, des premières recommandations consensuelles internationales sur le dépistage de la population générale : un premier dosage sanguin des auto-anticorps est préconisé entre 2 et 4 ans, avec un nouveau test entre 6 et 8 ans puis entre 10 et 15 ans pour les enfants négatifs. Le dépistage, mené par le consortium européen EDENT1FI coordonné par les Drs Chantal Mathieu (KU Leuven) et Anette-Gabriele Ziegler, a identifié une maladie de stade précoce chez environ 1 enfant sur 350. L'enjeu est de réduire le risque d'acidocétose au moment du diagnostic en intervenant avant les symptômes.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.helmholtz-munich.de/en/idf/research-areas/diabetes-study-center-studies-for-prevention-and-immunotherapy-of-type-1-diabetes" target="_blank">Immunomodulation aux stades précoces : l'arsenal des essais de prévention</a></h3>
+<div class="meta">Helmholtz Munich • 2026</div>
+<p>Le centre d'études cliniques sur le diabète de l'enfant de Helmholtz Munich consacre sa recherche à la prévention du diabète de type 1, de l'auto-immunité jusqu'à la maladie métabolique, avec un objectif constant : préserver la production d'insuline propre à l'organisme. Ses essais se déploient sur trois étages. En prévention primaire, de nouveaux traitements sont testés pour empêcher ou retarder l'apparition de l'auto-immunité des îlots chez des enfants à haut risque. Au stade présymptomatique, l'immunomodulation vise à retarder l'apparition clinique de la maladie — c'est le terrain de plusieurs essais en cours, dont des études testant le baricitinib (inhibiteur de JAK), un programme dédié au teplizumab et l'ATG. Après la manifestation clinique, l'objectif devient la préservation de la fonction bêta résiduelle. Le dispositif s'appuie sur une unité d'essais cliniques, des unités réglementaire et biostatistique, une biobanque et un laboratoire central.</p>
+</div>
+<div class="item">
+<h3><a href="https://pasteur-lille.fr/en/news/pancreatic-islet-transplantation-predicts-effectiveness/" target="_blank">Greffe d'îlots : le gène NKX6.1 comme marqueur prédictif d'efficacité</a></h3>
+<div class="meta">Pasteur-Lille / Inserm • Juillet 2026</div>
+<p>La transplantation d'îlots pancréatiques est aujourd'hui utilisée pour traiter le diabète de type 1, mais les résultats cliniques restent très hétérogènes d'un patient et d'un centre à l'autre. L'évaluation de son efficacité repose sur des examens biologiques — mesure du peptide C, marqueur de la sécrétion d'insuline, et observation de la rémission du diabète — réalisés après la greffe, donc de manière rétrospective, sans permettre de prédire l'issue. L'équipe du Pr Julie Kerr-Conte, au sein du laboratoire de recherche translationnelle sur le diabète dirigé par le Pr François Pattou, a identifié le gène NKX6.1 comme marqueur prédictif potentiel. Ce gène est spécifiquement exprimé par les cellules bêta des îlots de Langerhans, responsables de la sécrétion d'insuline, et joue un rôle clé dans leur différenciation, leur identité et leur maturité. Une forte expression de NKX6.1, facilement mesurable, est associée à une meilleure réussite de la greffe — une piste pour sélectionner les préparations d'îlots les plus fonctionnelles.</p>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Généré le 2 novembre 2026 par Hermes (veille-diabete). Fichiers : veille-diabete-2026-11-02.md + .html. Fenêtre de recherche : 7 jours (26 octobre – 2 novembre 2026). Contenu 100 % en français, sources anglophones traduites.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");
+</script>
+  </div>
+</div>
+
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+<!-- EDO JARVIS widget (réservé veille diabète) -->
+<div id="edo-widget" title="EDO — cœur de la veille">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+</body></html>
