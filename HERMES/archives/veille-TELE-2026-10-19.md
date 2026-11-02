@@ -32,8 +32,8 @@ La semaine a été dominée par le volet **cybersécurité des équipements surv
    [lien](https://www.ici.fr/hauts-de-france/nord-59/lille/56-gardes-a-vue-en-cours-exploitation-des-videosurveillances-la-justice-mobilisee-apres-les-violences-a-lille-2747377)
    Après les violences du 17 octobre, la justice a exploité les images de vidéosurveillance de la ville, du réseau de métro et des drones pour instruire les dossiers de pillage. La vidéo publique, croisée entre plusieurs capteurs, s'impose comme la pièce maîtresse de la réponse judiciaire.
 
-6. **Vêtements anti-IA : les manifestants peuvent-ils camoufler la surveillance algorithmique ?** — Yahoo Actualités • 18/10/2026
-   [lien](https://fr.news.yahoo.com/mobilisation-17-octobre-v%C3%AAtements-anti-040736500.html)
+6. **Vêtements anti-IA : les manifestants peuvent-ils camoufler la surveillance algorithmique ?** — 20 Minutes • 18/10/2026
+   [lien](https://www.20minutes.fr/high-tech/4254934-20261017-mobilisation-17-octobre-vetements-anti-ia-camouflent-manifestants-surveillance-algorithmique)
    À la veille de la mobilisation du 17 octobre, des vêtements à motifs perturbateurs — censés tromper la détection algorithmique — ont fait leur apparition. Les experts rappellent leur efficacité limitée mais réelle, et surtout l'émergence d'une contre-surveillance citoyenne qui nourrira le débat public sur la vidéoprotection algorithmique (loi Ripost).
 
 7. **Sécurité urbaine : les forces de l'ordre d'Occitanie et de Catalogne lâchent leurs drones** — L'Indépendant • 14/10/2026
@@ -77,19 +77,19 @@ La semaine a été dominée par le volet **cybersécurité des équipements surv
 
 1. **Tout équipement « piloté à distance » est une porte d'entrée — l'alarme ne fait pas d'exception.**
    Les frigos de supermarchés n'ont été que le prétexte : les transmetteurs IP, centrales connectées et NVR exposés naïvement sont structurellement menacés. **Implication intégrateur :** packager un audit récurrent « exposition Internet » dans les contrats de maintenance (inventaire des accès distants, VPN/MFA au lieu d'ouvertures de ports, segmentation).
-
+  Sources (signaux) : https://www.lefigaro.fr/societes/une-cyberattaque-a-touche-les-infrastructures-frigorifiques-de-centaines-de-supermarches-cooperative-u-et-intermarche-20261012 · https://www.20minutes.fr/high-tech/4253899-20261013-cyberattaque-ascenseurs-alarmes-apres-frigos-supermarches-equipements-peuvent-etre-vulnerables
 2. **La preuve vidéo devient le pivot de la réponse judiciaire — la chaîne de conservation devient un produit.**
    Lille a exploité en quelques jours les flux ville + métro + drones. **Implication CTS :** garantir traçabilité, horodatage et extraction légale des séquences ; documenter la chaîne de conservation des enregistrements comme argument commercial auprès des collectivités et des assureurs.
-
+  Sources (signaux) : https://www.ici.fr/hauts-de-france/nord-59/lille/56-gardes-a-vue-en-cours-exploitation-des-videosurveillances-la-justice-mobilisee-apres-les-violences-a-lille-2747377
 3. **Le drone bascule de l'exception au standard de la vidéoprotection.**
    Occitanie, arrêtés préfectoraux à Paris, financement UE massif : le capteur aérien mobile s'ajoute durablement aux réseaux fixes. **Implication intégrateur :** développer l'offre « drone + réseau fixe » (intégration flux vidéo, exploitation partagée) et sécuriser les compétences réglementaires avant que le marché ne se structure.
-
+  Sources (signaux) : https://www.lindependant.fr/2026/10/14/securite-urbaine-les-forces-de-lordre-doccitanie-et-de-catalogne-lachent-leurs-drones-13597342.php · https://2eu.brussels/index.php/en/news/eu-expands-external-border-drone-and-counter-drone-funding-beyond-half-a-billion-euros
 4. **L'extension des parcs municipaux se poursuit dans les villes moyennes — la valeur migre vers l'exploitation.**
    Orvault rejoint Nérac et Bergerac : les petites et moyennes communes équipent, avec des budgets contraints. **Implication installateur :** le renouvellement du marché se jouera moins dans l'installation que dans l'exploitation (maintenance, conformité CNIL, supervision d'images) — contractualiser le récurrent dès l'installation.
-
+  Sources (signaux) : https://infos-media-nantes.fr/?p=32374
 5. **La contre-surveillance citoyenne annonce un débat d'efficacité sur la vidéoprotection algorithmique.**
    Les vêtements anti-IA du 17 octobre sont marginaux mais le questionnement sur l'efficacité réelle des VSA s'installera dans la presse et chez les élus. **Implication CTS et intégrateurs français :** instrumenter leurs propres taux de levée de doute utile et de résultats, pour pouvoir démontrer objectivement la valeur des systèmes avant que le doute organisationnel ne s'installe.
-
+  Sources (signaux) : https://www.20minutes.fr/high-tech/4254934-20261017-mobilisation-17-octobre-vetements-anti-ia-camouflent-manifestants-surveillance-algorithmique
 ---
 
 *Fichiers : veille-TELE-2026-10-19.md + .html — générés le 19 octobre 2026 par Hermes (veille-telesurveillance). Chaîne aval : 07:30 maj-archives → 07:45 sync GitHub → 08:00 mail.*
