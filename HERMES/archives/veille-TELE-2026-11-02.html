@@ -1,0 +1,251 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Télésurveillance &amp; Sécurité électronique — 2026-11-02</title>
+  <style>
+    :root {
+      --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+      --accent:#0ea5e9; --accent-2:#6366f1; --success:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#ffffff,#f6f8fb);
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:#0ea5e9}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f8fb);border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  
+    .synthese{margin:26px 0 0}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .item ul{margin:6px 0 0;padding-left:20px;font-size:.88rem}
+    .item li{margin:2px 0;word-break:break-all}
+    .item a.src{color:var(--accent-2);text-decoration:none;word-break:break-all}
+    .item a.src:hover{text-decoration:underline}
+    .signal-title{color:var(--warn);font-weight:700}
+    .item h3 .num{color:var(--muted);font-weight:700}
+    .src-line{margin-top:4px !important}
+    h2.sec{font-size:1.15rem;margin:28px 0 10px}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-TELE-2026-11-02.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🛡️ Veille Télésurveillance &amp; Sécurité électronique</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-02">2 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&amp;&amp;z.scrollIntoView({behavior:'smooth'});z&amp;&amp;z.classList.add('zone-flash');setTimeout(function(){z&amp;&amp;z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">4</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&amp;&amp;z.scrollIntoView({behavior:'smooth'});z&amp;&amp;z.classList.add('zone-flash');setTimeout(function(){z&amp;&amp;z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&amp;&amp;z.scrollIntoView({behavior:'smooth'});z&amp;&amp;z.classList.add('zone-flash');setTimeout(function(){z&amp;&amp;z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">3</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 10 articles</span>
+    <span class="pill green">📅 2 novembre 2026</span>
+    <span class="pill yellow">⚖️ 3 entrées juridique &amp; réglementaire</span>
+    <span class="pill yellow">💼 2 entrées métiers</span>
+  </div>
+  <div class="grid">
+<div class="card" id="zone-france"><div class="card-head"><div class="card-title">🇫🇷 France</div><span class="pill">4 articles</span></div>
+<div class="card-body">
+<div class="item">
+<h3><span class="num">1.</span> <a href="https://www.smartcitymag.fr/breve/20/un-centre-departemental-de-supervision-mis-en-service-fin-2026-a-nice" target="_blank">Alpes-Maritimes : un centre départemental de supervision dopé à l'IA pour 151 communes</a></h3>
+<div class="meta">Smart City Mag • 26/10/2026</div>
+<p>Validé à l'unanimité le 26 octobre, le Centre départemental de supervision s'installera au Cadam, à Nice, pour une mise en service prévue fin 2026. Il mutualise la surveillance vidéo pour les communes qui n'ont ni le personnel ni les moyens techniques de tenir un mur d'images, notamment la nuit : 151 des 163 communes du département sont éligibles, 15 ont déjà adhéré, plus de 250 caméras municipales seront connectées au lancement (70 à 80 communes visées à terme). Investissement initial : 1,7 M€, exploitation estimée à 500 000 €/an. Un modèle de « télésurveillance publique mutualisée » qui concurrence directement les prestataires privés sur les petits territoires.</p>
+</div>
+<div class="item">
+<h3><span class="num">2.</span> <a href="https://www.dordognelibre.fr/grand-perigueux/la-ville-de-perigueux-veut-doubler-le-nombre-de-cameras-de-videosurveillance-31308352.php" target="_blank">Périgueux veut doubler son parc de caméras et moderniser son centre de supervision</a></h3>
+<div class="meta">Dordogne Libre • 01/11/2026</div>
+<p>À l'issue du conseil municipal du 29 octobre, la majorité a défendu le doublement du dispositif, soit jusqu'à une cinquantaine de caméras supplémentaires pour atteindre environ 100 unités sur le mandat, avec une demande de subvention de plus de 521 000 € à l'État. Le centre de supervision urbain actuel, qui n'est pas armé 24 h/24, doit être modernisé dans le même mouvement ; l'opposition s'est abstenue. Signal classique du cycle d'équipement des villes moyennes : extension du parc, puis mise à niveau de la supervision — un appel d'air pour les intégrateurs locaux.</p>
+</div>
+<div class="item">
+<h3><span class="num">3.</span> <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-1408/" target="_blank">Vidéosurveillance : le CERT-FR signale une faille dans les sauvegardes d'Axis Camera Station Pro</a></h3>
+<div class="meta">CERT-FR (ANSSI) • 28/10/2026</div>
+<p>L'avis CERTFR-2026-AVI-1408 décrit la vulnérabilité CVE-2026-63286 (gravité élevée, CVSS 7.1) dans Camera Station Pro, le logiciel de station vidéo d'Axis, pour toutes les versions antérieures à 6.20. Elle expose les sauvegardes de la base de données du logiciel à des attaques hors ligne, avec risque de fuite d'identifiants et d'informations. Le correctif est publié en 6.20, mais l'ANSSI précise que les anciennes copies de sauvegarde doivent aussi être supprimées et les identifiants exposés renouvelés. À intégrer dans les procédures de maintenance des parcs vidéo professionnels.</p>
+</div>
+<div class="item">
+<h3><span class="num">4.</span> <a href="https://www.bfmtv.com/tech/cybersecurite/il-ne-faut-pas-considerer-que-le-probleme-est-definitivement-resolu-l-anssi-alerte-sur-des-impacts-secondaires-lies-aux-failles-php_AD-202610280917.html" target="_blank">L'ANSSI alerte sur les « impacts secondaires » des failles PHP : caméras, routeurs et objets connectés visés</a></h3>
+<div class="meta">BFM TV • 28/10/2026</div>
+<p>Après le correctif des serveurs web, l'ANSSI prévient que le risque s'est déplacé vers les produits embarquant une version de PHP dans leur interface d'administration : routeurs, pare-feu, NAS et objets connectés — dont caméras IP et enregistreurs. La France compte plus de 660 000 adresses IP utilisant PHP et potentiellement plus de 6 millions d'applications concernées. Seule la mise à jour publiée par chaque fabricant protège réellement l'équipement : pour un installateur, cela se traduit par un inventaire du parc, un suivi des firmwares éditeurs et un cloisonnement réseau systématique.</p>
+</div>
+</div>
+</div>
+<div class="card" id="zone-europe"><div class="card-head"><div class="card-title">🌍 Europe hors France</div><span class="pill">3 articles</span></div>
+<div class="card-body">
+<div class="item">
+<h3>1. Royaume-Uni : la reconnaissance faciale en direct s'étend, toujours sans loi dédiée</h3>
+<div class="meta">BBC News • 26/10/2026 · Tech Times • 28/10/2026 · Biometric Update • 30/10/2026 — <a class="src" href="https://www.bbc.co.uk/news/articles/ck62y02285r8o" target="_blank">BBC News 26/10</a> · <a class="src" href="https://www.techtimes.com/articles/329574/20261028/live-facial-recognition-scanned-406001-hampshire-faces-still-no-uk-law.htm" target="_blank">Tech Times 28/10</a> · <a class="src" href="https://www.biometricupdate.com/202610/uk-facial-recognition-rollout-widens-as-police-oversight-rules-take-shape" target="_blank">Biometric Update 30/10</a></div>
+<p>La police du Suffolk redéploie ses fourgons de reconnaissance faciale en direct à Lowestoft (3/11), Bury St Edmunds (4/11) et Ipswich (5/11) ; le Hertfordshire a mis en service deux nouveaux véhicules. Surtout, l'association Big Brother Watch a publié le 27 octobre les chiffres du Hampshire : 406 001 visages convertis en gabarits biométriques en douze mois pour 26 arrestations, sans consentement ni base légale spécifique, en attendant le Police Reform Bill. Pour un intégrateur français : la biométrie en temps réel reste hors du cadre autorisé en France, mais la pression commerciale sur ce type d'offres s'accroît à l'échelle européenne.</p>
+</div>
+<div class="item">
+<h3><span class="num">2.</span> <a href="https://anoni.net/news/en/2026/10/germany-police-facial-recognition/" target="_blank">Allemagne : recoupement a posteriori contesté au Bade-Wurtemberg et caméras « comportementales » à Berlin</a></h3>
+<div class="meta">anoni.net (dont netzpolitik.org, Polizei Berlin) • 28/10/2026</div>
+<p>Selon un témoignage d'audience rapporté par netzpolitik.org, un agent de l'office criminel du Bade-Wurtemberg a passé après coup des images d'une manifestation enregistrée dans un logiciel et identifié quatre participants sans lien avec l'affaire. En parallèle, la police de Berlin a commencé à tester des caméras analysant les comportements dans des lieux à forte criminalité, la loi berlinoise excluant explicitement la reconnaissance faciale automatisée sur ces images. Le rappel utile : l'AI Act interdit en principe l'identification biométrique en temps réel dans l'espace public, mais le recoupement a posteriori ne relève du régime « haut risque » qu'à partir de décembre 2027.</p>
+</div>
+<div class="item">
+<h3><span class="num">3.</span> <a href="https://www.digitalsecuritymagazine.com/2026/10/29/yale-ajax-alianza-integracion-linus-smart-lock-l2-lite/" target="_blank">Yale et Ajax renforcent leur alliance : la Linus Smart Lock L2 Lite intégrée nativement à l'écosystème Ajax</a></h3>
+<div class="meta">Digital Security Magazine • 29/10/2026</div>
+<p>La dernière serrure connectée de la gamme Linus (Yale, groupe ASSA ABLOY) est désormais officiellement intégrée dans le cloud Ajax : elle apparaît comme un dispositif natif dans les applications Ajax et se pilote depuis la même interface que les protections intrusion, incendie et vidéosurveillance. Objectif affiché : centraliser le contrôle d'accès sans passerelle tierce. Pour les installateurs certifiés Ajax, c'est une brique de plus dans une offre unifiée alarme + accès + vidéo, et un premier pas concret de la convergence contrôle d'accès / intrusion côté européen.</p>
+</div>
+</div>
+</div>
+<div class="card" id="zone-monde"><div class="card-head"><div class="card-title">🌐 Monde</div><span class="pill">3 articles</span></div>
+<div class="card-body">
+<div class="item">
+<h3>1. Ukraine : le CERT-UA alerte sur le piratage de caméras Dahua via les services cloud</h3>
+<div class="meta">The Record • 26/10/2026 · eSecurity Planet • 27/10/2026 — <a class="src" href="https://therecord.media/ukraine-cert-ua-warning-chinese-dahua-cameras-hacked" target="_blank">The Record 26/10</a> · <a class="src" href="https://www.esecurityplanet.com/news/dahua-camera-cloud-access-attacks-emea-ukraine/" target="_blank">eSecurity Planet 27/10</a></div>
+<p>L'autorité ukrainienne CERT-UA signale une campagne active contre les caméras et enregistreurs Dahua connectés à internet, exploitant des vulnérabilités connues (dont CVE-2021-33044) pour accéder aux flux vidéo et créer des comptes non autorisés. Le point le plus préoccupant : le service cloud Easy4IP permet l'accès aux équipements même derrière un pare-feu, ce qui invalide la protection par simple isolation réseau. À lire comme un rappel que la « commodité cloud » des caméras est un vecteur d'attaque direct pour tout parc professionnel mal cloisonné.</p>
+</div>
+<div class="item">
+<h3><span class="num">2.</span> <a href="https://securitytoday.com/articles/2026/10/28/adt-unveils-renovated-texas-monitoring-center.aspx" target="_blank">ADT rénove son centre de surveillance du Texas pour 2 M$</a></h3>
+<div class="meta">Security Today • 28/10/2026</div>
+<p>ADT a achevé la rénovation de son centre de surveillance d'Irving (Texas) avec un investissement de 2 M$ : postes de travail modernisés, espaces de collaboration élargis et équipements destinés à fluidifier la coordination des alarmes et des dispatchs 24/7. Le signal pour la filière : les industriels continuent d'investir dans le bâtiment des centres de surveillance, alors que l'essentiel de la valeur perçue migre vers le logiciel et l'analyse — un arbitrage budgétaire à surveiller pour les centres français de taille intermédiaire.</p>
+</div>
+<div class="item">
+<h3>3. Totem et Milestone s'associent pour industrialiser la supervision vidéo 24/7 externalisée</h3>
+<div class="meta">SDM Magazine • 27/10/2026 · Security.World • 27/10/2026 · SourceSecurity • 28/10/2026 — <a class="src" href="https://www.sdmmag.com/articles/105949-totem-partners-with-milestone-to-extend-the-power-of-video-management-into-24-7-monitoring-operations" target="_blank">SDM Magazine 27/10</a> · <a class="src" href="https://security.world/totem-partners-with-milestone-to-expand-24-7-video-monitoring-operations/" target="_blank">Security.World 27/10</a> · <a class="src" href="https://www.sourcesecurity.com/news/totem-milestone-partner-24-7-video-co-1621407195-ga.1793167014.html" target="_blank">SourceSecurity 28/10</a></div>
+<p>Annoncé le 27 octobre, le partenariat combine le VMS XProtect de Milestone et le service de supervision humaine 24/7 de Totem. Les centrales de télésurveillance peuvent ainsi proposer de la vérification vidéo et du traitement d'alerte sans recruter ni construire d'infrastructure supplémentaire. C'est l'illustration d'un modèle « monitoring as a service » qui déplace la concurrence : la barrière à l'entrée d'un centre de supervision vidéo baisse, mais la dépendance à un tiers opérateur augmente.</p>
+</div>
+</div>
+</div>
+    <h2 class="sec">⚖️ Juridique &amp; Réglementaire</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3>1. Vidéoprotection algorithmique : le Sénat vote une nouvelle extension, jusqu'à fin 2030 (France)</h3>
+<div class="meta">INCYBER NEWS • 28/10/2026 · Armées.com • 28/10/2026 — <a class="src" href="https://incyber.org/article/videoprotection-algorithmique-le-senat-vote-une-nouvelle-extension-du-dispositif/" target="_blank">INCYBER NEWS 28/10</a> · <a class="src" href="https://armees.com/casseurs-payeurs-drones-surveillance-algorithmes-maintien-ordre/" target="_blank">Armées.com 28/10</a></div>
+<p>Adopté dans la nuit du 27 au 28 octobre par 229 voix contre 105, le projet de loi « casseurs-payeurs » prolonge l'expérimentation d'analyse automatisée des images (caméras et drones judiciaires) et élargit son usage aux troubles à l'ordre public ; le texte part à l'Assemblée nationale. <strong>Impact concret :</strong> le cadre de la vidéoprotection algorithmique se consolide côté « événementiel et ordre public », mais reste strictement encadré (pas de reconnaissance faciale en temps réel généralisée, autorisations plafonnées). Toute offre d'analyse vidéo IA doit être calibrée sur les finalités autorisées.</p>
+</div>
+<div class="item">
+<h3>2. NIS2 : la France toujours non transposée, le texte retiré de l'agenda parlementaire (France/Europe)</h3>
+<div class="meta">AOCSI • 29/10/2026 · NIS2 Transposition Tracker • 27/10/2026 · Silicon.fr • octobre 2026 — <a class="src" href="https://aocsi.fr/blog/loi-resilience-transposition-nis2" target="_blank">AOCSI 29/10</a> · <a class="src" href="https://nhimg.org/nis2-transposition-tracker" target="_blank">NIS2 Transposition Tracker 27/10</a> · <a class="src" href="https://www.silicon.fr/cybersecurite-1371/nis2-ce-quil-faut-attendre-du-projet-de-loi-examine-a-lassemblee-nationale-229520" target="_blank">Silicon.fr</a></div>
+<p>24 des 27 États membres ont une loi NIS2 en vigueur ; la France, l'Irlande et l'Espagne non. Le projet de loi « Résilience » (transposition NIS2, CER, DORA) a été retiré de l'ordre du jour de l'Assemblée nationale le 6 octobre, sans nouvelle date, alors qu'il élargirait le périmètre à environ 15 000 entités sur 18 secteurs. <strong>Impact concret :</strong> pour un centre de télésurveillance ou un intégrateur, les obligations d'hygiène cyber et de notification ne sont pas encore opposables en droit français, mais les donneurs d'ordre (collectivités, santé, énergie) les intègrent déjà dans leurs cahiers des charges. Anticiper reste la seule option.</p>
+</div>
+<div class="item">
+<h3>3. AI Act : un référentiel officiel des échéances publié le 29 octobre, « haut risque » reporté au 2 décembre 2027 (Europe)</h3>
+<div class="meta">data.gouv.fr • 29/10/2026 · ActuIA • octobre 2026 — <a class="src" href="https://www.data.gouv.fr/datasets/referentiel-ia-act-echeances-obligations-et-sanctions-du-reglement-europeen-sur-lia" target="_blank">data.gouv.fr 29/10</a> · <a class="src" href="https://www.actuia.com/en/news/ai-act-obligations-in-force-and-delays-under-omnibus-2026-1744/" target="_blank">ActuIA octobre 2026</a></div>
+<p>Le référentiel exploitable publié le 29 octobre rappelle que le règlement omnibus (UE) 2026/1744 a repoussé les obligations « haut risque » de l'annexe III au 2 décembre 2027 (annexe I : 2 août 2028), tout en conservant l'application des interdictions, des règles GPAI et de transparence. <strong>Impact concret :</strong> pour un fournisseur de VMS, d'analytique vidéo ou un centre de télésurveillance, la fenêtre de mise en conformité s'allonge de plusieurs trimestres, mais la documentation (cartographie des fonctions IA, supervision humaine, journalisation) reste à produire avant l'audit — le report ne supprime aucune obligation de fond.</p>
+</div>
+    </div></div>
+    <h2 class="sec">💼 Métiers de la télésurveillance — focus impacts IA</h2>
+    <div class="card"><div class="card-body">
+<div class="item">
+<h3>1. Opérateurs de télésurveillance &amp; levée de doute : l'IA trie, l'humain décide</h3>
+<div class="meta">Benchmark Magazine • 29/10/2026 — <a class="src" href="https://benchmarkmagazine.com/reducing-control-room-fatigue-where-ai-can-help/" target="_blank">Benchmark Magazine 29/10</a></div>
+<p><strong>Métier touché :</strong> opérateurs de télésurveillance et de levée de doute en salle de contrôle. <strong>Ce que l'IA change :</strong> l'analytique vidéo détecte l'activité inhabituelle, écarte les alertes redondantes et met en avant les événements qui méritent attention ; l'opérateur conserve la vérification contextuelle, l'arbitrage en cas d'ambiguïté, l'appel client et la transmission aux forces de l'ordre. Tâches automatisées : filtrage des fausses alertes, pré-tri et priorisation de la file. Tâches humaines conservées : qualification de l'alerte, décision d'escalade, relation client. L'article s'appuie sur une enquête Omdia (utilisateurs finaux Amérique du Nord et Europe) montrant un retour sur investissement marqué de l'analytique vidéo. Compétence qui monte : paramétrer et exploiter les scénarios d'analyse, non plus seulement « lire » des images.</p>
+</div>
+<div class="item">
+<h3>2. Formation et carte professionnelle : le CNAPS précise les règles du tronc commun obligatoire</h3>
+<div class="meta">83-629.fr (Sécurité Privée, CNAPS &amp; Réglementation) • 27/10/2026 — <a class="src" href="https://www.83-629.fr/tag/telesurveillance/" target="_blank">83-629.fr 27/10</a></div>
+<p><strong>Métiers touchés :</strong> opérateurs vidéoprotection/télésurveillance, formateurs et responsables RH des entreprises de sécurité privée. <strong>Ce que l'IA change :</strong> dans un secteur où les fiches de poste s'élargissent aux outils numériques et d'analyse, le socle de compétences devient un enjeu RH direct — l'article revient sur les cas où un agent ayant déjà suivi le tronc commun doit (ou non) le refaire, réponse du CNAPS à l'appui. Pour un centre de télésurveillance, c'est le cadre à maîtriser pour valider la conformité des agents (carte professionnelle, formations obligatoires) au moment où l'on ajoute des modules d'exploitation vidéo et d'outils IA aux parcours internes.</p>
+</div>
+    </div></div>
+    <h2 class="sec">🔮 Prospective — tendances de fond</h2>
+    <div class="card"><div class="card-body">
+<div class="item"><h3>Salles de supervision mutualisées « IA + opérateur » portées par le public — <em>Court terme (&lt;2 ans)</em></h3><p>Le centre départemental des Alpes-Maritimes (151 communes éligibles, 250+ caméras) et le doublement du parc de Périgueux montrent que les collectivités investissent désormais directement dans la supervision assistée par IA. Pour les centres privés : positionnement à revoir sur les petits territoires, qui basculent vers l'intercommunal ou le départemental.</p><ul><li><a class="src" href="https://www.smartcitymag.fr/breve/20/un-centre-departemental-de-supervision-mis-en-service-fin-2026-a-nice" target="_blank">Smart City Mag</a></li><li><a class="src" href="https://www.dordognelibre.fr/grand-perigueux/la-ville-de-perigueux-veut-doubler-le-nombre-de-cameras-de-videosurveillance-31308352.php" target="_blank">Dordogne Libre</a></li></ul></div>
+<div class="item"><h3>Hygiène cyber des équipements de sécurité comme prérequis contractuel — <em>Court terme (&lt;2 ans)</em></h3><p>Failles PHP dans les objets connectés (660 000 IP en France), vulnérabilité Axis Camera Station Pro, caméras Dahua détournées via le cloud : trois signaux convergents la même semaine. Les installateurs devront prouver un inventaire firmware, des accès durcis et un cloisonnement réseau, et le contractualiser.</p><ul><li><a class="src" href="https://www.bfmtv.com/tech/cybersecurite/il-ne-faut-pas-considerer-que-le-probleme-est-definitivement-resolu-l-anssi-alerte-sur-des-impacts-secondaires-lies-aux-failles-php_AD-202610280917.html" target="_blank">BFM TV</a></li><li><a class="src" href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-1408/" target="_blank">CERT-FR</a></li><li><a class="src" href="https://therecord.media/ukraine-cert-ua-warning-chinese-dahua-cameras-hacked" target="_blank">The Record</a></li></ul></div>
+<div class="item"><h3>Biométrie : extension des usages, retard du cadre — <em>Moyen terme (2-5 ans)</em></h3><p>Le Royaume-Uni déploie la reconnaissance faciale en direct sans loi dédiée (406 001 visages scannés par une seule police) et l'Allemagne teste l'analyse comportementale, alors que le régime « haut risque » de l'AI Act ne s'applique qu'en décembre 2027. Un décalage qui continuera d'alimenter contentieux et revirements réglementaires.</p><ul><li><a class="src" href="https://www.biometricupdate.com/202610/uk-facial-recognition-rollout-widens-as-police-oversight-rules-take-shape" target="_blank">Biometric Update</a></li><li><a class="src" href="https://anoni.net/news/en/2026/10/germany-police-facial-recognition/" target="_blank">anoni.net</a></li></ul></div>
+<div class="item"><h3>Industrialisation de la supervision vidéo externalisée (monitoring as a service) — <em>Moyen terme (2-5 ans)</em></h3><p>Le partenariat Totem × Milestone permet à une centrale d'ajouter de la vérification vidéo 24/7 sans recruter ni bâtir d'infrastructure : la barrière à l'entrée baisse, mais la valeur migre vers le logiciel et le réseau d'opérateurs. Modèle à surveiller pour les centres français de taille intermédiaire.</p><ul><li><a class="src" href="https://www.sdmmag.com/articles/105949-totem-partners-with-milestone-to-extend-the-power-of-video-management-into-24-7-monitoring-operations" target="_blank">SDM Magazine</a></li></ul></div>
+<div class="item"><h3>Convergence accès / intrusion / vidéo dans une même application — <em>Moyen terme (2-5 ans)</em></h3><p>L'intégration native de la serrure Yale Linus L2 Lite dans l'écosystème Ajax acte la fin des silos « contrôle d'accès » et « alarme » côté offre installateur ; la valeur se déplace vers la plateforme unifiée et les scénarios automatisés.</p><ul><li><a class="src" href="https://www.digitalsecuritymagazine.com/2026/10/29/yale-ajax-alianza-integracion-linus-smart-lock-l2-lite/" target="_blank">Digital Security Magazine</a></li></ul></div>
+    </div></div>
+    <h2 class="sec">🧭 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="card"><div class="card-body">
+<div class="item"><h3><span class="signal-title">1. Les collectivités deviennent des exploitants de vidéoprotection IA (centre départemental, mutualisation intercommunale)</span></h3><p>Implication : Repositionner l'offre des centres privés vers l'infogérance et l'expertise, pas la revente de caméras.</p><ul><li><a class="src" href="https://www.smartcitymag.fr/breve/20/un-centre-departemental-de-supervision-mis-en-service-fin-2026-a-nice" target="_blank">Smart City Mag</a></li><li><a class="src" href="https://www.rivieraradio.mc/article/new-ai-powered-cctv-centre-to-monitor-towns-across-the-alpes-maritimes-5HjdkXw_2/" target="_blank">Riviera Radio</a></li><li><a class="src" href="https://www.dordognelibre.fr/grand-perigueux/la-ville-de-perigueux-veut-doubler-le-nombre-de-cameras-de-videosurveillance-31308352.php" target="_blank">Dordogne Libre</a></li></ul></div>
+<div class="item"><h3><span class="signal-title">2. La faille vient du firmware, pas de la caméra : le parc installé est le vrai risque</span></h3><p>Implication : Inventaire des firmwares, veille CERT-FR, cloisonnement réseau et engagement de maintenance à contractualiser.</p><ul><li><a class="src" href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-1408/" target="_blank">CERT-FR</a></li><li><a class="src" href="https://www.bfmtv.com/tech/cybersecurite/il-ne-faut-pas-considerer-que-le-probleme-est-definitivement-resolu-l-anssi-alerte-sur-des-impacts-secondaires-lies-aux-failles-php_AD-202610280917.html" target="_blank">BFM TV</a></li><li><a class="src" href="https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-014/" target="_blank">CERT-FR alerte PHP</a></li></ul></div>
+<div class="item"><h3><span class="signal-title">3. La supervision vidéo s'achète désormais comme un service opéré par un tiers</span></h3><p>Implication : Décider vite entre internaliser (opérateurs, process) et s'appuyer sur un partenaire, avant que la marge ne se déplace définitivement.</p><ul><li><a class="src" href="https://www.sdmmag.com/articles/105949-totem-partners-with-milestone-to-extend-the-power-of-video-management-into-24-7-monitoring-operations" target="_blank">SDM Magazine</a></li><li><a class="src" href="https://www.sourcesecurity.com/news/totem-milestone-partner-24-7-video-co-1621407195-ga.1793167014.html" target="_blank">SourceSecurity</a></li></ul></div>
+<div class="item"><h3><span class="signal-title">4. La biométrie en direct progresse dans les usages policiers européens avant tout cadre légal national</span></h3><p>Implication : Refuser ou encadrer strictement toute demande client de reconnaissance faciale en temps réel ; documenter le refus, c'est de la maîtrise du risque.</p><ul><li><a class="src" href="https://www.techtimes.com/articles/329574/20261028/live-facial-recognition-scanned-406001-hampshire-faces-still-no-uk-law.htm" target="_blank">Tech Times</a></li><li><a class="src" href="https://anoni.net/news/en/2026/10/germany-police-facial-recognition/" target="_blank">anoni.net</a></li><li><a class="src" href="https://www.biometricupdate.com/202610/uk-facial-recognition-rollout-widens-as-police-oversight-rules-take-shape" target="_blank">Biometric Update</a></li></ul></div>
+<div class="item"><h3><span class="signal-title">5. Le report « haut risque » de l'AI Act (2 décembre 2027) décale la conformité mais ne l'annule pas</span></h3><p>Implication : Constituer dès maintenant les preuves documentaires (cartographie IA, supervision humaine, journalisation) et les valoriser commercialement face aux donneurs d'ordre publics.</p><ul><li><a class="src" href="https://www.data.gouv.fr/datasets/referentiel-ia-act-echeances-obligations-et-sanctions-du-reglement-europeen-sur-lia" target="_blank">data.gouv.fr</a></li><li><a class="src" href="https://aocsi.fr/blog/loi-resilience-transposition-nis2" target="_blank">AOCSI</a></li></ul></div>
+    </div></div>
+  </div>
+  <footer>
+    <p>Généré le 2 novembre 2026 par Hermes (veille-telesurveillance). Template moderne inline (KPIs cliquables, cartes zones pleine largeur). Fichiers : veille-TELE-2026-11-02.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+</body></html>
