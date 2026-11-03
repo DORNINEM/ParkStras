@@ -39,7 +39,7 @@ _Section destinée au résumé vocal : les liens sources sont dans les entrées 
 ## 2. 📈 Efficacité de gestion de la fraude
 
 - **Fraude à l'assurance : près d'un milliard d'euros détectés en 2025** — *La Tribune (rapport ALFA), 10/07/2026*
-  Le rapport annuel de l'ALFA chiffre la fraude détectée à 946,3 M€ en 2025 (+4,9 %), aux deux tiers en IARD, avec une fraude qualifiée de « de plus en plus structurée ». Répartition par branche et tendance annuelle y sont détaillées.
+  Le rapport annuel de l'ALFA chiffre la fraude détectée à 946,3 M€ en 2025 (+4,9 %), aux deux tiers en IARD, avec une fraude qualifiée de « de plus en plus structurée ». Répartition par branche et tendance annuelle y sont détaillées. Le montant estimé du préjudice réel reste très supérieur aux détections.
   **Pourquoi c'est pertinent ?** Le socle chiffré à citer en comité : niveau de détection, répartition par branche et dynamique annuelle pour arbitrer les budgets.
   🔗 [Source](https://www.latribune.fr/article/banques-finance/assurance/76854307418288/fraude-a-l-assurance-pres-dun-milliard-deuros-detectes-en-2025)
 
@@ -76,7 +76,7 @@ _Section destinée au résumé vocal : les liens sources sont dans les entrées 
 ## 4. 🕸️ Lutte contre les bandes organisées
 
 - **Escroquerie aux mutuelles : l'enquête qui a démantelé une fraude généralisée dans le secteur de l'optique** — *Le Monde, 26/09/2026*
-  Vingt-deux personnes, dont deux ophtalmologues et dix opticiens, et quinze sociétés renvoyées devant le tribunal correctionnel : prescriptions atypiques et facturations gonflées auprès des mutuelles. L'enquête a démarré sur les signalements d'anomalies des mutuelles elles-mêmes.
+  Vingt-deux personnes, dont deux ophtalmologues et dix opticiens, et quinze sociétés renvoyées devant le tribunal correctionnel : prescriptions atypiques et facturations gonflées auprès des mutuelles. L'enquête a démarré sur les signalements d'anomalies des mutuelles elles-mêmes, transmis à l'OCLTI.
   **Pourquoi c'est pertinent ?** Le cas d'école de la collaboration assureurs-police : c'est la qualité du signalement des complémentaires, pas la plainte isolée, qui déclenche le démantèlement.
   🔗 [Source](https://www.lemonde.fr/les-decodeurs/article/2026/09/26/escroquerie-aux-mutuelles-l-enquete-qui-a-demantele-une-fraude-generalisee-dans-le-secteur-de-l-optique_6783120_4355770.html)
 
