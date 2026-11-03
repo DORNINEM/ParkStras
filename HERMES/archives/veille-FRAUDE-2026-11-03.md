@@ -1,8 +1,20 @@
 # Veille Fraude Assurance — 3 novembre 2026
 
-**Synthèse** : Les assureurs français ont détecté 946,3 M€ de fraude en 2025, en hausse de 4,9 % et aux deux tiers en IARD, tandis que l'Assurance Maladie stoppait 723 M€ de son côté, en progression de 15 % portée par les arrêts de travail. La bascule de l'année est qualitative : la fraude se structure en réseaux — Europol classe la fraude parmi les activités clés de 731 réseaux criminels européens — et l'IA générative industrialise le faux document comme la fausse preuve, jusqu'à 42 % des preuves falsifiées identifiées. En riposte, les dispositifs s'outillent : forensique des métadonnées, KPI et ROI chiffrés, échange de données entre Assurance Maladie et complémentaires validé par le Conseil constitutionnel, listes noires exploitables en opendata. Le point aveugle documenté cette semaine : seuls 6 assureurs sur 76 mentionnent le risque deepfake dans leurs publications, et uniquement comme risque cyber.
+**Synthèse** : La fraude à l'assurance a changé de nature : détections record côté assureurs comme côté Assurance Maladie, mais surtout une fraude qui se structure en réseaux et s'industrialise grâce à l'IA générative. En face, les dispositifs de riposte s'outillent — forensique des documents, calcul de rentabilité des outils, échange de données validé par le Conseil constitutionnel et listes noires exploitables en opendata. Le point aveugle : le risque deepfake reste absent des publications de la plupart des assureurs. Cette édition couvre les sept thématiques, de la fraude documentaire à la fraude organisée.
 
 *21 articles · 7 thématiques · sources d'autorité : ACPR, Assurance Maladie, Europol, ENISA, Assemblée nationale · modèle DeepSeek v4.1 Flash · Nous*
+
+## 🎧 Résumé par thématique (version audio)
+
+_Section destinée au résumé vocal : les liens sources sont dans les entrées ci-dessous._
+
+- **🔍 Anti-fraude documentaire** : Côté faux documents, l'IA génère plus de quatre fausses preuves sur dix, et la fraude documentaire se déplace vers la souscription, avec près d'un tiers de détections en plus avant même le sinistre.
+- **📈 Efficacité de gestion de la fraude** : Sur l'efficacité, 946 millions d'euros de fraude ont été détectés en 2025, en hausse de près de cinq pour cent, une fraude jugée de plus en plus structurée. Les outils intègrent désormais un calcul de rentabilité.
+- **🗂️ Exploitation de l'opendata** : Sur l'opendata, le Conseil constitutionnel a validé l'échange de données entre l'Assurance Maladie et les complémentaires : les assureurs santé deviennent acteurs de la détection.
+- **🕸️ Lutte contre les bandes organisées** : Pour les bandes organisées, l'enquête sur le secteur de l'optique a conduit vingt-deux personnes devant le tribunal, déclenchée par le signalement des mutuelles elles-mêmes.
+- **🚪 Fraude en entrée en relation** : À l'entrée en relation, la fraude à l'assurance-vie a presque doublé, à 24,8 millions d'euros, l'usurpateur modifiant le compte bancaire d'un contrat déjà en cours.
+- **🩺 Fraude à la santé** : Sur la santé, 723 millions d'euros de fraudes ont été stoppées en 2025, dont 49 millions sur les arrêts de travail, et plus de quinze mille fausses ordonnances ont été signalées.
+- **🧪 Divers — sujet émergent** : Enfin, le sujet émergent : six assureurs sur soixante-seize seulement mentionnent le risque de deepfake, et les actuaires proposent de figer la preuve de sinistre dans un registre inviolable.
 
 ## 1. 🔍 Anti-fraude documentaire
 
@@ -10,12 +22,14 @@
   L'IA générative représente 42 % des fausses preuves identifiées dans l'assurance : déclarations de sinistre, expertise à distance, pièces justificatives. La vérification traditionnelle (visuelle, humaine) ne tient plus face à des documents parfaitement générés.
   **Pourquoi c'est pertinent ?** Le cadre de référence pour repositionner la chaîne de contrôle : ce n'est plus la pièce qu'il faut regarder, c'est sa cohérence interne et ses métadonnées.
   🔗 [Source](https://www.argusdelassurance.com/tech/intelligence-artificielle/intelligence-artificielle-reconstruire-la-confiance-a-lere-des-deepfakes.2MRT6YZL6JA65LGG2F2C4RDILE.html)
+  ➕ Complément — source primaire du chiffre de 42,5 % (accessible) : https://www.signicat.com/press-releases/42-5-of-fraud-attempts-are-now-ai-driven-financial-institutions-rushing-to-strengthen-defences
 
 - **Photos de dégâts retouchées par IA : les assureurs les détectent en lisant les métadonnées** — *JeChange, 29/07/2026*
   Les assureurs repèrent les photos de dégâts retouchées ou générées en croisant les métadonnées des fichiers, l'analyse pixel et la cohérence des ombres et des reflets. Les incohérences de métadonnées restent le signal le plus rentable.
   **Pourquoi c'est pertinent ?** Concret, transposable immédiatement sur les sinistres habitation et auto : les outils existent, encore faut-il brancher le contrôle au bon endroit du parcours.
   À surveiller : l'analyse forensique des métadonnées (EXIF, calques, vecteurs de compression) est adaptable au contrôle automatique des constats amiable et des factures de réparation.
   🔗 [Source](https://www.jechange.fr/assurance/habitation/news/photos-de-degats-retouchees-ia-assureurs-detectent-metadonnees)
+  ➕ Complément — voir aussi franceinfo, 04/07/2026 : https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html
 
 - **Insurance document fraud moves upstream** — *Insurance Post (Royaume-Uni), 14/09/2026*
   Les détections de fraude documentaire progressent de 31 % au stade de la souscription : la fraude se déplace de l'indemnisation vers l'entrée en relation, avec des documents fabriqués dès l'adhésion pour préparer un sinistre futur.
