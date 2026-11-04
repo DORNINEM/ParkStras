@@ -1,0 +1,291 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 4 novembre 2026</title>
+<style>
+    :root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background: radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent), radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent), var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius:18px; color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#0f172a,#0b1220);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#40dcff;color:#010409;border-color:#40dcff}
+    .pill.green{background:#7bffb2;color:#010409;border-color:#7bffb2}
+    .pill.yellow{background:#ffb347;color:#010409;border-color:#ffb347}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#0f172a,#0b1220);border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:#e5e7eb}
+    html[data-theme="light"] .item p{color:#1f2937}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    .footer p{margin:4px 0}
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-11-04.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🩺 Veille Innovations Diabète</h1>
+      <p>Sources FR prioritaires • Technologies, capteurs MCG, pompes &amp; pancréas artificiel, recherche, Big Pharma — généré par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-04">4 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-france')" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">6</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-europe')" title="Aller à la section 🌍 Europe &amp; Suisse"><div class="label">🌍 Europe &amp; Suisse</div><div class="value">2</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-monde')" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">4</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 4 novembre 2026</span>
+    <span class="pill yellow">🔬 4 cartes Prospective</span>
+  </div>
+
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.capital.fr/conso/le-medicament-anti-obesite-wegovy-arrive-en-comprimes-lundi-mais-a-169-euros-par-mois-et-sans-remboursement-1531469" target="_blank">Wegovy en comprimés : le traitement anti-obésité arrive en France à 169 euros par mois, sans remboursement</a></h3>
+<div class="meta">Capital.fr • 01/11/2026</div>
+<p>Le Wegovy, médicament anti-obésité utilisé par plus de 100 000 personnes en France, est disponible en comprimés sur le marché français depuis le lundi 2 novembre 2026, rapporte Capital : une première dans le pays, où le traitement n'existait jusqu'ici que sous forme d'injections hebdomadaires. Dans les deux cas, les patients ingèrent la même molécule, le sémaglutide, qui agit sur les récepteurs du GLP-1, une hormone impliquée dans la régulation de l'appétit. La version orale, toujours soumise à prescription médicale, s'adresse aux adultes souffrant d'obésité (IMC égal ou supérieur à 30) ou de surpoids (IMC d'au moins 27) s'ils présentent au moins un problème de santé associé au poids : diabète de type 2, hypertension artérielle, apnée du sommeil. Sa prise impose une contrainte horaire stricte : être à jeun et ne pas avoir mangé pendant huit heures, puis attendre une demi-heure après l'ingestion avant de pouvoir manger ou boire. Surtout, à la différence de la forme injectable — remboursée depuis juin 2026 pour les personnes souffrant d'une obésité très sévère — le comprimé ne sera pas pris en charge par l'Assurance maladie : Novo Nordisk a fixé son prix à 169 euros par mois, les pharmacies restant libres de définir leurs tarifs de vente. « On a souhaité que ce traitement soit disponible rapidement, donc il ne sera pas remboursé au démarrage », déclare Etienne Tichit, directeur général de Novo Nordisk France. L'article rappelle l'efficacité mesurée dans un essai clinique publié dans le New England Journal of Medicine : sur 307 adultes en situation d'obésité ou de surpoids associé à un problème de santé, les participants ont perdu en moyenne 13,61 % de leur poids de base en 64 semaines de traitement. Environ 10 millions de personnes vivent avec une obésité en France. Capital signale aussi que le laboratoire danois traverse une période difficile, marquée par le recul des ventes de certaines de ses gammes et des suppressions d'emplois à l'échelle mondiale.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.whatsupdoc-lemag.fr/article/ist-cystites-diabete-les-biologistes-pourraient-bientot-prescrire-et-suivre-davantage-de" target="_blank">Diabète et maladie rénale : les biologistes médicaux pourraient suivre les patients sans ordonnance préalable</a></h3>
+<div class="meta">What's Up Doc • 02/11/2026</div>
+<p>Les syndicats de biologistes médicaux ont signé le 2 novembre un nouveau protocole fixant le cadre d'évolution des dépenses de biologie médicale pour les trois prochaines années. L'accord prévoit une enveloppe spécifique consacrée aux missions de santé publique, destinée à financer de nouvelles activités de prévention, de dépistage et de suivi des maladies chroniques — dont le diabète. Pour les médecins, les évolutions les plus significatives figurent dans les engagements issus de la mission ministérielle confiée à Laurent Habert ; leur mise en œuvre nécessitera encore des modifications législatives, réglementaires ou conventionnelles. Sur le diabète et la maladie rénale chronique, l'idée est de permettre aux biologistes de participer plus directement au suivi des patients diabétiques insuffisamment observants et au dépistage des atteintes rénales, en intervenant « sans ordonnance préalable et grâce à un module d'éligibilité et de traçabilité ». Pour le diabète, l'objectif est d'améliorer le suivi des patients qui ne réalisent pas suffisamment les examens recommandés ; pour les atteintes rénales, le dispositif renforcerait le dépistage grâce au calcul d'un score rénal. L'Assurance maladie confirme que l'enveloppe dédiée aux missions de santé publique sera élargie à de nouveaux actes, « comme le dépistage de la maladie rénale chronique (MRC) ou le suivi du diabète ». Reste à déterminer comment ces examens réalisés sans prescription préalable s'articuleront avec le suivi assuré par le médecin traitant. Le texte prévoit aussi que les biologistes puissent prescrire des traitements après un dépistage positif d'IST ou de cystite, remettre directement les kits de dépistage du cancer colorectal et stocker des vaccins au laboratoire. En contrepartie, au moins 30 millions d'euros d'économies sont attendues en 2027 sur les prescriptions d'analyses. « Les biologistes ont accepté de prendre leur part de l'effort, et ils obtiennent en retour une meilleure reconnaissance de leur rôle dans le parcours de soin », souligne le Dr Thomas Hottier, président du Syndicat des biologistes.</p>
+</div>
+<div class="item">
+<h3><a href="https://selectra.info/assurance/actualites/marche/capteur-glycemie-type-2-generaliste-rembourse" target="_blank">Capteur de glucose : le médecin généraliste peut désormais le prescrire à certains patients diabétiques de type 2</a></h3>
+<div class="meta">Selectra • 03/11/2026</div>
+<p>Un diabétique de type 2 sous insuline non intensifiée, dont la glycémie reste mal équilibrée, peut se faire prescrire un capteur de glucose remboursé par son médecin généraliste : c'est la règle que détaille Selectra, en s'appuyant sur le mémo destiné aux médecins de l'Assurance maladie. Le diabétologue n'est obligatoire que pour les traitements par insuline dite intensifiée, c'est-à-dire plusieurs injections par jour ou une pompe. Pour une insulinothérapie non intensifiée, le généraliste peut réaliser la première prescription et la période d'essai, comme le diabétologue ; ensuite, tout médecin peut renouveler l'ordonnance. Les patients éligibles sont donc les diabétiques de type 1 et de type 2 sous insulinothérapie intensifiée, auxquels s'ajoutent ceux de type 2 sous insulinothérapie non intensifiée dont la glycémie reste mal équilibrée — les règles ne mentionnent pas les patients traités par comprimés seuls. Les modèles cités par le mémo sont les FreeStyle Libre 2, Libre 2 plus et Libre Select, ainsi que les Dexcom One et One+. Le nombre de capteurs pris en charge par an est plafonné selon le modèle, chaque capteur ayant une durée de vie limitée. Le lecteur du FreeStyle Libre 2 n'est plus remboursé depuis le 1er juin 2026, tandis que celui du Libre 2 plus l'est jusqu'en 2030. La Haute Autorité de santé estime que ces capteurs améliorent l'équilibre glycémique par rapport à la mesure au doigt, et l'Assurance maladie y associe une obligation d'éducation thérapeutique, le patient devant apprendre à utiliser le capteur et à lire ses résultats. Les capteurs Dexcom G6 et Guardian 4 suivent d'autres règles : ils sont réservés au diabète de type 1 et prescrits à l'hôpital. Le diabète de type 1 comme de type 2 figure parmi les affections de longue durée, les frais liés à la maladie étant remboursés au maximum de la base de la Sécurité sociale.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.federationdesdiabetiques.org/federation/actualites/etre-accompagne-pour-mieux-vivre-avec-son-diabete-decouvrez-la-video" target="_blank">« Parler de mon diabète avec quelqu'un qui le vit aussi » : la Fédération publie une nouvelle vidéo de ses bénévoles patients experts</a></h3>
+<div class="meta">Fédération Française des Diabétiques • 02/11/2026</div>
+<p>À l'approche de la Journée Mondiale du Diabète, cette année consacrée à l'accompagnement entre patients, la Fédération Française des Diabétiques publie la deuxième vidéo témoignage de ses Bénévoles Patients Experts (BPE). Anne Brodin (Association des Diabétiques de la Sarthe, AFD 72), Pascal Allayrangue (AFD Occitanie) et Dominique Lemaire (AFD 35) y racontent ce que ce lien entre personnes vivant avec un diabète peut changer. « La Fédération et en particulier l'AFD 35 m'a permis de ne pas rester enfermé sur mon diabète, parce que j'avais presque un déni, je ne voulais en parler à personne. En parler avec l'association m'a permis de pouvoir en parler librement à n'importe qui », témoigne Dominique, BPE à l'AFD 35. L'accompagnement est mené par des BPE vivant eux-mêmes avec un diabète, formés par la Fédération pour écouter et soutenir d'autres personnes, en complément du suivi médical. « Une fois, une personne en totale détresse m'a même dit à la fin que je lui avais sauvé la vie. Pour moi c'était une fierté. Je n'avais pas eu l'impression de faire énormément mais quelques mots, l'écouter, échanger avec lui, lui a fait beaucoup de bien », ajoute Anne, BPE à l'AFD 72. Ce format vidéo prolonge une première publication diffusée fin octobre. La vidéo a une vocation pédagogique : pour toute question concernant le diabète ou l'état de santé, la Fédération renvoie vers le médecin. Les internautes sont aussi invités à une visioconférence le mercredi 4 novembre à 18 h 30, diffusée en direct sur YouTube, LinkedIn et Facebook, sur le thème « Parler de mon diabète avec quelqu'un qui le vit aussi : qu'est-ce que ça change ? », ainsi qu'à consulter la carte des manifestations organisées partout en France pour le 14 novembre.</p>
+</div>
+<div class="item">
+<h3><a href="https://actu.fr/normandie/flers_61169/165-000-nouveaux-cas-de-diabete-par-an-lhopital-de-flers-organise-une-journee-de-depistage_65002477.html" target="_blank">165 000 nouveaux cas de diabète par an : une journée de dépistage à l'hôpital de Flers le 12 novembre</a></h3>
+<div class="meta">Actu.fr (Actu Normandie) • 02/11/2026</div>
+<p>Le service de pédiatrie de l'hôpital Jacques-Monod à Flers (Orne) organise, avec plusieurs partenaires, une journée de sensibilisation et de dépistage du diabète le jeudi 12 novembre 2026, de 10 h à 16 h, dans le hall principal de l'établissement, les dépistages étant réalisés dans une pièce dédiée pour préserver l'intimité des participants. Objectifs affichés par Clotilde Pierre et Mélinda Gallier, infirmières en puériculture : mieux faire connaître le diabète, informer sur sa prise en charge, lever les idées reçues et soutenir les personnes qui vivent avec la maladie. L'événement réunit des professionnels de la pédiatrie, Pamela Poulain, intervenante en éducation thérapeutique pour adultes, Jean-Louis Maillard, représentant de l'Association Française des Diabétiques, et l'association Planeth Patients. Les chiffres rappelés à cette occasion donnent la mesure de l'enjeu : 4,4 millions de personnes vivent avec un diabète diagnostiqué en France, dont 93 % de type 2, et 800 000 personnes atteintes de diabète de type 2 l'ignorent. En 2023, 165 000 nouveaux cas de diabète de type 2 ont été recensés. Sur le plan pédiatrique, environ 31 400 jeunes de moins de 20 ans étaient atteints de diabète de type 1 en 2023, contre 20 300 en 2012, et environ 2 300 enfants de moins de 15 ans découvrent un diabète chaque année. Localement, la progression est visible : là où l'équipe constatait auparavant deux à quatre découvertes annuelles, elle signale désormais six à sept cas de diabète de type 1 par an à l'hôpital de Flers. Le dépistage proposé est une glycémie capillaire — une piqûre au doigt donnant un résultat immédiat ; en cas de valeur anormale, les personnes sont invitées à consulter leur médecin traitant pour une prise de sang de confirmation. L'an dernier, 168 dépistages avaient été réalisés lors de la même opération.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.science-et-vie.com/corps-et-sante/quand-le-signal-est-apparu-ma-premiere-reaction-a-ete-la-prudence-un-sucre-de-la-viande-rouge-a-ete-associe-a-un-risque-de-diabete-accru-de-63-264923.html" target="_blank">Un sucre de la viande rouge (Neu5Gc) associé à un risque de diabète de type 2 accru de 63 %</a></h3>
+<div class="meta">Science et Vie • 01/11/2026</div>
+<p>Bœuf bourguignon, gigot d'agneau, entrecôte : ces plats contiennent un sucre que notre organisme ne sait plus produire, l'acide N-glycolylneuraminique, ou Neu5Gc. Une équipe de l'Université Sorbonne Paris Nord, à Bobigny, l'associe à un risque accru de diabète de type 2 dans la cohorte française NutriNet-Santé, avec des résultats présentés le 1er octobre 2026 à Milan, au congrès annuel de l'Association européenne pour l'étude du diabète. Chez les plus gros consommateurs de Neu5Gc d'origine carnée, le risque serait 63 % plus élevé que chez les plus petits ; il augmente de 41 % dès le quatrième quintile. La plupart des mammifères fabriquent cette molécule, mais l'humain a perdu cette capacité après une mutation ancienne du gène CMAH ; le sucre entre pourtant dans notre corps par l'alimentation, surtout via le bœuf et l'agneau et, en plus petite quantité, les produits laitiers. Une fois absorbé, il s'intègre à nos tissus et des anticorps le reconnaissent comme étranger, ce qui induirait une inflammation chronique de bas grade que les chercheurs appellent « xénosialite ». Méthodologie : les données de 89 953 adultes ont été analysées — 42 ans de moyenne, quatre participants sur cinq des femmes, aucun diabétique ni atteint de cancer au départ —, chacun ayant rempli trois relevés alimentaires de 24 heures, et une base inédite sur la teneur en Neu5Gc des aliments a permis d'estimer l'exposition ; les participants ont été répartis en cinq groupes de même taille. En 7,2 ans de suivi médian, 966 cas de diabète de type 2 sont apparus. L'étude reste observationnelle et ne démontre aucun lien de cause à effet : « Il s'agit de résultats préliminaires. Ils n'ont pas encore été évalués par des pairs et doivent être présentés comme tels », insiste Leopold Fezeu, premier auteur, dont la prudence est reprise en titre par Science et Vie.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe &amp; Suisse</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://diabeteetobesite.fr/les-belles-promesses-de-la-boucle-fermee-ce-que-vos-patients-nosent-pas-toujours-vous-dire/" target="_blank">Boucle fermée : les belles promesses et la désillusion que les patients n'osent pas toujours dire</a></h3>
+<div class="meta">Diabète et Obésité • 02/11/2026</div>
+<p>C'est un texte rare dans la presse médicale : une patiente vivant avec un diabète de type 1 depuis 28 ans, qui tient un blog communautaire, y restitue les échanges qu'elle a eus avec des patients ayant vécu une désillusion vis-à-vis de leur boucle fermée, et qui osent rarement prendre la parole. Rappel du fonctionnement : la boucle semi-fermée, ou boucle fermée hybride, connecte le capteur de glycémie et la pompe à insuline pour automatiser l'administration de l'insuline ; on l'appelle « semi » ou « hybride » parce que l'utilisateur doit toujours renseigner ses glucides et gérer ses repas. Ce n'est donc pas encore un système 100 % automatisé, et tous les systèmes ne se valent pas : certaines boucles intègrent une intelligence artificielle auto-apprenante, d'autres non, certaines offrent des capacités de prédiction ou des options pour les repas riches. Les promesses, ensuite : un diabète équilibré avec des patients « à 80 % au moins dans la cible » et une HbA1c inférieure à 7 %, une charge mentale considérablement allégée puisque l'algorithme ajuste ses décisions toutes les 5 minutes, et une meilleure qualité de vie, avec de meilleures nuits et moins d'hypoglycémies. La réalité : la boucle fermée ne guérit pas le diabète de type 1. « Nous restons DT1, nous portons toujours capteur et pompe, avec tout ce que cela implique, et nous continuons à faire des hypoglycémies et des hyperglycémies », écrit l'autrice. La boucle aide à souffler, à retrouver du temps et de l'énergie, à améliorer les résultats, mais elle « n'a pas la force divine de guérir notre rapport à la maladie ou à l'alimentation ». Parmi les causes possibles du désenchantement, elle pointe d'abord la qualité de l'accompagnement et le choix du système : pourquoi celui-ci plutôt qu'un autre, ses points forts étaient-ils en adéquation avec le profil et les besoins du patient ? L'article défend une technologie présentée comme une bonne innovation, mais pas comme un traitement magique, et rappelle qu'elle ne fonctionne pas aussi bien chez tout le monde.</p>
+</div>
+<div class="item">
+<h3><a href="https://diabeteetobesite.fr/boucle-fermee-et-grossesse-retour-dexperience-pratique/" target="_blank">Boucle fermée et grossesse : ce que montrent les essais AIDAPT, CRISTAL et CIRCUIT</a></h3>
+<div class="meta">Diabète et Obésité • 02/11/2026</div>
+<p>Les complications maternelles, obstétricales et fœtales sont plus importantes chez les femmes vivant avec un diabète de type 1, ce qui justifie une programmation de la grossesse et une prise en soins renforcée. Le consensus formalisé d'experts récent sous l'égide du Collège national des gynécologues et obstétriciens français et de la Société francophone du diabète fixe deux repères : en préconceptionnel, un équilibre glycémique optimal est défini par une HbA1c inférieure à 6,5 % et un temps dans la cible entre 70 et 180 mg/dl supérieur à 70 % ; pendant la grossesse, la plage cible se situe entre 63 et 140 mg/dl avec un objectif de temps dans la cible supérieur à 70 %, afin de réduire les complications materno-fœtales. Or les données de la littérature montrent qu'il est difficile d'atteindre précocement et de maintenir cet objectif tout au long de la grossesse. Trois essais randomisés ont évalué l'apport de la boucle fermée hybride. L'étude anglaise AIDAPT, qui a inclus 124 femmes avant 16 semaines d'aménorrhée avec le système CamAPS FX, montre un temps dans la cible sur 24 heures significativement amélioré (68,2 % contre 55,6 %, p < 0,01) et une diminution significative du temps passé en hyperglycémie (29,2 % contre 41,4 %, p < 0,001). L'étude CRISTAL, menée aux Pays-Bas et en Belgique chez 92 femmes avant 12 SA avec le MiniMed 780G SmartGuard, ne trouve pas de différence significative sur le temps dans la cible moyen (66,5 % contre 63,2 %), mais une amélioration significative du temps dans la cible nocturne (75,1 % contre 67,2 %, p = 0,0026) et une baisse significative du temps passé sous la cible. L'étude CIRCUIT, menée au Canada et en Australie chez 91 femmes avant 14 SA avec Tandem Control-IQ, montre un temps dans la cible significativement amélioré (65,4 % contre 50,3 %, p < 0,01). Dans ces trois essais, les patientes se disent très satisfaites des dispositifs ; aucun n'était cependant dimensionné pour démontrer une réduction des complications de grossesse, ce qui rend des travaux complémentaires nécessaires.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.healio.com/news/endocrinology/20261028/islet-cell-therapy-reduces-diabetes-distress-fear-of-hypoglycemia-in-type-1-diabetes" target="_blank">Thérapie cellulaire d'îlots : moins de détresse liée au diabète et moins de peur de l'hypoglycémie dans le diabète de type 1</a></h3>
+<div class="meta">Healio (Breakthrough T1D Clinical &amp; Research Congress) • 28/10/2026</div>
+<p>Une perfusion unique de thérapie cellulaire d'îlots a produit des réductions durables de la détresse liée au diabète et de la peur de l'hypoglycémie à un an, chez des adultes atteints de diabète de type 1, selon des données présentées à Philadelphie lors du congrès clinique et de recherche de Breakthrough T1D et rapportées par Healio. Le zimislecel (Vertex Pharmaceuticals) est une thérapie d'îlots dérivés de cellules souches, productrice d'insuline, administrée par perfusion, qui restaure la fonction des îlots pancréatiques et permet à l'organisme de réguler la glycémie. Les chercheurs ont évalué les résultats rapportés par les patients chez 12 adultes traités dans les parties de phase 1, 2 ou 3 de l'essai FORWARD-VX-880-101 : tous présentaient une perception altérée de l'hypoglycémie et avaient connu au moins deux épisodes d'hypoglycémie sévère dans l'année précédant l'inclusion. Deux questionnaires ont été administrés au départ, à 90 jours, 180 jours et un an — l'échelle de détresse liée au diabète en 17 items et l'enquête sur la peur de l'hypoglycémie (Hypoglycemic Fear Survey-II). Pendant l'essai, les 12 participants ont vu leur HbA1c passer sous 7 % et aucun épisode d'hypoglycémie sévère n'est survenu ; l'usage d'insuline exogène a diminué pour tous et 83 % du groupe n'avait plus besoin d'insuline exogène. Le temps passé dans la cible de 70 à 180 mg/dl est monté de 49,5 % au départ à 76,1 % à 90 jours, 88,3 % à 180 jours et 93,3 % à un an. Le score moyen de détresse, de 3 sur 6 au départ, a baissé de 1 point à 90 jours, 1,3 point à 180 jours et 1,5 point à un an. Le score de peur de l'hypoglycémie, de 80 sur 132 au départ, a chuté de 25,2 points à 90 jours, 34,4 points à 180 jours et 52,3 points à un an. « Vivre une hypoglycémie, et surtout un épisode sévère, est très perturbant pour les personnes vivant avec un diabète de type 1 », souligne le Dr Michael R. Rickels, professeur à la faculté de médecine Perelman de l'université de Pennsylvanie.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.pharmacytimes.com/view/diabetes-awareness-month-opens-amid-new-t1d-t2d-approvals" target="_blank">Mois de sensibilisation au diabète : trois autorisations récentes qui changent la prise en charge</a></h3>
+<div class="meta">Pharmacy Times • 01/11/2026</div>
+<p>Le Mois de la sensibilisation au diabète s'ouvre, aux États-Unis, après une séquence particulièrement dense d'autorisations réglementaires, résume Pharmacy Times. Premier mouvement : le 12 juin 2026, la FDA a accordé une autorisation accélérée au télizumab-mzwv (Tzield, Sanofi) pour ralentir le déclin de la production d'insuline endogène chez les patients de 8 à 17 ans récemment diagnostiqués au stade 3 du diabète de type 1. L'anticorps était déjà approuvé pour retarder l'apparition du stade 3 chez l'adulte et l'enfant d'un an et plus au stade 2. Cette extension repose sur l'essai de phase 3 PROTECT, qui a réparti 328 participants diagnostiqués dans les six semaines précédentes, dans un rapport 2:1, entre télizumab et placebo : le traitement a ralenti le déclin du peptide C, marqueur de la fonction bêta résiduelle, avec une différence de 0,13 pmol/mL (intervalle de confiance à 95 % : 0,09-0,17 ; p < 0,001), en deux cures de 12 perfusions espacées de 26 semaines. Le peptide C étant un critère de substitution, la confirmation dépendra de l'essai BETA-PRESERVE. Deuxième mouvement : une deuxième insuline basale hebdomadaire pour le diabète de type 2, l'insuline efsitora alfa-gobe (Onswik, Eli Lilly), approuvée en septembre 2026, après l'insuline icodec-abae (Awiqli, Novo Nordisk) en mars 2026 ; l'autorisation s'appuie sur les quatre essais de phase 3 QWINT, qui ont inclus plus de 3 400 adultes, avec une non-infériorité sur l'HbA1c par rapport aux insulines basales quotidiennes. Elle n'est pas recommandée chez les patients de type 1 en raison d'un risque accru d'hypoglycémie sévère. Troisième mouvement : en octobre 2026, Sequel Med Tech a obtenu le feu vert réglementaire (510(k)) pour son système d'administration automatisée de l'insuline twiist chez les adultes de 18 ans et plus atteints de diabète de type 2 traité par insuline. Dans un essai pivot de 13 semaines mené auprès de 307 adultes sur 30 sites américains, l'HbA1c moyenne a baissé de 0,7 % à partir d'une base de 8,1 % et le temps dans la cible de 70 à 180 mg/dl est passé d'environ 57 % à 73 %, soit près de 3,8 heures de plus par jour, sans aucun épisode d'hypoglycémie sévère. Plus de la moitié des participants prenaient aussi un agoniste du récepteur du GLP-1 et 37 % un inhibiteur de SGLT2.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.thelancet.com/journals/landia/article/PIIS2213-8587(26)00232-9/abstract" target="_blank">Orforglipron oral : jusqu'à 8,7 % de perte de poids dans l'essai de phase 3 ATTAIN-J</a></h3>
+<div class="meta">The Lancet Diabetes &amp; Endocrinology • 30/10/2026</div>
+<p>L'essai ATTAIN-J, publié en ligne le 30 octobre 2026 dans The Lancet Diabetes & Endocrinology, a évalué l'orforglipron oral chez des adultes japonais atteints d'obésité, dont une partie présentait également un diabète de type 2. Il s'agit d'un essai de phase 3 randomisé, double aveugle, contrôlé par placebo et en groupes parallèles, testant une prise quotidienne unique de 6, 12 ou 36 mg d'orforglipron contre placebo. À 72 semaines, la perte de poids a atteint 5,9 % à 8,7 % selon la dose, contre 0,6 % sous placebo, et la proportion de participants ayant perdu au moins 5 % de leur poids était plus élevée dans les groupes traités. Le profil de sécurité est cohérent avec celui des autres agonistes du récepteur du GLP-1, avec les effets indésirables gastro-intestinaux attendus. Le journal publie le même jour un commentaire dédié à ce résultat, signé dans la même revue. Cet essai s'inscrit dans un contexte réglementaire favorable : le 15 octobre 2026, le comité des médicaments à usage humain de l'Agence européenne des médicaments a émis un avis positif pour Foundayo (orforglipron), petite molécule agoniste du GLP-1 administrable par voie orale, à la fois dans le traitement du diabète de type 2 — en monothérapie ou en association — et dans la gestion du poids chez l'adulte. L'intérêt de cette classe tient à sa forme : une molécule non peptidique, prise en comprimé une fois par jour, sans les contraintes de conservation des traitements injectables.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.boursorama.com/bourse/actualites/health-rounds-les-medicaments-a-base-de-glp-1-permettent-de-mieux-controler-le-prediabete-que-le-traitement-standard-actuel-779c5256dc13850e45a8c5885dedb8e8" target="_blank">Prédiabète : les GLP-1 font mieux que la metformine pour normaliser la glycémie</a></h3>
+<div class="meta">Boursorama / Reuters (Health Rounds) • 03/11/2026</div>
+<p>Les médicaments à base de GLP-1 pourraient contribuer à prévenir le diabète de type 2 et à réduire le risque de crise cardiaque et d'accident vasculaire cérébral chez les personnes chez qui un prédiabète a été diagnostiqué, plus efficacement que le traitement standard actuel, selon des données qui seront présentées lors des sessions scientifiques de l'American Heart Association à Chicago. Les chercheurs ont examiné les dossiers médicaux de plus de 256 000 adultes atteints de prédiabète et d'obésité, dont environ la moitié prenait un GLP-1 — sémaglutide, tirzépatide, liraglutide ou dulaglutide — et l'autre moitié de la metformine, traitement générique de référence prescrit en cas de prédiabète. Au cours de cette étude menée sur trois ans, les patients sous GLP-1 avaient 50 % plus de chances de ramener leur glycémie à un niveau normal, un risque 31 % plus faible de développer un diabète de type 2 déclaré et un risque de décès, toutes causes confondues, réduit de 41 % par rapport aux patients sous metformine. Les GLP-1 ont également été associés à une diminution de 15 % des crises cardiaques, de 20 % des AVC, de 25 % des cas d'insuffisance cardiaque et de 8 % des cas de fibrillation auriculaire, une arythmie qui peut multiplier par cinq le risque d'AVC. « Cette recherche pourrait renforcer l'argument en faveur d'une prescription plus précoce des médicaments à base de GLP-1 chez certains patients, plutôt que d'attendre qu'ils développent un diabète de type 2 », estime le Dr Vinicius de Sousa Barzon Serra, de la Mayo Clinic à Scottsdale (Arizona), qui a dirigé les travaux. Ces bénéfices sont probablement liés à la perte de poids, connue pour contribuer à prévenir le diabète de type 2, note le Dr Robert Eckel, ancien président de l'American Heart Association, qui n'a pas participé à l'étude. La metformine reste un traitement de première intention sûr, peu coûteux et dont l'efficacité est éprouvée de longue date.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class="arxiv-section">
+    <h2>🔬 Prospective &amp; Recherche</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Recherche &amp; essais précoces</div></div>
+        <div class="card-body">
+<div class="item">
+<h3><a href="https://econotimes.com/Padua-Trial-Tests-Engineered-Stem-Cells-for-Newly-Diagnosed-Type-1-Diabetes-1765130" target="_blank">P1. Diabète de type 1 récent : une thérapie génique autologue teste des cellules souches modifiées pour freiner l'auto-immunité</a></h3>
+<div class="meta">EconoTimes • 28/10/2026</div>
+<p>Un essai de phase I/II de thérapie génique, nommé Immunostem et mené à l'hôpital universitaire de Padoue, en Italie, évalue une approche d'immunothérapie tolérogène chez des personnes atteintes d'un diabète de type 1 récemment diagnostiqué. Le principe consiste à prélever les cellules souches et progénitrices hématopoïétiques du patient lui-même, à les modifier en laboratoire au moyen d'un vecteur lentiviral portant les instructions du PD-L1 — une protéine de point de contrôle immunitaire impliquée dans la régulation des lymphocytes T activés — puis à les réadministrer au patient par voie intraveineuse. L'objectif : préserver la fonction résiduelle des cellules productrices d'insuline en atténuant l'attaque auto-immune. Une étude publiée en 2017 dans Science Translational Medicine avait montré une réduction de l'activité auto-immune en laboratoire et une inversion du diabète chez des souris non obèses diabétiques récemment hyperglycémiques ; il s'agissait toutefois de résultats précliniques, l'efficacité chez l'homme restant à confirmer. L'essai prévoit d'inclure 15 personnes, le site de Padoue étant le seul investigateur ; le registre européen des essais cliniques le donne comme recrutant, avec un démarrage le 13 mars 2026 et un début de recrutement le 14 juillet. Le promoteur, Altheia Science, est une société issue de l'université de Padoue et de l'université de Milan. Le critère principal est la sécurité, avec des évaluations à trois, douze et vingt-quatre mois, et un suivi de deux ans portant notamment sur la production naturelle d'insuline, l'équilibre glycémique et les besoins en insuline externe. La professeure Alessandra Biffi, qui dirige le service d'hématologie pédiatrique, d'oncologie et de transplantation de cellules souches à Padoue, a déjà travaillé sur la thérapie génique d'une maladie héréditaire, la leucodystrophie métachromatique ; elle expliquait le 28 octobre à Euronews que cette approche s'étend désormais à des maladies non héréditaires. La fiche de l'essai est également consultable, en français, sur essaiscliniques.fr.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.fool.com/earnings/call-transcripts/2026/11/03/vertex-vrtx-q3-2026-earnings-call-transcript/" target="_blank">P2. Vertex fait de la thérapie d'îlots VX-017 sa priorité dans le diabète de type 1</a></h3>
+<div class="meta">Vertex Pharmaceuticals (résultats du 3e trimestre, via The Motley Fool) • 03/11/2026</div>
+<p>Lors de la présentation de ses résultats du troisième trimestre 2026, Vertex Pharmaceuticals a annoncé avoir choisi d'accélérer le développement de VX-017 comme programme phare dans le diabète de type 1. VX-017 est une thérapie cellulaire d'îlots entièrement différenciés, allogénique et « prête à l'emploi », qui produit de l'insuline en réponse au glucose. Sa particularité : elle est conçue pour convenir à tous les groupes sanguins, ce qui double la population éligible, portée à environ 120 000 personnes selon la direction. Des patients ont d'ores et déjà reçu les premières doses dans le cadre d'un essai de phase 1/2. Les objectifs à court terme sont de démontrer la preuve de concept et de monter en échelle la production, avec l'ambition de passer en développement pivot l'an prochain. Vertex indique parallèlement poursuivre ses travaux d'innovation dans le diabète de type 1, autour d'une immunosuppression améliorée et de la génération d'îlots « hypo-immuns », afin d'ouvrir cette thérapie potentiellement curative au plus grand nombre. Ce programme s'inscrit dans la lignée de zimislecel (ex-VX-880), dont l'essai FORWARD-VX-880-101 documente déjà l'effet d'une perfusion unique sur l'équilibre glycémique et sur la détresse liée au diabète. Le laboratoire justifie ce choix par l'intensité en ressources, la complexité et les contraintes de production propres aux thérapies cellulaires, qui obligent à concentrer les moyens sur le programme au profil le plus large.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.portalediabete.org/cosa-ce-nel-futuro-della-terapia-del-diabete-terapia-cellulare-e-rigenerativa-con-un-occhio-attento-alla-cina/" target="_blank">P3. Thérapie cellulaire et médecine régénérative : remplacer les cellules bêta ou les faire repousser</a></h3>
+<div class="meta">Portale Diabete (Italie) • 30/10/2026</div>
+<p>La médecine régénérative appliquée au diabète repose sur deux stratégies, résume le Pr Lorenzo Piemonti, directeur du Diabetes Research Institute et responsable de l'unité de médecine régénérative et des transplantations de l'IRCCS Ospedale San Raffaele de Milan : remplacer les cellules perdues, ou stimuler celles qui restent pour reconstituer une masse cellulaire capable d'assurer à nouveau sa fonction. Les deux voies, distinctes, pourraient converger. Il ne s'agit plus seulement de perspectives théoriques : certaines approches sont déjà entrées en expérimentation clinique chez l'homme, de la phase 1 à la phase 3, avec des premiers résultats qui ouvrent des scénarios inédits, surtout pour le diabète de type 1. Restent à vérifier la durée de la protection, la capacité des cellules à maintenir une fonction efficace dans le temps et la sécurité des modifications génétiques : éviter le rejet tout en garantissant que ces cellules « invisibles » au système immunitaire demeurent sûres et contrôlables est indispensable pour transformer la promesse en thérapie. En parallèle de la substitution cellulaire, une autre voie vise à stimuler la prolifération des cellules bêta encore présentes, piste particulièrement intéressante dans le diabète de type 2 : parmi les cibles biologiques étudiées figurent la ménine et la protéine DYRK1A. L'inhibiteur de la ménine icovamenib est en phase 2, et ses données montrent qu'après 12 semaines de traitement, la réduction de l'hémoglobine glyquée s'est maintenue plusieurs mois, notamment chez les patients présentant une carence marquée en insuline ; d'autres molécules, comme l'inhibiteur de la ménine KO-7246 et les inhibiteurs de DYRK1A, restent précliniques ou aux tout premiers stades. L'hypothèse d'un « effet cocktail » avec les agonistes du récepteur du GLP-1 est avancée. Le professeur met toutefois en garde : ces recherches sont encore initiales, et stimuler la prolifération cellulaire exige un contrôle rigoureux, une activité excessive ou non régulée pouvant comporter des risques non négligeables.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lesoleil.com/communiques-de-presse/2026/10/28/adipopharma-lance-la-phase-1b-des-essais-cliniques-du-peptide-patas-chez-des-patients-atteints-de-diabete-de-type-2-WEA6ZUCDX5BY5LMCSWDBQPMUTY/" target="_blank">P4. AdipoPharma lance la phase 1b du peptide PATAS, un sensibilisateur à l'insuline d'un nouveau genre</a></h3>
+<div class="meta">Le Soleil (communiqué GlobeNewswire, Québec) • 28/10/2026</div>
+<p>AdipoPharma, société de biotechnologie au stade clinique qui développe des thérapies ciblant le dysfonctionnement des adipocytes pour soigner les maladies métaboliques, annonce le lancement de la phase 1b de son essai de phase 1 évaluant le peptide PATAS. Les premiers participants ont été recrutés et ont reçu leur première dose dans le volet à doses multiples croissantes, mené chez des patients atteints de diabète de type 2. Premier de sa catégorie, PATAS est un sensibilisateur à l'insuline conçu pour rétablir le bon fonctionnement du tissu adipeux en retrouvant une gestion normale du glucose dans les adipocytes blancs, ce qui améliore ensuite la sensibilité à l'insuline de l'organisme entier. Le programme de phase 1 consiste en une étude randomisée, en double aveugle et contrôlée par placebo, destinée à évaluer la sécurité, la tolérance et la pharmacocinétique du peptide ; le volet à dose unique croissante est désormais achevé et a montré un profil favorable de sécurité et de tolérance, avec des résultats attendus en 2027 chez les patients atteints de diabète de type 2. « Les traitements de référence actuels ont certes permis des progrès significatifs dans la prise en charge des symptômes glycémiques et du poids, mais l'inversion directe du mécanisme cellulaire sous-jacent à l'insulinorésistance reste l'un des plus grands secteurs non exploités de la médecine cardiométabolique », souligne Vincent Marion, président et directeur général d'AdipoPharma. Il insiste sur un point de fond : « il ne s'agit pas seulement de la quantité de graisse présente dans le corps qui compte, mais aussi de sa qualité » — lorsque les adipocytes dysfonctionnent, une résistance systémique à l'insuline peut s'ensuivre.</p>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Généré le 4 novembre 2026 par Hermes (veille-diabete). Fichiers : veille-diabete-2026-11-04.md + .html. Fenêtre de recherche : 7 jours (28 octobre – 4 novembre 2026). Contenu 100 % en français, sources anglophones traduites.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");
+</script>
+  </div>
+</div>
+
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+<!-- EDO JARVIS widget (réservé veille diabète — à coller juste avant </body>) -->
+<div id="edo-widget" title="EDO — cœur de la veille">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+</body></html>
