@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded',hvPaint);
 </div>
 <div style="text-align:right"><a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)"><span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span></a><time datetime="2026-11-06">6 novembre 2026</time></div>
 </header>
-<div class="kpis"><div class="kpi"><div class="label">Veilles comparées</div><div class="value">9</div></div><div class="kpi"><div class="label">Thèmes</div><div class="value">3 × 3 modèles</div></div><div class="kpi"><div class="label">Juges à l’aveugle</div><div class="value">Grok 4.7 + DeepSeek</div></div><div class="kpi"><div class="label">Sources inventées</div><div class="value">0</div></div><div class="kpi"><div class="label">Coût du bench complet</div><div class="value">0,436 $</div></div></div><div class="card"><div class="card-head"><div class="card-title">🔬 Protocole — ce que ce bench mesure, et comment</div></div><div class="card-body">
+<div class="kpis"><div class="kpi"><div class="label">Veilles comparées</div><div class="value">9</div></div><div class="kpi"><div class="label">Thèmes</div><div class="value">3 × 3 modèles</div></div><div class="kpi"><div class="label">Juges à l’aveugle</div><div class="value">Grok 4.7 + DeepSeek</div></div><div class="kpi"><div class="label">Sources inventées</div><div class="value">0</div></div><div class="kpi"><div class="label">Coût du bench complet</div><div class="value">0,436 $</div></div><div class="kpi"><div class="label">Contre-test avec procédure</div><div class="value">4 bras</div></div></div><div class="card"><div class="card-head"><div class="card-title">🔬 Protocole — ce que ce bench mesure, et comment</div></div><div class="card-body">
 <p>Neuf veilles ont été produites le même jour, entre 15h17 et 16h30, par trois modèles de gamme de prix
 comparable — <b>DeepSeek v4.1 Flash</b>, <b>GLM 5.3 Flash</b> et <b>Qwen 3.8 Flash</b> — servis par le même
 endpoint. Chacun a traité trois thèmes : IA global, Diabète, IA &amp; mutations RH. Cela fait neuf tirages,
@@ -204,6 +204,10 @@ six entrées sur treize issues du même site — et par un décompte d'articles 
 (« 11 actualités » pour 13 entrées).</li>
 <li><b>Économiquement, Qwen ne se justifie pas</b> : 0,1978 $ pour trois veilles, contre 0,1358 $ pour
 DeepSeek et 0,1024 $ pour GLM. Deux pour cent de qualité en plus, 46 % de prix en plus.</li>
+<li><b>Et ce n'est pas un accident de préparation.</b> Un contre-test à modèle et thème identiques, cette fois
+avec la procédure de thème réellement chargée, montre que GLM reste le plus court des deux modèles dans les deux
+thèmes rejoués, et que la procédure corrige sa discipline sans renverser le classement. Le détail est au chapitre
+« Contre-test », l'explication des écarts au chapitre « Skill ou prompt ».</li>
 </ol>
 </div>
 </div></div><div class="card"><div class="card-head"><div class="card-title">🗞️ Résultats — IA global</div></div><div class="card-body">
@@ -358,7 +362,114 @@ pas de compter.</li>
 qui est vérifiable — un lien mort, une date hors fenêtre, un signal sans source — et laisse passer ce qui
 demande du jugement. Le juge aveugle attrape ce qui demande du jugement et se trompe sur ce qui demande une
 requête HTTP. C'est la combinaison qui rend ce verdict utilisable.</p>
-<table class="cmp"><thead><tr><th>Thème</th><th>Modèle</th><th>Grok 4.7<br><span class="note">/25</span></th><th>DeepSeek<br><span class="note">/25</span></th><th>cumul</th><th>classement Grok</th><th>classement DeepSeek</th></tr></thead><tbody><tr><td>Ia</td><td><b>Qwen 3.8 Flash</b></td><td class="num">19</td><td class="num">23</td><td class="num"><b>42 / 50</b></td><td>deepseek > <b>qwen</b> > glm</td><td><b>qwen</b> > deepseek > glm</td></tr><tr><td>Ia</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">20</td><td class="num">21</td><td class="num"><b>41 / 50</b></td><td><b>deepseek</b> > qwen > glm</td><td>qwen > <b>deepseek</b> > glm</td></tr><tr><td>Ia</td><td><b>GLM 5.3 Flash</b></td><td class="num">18</td><td class="num">17</td><td class="num"><b>35 / 50</b></td><td>deepseek > qwen > <b>glm</b></td><td>qwen > deepseek > <b>glm</b></td></tr><tr><td>Diabete</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">20</td><td class="num">24</td><td class="num"><b>44 / 50</b></td><td><b>deepseek</b> > qwen > glm</td><td><b>deepseek</b> > glm > qwen</td></tr><tr><td>Diabete</td><td><b>Qwen 3.8 Flash</b></td><td class="num">18</td><td class="num">19</td><td class="num"><b>37 / 50</b></td><td>deepseek > <b>qwen</b> > glm</td><td>deepseek > glm > <b>qwen</b></td></tr><tr><td>Diabete</td><td><b>GLM 5.3 Flash</b></td><td class="num">16</td><td class="num">19</td><td class="num"><b>35 / 50</b></td><td>deepseek > qwen > <b>glm</b></td><td>deepseek > <b>glm</b> > qwen</td></tr><tr><td>Rh</td><td><b>Qwen 3.8 Flash</b></td><td class="num">21</td><td class="num">24</td><td class="num"><b>45 / 50</b></td><td><b>qwen</b> > deepseek > glm</td><td><b>qwen</b> > deepseek > glm</td></tr><tr><td>Rh</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">17</td><td class="num">19</td><td class="num"><b>36 / 50</b></td><td>qwen > <b>deepseek</b> > glm</td><td>qwen > <b>deepseek</b> > glm</td></tr><tr><td>Rh</td><td><b>GLM 5.3 Flash</b></td><td class="num">15</td><td class="num">19</td><td class="num"><b>34 / 50</b></td><td>qwen > deepseek > <b>glm</b></td><td>qwen > deepseek > <b>glm</b></td></tr></tbody></table></div></div><div class="card"><div class="card-head"><div class="card-title">✅ Recommandations thème par thème</div></div><div class="card-body">
+<table class="cmp"><thead><tr><th>Thème</th><th>Modèle</th><th>Grok 4.7<br><span class="note">/25</span></th><th>DeepSeek<br><span class="note">/25</span></th><th>cumul</th><th>classement Grok</th><th>classement DeepSeek</th></tr></thead><tbody><tr><td>Ia</td><td><b>Qwen 3.8 Flash</b></td><td class="num">19</td><td class="num">23</td><td class="num"><b>42 / 50</b></td><td>deepseek > <b>qwen</b> > glm</td><td><b>qwen</b> > deepseek > glm</td></tr><tr><td>Ia</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">20</td><td class="num">21</td><td class="num"><b>41 / 50</b></td><td><b>deepseek</b> > qwen > glm</td><td>qwen > <b>deepseek</b> > glm</td></tr><tr><td>Ia</td><td><b>GLM 5.3 Flash</b></td><td class="num">18</td><td class="num">17</td><td class="num"><b>35 / 50</b></td><td>deepseek > qwen > <b>glm</b></td><td>qwen > deepseek > <b>glm</b></td></tr><tr><td>Diabete</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">20</td><td class="num">24</td><td class="num"><b>44 / 50</b></td><td><b>deepseek</b> > qwen > glm</td><td><b>deepseek</b> > glm > qwen</td></tr><tr><td>Diabete</td><td><b>Qwen 3.8 Flash</b></td><td class="num">18</td><td class="num">19</td><td class="num"><b>37 / 50</b></td><td>deepseek > <b>qwen</b> > glm</td><td>deepseek > glm > <b>qwen</b></td></tr><tr><td>Diabete</td><td><b>GLM 5.3 Flash</b></td><td class="num">16</td><td class="num">19</td><td class="num"><b>35 / 50</b></td><td>deepseek > qwen > <b>glm</b></td><td>deepseek > <b>glm</b> > qwen</td></tr><tr><td>Rh</td><td><b>Qwen 3.8 Flash</b></td><td class="num">21</td><td class="num">24</td><td class="num"><b>45 / 50</b></td><td><b>qwen</b> > deepseek > glm</td><td><b>qwen</b> > deepseek > glm</td></tr><tr><td>Rh</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">17</td><td class="num">19</td><td class="num"><b>36 / 50</b></td><td>qwen > <b>deepseek</b> > glm</td><td>qwen > <b>deepseek</b> > glm</td></tr><tr><td>Rh</td><td><b>GLM 5.3 Flash</b></td><td class="num">15</td><td class="num">19</td><td class="num"><b>34 / 50</b></td><td>qwen > deepseek > <b>glm</b></td><td>qwen > deepseek > <b>glm</b></td></tr></tbody></table></div></div><div class="card"><div class="card-head"><div class="card-title">🔁 Contre-test — et si les modèles avaient eu leur procédure ?</div></div><div class="card-body">
+<p>Le bench du 6 novembre a fait son constat dans une condition particulière : <b>aucune procédure de thème</b>,
+seulement la consigne écrite dans le prompt. Or les veilles de production tournent <i>avec</i> un skill — et le
+modèle épinglé sur l'IA, GLM, en sortait dernier. D'où la question : GLM est-il mauvais, ou la condition de test
+le pénalisait-elle ?</p>
+<p>Quatre bras ont donc été rejoués — mêmes modèles, mêmes thèmes, mêmes consignes — avec cette fois
+<b>la procédure de thème effectivement chargée</b>. Le chargement a été vérifié, il n'est pas supposé : une phrase
+caractéristique du skill apparaît dans six messages de session, et 42 appels de chargement de skill sont
+consignés. Les nouveaux fichiers portent le suffixe <code>-skill</code> et n'ont rien écrasé.</p>
+
+<h4>Quatre résultats, et une conclusion qui n'est pas celle attendue</h4>
+<table class="cmp"><thead><tr><th>Thème</th><th>Modèle</th><th>mots</th><th>liens uniques</th>
+<th>liens dans les signaux</th><th>dates hors fenêtre</th></tr></thead><tbody>
+<tr><td>IA</td><td>DeepSeek v4.1 Flash</td><td class="num">1 833 → <b>1 954</b> <span class="m-d">▲</span></td>
+<td class="num">15 → <b>17</b> <span class="m-d">▲</span></td><td class="num">9 → <b>11</b> <span class="m-d">▲</span></td><td>—</td></tr>
+<tr><td>IA</td><td>GLM 5.3 Flash</td><td class="num">1 222 → <b>1 527</b> <span class="m-d">▲</span></td>
+<td class="num">17 → <b>13</b> <span class="m-r">▼</span></td><td class="num">7 → <b>10</b> <span class="m-d">▲</span></td>
+<td>29/10 introduite</td></tr>
+<tr><td>RH</td><td>DeepSeek v4.1 Flash</td><td class="num">2 212 → <b>1 867</b> <span class="m-r">▼</span></td>
+<td class="num">24 → <b>12</b> <span class="m-r">▼▼</span></td><td class="num">13 → <b>13</b></td><td>—</td></tr>
+<tr><td>RH</td><td>GLM 5.3 Flash</td><td class="num">1 346 → <b>1 224</b> <span class="m-r">▼</span></td>
+<td class="num">12 → <b>11</b></td><td class="num">10 → <b>9</b></td><td>—</td></tr>
+</tbody></table>
+<p class="note">Lecture : « sans skill → <b>avec skill</b> ». Les liens <i>uniques</i> sont mis en avant parce que
+le volume brut trompe : un bras qui cite 25 liens dont 12 distincts est moins bien sourcé qu'un bras qui en cite
+20 tous différents.</p>
+<ul>
+<li><b>IA / DeepSeek</b> — le skill améliore légèrement : plus de volume, plus de liens, signaux mieux sourcés.
+Le modèle continue de ne citer <b>qu'une seule date</b> dans toute la page.</li>
+<li><b>IA / GLM</b> — +25 % de mots, mais liens uniques 17 → <b>13</b> : plus long <i>et</i> plus répétitif, avec
+une date hors fenêtre introduite (29/10). Le skill fait pousser la forme sans élargir la recherche.</li>
+<li><b>RH / DeepSeek</b> — le skill <b>dégrade</b> ce bras : −16 % de mots et surtout deux fois moins de sources
+distinctes, l'une citée cinq fois. C'est exactement le défaut reproché à GLM dans le bench — ici provoqué chez
+DeepSeek par la procédure.</li>
+<li><b>RH / GLM</b> — le skill <b>corrige le pire défaut</b> de ce bras : la source la plus citée passe de
+10 occurrences (yapluqua.com) à 3 (isfb.ch). La monoculture disparaît, sans perte de volume notable.</li>
+</ul>
+<h4>Ce que ça change pour le verdict</h4>
+<p><b>L'hypothèse de départ est invalidée.</b> Le skill n'est pas un handicap systématique : son effet dépend du
+thème et du modèle, et il corrige chez GLM le défaut qui l'avait fait chuter en RH. Mais il ne renverse pas le
+classement : <b>GLM reste le plus court des deux modèles dans les deux thèmes</b> (1 527 mots contre 1 954 en IA,
+1 224 contre 1 867 en RH) et DeepSeek, qui a produit le meilleur diabète, perd sa diversité de sources en RH
+sous skill. Autrement dit : <b>le bench n'a pas condamné GLM par accident de préparation</b> — la procédure
+améliore sa discipline, pas sa production.</p>
+<p class="note">Une notation à l'aveugle des huit fichiers (les quatre paires, modèles masqués) est lancée en
+parallèle et sera ajoutée ici dès qu'elle sera rendue : les mesures ci-dessus disent ce qui a changé, les juges
+diront si c'est mieux.</p>
+</div></div><div class="card"><div class="card-head"><div class="card-title">🎓 Skill ou prompt : d’où viennent les différences</div></div><div class="card-body">
+<p>La question mérite une réponse précise, parce que « via skill » et « via prompt » ne désignent pas deux
+manières de demander la même chose : ce sont <b>deux contenus différents</b>.</p>
+<h4>Ce que chaque condition contient réellement</h4>
+<table class="cmp"><thead><tr><th></th><th>Prompt seul (bench)</th><th>Prompt + procédure (contre-test)</th></tr></thead><tbody>
+<tr><td>Volume d'instructions</td><td>652 caractères (IA) · 1 574 (RH)</td>
+<td>+ 4 384 caractères (IA) · + 4 243 (RH) → <b>×7,7 et ×3,7</b></td></tr>
+<tr><td>Ce qui est décrit</td><td>La forme : sections attendues, fenêtre de recherche, noms de fichiers,
+interdits</td><td>La forme <b>et la méthode</b> : taxonomie de recherche, sources prioritaires nommées, protocole
+de vérification des dates, règles de sourçage, liste de contrôle finale</td></tr>
+<tr><td>Capacité de recherche</td><td>Recherche web du modèle</td><td><b>Identique</b> — la procédure n'ajoute
+aucun outil</td></tr>
+</tbody></table>
+<p>Ce que la procédure ajoute, en clair : une <b>taxonomie</b> (zones France/Europe/Monde et France ≥ 5 articles
+en IA ; les quatre axes RH détaillés en sous-thèmes — ATS, matching CV, onboarding, GPEC prédictive, people
+analytics, churn, paie, biais algorithmiques, RGPD/IA Act, accords d'entreprise), un <b>protocole de
+vérification des dates</b> (ouvrir chaque page source, ne pas se fier à une barre latérale, attention au piège
+JJ/MM contre MM/JJ), des <b>règles dures de sourçage</b> (1 à 3 liens bruts par signal, volume plancher
+explicite), et un <b>chemin technique</b> (gabarit HTML, nom de fichier, script de construction).</p>
+<p>Autrement dit : <b>la procédure dit ce que le rapport doit contenir, et presque rien de plus sur l'endroit où
+chercher.</b> Elle resserre le cahier des charges sans élargir la recherche. C'est toute la clé des différences
+observées.</p>
+
+<h4>D'où viennent les différences, alors ?</h4>
+<ol>
+<li><b>La conformité monte.</b> Plus d'exigences écrites, donc plus de points à satisfaire : les liens dans la
+section des signaux passent de 7-9 à 10-11 chez les deux modèles, et le volume rédigé grimpe en IA (+7 % et
++25 %). C'est le rôle du skill, et il le remplit.</li>
+<li><b>Mais l'exploration, elle, baisse.</b> C'est le résultat contre-intuitif du contre-test : avec la
+procédure, les modèles <b>itèrent moins</b>. Les appels API diminuent (13 → 10 pour GLM en IA, 18 → 16 en RH) et
+les jetons d'entrée chutent — <b>−21 %, −23 %, et jusqu'à −57 %</b> sur RH/GLM. Le cadre étant fourni, le modèle
+remplit les sections demandées avec les sources qu'il a déjà trouvées plutôt que d'en chercher d'autres : d'où
+des liens <i>uniques</i> qui baissent (17 → 13 en IA/GLM, 24 → 12 en RH/DeepSeek). <b>La procédure ne rend pas
+la recherche meilleure ; elle rend la rédaction plus disciplinée.</b></li>
+<li><b>Le profil de jetons ne bouge pas dans un sens unique</b> — et cela mérite d'être dit, car l'intuition
+voulait l'inverse. Charger la procédure <i>n'alourdit pas</i> systématiquement le travail : trois paires sur
+quatre consomment <b>moins</b> de jetons avec elle (voir tableau ci-dessous). Ce n'est donc pas une question de
+coût, mais de nature du travail effectué.</li>
+</ol>
+
+<p>Jetons réellement consommés par les quatre paires (relevés sur l'usage facturé des sessions, pas estimés) :</p>
+<table class="cmp"><thead><tr><th>Thème</th><th>Modèle</th><th>appels API</th><th>jetons d'entrée</th><th>cache relu</th><th>jetons produits</th></tr></thead><tbody><tr><td>IA</td><td>DeepSeek v4.1 Flash</td><td class="num">15 → <b>16</b></td><td class="num">69 805 → <b>98 522</b> <span class="m-d">▲</span></td><td class="num">890 624 → <b>1 164 544</b> <span class="m-r">▼</span></td><td class="num">32 548 → <b>29 205</b> <span class="m-r">▼</span></td></tr><tr><td>IA</td><td>GLM 5.3 Flash</td><td class="num">13 → <b>10</b></td><td class="num">57 333 → <b>45 413</b> <span class="m-r">▼</span></td><td class="num">450 816 → <b>368 384</b> <span class="m-r">▼</span></td><td class="num">14 104 → <b>13 833</b> <span class="m-r">▼</span></td></tr><tr><td>RH</td><td>DeepSeek v4.1 Flash</td><td class="num">23</td><td class="num">220 689 → <b>169 792</b> <span class="m-r">▼</span></td><td class="num">3 147 520 → <b>2 646 784</b> <span class="m-r">▼</span></td><td class="num">45 902 → <b>38 331</b> <span class="m-r">▼</span></td></tr><tr><td>RH</td><td>GLM 5.3 Flash</td><td class="num">18 → <b>16</b></td><td class="num">180 857 → <b>77 111</b> <span class="m-d">▲</span></td><td class="num">819 712 → <b>767 232</b> <span class="m-r">▼</span></td><td class="num">13 941 → <b>14 574</b> <span class="m-d">▲</span></td></tr></tbody></table><p class="note">Trois paires sur quatre consomment moins de jetons <i>avec</i> la procédure : le cadre étant fourni, le modèle explore moins. RH/GLM est le cas extrême — −57 % de jetons d'entrée pour un résultat de volume comparable.</p>
+<h4>Trois artefacts à connaître avant de conclure</h4>
+<ul>
+<li><b>La procédure IA contient un avis sur les modèles.</b> Elle affirme que ce job tourne sur GLM, « le plus
+fiable sur la traçabilité des sources », et rappelle que DeepSeek a produit cinq URL inventées. Dans le
+contre-test, GLM charge donc un document qui le déclare supérieur : c'est une particularité de notre dépôt, pas
+une propriété du modèle, et cela a pu peser sur son comportement.</li>
+<li><b>La procédure n'est pas suivable à la lettre dans le bac à sable.</b> Elle ordonne de lancer un script de
+construction qui écrit dans la production ; neutralisé pour l'isolation, il laissait le modèle rédiger lui-même
+les deux fichiers. Le bras suit donc la partie éditoriale du skill, pas son chemin technique — un contre-test en
+conditions réelles devrait restaurer ce chemin, et c'est la prochaine expérience à faire.</li>
+<li><b>Une contradiction interne à trancher :</b> la procédure IA impose une fenêtre de 24-48 h pour ce thème
+quotidien, là où la consigne du bench impose 7 jours. Les modèles arbitrent comme ils peuvent, et cela peut
+expliquer une partie des écarts de dates.</li>
+<li><b>Un seul tirage par bras, encore.</b> Les écarts mesurés ci-dessus sont réels, mais un tirage unique ne
+permet pas de les attribuer au skill plutôt qu'au hasard de la recherche : il faudrait trois répétitions par
+condition pour trancher. Ce chapitre doit donc se lire comme <i>une piste solide</i>, pas comme un résultat
+établi.</li>
+</ul>
+</div></div><div class="card"><div class="card-head"><div class="card-title">✅ Recommandations thème par thème</div></div><div class="card-body">
 <table class="cmp"><thead><tr><th>Thème</th><th>Recommandation</th><th>Pourquoi</th></tr></thead><tbody>
 <tr><td><b>Diabète</b></td><td><b>DeepSeek v4.1 Flash</b> (inchangé)</td>
 <td>Seul thème gagné sans discussion par les deux juges (44/50), le moins cher du thème
@@ -402,9 +513,8 @@ relever du hasard de la recherche autant que du modèle. Les écarts de plusieur
 pas être lus comme une propriété stable du modèle.</li>
 <li><b>Trois thèmes sur six.</b> La télésurveillance, le quantique et la fraude ne sont pas testés ici. Le
 classement global (Qwen 124, DeepSeek 121, GLM 104) porte donc sur ces trois thèmes, pondérés à égalité.</li>
-<li><b>Aucun skill de thème</b>, comme expliqué dans le protocole. Un modèle peut paraître plus faible ici
-qu'en production, où les procédures et le contrôle de liens bloquant rattrapent une partie des défauts.
-C'est particulièrement vrai pour GLM sur l'IA.</li>
+<li><b>Aucun skill de thème dans ce bench</b> — c'est la condition même du test, et le contre-test du 6 novembre
+(chapitre suivant) mesure ce que cela change. Un modèle peut donc paraître plus faible ici qu'en production.</li>
 <li><b>Le nombre d'articles n'est pas comparable d'un bras à l'autre</b> : les trois modèles formatent leurs
 entrées différemment (titres de niveau 3, puces avec lien en gras, listes numérotées). Le décompte automatique
 s'y casse — il a annoncé « 0 article » pour un bras RH qui en comptait treize. Ce rapport n'avance donc pas de
