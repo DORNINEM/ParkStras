@@ -1,0 +1,312 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.tricolor{background:linear-gradient(90deg,#0055a4,var(--panel) 50%,#ef4135);color:var(--ink);border-color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-IA-2026-11-06.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par GLM 5.3 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 13 articles</span>
+    <span class="pill green">📅 6 novembre 2026</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 5</span>
+    <span class="pill yellow">🧭 5 signaux faibles</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">Meta réduit ses effectifs français d'un tiers pour financer sa transition vers l'IA</a></h3>
+<div class="meta">ZDNet France • 05/11/2026</div>
+<p>Meta France organise le départ d'une centaine de salariés via une rupture conventionnelle collective, soit environ un tiers de ses effectifs locaux, pour rediriger les moyens vers son basculement vers l'IA. Un signal fort sur la réallocation du capital et de l'emploi des filiales européennes des géants américains.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/actualites/lire-les-editeurs-francais-accelerent-l-adoption-de-l-ia-100914.html" target="_blank">Les éditeurs français accélèrent l'adoption de l'IA (Top 250 EY-Numeum)</a></h3>
+<div class="meta">Le Monde Informatique • 05/11/2026</div>
+<p>Selon le Top 250 EY-Numeum 2026, 80 % des éditeurs français de logiciels ont déjà intégré des fonctions d'IA dans leurs offres, devant le cloud et le SaaS : l'IA devient la priorité technologique numéro un du logiciel hexagonal, avec des investissements concentrés sur les fonctions d'assistance et de génération.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/boom-des-datacenters-en-ile-de-france-mais-des-tensions-a-gerer-507350.htm" target="_blank">Boom des datacenters en Île-de-France, mais des tensions à gérer</a></h3>
+<div class="meta">ZDNet France • 05/11/2026</div>
+<p>En vingt ans, l'Île-de-France est passée d'une dizaine à plus de 150 datacenters, tirés par l'IA et la course à l'attractivité. Mais plusieurs zones font face à des tensions sur les ressources (électricité, eau, foncier), qui redessinent la géographie des grands projets de calcul.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.idboox.com/news-livres/10-editeurs-independants-francais-sunissent-et-ripostent-face-a-lia/" target="_blank">10 éditeurs indépendants français s'unissent face à l'IA et créent l'ADEPIA</a></h3>
+<div class="meta">Idboox • 05/11/2026</div>
+<p>Dix maisons d'édition indépendantes françaises créent l'ADEPIA pour agir collectivement et obtenir des réparations des sociétés d'IA qui ont utilisé leurs ouvrages sans autorisation pour entraîner leurs modèles. Une structuration inédite de la riposte du petit patrimoine éditorial.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.politico.eu/article/france-us-clash-ai-safety-talks-a-g7/" target="_blank">Sûreté de l'IA au G7 : clash entre la France et les États-Unis</a></h3>
+<div class="meta">Politico.eu • 05/11/2026</div>
+<p>La proposition française de coordination G7 sur la sûreté de l'IA avancée a été bloquée par Washington, qui la qualifie de « bureaucratie inutile ». La ministre du Numérique Anne Le Hénanff en a débattu au Sénat : la coopération internationale sur l'IA reste clivée entre régulateurs et partisans du libre marché.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.politico.eu/article/commission-turns-to-artificial-intelligence-to-write-better-laws/" target="_blank">La Commission européenne utilise l'IA pour rédiger de meilleures lois</a></h3>
+<div class="meta">Politico.eu • 04/11/2026</div>
+<p>Dans son rapport annuel sur la simplification, la Commission annonce employer des outils d'IA en interne pour rédiger des textes, repérer les chevauchements réglementaires et simplifier les règles existantes. L'institution qui encadre l'IA devient elle-même utilisatrice — et le Parlement s'en inquiète.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/actualites/lire-le-parlement-europeen-met-en-garde-contre-les-derives-de-l-ia-100915.html" target="_blank">Le Parlement européen met en garde contre les dérives de l'IA</a></h3>
+<div class="meta">Le Monde Informatique • 05/11/2026</div>
+<p>L'usage croissant de l'IA pour rédiger des amendements alerte les eurodéputés, qui préparent de nouvelles recommandations pour garantir transparence, vérification humaine et responsabilité démocratique. Un contrepoint direct à la stratégie de simplification de la Commission.</p>
+</div>
+<div class="item">
+<h3><a href="https://tech-insider.org/fr/souverainete-ia-europeenne-mensch-controles-exportation-2026/" target="_blank">Souveraineté IA : Arthur Mensch alerte avant le sommet informel de Dublin</a></h3>
+<div class="meta">Tech-Insider • 04/11/2026</div>
+<p>Le patron de Mistral avertit que l'Europe risque un « piège complet » en dépendant des modèles américains et chinois, à l'approche du sommet informel de Dublin consacré à la souveraineté et aux infrastructures IA. Il plaide pour des capacités européennes et des garde-fous sur les contrôles à l'exportation.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/" target="_blank">OpenAI : des agents IA trouvent et corrigent 948 vulnérabilités du noyau Linux</a></h3>
+<div class="meta">The Neuron • 05/11/2026</div>
+<p>Un pipeline de sécurité autonome d'OpenAI a découvert, validé et corrigé 948 failles d'élévation de privilèges locales du noyau Linux en une seule exécution, pour un coût d'environ 1,2 M$. GPT-6 Cyber a construit des exploits fonctionnels, dont de nombreuses vulnérabilités jusque-là inconnues — un tournant pour la cyberdéfense comme pour la cyberattaque.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.mercurynews.com/2026/11/05/anthropic-rapid-ai-development/" target="_blank">Anthropic accélère le développement de l'IA malgré les appels au ralentissement</a></h3>
+<div class="meta">Mercury News • 05/11/2026</div>
+<p>L'analyse de METR montre qu'Anthropic améliore les capacités de ses modèles environ deux fois plus vite qu'un an plus tôt, en partie grâce à l'assistance de l'IA dans son propre développement. L'information tombe alors que l'entreprise prépare une importante introduction en Bourse.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.bitdoze.com/news/2026-11-05/" target="_blank">OpenAI va acquérir Pierre Computer pour renforcer Codex</a></h3>
+<div class="meta">Bitdoze • 05/11/2026</div>
+<p>OpenAI s'apprête à racheter Pierre Computer pour intégrer du stockage basé sur Git et de la navigation de code à Codex. L'agentique de développement se dote d'une couche d'outils de versioning native — après Meta, qui a acquis Conductor pour ses agents de codage parallèles.</p>
+</div>
+<div class="item">
+<h3><a href="https://savedelete.com/news/archive/2026/11/05/" target="_blank">Google DeepMind : Gemini Omni 1.2 Flash disponible, vidéos IA de 15 s et prix -30 %</a></h3>
+<div class="meta">Savedelete • 05/11/2026</div>
+<p>Gemini Omni 1.2 Flash passe en disponibilité générale avec des clips vidéo IA étendus à 15 secondes et des tarifs réduits de 30 %. Google appuie sur la guerre des prix multimodaux, pendant que les benchmarks SemiAnalysis placent la gamme Gemini au coude-à-coude d'Anthropic à un tiers du coût par tâche.</p>
+</div>
+<div class="item">
+<h3><a href="https://postcutoff.com/news/" target="_blank">Anthropic signe son premier accord de licence payante avec l'Associated Press</a></h3>
+<div class="meta">Postcutoff • 05/11/2026</div>
+<p>Anthropic conclut son premier accord de licence de contenu avec l'Associated Press : des données électorales en temps réel et attribuées pour Claude pendant la couverture des midterms américaines. Un revirement notable pour l'entreprise qui refusait jusque-là les deals éditeurs pratiqués par OpenAI.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles à surveiller</div></div>
+<div class="card-body">
+<div class="signal"><h4>1. L'IA entre massivement dans l'appareil productif français</h4><p>80 % des éditeurs de logiciels français intègrent déjà l'IA dans leurs offres et Meta réaffecte un tiers de ses effectifs français vers sa transition : l'IA n'est plus un projet annexe mais le centre de la réallocation du capital et de l'emploi. À suivre : les prochaines restructurations « pour l'IA » en France.</p><div class="src"><a href="https://www.lemondeinformatique.fr/actualites/lire-les-editeurs-francais-accelerent-l-adoption-de-l-ia-100914.html" target="_blank">https://www.lemondeinformatique.fr/actualites/lire-les-editeurs-francais-accelerent-l-adoption-de-l-ia-100914.html</a> · <a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm</a></div></div>
+<div class="signal"><h4>2. Cyber : l'IA offensive autonome devient une réalité industrielle</h4><p>GPT-6 Cyber d'OpenAI a exploité 948 failles du noyau Linux de façon autonome pendant que Mistral décline Large 4 en version Cyber offensive : défense et attaque assistées par IA passent du laboratoire au produit. À suivre : les cadres d'encadrement du double usage en Europe.</p><div class="src"><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/" target="_blank">https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/</a> · <a href="https://www.itforbusiness.fr/mistral-large-4-poids-ouverts-version-cyber-109313" target="_blank">https://www.itforbusiness.fr/mistral-large-4-poids-ouverts-version-cyber-109313</a></div></div>
+<div class="signal"><h4>3. Les tensions territoriales et de ressources autour des data centers s'aiguisent</h4><p>Plus de 150 datacenters en Île-de-France et des ressources (électricité, eau, foncier) sous tension : l'acceptabilité devient le principal facteur de risque des plans de calcul. À suivre : les recours en cours et les règles de raccordement que RTE ajuste sans moratoire.</p><div class="src"><a href="https://www.zdnet.fr/actualites/boom-des-datacenters-en-ile-de-france-mais-des-tensions-a-gerer-507350.htm" target="_blank">https://www.zdnet.fr/actualites/boom-des-datacenters-en-ile-de-france-mais-des-tensions-a-gerer-507350.htm</a></div></div>
+<div class="signal"><h4>4. Droits d'auteur : du conflit au deal encadré</h4><p>Dix éditeurs français créent l'ADEPIA pour obtenir des réparations pendant qu'Anthropic signe son premier accord payant avec l'Associated Press : le contentieux se mue en marché de licences. À suivre : l'effet d'entraînement sur les négociations avec les éditeurs européens.</p><div class="src"><a href="https://www.idboox.com/news-livres/10-editeurs-independants-francais-sunissent-et-ripostent-face-a-lia/" target="_blank">https://www.idboox.com/news-livres/10-editeurs-independants-francais-sunissent-et-ripostent-face-a-lia/</a> · <a href="https://postcutoff.com/news/" target="_blank">https://postcutoff.com/news/</a></div></div>
+<div class="signal"><h4>5. L'IA rédige la loi qui l'encadre — et ça inquiète</h4><p>La Commission européenne utilise l'IA pour rédiger et simplifier ses textes pendant que le Parlement s'alerte sur les amendements générés et que le G7 se déchire sur la sûreté : l'IA devient un acteur du processus législatif. À suivre : les recommandations parlementaires et l'échéance AI Act du 2 décembre 2026.</p><div class="src"><a href="https://www.politico.eu/article/commission-turns-to-artificial-intelligence-to-write-better-laws/" target="_blank">https://www.politico.eu/article/commission-turns-to-artificial-intelligence-to-write-better-laws/</a> · <a href="https://www.lemondeinformatique.fr/actualites/lire-le-parlement-europeen-met-en-garde-contre-les-derives-de-l-ia-100915.html" target="_blank">https://www.lemondeinformatique.fr/actualites/lire-le-parlement-europeen-met-en-garde-contre-les-derives-de-l-ia-100915.html</a> · <a href="https://www.politico.eu/article/france-us-clash-ai-safety-talks-a-g7/" target="_blank">https://www.politico.eu/article/france-us-clash-ai-safety-talks-a-g7/</a></div></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item"><p>La semaine qui vient : le sommet informel de Dublin pourrait faire de la souveraineté IA un sujet politique majeur côté UE, avec Mistral en vitrine et en cible ; l'échéance AI Act du 2 décembre (marquage des contenus génératifs) approche pour les plateformes européennes ; et la baisse des prix multimodaux chez Google annonce une phase de compression des marges chez les fournisseurs d'API. En arrière-plan, l'entrée d'Anthropic en Bourse et l'accélération mesurée par METR raviveront le débat sur le rythme « soutenable » du progrès.</p></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.maddyness.com/2026/11/05/mistral-ai-soffre-une-cinquieme-acquisition-depuis-le-debut-de-lannee/" target="_blank">Mistral AI acquiert SkipLabs, cinquième acquisition de l'année</a></h3>
+<div class="meta">Maddyness • 05/11/2026</div>
+<p>Mistral s'offre SkipLabs, startup française spécialisée dans la génération de code par IA plus rapide, fiable et sécurisée. Il s'agit du cinquième rachat de 2026, après des opérations dans le cloud et l'IA industrielle : la pile « IA générative pour le code » se consolide en interne.</p>
+</div>
+<div class="item">
+<h3><a href="https://docs.mistral.ai/resources/release-notes" target="_blank">Mistral Studio : agents gérés, workflows en langage naturel et connecteurs HTTP</a></h3>
+<div class="meta">Docs Mistral (release notes) • 05/11/2026</div>
+<p>Le 5 novembre, Mistral déploie des agents gérés pour les workflows autonomes, un constructeur de workflows en langage naturel, des connecteurs HTTP via API et des améliorations d'observabilité et d'évaluation dans Mistral Studio. L'offre plateforme rattrape les suites agentiques des concurrents américains.</p>
+</div>
+<div class="item">
+<h3><a href="https://tech-insider.org/fr/ia-europeenne-lescure-mistral-dependance-modeles-frontiere-2026/" target="_blank">Lescure met en garde contre une dépendance excessive à Mistral (11,7 Md€)</a></h3>
+<div class="meta">Tech-Insider • 05/11/2026</div>
+<p>Le ministre Roland Lescure alerte sur le risque de dépendance à un seul acteur pour la souveraineté IA européenne, alors que Mistral publie son modèle Large 4 et pèse 11,7 milliards d'euros. Un débat vertueux : soutenir la championne tout en exigeant un écosystème diversifié.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.itforbusiness.fr/mistral-large-4-poids-ouverts-version-cyber-109313" target="_blank">Mistral Large 4 (Le Chonk) : poids ouverts, 1T paramètres, version Cyber offensive</a></h3>
+<div class="meta">IT for Business • 03/11/2026</div>
+<p>Mistral publie les poids ouverts de Large 4, un MoE de 1 000 milliards de paramètres entraîné sur des GPU européens, fort en codage, cybersécurité et raisonnement. Une déclinaison Cyber offensive est destinée aux tests d'intrusion et à la réponse à incident — entre souveraineté et double usage.</p>
+</div>
+<div class="item">
+<h3><a href="https://tech-insider.org/fr/souverainete-ia-europeenne-mensch-controles-exportation-2026/" target="_blank">Souveraineté IA : les trois risques listés par Arthur Mensch (Dublin)</a></h3>
+<div class="meta">Tech-Insider • 04/11/2026</div>
+<p>À l'approche du sommet informel de Dublin, Mensch détaille trois risques : dépendance aux modèles étrangers, contrôle des infrastructures, contrôles à l'exportation imposés de l'extérieur. Le plaidoyer d'un acteur européen pour une chaîne de valeur IA continentale intégrée.</p>
+</div>
+</div>
+</div>
+  <footer>
+    <p>Généré le 2026-11-06 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-11-06.md + .html</p>
+    <p>Corpus : 13 articles d'actualité (France 5 / Europe 3 / Monde 5) + 5 articles Focus Mistral. Dates de publication vérifiées sur chaque page source.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>
