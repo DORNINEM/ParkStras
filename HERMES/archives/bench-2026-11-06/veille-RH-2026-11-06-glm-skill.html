@@ -1,0 +1,213 @@
+<!doctype html><html lang="fr" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 6 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --teal:#40dcff;
+    --danger:#ff5c7a;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:18px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --accent:#0ea5e9; --accent-2:#6366f1; --teal:#0ea5e9; --danger:#e11d48;
+    --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Rajdhani','Segoe UI',Roboto,-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif;
+    background:
+      radial-gradient(900px 600px at 110% -10%,rgba(64,220,255,.12),transparent),
+      radial-gradient(900px 600px at -10% 10%,rgba(255,179,71,.10),transparent),
+      var(--bg);
+    color:var(--ink); line-height:1.65;
+  }
+  .mono{font-family:'Share Tech Mono',ui-monospace,monospace}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+  header{
+    display:grid; grid-template-columns:1fr auto; align-items:center; gap:14px;
+    padding:22px 22px 20px; border:1px solid var(--border);
+    background:linear-gradient(180deg,#0b1220,var(--panel));
+    border-radius:var(--radius); color:#fff; box-shadow:var(--shadow);
+    border-top:3px solid var(--accent);
+  }
+  header h1{font-size:1.6rem;margin:0;letter-spacing:.02em}
+  header p{margin:2px 0 0;opacity:.85;font-size:.95rem}
+  header time{font-variant-numeric:tabular-nums;font-family:'Share Tech Mono',monospace;color:var(--accent);font-size:1.05rem}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+  .kpi{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:14px;padding:14px 16px}
+  .kpi .label{font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+  .kpi .value{font-size:1.5rem;margin-top:4px;font-weight:700;color:var(--accent)}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+  .pill.blue{background:var(--accent);color:#01202b;border-color:var(--accent)}
+  .pill.green{background:#10b981;color:#04281c;border-color:#10b981}
+  .pill.yellow{background:var(--accent-2);color:#2b1a02;border-color:var(--accent-2)}
+  h2.axis{
+    font-size:1.15rem;margin:30px 2px 12px;padding-left:10px;
+    border-left:4px solid var(--accent);letter-spacing:.03em;
+  }
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:var(--radius);box-shadow:var(--shadow);border-left:3px solid var(--teal)}
+  .card.risk{border-left-color:var(--danger)}
+  .card-body{padding:14px 18px 18px}
+  .item h3{margin:0 0 6px;font-size:1rem;line-height:1.4}
+  .item h3 a{color:var(--accent-2);text-decoration:none}
+  .item h3 a:hover{text-decoration:underline}
+  .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px;font-family:'Share Tech Mono',monospace}
+  .meta .src{color:var(--accent);font-family:'Rajdhani',sans-serif;font-weight:600}
+  .item p{margin:0;font-size:.93rem}
+  footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);margin-top:34px}
+  footer p{margin:4px 0}
+  .sig{margin:14px 0;padding:12px 16px;border:1px solid var(--border);border-radius:14px;background:var(--panel)}
+  .sig b{color:var(--accent)}
+  .sig .srcs{font-size:.8rem;color:var(--muted);word-break:break-all;margin-top:6px;font-family:'Share Tech Mono',monospace}
+  .sig .srcs a{color:var(--accent-2)}
+  .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+    font-size:13px;font-weight:600;letter-spacing:.06em;padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+    border:1px solid var(--border);background:var(--panel);color:var(--ink);
+    box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+  @media (min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+  @media (min-width:1080px){.grid{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🧭 Veille IA &amp; Mutations RH</h1>
+      <p>Banque · Assurance · Informatique — fenêtre 30/10 → 06/11/2026 · généré par ORAC (Hermes)</p>
+    </div>
+    <time datetime="2026-11-06">06/11/2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles</div><div class="value">11</div></div>
+    <div class="kpi"><div class="label">Sources vérifiées</div><div class="value">10</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Signaux faibles</div><div class="value">5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 11 articles</span>
+    <span class="pill green">📅 Dates contrôlées sur page source</span>
+    <span class="pill yellow">🎯 Focus banque / assurance / informatique</span>
+  </div>
+
+  <h2 class="axis">1 · IA dans les métiers RH</h2>
+  <div class="grid">
+    <div class="card"><div class="card-body">
+      <h3><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank">Les institutions financières accélèrent leur transition vers l'IA multi-agents</a></h3>
+      <div class="meta"><span class="src">Capgemini (communiqué)</span> • 05/11/2026</div>
+      <p>Le World Cloud Report for Financial Services 2027 : 59 % des banques et assureurs expérimentent ou déploient des systèmes d'IA multi-agents sur les processus métier, mais 10 % seulement ont une orchestration à l'échelle de l'entreprise. Implication directe pour les RH : redéfinition des rôles, gouvernance des agents et montée en compétences des équipes qui les supervisent.</p>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <h3><a href="https://www.hrtechnologiesfrance.com/news-sponsors/quand-l-ia-agentique-transforme-le-r-le-du-drh" target="_blank">Quand l'IA agentique transforme le rôle du DRH</a></h3>
+      <div class="meta"><span class="src">HR Technologies France (Septeo HR)</span> • 05/11/2026</div>
+      <p>Avec l'essor de l'IA agentique, l'organisation du travail se réinvente : entre collaborateurs et agents IA qui agissent et exécutent en autonomie, le DRH devient l'architecte d'une organisation hybride humains-agents — allocation des tâches, supervision, contrôles et nouvelles règles du jeu managérial.</p>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <h3><a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/" target="_blank">IA et recrutement : qui assume la décision ? La réponse de Fabian Caldarella</a></h3>
+      <div class="meta"><span class="src">myRHline</span> • 02/11/2026</div>
+      <p>Dans l'étude « Recrutement 2040 » (myRHline × Teamtailor), le directeur du recrutement d'Artemys défend un recruteur qui garde la main : « On peut automatiser énormément de choses, mais on ne doit pas automatiser la responsabilité. » Matching IA et scoring bienvenus, mais décision finale et explication restent humaines.</p>
+    </div></div>
+  </div>
+
+  <h2 class="axis">2 · Évolutions des compétences</h2>
+  <div class="grid">
+    <div class="card"><div class="card-body">
+      <h3><a href="https://www.lesechos.fr/travailler-mieux/vie-au-travail/je-predis-que-la-plupart-des-pdg-de-demain-seront-des-drh-pourquoi-lia-pourrait-changer-la-vie-des-responsables-des-ressources-humaines-2261166" target="_blank">« Je prédis que la plupart des PDG de demain seront des DRH »</a></h3>
+      <div class="meta"><span class="src">Les Échos</span> • 05/11/2026</div>
+      <p>Selon Heidrick &amp; Struggles, 76 % des 600 DRH interrogés dans le monde font de la préparation des collaborateurs à l'IA une priorité des 2-3 prochaines années, mais un quart seulement juge leur fonction efficace, et 64 % des DRH français regrettent un financement insuffisant. L'IA propulse la fonction RH au centre des décisions — si l'écart de maturité est comblé.</p>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <h3><a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1" target="_blank">Deutsche Bank Private Bank launches AI Academy for more than 20,000 employees</a></h3>
+      <div class="meta"><span class="src">Deutsche Bank</span> • 05/11/2026</div>
+      <p>La PB AI Academy propose des parcours adaptés aux métiers, du prompting et de l'usage responsable jusqu'aux agents IA et à l'IA agentique. Déjà ouverte à 3 500 collaborateurs, elle sera étendue à plus de 20 000 salariés ; le déploiement en Allemagne passera par une consultation des représentants du personnel (S1 2027) — modèle de montée en compétences à grande échelle.</p>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <h3><a href="https://br.advfn.com/noticias/PRNUS/2026/artigo/99643233" target="_blank">Zenarate joins Jobs2030 to help upskill 100,000 banking and fintech professionals</a></h3>
+      <div class="meta"><span class="src">PR Newswire (via ADVFN)</span> • 05/11/2026</div>
+      <p>Jobs2030, coalition britannique fondée par Zopa Bank et ClearScore, vise à former 100 000 professionnels de la banque et de la fintech aux compétences IA générative d'ici 2030 — modules de 40 minutes, parcours Operations, Engineering, Product, avec des volets RH et Compliance annoncés. La plus grande initiative d'upskilling IA du secteur financier britannique s'élargit.</p>
+    </div></div>
+  </div>
+
+  <h2 class="axis">3 · Risques &amp; défis</h2>
+  <div class="grid">
+    <div class="card risk"><div class="card-body">
+      <h3><a href="https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-5-novembre-2026" target="_blank">Séance plénière du 5 novembre 2026 — décisions individuelles entièrement automatisées (art. 22 RGPD)</a></h3>
+      <div class="meta"><span class="src">CNIL</span> • 05/11/2026</div>
+      <p>La CNIL a inscrit à sa plénière une communication sur les décisions individuelles entièrement automatisées (article 22 du RGPD) — socle qui interdit déjà les rejets de candidatures 100 % automatisés sans intervention humaine — et une note CNIL/CIANum « IA agentique et données personnelles ». Signal fort pour les systèmes RH à haut risque (AI Act : application au 2 décembre 2027).</p>
+    </div></div>
+    <div class="card risk"><div class="card-body">
+      <h3><a href="https://www.isfb.ch/2026/10/30/ia-et-deskilling-lenvers-des-gains-de-productivite/" target="_blank">IA et deskilling : l'envers des gains de productivité</a></h3>
+      <div class="meta"><span class="src">ISFB — Observatoire des compétences</span> • 30/10/2026</div>
+      <p>Le centre de formation du secteur bancaire romand alerte : en déléguant recherche, synthèse et rédaction à l'IA, les collaborateurs bancaires risquent l'érosion des savoir-faire fondamentaux. Réponse proposée : apprendre à formuler, vérifier et garder l'œil critique — compétences que l'IA ne remplace pas — via la formation continue dédiée.</p>
+    </div></div>
+    <div class="card risk"><div class="card-body">
+      <h3><a href="https://www.bankingdive.com/news/banking-ai-agents-threaten-customer-relationships-human-personetics/873706/" target="_blank">Banks should play up human touch to stand out in AI era</a></h3>
+      <div class="meta"><span class="src">Banking Dive</span> • 04/11/2026</div>
+      <p>Alors que les agents IA passent de l'analyse à l'action, JPMorgan, Bank of America et Citi bloquent leur accès aux comptes clients ; Wells Fargo informe ses clients de leurs responsabilités. Fitch évalue un risque modéré de disruption à 5 ans. Pour l'emploi bancaire, la « chaîne humaine » (conseillers, agences) reste le différenciateur — et le socle des métiers à préserver.</p>
+    </div></div>
+  </div>
+
+  <h2 class="axis">4 · Dispositifs d'accompagnement</h2>
+  <div class="grid">
+    <div class="card"><div class="card-body">
+      <h3><a href="https://www.fintechfutures.com/publications/banking-technology-magazine/banking-technology-magazine-november-2026-issue-out-now" target="_blank">Banking Technology Magazine November 2026 : le dossier IA-emploi des banques</a></h3>
+      <div class="meta"><span class="src">FinTech Futures</span> • 02/11/2026</div>
+      <p>Le numéro cartographie les suppressions liées à l'IA dans la banque (Barclays ~5 000 postes, HSBC wealth management, DNB ~400, NAB jusqu'à 2 500) et consacre sa couverture à DORA : intégrer l'IA en sécurité dans l'ingénierie. Les plans privilégient départs volontaires, non-remplacements et reconversion — mais la pression sociale monte dans le secteur.</p>
+    </div></div>
+    <div class="card"><div class="card-body">
+      <h3><a href="https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank">Séminaire Swiss Banking sur l'IA générative au travail : de l'adoption à l'appropriation</a></h3>
+      <div class="meta"><span class="src">ISFB</span> • 03/11/2026</div>
+      <p>Le centre de formation bancaire suisse poursuit sa série « De l'adoption à l'appropriation de l'IA générative au travail » avec un Monthly Special le 10 novembre : compétences, identité professionnelle, autonomie, charge cognitive et santé au travail. Une méthode d'accompagnement qui croise sciences de l'éducation et psychologie pour ancrer l'IA dans les métiers bancaires sans diluer l'expertise humaine.</p>
+    </div></div>
+  </div>
+
+  <h2 class="axis">📊 Synthèse — 5 signaux faibles à surveiller</h2>
+  <div class="card"><div class="card-body">
+    <div class="sig"><b>1. L'orchestration des agents devient le vrai chantier RH.</b> 59 % des banques/assureurs déploient des agents, 10 % seulement les orchestrent : un gouffre de gouvernance que les DRH devront structurer (rôles, permissions, supervision des agents comme des collaborateurs).
+      <div class="srcs">Sources : <a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html">globenewswire.com</a> · <a href="https://www.hrtechnologiesfrance.com/news-sponsors/quand-l-ia-agentique-transforme-le-r-le-du-drh">hrtechnologiesfrance.com</a></div></div>
+    <div class="sig"><b>2. La responsabilité humaine s'affirme comme la ligne rouge du recrutement augmenté.</b> Recruteurs (Caldarella), autorités (CNIL, art. 22) et banques (blocage des agents IA sur les comptes clients) convergent : l'IA prépare, l'humain décide.
+      <div class="srcs">Sources : <a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/">myrhline.com</a> · <a href="https://www.cnil.fr/fr/ordre-du-jour-de-la-seance-pleniere-du-5-novembre-2026">cnil.fr</a> · <a href="https://www.bankingdive.com/news/banking-ai-agents-threaten-customer-relationships-human-personetics/873706/">bankingdive.com</a></div></div>
+    <div class="sig"><b>3. Le deskilling devient un risque formellement documenté dans la banque.</b> Un observatoire de formation bancaire en fait un enjeu de première page : l'IA peut appauvrir les compétences qu'elle est censée libérer.
+      <div class="srcs">Sources : <a href="https://www.isfb.ch/2026/10/30/ia-et-deskilling-lenvers-des-gains-de-productivite/">isfb.ch</a></div></div>
+    <div class="sig"><b>4. La montée en compétences passe à l'échelle industrielle — avec consultation des représentants du personnel.</b> 20 000 salariés chez Deutsche Bank, 100 000 au Royaume-Uni via Jobs2030 : les académies IA internes deviennent la norme, et la consultation du personnel conditionne leur déploiement.
+      <div class="srcs">Sources : <a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1">db.com</a> · <a href="https://br.advfn.com/noticias/PRNUS/2026/artigo/99643233">advfn.com</a></div></div>
+    <div class="sig"><b>5. Le déficit de financement et de maturité des DRH face à l'IA se précise.</b> 64 % des DRH français estiment leur fonction sous-financée pour préparer les équipes, et l'écart priorités/efficacité atteint 50 points : la bataille des compétences RH-IA se jouera sur les budgets autant que sur les outils.
+      <div class="srcs">Sources : <a href="https://www.lesechos.fr/travailler-mieux/vie-au-travail/je-predis-que-la-plupart-des-pdg-de-demain-seront-des-drh-pourquoi-lia-pourrait-changer-la-vie-des-responsables-des-ressources-humaines-2261166">lesechos.fr</a></div></div>
+  </div></div>
+
+  <footer>
+    <p>Veille IA &amp; Mutations RH — 6 novembre 2026 · générée par ORAC (Hermes, profil demo) · skill veille-rh-ia</p>
+    <p>Anti-doublons : une dépêche = une entrée · Sites blacklistés exclus · Dates de publication vérifiées sur chaque page source</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de thème" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">☀️</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'🌙'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

@@ -1,0 +1,283 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 6 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:16px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .prospective .item p{color:var(--ink)}
+    .signal p{margin:0 0 6px}
+    .signal ul{margin:0;padding-left:18px}
+    .signal li{font-size:.82rem;color:var(--muted);word-break:break-all}
+    .signal li a{color:var(--muted)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr 1fr}
+    }
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde + Focus Mistral — généré par ORAC / Hermes</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🇫🇷 France</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">🌐 Monde</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">🇫🇷 Focus Mistral</div><div class="value">3</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">🗓 6 novembre 2026</span>
+    <span class="pill yellow">🔎 Fenêtre 7 jours</span>
+    <span class="pill">🚫 lesnumeriques.com, degrouptest.com exclus</span>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-head"><div class="card-title">🧾 Synthèse</div></div>
+    <div class="card-body">
+      <p>La semaine confirme trois bascules. <strong>Souveraineté</strong> : OVHcloud promet un modèle ouvert d'ici fin novembre et attaque frontalement le modèle économique de <strong>Mistral</strong> ; l'<strong>Allemagne</strong> fixe un cap « nation IA souveraine » à 2030 (18 mesures) et l'<strong>Estonie</strong> plaide pour « construire » la puissance IA plutôt que l'acheter. <strong>Financement</strong> : <strong>Google</strong> adosse ~19 Md$ de baux d'<strong>Anthropic</strong> dans le Kentucky, et Anthropic affiche <strong>+1 100 %</strong> de revenus trimestriels — mais 23,3 Md$ de perte nette — à l'approche de son IPO. <strong>Usages et droits</strong> : <strong>OpenAI lance GPT-6 Cyber</strong> (accès restreint, tarif record) et une dizaine d'<strong>éditeurs français</strong> créent l'Adepia pour réclamer réparation, tandis que les quatre grands labos s'accordent sur un <strong>opt-out d'entraînement unifié</strong> dans robots.txt. Focus Mistral : la plateforme <strong>Studio</strong> (agents managés) et la 5<sup>e</sup> acquisition de l'année (SkipLabs).</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">OVHcloud prépare son IA souveraine et attaque le modèle économique de Mistral</a></h3>
+          <div class="meta">ZDNet FR • 2 novembre 2026</div>
+          <p>Désormais rentable, le cloud français annonce la sortie imminente d'un modèle de langage <strong>souverain — propriétaire et ouvert</strong> — d'ici <strong>fin novembre</strong>. Son fondateur <strong>Octave Klaba</strong> cible ouvertement Mistral AI, ouvrant une bataille décisive pour les infrastructures cloud des entreprises françaises. L'alternative revendiquée est hébergée sur serveurs souverains et personnalisable.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">Meta réduit ses effectifs français d'un tiers pour financer sa transition IA</a></h3>
+          <div class="meta">ZDNet FR • 5 novembre 2026</div>
+          <p>La filiale hexagonale de Meta (~300 collaborateurs) orchestre le départ d'<strong>une centaine de salariés</strong> via une <strong>rupture conventionnelle collective</strong> (candidatures closes le 5 novembre 2026) : indemnité de <strong>2,15 mois de salaire par année d'ancienneté</strong>, congé de mobilité de dix mois à 80 %, formations et aides à la création d'entreprise. Le groupe projette <strong>135 à 145 Md$ de capex</strong> en 2026, fléchés vers ses data centers et son IA.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lesechos.fr/tech-medias/medias/plusieurs-groupes-deditions-independants-sunissent-pour-mettre-fin-au-pillage-des-ia-2260883" target="_blank">Une dizaine d'éditeurs indépendants créent l'Adepia contre le « pillage » des IA</a></h3>
+          <div class="meta">Les Echos • 3 novembre 2026</div>
+          <p>Nouveau Monde éditions, La Volte, Aux forges de Vulcain, Maurice Nadeau, Artège, Desclée de Brouwer, Le Rocher, Champ Vallon, Rue de l'échiquier et Emmanuelle Collas s'unissent dans l'<strong>Association des éditeurs contre le pillage des IA (Adepia)</strong>, présidée par <strong>Yannick Dehée</strong>. Objectif : <strong>mises en demeure</strong> (fin 2026/début 2027) puis <strong>actions en justice</strong> — <strong>Mistral AI et Anthropic</strong> parmi les premières cibles possibles. 20 % des indemnités alimenteront une caisse commune de contentieux.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.politico.eu/article/berlin-unveil-blueprint-catch-up-ai-artificial-intelligence/" target="_blank">Allemagne : devenir une « nation IA souveraine » en 2030, 18 mesures à la clé</a></h3>
+          <div class="meta">POLITICO • 2 novembre 2026</div>
+          <p>Le rapport de la <strong>task force IA</strong> du gouvernement, présenté à Berlin, propose <strong>18 mesures</strong> : infrastructures de calcul étendues en écosystème européen, chaîne de valeur des semi-conducteurs et l'État en <strong>« client d'ancrage stratégique »</strong>. Objectifs 2030 : <strong>80 % des grands groupes et 55 % des PME</strong> utilisant l'IA, <strong>90 % des autorités fédérales</strong> avec une application en production, +300 % de capacité datacenter IA vs 2025. Le texte cite la France, le <strong>Canada</strong> et <strong>Mistral</strong> comme leviers ; Arthur Mensch dénonce de son côté le « piège complet » d'une Europe sans IA de frontière.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://news.err.ee/1610187157/estonian-pm-europe-needs-the-ability-to-build-ai-power-not-just-buy-it" target="_blank">Estonie : « construire la puissance IA, pas seulement l'acheter »</a></h3>
+          <div class="meta">ERR News • 5 novembre 2026</div>
+          <p>Ouvrant le <strong>Tallinn Digital Summit</strong>, le Premier ministre <strong>Kristen Michal</strong> compare la dépendance technologique au précédent de l'énergie russe : l'Europe doit développer ses propres capacités. Il salue le plan européen de <strong>200 Md€</strong> (dont des <em>gigafactories</em>) mais réclame un accès plus simple au financement. L'Estonie signe le <strong>« Call for Control of Frontier AI Models »</strong> avec plus de 30 pays et la Commission, et prépare des règles d'adoption sûre des <strong>agents IA</strong>.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.euronews.com/2026/11/02/uk-and-germany-to-jointly-develop-military-ai-in-2027" target="_blank">Royaume-Uni et Allemagne vers une IA militaire commune en 2027</a></h3>
+          <div class="meta">Euronews • 2 novembre 2026</div>
+          <p>Le secrétaire britannique à la Défense <strong>Wes Streeting</strong> annonce, dans la <em>Frankfurter Allgemeine Zeitung</em>, l'extension au domaine de l'IA du projet conjoint de cybersécurité <strong>« Cyber Lighthouse »</strong> : tests, développement puis introduction d'IA dans les forces armées des deux pays. Gouvernements et industriels se réuniront au <strong>printemps 2027</strong> ; aucun système ni budget n'est encore nommé. Les entreprises allemandes ont promis <strong>800 M£</strong> à l'industrie de défense britannique depuis 2024.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌐 Monde</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://venturebeat.com/ai/openai-launches-gpt-6-cyber-with-stronger-exploit-research-and-higher-api-price-than-anthropic-and-google" target="_blank">OpenAI lance GPT-6 Cyber, modèle de sécurité à l'accès restreint et au tarif record</a></h3>
+          <div class="meta">VentureBeat • 5 novembre 2026</div>
+          <p>Variante de GPT-6 Astra spécialisée pour les investigations de sécurité, <strong>GPT-6 Cyber</strong> affiche <strong>48,5 %</strong> sur ExploitGym (contre 32,1 % pour GPT-5.6 Cyber) et <strong>40,3 %</strong> de vulnérabilités détectées en boîte noire. L'accès, soumis à approbation via le programme <strong>Daybreak Red</strong>, est facturé <strong>20 $ / 100 $ par million de jetons</strong> (entrée/sortie) — au-dessus des modèles cyber d'Anthropic et de Google. OpenAI évoque des milliers de failles reproduites et validées dans des bases critiques comme <strong>Linux et Firefox</strong>.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://investors.terawulf.com/news-events/press-releases" target="_blank">Google adosse ~19 Md$ de baux d'Anthropic dans le Kentucky</a></h3>
+          <div class="meta">TeraWulf (communiqué 8-K) • 4 novembre 2026</div>
+          <p>L'opérateur de datacenters <strong>TeraWulf</strong> annonce trois accords de <em>credit support</em> avec <strong>Google</strong>, adossés à environ <strong>19 Md$ de baux contractuels (20 ans) avec Anthropic</strong> sur le campus <strong>Justified</strong> de Hawesville (Kentucky, ~401 MW), plus un accord d'ingénierie-construction (EPC) définitif avec <strong>Fluor</strong>. La garantie ne s'active qu'à l'entrée en service de chaque dernier <em>data hall</em> (livraison échelonnée fin 2027 → mi-2028) : en cas de défaut, Google peut assumer le bail par novation ou payer une pénalité de résiliation.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.reuters.com/business/anthropics-quarterly-loss-shrinks-revenue-jumps-ahead-blockbuster-ipo-2026-11-02/" target="_blank">Anthropic : +1 100 % de revenus mais 23,3 Md$ de perte nette avant l'IPO</a></h3>
+          <div class="meta">Reuters / AP • 2 novembre 2026</div>
+          <p>Dans son <strong>S-1 amendé</strong>, Anthropic déclare un chiffre d'affaires de <strong>17 Md$</strong> au 3<sup>e</sup> trimestre 2026 (contre 1,4 Md$ un an plus tôt), une progression ralentie (+47 % sur un trimestre), une <strong>perte nette de 23,3 Md$</strong> (charges comptables liées à la valorisation) et <strong>~895 Md$ d'engagements de dépenses</strong>, dont 70 Md$ avant septembre 2027. La société vise une introduction sur le Nasdaq (symbole <strong>ANT</strong>) pour <strong>~100 Md$</strong> levés, à une valorisation estimée entre 1 500 et 2 000 Md$.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://mistral.ai/news/build-with-studio/" target="_blank">Mistral Studio : agents managés, workflows et apps d'entreprise</a></h3>
+          <div class="meta">Mistral AI (blog) • 5 novembre 2026</div>
+          <p>Sous le slogan « Le Chonk brings the brains. Studio puts it to work. », Mistral étend <strong>Studio</strong> avec des <strong>agents managés et des apps</strong>, des workflows à déclencheurs et graphe visuel, du <em>enterprise context</em>, de l'observabilité (<em>tracing</em> par défaut) et des évaluations. Déploiement au choix en <strong>cloud, VPC ou on-premise</strong> pour la souveraineté ; un <strong>serveur MCP Mistral</strong> permet de déployer depuis son propre environnement de code (<code>agents deploy</code>). Le SDK <code>mistralai-agents</code> propose un même code en trois modes (in-process, self-hosted, managé) avec exécution durable, approbations humaines et reprise après incident. Clients cités en production : ABANCA, BNP Paribas, CMA CGM.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/mistral-accelere-dans-le-code-genere-par-ia-grace-a-une-nouvelle-acquisition-2261330" target="_blank">Mistral boucle sa cinquième acquisition de l'année avec SkipLabs</a></h3>
+          <div class="meta">Les Echos • 5 novembre 2026</div>
+          <p>Valorisée <strong>25 Md$</strong>, la start-up française annonce ce jeudi 5 novembre racheter <strong>SkipLabs</strong>, société française de six personnes fondée en 2022 et spécialisée dans la programmation logicielle (framework réactif <em>Skip</em>, agent <em>Skipper</em>). Montant non divulgué. C'est la <strong>cinquième acquisition en moins d'un an</strong> (après Koyeb, Emmi, Pimento, New Material) pour l'entreprise d'<strong>Arthur Mensch</strong>, qui veut accélérer sur la <strong>génération de code</strong> et sa <strong>vérification</strong> ; l'équipe forme le cœur d'une nouvelle équipe « Language ».</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/" target="_blank">Arthur Mensch : sans IA de frontière, l'Europe face à un « piège complet »</a></h3>
+          <div class="meta">POLITICO • 2 novembre 2026</div>
+          <p>En marge du <strong>Digital Summit de Berlin</strong>, le cofondateur de Mistral avertit que les modèles de pointe américains et chinois, de plus en plus classés « <strong>weapon grade</strong> » (double usage), pourraient cesser d'être fournis à l'Europe sous contrôle des exportations. Il plaide pour une <strong>stratégie IA européenne</strong> dotée de capacités de calcul propres, comparant l'enjeu à celui du <strong>nucléaire civil</strong> — « qui ne maîtrise pas cette technologie devient dépendant de fournisseurs dont la puissance ne cesse de croître ».</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card prospective" style="margin-top:16px">
+    <div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+    <div class="card-body">
+      <div class="item"><h3>La souveraineté IA se déplace de l'algorithme vers l'infrastructure et l'énergie <span class="meta">— court terme (&lt; 2 ans)</span></h3><p>OVHcloud, l'État allemand « client d'ancrage » et le boom des datacenters franciliens convergent : les États arbitrent désormais calcul, hébergement et électricité autant que les modèles.</p></div>
+      <div class="item"><h3>Le financement de l'IA devient un risque systémique de dette <span class="meta">— court terme (&lt; 2 ans)</span></h3><p>Les garanties croisées entre Big Tech (Google adossant ~19 Md$ de baux d'Anthropic) et les ~895 Md$ d'engagements d'Anthropic déplacent le risque des bilans tech vers les marchés de crédit.</p></div>
+      <div class="item"><h3>L'open-weight et les modèles cyber basculent dans le périmètre de défense <span class="meta">— moyen terme (2-5 ans)</span></h3><p>Classement « weapon grade », contrôles à l'export (Mensch) et coopération militaire UK-Allemagne instituent l'IA comme actif de sécurité nationale, avec les dilemmes de double usage afférents.</p></div>
+      <div class="item"><h3>Les agents IA deviennent des citoyens économiques à sécuriser <span class="meta">— moyen terme (2-5 ans)</span></h3><p>Agents managés (Mistral Studio), exécution durable, approbations et audit : fiabilité, plafonds d'action et traçabilité passent du confort au prérequis réglementaire.</p></div>
+      <div class="item"><h3>Le droit d'auteur s'industrialise en contentieux collectif <span class="meta">— moyen terme (2-5 ans)</span></h3><p>L'Adepia et l'opt-out d'entraînement unifié (robots.txt) dessinent un marché de la rémunération des données, entre négociation amiable et contentieux de masse.</p></div>
+    </div>
+  </div>
+
+  <div class="card signal" style="margin-top:16px">
+    <div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles sourcés</div></div>
+    <div class="card-body">
+      <div class="item">
+        <p><strong>1. La souveraineté IA devient une politique industrielle d'infrastructure</strong> — OVHcloud promet un modèle souverain fin novembre, l'Allemagne se dote d'un « client d'ancrage » public et d'un objectif de +300 % de capacité datacenter IA, et les datacenters franciliens passent de ~10 à 150+ en vingt ans : le terrain de jeu se déplace du modèle vers les ressources rares.</p>
+        <ul>
+          <li><a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm</a></li>
+          <li><a href="https://www.politico.eu/article/berlin-unveil-blueprint-catch-up-ai-artificial-intelligence/" target="_blank">https://www.politico.eu/article/berlin-unveil-blueprint-catch-up-ai-artificial-intelligence/</a></li>
+          <li><a href="https://www.zdnet.fr/actualites/boom-des-datacenters-en-ile-de-france-mais-des-tensions-a-gerer-507350.htm" target="_blank">https://www.zdnet.fr/actualites/boom-des-datacenters-en-ile-de-france-mais-des-tensions-a-gerer-507350.htm</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>2. Les Big Tech se garantissent mutuellement pour financer l'IA</strong> — Google adosse ~19 Md$ de baux d'Anthropic via trois accords de <em>credit support</em> ; le risque de construction reste chez TeraWulf et ses prêteurs, signe d'un financement de projet qui s'institutionnalise et fragmente le risque.</p>
+        <ul>
+          <li><a href="https://investors.terawulf.com/news-events/press-releases" target="_blank">https://investors.terawulf.com/news-events/press-releases</a></li>
+          <li><a href="https://finance.yahoo.com/technology/ai/articles/google-backstops-terawulf-8217-19-141248889.html" target="_blank">https://finance.yahoo.com/technology/ai/articles/google-backstops-terawulf-8217-19-141248889.html</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>3. Les ayants droit passent de la plainte au contentieux collectif</strong> — L'Adepia mutualise les actions d'une dizaine d'éditeurs français (mises en demeure visant notamment Mistral et Anthropic) et affecte 20 % des indemnités à un « trésor de guerre » : un front juridique durable se met en place.</p>
+        <ul>
+          <li><a href="https://www.lesechos.fr/tech-medias/medias/plusieurs-groupes-deditions-independants-sunissent-pour-mettre-fin-au-pillage-des-ia-2260883" target="_blank">https://www.lesechos.fr/tech-medias/medias/plusieurs-groupes-deditions-independants-sunissent-pour-mettre-fin-au-pillage-des-ia-2260883</a></li>
+          <li><a href="https://actualitte.com/article/135020/legislation/livres-pirates-dix-editeurs-francais-creent-leur-association-contre-les-ia" target="_blank">https://actualitte.com/article/135020/legislation/livres-pirates-dix-editeurs-francais-creent-leur-association-contre-les-ia</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>4. L'IA de pointe devient un actif de sécurité classifié « weapon grade »</strong> — Mensch alerte sur un possible assèchement de l'accès européen aux modèles US/chinois sous contrôle des exports, tandis que le Royaume-Uni et l'Allemagne étendent « Cyber Lighthouse » à l'IA militaire : la frontière civil/défense se durcit.</p>
+        <ul>
+          <li><a href="https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/" target="_blank">https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/</a></li>
+          <li><a href="https://www.euronews.com/2026/11/02/uk-and-germany-to-jointly-develop-military-ai-in-2027" target="_blank">https://www.euronews.com/2026/11/02/uk-and-germany-to-jointly-develop-military-ai-in-2027</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>5. Le contrôle de l'entraînement se normalise dans robots.txt</strong> — Les quatre grands labos (OpenAI, Google, Microsoft, Anthropic) soutiennent un jeton de politique unifié (<code>__usage_ai-training</code>) permettant un opt-out d'entraînement en une ligne ; l'application s'étale toutefois jusqu'en 2027, signe d'un compromis plus lent que la pression des éditeurs.</p>
+        <ul>
+          <li><a href="https://techxplore.com/news/2026-10-ai-giants-publishers-block.html" target="_blank">https://techxplore.com/news/2026-10-ai-giants-publishers-block.html</a></li>
+          <li><a href="https://kgi.georgetown.edu/research-and-commentary/what-the-new-ai-training-opt-out-really-means/" target="_blank">https://kgi.georgetown.edu/research-and-commentary/what-the-new-ai-training-opt-out-really-means/</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 6 novembre 2026 par <strong>ORAC</strong> / Hermes (skill veille-ia-quotidienne). Nom public : « Veille IA global ». Template veille-html (dark theme, KPIs, cards responsive).</p>
+    <p>Fenêtre : 30/10 → 06/11/2026. Blacklist exclus : lesnumeriques.com, degrouptest.com. Doublons de la veille du 01/11 écartés, dates de publication vérifiées source par source. Fichiers : veille-IA-2026-11-06-deepseek-skill.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">☀️</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'🌙'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>
