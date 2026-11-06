@@ -1,0 +1,418 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Synthèse — Tests de modèles sur les veilles — 6 novembre 2026</title>
+<style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.violet{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tag{display:inline-block;margin:8px 6px 0 0;padding:2px 8px;border-radius:8px;font-size:.72rem;background:rgba(99,102,241,.10);color:var(--accent-2);border:1px solid rgba(99,102,241,.25)}
+    .maturite,.horizon{display:inline-block;margin:8px 6px 0 0;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700}
+    .m-b{background:rgba(16,185,129,.14);color:#059669;border:1px solid rgba(16,185,129,.4)}
+    .m-r{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .m-t{background:rgba(239,68,68,.12);color:#dc2626;border:1px solid rgba(239,68,68,.35)}
+    .m-d{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-c{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-m{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .h-l{background:rgba(139,92,246,.14);color:#7c3aed;border:1px solid rgba(139,92,246,.4)}
+    .flag{color:#b45309;font-weight:600;font-size:.8rem}
+    .note{border:1px dashed var(--border);border-radius:14px;padding:10px 14px;margin:10px 18px 16px;color:var(--muted);font-size:.85rem;background:var(--panel)}
+    .visuels{margin-top:22px}
+    .visuels h2{font-size:1.1rem;margin:0 0 10px}
+    .synthese{margin-top:22px}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .signal{border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:var(--panel)}
+    .signal b{color:var(--accent-2)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .kpis{grid-template-columns:repeat(4,1fr)}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal-src{margin-top:8px;font-size:12.5px;color:var(--muted);}
+    .signal-src a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+    .signal-src a:hover{color:var(--accent-2);border-bottom-color:var(--accent-2);}
+
+    /* ajouts rapport de bench */
+    .resu{display:grid;gap:10px;margin-top:12px;}
+    .resu .row{display:grid;grid-template-columns:210px 1fr;gap:12px;align-items:start;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+    .resu .modele{font-weight:700;color:var(--ink);}
+    .resu .mes{color:var(--muted);font-size:13.5px;}
+    table.cmp{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px;}
+    table.cmp th,table.cmp td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;color:var(--ink);vertical-align:top;}
+    table.cmp th{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:11.5px;}
+    table.cmp td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+    .m-r{color:#ff6b6b;font-weight:600;}
+    .m-d{color:#4ade80;font-weight:600;}
+    .verdict{background:linear-gradient(180deg,rgba(64,220,255,.10),rgba(64,220,255,.02));border:1px solid rgba(64,220,255,.35);border-radius:14px;padding:16px 18px;margin:14px 0;}
+    .verdict ol{margin:6px 0 0 18px;padding:0;}
+    .verdict li{margin:7px 0;color:var(--ink);}
+    .src-list{columns:2;column-gap:26px;font-size:13px;color:var(--muted);}
+    .src-list li{margin:0 0 5px;}
+    .deux-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+    .deux-col .bloc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+    .deux-col h4{margin:0 0 8px;color:var(--ink);font-size:14px;}
+    .deux-col ul{margin:0 0 0 16px;padding:0;color:var(--muted);font-size:13.5px;}
+    .deux-col li{margin:5px 0;}
+    blockquote{border-left:3px solid rgba(64,220,255,.5);margin:10px 0;padding:2px 0 2px 14px;color:var(--muted);font-size:13.5px;}
+    @media(max-width:760px){.deux-col{grid-template-columns:1fr;} .resu .row{grid-template-columns:1fr;}}
+
+</style>
+</head><body>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+<div class="wrap">
+<header>
+<div>
+<h1>Synthèse — Tests de modèles sur les veilles — 6 novembre 2026</h1>
+<p>9 veilles comparées · 3 thèmes × 3 modèles · 196 appels API · 2 juges à l’aveugle · liens, dates et coûts mesurés</p>
+</div>
+<div style="text-align:right"><a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)"><span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span></a><time datetime="2026-11-06">6 novembre 2026</time></div>
+</header>
+<div class="kpis"><div class="kpi"><div class="label">Veilles comparées</div><div class="value">9</div></div><div class="kpi"><div class="label">Thèmes</div><div class="value">3 × 3 modèles</div></div><div class="kpi"><div class="label">Juges à l’aveugle</div><div class="value">Grok 4.7 + DeepSeek</div></div><div class="kpi"><div class="label">Sources inventées</div><div class="value">0</div></div><div class="kpi"><div class="label">Coût du bench complet</div><div class="value">0,436 $</div></div></div><div class="card"><div class="card-head"><div class="card-title">🔬 Protocole — ce que ce bench mesure, et comment</div></div><div class="card-body">
+<p>Neuf veilles ont été produites le même jour, entre 15h17 et 16h30, par trois modèles de gamme de prix
+comparable — <b>DeepSeek v4.1 Flash</b>, <b>GLM 5.3 Flash</b> et <b>Qwen 3.8 Flash</b> — servis par le même
+endpoint. Chacun a traité trois thèmes : IA global, Diabète, IA &amp; mutations RH. Cela fait neuf tirages,
+196 appels API, un fichier Markdown et une page HTML par tirage.</p>
+<p>Trois différences avec le bench du 2 novembre, et elles comptent pour lire les résultats :</p>
+<ul>
+<li><b>Aucun skill de thème.</b> Ce bench tourne dans le profil de démonstration, qui ne contient pas les
+procédures de veille. Les exigences — zones France/Europe/Monde, Focus Mistral, sources françaises en
+diabète, 4 axes RH, cinq signaux faibles sourcés — étaient portées <i>uniquement par le prompt</i>. Un modèle
+qui tient le cadre sans aide mérite donc plus de crédit qu'il n'y paraît ; à l'inverse, un modèle qui le rate
+n'a pas d'excuse.</li>
+<li><b>Un seul passage par bras.</b> Pas de reprise, pas de relecture, pas de seconde chance. Les écarts de
+volume entre deux bras d'un même thème tiennent donc en partie au hasard de la recherche, pas seulement au
+modèle. C'est une limite, et elle est assumée.</li>
+<li><b>Deux juges à l'aveugle.</b> Les neuf veilles ont été anonymisées — thème conservé, nom du modèle
+remplacé partout sauf dans les URL citées — puis notées séparément par <b>Grok 4.7</b> (via l'abonnement xAI,
+donc sans coût marginal) et par <b>DeepSeek v4.1 Flash</b>, qui est lui-même en compétition : c'est signalé
+partout où cela compte. Grille identique pour les deux : conformité, sources, substance, signal, lisibilité,
+notées de 0 à 5, plus un classement par thème.</li>
+</ul>
+<p>Ce qui n'est pas laissé à l'appréciation : le volume rédigé, le nombre de liens, les dates citées face à
+la fenêtre des sept derniers jours, et surtout <b>chaque URL testée une par une</b>. Un 404 est un lien mort ;
+un 401, 403, 406 ou 429 est un mur anti-bot — une page réelle qui refuse les robots — et ne compte pas comme
+lien cassé. La distinction change le diagnostic. Les coûts, enfin, ne sont pas estimés : ils sont recalculés
+depuis les jetons réellement consommés, relevés par le journal d'usage, avec la formule
+<i>entrée × prix d'entrée + sortie × prix de sortie + cache relu × prix du cache</i>, calée au centime sur les
+valeurs que l'outil sait calculer lui-même.</p>
+</div></div><div class="card"><div class="card-head"><div class="card-title">🧪 Le verdict en cinq lignes</div></div><div class="card-body">
+<div class="verdict">
+<ol>
+<li><b>Qwen 3.8 Flash arrive en tête au cumul des deux juges (124 points sur 150)</b>, DeepSeek v4.1 Flash
+juste derrière (121), GLM 5.3 Flash nettement décroché (104).</li>
+<li>Mais l'écart entre les deux premiers tient à <b>trois points sur cent cinquante</b> — et il se joue en
+diabète, un thème où Qwen laisse <b>cinq signaux faibles sans aucun lien</b>. Sa première place en IA et en RH
+ne compense pas ce trou : elle est acquise sur un défaut de fond.</li>
+<li><b>DeepSeek gagne le diabète sans discussion</b> (44/50). C'est le seul thème où les deux juges
+s'accordent sur le premier, et le seul où l'écart entre le premier et le deuxième dépasse sept points.</li>
+<li><b>GLM est dernier dans les trois thèmes.</b> Son bras RH est plombé par une quasi-monoculture de source —
+six entrées sur treize issues du même site — et par un décompte d'articles faux qu'il annonce lui-même
+(« 11 actualités » pour 13 entrées).</li>
+<li><b>Économiquement, Qwen ne se justifie pas</b> : 0,1978 $ pour trois veilles, contre 0,1358 $ pour
+DeepSeek et 0,1024 $ pour GLM. Deux pour cent de qualité en plus, 46 % de prix en plus.</li>
+</ol>
+</div>
+</div></div><div class="card"><div class="card-head"><div class="card-title">🗞️ Résultats — IA global</div></div><div class="card-body">
+<p>Le thème le mieux outillé — zones géographiques, Focus Mistral, cinq signaux sourcés — et celui où les deux
+juges se sont le plus opposés, ce qui en fait le cas le plus intéressant du bench.</p>
+<p>Les trois bras ont tenu le cadre. Aucune section imposée ne manque, et les trois ont produit des signaux
+faibles réellement sourcés, de 7 à 9 liens dans cette section : sur ce point, le thème ne départage rien.
+Les différences sont ailleurs.</p>
+<p><b>Qwen</b> est le plus volumineux (1 965 mots) et le plus généreux en apparence : 26 liens. Mais
+<b>13 seulement sont uniques</b> — il recite ses sources. Il cite aussi 19 dates dont <b>deux hors fenêtre</b>
+(8 et 29 octobre pour une veille du 6 novembre), ce que le contrôle automatique attrape et qu'aucun des deux
+juges n'a vu. En face, il fait une chose que personne d'autre n'a faite : une <b>note de méthode</b> qui
+explique les items écartés parce qu'ils sortaient de la fenêtre. C'est cette transparence qui lui vaut sa
+première place chez le juge DeepSeek.</p>
+<p><b>DeepSeek</b> est le plus ramassé des deux gros (1 833 mots, 21 liens dont 15 uniques) et le mieux
+équilibré entre les zones. Son point faible est ailleurs : il ne cite qu'<b>une seule date</b> sur toute la
+page. Impossible, dans ces conditions, de vérifier le respect de la fenêtre — et Grok le relève : deux liens
+des Échos ne sont pas datés, donc non situables.</p>
+<p><b>GLM</b> est le plus court (1 222 mots) et le plus discipliné sur les dates : 20 dates citées, aucune hors
+fenêtre. Il paie un vrai défaut, un lien mort (un communiqué Capgemini en 404), et surtout un travers que les
+deux juges ont repéré <i>indépendamment</i>, avec exactement la même liste d'URL : plusieurs liens pointent des
+<b>pages d'index</b> et non des articles — une page « AI Watch » d'agrégateur, la page « dernière
+actualité » d'un site, une rubrique thématique d'ActuIA. Vérification faite, ces pages <b>répondent toutes</b>
+(200 ou 308) : ce ne sont pas des liens morts, ce sont des liens creux. La nuance compte, et aucun contrôle
+automatique ne sait la faire.</p>
+<p>Sur le classement, les deux juges divergent d'un point : Grok place DeepSeek premier, le juge DeepSeek
+place Qwen premier. Tous deux s'accordent en revanche sur le dernier — GLM — et sur le fait que l'écart entre
+Qwen et DeepSeek est mince. Compte tenu du défaut de sourcing que Qwen traîne en diabète, et du fait que
+DeepSeek reste 40 % moins cher sur ce thème, le choix de production se joue moins sur la qualité brute que sur
+ce que l'on veut prioriser.</p>
+<h4 style="margin-top:18px">Mesures et notes</h4><table class="cmp"><thead><tr><th>Veille du modèle</th><th>mots</th><th>liens (uniques)</th><th>liens dans les signaux</th><th>dates hors fenêtre</th><th>lien mort</th><th>note des 2 juges</th><th>coût</th></tr></thead><tbody><tr><td><a href="bench-2026-11-06/veille-IA-2026-11-06-qwen.html"><b>Qwen 3.8 Flash</b></a></td><td class="num">1 965</td><td class="num">26 (13)</td><td class="num">8</td><td><b class="m-r">08/10, 29/10</b></td><td> — </td><td class="num"><b>42 / 50</b></td><td class="num">0.0462 $</td></tr><tr><td><a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html"><b>DeepSeek v4.1 Flash</b></a></td><td class="num">1 833</td><td class="num">21 (15)</td><td class="num">9</td><td><b class="m-d">aucune</b></td><td> — </td><td class="num"><b>41 / 50</b></td><td class="num">0.0277 $</td></tr><tr><td><a href="bench-2026-11-06/veille-IA-2026-11-06-glm.html"><b>GLM 5.3 Flash</b></a></td><td class="num">1 222</td><td class="num">19 (17)</td><td class="num">7</td><td><b class="m-d">aucune</b></td><td><b class="m-r">404 Capgemini (communiqué)</b></td><td class="num"><b>35 / 50</b></td><td class="num">0.0233 $</td></tr></tbody></table><p class="note">Vainqueur du thème selon les deux juges : <b>Qwen 3.8 Flash</b>. Comparatif détaillé : <a href="bench-ia-2026-11-06.html">page du thème</a>.</p></div></div><div class="card"><div class="card-head"><div class="card-title">🩺 Résultats — Diabète</div></div><div class="card-body">
+<p>C'est le thème le plus exigeant, parce que la consigne y est la plus précise : <b>sources françaises en
+priorité</b> (Inserm, HAS, Assurance Maladie, FFD, Quotidien du Médecin, presse médicale française), et une
+distinction obligatoire entre un <i>essai</i> et un simple <i>communiqué</i>. C'est aussi, et ce n'est pas un
+hasard, celui où les trois modèles se comportent le plus différemment.</p>
+<p>Les trois bras ont produit une veille structurée et lisible, avec la même architecture : synthèse, actualités,
+prospective, cinq signaux faibles. Les volumes divergent déjà du simple au double — <b>3 060 mots</b> pour
+DeepSeek, <b>3 069</b> pour Qwen, <b>1 560</b> pour GLM — mais ce n'est pas là que se joue la différence.</p>
+<p>Le fait marquant est ailleurs : <b>dans ce thème, deux modèles sur trois ont produit des signaux faibles
+sans un seul lien</b>. DeepSeek et Qwen nomment leurs sources avec leur date — « FierceBiotech, 04/11/2026 »,
+« ANSM/VIDAL, 03/11/2026 », « ARMMS-T2D », « STEP 1 » — mais n'en donnent aucune URL. Ce n'est pas de
+l'invention : c'est du <b>non-vérifiable</b>. Le lecteur ne peut pas contrôler, et c'est précisément la règle
+que les pages de production imposent depuis que ce défaut a été détecté. GLM, seul, lie ses cinq signaux
+(cinq URL pour cinq signaux).</p>
+<p>À cela s'ajoutent deux défauts mesurés que l'œil ne voit pas : Qwen cite <b>deux liens morts</b>
+(vidal.fr, 404) et DeepSeek une date <b>hors fenêtre</b> (23/10 pour une veille du 6 novembre). GLM ne
+commet ni l'un ni l'autre — et c'est bien pour cela que la rigueur n'est pas une question de volume.</p>
+<p>Sur la priorité française, le constat est plus nuancé que prévu. Aucun des trois ne l'atteint
+complètement : par domaine, DeepSeek place environ un tiers de sources françaises, GLM moins d'une sur cinq,
+et les juges relèvent chez Qwen <b>trois actualités françaises contre six internationales</b>. Mais c'est
+DeepSeek qui s'en sort le mieux, parce qu'il va chercher l'ANSM, l'Assurance Maladie et Univadis là où les
+autres restent sur la presse anglophone.</p>
+<p>Les deux juges sont d'accord, et c'est rare : <b>DeepSeek remporte ce thème</b> — 20/25 chez Grok, 24/25
+chez DeepSeek, soit 44 sur 50. L'un et l'autre saluent la même chose : un étiquetage systématique de la nature
+de chaque source (« résultat d'essai randomisé — pas un communiqué »), des réserves explicites, et des signaux
+écrits comme des implications concrètes pour le soignant ou le payeur. GLM paie son manque de matière (1 560
+mots) et une page de rubrique du Quotidien du Médecin là où un article était attendu. Qwen paie son cadrage
+trop international et son signal hors fenêtre, qu'il signale lui-même sans le retirer.</p>
+<p>Économiquement, l'ordre s'inverse : DeepSeek a produit ce thème pour <b>0,0486 $</b> et 19 appels,
+Qwen pour <b>0,0855 $</b> et 40 appels — presque le double, pour un résultat classé troisième.</p>
+<h4 style="margin-top:18px">Mesures et notes</h4><table class="cmp"><thead><tr><th>Veille du modèle</th><th>mots</th><th>liens (uniques)</th><th>liens dans les signaux</th><th>dates hors fenêtre</th><th>lien mort</th><th>note des 2 juges</th><th>coût</th></tr></thead><tbody><tr><td><a href="bench-2026-11-06/veille-DIABETE-2026-11-06-deepseek.html"><b>DeepSeek v4.1 Flash</b></a></td><td class="num">3 060</td><td class="num">14 (12)</td><td class="num"><b class="m-r">0</b></td><td><b class="m-r">23/10</b></td><td> — </td><td class="num"><b>44 / 50</b></td><td class="num">0.0486 $</td></tr><tr><td><a href="bench-2026-11-06/veille-DIABETE-2026-11-06-qwen.html"><b>Qwen 3.8 Flash</b></a></td><td class="num">3 069</td><td class="num">12 (12)</td><td class="num"><b class="m-r">0</b></td><td><b class="m-d">aucune</b></td><td><b class="m-r">2 × 404 vidal.fr</b></td><td class="num"><b>37 / 50</b></td><td class="num">0.0855 $</td></tr><tr><td><a href="bench-2026-11-06/veille-DIABETE-2026-11-06-glm.html"><b>GLM 5.3 Flash</b></a></td><td class="num">1 560</td><td class="num">16 (14)</td><td class="num">5</td><td><b class="m-d">aucune</b></td><td> — </td><td class="num"><b>35 / 50</b></td><td class="num">0.0321 $</td></tr></tbody></table><p class="note">Vainqueur du thème selon les deux juges : <b>DeepSeek v4.1 Flash</b>. Comparatif détaillé : <a href="bench-diabete-2026-11-06.html">page du thème</a>.</p></div></div><div class="card"><div class="card-head"><div class="card-title">👥 Résultats — IA & mutations RH</div></div><div class="card-body">
+<p>Le thème le plus cadré — quatre axes obligatoires, cinq signaux sourcés, et une consigne explicite : les
+signaux génériques sont à sanctionner. C'est aussi celui où le jugement des deux modèles converge
+<b>entièrement</b>, ce qui lui donne une valeur de test presque idéale.</p>
+<p><b>Qwen</b> remporte les deux grilles avec la même note élevée (21/25 et 24/25, soit 45 sur 50). Ses
+quatre axes sont remplis de sujets réellement bancassurance — un deal de 1,7 Md$ chez Guidewire, une
+jurisprudence de CSE, une baisse de 28,3 % des embauches en CDI chez les 21-29 ans — ses entrées portent toutes
+une ligne « Source / Date », il <b>fusionne explicitement ses doublons</b> et annonce sa méthode de fenêtre en
+pied de page. Le contrôle de liens confirme : 23 liens, aucun cassé, cinq signaux sourcés. C'est le bras le plus
+propre du bench, tous thèmes confondus.</p>
+<p><b>DeepSeek</b> est le plus dense en volume (2 212 mots, 25 liens dont 24 uniques — le meilleur ratio de
+tout le bench) et sourçait chacune de ses douze entrées, avec treize liens dans la seule section des signaux.
+Les deux juges lui reprochent les mêmes choses : deux articles différents qui renvoient à <b>une même URL
+générique</b> d'ActuIA, la répétition de L'Agefi trois fois, et un signal qui s'appuie sur un article du Monde
+daté du 6 octobre — hors fenêtre. C'est un bras solide, pénalisé par des détails de propreté.</p>
+<p><b>GLM</b> tombe de haut, et pour une raison précise : la <b>monoculture de source</b>. Six de ses treize
+entrées viennent du même site, et ses deux juges le disent en des termes quasi identiques — « quasi-monoculture
+de source », « six entrées sur Yapluqua ». Il annonce par ailleurs « 11 actualités » là où il en produit 13 :
+une erreur de comptage dans le rapport lui-même, relevée par les deux juges, qui mine la confiance plus qu'un
+défaut de style. Son quatrième axe (« dispositifs d'accompagnement ») se réduit à une dépêche et à un doublon
+exact.</p>
+<p>Le verdict est donc doublement confirmé, et le classement — <b>Qwen &gt; DeepSeek &gt; GLM</b> — identique
+chez les deux juges. Nuance de coût : ce thème est aussi celui où Qwen dépense 30 appels et 0,0661 $ contre
+0,0595 $ pour DeepSeek, soit un écart réduit — l'avantage de Qwen en RH se paie presque au même prix.</p>
+<h4 style="margin-top:18px">Mesures et notes</h4><table class="cmp"><thead><tr><th>Veille du modèle</th><th>mots</th><th>liens (uniques)</th><th>liens dans les signaux</th><th>dates hors fenêtre</th><th>lien mort</th><th>note des 2 juges</th><th>coût</th></tr></thead><tbody><tr><td><a href="bench-2026-11-06/veille-RH-2026-11-06-qwen.html"><b>Qwen 3.8 Flash</b></a></td><td class="num">1 613</td><td class="num">23 (13)</td><td class="num">10</td><td><b class="m-d">aucune</b></td><td> — </td><td class="num"><b>45 / 50</b></td><td class="num">0.0661 $</td></tr><tr><td><a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek.html"><b>DeepSeek v4.1 Flash</b></a></td><td class="num">2 212</td><td class="num">25 (24)</td><td class="num">13</td><td><b class="m-d">aucune</b></td><td> — </td><td class="num"><b>36 / 50</b></td><td class="num">0.0595 $</td></tr><tr><td><a href="bench-2026-11-06/veille-RH-2026-11-06-glm.html"><b>GLM 5.3 Flash</b></a></td><td class="num">1 346</td><td class="num">23 (12)</td><td class="num">10</td><td><b class="m-d">aucune</b></td><td><b class="m-r">1 domaine injoignable (BusinessWire)</b></td><td class="num"><b>34 / 50</b></td><td class="num">0.0470 $</td></tr></tbody></table><p class="note">Vainqueur du thème selon les deux juges : <b>Qwen 3.8 Flash</b>. Comparatif détaillé : <a href="bench-rh-2026-11-06.html">page du thème</a>.</p></div></div><div class="card"><div class="card-head"><div class="card-title">🧬 Profil des trois modèles</div></div><div class="card-body"><p class="note">Chaque profil croise les mesures, les notes des deux juges et les défauts relevés — y compris ceux que les juges n'ont pas vus.</p></div></div><div class="card"><div class="card-head"><div class="card-title"><span class="pill m-b">DeepSeek v4.1 Flash</span> <span class="note">121/150 · 0.1358 $ pour 3 veilles</span></div></div><div class="card-body">
+<p>Le plus complet des trois sur le volume — de 1 833 à 3 060 mots selon le thème — et le meilleur ratio de
+liens uniques du bench en RH (24 sur 25). Il va chercher ses sources plus loin que les autres : ANSM,
+Assurance Maladie et Univadis en diabète, articles du Code du travail en RH.</p>
+<p>Sa faiblesse est une <b>négligence de datation</b> : une seule date citée sur tout son thème IA, ce qui rend
+la fenêtre invérifiable, et un signal RH fondé sur un article du 6 octobre. En diabète, ses cinq signaux
+nomment leurs sources sans jamais les lier — le défaut le plus sérieux qu'il commet dans ce bench, et que
+<i>les deux juges ont manqué</i> en le lisant.</p>
+<p>Sa force économique est structurelle : c'est le modèle dont le <b>cache relu coûte le moins</b>
+(0,004 $/M contre 0,024 $ pour GLM et 0,016 $ pour Qwen) alors que le cache représente 16,5 millions de jetons
+sur ce bench. Un bras de veille relit son contexte bien plus qu'il ne rédige.</p></div></div><div class="card"><div class="card-head"><div class="card-title"><span class="pill m-d">GLM 5.3 Flash</span> <span class="note">104/150 · 0.1024 $ pour 3 veilles</span></div></div><div class="card-body">
+<p>Le plus concis (1 222 à 1 560 mots) et le moins cher (0,1024 $ pour trois veilles). Il est aussi celui qui
+respecte le mieux certaines contraintes formelles : <b>20 dates citées en IA, aucune hors fenêtre</b>, et
+surtout le <b>seul</b> à lier ses cinq signaux faibles en diabète — le thème où les deux autres les laissent
+sans source.</p>
+<p>Ses défauts sont de nature différente, et les deux juges les ont vus sans se concerter. Un lien mort
+réel (communiqué Capgemini en 404) et plusieurs <b>pages d'index à la place d'articles</b> en IA. En RH, le
+revers de sa concision : une monoculture de source (six entrées sur treize du même site), un axe d'accompagnement
+quasi vide, et un décompte d'articles faux annoncé dans le rapport lui-même.</p>
+<p>Il finit dernier des trois thèmes — mais à un coût qui reste un tiers inférieur à celui de Qwen. C'est le
+modèle à considérer quand le budget compte plus que la densité.</p></div></div><div class="card"><div class="card-head"><div class="card-title"><span class="pill m-r">Qwen 3.8 Flash</span> <span class="note">124/150 · 0.1978 $ pour 3 veilles</span></div></div><div class="card-body">
+<p>Le plus volumineux en IA et en diabète, le plus cher (0,1978 $, soit 46 % de plus que DeepSeek), et le plus
+gourmand en appels API (24, 40 et 30 selon le thème, contre 13 à 23 pour les autres). Il paie sa stratégie :
+le double de recherche, donc le double de cache relu, pour un gain éditorial qui reste mince.</p>
+<p>Il est aussi le seul à <b>documenter sa méthode</b> — une note qui explique les items écartés parce qu'ils
+sortaient de la fenêtre des sept jours — et c'est ce que les deux juges ont le plus valorisé, jusqu'à le placer
+premier en IA et en RH avec la meilleure note du bench (45/50 en RH).</p>
+<p>Mais deux défauts de fond l'accompagnent. En IA, <b>26 liens dont 13 seulement sont uniques</b> : il répète
+ses sources pour étoffer, et cite deux dates hors fenêtre. En diabète, <b>cinq signaux faibles sans un seul
+lien</b> et deux URL mortes chez vidal.fr. Autrement dit : le modèle le plus élégant est aussi celui qui laisse
+passer le plus d'invérifiable.</p></div></div><div class="card"><div class="card-head"><div class="card-title">⚖️ Les deux juges à l’aveugle — accords, désaccords, angles morts</div></div><div class="card-body">
+<p>Les deux juges ont reçu exactement la même grille et les mêmes fichiers anonymisés : le thème était visible,
+le nom du modèle remplacé partout sauf dans les URL citées — une veille IA peut légitimement citer un blog
+d'éditeur comme sujet d'article, ce n'est pas une fuite. La correspondance bras/modèle est restée hors du
+dossier de notation. Aucune vérification en ligne n'était autorisée : les deux juges notaient le texte, pas les
+sites.</p>
+<h4>Là où ils s'accordent</h4>
+<ul>
+<li><b>Diabète</b> : DeepSeek premier chez les deux (44/50), seul thème avec un écart net.</li>
+<li><b>RH</b> : classement <i>identique</i> chez les deux — Qwen, puis DeepSeek, puis GLM.</li>
+<li><b>GLM dernier dans les trois thèmes</b>, chez les deux.</li>
+<li>Les mêmes reproches précis, formulés indépendamment : la monoculture Yapluqua en RH, les pages d'index
+d'ActuIA, la source hors fenêtre du 6 octobre chez DeepSeek.</li>
+</ul>
+<h4>Là où ils divergent</h4>
+<p>Un seul désaccord réel : l'IA, où Grok place DeepSeek premier et le juge DeepSeek place Qwen premier —
+<b>un point sur cinquante</b> les sépare. Deux modèles de familles différentes, deux jugements indépendants,
+et l'écart se réduit à cela. C'est en soi une information : sur ce thème, le choix n'est pas tranché par la
+qualité.</p>
+<h4>Ce que les juges ont manqué, et que la machine a vu</h4>
+<ul>
+<li>Les <b>cinq signaux faibles sans aucun lien</b> de DeepSeek en diabète : les deux juges les ont décrits
+comme « sourcés » en lisant des noms de sources en clair. Il n'y a pas une seule URL dans cette section.</li>
+<li>Les <b>deux liens morts</b> (404 chez vidal.fr) et les <b>deux dates hors fenêtre</b> de Qwen en IA —
+invisibles à la lecture, évidents au test.</li>
+</ul>
+<h4>Ce que la machine n'aurait jamais vu, et que les juges ont attrapé</h4>
+<ul>
+<li>Le « lien mort » que les deux juges soupçonnaient chez GLM en IA n'en est pas un : ces URL
+<b>répondent</b> (308 pour master-ia.fr et tf1info, 200 pour watch.wilsoniumite.com et actuia.com/veille).
+Le vrai défaut, c'est que ce sont des <b>pages d'index</b>, pas des articles — un lecteur qui clique tombe sur
+un sommaire. Aucun test HTTP ne sait faire cette différence.</li>
+<li>La <b>répétition de sources</b> (six fois le même site en RH, treize liens dupliqués en IA) et les
+<b>signaux qui ne font que redire le corps de l'article</b> : deux critiques de fond qui demandent de lire,
+pas de compter.</li>
+</ul>
+<p>Conclusion de méthode : <b>aucune des deux approches ne suffit seule</b>. Le contrôle automatique attrape ce
+qui est vérifiable — un lien mort, une date hors fenêtre, un signal sans source — et laisse passer ce qui
+demande du jugement. Le juge aveugle attrape ce qui demande du jugement et se trompe sur ce qui demande une
+requête HTTP. C'est la combinaison qui rend ce verdict utilisable.</p>
+<table class="cmp"><thead><tr><th>Thème</th><th>Modèle</th><th>Grok 4.7<br><span class="note">/25</span></th><th>DeepSeek<br><span class="note">/25</span></th><th>cumul</th><th>classement Grok</th><th>classement DeepSeek</th></tr></thead><tbody><tr><td>Ia</td><td><b>Qwen 3.8 Flash</b></td><td class="num">19</td><td class="num">23</td><td class="num"><b>42 / 50</b></td><td>deepseek > <b>qwen</b> > glm</td><td><b>qwen</b> > deepseek > glm</td></tr><tr><td>Ia</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">20</td><td class="num">21</td><td class="num"><b>41 / 50</b></td><td><b>deepseek</b> > qwen > glm</td><td>qwen > <b>deepseek</b> > glm</td></tr><tr><td>Ia</td><td><b>GLM 5.3 Flash</b></td><td class="num">18</td><td class="num">17</td><td class="num"><b>35 / 50</b></td><td>deepseek > qwen > <b>glm</b></td><td>qwen > deepseek > <b>glm</b></td></tr><tr><td>Diabete</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">20</td><td class="num">24</td><td class="num"><b>44 / 50</b></td><td><b>deepseek</b> > qwen > glm</td><td><b>deepseek</b> > glm > qwen</td></tr><tr><td>Diabete</td><td><b>Qwen 3.8 Flash</b></td><td class="num">18</td><td class="num">19</td><td class="num"><b>37 / 50</b></td><td>deepseek > <b>qwen</b> > glm</td><td>deepseek > glm > <b>qwen</b></td></tr><tr><td>Diabete</td><td><b>GLM 5.3 Flash</b></td><td class="num">16</td><td class="num">19</td><td class="num"><b>35 / 50</b></td><td>deepseek > qwen > <b>glm</b></td><td>deepseek > <b>glm</b> > qwen</td></tr><tr><td>Rh</td><td><b>Qwen 3.8 Flash</b></td><td class="num">21</td><td class="num">24</td><td class="num"><b>45 / 50</b></td><td><b>qwen</b> > deepseek > glm</td><td><b>qwen</b> > deepseek > glm</td></tr><tr><td>Rh</td><td><b>DeepSeek v4.1 Flash</b></td><td class="num">17</td><td class="num">19</td><td class="num"><b>36 / 50</b></td><td>qwen > <b>deepseek</b> > glm</td><td>qwen > <b>deepseek</b> > glm</td></tr><tr><td>Rh</td><td><b>GLM 5.3 Flash</b></td><td class="num">15</td><td class="num">19</td><td class="num"><b>34 / 50</b></td><td>qwen > deepseek > <b>glm</b></td><td>qwen > deepseek > <b>glm</b></td></tr></tbody></table></div></div><div class="card"><div class="card-head"><div class="card-title">✅ Recommandations thème par thème</div></div><div class="card-body">
+<table class="cmp"><thead><tr><th>Thème</th><th>Recommandation</th><th>Pourquoi</th></tr></thead><tbody>
+<tr><td><b>Diabète</b></td><td><b>DeepSeek v4.1 Flash</b> (inchangé)</td>
+<td>Seul thème gagné sans discussion par les deux juges (44/50), le moins cher du thème
+(0,0486 $ pour 40 % d'appels en moins que Qwen), et le meilleur sur la priorité aux sources françaises.
+Réserve : ses cinq signaux doivent être liés — en production, le skill et le contrôle bloquant de liens
+l'imposent.</td></tr>
+<tr><td><b>IA global</b></td><td><b>À réexaminer</b> — DeepSeek ou Qwen, pas GLM</td>
+<td>GLM sort <b>dernier du thème</b> (35/50) alors qu'il est le modèle épinglé en production sur l'IA et le
+quantique. Les deux autres se tiennent à un point. À confirmer sur un tirage <i>avec</i> le skill de thème
+avant de changer l'épinglage.</td></tr>
+<tr><td><b>IA &amp; mutations RH</b></td><td><b>Qwen 3.8 Flash</b></td>
+<td>Le seul thème où Qwen creuse un écart net (45/50 contre 36 pour DeepSeek), sur des critères que la
+production valorise : diversité des sources, fusions de doublons annoncées, lignes « Source / Date ».
+Coût presque identique à DeepSeek sur ce thème (0,0661 $ contre 0,0595 $).</td></tr>
+</tbody></table>
+<p>Un mot sur le critère économique, qui n'est pas secondaire : sur les trois thèmes, Qwen totalise
+124 points sur 150 pour <b>0,1978 $</b>, DeepSeek 121 points pour <b>0,1358 $</b>, GLM 104 points pour
+<b>0,1024 $</b>. Autrement dit, <b>DeepSeek obtient 97 % du résultat de Qwen pour 69 % du prix</b>. Le choix par
+défaut de la production — DeepSeek — est donc économiquement le bon ; la question ouverte est l'épinglage de
+GLM sur l'IA, que ce bench ne conforte pas.</p>
+</div></div><div class="card"><div class="card-head"><div class="card-title">💸 Coût mesuré</div></div><div class="card-body">
+<p>Neuf veilles complètes pour <b>0,4360 $</b>, soit environ 39 centimes d'euro. Mais le total importe moins que
+sa structure, qui est le vrai enseignement de ce bench :</p>
+<ul>
+<li><b>Le cache relu domine tout</b> — 16,5 millions de jetons contre 0,83 million d'entrée réelle et
+291 000 de sortie. Un bras de veille relit son contexte bien plus qu'il ne rédige.</li>
+<li>Or le prix du cache varie <b>de 1 à 6</b> selon le modèle : 0,004 $/M chez DeepSeek, 0,016 $ chez Qwen,
+0,024 $ chez GLM. C'est structurel, et c'est ce qui explique l'essentiel des écarts de coût — pas le prix
+d'entrée, contrairement à ce qu'on imagine.</li>
+<li>Qwen est le plus cher pour une raison simple : <b>il appelle l'API plus souvent</b> (24, 40 et 30 appels
+contre 13 à 23 chez les autres). Plus de recherches, donc plus de contexte relu, donc plus de cache payé.</li>
+</ul>
+<p class="note">Taux de conversion : 1 € = 1,1151 $ au 6 novembre 2026 (taux BCE). La facturation de l'endpoint
+est en dollars ; la colonne en euros est indicative. Le coût de Qwen est <b>recalculé</b> depuis la grille
+tarifaire publiée, l'outil affichant 0 $ pour ce modèle faute de tarif dans sa table locale — un détail qui,
+laissé tel quel, aurait fait passer Qwen pour gratuit.</p>
+<table class="cmp"><thead><tr><th>Thème</th><th>Modèle</th><th>appels API</th><th>mots rédigés (k)</th><th>coût $</th><th>coût €</th></tr></thead><tbody><tr><td>IA global</td><td>GLM 5.3 Flash</td><td class="num">13</td><td class="num">1.2</td><td class="num"><b>0.0233 $</b></td><td class="num">0.0209 €</td></tr><tr><td>IA global</td><td>DeepSeek v4.1 Flash</td><td class="num">15</td><td class="num">1.8</td><td class="num"><b>0.0277 $</b></td><td class="num">0.0248 €</td></tr><tr><td>IA global</td><td>Qwen 3.8 Flash</td><td class="num">24</td><td class="num">2.0</td><td class="num"><b>0.0462 $</b></td><td class="num">0.0414 €</td></tr><tr><td>Diabète</td><td>GLM 5.3 Flash</td><td class="num">14</td><td class="num">1.6</td><td class="num"><b>0.0321 $</b></td><td class="num">0.0288 €</td></tr><tr><td>Diabète</td><td>DeepSeek v4.1 Flash</td><td class="num">19</td><td class="num">3.1</td><td class="num"><b>0.0486 $</b></td><td class="num">0.0436 €</td></tr><tr><td>Diabète</td><td>Qwen 3.8 Flash</td><td class="num">40</td><td class="num">3.1</td><td class="num"><b>0.0855 $</b></td><td class="num">0.0767 €</td></tr><tr><td>IA & mutations RH</td><td>GLM 5.3 Flash</td><td class="num">18</td><td class="num">1.3</td><td class="num"><b>0.0470 $</b></td><td class="num">0.0422 €</td></tr><tr><td>IA & mutations RH</td><td>DeepSeek v4.1 Flash</td><td class="num">23</td><td class="num">2.2</td><td class="num"><b>0.0595 $</b></td><td class="num">0.0534 €</td></tr><tr><td>IA & mutations RH</td><td>Qwen 3.8 Flash</td><td class="num">30</td><td class="num">1.6</td><td class="num"><b>0.0661 $</b></td><td class="num">0.0593 €</td></tr></tbody></table></div></div><div class="card"><div class="card-head"><div class="card-title">⚠️ Ce que ce bench ne prouve pas</div></div><div class="card-body">
+<ul>
+<li><b>Un seul tirage par bras.</b> Aucune répétition : un écart de volume entre deux bras du même thème peut
+relever du hasard de la recherche autant que du modèle. Les écarts de plusieurs centaines de mots ne doivent
+pas être lus comme une propriété stable du modèle.</li>
+<li><b>Trois thèmes sur six.</b> La télésurveillance, le quantique et la fraude ne sont pas testés ici. Le
+classement global (Qwen 124, DeepSeek 121, GLM 104) porte donc sur ces trois thèmes, pondérés à égalité.</li>
+<li><b>Aucun skill de thème</b>, comme expliqué dans le protocole. Un modèle peut paraître plus faible ici
+qu'en production, où les procédures et le contrôle de liens bloquant rattrapent une partie des défauts.
+C'est particulièrement vrai pour GLM sur l'IA.</li>
+<li><b>Le nombre d'articles n'est pas comparable d'un bras à l'autre</b> : les trois modèles formatent leurs
+entrées différemment (titres de niveau 3, puces avec lien en gras, listes numérotées). Le décompte automatique
+s'y casse — il a annoncé « 0 article » pour un bras RH qui en comptait treize. Ce rapport n'avance donc pas de
+nombre d'articles : il donne les liens, les liens uniques et les dates, qui sont mesurables sans ambiguïté.</li>
+<li><b>La fenêtre n'est vérifiable que si le modèle cite ses dates.</b> Le thème IA de DeepSeek ne cite qu'une
+date : impossible d'affirmer qu'il respecte les sept jours, impossible d'affirmer le contraire.</li>
+</ul>
+</div></div><div class="card"><div class="card-head"><div class="card-title">🔗 Traçabilité — les neuf veilles et les comparatifs</div></div><div class="card-body"><ul class="src-list"><li><b>IA global</b> : <a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-qwen.html">Qwen</a> — <a href="bench-ia-2026-11-06.html">comparatif du thème</a></li><li><b>Diabète</b> : <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-qwen.html">Qwen</a> — <a href="bench-diabete-2026-11-06.html">comparatif du thème</a></li><li><b>IA & mutations RH</b> : <a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-qwen.html">Qwen</a> — <a href="bench-rh-2026-11-06.html">comparatif du thème</a></li></ul><p class="note">Les neuf veilles brutes (HTML + Markdown) sont publiées dans <code>bench-2026-11-06/</code>, volontairement dans un sous-dossier : les index de veille listent les fichiers à plat, et un bras de bench déposé à la racine serait apparu comme une vraie veille dans l'index IA. Le dossier de comparaison de production (profil démo) conserve les sources d'origine.</p></div></div>
+<p class="note" style="text-align:center;margin:26px 0">Rapport produit par ORAC (Hermes) le 6 novembre 2026 — page statique, thème sombre par défaut, bascule clair/sombre enregistrée par navigateur. Chiffres mesurés, aucune estimation.</p>
+</div>
+</body></html>

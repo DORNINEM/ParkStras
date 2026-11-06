@@ -1,0 +1,167 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comparatif IA global — tests de modèles — 6 novembre 2026</title>
+<style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.violet{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tag{display:inline-block;margin:8px 6px 0 0;padding:2px 8px;border-radius:8px;font-size:.72rem;background:rgba(99,102,241,.10);color:var(--accent-2);border:1px solid rgba(99,102,241,.25)}
+    .maturite,.horizon{display:inline-block;margin:8px 6px 0 0;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700}
+    .m-b{background:rgba(16,185,129,.14);color:#059669;border:1px solid rgba(16,185,129,.4)}
+    .m-r{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .m-t{background:rgba(239,68,68,.12);color:#dc2626;border:1px solid rgba(239,68,68,.35)}
+    .m-d{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-c{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-m{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .h-l{background:rgba(139,92,246,.14);color:#7c3aed;border:1px solid rgba(139,92,246,.4)}
+    .flag{color:#b45309;font-weight:600;font-size:.8rem}
+    .note{border:1px dashed var(--border);border-radius:14px;padding:10px 14px;margin:10px 18px 16px;color:var(--muted);font-size:.85rem;background:var(--panel)}
+    .visuels{margin-top:22px}
+    .visuels h2{font-size:1.1rem;margin:0 0 10px}
+    .synthese{margin-top:22px}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .signal{border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:var(--panel)}
+    .signal b{color:var(--accent-2)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .kpis{grid-template-columns:repeat(4,1fr)}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal-src{margin-top:8px;font-size:12.5px;color:var(--muted);}
+    .signal-src a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+    .signal-src a:hover{color:var(--accent-2);border-bottom-color:var(--accent-2);}
+
+    /* ajouts rapport de bench */
+    .resu{display:grid;gap:10px;margin-top:12px;}
+    .resu .row{display:grid;grid-template-columns:210px 1fr;gap:12px;align-items:start;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+    .resu .modele{font-weight:700;color:var(--ink);}
+    .resu .mes{color:var(--muted);font-size:13.5px;}
+    table.cmp{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px;}
+    table.cmp th,table.cmp td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;color:var(--ink);vertical-align:top;}
+    table.cmp th{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:11.5px;}
+    table.cmp td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+    .m-r{color:#ff6b6b;font-weight:600;}
+    .m-d{color:#4ade80;font-weight:600;}
+    .verdict{background:linear-gradient(180deg,rgba(64,220,255,.10),rgba(64,220,255,.02));border:1px solid rgba(64,220,255,.35);border-radius:14px;padding:16px 18px;margin:14px 0;}
+    .verdict ol{margin:6px 0 0 18px;padding:0;}
+    .verdict li{margin:7px 0;color:var(--ink);}
+    .src-list{columns:2;column-gap:26px;font-size:13px;color:var(--muted);}
+    .src-list li{margin:0 0 5px;}
+    .deux-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+    .deux-col .bloc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+    .deux-col h4{margin:0 0 8px;color:var(--ink);font-size:14px;}
+    .deux-col ul{margin:0 0 0 16px;padding:0;color:var(--muted);font-size:13.5px;}
+    .deux-col li{margin:5px 0;}
+    blockquote{border-left:3px solid rgba(64,220,255,.5);margin:10px 0;padding:2px 0 2px 14px;color:var(--muted);font-size:13.5px;}
+    @media(max-width:760px){.deux-col{grid-template-columns:1fr;} .resu .row{grid-template-columns:1fr;}}
+
+</style>
+</head><body>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+<div class="wrap">
+<header>
+<div>
+<h1>Comparatif IA global — tests de modèles — 6 novembre 2026</h1>
+<p>3 veilles du même thème, produites par 3 modèles différents le 6 novembre 2026 · mesures réelles · notes de 2 juges à l’aveugle</p>
+</div>
+<div style="text-align:right"><a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)"><span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span></a><time datetime="2026-11-06">6 novembre 2026</time></div>
+</header>
+<div class="kpis"><div class="kpi"><div class="label">Tirages comparés</div><div class="value">3</div></div><div class="kpi"><div class="label">Juges à l’aveugle</div><div class="value">2</div></div><div class="kpi"><div class="label">Vainqueur du thème</div><div class="value">Qwen 3.8 Flash</div></div></div><div class="card"><div class="card-head"><div class="card-title">📊 Mesures et notes</div></div><div class="card-body"><table class="cmp"><thead><tr><th>Veille du modèle</th><th>mots</th><th>liens (uniques)</th><th>liens dans les signaux</th><th>dates hors fenêtre</th><th>lien mort</th><th>note des 2 juges</th><th>coût</th></tr></thead><tbody><tr><td><a href="bench-2026-11-06/veille-IA-2026-11-06-qwen.html"><b>Qwen 3.8 Flash</b></a></td><td class="num">1 965</td><td class="num">26 (13)</td><td class="num">8</td><td><b class="m-r">08/10, 29/10</b></td><td> — </td><td class="num"><b>42 / 50</b></td><td class="num">0.0462 $</td></tr><tr><td><a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html"><b>DeepSeek v4.1 Flash</b></a></td><td class="num">1 833</td><td class="num">21 (15)</td><td class="num">9</td><td><b class="m-d">aucune</b></td><td> — </td><td class="num"><b>41 / 50</b></td><td class="num">0.0277 $</td></tr><tr><td><a href="bench-2026-11-06/veille-IA-2026-11-06-glm.html"><b>GLM 5.3 Flash</b></a></td><td class="num">1 222</td><td class="num">19 (17)</td><td class="num">7</td><td><b class="m-d">aucune</b></td><td><b class="m-r">404 Capgemini (communiqué)</b></td><td class="num"><b>35 / 50</b></td><td class="num">0.0233 $</td></tr></tbody></table></div></div><div class="card"><div class="card-head"><div class="card-title">Qwen 3.8 Flash · IA <span class="note">— 42/50 chez les deux juges</span></div></div><div class="card-body"><p class="note">Volumes : 1965 mots · 26 liens (13 uniques) · 8 liens dans les signaux · coût 0.0462 $ · 24 appels</p><p>Le plus volumineux et le plus généreux en apparence : 26 liens, mais 13 seulement sont uniques. Deux dates hors fenêtre (8 et 29 octobre) que le contrôle attrape et que les juges n'ont pas vues. En échange, le seul bras du bench à publier une note de méthode sur les items écartés.</p><p><b>Notes des juges</b> — Grok 4.7 : 4 3 4 4 4 · DeepSeek : 5 4 5 4 5</p><p><a class="btn" href="bench-2026-11-06/veille-IA-2026-11-06-qwen.html">📖 Lire cette veille</a> <a class="btn" href="bench-2026-11-06/veille-IA-2026-11-06-qwen.md">🗒️ Fichier Markdown</a></p></div></div><div class="card"><div class="card-head"><div class="card-title">DeepSeek v4.1 Flash · IA <span class="note">— 41/50 chez les deux juges</span></div></div><div class="card-body"><p class="note">Volumes : 1833 mots · 21 liens (15 uniques) · 9 liens dans les signaux · coût 0.0277 $ · 15 appels</p><p>Le plus équilibré entre les zones et le plus ramassé des deux gros bras. 21 liens dont 15 uniques, 9 liens dans la section des signaux. Son angle mort : une seule date citée sur toute la page, ce qui rend la fenêtre des sept jours invérifiable — Grok le relève, deux liens des Échos n'étant pas datés.</p><p><b>Notes des juges</b> — Grok 4.7 : 5 4 4 3 4 · DeepSeek : 4 4 5 4 4</p><p><a class="btn" href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html">📖 Lire cette veille</a> <a class="btn" href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.md">🗒️ Fichier Markdown</a></p></div></div><div class="card"><div class="card-head"><div class="card-title">GLM 5.3 Flash · IA <span class="note">— 35/50 chez les deux juges</span></div></div><div class="card-body"><p class="note">Volumes : 1222 mots · 19 liens (17 uniques) · 7 liens dans les signaux · coût 0.0233 $ · 13 appels</p><p>Le plus court (1 222 mots) et le plus discipliné sur les dates : 20 dates citées, aucune hors fenêtre. Un lien mort réel (communiqué Capgemini, 404) et plusieurs pages d'index prises pour des articles — un défaut que les deux juges ont identifié indépendamment, avec la même liste d'URL.</p><p><b>Notes des juges</b> — Grok 4.7 : 4 3 4 3 4 · DeepSeek : 4 2 4 3 4</p><p><a class="btn" href="bench-2026-11-06/veille-IA-2026-11-06-glm.html">📖 Lire cette veille</a> <a class="btn" href="bench-2026-11-06/veille-IA-2026-11-06-glm.md">🗒️ Fichier Markdown</a></p></div></div><div class="card"><div class="card-head"><div class="card-title">🔗 Retour</div></div><div class="card-body"><p><a href="synthese-tests-modeles-veilles-2026-11-06.html">Voir le rapport complet (3 thèmes, 2 juges, coûts, méthode)</a></p></div></div>
+<p class="note" style="text-align:center;margin:26px 0">Comparatif produit par ORAC (Hermes) le 6 novembre 2026 — page statique, thème sombre par défaut.</p>
+</div>
+</body></html>

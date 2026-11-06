@@ -1,0 +1,59 @@
+# Veille Diabète — 6 novembre 2026
+
+Fenêtre : 30 octobre – 6 novembre 2026 · Sources vérifiées sur leurs pages de publication · 11 articles
+
+## Synthèse
+
+La semaine a été dominée par l'aval réglementaire et économique plutôt que par une percée technologique : la France active ce 6 novembre la consultation infirmière dédiée à l'insulino-initiation du diabète de type 2 (CIA, 20 €), et les résultats trimestriels de Novo Nordisk et de Medtech/Abbott-Dexcom redessinent la carte du marché GLP-1 et capteurs. Le Le Quotidien du Médecin souligne qu'« 2026 est une année de consensus » avec des recommandations qui poussent vers un traitement plus précoce. Côté recherche, l'horizon le plus structurant reste la thérapie cellulaire (zimislecel de Vertex en phase 3, CNTY-813 de Century Therapeutics en demande IND) et l'arrivée imminente en Europe de la pompe MiniMed Flex. Aucun dispositif majeur n'est devenu « disponible » en France cette semaine : tout ce qui est annoncé (Flex, boucles entièrement fermées) reste en déploiement ou en essai.
+
+## Actualités
+
+### 🇫🇷 France
+
+- **Diabète : 2026, une année de consensus** — Le Quotidien du Médecin, 30/10/2026 — [source](https://www.lequotidiendumedecin.fr/specialites/diabetologie-endocrinologie)
+  L'automne 2026 cumule les consensus internationaux (ADA/EASD du 16 septembre, adoptant le CGM comme standard et la boucle fermée comme administration optimale de l'insuline) qui « rebattent les cartes » de la prise en charge : traiter plus tôt, protéger les organes. Point de friction français récurrent : le remboursement de la boucle fermée reste conditionné au passage préalable par la pompe, alors que le consensus recommande un accès direct pour les adultes en multi-injections.
+
+- **Consultation infirmière CIA diabète de type 2 : entrée en vigueur le 6 novembre 2026** — Orion Santé, 06/11/2026 — [source](https://www.orionsante.fr/actualites/consultation-infirmiere-cia)
+  À compter de ce jour, la NGAP intègre la consultation infirmière CIA (20 € en métropole, 21 € outre-mer) pour les patients diabétiques de type 2 en ALD qui débutent une insulinothérapie : 4 consultations maximum dans les 6 premiers mois, sans prescription médicale, en séance dédiée, avec compte rendu versé au DMP. L'avis favorable de la HAS (adopté le 22 octobre, mis en ligne le 27 octobre) conditionne la facturation à des contenus pédagogiques conformes : éducation thérapeutique, prévention des hypoglycémies et des complications.
+
+- **Capteur de glucose remboursé sans passer par le diabétologue pour le type 2 mal équilibré** — Selectra, 03/11/2026 — [source](https://selectra.info/assurance/actualites/marche/capteur-glycemie-type-2-generaliste-rembourse)
+  Rappel utile aux patients : un diabétique de type 2 sous insulinothérapie non intensifiée (moins de 3 injections/jour) avec HbA1c ≥ 8 % peut obtenir un capteur remboursé (FreeStyle Libre 2/2 Plus/Select, Dexcom One/One+) sur prescription de son généraliste ; le diabétologue n'est requis que pour l'insulinothérapie intensifiée. À noter : le lecteur Libre 2 n'est plus pris en charge depuis le 1er juin 2026 (arrêté du 3 février 2025).
+
+- **Journée mondiale du diabète : la FFD présente les résultats de l'étude du Diabète LAB sur l'accompagnement entre patients** — Veille Acteurs de Santé, 05/11/2026 — [source](https://toute-la.veille-acteurs-sante.fr/246235/conference-de-presse-diabetes-entre-deux-consultations-comment-mieux-vivre-avec-la-maladie-en-ligne/)
+  À l'occasion de la JMD du 14 novembre, la Fédération Française des Diabétiques a tenu une visioconférence de presse le 5 novembre pour présenter les enseignements de l'étude du Diabète LAB sur l'impact de ses actions d'accompagnement entre patients (Cafés Diabète, Élan Solidaire, ligne Écoute Solidaire, Bénévoles Patients Experts). Un colloque institutionnel suit le 10 novembre à Paris.
+
+### 🌍 International
+
+- **Novo Nordisk relève ses prévisions annuelles ; CagriSema supérieur au tirzépatide 5 mg sur la perte de poids (REIMAGINE 5)** — Novo Nordisk (communiqué financiel), 04/11/2026 — [source](https://www.globenewswire.com/news-release/2026/11/04/3395015/0/en/novo-raises-full-year-outlook-on-continued-glp-1-momentum-with-third-quarter-adjusted-operating-profit-increasing-27-at-cer-to-dkk-31-720-million.html)
+  Résultats T3 2026 : bénéfice opérationnel ajusté en hausse de 27 % à 31 720 MDKK. Donnée d'essai clé : dans REIMAGINE 5 (adultes DT2 avec obésité), CagriSema 1,0/1,0 mg atteint −12,4 % de poids vs −9,1 % pour tirzépatide 5 mg, avec une réduction d'HbA1c non inférieure à 60 semaines. Il s'agit d'un résultat d'essai avec comparateur actif, pas d'un communiqué marketing ; l'AMM et le remboursement en France restent à construire.
+
+- **Abbott et Dexcom sous tension tarifaire avant une décision Medicare attendue fin 2026 sur les CGM chez les DT2 non insulino-traités** — MedTech Dive, 02/11/2026 — [source](https://www.medtechdive.com/news/abbott-dexcom-grapple-with-diabetes-coverage-ahead-of-planned-medicare-exp/873461/)
+  Abbott invoque une pression sur les prix et une croissance ralentie avant l'élargissement attendu de la couverture Medicare aux diabétiques de type 2 non insulino-traités ; Dexcom ne constate pas la même érosion (T3 : 1,34 Md$, +11 %). La décision du CMS est attendue avant la fin de l'année selon le PDG de Dexcom. En parallèle, les formularies CVS Caremark/Aetna basculent certains plans vers une couverture exclusive Abbott en 2027 — un enjeu d'accès pour les enfants DT1 sous pompe compatible Dexcom.
+
+- **Grèce : le FreeStyle Libre 2 Plus entre au panier de soins national (GESY) dès le 2 novembre** — Talanews, 02/11/2026 — [source](https://talanews.blogspot.com/2026/11/gesy-what-changes-from-today-for.html)
+  Le capteur Libre 2 Plus remplace le Libre 2 dans les prescriptions grecques : port prolongé de 14 à 15 jours, âge d'utilisation abaissé de 4 à 2 ans, prix listé porté à 71,37 € (TVA incluse), soit +4,75 € par capteur. Les ordonnances existantes restent valables jusqu'à échéance, transition progressive jusqu'à épuisement des stocks.
+
+## 🔬 Prospective & Recherche
+
+- **Zimislecel (Vertex, VX-880) : vers un sevrage en insuline — phase 3 en cours** — pharmaphorum — [source](https://pharmaphorum.com/news/ada-vertex-closer-weaning-type-1-diabetics-insulin)
+  Résultat d'essai de phase 1/2 (FORWARD-101) : 12 patients DT1 avec hypoglycémie méconnue, cellules d'îlots dérivées de cellules souches transplantées en une dose pleine (perfusion portale, immunosuppression standard) — critère principal atteint chez les 12 : HbA1c < 7 % et temps dans la cible > 70 % ; 10 patients sur 12 sevrés d'insuline, besoins réduits de 92 %, aucun épisode d'hypoglycémie sévère après 90 jours. La phase 3 vise 50 sujets dosés avant fin 2026, avec recrutement ouvert en Europe et au Canada. Rappel : thérapie expérimentale, non disponible en pratique.
+
+- **CNTY-813 (Century Therapeutics) : îlots dérivés de cellules souches hypoimmunes, demande IND prévue au T4 2026** — Investing.com (français) — [source](https://fr.investing.com/news/company-news/century-therapeutics-presente-des-donnees-sur-sa-therapie-contre-le-diabete-a-leasd-93CH-3619448)
+  Données non cliniques présentées à l'EASD : contrôle glycémique maintenu plus de 11 mois chez la souris diabétique, normoglycémie en ~30 jours post-greffon, sécrétion d'insuline stimulée comparable aux îlots primaires ; 5 lots produits à l'échelle clinique depuis la banque de cellules maîtresses BPF. L'alignement avec la FDA est obtenu sur le dossier non clinique et la conception de l'essai de phase 1/2 ; premières données cliniques attendues au second semestre 2027.
+
+- **Implant biomatériaux pour détecter précocement l'auto-immunité du DT1 (préclinique)** — University of Michigan BME, 04/11/2026 — [source](https://bme.umich.edu/2026/11/04/biomaterial-implant-reveals-early-signs-of-type-1-diabetes-and-treatment-response/)
+  Un implant biomatériaux permet de suivre in situ les changements immunitaires au fil de la progression du diabète de type 1 chez la souris, et d'évaluer si ces signatures pourraient guider les décisions thérapeutiques. Travail préclinique uniquement : ni essai chez l'humain, ni calendrier clinique.
+
+- **MiniMed Flex : lancement européen attendu à partir de mi-novembre 2026** — Drug Delivery Business — [source](https://www.drugdeliverybusiness.com/minimed-wins-ce-mark-for-next-gen-insulin-pump-ups-revenue-guidance)
+  MiniMed (issu de la scission de Medtronic Diabetes) a obtenu le marquage CE de sa pompe MiniMed Flex (contrôlée par smartphone, demi-taille de la 780G, réservoir 300 unités, algorithme SmartGuard), déjà lancée aux États-Unis en juin 2026. Le déploiement européen est annoncé à partir de mi-novembre (Belgique, Italie, Espagne, Portugal, pays nordiques…), d'abord avec le capteur Simplera Sync. Aucune date française n'était confirmée au 6 novembre : dispositif annoncé, pas encore disponible en France.
+
+## 🧭 5 signaux faibles à surveiller
+
+1. **Arrêt de commercialisation de 5 insulines et du Victoza au 31/12/2026 (Novo Nordisk)** : Fiasp Pumpcart (utilisé en pompe YpsoPump/Accu-Chek Insight), Levemir FlexPen/Penfill, Novomix 50 et Victoza disparaissent pour motif commercial. Implication patient : anticiper dès maintenant le relais avec son diabétologue avant l'épuisement des stocks ; implication soignant : cartographier les patients concernés, notamment ceux dont la pompe dépend de Fiasp Pumpcart. [Source FFD](https://www.federationdesdiabetiques.org/federation/actualites/arret-de-commercialisation-de-plusieurs-insulines-et-du-victoza-ce-quil-faut-savoir)
+2. **Retrait du Dexcom G6 de la commercialisation au 31/12/2026** (référentiel capteurs du CHUV, version novembre 2026) : les utilisateurs d'Omnipod 5 ou CamAPS FX couplé au G6 devront migrer vers le G7 — un test de compatibilité pompe/algorithme avant le changement est indispensable pour ne pas interrompre la boucle. [Source CHUV (PDF)](https://www.chuv.ch/fileadmin/sites/edm/images/CGMS_FGMS-Aide_au_choix-V3.1-2026.11.pdf)
+3. **La carte européenne des lancements se redessine** : MiniMed Flex arrive mi-novembre dans plusieurs pays mais pas (encore) en France ; Tandem Mobi est déjà dans 12 marchés internationaux. Implication industriel : la France risque un décalage d'accès aux nouvelles pompes, et les centres initiateurs devront arbitrer entre plateformes aux calendriers désynchronisés. [Source DiabetoTech](https://www.diabetotech.com/blog/easd-2026-tech-update-less-bolusing-new-pumps-and-sensors-beyond-glucose)
+4. **Décision CMS (Medicare, États-Unis) sur le remboursement des CGM chez les DT2 non insulino-traités attendue avant fin 2026** : un feu vert ouvrirait un marché massif et confirmerait la trajectoire française (extension Libre 2 au DT2 non intensifié depuis 2023, rappelée par Selectra cette semaine). Implication industriel : préparer le dossier de remboursement AME/HAS en anticipant ce précédent ; implication soignant : s'attendre à une demande accrue de capteurs en médecine générale. [Source MedTech Dive](https://www.medtechdive.com/news/abbott-dexcom-grapple-with-diabetes-coverage-ahead-of-planned-medicare-exp/873461/)
+5. **Rotation européenne vers les capteurs 15 jours** (Grèce : Libre 2 Plus au GESY le 02/11, +4,75 €/capteur ; Libre Select 15 jours déjà remboursé en France) : les payeurs arbitrent désormais sur la durée de port et le prix unitaire. Implication patient : moins de changements de capteur, mais vigilance sur les écarts de prix entre pays ; implication industriel : les capteurs 14 jours deviennent structurellement désavantagés. [Source Talanews](https://talanews.blogspot.com/2026/11/gesy-what-changes-from-today-for.html)
+
+---
+*Rapport généré le 6 novembre 2026 · Dates de publication vérifiées sur chaque page source · Sites blacklistés exclus (lesnumeriques.com, degrouptest.com)*

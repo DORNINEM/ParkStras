@@ -1,0 +1,281 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 6 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:16px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .prospective .item p{color:var(--ink)}
+    .signal p{margin:0 0 6px}
+    .signal ul{margin:0;padding-left:18px}
+    .signal li{font-size:.82rem;color:var(--muted);word-break:break-all}
+    .signal li a{color:var(--muted)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr 1fr}
+    }
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde + Focus Mistral — généré par ORAC / Hermes</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🇫🇷 France</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">🌐 Monde</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">🇫🇷 Focus Mistral</div><div class="value">2</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">🗓 6 novembre 2026</span>
+    <span class="pill yellow">🔎 Fenêtre 7 jours</span>
+    <span class="pill">🚫 lesnumeriques.com, degrouptest.com exclus</span>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-head"><div class="card-title">🧾 Synthèse</div></div>
+    <div class="card-body">
+      <p>La semaine se joue sur deux tableaux : la souveraineté et la sécurité. En France, <strong>OVHcloud</strong> annonce un modèle d'IA souverain pour fin novembre et attaque frontalement le modèle économique de <strong>Mistral</strong>, qui accélère de son côté (plateforme <strong>Studio</strong>, cinquième acquisition en un an) tandis que <strong>Meta ampute ses effectifs français d'un tiers</strong> pour financer sa bascule vers l'IA. Les <strong>éditeurs indépendants</strong> s'organisent pour réclamer des réparations, et le boom des <strong>datacenters en Île-de-France</strong> ravive les tensions sur les ressources. En Europe, l'<strong>Allemagne</strong> se fixe un cap industriel (« AI Nation 2030 », 18 mesures) et le capital-risque IA capte l'essentiel des <strong>1,3 Md€</strong> levés sur la semaine. Dans le monde, <strong>OpenAI lance GPT-6 Cyber</strong>, <strong>Google garantit ~19 Md$ de baux d'Anthropic</strong> et <strong>Apple ouvre Siri AI à tous les développeurs</strong>.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">OVHcloud prépare son IA souveraine et attaque le modèle économique de Mistral</a></h3>
+          <div class="meta">ZDNet FR • 2 novembre 2026</div>
+          <p>Le cloud français, désormais rentable, annonce la sortie imminente d'un modèle de langage souverain — propriétaire et ouvert — d'ici <strong>fin novembre</strong>. Son fondateur <strong>Octave Klaba</strong> cible ouvertement Mistral AI, ouvrant une bataille pour les infrastructures cloud des entreprises françaises. L'alternative européenne complète, hébergée sur serveurs souverains et personnalisable, positionne OVHcloud en challenger direct de la pépite française.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">Meta supprime un tiers de ses effectifs français pour financer sa transition IA</a></h3>
+          <div class="meta">ZDNet FR • 5 novembre 2026</div>
+          <p>La filiale hexagonale de Meta (~300 collaborateurs) finalise la suppression d'<strong>une centaine de postes</strong> via une rupture conventionnelle collective, candidatures closes le 5 novembre 2026 : indemnité de <strong>2,15 mois de salaire par année d'ancienneté</strong>, congé de mobilité de dix mois à 80 %, formations et aides à la création d'entreprise. Le groupe projette <strong>135 à 145 Md$ de capex</strong> en 2026, fléchés vers ses data centers et son IA.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://fr.news.yahoo.com/%C3%A9diteurs-ind%C3%A9pendants-sunissent-demander-r%C3%A9parations-153059948.html" target="_blank">Des éditeurs indépendants français s'unissent pour obtenir réparations des sociétés d'IA</a></h3>
+          <div class="meta">AFP (via Yahoo Actualités) • 4 novembre 2026</div>
+          <p>Une dizaine d'éditeurs indépendants ont annoncé « agir en commun » après l'utilisation non autorisée d'ouvrages de leurs auteurs. Ils prévoient des <strong>mises en demeure début 2027</strong>, puis des actions en justice. <strong>Mistral AI et Anthropic pourraient figurer parmi les premières concernées</strong>, Meta ayant déjà été assignée à Paris en 2025. 20 % des indemnités alimenteront une caisse commune de contentieux.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.zdnet.fr/actualites/boom-des-datacenters-en-ile-de-france-mais-des-tensions-a-gerer-507350.htm" target="_blank">Boom des datacenters en Île-de-France, sous tension sur les ressources</a></h3>
+          <div class="meta">ZDNet FR • 5 novembre 2026</div>
+          <p>En vingt ans, le nombre de datacenters franciliens est passé d'une dizaine à <strong>plus de 150</strong>, l'IA tirant l'implantation dans une course à l'attractivité. Cet essor crée des zones de tension et accroît la pression sur les ressources, prolongeant les alertes de l'Ademe sur la consommation électrique de l'IA générative.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.bundesregierung.de/breg-en/news/digital-summit-2026-2459582" target="_blank">Allemagne : le cap « AI Nation 2030 » fixé au Sommet numérique de Berlin</a></h3>
+          <div class="meta">Gouvernement fédéral (bundesregierung.de) • 2 novembre 2026</div>
+          <p>Réunis les 2 et 3 novembre sous le thème « Shaping AI: safe, sovereign, competitive », le chancelier <strong>Friedrich Merz</strong> et le ministre <strong>Karsten Wildberger</strong> ont présenté la vision allemande d'une nation IA. La <strong>task force IA</strong> a défini <strong>18 mesures</strong> mesurables. Objectifs 2030 : <strong>80 % des grandes entreprises et 55 % des PME</strong> utilisant l'IA, plus de 10 % de la production économique générée par l'IA, <strong>90 % des autorités fédérales</strong> exploitant au moins une application IA.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://tech.eu/2026/11/02/european-tech-weekly-recap-over-eur13b-invested-across-60-deals" target="_blank">Europe : 1,3 Md€ levés en une semaine, l'IA capte 60 % du capital</a></h3>
+          <div class="meta">Tech.eu • 2 novembre 2026</div>
+          <p>Le récapitulatif hebdomadaire recense <strong>plus de 60 tours tech pour plus de 1,3 Md€</strong> et plus de 10 opérations de M&amp;A/exits. L'IA arrive largement en tête des secteurs financés avec <strong>815,6 M€</strong>, devant la healthtech (121,1 M€) et la fintech (104,1 M€) — le capital-risque européen se concentre sur l'intelligence artificielle.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.getpliant.com/en-gb/press/80-million-series-c" target="_blank">Pliant (Berlin) lève 80 M$ pour ouvrir les paiements B2B aux agents IA</a></h3>
+          <div class="meta">Pliant (communiqué) • 4 novembre 2026</div>
+          <p>La fintech berlinoise boucle un <strong>série C de 80 M$</strong> mené par Seaya Nova et Speedinvest (avec Illuminate Financial, Motive Partners, Molten Ventures), portant son total à ~200 M$. Passée le cap des <strong>100 M$ de revenus récurrents annuels</strong>, Pliant ouvre son infrastructure de paiement régulée aux <strong>agents IA via le Model Context Protocol (MCP)</strong> — Claude, ChatGPT inclus — avec permissions, contrôles de dépenses et pistes d'audit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🌐 Monde</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://venturebeat.com/ai/openai-launches-gpt-6-cyber-with-stronger-exploit-research-and-higher-api-price-than-anthropic-and-google" target="_blank">OpenAI lance GPT-6 Cyber, un modèle de sécurité à l'accès restreint et au prix élevé</a></h3>
+          <div class="meta">VentureBeat • 5 novembre 2026</div>
+          <p>OpenAI dévoile <strong>GPT-6 Cyber</strong>, un modèle spécialisé capable selon l'éditeur de découvrir et d'exploiter davantage de vulnérabilités logicielles tout en respectant mieux les limites des chercheurs. L'accès, soumis à approbation, passe d'abord par <strong>Daybreak Red</strong>, aussi disponible sur <strong>Amazon Bedrock / AWS GovCloud</strong>. Tarif (<strong>20 $ / 100 $ par million de jetons</strong>) supérieur aux modèles cyber d'Anthropic et de Google.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://investors.terawulf.com/news-events/press-releases" target="_blank">Google garantit ~19 Md$ de baux d'Anthropic dans le Kentucky</a></h3>
+          <div class="meta">TeraWulf (communiqué 8-K) • 4 novembre 2026</div>
+          <p>L'opérateur <strong>TeraWulf</strong> annonce trois accords de <em>credit support</em> avec <strong>Google</strong>, adossés à environ <strong>19 Md$ de baux (20 ans) avec Anthropic</strong> sur le campus <em>Justified</em> de Hawesville (Kentucky, ~401 MW), plus un accord EPC avec Fluor. La garantie ne s'active qu'à l'achèvement (livraison échelonnée fin 2027 → mi-2028) : en cas de défaut, Google peut reprendre le bail ou payer une pénalité.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank">Apple ouvre Siri AI à tous les développeurs</a></h3>
+          <div class="meta">Apple Developer • 3 novembre 2026</div>
+          <p>Avec les bêtas iOS/iPadOS/macOS/watchOS/visionOS <strong>27.3</strong>, Apple propose une <em>Developer Preview</em> permettant à <strong>n'importe quelle application d'intégrer Siri AI via App Intents</strong> (contexte personnel, conscience de l'écran, langage naturel). De nouvelles « skills » combinent plusieurs actions en une expérience, et Siri AI expose toute entité de l'index sémantique Spotlight. Disponible en <strong>anglais, français, japonais, coréen, portugais et espagnol</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://mistral.ai/news/build-with-studio/" target="_blank">Mistral Studio : la plateforme d'agents d'entreprise adossée au Chonk</a></h3>
+          <div class="meta">Mistral AI (blog) • 5 novembre 2026</div>
+          <p>Sous le slogan « Le Chonk brings the brains. Studio puts it to work. », Mistral met en avant <strong>Studio</strong>, sa plateforme pour construire et déployer agents, workflows et applications d'entreprise sur <strong>Mistral Large 4 (Le Chonk)</strong>. La release ajoute <strong>agents managés</strong>, workflows (déclencheurs, graphe visuel), <em>enterprise context</em>, observabilité et évaluations, avec déploiement cloud, VPC ou on-premise pour la <strong>souveraineté</strong>. Clients en production : ABANCA, Accenture, Alten, BNP Paribas, Capgemini, CMA CGM, TCS ; un <strong>serveur MCP Mistral</strong> permet de déployer depuis son environnement de code.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/mistral-accelere-dans-le-code-genere-par-ia-grace-a-une-nouvelle-acquisition-2261330" target="_blank">Mistral boucle sa cinquième acquisition de l'année avec SkipLabs</a></h3>
+          <div class="meta">Les Echos • 5 novembre 2026</div>
+          <p>Valorisée <strong>25 Md$</strong>, la start-up française annonce racheter <strong>SkipLabs</strong>, société française de six personnes fondée en 2022, spécialisée dans la programmation logicielle. Montant non divulgué. C'est la <strong>cinquième acquisition en moins d'un an</strong> pour l'entreprise d'Arthur Mensch, qui veut accélérer sur la <strong>génération de code</strong> — un terrain où Le Chonk se positionne en tête des modèles ouverts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card prospective" style="margin-top:16px">
+    <div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+    <div class="card-body">
+      <div class="item"><h3>La bataille française de l'IA souveraine se déplace sur l'infrastructure <span class="meta">— court terme (&lt; 2 ans)</span></h3><p>L'annonce OVHcloud (modèle souverain fin novembre) et le tacle direct à Mistral signalent que la souveraineté se jouera autant sur le cloud et l'hébergement que sur les modèles.</p></div>
+      <div class="item"><h3>L'open-weight devient un actif de sécurité nationale <span class="meta">— court terme (&lt; 2 ans)</span></h3><p>Les variantes cyber (Le Chonk) et les débats sur les capacités offensives installent l'open-weight au cœur des politiques de défense ; la question du double usage va s'institutionnaliser.</p></div>
+      <div class="item"><h3>Les agents IA franchissent la frontière des paiements et des processus critiques <span class="meta">— moyen terme (2-5 ans)</span></h3><p>Avec Pliant et le MCP, les agents d'entreprise exécutent des paiements réels dans un cadre régulé : confiance, auditabilité et plafonds deviennent des exigences d'infrastructure.</p></div>
+      <div class="item"><h3>Le capital-risque IA se concentre et creuse l'écart avec l'amorçage <span class="meta">— moyen terme (2-5 ans)</span></h3><p>L'IA capte 815,6 M€ sur 1,3 Md€ levés en une semaine en Europe : la dynamique favorise les gros tours et les verticales matures au détriment du deeptech en amorçage.</p></div>
+      <div class="item"><h3>La régulation se déplace vers la responsabilité des systèmes d'information IA <span class="meta">— moyen terme (2-5 ans)</span></h3><p>En Allemagne, le projet de <em>Digital Media State Treaty</em> crée une catégorie d'« AI information systems » avec obligations de transparence au-delà d'un million d'usagers mensuels ; couplée aux contentieux d'ayants droit, elle préfigure une responsabilisation des fournisseurs.</p></div>
+    </div>
+  </div>
+
+  <div class="card signal" style="margin-top:16px">
+    <div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles sourcés</div></div>
+    <div class="card-body">
+      <div class="item">
+        <p><strong>1. Une concurrence franco-française s'ouvre sur l'IA souveraine</strong> — OVHcloud promet un modèle souverain fin novembre et attaque le modèle économique de Mistral ; le duel cloud / modèle frontier s'installe.</p>
+        <ul>
+          <li><a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm</a></li>
+          <li><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/souverainete-numerique-le-francais-ovhcloud-pret-a-se-diversifier-dans-les-modeles-ia-2237993" target="_blank">https://www.lesechos.fr/tech-medias/intelligence-artificielle/souverainete-numerique-le-francais-ovhcloud-pret-a-se-diversifier-dans-les-modeles-ia-2237993</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>2. L'IA grignote les effectifs des Big Tech en France</strong> — Meta supprime un tiers de ses salariés hexagonaux par rupture conventionnelle collective pour financer sa capex IA : la « transition IA » se paie en emplois.</p>
+        <ul>
+          <li><a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>3. Les ayants droit passent de la plainte au contentieux collectif</strong> — une dizaine d'éditeurs français mutualisent leurs actions (mises en demeure début 2027) visant notamment Mistral et Anthropic : un front juridique durable se met en place.</p>
+        <ul>
+          <li><a href="https://fr.news.yahoo.com/%C3%A9diteurs-ind%C3%A9pendants-sunissent-demander-r%C3%A9parations-153059948.html" target="_blank">https://fr.news.yahoo.com/éditeurs-indépendants-sunissent-demander-réparations-153059948.html</a></li>
+          <li><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/on-ne-demande-pas-la-charite-les-droits-dauteur-et-lia-de-retour-a-lagenda-parlementaire-2222805" target="_blank">https://www.lesechos.fr/tech-medias/intelligence-artificielle/on-ne-demande-pas-la-charite-les-droits-dauteur-et-lia-de-retour-a-lagenda-parlementaire-2222805</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>4. Les paiements par agents IA deviennent une réalité régulée</strong> — Pliant ouvre une infrastructure de paiement sous licence aux agents externes via MCP (Claude, ChatGPT) : l'agentique quitte la démo pour l'argent réel.</p>
+        <ul>
+          <li><a href="https://www.getpliant.com/en-gb/press/80-million-series-c" target="_blank">https://www.getpliant.com/en-gb/press/80-million-series-c</a></li>
+          <li><a href="https://tech.eu/2026/11/02/european-tech-weekly-recap-over-eur13b-invested-across-60-deals" target="_blank">https://tech.eu/2026/11/02/european-tech-weekly-recap-over-eur13b-invested-across-60-deals</a></li>
+        </ul>
+      </div>
+      <div class="item">
+        <p><strong>5. Les Big Tech se garantissent mutuellement pour financer l'IA</strong> — Google adosse ~19 Md$ de baux d'Anthropic ; le financement de projet se diffuse dans l'infrastructure IA, déplaçant le risque vers les marchés de dette.</p>
+        <ul>
+          <li><a href="https://investors.terawulf.com/news-events/press-releases" target="_blank">https://investors.terawulf.com/news-events/press-releases</a></li>
+          <li><a href="https://finance.yahoo.com/technology/ai/articles/google-backstops-terawulf-8217-19-141248889.html" target="_blank">https://finance.yahoo.com/technology/ai/articles/google-backstops-terawulf-8217-19-141248889.html</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 6 novembre 2026 par <strong>ORAC</strong> / Hermes (skill veille-ia-quotidienne). Nom public : « Veille IA global ». Template veille-html (dark theme, KPIs, cards responsive).</p>
+    <p>Fenêtre : 30/10 → 06/11/2026. Blacklist exclus : lesnumeriques.com, degrouptest.com. Doublons de la veille du 01/11 écartés, dates vérifiées source par source. Fichiers : veille-IA-2026-11-06-deepseek.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">☀️</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'🌙'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

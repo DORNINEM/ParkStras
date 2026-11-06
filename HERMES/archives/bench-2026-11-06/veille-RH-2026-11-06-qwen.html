@@ -1,0 +1,244 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 6 novembre 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:18px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Rajdhani',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+    background:
+      radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+      radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+      var(--bg);
+    color:var(--ink); line-height:1.65;
+  }
+  .mono{font-family:'Share Tech Mono','SFMono-Regular',Consolas,monospace}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+  header{
+    display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+    padding:22px 22px 20px; border:1px solid var(--border);
+    background:linear-gradient(180deg,#0b1220,var(--panel));
+    border-radius: var(--radius); color:#fff;
+    box-shadow: var(--shadow);
+  }
+  header h1{font-size:1.6rem;margin:0;letter-spacing:.02em}
+  header p{margin:0;opacity:.85;font-size:.95rem;color:var(--muted)}
+  header time{font-variant-numeric: tabular-nums;color:var(--accent);font-family:'Share Tech Mono',monospace;font-size:.95rem}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+  .kpi{
+    border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+    border-radius:14px; padding:14px 16px;
+  }
+  .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700;color:var(--accent)}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+  .pill.blue{background:var(--accent);color:#010409;border-color:var(--accent)}
+  .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+  .pill.yellow{background:#f59e0b;color:#010409;border-color:#f59e0b}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+  .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+  .card-title{font-size:1.05rem;font-weight:700;color:var(--accent)}
+  .card-body{padding:12px 18px 18px}
+  .item{border-top:1px solid var(--border);padding:14px 0}
+  .item:first-child{border-top:0;padding-top:0}
+  .item h3{margin:0 0 6px;font-size:1rem;line-height:1.4}
+  .item h3 a{color:var(--accent-2);text-decoration:none}
+  .item h3 a:hover{text-decoration:underline}
+  .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px;font-family:'Share Tech Mono',monospace}
+  .item p{margin:0;font-size:.92rem;color:var(--ink)}
+  .sig{padding:14px 0;border-top:1px solid var(--border)}
+  .sig:first-child{border-top:0;padding-top:0}
+  .sig h3{margin:0 0 6px;font-size:.98rem;color:var(--ink)}
+  .sig h3 .n{color:var(--accent);font-family:'Share Tech Mono',monospace;margin-right:6px}
+  .sig p{margin:0;font-size:.9rem;color:var(--ink)}
+  .sig .src{margin-top:8px;font-size:.74rem;line-height:1.9;word-break:break-all}
+  .sig .src a{color:var(--accent);text-decoration:underline}
+  .sig .src .lbl{color:var(--muted)}
+  footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+  footer p{margin:4px 0}
+  @media (min-width: 860px){ .grid{grid-template-columns:1fr 1fr} }
+  .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+    font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+    padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+    border:1px solid var(--border);background:var(--panel);color:var(--ink);
+    box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🧠 Veille IA &amp; Mutations RH</h1>
+      <p>Banque · Assurance · Informatique — fenêtre 30 octobre → 6 novembre 2026 · analyse équilibrée opportunités / risques / accompagnement</p>
+    </div>
+    <time datetime="2026-11-06">vendredi 6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">① IA dans les métiers RH</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">② Compétences</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">③ Risques &amp; défis</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">④ Accompagnement</div><div class="value">2</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 11 actualités (doublons fusionnés)</span>
+    <span class="pill green">📅 06/11/2026</span>
+    <span class="pill yellow">🔎 Dates vérifiées sur les pages sources</span>
+    <span class="pill">🚫 sites blacklistés non cités</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">## 1. IA dans les métiers RH</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.informatiquenews.fr/ia-et-emploi-la-tentation-de-produire-moins-de-251540" target="_blank">IA et emploi : la tentation de produire plus avec moins de salariés</a></h3>
+<div class="meta">Informatique News • 05/11/2026</div>
+<p>Démonstration Workday devant la presse à Paris : à partir d'un poste ouvert, un agent IA repère quinze profils, prépare des messages personnalisés et propose d'organiser les entretiens — le recruteur garde la validation. Global Workforce Report 2026 : 40 % des dirigeants misent sur l'IA pour l'efficacité, 28 % anticipent une baisse des effectifs ; en France, l'étude HEC/Banque de France relève −28,3 % d'embauches en CDI des 21-29 ans dans les métiers les plus exposés.</p>
+</div>
+<div class="item">
+<h3><a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/" target="_blank">IA et recrutement : qui assume la décision ? La réponse de Fabian Caldarella</a></h3>
+<div class="meta">myRHline • 02/11/2026</div>
+<p>L'étude « Recrutement 2040 : jusqu'où irons-nous ? » (myRHline × Teamtailor) mesure l'effacement de la frontière entre décision algorithmique et décision humaine. Pour le directeur du recrutement d'Artemys, sourcing et matching peuvent s'automatiser, mais challenger le besoin, défendre un potentiel et expliquer les choix reste au recruteur — un rappel utile alors que l'AI Act classe ces outils « à haut risque ».</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lassuranceenmouvement.com/2026/11/05/le-grand-forum-lassurance-face-a-la-rupture-agentique/" target="_blank">Le grand Forum « L'assurance face à la rupture agentique »</a></h3>
+<div class="meta">L'Assurance en Mouvement • 05/11/2026</div>
+<p>Compagnies, mutuelles, courtage et insurtech confrontent leurs usages, appuyés sur une enquête BtoB exclusive (196 professionnels) : l'IA agentique s'installe plus vite que prévu, d'abord près du client et du conseiller (sinistres, appels d'offres santé-prévoyance, analyse de portefeuille). Le courtier anticipe sa mutation en risk manager ; le vrai sujet RH devient l'usage du temps libéré.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">## 2. Évolutions des compétences</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.agefi.fr/cash-risk/actualites/la-montee-en-competences-face-a-lia-est-insuffisante-en-entreprise" target="_blank">La montée en compétences face à l'IA est insuffisante en entreprise</a></h3>
+<div class="meta">L'Agefi • 04/11/2026</div>
+<p>Enquête OneStream : 70 % des cadres financiers français craignent que l'impréparation de leurs collaborateurs à l'IA ne compromette la pertinence de leur organisation d'ici cinq ans. Pour banque et assurance, les investissements technologiques avancent plus vite que le développement des compétences — un risque de compétitivité autant que social.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.argusdelassurance.com/tech/assurtech/guidewire/en-faisant-lacquisition-dhyperexponential-guidewire-signe-le-plus-gros-deal-de-lhistoire-de-lassurtech-europeenne.K6QHSU5LEZD4BK73EIYUC4QD44.html" target="_blank">Guidewire signe le plus gros deal de l'histoire de l'assurtech européenne</a></h3>
+<div class="meta">L'Argus de l'assurance • 03/11/2026</div>
+<p>Guidewire rachète 1,7 Md$ (jusqu'à 2,1 Md$ avec earn-out) hyperexponential, plateforme d'IA native de souscription et tarification en assurance dommages (+75 Md$ de primes commerciales). Le modèle revendu — des agents IA qui évaluent, tarifent et décident « aux côtés » des souscripteurs et actuaires — redessine le référentiel de compétences des métiers techniques de l'assurance.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.isfb.ch/en/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank">Générative IA au travail : la banque privée romande se structure en compétences certifiantes</a></h3>
+<div class="meta">ISFB (Institut de Formation Bancaire) • 03/11/2026</div>
+<p>Avant sa table ronde du 10 novembre avec Swiss Banking, l'ISFB pose la question des DRH bancaires : intégrer l'IA générative sans perdre expertise, autonomie et sens — charge cognitive, identité professionnelle, santé au travail. La littératie IA s'y structure en parcours certifiants (badges, certifications SAQ), modèle de formation continue pour les banques.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">## 3. Risques &amp; défis</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">L'ère du « management algorithmique » : l'IA renforce la surveillance des salariés</a></h3>
+<div class="meta">Les Echos • 05/11/2026 (même dépêche : <a href="https://www.clubic.com/actualite-637498-cet-outil-permettra-a-votre-patron-de-surveiller-votre-travail-avec-claude.html" target="_blank">Clubic, 04/11/2026</a>)</div>
+<p>Les « smart reports » d'Anthropic permettent aux managers d'observer l'usage de Claude par leurs équipes : dépenses de tokens, bilan des « inefficacités » (conversations sans résultat exploitable ou jugées « personnelles ou hors sujet »). Utile pour piloter un déploiement, l'outil ouvre aussi une surveillance parfois opaque et disproportionnée — la CNIL exige justification, proportionnalité et consultation du CSE.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.capital.fr/votre-carriere/chatgpt-en-cachette-au-travail-quels-risques-pour-le-salarie-1531412" target="_blank">ChatGPT en cachette au travail : quels risques pour le salarié ?</a></h3>
+<div class="meta">Capital • 01/11/2026</div>
+<p>Près de trois salariés sur quatre utilisent l'IA générative au travail, mais seuls 37 % s'en tiennent aux outils homologués (Greenworking × Ipsos BVA). Faute, sanction, licenciement : Capital détaille les risques de la « shadow AI », sur fond de jurisprudence — la cour d'appel de Paris a confirmé le 21 mai 2026 la suspension de ChatGPT au Groupe Moniteur faute de consultation du CSE.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.nicematin.com/societe/400-congressistes-du-syndicat-national-de-la-banque-et-du-credit-rassembles-a-juan-les-pins-se-mobilisent-en-solidarite-avec-le-mouvement-du-5-novembre-10754317" target="_blank">Banque : 400 congressistes de la CFE-CGC mobilisés pour « une meilleure répartition de la valeur produite par l'IA »</a></h3>
+<div class="meta">Nice-Matin • 05/11/2026</div>
+<p>En congrès national à Juan-les-Pins, le SNB/CFE-CGC — premier syndicat bancaire (400 000+ salariés, 450 marques) — interrompt ses travaux pour la mobilisation du 5 novembre et martèle la revendication emblème du conflit IA : la redistribution de la valeur créée. Fonctions juridiques, comptabilité et centres de relation client désignés comme les plus menacés.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">## 4. Dispositifs d'accompagnement</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://culture-rh.com/deploiement-ia-en-entreprise-consultation-cse/" target="_blank">Déploiement de l'IA en entreprise : quand et comment consulter le CSE ?</a></h3>
+<div class="meta">Culture-RH • 02/11/2026 (même sujet : <a href="https://www.village-justice.com/articles/chatgpt-claude-agents-comment-concilier-innovation-pouvoir-direction-protection,59827.html" target="_blank">Village de la Justice, 05/11/2026</a>)</div>
+<p>Mode d'emploi du bon accompagnement : l'outil d'IA relève de la consultation « nouvelles technologies » (art. L. 2312-8) et, pour l'aide au recrutement ou le contrôle d'activité, de l'information-consultation préalable (art. L. 2312-38), avant toute décision. Jurisprudence 2026 à l'appui — Nanterre (29/01), Paris (21/05), Créteil (15/09) : les déploiements hors procédure sont suspendus, y compris en phase pilote.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees" target="_blank">Deutsche Bank : une « AI Academy » pour 20 000 collaborateurs de la banque privée</a></h3>
+<div class="meta">Deutsche Bank (communiqué) • 05/11/2026</div>
+<p>Parcours d'apprentissage par rôle et par niveau, du prompt fondamental aux agents agentiques : 3 500 collaborateurs formés aujourd'hui, 20 000+ visés. À noter, le calendrier allemand — introduction seulement au 1er semestre 2027 « après concertation avec les représentants du personnel » : le dialogue social est verrouillé en amont du plan de montée en compétences.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="card" style="margin-top:22px">
+<div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+<div class="card-body">
+<div class="sig">
+<h3><span class="n">1.</span>Le pipeline de recrutement sans premier filtre humain</h3>
+<p>La démonstration Workday (sourcing, messages et entretiens préparés par l'agent, simple « validation » recruteur) et l'étude « Recrutement 2040 » convergent : surveiller le moment où la validation humaine devient un geste automatique.</p>
+<div class="src mono"><span class="lbl">Sources :</span> <a href="https://www.informatiquenews.fr/ia-et-emploi-la-tentation-de-produire-moins-de-251540">https://www.informatiquenews.fr/ia-et-emploi-la-tentation-de-produire-moins-de-251540</a> · <a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/">https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/</a></div>
+</div>
+<div class="sig">
+<h3><span class="n">2.</span>Le token et « l'inefficacité » comme indicateurs de management</h3>
+<p>Les smart reports d'Anthropic installent une mesure de consommation d'IA par salarié ; risque de confondre pilotage du coût et évaluation de la performance, avec ce que cela suppose de dérive contrôle / RPS et de débat CSE.</p>
+<div class="src mono"><span class="lbl">Sources :</span> <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391">https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391</a> · <a href="https://www.clubic.com/actualite-637498-cet-outil-permettra-a-votre-patron-de-surveiller-votre-travail-avec-claude.html">https://www.clubic.com/actualite-637498-cet-outil-permettra-a-votre-patron-de-surveiller-votre-travail-avec-claude.html</a></div>
+</div>
+<div class="sig">
+<h3><span class="n">3.</span>La shadow AI comme double vulnérabilité</h3>
+<p>Seuls 37 % des utilisateurs de GenAI au travail s'en tiennent aux outils homologués : sanction individuelle possible pour l'un, suspension judiciaire pour l'employeur qui saute la consultation du CSE. Les banques qui industrialisent l'IA doivent documenter charte + formation + traces.</p>
+<div class="src mono"><span class="lbl">Sources :</span> <a href="https://www.capital.fr/votre-carriere/chatgpt-en-cachette-au-travail-quels-risques-pour-le-salarie-1531412">https://www.capital.fr/votre-carriere/chatgpt-en-cachette-au-travail-quels-risques-pour-le-salarie-1531412</a> · <a href="https://culture-rh.com/deploiement-ia-en-entreprise-consultation-cse/">https://culture-rh.com/deploiement-ia-en-entreprise-consultation-cse/</a></div>
+</div>
+<div class="sig">
+<h3><span class="n">4.</span>La « souscription agentique » en train de devenir un métier</h3>
+<p>Le deal record Guidewire/hyperexponential impose le narratif d'agents IA qui tarifient et décident « aux côtés » des souscripteurs et actuaires ; les assureurs français et la bancassurance devront renégocier périmètres de poste, supervision et formation initiale.</p>
+<div class="src mono"><span class="lbl">Sources :</span> <a href="https://www.argusdelassurance.com/tech/assurtech/guidewire/en-faisant-lacquisition-dhyperexponential-guidewire-signe-le-plus-gros-deal-de-lhistoire-de-lassurtech-europeenne.K6QHSU5LEZD4BK73EIYUC4QD44.html">https://www.argusdelassurance.com/tech/assurtech/guidewire/en-faisant-lacquisition-dhyperexponential-guidewire-signe-le-plus-gros-deal-de-lhistoire-de-lassurtech-europeenne.K6QHSU5LEZD4BK73EIYUC4QD44.html</a> · <a href="https://www.lassuranceenmouvement.com/2026/11/05/le-grand-forum-lassurance-face-a-la-rupture-agentique/">https://www.lassuranceenmouvement.com/2026/11/05/le-grand-forum-lassurance-face-a-la-rupture-agentique/</a></div>
+</div>
+<div class="sig">
+<h3><span class="n">5.</span>Porte d'entrée junior verrouillée, mobilité interne gelée</h3>
+<p>−28,3 % d'embauches CDI des 21-29 ans dans les métiers exposés (≈ −42 % chez les jeunes développeurs / ingénieurs IT), 57 % d'employeurs constatant moins de mobilités internes, 70 % de cadres financiers craignant l'impréparation de leurs équipes : la transmission des compétences en banque-assurance-informatique se joue maintenant.</p>
+<div class="src mono"><span class="lbl">Sources :</span> <a href="https://www.informatiquenews.fr/ia-et-emploi-la-tentation-de-produire-moins-de-251540">https://www.informatiquenews.fr/ia-et-emploi-la-tentation-de-produire-moins-de-251540</a> · <a href="https://www.agefi.fr/cash-risk/actualites/la-montee-en-competences-face-a-lia-est-insuffisante-en-entreprise">https://www.agefi.fr/cash-risk/actualites/la-montee-en-competences-face-a-lia-est-insuffisante-en-entreprise</a></div>
+</div>
+</div>
+</div>
+  <footer>
+    <p>Généré le 2026-11-06 par ORAC (bac à sable de comparaison, variante <span class="mono">qwen</span>) — veille-rh-ia + gabarit veille-html look Jarvis. Fichiers : <span class="mono">veille-RH-2026-11-06-qwen.md + .html</span></p>
+    <p>11 actualités · fenêtre 30/10–06/11/2026 · focus banque/assurance/informatique · doublons fusionnés (Les Echos+Clubic ; Culture-RH+Village de la Justice) · dates de publication vérifiées sur chaque page source (AG2R 18/09, Culture-RH équité 28/09, The Asian Banker 25/09, Numeum 09/10, NVO 02/09 — écartés hors fenêtre) · blacklist respectée (aucun site exclu cité).</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de thème" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'🌙'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

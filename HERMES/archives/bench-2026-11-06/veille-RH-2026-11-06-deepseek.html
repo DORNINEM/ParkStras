@@ -1,0 +1,289 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA & Mutations RH — 6 novembre 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#010409;
+      --panel:#0b1220;
+      --ink:#e6f1ff;
+      --muted:#8fb3cc;
+      --accent:#40dcff;
+      --accent-2:#ffb347;
+      --border:rgba(64,220,255,.22);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:'Rajdhani',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#ffb3471f,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 90px}
+    header{
+      padding:24px 24px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius:18px; color:#fff; box-shadow:var(--shadow);
+    }
+    header h1{font-size:1.7rem;margin:0;letter-spacing:-.2px}
+    header p{margin:6px 0 0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums;color:var(--accent)}
+    header code{font-family:'Share Tech Mono',ui-monospace,monospace;color:var(--accent-2);font-size:.88em}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+    .kpi{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:14px;padding:14px 16px}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#010409;border-color:var(--accent)}
+    .pill.green{background:#7bffb2;color:#010409;border-color:#7bffb2}
+    .pill.yellow{background:var(--accent-2);color:#010409;border-color:var(--accent-2)}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.08rem;font-weight:700;color:var(--accent)}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:16px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:1rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .nature{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      padding:2px 8px;border-radius:6px;border:1px solid var(--border);color:var(--muted);margin:2px 0 8px}
+    .item p{margin:0 0 6px;font-size:.94rem;color:var(--ink)}
+    section h2{font-size:1.25rem;margin:34px 0 12px;color:var(--ink);border-left:3px solid var(--accent);padding-left:12px}
+    .signals{display:grid;grid-template-columns:1fr;gap:14px;margin-top:6px}
+    .signal{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:16px;padding:14px 18px;box-shadow:var(--shadow)}
+    .signal .num{color:var(--accent);font-weight:700;margin-right:6px}
+    .signal h3{margin:0 0 6px;font-size:.98rem}
+    .signal p{margin:0 0 8px;font-size:.92rem}
+    .signal ul{margin:0;padding-left:18px}
+    .signal li{font-size:.88rem;margin:2px 0}
+    footer{padding:20px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    a{color:var(--accent)}
+    @media (min-width: 720px){ .kpis{grid-template-columns:repeat(4,1fr)} }
+  </style>
+</head><body>
+<div class="wrap">
+  <header>
+    <h1>🧑‍💼 Veille IA &amp; Mutations RH</h1>
+    <p>Focus secteurs : banque, assurance, informatique — 4 axes : outils RH · compétences · risques · accompagnement</p>
+    <p><time datetime="2026-11-06">6 novembre 2026</time> · fenêtre 30/10 → 06/11/2026 · modèle <code>deepseek/deepseek-v4.1-flash</code></p>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">1 · IA &amp; métiers RH</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">2 · Compétences</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">3 · Risques &amp; défis</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">4 · Accompagnement</div><div class="value">3</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 actualités</span>
+    <span class="pill green">📅 6 novembre 2026</span>
+    <span class="pill yellow">🧭 5 signaux faibles</span>
+    <span class="pill">🪟 fenêtre 30/10 → 06/11</span>
+  </div>
+
+  <!-- AXE 1 -->
+  <section>
+    <h2>1. IA dans les métiers RH</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="item">
+            <h3><a href="https://www.renascence.io/news/155707/workday-mise-sur-une-ia-autonome-pour-la-finance-et-les-rh" target="_blank">Workday mise sur une IA autonome pour la finance et les RH</a></h3>
+            <div class="meta">Renascence (d'après CIO Dive) • 03/11/2026</div>
+            <div class="nature">Brève sectorielle (éditeur SIRH)</div>
+            <p>Workday a dévoilé une série d'outils d'IA capables d'<strong>anticiper un besoin et d'engager une action</strong> dans les flux finance et RH (tâches comptables, démarches RH), sans attendre une requête — le client gardant la main via des contrôles qu'il définit. Basculement d'une IA qui répond à une IA qui prend l'initiative. Signal RH : automatisation accrue du <strong>back-office (paie, administratif)</strong>, et question ouverte du périmètre réellement délégué à l'agent.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/" target="_blank">IA et recrutement : qui assume la décision ? La réponse de Fabian Caldarella</a></h3>
+            <div class="meta">myRHline • 02/11/2026</div>
+            <div class="nature">Entretien (étude « Recrutement 2040 » × Teamtailor)</div>
+            <p>Dans un secteur banque-assurance où les <strong>ATS augmentés</strong> et le matching se généralisent, le directeur du recrutement d'Artemys défend un principe : l'IA accélère sourcing et comparaison de profils, mais <strong>la décision doit rester humaine</strong>. Il plaide pour un recruteur capable de questionner le besoin, défendre un potentiel et expliquer ses choix. Rappel des limites à poser sur le tri/scoring automatisé (décision traçable et explicable).</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank">Les institutions financières accélèrent leur transition vers l'IA multi-agents</a></h3>
+            <div class="meta">Capgemini (Capgemini Research Institute), via GlobeNewswire FR • 05/11/2026</div>
+            <div class="nature">Étude (1 100 dirigeants, 14 marchés)</div>
+            <p><strong>59 %</strong> des banques et assureurs expérimentent ou déploient déjà des systèmes d'IA multi-agents sur les principaux processus bancaires et d'assurance, mais <strong>seuls 10 %</strong> ont l'orchestration à l'échelle ; <strong>90 %</strong> visent un routage intelligent des modèles et <strong>52 %</strong> s'appuient sur les hyperscalers pour gouverner ces déploiements. Signal d'industrialisation de l'automatisation dans la finance, orchestration et gouvernance en prochains points de blocage.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AXE 2 -->
+  <section>
+    <h2>2. Évolutions des compétences</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="item">
+            <h3><a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1" target="_blank">Deutsche Bank — l'« AI Academy » de la banque privée visera plus de 20 000 collaborateurs</a></h3>
+            <div class="meta">Deutsche Bank (communiqué) • 05/11/2026</div>
+            <div class="nature">Communiqué d'entreprise (banque)</div>
+            <p>La banque privée de Deutsche Bank lance la <strong>« PB AI Academy »</strong> : apprentissage de l'IA <strong>par métier et par niveau</strong> (prompting, usage responsable, jusqu'aux agents et à l'IA agentique), 5 à 10 formations recommandées par parcours, en autoformation + sessions animées + ateliers. Déjà ouverte à <strong>~3 500 collaborateurs</strong>, montée prévue à <strong>plus de 20 000</strong> ; en Allemagne, introduction au S1 2027 après consultation des représentants du personnel.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank">Séminaire Swiss Banking sur l'IA générative au travail</a></h3>
+            <div class="meta">ISFB (formation bancaire, Suisse) • 03/11/2026</div>
+            <div class="nature">Annonce de séminaire (montée en compétences)</div>
+            <p>L'ISFB co-organise avec <strong>Swiss Banking</strong> un échange qui déplace la question RH de la simple adoption d'outil vers <strong>l'appropriation dans le métier</strong> : compétences, apprentissage, identité professionnelle, autonomie, charge cognitive et santé au travail. Fil rouge : « comment apprendre à travailler avec l'IA sans perdre ce qui fait la valeur de l'expertise humaine ? » Un angle sens/expertise plutôt que formation à l'outil seul.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.aefinfo.fr/depeche/759693-emploi-des-jeunes-les-partenaires-sociaux-saccordent-sur-un-programme-de-travail-jusqua-debut-mars2027" target="_blank">Emploi des jeunes : les partenaires sociaux s'accordent sur un programme de travail jusqu'à début mars 2027</a></h3>
+            <div class="meta">AEF info (dépêche n° 759693) • 05/11/2026</div>
+            <div class="nature">Dépêche sociale (dialogue social interprofessionnel)</div>
+            <p>Dans un contexte où <strong>l'IA pèse sur l'embauche des profils juniors les plus exposés</strong>, les partenaires sociaux ont arrêté un <strong>programme de travail sur l'emploi des jeunes</strong> courant jusqu'à début mars 2027. La séquence relie accès au premier emploi, formation initiale et montée en compétences — un chantier qui touche directement banque/assurance/informatique, où l'apprentissage reposait sur des tâches automatisables.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AXE 3 -->
+  <section>
+    <h2>3. Risques &amp; défis</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="item">
+            <h3><a href="https://www.agefi.fr/news/banque-assurance/la-societe-generale-supprime-des-postes-dans-sa-banque-de-detail-et-ses-services-titres" target="_blank">La Société Générale supprime des postes dans sa banque de détail et ses services titres</a></h3>
+            <div class="meta">L'Agefi • 05/11/2026</div>
+            <div class="nature">Information sociale sectorielle (banque)</div>
+            <p>La Société Générale poursuit la rationalisation de son réseau : <strong>~148 points de vente regroupés d'ici fin 2027</strong> (de 1 769 à ~1 620), dont une quarantaine d'agences de plein exercice, <strong>~375 transferts</strong> et <strong>~40 postes de directeurs d'agence</strong> supprimés (mobilité interne privilégiée, pas de départ contraint annoncé). Dans les services titres (SGSS), <strong>diminution nette d'environ 80 postes</strong> avec transferts d'activité. Interroge l'accompagnement des tâches qui se standardisent.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.actuia.com/domaine/emploi/" target="_blank">Proton : le PDG annule les « réentretiens » sur l'usage de l'IA, au lendemain d'une enquête</a></h3>
+            <div class="meta">ActuIA (brève « IA dans l'emploi », d'après 404 Media) • 30/10/2026</div>
+            <div class="nature">Brève presse (cas d'entreprise, informatique)</div>
+            <p>Le 30 octobre 2026, le PDG de Proton (Andy Yen) a <strong>annulé en réunion générale la série de « réentretiens »</strong> devant faire expliquer à la quasi-totalité des salariés leur usage de l'IA, un usage jugé insuffisant pouvant menacer le maintien dans l'emploi. L'annulation suit une enquête de 404 Media décrivant une direction poussant l'IA malgré des alertes internes. Cas d'école de la <strong>frontière entre incitation à l'IA et surveillance des salariés</strong>.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.actuia.com/domaine/emploi/" target="_blank">Grèce — un projet de loi sur l'IA au travail et la gestion algorithmique des plateformes</a></h3>
+            <div class="meta">ActuIA (brève « IA dans l'emploi ») • 02/11/2026</div>
+            <div class="nature">Brève réglementaire (transposition directive (UE) 2024/2831)</div>
+            <p>La ministre grecque du Travail a présenté en Conseil des ministres un projet de loi posant <strong>les premières règles d'usage de l'IA au travail</strong> : transparence de la gestion algorithmique, <strong>supervision humaine obligatoire des décisions importantes</strong> sur la situation d'emploi, information des travailleurs sur les critères, protection des données. Transposition de la <strong>directive (UE) 2024/2831</strong>. Préfigure l'application du régime « haut risque » de l'AI Act aux outils RH (2027).</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AXE 4 -->
+  <section>
+    <h2>4. Dispositifs d'accompagnement</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="item">
+            <h3><a href="https://www.agefi.fr/asset-management/actualites/lia-est-partout-chez-les-gerants-dactifs-mais-rarement-a-grande-echelle" target="_blank">L'IA est partout chez les gérants d'actifs, mais rarement à grande échelle</a></h3>
+            <div class="meta">L'Agefi (enquête Alfi × Efama, 63 acteurs) • 06/11/2026</div>
+            <div class="nature">Étude sectorielle (gestion d'actifs)</div>
+            <p>L'IA générative est utilisée par <strong>96,8 %</strong> des sociétés de gestion interrogées et <strong>60,3 %</strong> recourent déjà à des agents autonomes, mais le déploiement à grande échelle reste rare. <strong>51 % anticipent une réallocation des rôles</strong> plutôt qu'une baisse des effectifs, <strong>opérations et middle office</strong> en première ligne. Cadrage utile : la priorité RH porte sur la <strong>réallocation des compétences</strong> et la mobilité interne.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.agefi.fr/news/economie-marches/les-grands-risques-sont-aussi-des-opportunites-dinvestissement-pour-le-secteur-financier" target="_blank">Les grands risques sont aussi des opportunités d'investissement pour le secteur financier</a></h3>
+            <div class="meta">L'Agefi • 05/11/2026</div>
+            <div class="nature">Décryptage (banque/assurance, regard ACPR)</div>
+            <p>Le décryptage relie risques géopolitiques, IA et climat, et documente la réponse des acteurs : le groupe <strong>Crédit Agricole prévoit d'investir 500 millions d'euros d'ici 2028</strong> et s'associe à <strong>Mistral AI</strong> pour accélérer le déploiement industriel de l'IA. Côté RH, ces investissements se traduisent par des <strong>plans d'appropriation</strong> (formation, sécurité, gouvernance) pensés comme condition de la transformation des métiers.</p>
+          </div>
+
+          <div class="item">
+            <h3><a href="https://www.aefinfo.fr/depeche/759580-orange-les-syndicats-demandent-a-la-direction-louverture-dune-negociation-sur-le-deploiement-de-lia" target="_blank">Orange : les syndicats demandent l'ouverture d'une négociation sur le déploiement de l'IA</a></h3>
+            <div class="meta">AEF info (dépêche n° 759580, via CFE-CGC Orange) • 03/11/2026</div>
+            <div class="nature">Dépêche sociale (dialogue social, télécoms/informatique)</div>
+            <p>Constatant « un retard peu compréhensible pour une entreprise qui se prétend à l'avant-garde du numérique », la <strong>CFE-CGC Orange</strong> demande à la direction l'<strong>ouverture d'une négociation</strong> pour organiser, encadrer et déployer l'IA, avec une première réunion souhaitée sans délai. Précédent utile pour banque/assurance/informatique : le <strong>dialogue social devient un passage obligé</strong> du déploiement de l'IA (formation, garanties, encadrement des usages).</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNAUX -->
+  <section>
+    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <div class="signals">
+
+      <div class="signal">
+        <h3><span class="num">1.</span>L'échéance « haut risque » du recrutement reculée au 2 décembre 2027</h3>
+        <p>Le règlement (UE) 2026/1744 (« omnibus numérique IA »), en vigueur depuis le 27 juillet 2026, reporte au <strong>2 décembre 2027</strong> les obligations du régime « haut risque » (annexe III : recrutement, gestion des RH, crédit, assurance) ; les obligations de transparence, elles, s'appliquent déjà. Beaucoup d'entreprises croient avoir « gagné du temps », alors que le droit français (RGPD, Code du travail) s'applique dès maintenant.</p>
+        <ul>
+          <li><a href="https://www.actuia.com/actualite/calendrier-ai-act-ce-qui-sapplique-ce-que-lomnibus-reporte/" target="_blank">ActuIA — Calendrier de l'AI Act : ce qui s'applique, ce que l'omnibus reporte</a></li>
+          <li><a href="https://gdprwise.eu/fr/kennisbank/hr/ia-recrutement/" target="_blank">gdprwise — IA en recrutement : règles RGPD et AI Act</a></li>
+          <li><a href="https://www.informatiquenews.fr/il-aura-suffi-de-quelques-jours-pour-que-l-ai-act-retrouve-sa-fonction-preferee-sur-linkedin-faire-peur-112999" target="_blank">InformatiqueNews — « L'AI Act retrouve sa fonction préférée : faire peur ! »</a></li>
+        </ul>
+      </div>
+
+      <div class="signal">
+        <h3><span class="num">2.</span>Contrôles CNIL et biais algorithmiques dans le recrutement</h3>
+        <p>Le recrutement figure parmi les <strong>thématiques prioritaires de contrôle de la CNIL en 2026</strong>, les usages de tri/scoring/présélection étant classés « haut risque ». La démonstration d'<strong>absence de discrimination</strong> et la <strong>supervision humaine réelle</strong> deviennent des exigences vérifiables, en particulier dans la banque-assurance.</p>
+        <ul>
+          <li><a href="https://www.capital.fr/votre-carriere/recrutement-la-cnil-va-controler-les-entreprises-qui-utilisent-lia-pour-trier-les-cv-1527053" target="_blank">Capital — la CNIL va contrôler les entreprises qui utilisent l'IA pour trier les CV</a></li>
+          <li><a href="https://www.donneespersonnelles.fr/ai-act-rh-recrutement" target="_blank">Données personnelles — AI Act et recrutement : obligations RH et calendrier</a></li>
+          <li><a href="https://myrhline.com/type-tribune/outil-recrutement-ia-haut-risque/" target="_blank">myRHline — Votre outil de recrutement IA est-il à haut risque ?</a></li>
+        </ul>
+      </div>
+
+      <div class="signal">
+        <h3><span class="num">3.</span>Restructurations « tech » rattachées à l'IA, sans toujours l'assumer</h3>
+        <p>Chez <strong>Canva</strong>, 1 271 postes (22 % des effectifs) sont touchés par une « refondation » où l'IA est un contexte que la direction refuse de désigner comme cause directe ; chez <strong>Proton</strong>, la poussée d'usage de l'IA a mené à des « réentretiens » finalement annulés. La <strong>manière de nommer (ou non) l'IA</strong> dans les plans de réorganisation devient un sujet social et juridique.</p>
+        <ul>
+          <li><a href="https://www.mac4ever.com/ia/198866-canva-supprime-1-271-postes-pour-se-refonder-sans-jamais-dire-ia" target="_blank">mac4ever — Canva supprime 1 271 postes pour se « refonder » sans jamais dire « IA »</a></li>
+          <li><a href="https://next.ink/264941/chez-proton-le-rouleau-compresseur-de-lia-ecrase-tout/" target="_blank">Next — Chez Proton, le rouleau compresseur de l'IA écrase tout</a></li>
+          <li><a href="https://www.courrierinternational.com/article/emploi-secoue-par-l-ia-le-site-de-creation-graphique-canva-lance-sa-premiere-vague-de-licenciements_285149" target="_blank">Courrier international — Canva lance sa première vague de licenciements</a></li>
+        </ul>
+      </div>
+
+      <div class="signal">
+        <h3><span class="num">4.</span>L'acculturation à l'IA comme priorité RH mesurable</h3>
+        <p>Les plans se multiplient : <strong>Deutsche Bank</strong> cible 20 000 salariés via son académie IA, <strong>Orange</strong> vise 100 % de ses salariés formés à l'IA générative d'ici fin 2027, et le plan public <strong>« Impulsion IA 2027 »</strong> veut acculturer 30 millions de personnes. La <strong>littératie IA</strong> devient un livrable RH — et un levier d'employabilité dans les métiers exposés.</p>
+        <ul>
+          <li><a href="https://travail-emploi.gouv.fr/impulsion-ia-2027" target="_blank">Ministère du Travail — Impulsion IA 2027 : 12 mesures</a></li>
+          <li><a href="https://www.cfecgc-orange.org/developpement-des-competences-2/" target="_blank">CFE-CGC Orange — Développement des compétences (plan 2027, formation IA)</a></li>
+        </ul>
+      </div>
+
+      <div class="signal">
+        <h3><span class="num">5.</span>Vers des négociations de branche sur l'IA : la pression syndicale dans la banque</h3>
+        <p>Après les accords d'entreprise (MAIF en mai, Malakoff Humanis en septembre) et l'accord de branche Crédit Agricole du 9 octobre, le <strong>SNB CFE-CGC</strong> a demandé fin octobre aux directions bancaires un « véritable projet humain, social et économique » autour de l'IA. Le sujet quitte le cercle des DSI pour devenir un <strong>enjeu de dialogue social structurant</strong>, du CSE à la branche.</p>
+        <ul>
+          <li><a href="https://www.aefinfo.fr/depeche/759220-banques-le-snb-cfe-cgc-exige-des-directions-un-veritable-projet-humain-social-et-economique-autour-de-lia" target="_blank">AEF info — Banques : le SNB CFE-CGC exige un « véritable projet humain, social et économique » autour de l'IA</a></li>
+          <li><a href="https://www.lemonde.fr/vie-au-travail/article/2026/10/06/le-dialogue-social-sur-l-ia-au-travail-n-est-pour-l-instant-qu-un-v-u-pieux_6788943_6768900.html" target="_blank">Le Monde — Le dialogue social sur l'IA au travail n'est pour l'instant qu'un vœu pieux</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Rapport généré le 6 novembre 2026 — 12 actualités (3 par axe) + 5 signaux faibles. Fenêtre 30/10 → 06/11/2026 ; dates vérifiées sur page source. Anti-doublons ; aucune source blacklistée.</p>
+    <p>Fichiers : <code>veille-RH-2026-11-06-deepseek.md</code> + <code>.html</code></p>
+  </footer>
+</div>
+</body></html>
