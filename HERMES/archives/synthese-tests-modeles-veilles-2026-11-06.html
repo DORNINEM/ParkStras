@@ -406,9 +406,67 @@ classement : <b>GLM reste le plus court des deux modèles dans les deux thèmes<
 1 224 contre 1 867 en RH) et DeepSeek, qui a produit le meilleur diabète, perd sa diversité de sources en RH
 sous skill. Autrement dit : <b>le bench n'a pas condamné GLM par accident de préparation</b> — la procédure
 améliore sa discipline, pas sa production.</p>
-<p class="note">Une notation à l'aveugle des huit fichiers (les quatre paires, modèles masqués) est lancée en
-parallèle et sera ajoutée ici dès qu'elle sera rendue : les mesures ci-dessus disent ce qui a changé, les juges
-diront si c'est mieux.</p>
+<p class="note">Les mesures ci-dessus disent <i>ce qui a changé</i>. Les deux juges, notant les huit fichiers à
+l'aveugle, disent <i>si c'est mieux</i> — c'est l'objet du chapitre qui suit.</p>
+
+<h4>Et les juges ? Les huit fichiers notés à l'aveugle</h4>
+<p>Les huit veilles — les quatre paires — ont été soumises aux deux mêmes juges, <b>modèles masqués</b> et ordre
+mélangé à l'intérieur de chaque thème. Ni l'un ni l'autre ne savait quel bras avait reçu la procédure : ils
+classaient simplement quatre veilles par thème. Résultat du dépouillement :</p>
+<table class="cmp"><thead><tr><th>Thème</th><th>Bras</th><th>Grok 4.7</th><th>DeepSeek v4.1</th><th>Total /50</th></tr></thead><tbody>
+<tr><td>IA</td><td>DeepSeek <b>avec</b> procédure</td><td class="num">22/25</td><td class="num">24/25</td><td class="num"><b>46</b></td></tr>
+<tr><td>IA</td><td>DeepSeek sans procédure</td><td class="num">20/25</td><td class="num">23/25</td><td class="num">43</td></tr>
+<tr><td>IA</td><td>GLM sans procédure</td><td class="num">18/25</td><td class="num">19/25</td><td class="num">37</td></tr>
+<tr><td>IA</td><td>GLM <b>avec</b> procédure</td><td class="num">16/25</td><td class="num">18/25</td><td class="num">34</td></tr>
+<tr><td>RH</td><td>DeepSeek <b>avec</b> procédure</td><td class="num">24/25</td><td class="num">24/25</td><td class="num"><b>48</b></td></tr>
+<tr><td>RH</td><td>DeepSeek sans procédure</td><td class="num">20/25</td><td class="num">23/25</td><td class="num">43</td></tr>
+<tr><td>RH</td><td>GLM <b>avec</b> procédure</td><td class="num">20/25</td><td class="num">22/25</td><td class="num">42</td></tr>
+<tr><td>RH</td><td>GLM sans procédure</td><td class="num">12/25</td><td class="num">16/25</td><td class="num">28</td></tr>
+</tbody></table>
+<p><b>Les deux juges sont d'accord sur la direction des quatre paires — huit verdicts sur huit.</b></p>
+<table class="cmp"><thead><tr><th>Paire</th><th>sans → avec</th><th>Grok 4.7</th><th>DeepSeek v4.1</th><th>Ensemble</th></tr></thead><tbody>
+<tr><td>IA · DeepSeek</td><td class="num">43 → 46</td><td class="num">+2 ▲</td><td class="num">+1 ▲</td><td><b>améliore</b></td></tr>
+<tr><td>IA · GLM</td><td class="num">37 → 34</td><td class="num">−2 ▼</td><td class="num">−1 ▼</td><td><b>dégrade</b></td></tr>
+<tr><td>RH · DeepSeek</td><td class="num">43 → 48</td><td class="num">+4 ▲</td><td class="num">+1 ▲</td><td><b>améliore</b></td></tr>
+<tr><td>RH · GLM</td><td class="num">28 → 42</td><td class="num">+8 ▲▲</td><td class="num">+6 ▲▲</td><td><b>améliore fortement</b></td></tr>
+</tbody></table>
+
+<h4>Ce qu'ils ont trouvé seuls — et pourquoi c'est la meilleure preuve</h4>
+<p>Aucun des deux ne savait quelles paires existaient. Ils ont pourtant relevé, indépendamment l'un de l'autre,
+<b>les défauts exacts que les contrôles automatiques avaient mesurés de leur côté</b> :</p>
+<ul>
+<li>Sur la paire <b>GLM / IA</b>, les deux signalent la <b>même date hors fenêtre</b> (article daté du 29/10) —
+celle que la procédure lui avait fait <i>introduire</i> — et la contradiction avec son propre pied de page qui
+affirme le contraire. Grok ajoute que le signal n°3 attribue au <i>Wall Street Journal</i> une information
+absente des URL citées.</li>
+<li>Sur la paire <b>GLM / RH sans procédure</b>, les deux relèvent la <b>dépendance à un seul relais</b>
+(Grok : « sept entrées passent par yapluqua.com » ; DeepSeek : « ≈5 sources sur 12, souvent de simples
+communiqués repris ») <b>et</b> le doublon Deutsche Bank présent dans deux axes. C'est très exactement la
+monoculture que la mesure avait chiffrée : 10 occurrences de la même source, ramenées à 3 par la procédure.</li>
+<li>Grok signale en plus, sur ce bras, un « Claude Fable 5.1 » qu'aucun autre bras ne recoupe et dont le nom
+n'inspire pas confiance — un signal d'alerte que ni les métriques ni l'autre juge n'avaient vu.</li>
+<li>Sur les <b>deux bras DeepSeek</b>, les juges pointent tous les deux le <b>recyclage entre actualités et
+signaux</b> : un défaut qualitatif invisible pour un comptage de liens.</li>
+</ul>
+<p class="note"><b>Le contre-test ne remplace donc pas le jugement par une mesure — les deux se contrôlent.</b>
+Les métriques disent ce qui a changé dans le texte ; les juges, sans savoir où regarder, retrouvent les mêmes
+endroits. C'est ce recoupement qui rend le résultat solide, pas l'un ou l'autre pris seul.</p>
+
+<h4>Ce que le contre-test établit</h4>
+<ol>
+<li>La procédure <b>améliore trois paires sur quatre</b>, spectaculairement chez GLM en RH (+14 sur 50).</li>
+<li>Elle <b>dégrade</b> GLM en IA (−3 sur 50) : plus de volume, moins de sources distinctes, une date hors
+fenêtre introduite.</li>
+<li><b>Le classement tient.</b> Même avec la procédure, GLM reste dernier dans les deux thèmes (34 contre 46 en
+IA, 42 contre 48 en RH) — et GLM <i>avec</i> procédure en RH (42) reste un point derrière DeepSeek <i>sans</i>
+procédure (43).</li>
+<li>La conclusion la plus solide, et la plus utile pour la suite : <b>la procédure rend la rédaction plus
+conforme, pas la recherche meilleure.</b> Elle rattrape la forme et la discipline ; elle ne comble ni le déficit
+de volume de GLM en IA ni sa difficulté à diversifier ses sources.</li>
+</ol>
+<p class="note">Réserve maintenue : <b>un seul tirage par bras</b>. La convergence des deux juges et leur
+recoupement avec les mesures rendent les écarts crédibles, mais il faudrait trois répétitions par condition pour
+les attribuer avec certitude à la procédure plutôt qu'au hasard de la recherche.</p>
 <h4>Traçabilité du contre-test — les huit fichiers</h4><ul><li><b>IA · DeepSeek v4.1 Flash</b> — <a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek-skill.html">avec la procédure</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html">sans la procédure</a> (<a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek-skill.md">.md avec</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.md">.md sans</a>)</li><li><b>IA · GLM 5.3 Flash</b> — <a href="bench-2026-11-06/veille-IA-2026-11-06-glm-skill.html">avec la procédure</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-glm.html">sans la procédure</a> (<a href="bench-2026-11-06/veille-IA-2026-11-06-glm-skill.md">.md avec</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-glm.md">.md sans</a>)</li><li><b>RH · DeepSeek v4.1 Flash</b> — <a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek-skill.html">avec la procédure</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek.html">sans la procédure</a> (<a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek-skill.md">.md avec</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek.md">.md sans</a>)</li><li><b>RH · GLM 5.3 Flash</b> — <a href="bench-2026-11-06/veille-RH-2026-11-06-glm-skill.html">avec la procédure</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-glm.html">sans la procédure</a> (<a href="bench-2026-11-06/veille-RH-2026-11-06-glm-skill.md">.md avec</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-glm.md">.md sans</a>)</li></ul><p class="note">Les quatre veilles du contre-test sont publiées à côté des neuf autres, dans le même sous-dossier <code>bench-2026-11-06/</code>. Une même paire peut donc être ouverte côte à côte — c'est le seul moyen de voir ce que la procédure change vraiment dans le texte.</p></div></div><div class="card"><div class="card-head"><div class="card-title">🎓 Skill ou prompt : d’où viennent les différences</div></div><div class="card-body">
 <p>La question mérite une réponse précise, parce que « via skill » et « via prompt » ne désignent pas deux
 manières de demander la même chose : ce sont <b>deux contenus différents</b>.</p>
@@ -476,10 +534,12 @@ condition pour trancher. Ce chapitre doit donc se lire comme <i>une piste solide
 (0,0486 $ pour 40 % d'appels en moins que Qwen), et le meilleur sur la priorité aux sources françaises.
 Réserve : ses cinq signaux doivent être liés — en production, le skill et le contrôle bloquant de liens
 l'imposent.</td></tr>
-<tr><td><b>IA global</b></td><td><b>À réexaminer</b> — DeepSeek ou Qwen, pas GLM</td>
-<td>GLM sort <b>dernier du thème</b> (35/50) alors qu'il est le modèle épinglé en production sur l'IA et le
-quantique. Les deux autres se tiennent à un point. À confirmer sur un tirage <i>avec</i> le skill de thème
-avant de changer l'épinglage.</td></tr>
+<tr><td><b>IA global</b></td><td><b>Réexamen confirmé</b> — DeepSeek plutôt que GLM</td>
+<td>GLM sort dernier du thème (35/50) alors qu'il est épinglé en production sur l'IA et le quantique. Le
+contre-test tranche la réserve : <b>avec la procédure réellement chargée</b> et deux juges à l'aveugle, GLM
+obtient 34/50 contre <b>46/50</b> pour DeepSeek. Son avantage historique — zéro lien cassé — ne pèse plus
+devant douze points d'écart éditorial. La décision de basculer vous appartient, mais l'épinglage n'est plus
+soutenu par les mesures.</td></tr>
 <tr><td><b>IA &amp; mutations RH</b></td><td><b>Qwen 3.8 Flash</b></td>
 <td>Le seul thème où Qwen creuse un écart net (45/50 contre 36 pour DeepSeek), sur des critères que la
 production valorise : diversité des sources, fusions de doublons annoncées, lignes « Source / Date ».
@@ -489,7 +549,7 @@ Coût presque identique à DeepSeek sur ce thème (0,0661 $ contre 0,0595 $).</t
 124 points sur 150 pour <b>0,1978 $</b>, DeepSeek 121 points pour <b>0,1358 $</b>, GLM 104 points pour
 <b>0,1024 $</b>. Autrement dit, <b>DeepSeek obtient 97 % du résultat de Qwen pour 69 % du prix</b>. Le choix par
 défaut de la production — DeepSeek — est donc économiquement le bon ; la question ouverte est l'épinglage de
-GLM sur l'IA, que ce bench ne conforte pas.</p>
+GLM sur l'IA, que ni ce bench ni le contre-test avec procédure ne confortent (34 points contre 46).</p>
 </div></div><div class="card"><div class="card-head"><div class="card-title">💸 Coût mesuré</div></div><div class="card-body">
 <p>Neuf veilles complètes pour <b>0,4360 $</b>, soit environ 39 centimes d'euro. Mais le total importe moins que
 sa structure, qui est le vrai enseignement de ce bench :</p>
