@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded',hvPaint);
 <header>
 <div>
 <h1>Synthèse — Tests de modèles sur les veilles — 6 novembre 2026</h1>
-<p>9 veilles comparées · 3 thèmes × 3 modèles · 196 appels API · 2 juges à l’aveugle · 30 tirages de contrôle · liens, dates et coûts mesurés</p>
+<p>9 veilles comparées · 3 thèmes × 3 modèles · 196 appels API · 2 juges à l’aveugle · 42 tirages de contrôle · liens, dates et coûts mesurés</p>
 </div>
 <div style="text-align:right"><a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)"><span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span></a><time datetime="2026-11-06">6 novembre 2026</time></div>
 </header>
@@ -608,6 +608,47 @@ Coût presque identique à DeepSeek sur ce thème (0,0661 $ contre 0,0595 $).</t
 <b>0,1024 $</b>. Autrement dit, <b>DeepSeek obtient 97 % du résultat de Qwen pour 69 % du prix</b>. Le choix par
 défaut de la production — DeepSeek — est donc économiquement le bon ; la question ouverte est l'épinglage de
 GLM sur l'IA, que ni ce bench ni le contre-test avec procédure ne confortent (34 points contre 46).</p>
+</div></div><div class="card"><div class="card-head"><div class="card-title">🎯 Contre-test du 07/11 — GLM contre DeepSeek sur les deux veilles épinglées</div></div><div class="card-body">
+<p>Le 07/11/2026, les deux veilles encore épinglées sur GLM 5.3 Flash — <b>IA global</b> et
+<b>informatique quantique</b> — ont été remises en concurrence avec DeepSeek v4.1 Flash, cette fois
+dans les conditions de la production : <b>procédure complète chargée des deux côtés</b>, <b>trois tirages
+par modèle et par thème</b>, puis notation à l'aveugle de six veilles mélangées par grille, par deux
+juges. C'est la même méthode que ci-dessus, appliquée à une décision d'exploitation : le protocole
+d'un seul tirage ne tient pas, celui-ci a servi à débrancher un modèle en production.</p>
+
+<p>Trois lectures, dans l'ordre où elles doivent être lues. <b>D'abord la moyenne :</b> DeepSeek devance
+GLM sur les deux thèmes, chez les deux juges — de 4,3 points sur 25 pour le juge extérieur (écart
+supérieur à sa propre dispersion) et de 3,0 points pour le juge interne (écart inférieur à la sienne,
+donc à prendre comme un indice et non comme une preuve). <b>Ensuite le classement :</b> en quantique,
+les deux juges produisent le même ordre, les trois tirages DeepSeek devant les trois GLM, sans aucun
+chevauchement ; en IA, le juge extérieur sépare de la même façon, le juge interne laisse un tirage GLM
+s'immiscer en deuxième place. <b>Enfin les compteurs,</b> qui disent une chose que la notation ne dit
+pas : GLM écrit 30 % plus court sur les deux thèmes (seul écart de moyenne qui dépasse l'étendue interne
+des modèles), mais surtout il est <b>instable sur la datation des sources</b> — 12 ou 13 dates citées
+dans chacun des six tirages DeepSeek, contre 2 dates dans un tirage quantique et 13 dans un autre. Sur
+un thème dont la première exigence est la vérification des dates de publication, cette instabilité pèse
+plus que trois points de note.</p>
+
+<p>Aucun 404 sur les douze tirages : les « liens morts » relevés sont tous des murs anti-robot (403, 401,
+406), donc aucune URL inventée ni cassée, chez l'un comme chez l'autre. Sur le coût, GLM était 16 à 21 %
+moins cher par veille — environ 0,004 $ d'écart, un centième de centime par veille une fois ramené au
+mois : ce n'est pas un critère de décision, et la bascule a été faite pour la fiabilité, pas pour le prix.</p>
+
+<p>Un artefact à connaître : le skill quantique contient lui-même un paragraphe « Modèle » qui affirme
+que la veille tourne sur GLM et cite les raisons de l'épinglage précédent. Les deux modèles ont lu le
+même texte, donc la comparaison reste loyale — mais un bras DeepSeek lisait noir sur blanc que sa place
+était occupée. C'est le même type d'artefact que l'avis de préférence de modèle déjà relevé dans le
+skill IA, et il disparaît avec la mise à jour des skills consécutive à cette bascule.</p>
+<h4>Les compteurs, sur trois tirages par modèle</h4><table class="cmp"><thead><tr><th>Thème</th><th>Indicateur</th><th>DeepSeek (moy.)</th><th>GLM (moy.)</th><th>écart</th><th>bruit mesuré</th><th>verdict</th></tr></thead><tbody><tr><td>IA global</td><td>mots</td><td class="num">2012.7</td><td class="num">1430.7</td><td class="num">-582.0</td><td class="num">455</td><td class="ok">DÉPASSE le bruit</td></tr><tr><td>IA global</td><td>liens uniques</td><td class="num">12.3</td><td class="num">16.3</td><td class="num">+4.0</td><td class="num">5</td><td class="note">dans le bruit</td></tr><tr><td>IA global</td><td>liens totaux</td><td class="num">21.3</td><td class="num">28.7</td><td class="num">+7.3</td><td class="num">8</td><td class="note">dans le bruit</td></tr><tr><td>IA global</td><td>dates citées</td><td class="num">12.3</td><td class="num">16.0</td><td class="num">+3.7</td><td class="num">6</td><td class="note">dans le bruit</td></tr><tr><td>IA global</td><td>liens morts</td><td class="num">1.0</td><td class="num">3.7</td><td class="num">+2.7</td><td class="num">4</td><td class="note">dans le bruit</td></tr><tr><td>Informatique quantique</td><td>mots</td><td class="num">2598.7</td><td class="num">1891.3</td><td class="num">-707.3</td><td class="num">543</td><td class="ok">DÉPASSE le bruit</td></tr><tr><td>Informatique quantique</td><td>liens uniques</td><td class="num">12.7</td><td class="num">14.7</td><td class="num">+2.0</td><td class="num">4</td><td class="note">dans le bruit</td></tr><tr><td>Informatique quantique</td><td>liens totaux</td><td class="num">23.3</td><td class="num">23.3</td><td class="num">+0.0</td><td class="num">2</td><td class="note">dans le bruit</td></tr><tr><td>Informatique quantique</td><td>dates citées</td><td class="num">12.3</td><td class="num">9.0</td><td class="num">-3.3</td><td class="num">11</td><td class="note">dans le bruit</td></tr><tr><td>Informatique quantique</td><td>liens morts</td><td class="num">2.0</td><td class="num">2.0</td><td class="num">+0.0</td><td class="num">4</td><td class="note">dans le bruit</td></tr></tbody></table><h4>La notation à l’aveugle, six veilles mélangées par grille</h4><table class="cmp"><thead><tr><th>Grille</th><th>Juge</th><th>DeepSeek (moy.)</th><th>GLM (moy.)</th><th>écart</th><th>bruit du juge</th><th>verdict</th></tr></thead><tbody><tr><td>IA global</td><td>deepseek</td><td class="num">21.3 <span class="note">20↔24</span></td><td class="num">18.3 <span class="note">16↔22</span></td><td class="num">-3.0</td><td class="num">6</td><td class="note">dans le bruit (glm -3.0 vs bruit 6)</td></tr><tr><td>IA global</td><td>grok</td><td class="num">20.3 <span class="note">19↔21</span></td><td class="num">16.0 <span class="note">14↔17</span></td><td class="num">-4.3</td><td class="num">3</td><td class="ok">DÉPASSE le bruit (glm -4.3 vs bruit 3)</td></tr><tr><td>Informatique quantique</td><td>deepseek</td><td class="num">21.7 <span class="note">20↔24</span></td><td class="num">18.7 <span class="note">17↔20</span></td><td class="num">-3.0</td><td class="num">4</td><td class="note">dans le bruit (glm -3.0 vs bruit 4)</td></tr><tr><td>Informatique quantique</td><td>grok</td><td class="num">22.0 <span class="note">21↔23</span></td><td class="num">17.3 <span class="note">16↔20</span></td><td class="num">-4.7</td><td class="num">4</td><td class="ok">DÉPASSE le bruit (glm -4.7 vs bruit 4)</td></tr></tbody></table>
+<p class="note">Décision prise le 07/11/2026 : les deux tâches ont été <b>désépinglées</b> (champ
+<code>model</code> remis à vide) et suivent désormais le défaut du profil, c'est-à-dire DeepSeek v4.1
+Flash. Répercussions : section « Modèle » des skills <code>veille-ia-quotidienne</code> et
+<code>veille-quantique</code>, table <code>THEME_MODEL</code> de <code>send_veille_mail.py</code>
+(l'en-tête du mail), et <code>MODEL_MAP</code>/<code>SWITCH_HISTORY</code> de
+<code>inject_model_badge.py</code> — qui conserve le badge « produit par GLM » sur les pages publiées
+entre le 02/11 et le 06/11, l'histoire ne se réécrivant pas. Les douze tirages sont publiés dans
+<code>bench-2026-11-06/contre-test-glm/</code> ; les grilles anonymisées ne le sont pas, comme pour
+les répétitions.</p>
 </div></div><div class="card"><div class="card-head"><div class="card-title">💸 Coût mesuré</div></div><div class="card-body">
 <p>Neuf veilles complètes pour <b>0,4360 $</b>, soit environ 39 centimes d'euro. Mais le total importe moins que
 sa structure, qui est le vrai enseignement de ce bench :</p>
@@ -651,6 +692,6 @@ peut être totalement exclu. Un juge est en outre bruité : le même fichier not
 même bras. Enfin, ces tirages ont été produits sur un seul jour, avec les mêmes sources disponibles pour tous
 les bras — la compétition pour les mêmes articles limite mécaniquement la variété.</p>
 </div></div><div class="card"><div class="card-head"><div class="card-title">🔗 Traçabilité — les neuf veilles et les comparatifs</div></div><div class="card-body"><ul class="src-list"><li><b>IA global</b> : <a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-qwen.html">Qwen</a> — <a href="bench-ia-2026-11-06.html">comparatif du thème</a></li><li><b>Diabète</b> : <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-qwen.html">Qwen</a> — <a href="bench-diabete-2026-11-06.html">comparatif du thème</a></li><li><b>IA & mutations RH</b> : <a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-qwen.html">Qwen</a> — <a href="bench-rh-2026-11-06.html">comparatif du thème</a></li></ul><p class="note">Les neuf veilles brutes (HTML + Markdown) sont publiées dans <code>bench-2026-11-06/</code>, volontairement dans un sous-dossier : les index de veille listent les fichiers à plat, et un bras de bench déposé à la racine serait apparu comme une vraie veille dans l'index IA. Le dossier de comparaison de production (profil démo) conserve les sources d'origine.</p></div></div>
-<p class="note" style="text-align:center;margin:26px 0">Rapport produit par ORAC (Hermes) le 6 novembre 2026, complété le 7 novembre par le chapitre des trente tirages de contrôle — page statique, thème sombre par défaut, bascule clair/sombre enregistrée par navigateur. Chiffres mesurés, aucune estimation.</p>
+<p class="note" style="text-align:center;margin:26px 0">Rapport produit par ORAC (Hermes) le 6 novembre 2026, complété le 7 novembre par les chapitres des trente tirages de contrôle et du contre-test GLM face à DeepSeek sur les deux veilles épinglées — page statique, thème sombre par défaut, bascule clair/sombre enregistrée par navigateur. Chiffres mesurés, aucune estimation.</p>
 </div>
 </body></html>

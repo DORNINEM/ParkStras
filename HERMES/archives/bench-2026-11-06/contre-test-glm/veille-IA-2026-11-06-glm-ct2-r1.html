@@ -1,0 +1,276 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-09-30</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:var(--ink); --ink:#f3f4f6; --muted:#d1d5db;
+      --border:var(--ink); --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par ORAC (Hermes)</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">4</div></div>
+</div>
+<div class="badges">
+<span class="pill blue">📰 12 articles</span>
+<span class="pill green">📅 Fenêtre : 31 oct. – 6 nov. 2026</span>
+<span class="pill yellow">🗓️ Publié le 6 novembre 2026</span>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">📋 Synthèse</div></div>
+<div class="card-body"><p>La semaine a été dominée par deux forces contradictoires : l'IA continue de lever des montants records (dépôt S-1 d'Anthropic visant plus de 100 Md$) pendant que ses infrastructures physiques se heurtent à une mobilisation sociale inédite — plus de 60 actions en France et dans l'UE ce week-end pour réclamer un moratoire sur les data centers. En France, Mistral enchaîne : cinquième acquisition de l'année (SkipLabs), poids ouverts de Large 4 « Le Chonk », mais aussi pression médiatique (Canard enchaîné sur le lobbying) et offensive concurrentielle d'OVHcloud. Côté régulation, la Commission outille les administrations publiques (AI toolbox), et les géants du net tendent une main aux éditeurs avec un standard commun anti-scraping.</p></div>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/actualites/lire-mistral-rachete-skiplabs-et-cree-une-equipe-dediee-aux-langages-100926.html" target="_blank">Mistral rachète SkipLabs et crée une équipe dédiée aux langages</a></h3>
+<div class="meta">Le Monde Informatique • 06/11/2026</div>
+<p>Cinquième acquisition de Mistral en moins d'un an : la start-up française SkipLabs, spécialisée dans la génération de code agentique fiable, rejoint Mistral, qui crée une équipe « Language » pour automatiser la vérification du code produit par les agents.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">ZD Tech : Octave Klaba attaque Mistral AI et annonce l'IA souveraine d'OVHcloud</a></h3>
+<div class="meta">ZDNet France • 02/11/2026</div>
+<p>Désormais rentable, OVHcloud prépare la sortie d'un modèle de langage souverain d'ici fin novembre. Son fondateur tacle Mistral (« une simple société de services »), ouvrant une bataille décisive pour le cloud souverain français.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lecanardenchaine.fr/police-justice/55322-mistral-ai-n-est-plus-assure-de-le-jouer-gagnant" target="_blank">Marchés publics, crédit d'impôts, lobbying : Mistral AI n'est plus assuré de la jouer gagnant</a></h3>
+<div class="meta">Le Canard enchaîné • 03/11/2026</div>
+<p>L'hebdomadaire s'interroge sur l'avenir du « biberonnage présidentiel » de Mistral à l'approche de la fin du quinquennat : Bpifrance actionnaire, crédit d'impôt recherche, marchés publics et lobbying passés au crible.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.techniques-ingenieur.fr/actualite/articles/avec%E2%80%8D%E2%80%8D%E2%80%8D-large-4-mistral-se-rapproche-des-modeles-dia-americains-et-chinois-165533/" target="_blank">Avec Large 4, Mistral se rapproche des modèles d'IA américains et chinois</a></h3>
+<div class="meta">Techniques de l'Ingénieur • 03/11/2026</div>
+<p>Décryptage du modèle de 1 000 Md de paramètres (52 Md actifs par token) entraîné sur 3 800 GPU NVIDIA en Europe : meilleur open-weight hors États-Unis et Chine, mais devancé par trois modèles chinois sur l'index d'Artificial Analysis.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.latribune.fr/article/tech/54467093993446/data-centers-mobilisation-inedite-des-ce-vendredi-pour-reclamer-un-moratoire" target="_blank">Data centers : mobilisation inédite en France et dans l'UE pour réclamer un moratoire</a></h3>
+<div class="meta">La Tribune • 06/11/2026</div>
+<p>Une soixantaine d'actions sont organisées ce week-end en France et en Europe par des ONG environnementales contre l'expansion des data centers liés à l'IA (relais : <a href='https://www.franceinfo.fr/internet/intelligence-artificielle/des-ong-de-protection-de-l-environnement-demandent-un-moratoire-sur-l-expansion-des-data-centers-en-france-et-en-europe_8270879.html' target='_blank'>franceinfo</a>).</p>
+</div>
+</div>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.rfi.fr/fr/%C3%A9conomie/20261107-en-europe-la-contestation-contre-la-construction-de-centres-de-donn%C3%A9es-s-amplifie" target="_blank">En Europe, la contestation contre la construction de centres de données s'amplifie</a></h3>
+<div class="meta">RFI • 07/11/2026</div>
+<p>Des manifestants d'une quinzaine de pays européens réclament un moratoire sur les grands data centers (relais anglophone : <a href='https://www.techradar.com/pro/europe-wide-protests-call-to-stop-dirty-data-centers-following-mounting-opposition' target='_blank'>TechRadar, 06/11/2026</a>).</p>
+</div>
+<div class="item">
+<h3><a href="https://interoperable-europe.ec.europa.eu/interoperable-europe/news/ai-toolbox-support-public-administrations-adopting-ai" target="_blank">AI toolbox : la Commission aide les administrations publiques à appliquer l'AI Act</a></h3>
+<div class="meta">Commission européenne • 05/11/2026</div>
+<p>La boîte à outils européenne fournit aux administrations publiques des ressources pratiques pour adopter l'IA conformément à la stratégie Apply AI et au règlement européen sur l'intelligence artificielle.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.scworld.com/perspective/the-eu-ai-act-has-entered-the-real-world-what-organizations-need-to-do-now" target="_blank">The EU AI Act has entered the real world: what organizations need to do now</a></h3>
+<div class="meta">SC World • 04/11/2026</div>
+<p>Deux ans après son entrée en vigueur (1er août 2024) et depuis l'ouverture de la phase d'application large (2 août 2026), panorama des obligations désormais actives du règlement européen et de leur impact concret sur les organisations.</p>
+</div>
+</div>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://ca.finance.yahoo.com/news/anthropic-ipo-what-we-know-143321078.html" target="_blank">Anthropic a déposé son S-1 : tout ce qu'on sait avant l'IPO</a></h3>
+<div class="meta">Yahoo Finance • 06/11/2026</div>
+<p>Le créateur de Claude a déposé publiquement son dossier d'introduction en bourse, visant une valorisation supérieure à 100 Md$. Des rapports font état d'investisseurs poussant à revoir ces ambitions à la baisse.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1028454/openai-data-center-nda" target="_blank">OpenAI is stepping back from NDAs for data center projects</a></h3>
+<div class="meta">The Verge • 06/11/2026</div>
+<p>OpenAI renonce aux accords de confidentialité imposés aux responsables publics de ses projets de data centers, sous la pression des exigences de transparence.</p>
+</div>
+<div class="item">
+<h3><a href="https://english.aawsat.com/technology/5335881-ai-giants-promise-publishers-new-way-block-some-scraping" target="_blank">AI giants promise publishers new way to block some scraping</a></h3>
+<div class="meta">Asharq Al-Awsat (AP) • 06/11/2026</div>
+<p>OpenAI, Google, Microsoft et Anthropic se sont engagés à offrir aux médias et aux sites web un mécanisme unique permettant d'interdire l'aspiration de leurs contenus pour l'entraînement des modèles d'IA.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.informatiquenews.fr/sujet/mistral-ai" target="_blank">OpenAI lance GPT-6 Cyber : une chaîne d'agents développe 948 exploits ciblant le noyau Linux</a></h3>
+<div class="meta">InformatiqueNews • 06/11/2026</div>
+<p>En environnement contrôlé, une chaîne d'agents pilotée par GPT-6 Cyber a produit 948 exploits fonctionnels visant le noyau Linux — nouvelle illustration de la course entre capacités offensives et défensives de l'IA.</p>
+</div>
+</div>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/actualites/lire-mistral-rachete-skiplabs-et-cree-une-equipe-dediee-aux-langages-100926.html" target="_blank">Acquisition de SkipLabs : cinquième M&amp;A de l'année</a></h3>
+<div class="meta">Le Monde Informatique • 06/11/2026</div>
+<p>SkipLabs rejoint Mistral, qui crée une équipe « Language » dédiée à la vérification agentique du code. Cinquième opération de croissance externe en moins d'un an.</p>
+</div>
+
+<div class="item">
+<h3><a href="https://mistral.ai/news/build-with-studio/" target="_blank">Studio V2 : « Le Chonk brings the brains. Studio puts it to work »</a></h3>
+<div class="meta">Blog Mistral • 05/11/2026</div>
+<p>Mistral pousse Studio, sa plateforme d'agents, de workflows et d'applications d'entreprise, appuyée sur Large 4, avec contrôle des modèles, des données et de l'infrastructure.</p>
+</div>
+
+<div class="item">
+<h3><a href="https://www.techniques-ingenieur.fr/actualite/articles/avec%E2%80%8D%E2%80%8D%E2%80%8D-large-4-mistral-se-rapproche-des-modeles-dia-americains-et-chinois-165533/" target="_blank">Large 4 / Le Chonk : les poids ouverts au centre du débat</a></h3>
+<div class="meta">Techniques de l'Ingénieur • 03/11/2026</div>
+<p>Les poids du modèle 1T (publiés le 29/10) alimentent l'analyse comparative : meilleur open-weight hors USA/Chine, mais devancé par MiMo-V2.6-Pro, GLM-5.3-Flash et DeepSeek V4.1 Flash.</p>
+</div>
+
+<div class="item">
+<h3><a href="https://www.lecanardenchaine.fr/police-justice/55322-mistral-ai-n-est-plus-assure-de-le-jouer-gagnant" target="_blank">Pression concurrentielle et médiatique</a></h3>
+<div class="meta">ZDNet • 02/11/2026 &amp; Le Canard enchaîné • 03/11/2026</div>
+<p>Attaque publique d'OVHcloud sur son modèle économique (<a href='https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm' target='_blank'>ZDNet</a>) et enquête du Canard enchaîné sur son soutien étatique.</p>
+</div>
+
+</div>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item"><h3>L'énergie, nouveau goulot d'étranglement de l'IA</h3><p>La mobilisation européenne sur les data centers prolonge la tendance américaine : environ 40 % de la capacité planifiée aux États-Unis se trouverait dans des États dont les nouveaux gouverneurs ont promis une pause (<a href="https://www.ibj.com/topics/artificial-intelligence" target="_blank">Bloomberg via IBJ, 06/11/2026</a>).</p></div>
+<div class="item"><h3>Souveraineté en cascade</h3><p>Si OVHcloud tient sa promesse d'un modèle souverain fin novembre et que l'Europe outille ses administrations (AI toolbox), la « stack souveraine complète » (cloud + modèle + cadre légal) cessera d'être un slogan pour devenir une offre commerciale testable — et mettra Mistral en concurrence frontale chez lui.</p></div>
+<div class="item"><h3>Auto-régulation négociée des géants</h3><p>L'engagement anti-scraping commun aux quatre grands et l'abandon des NDA par OpenAI dessinent une normalisation négociée de la relation IA / éditeurs / pouvoirs publics, plutôt qu'un affrontement juridique frontal.</p></div>
+</div>
+</div>
+
+  <div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles</div></div>
+<div class="card-body">
+<div class="item"><h3>1. Contestation territoriale des data centers</h3><p>D'incident local à mouvement paneuropéen coordonné en quelques mois — à surveiller pour tout projet d'implantation IA.<br>Sources : <a href="https://www.rfi.fr/fr/%C3%A9conomie/20261107-en-europe-la-contestation-contre-la-construction-de-centres-de-donn%C3%A9es-s-amplifie" target="_blank">RFI</a> • <a href="https://www.latribune.fr/article/tech/54467093993446/data-centers-mobilisation-inedite-des-ce-vendredi-pour-reclamer-un-moratoire" target="_blank">La Tribune</a></p></div>
+<div class="item"><h3>2. Le mur de la valorisation</h3><p>L'IPO d'Anthropic servira de test de vérité pour toute l'économie de l'IA ; des investisseurs poussent déjà à revoir les ambitions.<br>Sources : <a href="https://ca.finance.yahoo.com/news/anthropic-ipo-what-we-know-143321078.html" target="_blank">Yahoo Finance</a> • <a href="https://techxplore.com/news/2026-11-anthropic-ipo-ambitions-investors-balk.html" target="_blank">TechXplore</a></p></div>
+<div class="item"><h3>3. M&amp;A en rafale chez Mistral</h3><p>Cinq acquisitions en un an : une course à l'assemblage de capacités (code, langages) plutôt qu'une croissance organique — signe de pression concurrentielle.<br>Sources : <a href="https://www.lemondeinformatique.fr/actualites/lire-mistral-rachete-skiplabs-et-cree-une-equipe-dediee-aux-langages-100926.html" target="_blank">Le Monde Informatique</a> • <a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">ZDNet</a></p></div>
+<div class="item"><h3>4. Concession des géants aux éditeurs</h3><p>Un standard anti-scraping unique négocié avec les médias pourrait redistribuer la valeur des données d'entraînement.<br>Sources : <a href="https://english.aawsat.com/technology/5335881-ai-giants-promise-publishers-new-way-block-some-scraping" target="_blank">Asharq Al-Awsat (AP)</a> • <a href="https://ground.news/article/ai-giants-promise-publishers-new-way-to-block-some-scraping" target="_blank">Ground News</a></p></div>
+<div class="item"><h3>5. Fin de cycle politique pour les champions nationaux</h3><p>La remise en cause du soutien d'État à Mistral et l'entrée d'OVHcloud sur le terrain des modèles annoncent une recomposition du paysage souverain français après 2027.<br>Sources : <a href="https://www.lecanardenchaine.fr/police-justice/55322-mistral-ai-n-est-plus-assure-de-le-jouer-gagnant" target="_blank">Le Canard enchaîné</a> • <a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank">ZDNet</a></p></div>
+</div>
+</div>
+
+<footer>
+    <p>Généré le 2026-09-30 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-09-30.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'&#127769;&#65039;'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>

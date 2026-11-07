@@ -1,0 +1,283 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:var(--ink); --ink:#f3f4f6; --muted:#d1d5db;
+      --border:var(--ink); --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .signal ul{margin:0;padding-left:18px}
+    .signal li{margin:8px 0;font-size:.92rem}
+    .signal a{color:var(--accent);word-break:break-all;text-decoration:none}
+    .signal a:hover{text-decoration:underline}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR / EU / Monde — fenêtre 1 → 7 novembre 2026 · généré par ORAC (Hermes, profil demo)</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">2</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 6 novembre 2026</span>
+    <span class="pill yellow">🇫🇷 Focus Mistral : 2</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse</div></div>
+<div class="card-body">
+<p>La semaine a été dominée par la <strong>souveraineté IA européenne</strong> : préparation du premier sommet des 27 dédié à l'IA (Dublin, 13 novembre, avec Arthur Mensch et Geoffrey Hinton) et appels estoniens à « construire » plutôt qu'« acheter » la puissance IA. En France, la page se tourne sur les usages : les mathématiciens organisent leur cohabitation avec l'IA tandis que les assistants abandonnent la flatterie pour un ton plus dur. Côté marchés, la bulle vacille (Nasdaq -5,5 % après les midterms, où le rejet des data centers s'invite dans le vote). Dans l'industrie, la bataille glisse des modèles vers l'orchestration d'agents (Mistral Studio, Perplexity Teammates) et l'infrastructure de stockage IA (Dropbox/Tigris). La Chine pousse ses modèles à poids ouverts (Tencent Hy4).</p>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lemonde.fr/sciences/article/2026/11/06/confrontes-au-seisme-de-l-ia-des-mathematiciens-cherchent-des-pistes-de-cohabitation_6807757_1650684.html" target="_blank">Confrontés au séisme de l'IA, des mathématiciens cherchent des pistes de cohabitation</a></h3>
+<div class="meta">Le Monde • 06/11/2026</div>
+<p>Environ 70 mathématiciennes et mathématiciens de laboratoires parisiens réunis le 3 novembre à Paris ont voté des « appels à action » : jours de travail sans IA, soutenances rallongées, IA « universitaires » ouvertes, « CERN de l'IA », voire une taxe sur les producteurs de modèles pour financer l'étude des preuves illisibles générées par les machines. Le reportage décrit une communauté « chamboulée » par l'irruption de l'IA.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemonde.fr/m-perso/article/2026/11/06/comment-mon-assistant-ia-est-devenu-passif-agressif_6807724_4497916.html" target="_blank">« Es-tu certain d'avoir les moyens d'aller nager à Molitor ? » : comment mon assistant IA est devenu « passif-agressif »</a></h3>
+<div class="meta">Le Monde • 06/11/2026</div>
+<p>Fini le temps des IA flatteuses : Claude « boude », ChatGPT se montre condescendant, Gemini juge la vie privée. C'est la fin du « sycophantisme », la flatterie systématique culminant avec une mise à jour de ChatGPT en avril 2025. Anthropic évalue cette flagornerie depuis 2022 et revendique des scores inférieurs de 70 % à 85 % à ceux de modèles antérieurs.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.sudinfo.be/id1220526/article/2026-11-04/les-dirigeants-de-lue-se-reuniront-la-semaine-prochaine-pour-un-sommet-sur-lia" target="_blank">Les dirigeants de l'UE se réuniront la semaine prochaine pour un sommet sur l'IA</a></h3>
+<div class="meta">Sudinfo (Belga/AFP) • 04/11/2026</div>
+<p>Le président du Conseil européen António Costa convoque les 27 à un sommet informel sur l'IA le 13 novembre à Dublin : compétitivité, souveraineté technologique, réduction des dépendances critiques et gouvernance internationale. Arthur Mensch (Mistral AI) et le prix Nobel Geoffrey Hinton interviendront.</p>
+</div>
+<div class="item">
+<h3><a href="https://news.err.ee/1610187157/estonian-pm-europe-needs-the-ability-to-build-ai-power-not-just-buy-it" target="_blank">Estonian PM: Europe needs the ability to build AI power, not just buy it</a></h3>
+<div class="meta">ERR News • 05/11/2026</div>
+<p>Au Tallinn Digital Summit, le Premier ministre estonien Kristen Michal appelle l'Europe à « construire » sa puissance IA plutôt qu'à l'« acheter », en référence à la dépendance énergétique passée envers la Russie. L'Estonie signe avec 30+ pays la « Call for Control of Frontier AI Models ».</p>
+</div>
+<div class="item">
+<h3><a href="https://eic.ec.europa.eu/news/european-innovation-council-launches-eur18-billion-funding-2027-2026-11-05_en" target="_blank">European Innovation Council launches €1.8 billion in funding for 2027</a></h3>
+<div class="meta">Commission européenne / EIC • 05/11/2026</div>
+<p>La Commission adopte le programme de travail 2027 de l'EIC (1,8 Md€), dernier paquet sous Horizon Europe 2021-2027 : Scaleup Europe Fund (1 Md€), défense (200 M€), subventions Women TechEU doublées à 150 000 €, nouveau Prix des innovatrices en quantique.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/" target="_blank">Dropbox acquires Tigris Data for $350M to bolster its AI infrastructure</a></h3>
+<div class="meta">TechCrunch • 05/11/2026</div>
+<p>Dropbox rachète Tigris Data (stockage objet distribué pour l'IA) pour ~350 M$ — sa plus grosse acquisition — et lance DBX Agent Cloud, un stockage compatible S3 pour développeurs d'IA. Premier déploiement US/UK/Australie, extension en 2027.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work" target="_blank">Perplexity launches its own take on AI agents for work</a></h3>
+<div class="meta">The Verge • 05/11/2026</div>
+<p>Perplexity lance « Teammates », des agents toujours actifs qui gèrent des travaux de longue haleine, coopèrent entre eux, s'intègrent à Slack et travaillent 24 h/24. Réservé aux abonnés Max (200 $/mois) : concurrence directe avec les Dots d'OpenAI et Duet de Claude.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.caixinglobal.com/2026-11-05/tencent-launches-upgraded-hy4-ai-model-with-visual-understanding-102501068.html" target="_blank">Tencent Launches Upgraded Hy4 AI Model With Visual Understanding</a></h3>
+<div class="meta">Caixin Global • 05/11/2026</div>
+<p>Tencent officialise Hunyuan Hy4 (770 Md de paramètres, open-source), qui ajoute la compréhension visuelle et le pilotage d'ordinateur (CLI + GUI) et ramène son taux d'hallucination de 15,76 % à 5,45 %. Poids promis en ouverture ; disponible via Tencent Cloud, Yuanbao, ima et OpenRouter.</p>
+</div>
+<div class="item">
+<h3><a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank">New York Times and other outlets sue web browser Brave over alleged content scraping</a></h3>
+<div class="meta">TechCrunch • 02/11/2026</div>
+<p>Le New York Times poursuit Brave, l'accusant d'avoir aspiré et redistribué ses contenus à des clients nommés (Anthropic, Perplexity, Mistral, xAI, Cohere), via un index de 30+ milliards de pages et un contournement des paywalls. Plaintes similaires du Daily News, du Chicago Tribune et de l'Orlando Sentinel.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemonde.fr/international/article/2026/11/05/midterms-2026-les-americains-expriment-aussi-leur-rejet-des-data-centers_6806840_3210.html" target="_blank">Midterms 2026 : les Américains expriment aussi leur rejet des data centers</a></h3>
+<div class="meta">Le Monde • 05/11/2026</div>
+<p>Aux États-Unis, le rejet des data centers s'invite dans les midterms : au Texas, Gina Hinojosa, élue gouverneure, avait fait campagne contre ces centres ; 23 % des électeurs les jugent « décisifs » (sondage NBC). Le Nasdaq a lâché plus de 5,5 % le 5 novembre.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.nodeit.fr/blog/mistral-studio-agents-workflows-apps-entreprise" target="_blank">Mistral Studio : agents managés, workflows et applications pour l'entreprise</a></h3>
+<div class="meta">Node it • 05-06/11/2026</div>
+<p>Le 5 novembre, Mistral étend Studio avec des agents managés et des applications : tâches multi-étapes, « skills » de procédures internes, sandbox de code, sous-agents, workflows déclenchés par événements et graphe visuel. Socle Large 4 (« Le Chonk »), déploiement cloud/VPC/on-premise ; ABANCA, BNP Paribas et CMA CGM en production.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemagit.fr/actualites/366653932/IA-agentique-et-programmation-reactive-pourquoi-Mistral-AI-acquiert-SkipLabs" target="_blank">IA agentique et programmation réactive : pourquoi Mistral AI acquiert SkipLabs</a></h3>
+<div class="meta">LeMagIT • 06/11/2026</div>
+<p>Mistral confirme le rachat de SkipLabs (six collaborateurs, ex-Meta) — 5e acquisition en moins d'un an. La nouvelle équipe « Language » doit doter les agents de codage d'outils rapides (vérification de types, analyse statique, calcul incrémental) pour fiabiliser le code généré. Montant non divulgué.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item">
+<p><strong>Souveraineté IA, acte fondateur (13 nov).</strong> Premier débat des 27 entièrement consacré à l'IA, avec deux invités divergents par construction (Mensch côté « construire nos modèles », Hinton côté risques). À surveiller : achat public « souverain et digne de confiance » et rôle du futur Fonds européen de compétitivité.</p>
+</div>
+<div class="item">
+<p><strong>Modèles ouverts européens fin novembre.</strong> OVHcloud vise un modèle souverain, propriétaire et ouvert d'ici fin novembre, en rupture affichée avec le modèle économique de Mistral : concurrence intra-européenne en hausse.</p>
+</div>
+<div class="item">
+<p><strong>Du modèle à l'orchestration.</strong> Avec Studio, Perplexity Teammates et les agents managés, la valeur se déplace vers l'orchestration d'agents, l'observabilité et l'évaluation, plus que vers le modèle sous-jacent.</p>
+</div>
+<div class="item">
+<p><strong>Dépendances et droits.</strong> La progression des modèles à poids ouverts chinois (Tencent Hy4, Qwen, GLM, Kimi) et la multiplication des contentieux sur le scraping (NYT/Brave) redessinent souveraineté et droit d'auteur.</p>
+</div>
+</div>
+</div>
+<div class="card signal">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles sourcés</div></div>
+<div class="card-body">
+<div class="item">
+<p><strong>1. Fin du « sycophantisme » : le ton des assistants se durcit.</strong></p>
+<ul>
+<li><a href="https://www.lemonde.fr/m-perso/article/2026/11/06/comment-mon-assistant-ia-est-devenu-passif-agressif_6807724_4497916.html" target="_blank">https://www.lemonde.fr/m-perso/article/2026/11/06/comment-mon-assistant-ia-est-devenu-passif-agressif_6807724_4497916.html</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>2. Les communautés scientifiques s'organisent face à l'IA.</strong></p>
+<ul>
+<li><a href="https://www.lemonde.fr/sciences/article/2026/11/06/confrontes-au-seisme-de-l-ia-des-mathematiciens-cherchent-des-pistes-de-cohabitation_6807757_1650684.html" target="_blank">https://www.lemonde.fr/sciences/article/2026/11/06/confrontes-au-seisme-de-l-ia-des-mathematiciens-cherchent-des-pistes-de-cohabitation_6807757_1650684.html</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>3. L'open-weight chinois pousse sur l'agentique et le multimodal.</strong></p>
+<ul>
+<li><a href="https://www.caixinglobal.com/2026-11-05/tencent-launches-upgraded-hy4-ai-model-with-visual-understanding-102501068.html" target="_blank">https://www.caixinglobal.com/2026-11-05/tencent-launches-upgraded-hy4-ai-model-with-visual-understanding-102501068.html</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>4. La souveraineté IA devient un sujet de sommet.</strong></p>
+<ul>
+<li><a href="https://www.sudinfo.be/id1220526/article/2026-11-04/les-dirigeants-de-lue-se-reuniront-la-semaine-prochaine-pour-un-sommet-sur-lia" target="_blank">https://www.sudinfo.be/id1220526/article/2026-11-04/les-dirigeants-de-lue-se-reuniront-la-semaine-prochaine-pour-un-sommet-sur-lia</a></li>
+<li><a href="https://news.err.ee/1610187157/estonian-pm-europe-needs-the-ability-to-build-ai-power-not-just-buy-it" target="_blank">https://news.err.ee/1610187157/estonian-pm-europe-needs-the-ability-to-build-ai-power-not-just-buy-it</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>5. Le scraping et l'infrastructure IA changent d'échelle.</strong></p>
+<ul>
+<li><a href="https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/" target="_blank">https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/</a></li>
+<li><a href="https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/" target="_blank">https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/</a></li>
+</ul>
+</div>
+</div>
+</div>
+  </div>
+  <footer>
+    <p>Généré le 2026-11-06 par ORAC (Hermes, profil demo) — veille IA global. Template veille-html (dark theme, KPIs, cartes responsive). 12 articles, fenêtre 1 → 7 novembre 2026, dates de publication vérifiées.</p>
+    <p>Bac à sable de comparaison : aucun index ni fichier de production modifié. Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'&#127769;&#65039;'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>

@@ -1,0 +1,279 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:var(--ink); --ink:#f3f4f6; --muted:#d1d5db;
+      --border:var(--ink); --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius:18px; color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .item ul{margin:6px 0 0;padding-left:20px;font-size:.85rem}
+    .item ul li{margin:2px 0;word-break:break-all}
+    .item ul li a{color:var(--accent);text-decoration:none}
+    .item ul li a:hover{text-decoration:underline}
+    .src{font-size:.82rem}
+    .src a{color:var(--accent);text-decoration:none}
+    .src a:hover{text-decoration:underline}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (max-width: 720px){
+      .kpis{grid-template-columns:repeat(2,1fr)}
+      header{grid-template-columns:1fr}
+    }
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par ORAC (Hermes)</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">3</div></div>
+<div class="kpi"><div class="label">🌍 Europe hors France</div><div class="value">3</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">4</div></div>
+<div class="kpi"><div class="label">🇫🇷 Focus Mistral</div><div class="value">2</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 31 octobre → 6 novembre 2026</span>
+    <span class="pill yellow">✅ dates de publication vérifiées</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse</div></div>
+<div class="card-body">
+<p>La semaine a basculé du côté du <strong>risque politique et financier</strong> : la victoire démocrate aux midterms a déclenché une déflagration boursière sur les valeurs IA (Nvidia −9,3 %, AMD −17,3 %) et installé les <strong>data centers</strong> comme enjeu électoral local, alors que les quatre hyperscalers promettent plus de <strong>720 Md$ de CapEx</strong> cette année sans retour démontré. En Europe, la <strong>souveraineté</strong> avance par alliances industrielles (Bull × Schwarz Digits, Orange Cyberdefense partenaire de Mistral) et par le droit (la CMA britannique enquête sur les conditions Meta d'usage des contenus de presse pour l'IA). En France, l'IA entre dans le <strong>circuit commercial</strong> (Bouygues Telecom vend ses forfaits dans ChatGPT) tandis que la <strong>rétro-ingénierie assistée</strong> banalise le « mash-up » de jeux vidéo et que des mathématiciens alertent sur le rétrécissement de leur discipline. Côté modèles, la Chine montre qu'elle sait entraîner de l'<strong>open-weight de taille frontière sur silicium domestique</strong> (Meituan LongCat-2.5, Tencent Hy4). Mistral consolide son <strong>étage entreprise</strong> (Studio) et son <strong>ancrage cyber européen</strong>.</p>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lemonde.fr/pixels/article/2026/11/02/comment-l-ia-permet-aux-bidouilleurs-de-decompiler-de-fusionner-ou-de-copier-plus-rapidement-des-jeux-video_6805311_4408996.html" target="_blank">Comment l'IA permet aux bidouilleurs de « décompiler », de fusionner ou de copier plus rapidement des jeux vidéo</a></h3>
+<div class="meta">Le Monde (Pixels) • 02/11/2026</div>
+<p>Des vidéos de jeux « fusionnés » (« SkyCraft », le héros de <em>Minecraft</em> dans <em>Skyrim</em>, des routes de <em>GTA V</em> soufflées à la TNT) inondent les réseaux sociaux, avec une explication rituelle : l'IA saurait désormais « décompiler » n'importe quel jeu pour le mélanger à un autre. <strong>Flavien Normand</strong> (Teamcraft Studios), qui pratique la rétro-ingénierie depuis près de dix ans, relativise d'emblée : « Fondamentalement, l'IA n'a rien inventé. » Il rappelle la mécanique : compiler, c'est comprimer et optimiser du code lisible par des humains pour que la machine le gère ; décompiler, c'est l'opération inverse — un travail ancien que l'IA accélère et démocratise plutôt qu'elle ne l'invente. <span class="src">[<a href="https://www.lemonde.fr/pixels/article/2026/11/02/comment-l-ia-permet-aux-bidouilleurs-de-decompiler-de-fusionner-ou-de-copier-plus-rapidement-des-jeux-video_6805311_4408996.html" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-premier-operateur-telecom-francais-a-integrer-ses-services-directement-dans-chatgpt/" target="_blank">Bouygues Telecom : premier opérateur télécom français à intégrer ses services directement dans ChatGPT</a></h3>
+<div class="meta">Bouygues Telecom (communiqué) • 03/11/2026</div>
+<p>L'opérateur lance une <strong>application dédiée dans ChatGPT</strong>, accessible y compris aux <strong>comptes gratuits</strong> : comparer les offres fixe et mobile, choisir un smartphone (capacité, couleur, plan de financement), tester son <strong>éligibilité à la fibre</strong> et aux offres Box. L'application est connectée en temps réel aux <strong>API sécurisées</strong> de Bouygues Telecom pour éviter les données obsolètes ; les échanges se font à l'écrit ou à la <strong>voix</strong>, et la redirection vers le site de l'opérateur n'intervient qu'à la <strong>dernière étape</strong>, pour finaliser le panier. Une première revendiquée chez les opérateurs français. <span class="src">[<a href="https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-premier-operateur-telecom-francais-a-integrer-ses-services-directement-dans-chatgpt/" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemonde.fr/sciences/article/2026/11/05/le-grand-danger-serait-une-vision-de-la-recherche-mathematique-cantonnee-a-sa-partie-la-plus-vulnerable-a-l-ia_6806850_1650684.html" target="_blank">« Le grand danger serait une vision de la recherche mathématique cantonnée à sa partie la plus vulnérable à l'IA »</a></h3>
+<div class="meta">Le Monde (Sciences) • 05/11/2026</div>
+<p>Dans une tribune, les mathématiciens <strong>Stéphane Jaffard</strong> et <strong>Yves Meyer</strong> alertent : en réduisant la discipline aux <strong>seuls problèmes que l'IA sait résoudre</strong>, c'est le travail des chercheurs « à la croisée des disciplines » qui est menacé. Le texte prolonge le mouvement de la communauté mathématique française, qui s'organise depuis début novembre face à l'irruption des modèles génératifs dans son métier. <span class="src">[<a href="https://www.lemonde.fr/sciences/article/2026/11/05/le-grand-danger-serait-une-vision-de-la-recherche-mathematique-cantonnee-a-sa-partie-la-plus-vulnerable-a-l-ia_6806850_1650684.html" target="_blank">source</a>]</span></p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://tech.eu/2026/11/05/uk-sovereign-ai-fund-and-stripe-ceo-back-potential-sciences-in-multi-million-dollar-raise/" target="_blank">UK Sovereign AI fund and Stripe CEO back Potential Sciences in multi-million-dollar raise</a></h3>
+<div class="meta">Tech.eu • 05/11/2026</div>
+<p>La start-up londonienne <strong>Potential Sciences</strong> (infrastructure IA pour la découverte de médicaments) lève « des dizaines de millions de dollars », avec à son tour de table le <strong>Sovereign AI fund</strong> britannique et <strong>Patrick Collison</strong> (PDG de Stripe), aux côtés de Twin Path Ventures, Nauta Capital, rule30 ou Lightfield Equity. Elle combine IA et <strong>simulations de chimie quantique</strong> avec un modèle fondé sur les <strong>lois fondamentales de la physique</strong> plutôt que sur des données expérimentales, et affirme pouvoir rendre les calculs de conception chimique <strong>100 fois moins chers</strong>. Le fonds souverain y ajoute un <strong>engagement de capacité de calcul</strong> — modèle d'intervention publique qui se banalise au Royaume-Uni (Olix, Ineffable Intelligence, Callosum). Fondée fin 2025 par <strong>Hatem Helal</strong> (ex-Graphcore) ; montant et valorisation non divulgués. <span class="src">[<a href="https://tech.eu/2026/11/05/uk-sovereign-ai-fund-and-stripe-ceo-back-potential-sciences-in-multi-million-dollar-raise/" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.globenewswire.com/news-release/2026/11/03/3394200/0/en/bull-and-schwarz-digits-a-franco-german-alliance-for-europe-s-digital-sovereignty.html" target="_blank">Bull and Schwarz Digits, a Franco-German alliance for Europe's digital sovereignty</a></h3>
+<div class="meta">GlobeNewswire (BULL SAS) • 03/11/2026</div>
+<p><strong>Bull</strong> (calcul avancé et IA) et <strong>Schwarz Digits</strong> (branche IT du groupe Schwarz, maison mère de Lidl/Kaufland) signent un <strong>protocole d'accord</strong> pour bâtir un écosystème européen indépendant d'<strong>IA et de cloud</strong>, « des serveurs à la plateforme logicielle et à l'environnement applicatif ». Objectif : permettre aux organisations européennes, <strong>en particulier dans les secteurs régulés et stratégiques</strong>, de développer et d'exploiter l'IA tout en gardant <strong>données, infrastructures et opérations sous juridiction européenne</strong>. Signature annoncée depuis Paris et Berlin. <span class="src">[<a href="https://www.globenewswire.com/news-release/2026/11/03/3394200/0/en/bull-and-schwarz-digits-a-franco-german-alliance-for-europe-s-digital-sovereignty.html" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemonde.fr/economie/article/2026/10/30/le-royaume-uni-ouvre-une-enquete-sur-les-nouvelles-conditions-commerciales-de-meta-pour-l-utilisation-des-contenus-de-medias-qui-pourraient-etre-deloyales_6803098_3234.html" target="_blank">Le Royaume-Uni ouvre une enquête sur les nouvelles conditions commerciales de Meta pour l'utilisation des contenus de médias, qui pourraient être « déloyales »</a></h3>
+<div class="meta">Le Monde (Économie) • 30/10/2026</div>
+<p>Le régulateur britannique de la concurrence, la <strong>CMA</strong>, ouvre une enquête sur les nouvelles conditions de Meta, qui pourraient lui permettre d'utiliser les <strong>contenus de médias pour ses propres produits, notamment d'IA, sans consulter les éditeurs</strong>. La CMA cherche à établir si Meta détient une position dominante sur le marché britannique concerné et si ces conditions en constituent un <strong>abus</strong> : « l'obligation faite aux éditeurs de presse et aux autres entreprises de contenus d'accepter ces conditions » pourrait constituer une <strong>imposition de conditions commerciales déloyales</strong> pour des milliers d'entreprises. L'entrée en vigueur, prévue le 30 octobre, a été reportée au <strong>20 novembre</strong>, et Meta a annoncé <strong>suspendre le déploiement</strong> dans l'attente d'une consultation ; le groupe conteste tout motif d'enquête. <span class="src">[<a href="https://www.lemonde.fr/economie/article/2026/10/30/le-royaume-uni-ouvre-une-enquete-sur-les-nouvelles-conditions-commerciales-de-meta-pour-l-utilisation-des-contenus-de-medias-qui-pourraient-etre-deloyales_6803098_3234.html" target="_blank">source</a>]</span></p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.cnbc.com/2026/11/06/ai-data-center-midterms-selloff.html" target="_blank">AI stocks hammered by midterm shock as data center buildout becomes a 'war of attrition'</a></h3>
+<div class="meta">CNBC • 06/11/2026</div>
+<p>La <strong>victoire démocrate aux midterms</strong> a déclenché une <strong>vente massive</strong> sur les valeurs technologiques jeudi : <strong>Nvidia −9,3 %</strong>, <strong>AMD −17,3 %</strong>, <strong>Micron −17,5 %</strong>, <strong>Broadcom −10,4 %</strong>, <strong>Tesla −10,8 %</strong>, <strong>Microsoft −3,6 %</strong>, mais aussi les « neoclouds » — <strong>Nebius −15 %</strong>, <strong>Iren −17 %</strong>, <strong>CoreWeave −10 %</strong>. En cause : un Congrès démocrate porteur de <strong>régulation</strong>, et des dizaines de <strong>mesures locales</strong> dans <strong>10 États</strong> restreignant la construction de data centers, votées le même jour. Les résultats trimestriels sont jugés « globalement décevants », avec des signes de <strong>ralentissement de la dépense IA</strong> ; les valeurs se reprennent partiellement vendredi matin, sans effacer l'avertissement. <span class="src">[<a href="https://www.cnbc.com/2026/11/06/ai-data-center-midterms-selloff.html" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1027344/amazon-microsoft-alphabet-google-meta-data-centers-earnings-q3" target="_blank">Big Tech's big AI buildout will not end until someone stops it</a></h3>
+<div class="meta">The Verge • 05/11/2026</div>
+<p><strong>Amazon, Microsoft, Alphabet et Meta</strong> prévoient de dépenser <strong>au moins 720 Md$ de CapEx cette année</strong>, majoritairement pour l'infrastructure IA — au-dessus d'<strong>au moins 1 000 Md$ d'engagements</strong> déjà arrangés pour les années suivantes. Deux constats : ces groupes <strong>ne s'arrêteront pas d'eux-mêmes</strong>, et le build-out <strong>n'est pas plus proche de tenir ses promesses de rentabilité</strong>. Le scrutin a élu des responsables favorables à des <strong>moratoires</strong> sur les data centers ; Wall Street a vu cette incertitude réglementaire d'un bon œil, les titres remontant dès le mardi. <span class="src">[<a href="https://www.theverge.com/ai-artificial-intelligence/1027344/amazon-microsoft-alphabet-google-meta-data-centers-earnings-q3" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.rappler.com/technology/tencent-hy4-ai-model-trained-limited-cybersecurity-data/" target="_blank">Tencent rolls out AI model trained with limited cybersecurity data amid hacking fears</a></h3>
+<div class="meta">Rappler (Reuters) • 05/11/2026</div>
+<p><strong>Tencent</strong> publie <strong>Hy4</strong> (présenté le mercredi 4 novembre), un modèle dont l'entraînement cyber a été <strong>restreint aux usages défensifs</strong> — identifier et corriger les failles — en excluant tout matériel sur la <strong>construction d'outils de piratage</strong>, l'intrusion et le test de vulnérabilités. Le géant affirme que ses équipes internes n'ont décelé <strong>aucun risque accru</strong> d'aide à l'effraction ou au contournement de protections, ni de facilitation d'expériences biologiques dangereuses. Les <strong>poids seront publiés plus tard</strong>, accompagnés d'un <strong>rapport de tests de sûreté</strong>. Contexte : montée des inquiétudes sur le <strong>hacking assisté par IA</strong> et précédent de <strong>Moonshot AI</strong>, qui a limité les capacités cyber-offensives de son Kimi. <span class="src">[<a href="https://www.rappler.com/technology/tencent-hy4-ai-model-trained-limited-cybersecurity-data/" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html" target="_blank">Meituan Unveils New AI Model Trained on Homegrown Chips</a></h3>
+<div class="meta">Caixin Global • 03/11/2026</div>
+<p><strong>Meituan</strong> dévoile <strong>LongCat-2.5</strong>, modèle <strong>nativement multimodal de 1 600 Md de paramètres</strong> (environ <strong>48 Md activés par jeton</strong>) conçu pour les <strong>tâches agentiques de longue haleine</strong> et <strong>entraîné intégralement sur des puces chinoises</strong>. Le groupe entend l'exploiter pour gagner en efficacité dans ses <strong>métiers cœur</strong> plutôt que de vendre de la puissance de calcul brute : le mouvement illustre la <strong>dépendance croissante des acteurs chinois au silicium domestique</strong> malgré les limites matérielles, et une stratégie de <strong>monétisation par l'écosystème</strong> existant. <span class="src">[<a href="https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html" target="_blank">source</a>]</span></p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<p style="margin:0 0 12px;font-size:.92rem">Deux actualités Mistral dans la fenêtre, toutes deux hors du bruit des benchmarks : une <strong>plateforme entreprise</strong> et un <strong>ancrage cyber européen</strong>. À noter : la publication des <strong>poids ouverts de Mistral Large 4 (« Le Chonk »)</strong> date du <strong>29 octobre 2026</strong> et sort donc de la fenêtre de 7 jours — elle n'est volontairement pas comptée ici.</p>
+<div class="item">
+<h3><a href="https://mistral.ai/news/build-with-studio/" target="_blank">Le Chonk brings the brains. Studio puts it to work.</a></h3>
+<div class="meta">Mistral AI (blog officiel) • 05/11/2026</div>
+<p>Mistral étend <strong>Studio</strong>, sa plateforme IA d'entreprise, pour <strong>activer les modèles via des agents, des workflows et des applications</strong> connectés aux données et systèmes de l'entreprise. Déploiement au choix : <strong>cloud, VPC du client, on-premise</strong> ou combinaison, avec conservation du <strong>contrôle et de la compréhension</strong> de l'intelligence produite. Bâti sur <strong>Mistral Large 4</strong>, le dispositif revendique des clients déjà en production, dont <strong>ABANCA et BNP Paribas</strong>. <span class="src">[<a href="https://mistral.ai/news/build-with-studio/" target="_blank">source</a>]</span></p>
+</div>
+<div class="item">
+<h3><a href="https://www.webwire.com/ViewPressRel.asp?aId=363577" target="_blank">Orange Cyberdefense becomes Mistral AI's first European MSSP design Partner</a></h3>
+<div class="meta">WebWire (communiqué) • 02/11/2026</div>
+<p><strong>Orange Cyberdefense</strong> devient le <strong>premier partenaire « design Partner » MSSP européen</strong> de Mistral AI, avec un <strong>accès anticipé à une variante de Mistral Large 4 optimisée cybersécurité</strong>. Premiers cas d'usage : <strong>tests d'intrusion et audits techniques</strong>, puis <strong>investigation et réponse à incident</strong> (analyse accélérée des traces). Garde-fous annoncés : gestion des accès, <strong>traçabilité</strong>, tests de sécurité des modèles et <strong>supervision humaine</strong>, toute action critique restant sous responsabilité d'experts. Les modèles tournent sur des <strong>capacités de calcul européennes</strong>. « Nous construisons l'IA cyber européenne, entraînée par nos experts et opérée sous leur contrôle », résume <strong>Hugues Foulon</strong> (PDG d'Orange Cyberdefense). <span class="src">[<a href="https://www.webwire.com/ViewPressRel.asp?aId=363577" target="_blank">source</a>]</span></p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item"><p><strong>Le silicium domestique change la donne de l'open-weight.</strong> Meituan (1 600 Md de paramètres sur puces chinoises) et Tencent Hy4 montrent qu'un modèle de taille frontière peut être entraîné <strong>hors chaîne Nvidia</strong> : à surveiller, l'effet sur les <strong>prix du calcul</strong> et sur les stratégies de souveraineté occidentales, encore largement adossées au matériel américain.</p></div>
+<div class="item"><p><strong>Le data center devient un actif politiquement risqué.</strong> Moratoires locaux dans 10 États, CapEx des hyperscalers supérieur à 720 Md$ sans retour démontré, selloff post-midterms : le coût du capital de l'IA intègre désormais une <strong>prime de risque réglementaire</strong>, pas seulement technologique.</p></div>
+<div class="item"><p><strong>Le chatbot devient un canal de distribution.</strong> Après les agents, l'intégration de <strong>Bouygues Telecom</strong> dans ChatGPT ouvre la voie aux transactions grand public dans l'interface : questions à venir sur la <strong>responsabilité</strong>, la <strong>mesure</strong> et la <strong>neutralité</strong> de ces parcours.</p></div>
+<div class="item"><p><strong>La souveraineté européenne se joue à trois niveaux emboîtés.</strong> Modèle ouvert côté Mistral, infrastructure côté <strong>Bull × Schwarz Digits</strong>, droit de la concurrence côté <strong>CMA/Meta</strong> : l'Europe avance par la <strong>régulation et les alliances</strong> plutôt que par la course au paramètre.</p></div>
+<div class="item"><p><strong>L'orchestration d'agents comme prochain terrain de valeur.</strong> Avec <strong>Studio</strong> (agents managés, workflows, applications), la différenciation se déplace du modèle vers la <strong>plateforme d'exécution</strong> et la gouvernance des skills d'entreprise.</p></div>
+</div>
+</div>
+<div class="card signal">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles sourcés</div></div>
+<div class="card-body">
+<div class="item">
+<p><strong>1. L'IA générative devient un canal de vente pour les services grand public.</strong> Un opérateur télécom français vend désormais forfaits, terminaux et éligibilité fibre dans l'interface du chatbot, avant toute redirection — le début d'une désintermédiation des sites marchands.</p>
+<ul>
+<li><a href="https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-premier-operateur-telecom-francais-a-integrer-ses-services-directement-dans-chatgpt/" target="_blank">https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-premier-operateur-telecom-francais-a-integrer-ses-services-directement-dans-chatgpt/</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>2. Le droit d'usage des contenus pour l'IA entre dans le champ du droit de la concurrence.</strong> La CMA britannique examine les conditions Meta comme un possible abus de position dominante — la propriété intellectuelle des éditeurs glisse du droit d'auteur vers l'antitrust.</p>
+<ul>
+<li><a href="https://www.lemonde.fr/economie/article/2026/10/30/le-royaume-uni-ouvre-une-enquete-sur-les-nouvelles-conditions-commerciales-de-meta-pour-l-utilisation-des-contenus-de-medias-qui-pourraient-etre-deloyales_6803098_3234.html" target="_blank">https://www.lemonde.fr/economie/article/2026/10/30/le-royaume-uni-ouvre-une-enquete-sur-les-nouvelles-conditions-commerciales-de-meta-pour-l-utilisation-des-contenus-de-medias-qui-pourraient-etre-deloyales_6803098_3234.html</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>3. Le goulot d'étranglement de l'IA devient politique, pas seulement industriel.</strong> L'élection de responsables hostiles aux data centers et le plongeon boursier qui a suivi font de l'implantation des centres de calcul un sujet électoral local aux effets de marché immédiats.</p>
+<ul>
+<li><a href="https://www.cnbc.com/2026/11/06/ai-data-center-midterms-selloff.html" target="_blank">https://www.cnbc.com/2026/11/06/ai-data-center-midterms-selloff.html</a></li>
+<li><a href="https://www.theverge.com/ai-artificial-intelligence/1027344/amazon-microsoft-alphabet-google-meta-data-centers-earnings-q3" target="_blank">https://www.theverge.com/ai-artificial-intelligence/1027344/amazon-microsoft-alphabet-google-meta-data-centers-earnings-q3</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>4. La souveraineté cyber européenne se construit sur des modèles ouverts et des alliances croisées.</strong> Un opérateur télécom devient le premier partenaire MSSP de Mistral sur Large 4, tandis qu'un industriel franco-allemand scelle une alliance serveurs-vers-applications : la défense européenne s'adosse à des modèles ouverts hébergés localement.</p>
+<ul>
+<li><a href="https://www.webwire.com/ViewPressRel.asp?aId=363577" target="_blank">https://www.webwire.com/ViewPressRel.asp?aId=363577</a></li>
+<li><a href="https://www.globenewswire.com/news-release/2026/11/03/3394200/0/en/bull-and-schwarz-digits-a-franco-german-alliance-for-europe-s-digital-sovereignty.html" target="_blank">https://www.globenewswire.com/news-release/2026/11/03/3394200/0/en/bull-and-schwarz-digits-a-franco-german-alliance-for-europe-s-digital-sovereignty.html</a></li>
+</ul>
+</div>
+<div class="item">
+<p><strong>5. L'open-weight chinois s'affranchit du silicium occidental et se dote de garde-fous défensifs.</strong> LongCat-2.5 entraîné sur puces domestiques et Hy4 à l'entraînement cyber restreint aux usages défensifs : la Chine assortit sa montée en puissance d'un discours de sûreté, ce qui déplace la pression concurrentielle vers l'ensemble de l'écosystème européen.</p>
+<ul>
+<li><a href="https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html" target="_blank">https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html</a></li>
+<li><a href="https://www.rappler.com/technology/tencent-hy4-ai-model-trained-limited-cybersecurity-data/" target="_blank">https://www.rappler.com/technology/tencent-hy4-ai-model-trained-limited-cybersecurity-data/</a></li>
+</ul>
+</div>
+</div>
+</div>
+  </div>
+  <footer>
+    <p>Généré le 6 novembre 2026 par ORAC (Hermes, profil demo) — veille IA global. Template veille-html (dark theme, KPIs, cartes responsive). 12 articles, fenêtre 31 octobre → 6 novembre 2026, dates de publication vérifiées à la source.</p>
+    <p>Bac à sable de comparaison : aucun index ni fichier de production modifié. Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'&#127769;&#65039;'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>

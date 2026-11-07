@@ -1,0 +1,280 @@
+<!doctype html><html lang="fr" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Informatique Quantique — 06/11/2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Rajdhani','Segoe UI',Roboto,Inter,Arial,sans-serif;
+    background:
+      radial-gradient(900px 600px at 110% -10%,#40dcff1f,transparent),
+      radial-gradient(900px 600px at -10% 10%,#40dcff1f,transparent),
+      var(--bg);
+    color:var(--ink); line-height:1.6;
+  }
+  .mono{font-family:'Share Tech Mono',monospace}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+  header{
+    display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+    padding:22px 22px 20px; border:1px solid var(--border);
+    background:linear-gradient(180deg,#0b1220,var(--panel));
+    border-radius:16px; color:#fff;
+    box-shadow: var(--shadow);
+  }
+  header h1{font-size:1.7rem;margin:0;letter-spacing:.5px;text-transform:uppercase}
+  header h1 .q{color:var(--accent)}
+  header p{margin:2px 0 0;opacity:.85;font-size:.95rem}
+  header time{font-family:'Share Tech Mono',monospace;font-variant-numeric:tabular-nums;color:var(--accent);font-size:1.05rem}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+  .kpi{
+    border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+    border-radius:14px; padding:14px 16px;
+  }
+  .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+  .kpi .value{font-size:1.2rem;margin-top:6px;font-weight:700;color:var(--accent)}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+  .pill.blue{background:var(--accent);color:#01121a;border-color:var(--accent)}
+  .pill.yellow{background:var(--accent-2);color:#1a1000;border-color:var(--accent-2)}
+  h2.section{
+    font-size:1.25rem;margin:30px 2px 12px;letter-spacing:.06em;text-transform:uppercase;
+    border-left:4px solid var(--accent);padding-left:12px;
+  }
+  .synth{counter-reset:sig}
+  .synth .sig{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:16px;padding:16px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .synth .sig h3{margin:0 0 6px;font-size:1.05rem;color:var(--accent)}
+  .synth .sig h3::before{counter-increment:sig;content:counter(sig) " · ";color:var(--accent-2)}
+  .synth .sig .imp{border-left:3px solid var(--accent-2);padding:6px 12px;margin:10px 0;background:rgba(255,179,71,.07);font-size:.95rem}
+  .synth .sig .src{font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--muted);word-break:break-all}
+  .synth .sig .src a{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+  .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+  .card-title{font-size:1.1rem;font-weight:700;letter-spacing:.04em}
+  .card-body{padding:12px 18px 18px}
+  .item{border-top:1px solid var(--border);padding:14px 0}
+  .item:first-child{border-top:0;padding-top:0}
+  .item h3{margin:0 0 6px;font-size:1rem;line-height:1.4}
+  .item h3 a{color:var(--accent-2);text-decoration:none}
+  .item h3 a:hover{text-decoration:underline;color:var(--accent)}
+  .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px;font-family:'Share Tech Mono',monospace}
+  .meta .tag{color:var(--accent)}
+  .item p{margin:0;font-size:.95rem;color:var(--ink)}
+  .prosp{display:grid;grid-template-columns:1fr;gap:14px}
+  .prosp .horizon{border:1px solid var(--border);border-radius:16px;padding:16px 18px;background:linear-gradient(180deg,var(--panel),var(--bg));box-shadow:var(--shadow)}
+  .prosp .horizon h3{margin:0 0 6px;color:var(--accent);font-size:1rem;text-transform:uppercase;letter-spacing:.06em}
+  footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+  footer p{margin:4px 0}
+  @media (min-width: 860px){
+    .grid{grid-template-columns:1fr 1fr}
+    .prosp{grid-template-columns:1fr 1fr 1fr}
+  }
+  .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+    font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+    padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+    border:1px solid var(--border);background:var(--panel);color:var(--ink);
+    box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>⚛️ Veille <span class="q">Quantique</span> hebdomadaire</h1>
+      <p>Informatique quantique · technologies appliquées · cybersécurité post-quantique — généré par ORAC (Hermes)</p>
+    </div>
+    <time datetime="2026-11-06">06/11/2026</time>
+  </header>
+
+  <div class="kpis">
+<div class="kpi"><div class="label">🇫🇷 France</div><div class="value">3</div></div>
+<div class="kpi"><div class="label">🌍 Europe</div><div class="value">4</div></div>
+<div class="kpi"><div class="label">🌐 Monde</div><div class="value">5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 31/10 → 07/11/2026</span>
+    <span class="pill yellow">🔎 Dates vérifiées sur chaque source</span>
+  </div>
+
+  <h2 class="section">Synthèse — 5 signaux faibles</h2>
+  <div class="synth">
+<div class="sig">
+<h3>La course se déplace du qubit vers le déploiement opérationnel</h3>
+<p>IBM installe son Quantum System Two (processeur Nighthawk r2, 120 qubits) à l'Université de Chicago, « le plus visible au monde » derrière une vitrine, ancré au National Quantum Algorithm Center. La bataille n'est plus le nombre de qubits mais l'écosystème d'algorithmes et d'utilisateurs autour d'une machine physiquement installée.</p>
+<div class="imp"><strong>Implication DSI/RSSI/R&amp;D :</strong> les accès cloud quantiques se régionalisent (Illinois, Espagne, Japon, Corée) — anticiper où et comment vos équipes accèderont à une machine, et à quel coût.</div>
+<div class="src">Sources : <a href="https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future" target="_blank">newsroom.ibm.com</a> · <a href="https://www.ibm.com/quantum/blog/chicago-quantum-computer" target="_blank">ibm.com/quantum/blog</a></div>
+</div>
+<div class="sig">
+<h3>La correction d'erreur devient un problème d'ingénierie classique co-localisée</h3>
+<p>IBM, le Quantum Science Center d'Oak Ridge et AMD co-localisent le Nighthawk 120 qubits avec le supercalculateur Umbra (GPU AMD Instinct MI355X) : les décodeurs QEC temps réel exigent du HPC à la milliseconde. Cible DOE : 100 qubits logiques / 100 000 opérations « dures » fin 2028 ; IBM a démontré 70 qubits logiques et 438 opérations — un facteur ~230 reste à combler sur les seules opérations.</p>
+<div class="imp"><strong>Implication :</strong> le coût réel d'une machine tolérante aux pannes inclura une masse de calcul classique dédiée au décodage — à intégrer dans toute projection TCO et choix d'hébergement.</div>
+<div class="src">Sources : <a href="https://newsroom.ibm.com/2026-11-05-oak-ridge-national-lab,-ibm,-and-amd-launch-new-co-design-platform-for-quantum-error-correction" target="_blank">newsroom.ibm.com</a> · <a href="https://quantumcomputingreport.com/ibm-ornl-and-amd-deploy-co-located-quantum-error-correction-platform-in-poughkeepsie/" target="_blank">quantumcomputingreport.com</a></div>
+</div>
+<div class="sig">
+<h3>Le post-quantum entre dans le silicium de production</h3>
+<p>STMicroelectronics lance le STM32G5 (03/11), premier MCU à cœur cryptographique matériel accélérant tous les algorithmes PQC NIST (ML-KEM, ML-DSA, SLH-DSA, LMS) ; côté logiciel, IBM lance une suite « Quantum Safe » automatisant inventaire cryptographique et migration (31/10). Le PQC n'est plus un chantier d'experts : il arrive dans les composants que vous achetez.</p>
+<div class="imp"><strong>Implication RSSI :</strong> lancer l'inventaire cryptographique (crypto-agilité) et exiger le support PQC matériel dans les cahiers des charges MCU/IoT — les échéances réglementaires devancent les ordinateurs quantiques.</div>
+<div class="src">Sources : <a href="https://blog.st.com/stm32g5-security/" target="_blank">blog.st.com</a> · <a href="https://quantumcomputingreport.com/ibm-launches-unified-quantum-safe-software-suite-to-automate-enterprise-pqc-migration/" target="_blank">quantumcomputingreport.com</a></div>
+</div>
+<div class="sig">
+<h3>Consolidation cyber-quantique : Zero Trust + PQC + QKD dans une seule offre</h3>
+<p>IonQ a finalisé (04/11) l'acquisition d'Elisity pour 1,15 Md$ en actions, mariant micro-segmentation Zero Trust, PQC et QKD ; un fournisseur quantique entre ainsi dans les budgets cybersécurité IT. La frontière entre « cybersécurité » et « quantique » s'efface côté offre comme côté financement.</p>
+<div class="imp"><strong>Implication RSSI/DSI :</strong> surveiller la consolidation fournisseurs — vos contrats PQC/QKD dépendront demain d'acteurs issus du calcul quantique ; évaluer la portabilité avant de vous engager.</div>
+<div class="src">Sources : <a href="https://www.ionq.com/news/ionq-completes-acquisition-of-elisity-extending-quantum-security-for-enterprises-and-government" target="_blank">ionq.com</a> · <a href="https://quantumcomputingreport.com/ionq-completes-1-15b-acquisition-of-elisity-to-integrate-zero-trust-with-quantum-security/" target="_blank">quantumcomputingreport.com</a></div>
+</div>
+<div class="sig">
+<h3>Bilans financiers contrastés : demande institutionnelle réelle, revenus faibles</h3>
+<p>Semaine des résultats : IQM 8,86 M€ de revenus T3 (+51 %) mais 102,5 M€ de carnet ; IonQ un record avec guidance relevée et de lourdes pertes ; Pasqal 3,3 M€ (absence de ventes de QPU) mais 312,8 M€ de trésorerie et 69,8 M€ de commandes. Le secteur vend des infrastructures aux États et laboratoires, pas encore des applications rentables.</p>
+<div class="imp"><strong>Implication direction R&amp;D/investissement :</strong> distinguer carnets de commandes (argent public) et revenus effectifs ; la soutenabilité des acteurs européens repose encore sur EIC, PROQCIMA, DLR — critère de risque pour tout partenariat pluriannuel.</div>
+<div class="src">Sources : <a href="https://quantumcomputingreport.com/iqm-quantum-computers-reports-q3-2026-results-backlog-expands-to-e102-5m-q3-revenue-up-51-and-fy-2026-guidance-reaffirmed/" target="_blank">quantumcomputingreport.com</a> · <a href="https://www.nasdaq.com/press-release/pasqal-reports-third-quarter-business-update-2026-11-06" target="_blank">nasdaq.com</a> · <a href="https://www.ionq.com/news/ionq-announces-record-3q26-revenues-and-raises-fy2026-guidance-to-505---515-million-as-backlog-grows-to-1-2-billion" target="_blank">ionq.com</a></div>
+</div>
+  </div>
+
+  <h2 class="section">🇫🇷 France</h2>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">Pasqal &amp; industrie française</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.nasdaq.com/press-release/pasqal-reports-third-quarter-business-update-2026-11-06" target="_blank">Pasqal publie ses résultats T3 2026 : revenus en retrait, trésorerie solide, pivot vers les services</a></h3>
+<div class="meta">Nasdaq (GlobeNewswire) • <span class="tag">06/11/2026</span></div>
+<p>Le leader français des atomes neutres (Nasdaq : PSQL) rapporte 3,3 M€ de revenus au T3 contre 5,7 M€ un an plus tôt — l'écart s'explique par l'absence de vente de QPU cette année — tandis que les services liés aux QPU progressent de 53 % à 3,1 M€ (premières heures consommées chez Aramco). Trésorerie de 312,8 M€, carnet de 69,8 M€. Distinguer revenus de services (récurrents) et ventes de machines (ponctuelles) avant tout jugement de santé.</p>
+</div>
+<div class="item">
+<h3><a href="https://blog.st.com/stm32g5-security/" target="_blank">STMicroelectronics lance le STM32G5, premier MCU avec accélération matérielle de toute la PQC NIST</a></h3>
+<div class="meta">Blog ST • <span class="tag">03/11/2026</span></div>
+<p>Le MCU mixte Cortex-M33 intègre un cœur cryptographique matériel accélérant ML-KEM (FIPS 203), ML-DSA (FIPS 204), SLH-DSA (FIPS 205) et LMS, avec stockage de clés protégé et certifications visées SESIP/PSA niveau 3 ; versions bi-cœurs en 2027. Un jalon industriel concret (pas un prototype) : le PQC devient une fonction embarquée standard.</p>
+</div>
+<div class="item">
+<h3><a href="https://multiversecomputing.com/resources/multiverse-computing-and-capgemini-explore-ai-model-compression-for-drones-and-mission-critical" target="_blank">Multiverse Computing et Capgemini explorent la compression de modèles IA pour drones et systèmes embarqués critiques</a></h3>
+<div class="meta">Multiverse Computing • <span class="tag">04/11/2026</span></div>
+<p>Dans l'écosystème OMNISS, la société espagnole (technologie quantique-inspired) et le groupe français travaillent au déploiement d'IA avancée sur plateformes de défense autonomes à ressources limitées. Signal d'une convergence défense/edge où les techniques issues du quantique irriguent l'IA embarquée.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">🌍 Europe</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://quantumcomputingreport.com/iqm-quantum-computers-reports-q3-2026-results-backlog-expands-to-e102-5m-q3-revenue-up-51-and-fy-2026-guidance-reaffirmed/" target="_blank">IQM : T3 solide, carnet de commandes de 102,5 M€ porté par le contrat LUMI de 33 M€</a></h3>
+<div class="meta">Quantum Computing Report • <span class="tag">05/11/2026</span></div>
+<p>Le finlandais (coté Nasdaq) voit ses revenus progresser de 51 % à 8,86 M€ et enregistre 42,2 M€ de nouvelles commandes (LUMI AI Factory, Brésil, Japon) ; guidance annuelle réaffirmée à 42-47 M€, avec une perte trimestrielle de 152,6 M€ dont 127,1 M€ de frais d'introduction en bourse. Le marché est celui des infrastructures vendues aux institutions — 17 systèmes livrés sur 31 vendus.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.quixquantum.com/news/quix-quantum-advances-europes-industrial-quantum-computing-ambitions" target="_blank">QuiX Quantum avance l'initiative photonique P4Q de 50 M€ pour industrialiser la filière européenne</a></h3>
+<div class="meta">QuiX Quantum • <span class="tag">04/11/2026</span></div>
+<p>Co-financée par l'EU Chips Joint Undertaking, P4Q (29 partenaires, 12 pays, 2026-2029) vise une fabrication fiable de circuits photoniques quantiques. S'appuyant sur la livraison de CARINA au DLR, QuiX renforce la chaîne d'approvisionnement photonique au service de sa feuille de route Dedalo (qubits logiques tolérants aux pertes démontrés 2028-2030). Le sujet européen n'est plus la démo mais la fabrication.</p>
+</div>
+<div class="item">
+<h3><a href="https://multiversecomputing.com/resources/multiverse-computing-and-yellowdog-ai-partner-to-maximise-compute-efficiency-for-european" target="_blank">Multiverse Computing s'allie à YellowDog.ai pour l'efficacité de calcul de l'IA souveraine européenne</a></h3>
+<div class="meta">Multiverse Computing • <span class="tag">03/11/2026</span></div>
+<p>L'alliance combine compression de modèles (CompactifAI) et orchestration dynamique de calcul distribué pour les déploiements d'IA souverains et réglementés en Europe — faire tourner l'IA européenne sur les accélérateurs existants plutôt que d'en acheter davantage.</p>
+</div>
+<div class="item">
+<h3><a href="https://quantumcomputingreport.com/nqcc-signs-enterprise-agreement-with-phasecraft-to-provide-quantum-software-via-sparq-access/" target="_blank">Le NQCC britannique s'associe à Phasecraft pour l'accès aux logiciels quantiques via SparQ Access</a></h3>
+<div class="meta">Quantum Computing Report • <span class="tag">06/11/2026</span></div>
+<p>Le National Quantum Computing Centre offre aux organisations britanniques l'accès aux plateformes logicielles de Phasecraft (Magritte, Monet, Mondrian) pour évaluer l'avantage quantique à moindre barrière technique ; premier appel à projets fin novembre, première cohorte printemps 2027. Modèle à observer côté France/Europe : mutualiser le logiciel pour préparer la demande d'usage.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <h2 class="section">🌐 Monde</h2>
+  <div class="grid">
+<div class="card">
+<div class="card-head"><div class="card-title">IBM · Quantinuum · IonQ</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://newsroom.ibm.com/2026-11-05-oak-ridge-national-lab,-ibm,-and-amd-launch-new-co-design-platform-for-quantum-error-correction" target="_blank">IBM, Oak Ridge et AMD lancent une plateforme de co-conception pour la correction d'erreur quantique</a></h3>
+<div class="meta">IBM Newsroom • <span class="tag">05/11/2026</span></div>
+<p>Le processeur 120 qubits Nighthawk est co-localisé avec le HPC Umbra (GPU MI355X) pour un décodage QEC temps réel sans latence réseau, au service de la cible DOE : 100 qubits logiques exécutant 100 000 opérations « dures » d'ici fin 2028. IBM a démontré 70 qubits logiques et 438 opérations — un jalon vérifié, mais un écart de ~230× reste à combler sur les opérations.</p>
+</div>
+<div class="item">
+<h3><a href="https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future" target="_blank">IBM dévoile son Quantum System Two le plus avancé à Chicago, hébergé par l'Université de Chicago</a></h3>
+<div class="meta">IBM Newsroom • <span class="tag">06/11/2026</span></div>
+<p>Premier ordinateur quantique d'IBM dans l'Illinois, animé par Nighthawk r2 (120 qubits, 218 coupleurs), installé à Hyde Park Labs avant de rejoindre l'Illinois Quantum and Microelectronics Park ; machine vitrine du National Quantum Algorithm Center. Un déploiement opérationnel, à ne pas confondre avec un saut de performance.</p>
+</div>
+<div class="item">
+<h3><a href="https://quantumcomputingreport.com/quantinuum-unveils-nexus-roadmap-to-automate-fault-tolerant-application-deployment-through-2029/" target="_blank">Quantinuum dévoile la feuille de route Nexus pour automatiser les applications tolérantes aux pannes d'ici 2029</a></h3>
+<div class="meta">Quantum Computing Report • <span class="tag">05/11/2026</span></div>
+<p>La plateforme vise à faire passer les développeurs de l'expérimentation sur qubits physiques à l'exécution logique tolérante aux pannes, en automatisant progressivement QEC, télémétrie et orchestration hybride. Rappel : le record de fidélité logique 99,9995 % de Quantinuum (Helios, code couleur) date du 19/10 — il précède la fenêtre, mais contextualise cette annonce logicielle.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.ionq.com/news/ionq-announces-record-3q26-revenues-and-raises-fy2026-guidance-to-505---515-million-as-backlog-grows-to-1-2-billion" target="_blank">IonQ : revenus T3 record, guidance annuelle relevée à 505-515 M$, backlog de 1,2 Md$</a></h3>
+<div class="meta">IonQ • <span class="tag">05/11/2026</span></div>
+<p>La croissance d'IonQ repose largement sur acquisitions (SkyWater, Elisity…) et contrats publics ; la société combine calculateurs piégés, sécurité quantique (PQC/QKD) et fonderie. Attention : un chiffre d'affaires agrégé par rachat n'équivaut pas à une validation technique du calcul quantique.</p>
+</div>
+<div class="item">
+<h3><a href="https://quantumcomputingreport.com/ibm-launches-unified-quantum-safe-software-suite-to-automate-enterprise-pqc-migration/" target="_blank">IBM lance la suite unifiée Quantum Safe pour automatiser la migration PQC des entreprises</a></h3>
+<div class="meta">Quantum Computing Report • <span class="tag">31/10/2026</span></div>
+<p>La plateforme couvre évaluation stratégique, découverte automatisée de la crypto dans le code source et médiation dynamique réseau — l'outillage industriel de l'inventaire cryptographique qui deviendra la base de toute conformité post-quantique.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <h2 class="section">🔮 Prospective</h2>
+  <div class="prosp">
+<div class="horizon">
+<h3>Court terme — 2027</h3>
+<p>Les feuilles de route logiques prennent corps : Quantinuum (Sol, 2027), IBM (Kookaburra 2026 : mémoire quantique + unité logique ; Cockatoo 2027 : intrication inter-modules, non annoncée comme livrée), IonQ (mise en service de systèmes 256 qubits dès 2027), Microsoft/Atom Computing (Magne, ~50 qubits logiques visés ~2027). Côté PQC, les MCU bi-cœur STM32G5 (2027) généraliseront le PQC matériel embarqué. Les DSI pourront tester des charges sur des machines à qubits logiques, pas seulement bruitées.</p>
+</div>
+<div class="horizon">
+<h3>Moyen terme — 2028-2029</h3>
+<p>Échéances publiques datées : cible DOE « Quantum Genesis » (100 qubits logiques, 100 000 opérations dures fin 2028), IBM Quantum Starling (200 qubits logiques, 100 M de portes, 2029), Quantinuum Apollo (2029), objectif Pasqal &gt;10 000 qubits physiques / 200 logiques fin 2029. Les verdicts DARPA QBI stage C (Microsoft, PsiQuantum, puis Atom Computing, Diraq, IBM, IonQ) fixeront la crédibilité de chaque approche.</p>
+</div>
+<div class="horizon">
+<h3>Long terme — 2030+</h3>
+<p>Vers le tolérant aux pannes en Europe : Alice &amp; Bob et Quandela visent des machines FTQC vers 2030 ; PROQCIMA vise deux prototypes universels de 1 000 qubits logiques industrialisables d'ici 2032 ; Quobly vise 1 million de qubits en 2032 via la filière 300 mm de STMicroelectronics. En parallèle, la migration PQC réglementaire (NIST, Commission européenne) rendra l'inventaire cryptographique obligatoire bien avant ces machines : le seul horizon quantique à échéance déjà ferme pour une DSI.</p>
+</div>
+  </div>
+
+  <footer>
+    <p class="mono">Généré par ORAC — Hermes Agent (profil demo) · 12 articles, dates de publication vérifiées sur chaque page source.</p>
+    <p class="mono">Fichiers : veille-QUANTIQUE-2026-11-06-glm-ct2-r3.md / .html — bac à sable, aucun index modifié, aucun envoi.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">☀️</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'🌙'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>
