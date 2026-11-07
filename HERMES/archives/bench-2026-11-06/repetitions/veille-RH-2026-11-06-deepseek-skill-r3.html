@@ -1,0 +1,275 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 6 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --teal:#14b8a6;
+    --danger:#ef4444;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --teal:#0d9488;
+    --danger:#dc2626;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius:18px; color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-family:'Rajdhani','Segoe UI',sans-serif;font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-family:'Share Tech Mono',monospace;font-variant-numeric: tabular-nums;color:#7fe3ff}
+    .model-badge{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.skills{border-top:4px solid var(--accent-2)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-family:'Rajdhani','Segoe UI',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.02em}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted);word-break:break-all}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+    }
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>Métiers RH, compétences, risques, dispositifs d'accompagnement — généré par ORAC / Hermes (skill veille-rh-ia)</p>
+      <p class="model-badge">⚙ ORAC · deepseek/deepseek-v4.1-flash · Nous</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Actualités vérifiées</div><div class="value">12</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">31 oct. – 6 nov. 2026</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill teal">🛠️ 3 IA &amp; métiers RH</span>
+    <span class="pill yellow">🎓 3 compétences</span>
+    <span class="pill red">⚠️ 3 risques</span>
+    <span class="pill green">🔄 3 dispositifs</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card apports">
+      <div class="card-head"><div class="card-title">🛠️ 1. IA dans les métiers RH</div><span class="pill teal">3</span></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://itbrief.asia/story/dayforce-launches-agentic-hcm-platform-with-native-ai" target="_blank" rel="noopener">Dayforce lance une plateforme HCM « agentique » : recrutement, paie, onboarding et administration RH portés par l'IA</a></h3>
+          <div class="meta">IT Brief Asia • 02/11/2026</div>
+          <p>Dayforce dévoile sa plateforme HCM « agentique » — Ask Dayforce (interface conversationnelle), agents IA multi-étapes, bots créés par les clients et Dayforce Build (apps et bots en langage naturel) — couvrant recrutement, gestion des effectifs, paie, planification et administration RH. Un Forms Agent oriente le salarié vers le bon formulaire et le recrutement intègre la technologie Ribbon AI. Signal : la promesse RH passe de « répondre » à « exécuter », la gouvernance (identité, permissions, auditabilité) devenant le prérequis.</p>
+          <div class="tags"><span class="tag">SIRH augmenté</span><span class="tag">agents IA</span><span class="tag">paie · onboarding</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.hr-brew.com/stories/dayforce-closes-deal-to-acquire-ai-interviewing-platform-ribbon" target="_blank" rel="noopener">Dayforce finalise le rachat de Ribbon AI : des entretiens de recrutement conduits par IA</a></h3>
+          <div class="meta">HR Brew • 05/11/2026</div>
+          <p>Dayforce a closé ce mois-ci l'acquisition de Ribbon AI, spécialiste du recrutement par agents d'IA. Ses entretiens vocaux et vidéo sont bidirectionnels (le candidat passe l'entretien à toute heure) ; le système note et résume les entretiens et les évalue selon une grille. La technologie (plus d'un million d'entretiens revendiqués) sera intégrée à l'expérience « Agentic Recruiting », sur les métiers à fort volume (frontline, horaire).</p>
+          <div class="tags"><span class="tag">recrutement</span><span class="tag">matching &amp; entretien IA</span><span class="tag">frontline</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable" target="_blank" rel="noopener">Assurance : AXA place la supervision humaine au cœur de son IA « augmentée »</a></h3>
+          <div class="meta">AXA • 06/11/2026 • Assurance</div>
+          <p>Matthieu Caillat (Group CTO &amp; AI Officer) décrit une IA qui « ne remplace pas le jugement humain, elle l'augmente ». L'assistant SmartInAXA est utilisé par plus de 19 000 collaborateurs (assurance dommages) et traite ~1 500 requêtes/jour ; AXA estime pouvoir mieux exploiter 3,5 milliards de documents non structurés. Gouvernance : validation des cas d'usage, qualité et sécurité des données, choix des modèles, supervision humaine des décisions sensibles.</p>
+          <div class="tags"><span class="tag">chatbot RH</span><span class="tag">supervision humaine</span><span class="tag">assurance</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card skills">
+      <div class="card-head"><div class="card-title">🎓 2. Évolutions des compétences</div><span class="pill yellow">3</span></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://pollen.fr/blog/societe-generale-ia-generative-art-du-prompt" target="_blank" rel="noopener">Société Générale forme 60 000 collaborateurs à l'IA générative, métier par métier</a></h3>
+          <div class="meta">Pollen • 05/11/2026 • Banque</div>
+          <p>Société Générale University (plus de 100 000 collaborateurs) a formé 60 000 personnes (objectif initial 50 000) via le programme « L'Art du Prompt ». Méthode : cartographier les métiers en 10 familles, définir les cas d'usage et prompts centraux, puis faire monter ~100 webinaires à 500 sessions animées par des « AI ambassadors » internes. Aucune cohorte sous 4,5/5. Former massivement, mais par métier et dans un cadre responsable.</p>
+          <div class="tags"><span class="tag">formation IA</span><span class="tag">montée en compétences</span><span class="tag">banque</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.oecd.org/fr/about/news/press-releases/2026/11/oecd-digital-economy-and-society-outlook-2026.html" target="_blank" rel="noopener">OCDE : l'adoption de l'IA s'accélère, mais un double fossé (entreprises, générations) persiste</a></h3>
+          <div class="meta">OCDE (communiqué) • 05/11/2026</div>
+          <p>Dans ses Perspectives 2026, l'OCDE estime qu'en 2025 20 % des entreprises (10 salariés et +) utilisent l'IA, contre 52 % des grandes entreprises (250+). L'écart générationnel se creuse aussi : parmi les seniors, 43 % « n'en ont pas besoin », 12 % invoquent un manque de compétences et 9 % une méconnaissance. L'adoption appelle une formation différenciée (PME, seniors).</p>
+          <div class="tags"><span class="tag">compétences</span><span class="tag">fossé générationnel</span><span class="tag">PME</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.leparisien.fr/economie/entreprise/comment-lia-impacte-le-parcours-des-jeunes-diplomes-03-11-2026-POVUZ5XYSZFELPSBOMOHCESEHQ.php" target="_blank" rel="noopener">Le Parisien : l'IA bouscule l'entrée des jeunes diplômés sur le marché du travail</a></h3>
+          <div class="meta">Le Parisien • 03/11/2026 • Banque · Informatique (juniors)</div>
+          <p>Relais de l'étude HEC Paris – Banque de France (octobre 2026) : entre novembre 2022 et mars 2026, les embauches CDI des 21-29 ans ont reculé de 28,3 % dans les métiers les plus exposés à l'IA générative (traducteurs, chargés d'études, techniciens bancaires), contre 7,5 % dans les moins exposés. Les chercheurs nuancent : l'effet tient aussi à la conjoncture et au télétravail, « la réorganisation du travail pèse plus que l'automatisation ».</p>
+          <div class="tags"><span class="tag">juniors</span><span class="tag">embauches</span><span class="tag">HEC / BdF</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card risques">
+      <div class="card-head"><div class="card-title">⚠️ 3. Risques &amp; défis</div><span class="pill red">3</span></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.lesechos.fr/travailler-mieux/travailler-avec-lia/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank" rel="noopener">« Management algorithmique » : l'IA renforce la surveillance des salariés</a></h3>
+          <div class="meta">Les Echos • 05/11/2026 • Transversal</div>
+          <p>Le déploiement « parfois débridé » de l'IA et la recherche de gains de productivité accroissent la surveillance des employés, parfois de manière opaque et disproportionnée. L'annexe III de l'AI Act classe « à haut risque » les IA qui attribuent des tâches selon le comportement ou surveillent/évaluent la performance, et l'article 22 du RGPD interdit une décision à effet significatif fondée exclusivement sur un algorithme. Proportionnalité, information, consultation du CSE, AIPD.</p>
+          <div class="tags"><span class="tag">surveillance</span><span class="tag">AI Act</span><span class="tag">RGPD art. 22</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank" rel="noopener">Capgemini : les institutions financières déploient l'IA multi-agents plus vite qu'elles ne peuvent l'orchestrer</a></h3>
+          <div class="meta">Capgemini (via GlobeNewswire) • 05/11/2026 • Banque · Assurance</div>
+          <p>World Cloud Report for Financial Services 2027 (Capgemini Research Institute) : 59 % des institutions financières expérimentent ou déploient des systèmes d'IA multi-agents, mais seulement ~10 % ont l'orchestration d'entreprise nécessaire ; 52 % s'appuient sur les hyperscalers pour la gouvernance. Sondage de 1 100 dirigeants (14 marchés). Le déficit de gouvernance et de supervision devient le principal frein du passage à l'échelle.</p>
+          <div class="tags"><span class="tag">IA multi-agents</span><span class="tag">gouvernance</span><span class="tag">services financiers</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank" rel="noopener">Assurance : quatre syndicats appellent à la mobilisation du 5 novembre et exigent une consultation avant tout déploiement de l'IA</a></h3>
+          <div class="meta">L'Argus de l'assurance • 04/11/2026 • Assurance</div>
+          <p>CFDT, CGT, CFTC et FO appellent les salariés de l'assurance à rejoindre la mobilisation du 5 novembre. Elles dénoncent la hausse des charges et les « réorganisations permanentes » et estiment que le numérique et l'IA ne doivent pas se faire « au détriment de l'emploi et des conditions de travail ». Revendications : consultation des représentants du personnel en amont de tout test/déploiement de l'IA, garanties collectives, reconnaissance des qualifications.</p>
+          <div class="tags"><span class="tag">résistances sociales</span><span class="tag">dialogue social</span><span class="tag">assurance</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card accomp">
+      <div class="card-head"><div class="card-title">🔄 4. Dispositifs d'accompagnement</div><span class="pill green">3</span></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.aefinfo.fr/depeche/759657-plusieurs-experts-des-rh-sinterrogent-sur-lavenir-du-travail-reel-face-a-la-transformation-du-management-et-lia" target="_blank" rel="noopener">DRH et experts débattent du « travail réel » face à la transformation par l'IA</a></h3>
+          <div class="meta">AEF info (Ressources humaines) • 04/11/2026 • Transversal</div>
+          <p>À l'invitation d'un institut, plusieurs DRH et experts des relations de travail ont débattu le 4 novembre 2026 de « crise du management — que révèle le travail réel des managers ? » et « transformations par l'IA — le diable serait-il dans le travail réel ? ». Fil rouge : faire porter le dialogue social sur le travail concret (charge, autonomie, collectifs), pas seulement sur les outils.</p>
+          <div class="tags"><span class="tag">dialogue social</span><span class="tag">travail réel</span><span class="tag">management</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.aefinfo.fr/depeche/759580-orange-les-syndicats-demandent-a-la-direction-louverture-dune-negociation-sur-le-deploiement-de-lia" target="_blank" rel="noopener">Informatique/télécoms : à Orange, les syndicats réclament une négociation nationale sur le déploiement de l'IA</a></h3>
+          <div class="meta">AEF info (dépêche n°759580) • 03/11/2026 (repris par la CFE-CGC Orange le 04/11/2026) • Informatique</div>
+          <p>« Faisant le constat d'un retard peu compréhensible pour une entreprise qui se prétend à l'avant-garde du numérique, la CFE-CGC Orange considère qu'une négociation s'avère indispensable pour organiser, encadrer et déployer l'IA au sein du groupe », indique le syndicat, qui demande une première réunion rapide « compte tenu de la vitesse des transformations ». La négociation collective s'impose comme voie d'encadrement (usages internes, compétences).</p>
+          <div class="tags"><span class="tag">négociation IA</span><span class="tag">télécoms</span><span class="tag">informatique</span></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.aefinfo.fr/depeche/759770-il-est-important-que-lia-reste-au-service-de-lhumain-et-des-collectifs-de-travail-colloque-de-la-cour-de-cassation" target="_blank" rel="noopener">« L'IA au service de l'humain et des collectifs de travail » : colloque de la Cour de cassation</a></h3>
+          <div class="meta">AEF info • 06/11/2026 • Transversal (droit du travail)</div>
+          <p>Lors d'un colloque sur « l'intelligence artificielle en droit du travail » organisé par la Cour de cassation, avocats, DRH, médecins du travail et universitaires partagent un constat : « L'IA générative a tout bousculé dans les entreprises », l'enjeu étant que l'IA reste « au service de l'humain et des collectifs de travail ». La jurisprudence et le droit du travail s'installent comme cadres de référence du déploiement.</p>
+          <div class="tags"><span class="tag">jurisprudence</span><span class="tag">droit du travail</span><span class="tag">IRP</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+      <div class="card-body signals">
+        <ol>
+          <li><strong>L'IA « agentique » entre dans le back-office RH et déplace le sujet vers la gouvernance.</strong> Dayforce industrialise une plateforme HCM agentique (recrutement, paie, onboarding, administration) et rachète Ribbon AI pour les entretiens IA ; mais seules ~10 % des institutions financières ont l'orchestration d'entreprise de leurs agents. <div class="signal-src">Sources : <a href="https://itbrief.asia/story/dayforce-launches-agentic-hcm-platform-with-native-ai" target="_blank" rel="noopener">itbrief.asia</a> · <a href="https://www.hr-brew.com/stories/dayforce-closes-deal-to-acquire-ai-interviewing-platform-ribbon" target="_blank" rel="noopener">hr-brew.com</a> · <a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank" rel="noopener">globenewswire.com</a></div></li>
+          <li><strong>La formation devient un livrable RH critique, et elle se fait métier par métier.</strong> Société Générale a formé 60 000 collaborateurs à l'IA générative via des parcours par famille de métiers ; l'OCDE documente un double fossé (entreprises : 20 % vs 52 % ; seniors : 12 % en manque de compétences) ; l'étude HEC/Banque de France montre que les juniors des métiers exposés sont les premiers touchés. <div class="signal-src">Sources : <a href="https://pollen.fr/blog/societe-generale-ia-generative-art-du-prompt" target="_blank" rel="noopener">pollen.fr</a> · <a href="https://www.oecd.org/fr/about/news/press-releases/2026/11/oecd-digital-economy-and-society-outlook-2026.html" target="_blank" rel="noopener">oecd.org</a> · <a href="https://www.leparisien.fr/economie/entreprise/comment-lia-impacte-le-parcours-des-jeunes-diplomes-03-11-2026-POVUZ5XYSZFELPSBOMOHCESEHQ.php" target="_blank" rel="noopener">leparisien.fr</a></div></li>
+          <li><strong>La surveillance algorithmique s'installe et vire au risque juridique et social.</strong> Les Echos documentent un « management algorithmique » qui accroît la surveillance des salariés ; l'annexe III de l'AI Act et l'article 22 du RGPD encadrent déjà ces usages ; en assurance, quatre syndicats exigent une consultation avant tout déploiement. <div class="signal-src">Sources : <a href="https://www.lesechos.fr/travailler-mieux/travailler-avec-lia/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank" rel="noopener">lesechos.fr</a> · <a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank" rel="noopener">argusdelassurance.com</a></div></li>
+          <li><strong>Le dialogue social et la négociation s'imposent comme passage obligé du déploiement.</strong> La CFE-CGC Orange réclame une négociation nationale sur l'IA ; DRH et experts recentrent le débat sur le « travail réel » ; la Cour de cassation fait de l'IA en droit du travail un sujet de colloque. <div class="signal-src">Sources : <a href="https://www.aefinfo.fr/depeche/759580-orange-les-syndicats-demandent-a-la-direction-louverture-dune-negociation-sur-le-deploiement-de-lia" target="_blank" rel="noopener">aefinfo.fr (Orange)</a> · <a href="https://www.aefinfo.fr/depeche/759657-plusieurs-experts-des-rh-sinterrogent-sur-lavenir-du-travail-reel-face-a-la-transformation-du-management-et-lia" target="_blank" rel="noopener">aefinfo.fr (travail réel)</a> · <a href="https://www.aefinfo.fr/depeche/759770-il-est-important-que-lia-reste-au-service-de-lhumain-et-des-collectifs-de-travail-colloque-de-la-cour-de-cassation" target="_blank" rel="noopener">aefinfo.fr (Cour de cassation)</a></div></li>
+          <li><strong>L'assurance et la banque outillent l'« IA augmentée » avec la supervision humaine comme argument social.</strong> AXA met en avant SmartInAXA (19 000 utilisateurs) et une supervision humaine des décisions sensibles ; Capgemini relève que la gouvernance multi-agents reste le maillon faible ; en assurance, les syndicats réclament des garanties avant tout déploiement. <div class="signal-src">Sources : <a href="https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable" target="_blank" rel="noopener">axa.com</a> · <a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank" rel="noopener">globenewswire.com</a> · <a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank" rel="noopener">argusdelassurance.com</a></div></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <p>Généré le 6 novembre 2026 par ORAC / Hermes (skill veille-rh-ia) — 12 actualités, 4 axes, dates de publication vérifiées page par page (fenêtre 31/10 → 06/11/2026). Fichiers : veille-RH-2026-11-06-deepseek-skill-r3.md + .html</p>
+    <p>Focus secteurs : banque, assurance, informatique. Sources blacklistées exclues (lesnumeriques.com, degrouptest.com). Anti-doublons appliqué.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

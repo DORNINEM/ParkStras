@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille IA global — 6 novembre 2026</title>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#161b22; --panel2:#1c2230; --ink:#e6edf3; --muted:#9aa4b2;
+    --line:#2a3240; --fr:#3b82f6; --eu:#8b5cf6; --world:#10b981; --mistral:#f59e0b;
+    --pro:#06b6d4; --sig:#ec4899; --accent:#7c9cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+  header{background:linear-gradient(135deg,#1b2b5a 0%,#0e1117 60%);border-bottom:1px solid var(--line);
+    padding:48px 20px 36px;margin-bottom:36px}
+  header .wrap{padding-bottom:0}
+  h1{font-size:2.1rem;margin:0 0 8px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:.95rem}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .badge{font-size:.78rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);
+    background:var(--panel);color:var(--muted)}
+  .badge b{color:var(--ink);font-weight:600}
+  h2{font-size:1.4rem;margin:44px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:10px}
+  h3{font-size:1.08rem;margin:30px 0 14px;color:var(--accent);letter-spacing:.01em}
+  .summary{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:12px;padding:20px 22px;color:#dbe3ee}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+    margin:14px 0;border-left:4px solid var(--fr);transition:transform .12s ease,border-color .12s ease}
+  .card:hover{transform:translateY(-2px)}
+  .card.eu{border-left-color:var(--eu)}
+  .card.world{border-left-color:var(--world)}
+  .card.mistral{border-left-color:var(--mistral)}
+  .card h4{margin:0 0 8px;font-size:1.02rem;line-height:1.4}
+  .card p{margin:0 0 12px;color:#c9d3e0;font-size:.93rem}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.8rem}
+  .src{color:var(--muted)}
+  .date{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:#cdd6e2}
+  a.link{color:var(--accent);text-decoration:none;word-break:break-all;font-size:.8rem}
+  a.link:hover{text-decoration:underline}
+  .pro{background:linear-gradient(180deg,var(--panel),#0d1b22);border:1px solid var(--line);
+    border-left:4px solid var(--pro);border-radius:12px;padding:8px 22px 18px}
+  .pro p{margin:14px 0;color:#cfd9e6;font-size:.94rem}
+  .pro b{color:#fff}
+  .signals{display:grid;grid-template-columns:1fr;gap:14px}
+  .signal{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--sig);
+    border-radius:12px;padding:16px 18px}
+  .signal b{display:block;margin-bottom:8px;color:#fff;font-size:.97rem}
+  .signal p{margin:0 0 10px;color:#c9d3e0;font-size:.92rem}
+  .signal a{display:block;color:var(--accent);text-decoration:none;word-break:break-all;font-size:.79rem;margin:3px 0}
+  .signal a:hover{text-decoration:underline}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:10px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Veille IA global — 6 novembre 2026</h1>
+    <div class="sub">Intelligence artificielle : France · Europe · Monde · Focus Mistral</div>
+    <div class="badges">
+      <span class="badge">Fenêtre : <b>31/10 → 07/11/2026 (7 j)</b></span>
+      <span class="badge">Sites blacklistés exclus : <b>lesnumeriques.com, degrouptest.com</b></span>
+      <span class="badge"><b>12</b> articles (max. 12)</span>
+      <span class="badge">Anti-doublons : <b>oui</b></span>
+      <span class="badge">Dates de publication : <b>vérifiées une à une</b></span>
+      <span class="badge">Tirage : <b>deepseek-sans-r3</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>Synthèse</h2>
+  <div class="summary">
+    La semaine se lit en trois mouvements. <b>Énergie et territoires</b> d'abord : la fronde anti-data centers passe un seuil politique — plus de trente projets français contestés, une mobilisation européenne des 6 et 7 novembre portée par plus de cent organisations réclamant un « moratoire », et, en miroir, OpenAI qui lance un programme de flexibilité électrique pour désamorcer le sujet. <b>Gouvernance</b> ensuite : la Commission européenne met l'IA au service de sa propre fabrique législative, tandis que Washington bloque la tentative française de coordonner la sûreté de l'IA au G7 — la divergence transatlantique devient structurelle. <b>Modèles et capital</b> enfin : l'agentique chinoise s'installe (Meituan LongCat-2.5 entraîné sur puces domestiques, Tencent Hy4) et un modèle Anthropic non publié démontre en trois jours une conjecture de calcul quantique ouverte depuis 2008, pendant que Thinking Machines Lab lève 5 Md$ à 40 Md$ — la frontière se finance encore cher, mais se disperse. En France, Mistral AI consolide sa position d'opérateur de l'État (fisc après cyberattaque) et signe avec Stellantis son passage des pilotes à l'alliance industrielle.
+  </div>
+
+  <h2>Actualités</h2>
+
+  <h3>🇫🇷 France</h3>
+
+  <div class="card">
+    <h4>1. La fronde anti-data centers s'organise : plus de trente projets attaqués en justice ou bloqués localement</h4>
+    <p>La Tribune ouvre une série (« Data centers, la fronde qui vient, 1/5 ») : face à la multiplication des projets d'implantation liés à l'IA, plus de trente dossiers font l'objet de recours contentieux ou de mobilisations locales. Le sujet quitte le registre technique pour devenir conflit d'aménagement et d'énergie.</p>
+    <div class="meta"><span class="src">La Tribune — Margot Ruault</span><span class="date">02/11/2026 · 08h00</span>
+      <a class="link" href="https://www.latribune.fr/article/tech/59597158650558/pourquoi-l-explosion-de-l-ia-declenche-une-vague-de-rejet-des-data-centers">latribune.fr</a></div>
+  </div>
+
+  <div class="card">
+    <h4>2. Des ONG réclament un « moratoire » sur l'expansion des data centers en France et en Europe</h4>
+    <p>Des organisations environnementales se mobilisent vendredi 6 et samedi 7 novembre sous le slogan « Stop aux centres de données polluants », et demandent l'arrêt des grands projets. Le mouvement est pan-européen : plus de cent organisations signataires, journées d'action coordonnées dans plusieurs pays.</p>
+    <div class="meta"><span class="src">franceinfo · Euronews FR</span><span class="date">06/11/2026 · 05/11/2026</span>
+      <a class="link" href="https://www.franceinfo.fr/internet/intelligence-artificielle/des-ong-de-protection-de-l-environnement-demandent-un-moratoire-sur-l-expansion-des-data-centers-en-france-et-en-europe_8270879.html">franceinfo.fr</a>
+      <a class="link" href="https://fr.euronews.com/2026/11/05/en-europe-plus-de-100-organisations-reclament-un-moratoire-sur-les-grands-centres-de-donne">fr.euronews.com</a></div>
+  </div>
+
+  <div class="card">
+    <h4>3. Levées : 22,1 M€ sur 8 opérations, la deeptech capte plus de la moitié des montants</h4>
+    <p>Semaine modeste en valeur mais révélatrice du mix : sept des huit tours sont en amorçage, ticket moyen 2,8 M€, et la deeptech concentre plus de la moitié des sommes. Gallium Defense signe la plus grosse opération (7 M€) pour industrialiser un radar de détection.</p>
+    <div class="meta"><span class="src">Maddyness — Pierre Berthoux</span><span class="date">06/11/2026</span>
+      <a class="link" href="https://www.maddyness.com/2026/11/06/les-startups-francaises-ont-leve-22-millions-deuros-cette-semaine/">maddyness.com</a></div>
+  </div>
+
+  <h3>🌍 Europe hors France</h3>
+
+  <div class="card eu">
+    <h4>4. La Commission européenne déploie l'IA dans sa propre fabrique de la loi</h4>
+    <p>Dans son rapport annuel de simplification, l'exécutif bruxellois indique utiliser des outils d'IA pour repérer chevauchements, incohérences et redondances entre textes, et « moderniser » l'élaboration normative. Le geste est symbolique autant qu'opérationnel : la Commission applique à ses propres textes ce qu'elle régule.</p>
+    <div class="meta"><span class="src">POLITICO Europe</span><span class="date">04/11/2026 · 13h04 CET</span>
+      <a class="link" href="https://www.politico.eu/article/commission-turns-to-artificial-intelligence-to-write-better-laws/">politico.eu</a></div>
+  </div>
+
+  <div class="card eu">
+    <h4>5. Berlin et Nvidia signent une déclaration conjointe sur l'« IA physique »</h4>
+    <p>Le chancelier Friedrich Merz et deux ministères fédéraux ont paraphé au sommet <em>Invest in Germany</em> une déclaration d'intention avec Nvidia pour relier l'industrie manufacturière allemande à la recherche en IA et bâtir un écosystème d'IA industrielle à l'échelle européenne. Jensen Huang a annoncé des investissements dans quatre startups allemandes (Agile Robots, Avelios Medical, Mirelo, Reflex Aerospace), dans le cadre d'un engagement européen proche de 10 Md$. Siemens a de son côté étendu son partenariat Nvidia sur les usines autonomes.</p>
+    <div class="meta"><span class="src">Silicon Report (communiqué Nvidia)</span><span class="date">05/11/2026</span>
+      <a class="link" href="https://www.siliconreport.com/germany-signs-joint-declaration-with-nvidia-to-advance-physical-ai">siliconreport.com</a></div>
+  </div>
+
+  <div class="card eu">
+    <h4>6. L'UE accuse TikTok de violer le DSA par un algorithme créant des « rabbit holes »</h4>
+    <p>Premières conclusions préliminaires de la Commission : le flux « Pour toi » enchaînerait des contenus personnalisés susceptibles de nuire au bien-être des utilisateurs, sans évaluation adéquate des risques systémiques. C'est la première fois que Bruxelles cible le mécanisme de recommandation lui-même — un signal direct pour tout système de classement automatisé.</p>
+    <div class="meta"><span class="src">Euronews — Greta Ruffino</span><span class="date">06/11/2026 · 14h48 CET</span>
+      <a class="link" href="https://www.euronews.com/2026/11/06/eu-tells-tiktok-to-change-harmful-for-you-feed-over-rabbit-hole-effect">euronews.com</a></div>
+  </div>
+
+  <h3>🌐 Monde</h3>
+
+  <div class="card world">
+    <h4>7. Un modèle Anthropic non publié démontre une conjecture de calcul quantique ouverte depuis 2008</h4>
+    <p>Le laboratoire Physical Superintelligence Inc. (PSI) affirme avoir construit un dispositif de recherche autour d'un modèle Anthropic non encore publié pour démontrer la conjecture Aaronson-Ambainis — question de 2008 sur les conditions d'un avantage exponentiel du calcul quantique — en trois jours. Dernier épisode en date de l'irruption de l'IA en mathématiques, après Navier-Stokes (OpenAI, septembre). Effet de bord documenté : 76 % des doctorants et post-doctorants en mathématiques interrogés par des chercheurs du MIT se disent peu enclins à rester dans la recherche académique.</p>
+    <div class="meta"><span class="src">Business Insider (via Yahoo Tech)</span><span class="date">annonce 06/11 · publié 07/11/2026</span>
+      <a class="link" href="https://tech.yahoo.com/ai/claude/articles/unreleased-anthropic-model-just-helped-004910788.html">tech.yahoo.com</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>8. Tencent revendique l'entrée de Hy4 dans le premier rang des modèles open-weight chinois</h4>
+    <p>Tencent a présenté Hy4, modèle de fondation à poids ouverts qu'il place pour la première fois au niveau des meilleurs systèmes chinois. La bascule est notable : l'acteur historique de la messagerie et du jeu entre dans la course ouverte, où Qwen, DeepSeek et Kimi occupent déjà le terrain.</p>
+    <div class="meta"><span class="src">Bloomberg (via Yahoo Finance)</span><span class="date">04/11/2026 · 01h19 EST</span>
+      <a class="link" href="https://finance.yahoo.com/technology/ai/articles/tencent-declares-latest-ai-model-061905500.html">finance.yahoo.com</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>9. Meituan sort LongCat-2.5, multimodal de 1 600 milliards de paramètres entraîné sur puces chinoises</h4>
+    <p>Dévoilé le 2 novembre, LongCat-2.5 est un modèle nativement multimodal de 1,6 T paramètres visant les tâches d'agents longues (codage autonome, raisonnement étendu), entraîné entièrement sur des puces domestiques. La stratégie revendiquée n'est pas la vente de calcul mais la monétisation de l'IA dans les activités existantes du groupe.</p>
+    <div class="meta"><span class="src">Caixin Global — Yang Zirui</span><span class="date">03/11/2026 (modèle 02/11)</span>
+      <a class="link" href="https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html">caixinglobal.com</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>10. Thinking Machines Lab boucle 5 Md$ à 40 Md$ de valorisation pré-money</h4>
+    <p>Le laboratoire de Mira Murati (ex-CTO d'OpenAI) s'apprête à clôturer un tour de 5 Md$ mené par Accel, sur une valorisation pré-money de 40 Md$ — plus de trois fois sa valorisation publique précédente (plus de 10 Md$, après un seed de 2 Md$ l'an dernier), et à comparer au tour à 50 Md$ envisagé puis abandonné en 2025. Signal inverse de celui d'Anthropic : le capital reste très disponible pour les labos de frontière, mais se concentre sur un nombre réduit de noms.</p>
+    <div class="meta"><span class="src">Business Insider — Katie Roof &amp; al.</span><span class="date">05/11/2026 · 19h40 ET</span>
+      <a class="link" href="https://www.businessinsider.com/thinking-machines-lab-is-closing-5-billion-new-round-2026-11">businessinsider.com</a></div>
+  </div>
+
+  <h2>Focus Mistral</h2>
+
+  <div class="card mistral">
+    <h4>11. Stellantis et Mistral AI passent des pilotes à l'alliance stratégique</h4>
+    <p>Après dix-huit mois de travaux communs (assistants embarqués, processus métiers, ingénierie), Stellantis et Mistral AI annoncent le deuxième étage de leur coopération : faire de l'IA le socle opérationnel du constructeur, via deux plateformes — un <em>Innovation Lab</em> (co-développement, données intégrées aux processus de vente et après-vente) et une <em>Transformation Academy</em> (passage à l'échelle industrielle, nouveaux cas d'usage). C'est la signature industrielle la plus tangible de la semaine pour Mistral côté clients non-État.</p>
+    <div class="meta"><span class="src">Stellantis / investisseurs · Automotive World · AK&amp;M</span><span class="date">06/11/2026 · 16h30</span>
+      <a class="link" href="https://www.ideal-investisseur.fr/actions-b/stellantis-et-mistral-ai-renforcent-leur-partenariat-pour-lintgration-de-lia/6749.html">ideal-investisseur.fr</a>
+      <a class="link" href="https://www.automotiveworld.com/news/stellantis-mistral-ai-deepen-tie-up-to-scale-ai-adoption/">automotiveworld.com</a></div>
+  </div>
+
+  <div class="card mistral">
+    <h4>12. Après le piratage massif du fisc, la DGFiP s'appuie sur Mistral AI</h4>
+    <p>La Direction générale des finances publiques confie à Mistral AI le renforcement de ses protections après la cyberattaque de grande ampleur subie par l'administration fiscale. L'épisode confirme le rôle de Mistral comme fournisseur de référence de l'État pour l'IA souveraine — et installe la sécurité des systèmes publics comme premier cas d'usage « critique » du champion français.</p>
+    <div class="meta"><span class="src">The Connexion (France) — Brian McCulloch</span><span class="date">02/11/2026 · 06h00</span>
+      <a class="link" href="https://www.connexionfrance.com/news/frances-tax-office-turns-to-ai-after-major-hack/822053">connexionfrance.com</a></div>
+  </div>
+
+  <h2>🔮 Prospective</h2>
+  <div class="pro">
+    <p>Trois lignes se dessinent pour les semaines à venir. <b>(1) L'énergie devient le principal goulot d'étranglement politique de l'IA en Europe</b> : la mobilisation des 6-7 novembre, la série de recours français et l'annonce par OpenAI de son programme <em>Grid Protectors</em> (flexibilité de la demande, 02/11) indiquent que l'acceptabilité locale et le raccordement électrique — pas les puces — conditionneront les calendriers de déploiement.</p>
+    <p><b>(2) La gouvernance de la sûreté de l'IA se fragmente sur l'axe transatlantique</b> : Washington a bloqué la tentative française, en présidence du G7, de créer un groupe de test des modèles de frontière ; les acteurs avanceront donc par cadres volontaires, tandis que Bruxelles poursuit sa voie réglementaire (AI Act appliqué depuis le 2 août 2026, DSA appliqué aux algorithmes de recommandation, comme le montre le cas TikTok).</p>
+    <p><b>(3) La preuve devient un terrain de compétition</b> : démonstration assistée par IA d'une conjecture de 2008, interprétabilité appliquée à l'entraînement, garde-fous en poids ouverts — la « vérifiabilité » des systèmes remplace progressivement la conformité déclarative comme argument de confiance. À surveiller aussi : le paquet quantique européen en préparation, qui cherche à transformer l'échec relatif de l'Europe sur l'IA en position de force sur la décennie suivante.</p>
+  </div>
+
+  <h2>🧭 Synthèse — 5 signaux faibles sourcés</h2>
+  <div class="signals">
+
+    <div class="signal">
+      <b>1. Le désaccord transatlantique sur la sûreté de l'IA se durcit (France vs États-Unis au G7).</b>
+      <p>Washington a bloqué la proposition française, en présidence du G7, d'un groupe de haut niveau pour tester les modèles de frontière et partager les informations de risque ; la Maison-Blanche parle de « bureaucratie inutile ». La coordination internationale se fera par blocs, pas par consensus.</p>
+      <a href="https://www.politico.eu/article/france-us-clash-ai-safety-talks-a-g7/">https://www.politico.eu/article/france-us-clash-ai-safety-talks-a-g7/</a>
+      <a href="https://www.cyberverso.net/brief/cyber-brief-5-nov-2026/">https://www.cyberverso.net/brief/cyber-brief-5-nov-2026/</a>
+    </div>
+
+    <div class="signal">
+      <b>2. Les opérateurs anticipent la contrainte électrique avant qu'elle ne devienne un blocage juridique.</b>
+      <p>Programme <em>Grid Protectors</em> d'OpenAI (réduction de la demande, accord géorgien jusqu'à 1 000 MW), pendant que la contestation européenne monte (plus de 100 organisations, journées d'action des 6-7 novembre). Le raccordement électrique devient un actif politique.</p>
+      <a href="https://openai.com/index/grid-protectors-program/">https://openai.com/index/grid-protectors-program/</a>
+      <a href="https://www.techradar.com/pro/europe-wide-protests-call-to-stop-dirty-data-centers-following-mounting-opposition">https://www.techradar.com/pro/europe-wide-protests-call-to-stop-dirty-data-centers-following-mounting-opposition</a>
+      <a href="https://fr.euronews.com/2026/11/05/en-europe-plus-de-100-organisations-reclament-un-moratoire-sur-les-grands-centres-de-donne">https://fr.euronews.com/2026/11/05/en-europe-plus-de-100-organisations-reclament-un-moratoire-sur-les-grands-centres-de-donne</a>
+    </div>
+
+    <div class="signal">
+      <b>3. Les modèles chinois ouverts avancent sur deux jambes : puces domestiques et distribution via les clouds occidentaux.</b>
+      <p>LongCat-2.5 entraîné intégralement sur puces chinoises ; Kimi K3.1 Pro (Moonshot) rendu disponible sur Amazon Bedrock ; Hy4 de Tencent en poids ouverts. La contrainte matérielle ne ralentit pas la cadence de publication.</p>
+      <a href="https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html">https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html</a>
+      <a href="https://minutesofai.com/topics/models">https://minutesofai.com/topics/models</a>
+      <a href="https://benchlm.ai/best/chinese-models">https://benchlm.ai/best/chinese-models</a>
+    </div>
+
+    <div class="signal">
+      <b>4. Le financement des labos de frontière se fragilise par le haut du bilan, pas par le bas.</b>
+      <p>Anthropic : ~17 Md$ de revenus au T3 pour ~895 Md$ d'engagements (calcul/infrastructure) et une notation attendue sous le seuil <em>investment grade</em> ; en parallèle, Thinking Machines Lab lève 5 Md$ à 40 Md$ et Fal 1,65 Md$. Le capital reste abondant, la soutenabilité des engagements se discute.</p>
+      <a href="https://www.tlt.com/insights-and-events/insight/tlts-ai-brief-november-2026">https://www.tlt.com/insights-and-events/insight/tlts-ai-brief-november-2026</a>
+      <a href="https://fourweekmba.com/ai-thinking-machines-nears-5b-raise-at-40b-3-3x-its-seed/">https://fourweekmba.com/ai-thinking-machines-nears-5b-raise-at-40b-3-3x-its-seed/</a>
+      <a href="https://www.briefia.fr/article/fal-leve-1-3-md-et-atteint-16-md-de-valorisation">https://www.briefia.fr/article/fal-leve-1-3-md-et-atteint-16-md-de-valorisation</a>
+    </div>
+
+    <div class="signal">
+      <b>5. L'alignement glisse de la conformité documentaire vers le façonnage des représentations internes.</b>
+      <p>Goodfire publie le <em>mechanistic shaping</em> : contraindre, dès l'entraînement, les concepts qu'un modèle exprime, plutôt qu'auditer sa sortie (résultats forts sur les raccourcis, la complaisance et la triche ; code ouvert sur GitHub). La preuve formelle assistée par IA (conjecture Aaronson-Ambainis) participe du même mouvement : rendre le comportement démontrable.</p>
+      <a href="https://www.goodfire.com/research/mechanistic-shaping/">https://www.goodfire.com/research/mechanistic-shaping/</a>
+      <a href="https://github.com/goodfire-ai/reliance">https://github.com/goodfire-ai/reliance</a>
+      <a href="https://the-decoder.com/frontier-radar-5-if-agi-is-so-close-why-is-everyone-leaving-the-neolabs-and-their-bets/">https://the-decoder.com/frontier-radar-5-if-agi-is-so-close-why-is-everyone-leaving-the-neolabs-and-their-bets/</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div>Veille produite le 07/11/2026 — fenêtre 31/10 → 07/11/2026 (7 jours) · 12 articles (max. 12) · Sites blacklistés exclus : lesnumeriques.com, degrouptest.com.</div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--fr)"></span>France</span>
+      <span><span class="dot" style="background:var(--eu)"></span>Europe hors France</span>
+      <span><span class="dot" style="background:var(--world)"></span>Monde</span>
+      <span><span class="dot" style="background:var(--mistral)"></span>Focus Mistral</span>
+      <span><span class="dot" style="background:var(--sig)"></span>Signaux faibles</span>
+    </div>
+    <div class="legend">Aucune URL de cette édition ne réapparaît dans les tirages précédents (anti-doublons). Chaque date de publication a été vérifiée sur la page source.</div>
+  </footer>
+
+</div>
+</body>
+</html>

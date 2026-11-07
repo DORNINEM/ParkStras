@@ -1,0 +1,261 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .theme-toggle{margin-top:10px}
+    .theme-toggle button{
+      background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:999px;
+      padding:5px 14px;font-size:.8rem;cursor:pointer;
+    }
+    .theme-toggle button:hover{background:#334155}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.prospec{border-top:4px solid #8b5cf6}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .dark .card.apports .card-title{color:#2dd4bf}
+    .dark .card.risques .card-title{color:#f87171}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted)}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .flag{font-weight:700}
+    .flag.fort{color:#ef4444}
+    .flag.modere{color:#ea580c}
+    .flag.faible{color:#10b981}
+    .full-card{margin-top:16px}
+    .signals{padding:12px 18px 18px}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    table.dash{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+    table.dash th{background:#0b1220;color:#f3f4f6;padding:10px 12px;text-align:left;font-size:.8rem;letter-spacing:.04em}
+    table.dash td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+    table.dash tr:nth-child(even) td{background:rgba(148,163,184,.07)}
+    .riskcell{font-weight:700}
+    .riskcell.f{color:#ef4444}.riskcell.m{color:#ea580c}.riskcell.w{color:#10b981}
+    .dash-scroll{overflow-x:auto}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      table.dash{font-size:.78rem}
+      table.dash th,table.dash td{padding:8px 8px}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    html[data-theme="light"]{--teal:#0d9488;--danger:#dc2626}
+    .signals ol li{margin:14px 0}
+    .signals .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+    .item .src-line{color:#8fb3cc;font-size:.85rem;margin:2px 0 8px}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>IA dans les métiers RH · compétences · risques &amp; défis · dispositifs d'accompagnement — généré automatiquement par ORAC (Hermes)</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles vérifiés</div><div class="value">12</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">31 oct. – 6 nov. 2026</div></div>
+  </div>
+
+<div class="card apports full-card">
+<div class="card-head"><div class="card-title">🛠️ 1. IA dans les métiers RH</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank">IA agentique en banque-assurance : 59 % passent à l'échelle, mais seuls 10 % orchestrent</a></h3>
+<div class="meta">Capgemini Research Institute (World Cloud Report for Financial Services 2027), communiqué • publié le 05/11/2026 • Banque · Assurance</div>
+<p>L'enquête menée auprès de 1 100 dirigeants d'institutions financières (14 marchés) montre un basculement rapide : 59 % des banques et assureurs pilotent ou déploient des systèmes d'IA multi-agents en production, mais seulement 10 % disposent d'une orchestration à l'échelle de l'entreprise et 5 % sont matures. 90 % adoptent ou prévoient un routage intelligent des modèles, 52 % s'appuient sur les hyperscalers pour la gouvernance des agents, et près d'un sur deux ne sait pas démontrer la rentabilité de ses projets. Le sujet RH n'est plus la multiplication des agents mais leur gouvernance et la clarté du retour sur investissement.</p>
+</div>
+<div class="item">
+<h3><a href="https://itbrief.asia/story/dayforce-launches-agentic-hcm-platform-with-native-ai" target="_blank">Dayforce lance une plateforme HCM « agentique » nativement IA (recrutement, onboarding, paie)</a></h3>
+<div class="meta">IT Brief Asia • publié le 02/11/2026 • Informatique · HR tech</div>
+<p>Dayforce présente sa plateforme « Agentic HCM » : un socle unique d'identité, permissions, confidentialité et auditabilité, une interface conversationnelle (Ask Dayforce), des agents spécialisés pour les tâches multi-étapes, des bots créables sans code et une « Build Academy » de formation et certification. Le SIRH passe de l'assistant qui répond à l'agent qui exécute — sur le recrutement à fort volume, l'onboarding, la planification et la paie multi-pays. Le contrôle des actions automatisées (approbation, traçabilité) devient le point de conception central.</p>
+</div>
+<div class="item">
+<h3><a href="https://yapluqua.com/ia-et-rh-meme-les-meilleurs-modeles-ne-calculent-juste-quune-fiche-de-paie-sur-quatre-benchmarks-remote-hrmark-et-paymark/" target="_blank">Paie automatisée : même les meilleurs modèles ne calculent juste qu'une fiche sur quatre</a></h3>
+<div class="meta">Yapluqua (benchmarks Remote HRmark & PayMark) • publié le 05/11/2026 • Automatisation paie / administratif</div>
+<p>Remote a testé 12 modèles sur deux référentiels : HRmark (2 500 questions de droit du travail dans 50 pays) et PayMark (2 000 fiches de paie réelles à recalculer sans aide). Le meilleur modèle ne produit une fiche entièrement juste que dans 26 % des cas, et le domaine du droit du travail plafonne à 69 %. Les règles RH et de paie connaissent 15 000 à 20 000 mises à jour par an : pour toute automatisation de la paie ou de l'administratif, la vérification humaine reste le maillon de conformité, à budgéter dans le business case.</p>
+</div>
+</div>
+</div>
+<div class="card compet full-card">
+<div class="card-head"><div class="card-title">🎓 2. Évolutions des compétences</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1" target="_blank">Deutsche Bank déploie une AI Academy pour plus de 20 000 salariés de sa banque privée</a></h3>
+<div class="meta">Deutsche Bank (communiqué de presse) • publié le 05/11/2026 • Banque · Formation IA</div>
+<p>La Private Bank de Deutsche Bank lance la « PB AI Academy » : des parcours d'apprentissage par rôle, calibrés sur les responsabilités et le niveau d'expérience IA de chacun, mêlant autoformation, sessions animées, ateliers et communautés (5 à 10 formations par parcours). Le contenu va du prompting à l'usage responsable et éthique jusqu'aux agents IA. Déjà ouverte à ~3 500 salariés, elle doit couvrir plus de 20 000 collaborateurs, l'Allemagne suivant après consultation des représentants du personnel. Un cas d'école de montée en compétences IA à l'échelle d'une banque.</p>
+</div>
+<div class="item">
+<h3><a href="https://yapluqua.com/un-metier-junior-sur-cinq-exige-deja-lia-letude-jobteaser-sur-400-000-offres/" target="_blank">Un métier junior sur cinq exige déjà l'IA — la banque-assurance à 14 %</a></h3>
+<div class="meta">Yapluqua (étude JobTeaser / Gen Z Lab sur 400 000 offres) • publié le 05/11/2026 • Transversal · Banque-assurance</div>
+<p>L'analyse de plus de 400 000 offres de stage, d'alternance et de premier emploi montre que 20,1 % des métiers juniors exigent des compétences IA en 2026, contre 6,3 % en 2022 — un triplement en quatre ans. La demande culmine dans le numérique/IT (64 %) mais la banque-assurance atteint 14 %. Les attentes diffèrent fortement selon les profils : l'ingénieur doit savoir concevoir, le manager surtout utiliser à bon escient. Une fiche junior compte 7 soft skills pour 3 hard skills : le socle comportemental reste déterminant.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank">IA générative au travail : passer de l'adoption à l'appropriation (séminaire Swiss Banking / ISFB)</a></h3>
+<div class="meta">ISFB — Institut Supérieur de Formation Bancaire • publié le 03/11/2026 • Banque · Compétences</div>
+<p>L'ISFB prolonge sa série « De l'adoption à l'appropriation de l'IA générative au travail », croisant sciences de l'éducation et psychologie du travail, par un séminaire avec Swiss Banking. Au programme : compétences, apprentissage, identité professionnelle, autonomie, charge cognitive et santé au travail. Le fil rouge, « comment apprendre à travailler avec l'IA sans perdre ce qui fait la valeur de l'expertise humaine », cible précisément le point où la formation bancaire doit se réinventer au-delà de l'initiation à l'outil.</p>
+</div>
+</div>
+</div>
+<div class="card risques full-card">
+<div class="card-head"><div class="card-title">⚠️ 3. Risques & défis</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">L'ère du « management algorithmique » : l'usage même de l'IA devient un indicateur de performance</a></h3>
+<div class="meta">Les Echos (Joséphine Boone) • publié le 05/11/2026 • Transversal · Surveillance</div>
+<p>Les « smart reports » lancés par Anthropic permettent aux managers d'observer comment leurs équipes utilisent Claude (chat, Code, Cowork) et ce que chacun dépense, jusqu'au « bilan des inefficacités » (échanges sans résultat exploitable, usages personnels) et à l'identification des gros consommateurs de tokens. Présenté comme un outil de pilotage du déploiement, il peut se muer en instrument de contrôle individuel : sujet direct pour les CSE, les DPO et les chartes d'usage, alors que l'article 5 de l'AI Act interdit certaines inférences.</p>
+</div>
+<div class="item">
+<h3><a href="https://yapluqua.com/rgpd-cinq-plaintes-contre-scale-ai-plateforme-outlier-qui-surveilleraient-pres-dun-million-de-travailleurs-de-lia/" target="_blank">RGPD : cinq plaintes contre Scale AI (plateforme Outlier), qui surveilleraient près d'un million de travailleurs de l'IA</a></h3>
+<div class="meta">Yapluqua (action de l'ONG noyb) • publié le 05/11/2026 • Informatique · Plateformes</div>
+<p>Le 27 octobre, noyb, avec Intérêt à Agir, DIPLab et Reversing.Works, a déposé cinq plaintes RGPD (France, Italie, Pays-Bas, Autriche) contre Scale AI et sa plateforme Outlier. Sont reprochés des traceurs transmettant des données personnelles de travailleurs à des tiers (Facebook, LinkedIn, TikTok) et une procédure de vérification biométrique (enregistrement vidéo du visage, pièce d'identité). Un précédent à suivre pour toute organisation qui outille des prestataires ou des équipes distribuées via des plateformes algorithmiques.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank">Assurance : les syndicats exigent la consultation du CSE avant tout déploiement d'IA</a></h3>
+<div class="meta">L'Argus de l'assurance (Nicolas Thouet) • publié le 04/11/2026 • Assurance · Dialogue social</div>
+<p>La CFDT, la CGT, la CFTC et Force ouvrière appellent les salariés de l'assurance à la mobilisation du 5 novembre, dénonçant charge de travail en hausse, réorganisations permanentes et pressions commerciales. Ils réclament des augmentations générales, mais aussi la consultation des représentants du personnel en amont de tout test ou déploiement d'IA, des garanties collectives face aux restructurations et une meilleure reconnaissance des qualifications. La séquence sociale de l'automne se noue donc sur la méthode de déploiement de l'IA, plus que sur l'outil.</p>
+</div>
+</div>
+</div>
+<div class="card accomp full-card">
+<div class="card-head"><div class="card-title">🔄 4. Dispositifs d'accompagnement</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.caixinglobal.com/2026-11-02/china-issues-18-point-plan-to-protect-workers-from-ai-job-losses-102499816.html" target="_blank">Chine : un plan de 18 mesures pour amortir l'impact de l'IA sur l'emploi</a></h3>
+<div class="meta">Caixin Global (Conseil d'État chinois) • publié le 02/11/2026 • Transversal · Plan de transition</div>
+<p>Pékin publie un plan de 18 mesures organisées en six axes, centré sur un « modèle de développement favorable à l'emploi ». Il impose d'évaluer le risque d'emploi avant d'approuver un projet d'IA à fort impact, encourage un préavis et une « période tampon de chômage » avant tout déploiement massif, avec formation, reclassement et accompagnement, et appelle à un déploiement prudent dans les secteurs à forte intensité de main-d'œuvre. Il encadre aussi l'IA en gestion des ressources humaines (discrimination algorithmique, recrutement frauduleux, vie privée) — un premier cadrage étatique du plan de transition.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.barnsley.gov.uk/news/barnsley-residents-to-gain-practical-ai-skills-thanks-to-tech-towns-ai-upskilling-challenge-fund" target="_blank">Royaume-Uni : 810 591 £ pour former les publics fragiles à l'IA (Barnsley)</a></h3>
+<div class="meta">Barnsley Council / gouvernement britannique (AI Upskilling Challenge Fund) • publié le 03/11/2026 • Transversal · Formations</div>
+<p>Quatre projets se partagent 810 591 £ via l'AI Upskilling Challenge Fund, dans le cadre de Barnsley « Tech Town ». Barnsley College déploie des unités mobiles pour les personnels hospitaliers et sociaux ; Atheni forme 140 salariés (majoritairement 40 ans et plus) de six entreprises industrielles à partir de leurs propres documents ; Fossu (Ignite AI) accompagne 100 habitantes (femmes en retour d'emploi, jeunes) ; Optimise Cyber Solutions outille 20 TPE. La formation part des tâches réelles de travail, pas d'une initiation générique.</p>
+</div>
+<div class="item">
+<h3><a href="https://techcrunch.com/2026/11/04/canva-lays-off-over-1200-people-amid-slowing-growth/" target="_blank">Canva supprime 1 271 postes (22 %) et aligne un accompagnement social chiffré</a></h3>
+<div class="meta">TechCrunch (et Fortune) • publié le 04/11/2026 • Informatique · Restructuration</div>
+<p>Première restructuration en treize ans chez l'éditeur australien : 1 271 postes, soit 22 % de l'effectif, sont affectés — pas seulement par des licenciements (aussi mobilités et relocalisations) — au motif d'une croissance ralentie et du coût de l'IA. Le package social est net : au moins six mois de salaire, douze mois de couverture santé, coaching carrière et entretiens, un an de LinkedIn Premium, suppression du « vesting cliff » et 10 000 dollars d'aide via le Canva Collective Fund. La direction nie un remplacement par l'IA : un test grandeur nature de la crédibilité du discours d'accompagnement dans la tech.</p>
+</div>
+</div>
+</div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-body signals">
+      <ol>
+<li><strong>Le déploiement de l'IA agentique dépasse la capacité d'orchestration</strong> — En banque-assurance, 59 % des institutions pilotent ou déploient des multi-agents mais 10 % seulement orchestrent à l'échelle de l'entreprise, tandis que les plateformes SIRH basculent vers l'« agentique » gouverné (Dayforce). Pour un DRH, la question n'est plus « combien d'agents ? » mais « qui orchestre, trace et approuve leurs actions ? ».
+<div class="signal-src">Sources : <a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank">https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html</a> · <a href="https://itbrief.asia/story/dayforce-launches-agentic-hcm-platform-with-native-ai" target="_blank">https://itbrief.asia/story/dayforce-launches-agentic-hcm-platform-with-native-ai</a></div></li>
+<li><strong>La fiabilité sur les tâches RH de base reste le maillon faible</strong> — Une fiche de paie entièrement juste sur quatre pour les meilleurs modèles (benchmarks Remote) : l'automatisation de la paie et de l'administratif progresse, mais la vérification humaine demeure un poste de coût et de conformité à intégrer explicitement dans tout business case d'automatisation RH.
+<div class="signal-src">Sources : <a href="https://yapluqua.com/ia-et-rh-meme-les-meilleurs-modeles-ne-calculent-juste-quune-fiche-de-paie-sur-quatre-benchmarks-remote-hrmark-et-paymark/" target="_blank">https://yapluqua.com/ia-et-rh-meme-les-meilleurs-modeles-ne-calculent-juste-quune-fiche-de-paie-sur-quatre-benchmarks-remote-hrmark-et-paymark/</a></div></li>
+<li><strong>L'IA devient un prérequis d'entrée, pas une compétence d'expert</strong> — Un métier junior sur cinq exige déjà l'IA (JobTeaser), avec un écart entre ingénieurs qui doivent la concevoir et managers qui doivent l'utiliser à bon escient ; côté banque, la formation se déplace de l'initiation à l'outil vers l'appropriation réelle et la préservation de l'expertise (ISFB). Le vivier d'entrée et la transmission du savoir-faire deviennent les variables critiques.
+<div class="signal-src">Sources : <a href="https://yapluqua.com/un-metier-junior-sur-cinq-exige-deja-lia-letude-jobteaser-sur-400-000-offres/" target="_blank">https://yapluqua.com/un-metier-junior-sur-cinq-exige-deja-lia-letude-jobteaser-sur-400-000-offres/</a> · <a href="https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank">https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/</a></div></li>
+<li><strong>La conformité sociale et la surveillance deviennent le point de friction</strong> — Les « smart reports » d'Anthropic font de l'usage de l'IA un indicateur managérial, et les syndicats de l'assurance exigent la consultation du CSE en amont de tout déploiement d'IA : la matière contentieuse et le dialogue social se construisent désormais sur la méthode de déploiement et la traçabilité de l'activité, pas sur le choix de l'outil.
+<div class="signal-src">Sources : <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391</a> · <a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank">https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html</a></div></li>
+<li><strong>Les dispositifs d'accompagnement se mesurent en engagements chiffrés</strong> — Le plan chinois de 18 mesures (évaluation du risque d'emploi, préavis, « période tampon », formation), le package Canva (six mois de salaire, coaching, 10 000 $) et les 810 591 £ de Barnsley pour les publics fragiles montrent que la crédibilité des engagements sociaux ne se lit plus dans l'intention, mais dans des dispositifs chiffrés et opposables.
+<div class="signal-src">Sources : <a href="https://www.caixinglobal.com/2026-11-02/china-issues-18-point-plan-to-protect-workers-from-ai-job-losses-102499816.html" target="_blank">https://www.caixinglobal.com/2026-11-02/china-issues-18-point-plan-to-protect-workers-from-ai-job-losses-102499816.html</a> · <a href="https://techcrunch.com/2026/11/04/canva-lays-off-over-1200-people-amid-slowing-growth/" target="_blank">https://techcrunch.com/2026/11/04/canva-lays-off-over-1200-people-amid-slowing-growth/</a> · <a href="https://www.barnsley.gov.uk/news/barnsley-residents-to-gain-practical-ai-skills-thanks-to-tech-towns-ai-upskilling-challenge-fund" target="_blank">https://www.barnsley.gov.uk/news/barnsley-residents-to-gain-practical-ai-skills-thanks-to-tech-towns-ai-upskilling-challenge-fund</a></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 6 novembre 2026 par ORAC (Hermes, profil démo — skill veille-rh-ia). Corpus : 12 articles, 4 axes, dates de publication vérifiées page par page.</p>
+    <p>Analyse équilibrée opportunités / risques / accompagnement — focus banque · assurance · informatique.</p>
+  </footer>
+</div>
+</body></html>

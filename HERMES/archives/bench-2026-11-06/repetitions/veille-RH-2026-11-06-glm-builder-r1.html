@@ -1,0 +1,332 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .theme-toggle{margin-top:10px}
+    .theme-toggle button{
+      background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:999px;
+      padding:5px 14px;font-size:.8rem;cursor:pointer;
+    }
+    .theme-toggle button:hover{background:#334155}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.prospec{border-top:4px solid #8b5cf6}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .dark .card.apports .card-title{color:#2dd4bf}
+    .dark .card.risques .card-title{color:#f87171}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted)}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .flag{font-weight:700}
+    .flag.fort{color:#ef4444}
+    .flag.modere{color:#ea580c}
+    .flag.faible{color:#10b981}
+    .full-card{margin-top:16px}
+    .signals{padding:12px 18px 18px}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    table.dash{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+    table.dash th{background:#0b1220;color:#f3f4f6;padding:10px 12px;text-align:left;font-size:.8rem;letter-spacing:.04em}
+    table.dash td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+    table.dash tr:nth-child(even) td{background:rgba(148,163,184,.07)}
+    .riskcell{font-weight:700}
+    .riskcell.f{color:#ef4444}.riskcell.m{color:#ea580c}.riskcell.w{color:#10b981}
+    .dash-scroll{overflow-x:auto}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      table.dash{font-size:.78rem}
+      table.dash th,table.dash td{padding:8px 8px}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    html[data-theme="light"]{--teal:#0d9488;--danger:#dc2626}
+    .item .flag{display:inline-block;margin-left:6px}
+    .signals ol li{margin:14px 0}
+    .signals .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>Apports RH, compétences, risques, accompagnement — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par GLM · Nous</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles vérifiés</div><div class="value">11</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">30 oct. – 6 nov. 2026</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 11 articles</span>
+    <span class="pill teal">🛠️ 3 apports RH</span>
+    <span class="pill purple">🎓 2 compétences</span>
+    <span class="pill red">⚠️ 3 risques</span>
+    <span class="pill green">🔄 3 dispositifs</span>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📌 Synthèse de la semaine</div></div>
+    <div class="card-body synthese">
+      Semaine du 30 octobre au 6 novembre 2026 : les outils d'IA RH s'industrialisent (93 % de recruteurs équipés selon Hellowork, bascule multi-agents dans la finance selon Capgemini) mais l'adoption ne crée pas seule la valeur — la moitié des institutions financières ne démontre pas la rentabilité de ses initiatives agentiques. Côté <strong>risques</strong>, la doctrine se durcit : l'autorité espagnole juge insuffisant le « clic de validation » humain sur les tris de CV (art. 22 RGPD), et les « smart reports » d'Anthropic ouvrent l'ère du management algorithmique. Côté <strong>accompagnement</strong>, le rapport HRCI fournit un cadre en huit étapes de refonte des postes, l'OCC encadre les agents IA dans la banque et la Cour de cassation institutionnalise le débat sur l'IA en droit du travail. Le fil rouge : 76 % des DRH placent la préparation des collaborateurs à l'IA en priorité, mais un quart seulement juge leur fonction efficace — la fonction RH elle-même est le maillon à financer.
+    </div>
+  </div>
+
+<div class="card apports full-card">
+<div class="card-head"><div class="card-title">1 · 🛠️ IA dans les métiers RH : apports &amp; outils</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://myrhline.com/replay-webinar-rh/outil-sourcing-ia-criteres-choisir/" target="_blank">Sourcing IA : 7 critères pour évaluer un outil avant de l'adopter</a></h3>
+<div class="meta">myRHline (replay du webinaire du 3 nov. avec Collective.work) • 04/11/2026 • Secteur : transversal</div>
+<p>Issu d'un webinaire avec cas réel, ce mode d'emploi établit la grille de sélection d'un moteur de sourcing/matching augmenté : clarifier le besoin avant le prompt, savoir quelles données l'outil interroge (base propriétaire, ATS, web public — avec les exigences CNIL sur les données candidats), exiger des résultats explicables et vérifiables, garder la traçabilité des critères et des interventions humaines, et intégrer l'outil à l'ATS. Le recruteur doit pouvoir corriger et décider : l'IA prépare, il juge.</p>
+<div class="tags"><span class="tag">sourcing</span><span class="tag">matching</span><span class="tag">ATS</span><span class="tag">CNIL</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lesclesdudigital.fr/les-recruteurs-et-les-candidats-utilisent-lintelligence-artificielle/" target="_blank">Recruteurs et candidats adoptent l'IA : 93 % de recruteurs équipés, une méfiance réciproque</a></h3>
+<div class="meta">Les Clés du Digital (enquête Hellowork, 2 532 candidats et 695 recruteurs) • 03/11/2026 • Secteur : transversal</div>
+<p>L'enquête Hellowork montre une adoption massive mais asymétrique : 93 % des recruteurs utilisent l'IA en 2026 (78 % en 2025) contre 61 % des candidats (50 % en 2025), et 81 % l'emploient pour rédiger les offres. Le tri automatisé des candidatures, celui qui effraie, n'est pourtant déclaré que par 8,5 % des recruteurs. 62 % des candidats craignent que la sélection ne soit faite par l'IA, tandis que la standardisation des CV générés est déjà observée par trois quarts des recruteurs — d'où l'appel à la transparence sur ce que l'IA fait et ne fait pas.</p>
+<div class="tags"><span class="tag">recrutement</span><span class="tag">ATS</span><span class="tag">tri des CV</span><span class="tag">transparence</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank">Les institutions financières passent à l'IA multi-agents, mais l'orchestration reste rare</a></h3>
+<div class="meta">GlobeNewswire (World Cloud Report for Financial Services 2027, Capgemini Research Institute) • 05/11/2026 • Secteur : banque <span class="flag modere">Risque : Modéré</span></div>
+<p>L'enquête Capgemini (1 100 dirigeants, 14 marchés, banque de détail, gestion d'actifs, paiements, assurances) mesure la bascule agentique : 59 % des institutions expérimentent ou déploient des systèmes multi-agents sur les processus cœur (souscription, gestion de comptes, sinistres), mais 10 % seulement ont l'orchestration d'entreprise nécessaire au fonctionnement autonome. Presque la moitié ne démontre pas de façon constante la rentabilité de ses initiatives : l'argument d'efficacité céderait la place à l'impact business (+141 % de dirigeants le privilégiant d'ici 2028) — ce qui conditionne aussi les effectifs et les compétences attendus.</p>
+<div class="tags"><span class="tag">agents IA</span><span class="tag">banque</span><span class="tag">assurance</span><span class="tag">orchestration</span></div>
+</div>
+</div>
+</div>
+<div class="card compet full-card">
+<div class="card-head"><div class="card-title">2 · 🎓 Évolutions des compétences</div><div class="meta">2 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesechos.fr/travailler-mieux/vie-au-travail/je-predis-que-la-plupart-des-pdg-de-demain-seront-des-drh-pourquoi-lia-pourrait-changer-la-vie-des-responsables-des-ressources-humaines-2261166" target="_blank">« Je prédis que la plupart des PDG de demain seront des DRH » : pourquoi l'IA pourrait changer la vie des DRH</a></h3>
+<div class="meta">Les Echos (enquête Heidrick & Struggles, 600 DRH dans le monde) • 05/11/2026 • Secteur : transversal</div>
+<p>76 % des 600 DRH interrogés par Heidrick & Struggles jugent que la préparation des collaborateurs aux évolutions liées à l'IA sera une priorité majeure des deux à trois prochaines années — mais un quart seulement juge leur fonction efficace sur ce sujet, et 64 % des DRH français regrettent un financement insuffisant. L'article (qui cite Vineet Nayar : « la plupart des PDG de demain seront des directeurs RH ») dessine un métier RH tiré vers la stratégie, la culture et la collaboration avec les directions tech — sous condition d'investissement dans la fonction elle-même.</p>
+<div class="tags"><span class="tag">DRH</span><span class="tag">montée en compétences</span><span class="tag">Heidrick & Struggles</span><span class="tag">stratégie</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.fia.org/marketvoice/articles/generative-ai-moves-experiment-execution-capital-markets" target="_blank">IA générative : la banque et les marchés financiers passent de l'expérimentation à la production</a></h3>
+<div class="meta">FIA MarketVoice (FIA Expo, table ronde BNP Paribas, Société Générale, Bank of America, Nasdaq) • 05/11/2026 • Secteur : informatique <span class="flag">Horizon : Court terme (<2 ans)</span></div>
+<p>À la FIA Expo de Chicago, les quatre établissements décrivent le passage en production : Société Générale accélère le développement logiciel et les investigations sur les écarts de règlement, BNP Paribas le rapprochement de données structurées et non structurées, Bank of America (plus de 100 agents en bêta) pilote ses agents dans un cadre « Orchestra » avec contrôles techniques. Les enseignements compétences sont nets : la valeur se déplace vers la compréhension du problème, l'architecture et la validation — et le code généré par IA pose la question de la revue humaine « de bases que plus personne n'a lues en entier ».</p>
+<div class="tags"><span class="tag">compétences</span><span class="tag">développement logiciel</span><span class="tag">agents IA</span><span class="tag">gouvernance</span></div>
+</div>
+</div>
+</div>
+<div class="card risques full-card">
+<div class="card-head"><div class="card-title">3 · ⚠️ Risques &amp; défis</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.village-justice.com/articles/chatgpt-claude-agents-comment-concilier-innovation-pouvoir-direction-protection,59827.html" target="_blank">ChatGPT, Claude et agents IA : comment concilier innovation, pouvoir de direction et protection des salariés ?</a></h3>
+<div class="meta">Village de la Justice (Sophie Reichman, avocate au Barreau de Paris) • 05/11/2026 • Secteur : transversal <span class="flag modere">Risque : Modéré</span></div>
+<p>Cette analyse juridique détaillée rappelle que le Code du travail ne connaît pas le terme « intelligence artificielle » : tout relève du droit commun — règlement intérieur (les chartes IA y sont assimilées si elles créent des obligations permanentes), consultation préalable du CSE (art. L2312-38) pour les moyens de contrôle de l'activité, information simple pour les outils d'aide au recrutement, possibilité d'expertise (art. L2315-94). Une sanction n'est solide que si la règle était opposable et connue ; l'application échelonnée de l'AI Act (modifiée par le règlement 2026/1744) n'exonère d'aucune obligation actuelle.</p>
+<div class="tags"><span class="tag">règlement intérieur</span><span class="tag">CSE</span><span class="tag">AI Act</span><span class="tag">pouvoir disciplinaire</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.donneespersonnelles.fr/actualite-ia-2026" target="_blank">L'AEPD : un humain dans la boucle ne suffit pas pour trier des candidats</a></h3>
+<div class="meta">donneespersonnelles.fr (décision de l'autorité espagnole de protection des données) • 03/11/2026 • Secteur : transversal <span class="flag fort">Risque : Fort</span></div>
+<p>Après enquête d'office sur un système de tri de CV, notation de profils et priorisation de candidatures, l'autorité espagnole écarte la défense « la décision finale revient à une personne » : un simple clic de validation sur une liste pré-classée n'est pas un contrôle humain réel (art. 22 RGPD). Elle exige une supervision effective, l'information claire des candidats sur la logique du tri (art. 12-14), la protection dès la conception (art. 25) et une AIPD (art. 35) — sous peine de procédures de sanction. Référence directe pour tout ATS augmenté déployé en banque et en assurance.</p>
+<div class="tags"><span class="tag">RGPD</span><span class="tag">art. 22</span><span class="tag">biais</span><span class="tag">AIPD</span><span class="tag">recrutement</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">L'ère du « management algorithmique » : comment l'IA renforce la surveillance des salariés</a></h3>
+<div class="meta">Les Echos (fonctionnalité « smart reports » lancée par Anthropic) • 05/11/2026 • Secteur : informatique <span class="flag fort">Risque : Fort</span></div>
+<p>Anthropic lance les « smart reports » : les managers peuvent observer comment chaque salarié utilise Claude (chat, Code, Cowork), les dépenses en tokens, et surtout un bilan des « inefficacités » — conversations sans résultat exploitable ou jugées « personnelles ou hors sujet ». L'outil de pilotage du déploiement devient potentiellement un instrument de notation individuelle : le cas donne une concrétisation industrielle au débat sur la surveillance des salariés par l'IA, alors que la CNIL et le Code du travail encadrent strictement le contrôle de l'activité.</p>
+<div class="tags"><span class="tag">surveillance</span><span class="tag">management algorithmique</span><span class="tag">tokens</span><span class="tag">CNIL</span></div>
+</div>
+</div>
+</div>
+<div class="card accomp full-card">
+<div class="card-head"><div class="card-title">4 · 🔄 Dispositifs d'accompagnement</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.hrci.org/blogs-and-announcements/press-releases/2026/11/06/ai-is-reshaping-jobs-hr-must-lead-the-redesign" target="_blank">AI Is Reshaping Jobs Task by Task : HRCI appelle les RH à conduire la refonte des postes</a></h3>
+<div class="meta">HRCI (rapport « Redesigning Work: How AI Is Changing Jobs and How HR Can Lead ») • 06/11/2026 • Secteur : transversal <span class="flag">Statut : Existant</span></div>
+<p>Le rapport de la fédération internationale des professionnels RH conteste le scénario des destructions massives : 82 % des RH n'ont vu aucun emploi disparaître par l'IA dans leur secteur en 2025, mais l'IA transforme les postes tâche par tâche. Il propose un cadre en huit étapes — définir le travail avant la technologie, consulter les salariés sur les automatisations, former aux usages et limites, piloter, mettre à jour les fiches de poste, protéger les trajectoires de carrière. Point critique : 71 % des RH utilisent l'IA régulièrement, mais 53 % déclarent qu'aucune formation IA n'est offerte dans leur organisation.</p>
+<div class="tags"><span class="tag">refonte des postes</span><span class="tag">formation</span><span class="tag">trajectoires</span><span class="tag">HRCI</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.bankingdive.com/news/ai-agent-protocols-bank-access-socure-pnc-fifth-third-fraud-aml-kyc/873970/" target="_blank">Agents IA dans les banques : « code red », protocoles d'accès et encadrement du régulateur</a></h3>
+<div class="meta">Banking Dive (Socure, PNC, Fifth Third ; cadre de supervision de l'OCC du 4 novembre) • 06/11/2026 • Secteur : banque <span class="flag">Statut : En cours de déploiement</span></div>
+<p>La prolifération des agents IA agissant pour les clients oblige les banques américaines (JPMorgan, Bank of America, Citi) à bloquer les accès non cadrés, tandis que l'OCC a publié le 4 novembre 2026 un cadre de supervision évaluant les agents selon leur autonomie, leurs conséquences et le degré de supervision humaine (Bulletin 2026-54), sans exigence nouvelle mais dans le dispositif existant. Le CEO de Socure prédit six mois pour des protocoles clairs : le cadre KYC/AML pour les agents reste à écrire. Pour les DRH bancaires, la question rejoint celle des autorisations d'usage internes et de la responsabilité.</p>
+<div class="tags"><span class="tag">agents IA</span><span class="tag">gouvernance</span><span class="tag">OCC</span><span class="tag">KYC/AML</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.aefinfo.fr/depeche/759770-il-est-important-que-lia-reste-au-service-de-lhumain-et-des-collectifs-de-travail-colloque-de-la-cour-de-cassation" target="_blank">« Il est important que l'IA reste au service de l'humain et des collectifs de travail » (colloque de la Cour de cassation)</a></h3>
+<div class="meta">AEF info (colloque « l'intelligence artificielle en droit du travail ») • 06/11/2026 • Secteur : transversal <span class="flag">Statut : Existant</span></div>
+<p>Lors d'un colloque sur l'IA en droit du travail organisé par la Cour de cassation, avocats, DRH, médecins du travail et universitaires partagent un constat — « l'IA générative a tout bousculé dans les entreprises » — et un repère de méthode : l'IA doit rester au service de l'humain et des collectifs de travail. La haute juridiction institutionnalisant ce débat signale que la matière (organisation du travail, consultation, preuve, santé au travail) devient un objet juridique stable, à intégrer dans les cadres de déploiement des banques, assureurs et ESN.</p>
+<div class="tags"><span class="tag">Cour de cassation</span><span class="tag">droit du travail</span><span class="tag">collectifs de travail</span><span class="tag">colloque</span></div>
+</div>
+</div>
+</div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">🖼️ Images &amp; schémas analysés</div></div>
+    <div class="card-body synthese">
+      Aucun schéma de données exploitable cette semaine : les visuels des sources retenues sont des illustrations de presse et des visuels d'événements. Deux données chiffrées se prêtent à une reconstruction en support DRH : la progression de l'usage de l'IA chez recruteurs (78 % → 93 %) et candidats (50 % → 61 %) entre 2025 et 2026 selon Hellowork, et l'écart adoption/orchestration de l'IA multi-agents dans la finance (59 % contre 10 %, Capgemini). La matrice « tâches automatisables / tâches à conserver humaines » du rapport HRCI est le support opérationnel le plus directement transposable à un plan de transformation RH.
+    </div>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-body signals">
+      <ol>
+<li><strong>1. Le tri de CV : le « clic de validation » n'est plus une garantie</strong> — La position de l'AEPD du 3 novembre (un humain qui valide une liste pré-classée ne constitue pas un contrôle réel, art. 22 RGPD) croise l'enquête Hellowork : 93 % des recruteurs utilisent l'IA mais seuls 8,5 % déclarent trier automatiquement. La divergence entre déclaration et pratique réelle devient le premier point de contrôle attendu par les régulateurs sur les ATS augmentés.
+<div class="signal-src">Sources : <a href="https://www.donneespersonnelles.fr/actualite-ia-2026" target="_blank">https://www.donneespersonnelles.fr/actualite-ia-2026</a> · <a href="https://www.lesclesdudigital.fr/les-recruteurs-et-les-candidats-utilisent-lintelligence-artificielle/" target="_blank">https://www.lesclesdudigital.fr/les-recruteurs-et-les-candidats-utilisent-lintelligence-artificielle/</a></div></li>
+<li><strong>2. La surveillance des salariés change d'échelle : de la caméra aux rapports d'usage IA</strong> — Les « smart reports » d'Anthropic (bilan des « inefficacités », classement des consommateurs de tokens) industrialisent l'observation de l'activité, et l'analyse juridique du 5 novembre rappelle que tout moyen de contrôle de l'activité exige la consultation préalable du CSE. Les chartes d'usage IA et les dispositifs de mesure vont devoir être traités comme des instruments de contrôle, pas comme de simples outils de productivité.
+<div class="signal-src">Sources : <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391</a> · <a href="https://www.village-justice.com/articles/chatgpt-claude-agents-comment-concilier-innovation-pouvoir-direction-protection,59827.html" target="_blank">https://www.village-justice.com/articles/chatgpt-claude-agents-comment-concilier-innovation-pouvoir-direction-protection,59827.html</a></div></li>
+<li><strong>3. La banque et l'assurance passent des agents isolés aux écosystèmes multi-agents</strong> — Capgemini mesure 59 % d'institutions en expérimentation ou production multi-agents contre 10 % d'orchestration d'entreprise, et le compte rendu de la FIA Expo décrit des cadres d'encadrement (Orchestra chez Bank of America, agents Nasdaq qui « s'arrêtent à la recommandation »). Le débat d'entreprise glisse du choix d'outil vers la gouvernance des agents — compétence RH et IT confondues.
+<div class="signal-src">Sources : <a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank">https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html</a> · <a href="https://www.fia.org/marketvoice/articles/generative-ai-moves-experiment-execution-capital-markets" target="_blank">https://www.fia.org/marketvoice/articles/generative-ai-moves-experiment-execution-capital-markets</a></div></li>
+<li><strong>4. Les fonctions RH se déclarent sous-dimensionnées pour porter la transition</strong> — 76 % des DRH voient la préparation des collaborateurs à l'IA comme une priorité majeure mais un quart seulement juge leur fonction efficace (Heidrick & Struggles), et HRCI documente le même écart : 71 % d'usage régulier de l'IA par les RH contre 53 % d'organisations sans aucune formation IA. Le risque n'est plus le retard des salariés, mais celui de la fonction censée les accompagner.
+<div class="signal-src">Sources : <a href="https://www.lesechos.fr/travailler-mieux/vie-au-travail/je-predis-que-la-plupart-des-pdg-de-demain-seront-des-drh-pourquoi-lia-pourrait-changer-la-vie-des-responsables-des-ressources-humaines-2261166" target="_blank">https://www.lesechos.fr/travailler-mieux/vie-au-travail/je-predis-que-la-plupart-des-pdg-de-demain-seront-des-drh-pourquoi-lia-pourrait-changer-la-vie-des-responsables-des-ressources-humaines-2261166</a> · <a href="https://www.hrci.org/blogs-and-announcements/press-releases/2026/11/06/ai-is-reshaping-jobs-hr-must-lead-the-redesign" target="_blank">https://www.hrci.org/blogs-and-announcements/press-releases/2026/11/06/ai-is-reshaping-jobs-hr-must-lead-the-redesign</a></div></li>
+<li><strong>5. L'encadrement se normalise : régulateur, juridiction et doctrine convergent</strong> — En une semaine : cadre de supervision de l'OCC sur les agents IA (4 novembre), colloque de la Cour de cassation sur l'IA en droit du travail (6 novembre), analyse d'avocate sur la mise en conformité des déploiements (5 novembre). La période de l'« expérimentation sans cadre » se referme : les dispositifs d'accompagnement internes devront être documentables devant un régulateur ou un juge.
+<div class="signal-src">Sources : <a href="https://www.bankingdive.com/news/ai-agent-protocols-bank-access-socure-pnc-fifth-third-fraud-aml-kyc/873970/" target="_blank">https://www.bankingdive.com/news/ai-agent-protocols-bank-access-socure-pnc-fifth-third-fraud-aml-kyc/873970/</a> · <a href="https://www.aefinfo.fr/depeche/759770-il-est-important-que-lia-reste-au-service-de-lhumain-et-des-collectifs-de-travail-colloque-de-la-cour-de-cassation" target="_blank">https://www.aefinfo.fr/depeche/759770-il-est-important-que-lia-reste-au-service-de-lhumain-et-des-collectifs-de-travail-colloque-de-la-cour-de-cassation</a></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">🗺️ Tableau de bord des métiers à risque</div></div>
+    <div class="card-body">
+      <div class="dash-scroll">
+        <table class="dash">
+          <thead>
+            <tr><th>Secteur</th><th>Métier</th><th>Niveau de risque IA</th><th>Horizon</th><th>Piste de reconversion prioritaire</th></tr>
+          </thead>
+          <tbody>
+<tr><td>Banque</td><td>Conseiller clientèle, opérations de back-office</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Supervision des agents IA, conseiller spécialisé (patrimoine, professionnels), relation client à valeur ajoutée</td></tr>
+<tr><td>Banque</td><td>Conformité, KYC/AML, lutte anti-fraude</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Audit des agents IA, définition des protocoles d'accès agents (cas OCC/Socure), conformité AI Act</td></tr>
+<tr><td>Banque / marchés</td><td>Développement logiciel, post-trade IT</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Architecture et validation de code généré par IA, revue de bases hybrides, ingénierie de la donnée</td></tr>
+<tr><td>Assurance</td><td>Souscription standardisée, gestion sinistres simples</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Supervision d'agents multi-agents (10 % d'orchestration seulement), gestion des cas complexes, contrôle des décisions</td></tr>
+<tr><td>Informatique / ESN</td><td>Rédaction de code, support niveau 1</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>IA engineering (RAG, orchestration), spécification des besoins, gouvernance du code généré</td></tr>
+<tr><td>Tous secteurs</td><td>Fonction RH</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Redesign des postes tâche par tâche (cadre HRCI), people analytics, conformité RGPD/AI Act des outils RH</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 6 novembre 2026 par Hermes (skill veille-rh-ia). Fichiers : veille-RH-2026-11-06-glm-builder-r1.md + .html</p>
+    <p>Corpus : 11 articles, 4 axes, dates de publication vérifiées page par page. Bac à sable de comparaison — aucune donnée de production.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>

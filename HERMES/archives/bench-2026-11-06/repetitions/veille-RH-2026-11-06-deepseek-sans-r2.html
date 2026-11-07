@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille IA &amp; Mutations RH — Banque · Assurance · Informatique — 6 nov. 2026</title>
+<style>
+  :root{
+    --bg-0:#02060f;
+    --bg-1:#050b18;
+    --bg-2:#081323;
+    --line:#12314a;
+    --line-soft:#0e2438;
+    --cyan:#38e1e1;
+    --cyan-dim:#1f9fb0;
+    --blue:#4ea8ff;
+    --amber:#ffcf6b;
+    --red:#ff7a7a;
+    --green:#6ff0b6;
+    --txt:#d6e6f2;
+    --txt-dim:#8ba6bd;
+    --txt-mute:#5f7d97;
+    --mono:'JetBrains Mono','SFMono-Regular',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(56,225,225,.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(78,168,255,.10), transparent 55%),
+      linear-gradient(180deg,var(--bg-0),var(--bg-1) 40%,var(--bg-0));
+    color:var(--txt);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .grid-overlay{
+    position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+    background-image:
+      linear-gradient(rgba(56,225,225,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,225,225,.045) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(circle at 50% 0%, #000 0%, transparent 75%);
+  }
+  .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:34px 22px 70px}
+
+  /* HEADER */
+  header.hud{
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:linear-gradient(180deg, rgba(9,20,36,.92), rgba(5,11,24,.92));
+    box-shadow:0 0 0 1px rgba(56,225,225,.06), 0 18px 60px -30px rgba(56,225,225,.55);
+    padding:26px 26px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hud::before{
+    content:"";position:absolute;left:0;top:0;height:3px;width:100%;
+    background:linear-gradient(90deg,transparent,var(--cyan),var(--blue),transparent);
+    opacity:.85;
+  }
+  .brandline{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--txt-mute)}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+  h1{
+    font-family:var(--mono);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(22px,3.6vw,34px);margin:14px 0 6px;line-height:1.18;
+    background:linear-gradient(90deg,#eafcff,#8fe9ea 45%,#6fb6ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .subtitle{color:var(--txt-dim);font-size:14.5px;margin:0}
+  .datestamp{font-family:var(--mono);color:var(--cyan);font-size:13px;margin-top:12px;letter-spacing:.04em}
+
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .chip{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+    border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--txt-dim);
+    background:rgba(8,19,35,.7);
+  }
+  .chip b{color:var(--cyan)}
+  .chip.warn{border-color:#5a3a12;color:var(--amber)}
+
+  .chapeau{
+    margin:22px 0 8px;padding:16px 18px;border-left:3px solid var(--cyan-dim);
+    background:linear-gradient(90deg, rgba(31,159,176,.10), transparent);
+    border-radius:0 10px 10px 0;color:var(--txt);font-size:14.5px;
+  }
+  .chapeau b{color:var(--cyan)}
+
+  /* SECTIONS */
+  section{margin-top:34px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 16px;border-bottom:1px solid var(--line-soft);padding-bottom:12px}
+  .sec-num{
+    font-family:var(--mono);font-size:13px;color:#02121a;background:linear-gradient(180deg,#7feff0,#38e1e1);
+    padding:4px 10px;border-radius:7px;font-weight:700;letter-spacing:.05em;
+    box-shadow:0 0 18px -4px var(--cyan);
+  }
+  .sec-title{font-family:var(--mono);font-size:clamp(16px,2.4vw,20px);color:#eafcff;margin:0;font-weight:700;letter-spacing:.01em}
+  .sec-note{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--txt-mute)}
+
+  /* CARDS */
+  .card{
+    border:1px solid var(--line-soft);border-radius:13px;
+    background:linear-gradient(180deg, rgba(9,20,36,.72), rgba(6,13,25,.72));
+    padding:18px 18px 16px;margin-bottom:14px;
+    transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  .card:hover{border-color:var(--cyan-dim);box-shadow:0 14px 40px -26px var(--cyan);transform:translateY(-1px)}
+  .card h3{margin:0 0 8px;font-size:16.5px;line-height:1.35}
+  .card h3 a{color:#bfeaff;text-decoration:none;border-bottom:1px dashed rgba(56,225,225,.4)}
+  .card h3 a:hover{color:var(--cyan);border-bottom-color:var(--cyan)}
+  .srcline{font-family:var(--mono);font-size:12px;color:var(--txt-mute);margin:0 0 10px;letter-spacing:.02em}
+  .srcline .src{color:var(--cyan-dim)}
+  .srcline .date{color:var(--amber)}
+  .card p{margin:0;color:var(--txt-dim);font-size:14px}
+  .card p b{color:var(--txt)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan-dim);border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-bottom:9px}
+
+  /* SYNTHESIS */
+  .synth{margin-top:40px;border:1px solid var(--line);border-radius:16px;padding:24px 22px;
+    background:linear-gradient(180deg, rgba(10,24,40,.9), rgba(5,11,24,.92));
+    box-shadow:0 0 0 1px rgba(78,168,255,.06), 0 20px 60px -34px rgba(78,168,255,.6)}
+  .synth h2{font-family:var(--mono);font-size:clamp(17px,2.6vw,22px);margin:0 0 4px;color:#eafcff;font-weight:700}
+  .synth .lead{color:var(--txt-mute);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 20px}
+  .signal{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line-soft)}
+  .sig-no{font-family:var(--mono);font-weight:700;font-size:20px;color:var(--blue);min-width:44px;
+    text-shadow:0 0 14px rgba(78,168,255,.6)}
+  .sig-body h4{margin:0 0 6px;font-size:15px;color:#dff2ff}
+  .sig-body p{margin:0 0 8px;color:var(--txt-dim);font-size:13.5px}
+  .sig-links{list-style:none;margin:0;padding:0}
+  .sig-links li{font-family:var(--mono);font-size:12px;color:var(--txt-mute);padding:2px 0}
+  .sig-links a{color:var(--cyan-dim);text-decoration:none}
+  .sig-links a:hover{color:var(--cyan);text-decoration:underline}
+  .sig-links li::before{content:"↳ ";color:var(--blue)}
+
+  /* FOOTER */
+  footer{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:18px;color:var(--txt-mute);font-family:var(--mono);font-size:11.5px;line-height:1.9}
+  footer b{color:var(--txt-dim)}
+  .footgrid{display:flex;flex-wrap:wrap;gap:8px 22px}
+
+  @media (max-width:640px){
+    .wrap{padding:22px 14px 54px}
+    .sec-note{display:none}
+    .signal{flex-direction:column;gap:6px}
+    .sig-no{min-width:0}
+  }
+</style>
+</head>
+<body>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="wrap">
+
+  <header class="hud">
+    <div class="brandline"><span class="dot"></span> O.R.A.C. · Veille augmentée · Système de rapport</div>
+    <h1>Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+    <p class="subtitle">Emploi, compétences, dialogue social et gouvernance de l'IA dans la finance et l'IT.</p>
+    <div class="datestamp">FENÊTRE : 7 JOURS — 31 OCT. → 6 NOV. 2026 &nbsp;·&nbsp; RAPPORT DU 6 NOVEMBRE 2026</div>
+    <div class="meta">
+      <span class="chip"><b>12</b> entrées</span>
+      <span class="chip"><b>4</b> axes</span>
+      <span class="chip">dates vérifiées à la source</span>
+      <span class="chip">doublons fusionnés</span>
+      <span class="chip warn">sources blacklistées exclues</span>
+    </div>
+  </header>
+
+  <div class="chapeau">
+    <b>Lecture d'ensemble.</b> Les déploiements d'IA (agents, multi-agents, people analytics) progressent vite,
+    mais la montée en compétences, la gouvernance et l'échelle patinent. Côté <b>opportunités</b> : formation IA
+    industrielle et dispositifs publics de reskilling montent en puissance. Côté <b>risques</b> : la paie, la
+    surveillance des prompts et le contrôle de l'activité redeviennent des lignes rouges juridiques. Côté
+    <b>accompagnement</b> : la finance s'installe dans le modèle « l'IA prépare, l'humain décide », doublé d'une
+    exigence nouvelle de preuve de gouvernance.
+  </div>
+
+  <!-- AXE 1 -->
+  <section id="axe1">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">IA dans les métiers RH</h2>
+      <span class="sec-note">people analytics · automatisation</span>
+    </div>
+
+    <article class="card">
+      <span class="tag">People analytics</span>
+      <h3><a href="https://www.morningstar.com/news/accesswire/1247118msn/insightful-launches-new-work-intelligence-products-to-help-leaders-transform-work-in-the-ai-era" target="_blank" rel="noopener">Insightful lance une plateforme « Work Intelligence » qui pilote le travail par la donnée</a></h3>
+      <p class="srcline"><span class="src">Morningstar / ACCESS Newswire (communiqué Insightful)</span> · <span class="date">5 novembre 2026</span></p>
+      <p>Présentée à People Analytics World (New York), la plateforme combine Workforce Analytics, People Intelligence et Process Intelligence pour « montrer comment le travail se déroule réellement ». La brique People Intelligence mesure la <b>maturité IA de chaque salarié</b> et suggère des actions pour accélérer l'adoption. Revers : l'extension à l'analyse des flux de travail ravive la question de la surveillance.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">People analytics · NLP</span>
+      <h3><a href="https://lasvegassun.com/news/2026/nov/04/workhuman-research-finds-employee-recognition-data/" target="_blank" rel="noopener">Workhuman transforme 2,6 millions de messages de reconnaissance en signaux RH</a></h3>
+      <p class="srcline"><span class="src">Workhuman / Business Wire (repris par Las Vegas Sun)</span> · <span class="date">4 novembre 2026</span></p>
+      <p>Par analyse NLP de 2,6 millions de messages, l'éditeur extrait des signaux sur les <b>compétences</b>, la sécurité psychosociale, la charge de travail et l'adoption de l'IA. Les thèmes « IA et numérique » ont plus que doublé en dix-huit mois (~1,6 % → ~3,8 %). Une donnée « écrite par les humains » exploitée par l'IA RH — à encadrer (RGPD, biais).</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Automatisation · secteur financier</span>
+      <h3><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank" rel="noopener">Banques et assureurs accélèrent vers l'IA multi-agents : 59 % en pilote, 10 % seulement orchestrent</a></h3>
+      <p class="srcline"><span class="src">Capgemini Research Institute / GlobeNewswire</span> · <span class="date">5 novembre 2026</span></p>
+      <p>Le <i>World Cloud Report for Financial Services 2027</i> (1 100 dirigeants) montre que 59 % des institutions financières testent ou déploient des systèmes multi-agents, mais que seul un dixième dispose de l'<b>orchestration à l'échelle</b>. 52 % s'appuient sur les hyperscalers pour gouverner ces agents. L'automatisation gagne les processus cœur (crédit, souscription, service client), redessinant les métiers.</p>
+    </article>
+  </section>
+
+  <!-- AXE 2 -->
+  <section id="axe2">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Évolutions des compétences</h2>
+      <span class="sec-note">formation · reskilling</span>
+    </div>
+
+    <article class="card">
+      <span class="tag">Formation · banque</span>
+      <h3><a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1" target="_blank" rel="noopener">Deutsche Bank déploie une académie IA pour plus de 20 000 salariés</a></h3>
+      <p class="srcline"><span class="src">Deutsche Bank (communiqué)</span> · <span class="date">5 novembre 2026</span></p>
+      <p>La banque privée lance la <b>PB AI Academy</b> : parcours par rôle et par niveau, du <i>prompting</i> à l'IA agentique, déjà ouverts à ~3 500 salariés et extensibles à plus de 20 000. En Allemagne, le déploiement interviendra au premier semestre 2027 <b>après consultation des représentants du personnel</b>. Modèle d'un dispositif de montée en compétences IA à grande échelle.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Montée en compétences · enquête</span>
+      <h3><a href="https://www.agefi.fr/cash-risk/actualites/la-montee-en-competences-face-a-lia-est-insuffisante-en-entreprise" target="_blank" rel="noopener">« La montée en compétences face à l'IA est insuffisante en entreprise » (OneStream)</a></h3>
+      <p class="srcline"><span class="src">L'Agefi (Cash Risk)</span> · <span class="date">4 novembre 2026</span></p>
+      <p>Selon une enquête OneStream, <b>70 % des cadres financiers français</b> craignent que l'absence de préparation de leurs collaborateurs à l'IA ne compromette la pertinence de leur organisation d'ici cinq ans. Le premier frein n'est plus la technologie mais la <b>formation</b>. Contrepoids utile aux annonces d'outils.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Réallocation des rôles · asset management</span>
+      <h3><a href="https://www.agefi.fr/asset-management/actualites/lia-est-partout-chez-les-gerants-dactifs-mais-rarement-a-grande-echelle" target="_blank" rel="noopener">Asset management : l'IA partout, l'échelle rare — et 51 % anticipent une réallocation des rôles</a></h3>
+      <p class="srcline"><span class="src">L'Agefi (Asset Management) — enquête Alfi / Efama, 63 acteurs</span> · <span class="date">6 novembre 2026</span></p>
+      <p>96,8 % des sociétés de gestion utilisent l'IA générative et 60,3 % des agents autonomes. Mais sur trois ans, <b>51 % anticipent une réallocation des rôles plutôt qu'une baisse d'effectifs</b>, le <i>middle office</i> et les opérations étant en première ligne. Nuance majeure pour la GPEC : transformation des métiers plutôt que suppressions.</p>
+    </article>
+  </section>
+
+  <!-- AXE 3 -->
+  <section id="axe3">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Risques &amp; défis</h2>
+      <span class="sec-note">biais · RGPD/AI Act · surveillance</span>
+    </div>
+
+    <article class="card">
+      <span class="tag">Gouvernance paie · ligne rouge</span>
+      <h3><a href="https://www.hcamag.com/ca/specialization/transformation/what-canadas-banks-know-about-ai-agents-that-hr-teams-may-not/596367" target="_blank" rel="noopener">IA et paie : ce que les banques canadiennes refusent déjà aux agents IA</a></h3>
+      <p class="srcline"><span class="src">HRD Canada (HCAMag)</span> · <span class="date">5 novembre 2026</span></p>
+      <p>Après que BMO, RBC, CIBC et TD ont bloqué l'accès des agents IA aux comptes, la question se déplace vers la paie : pour l'expert John Wunderlich, une IA « probabiliste » ne doit <b>jamais</b> toucher au calcul ni au versement des salaires, et l'employeur reste responsable des actes de son agent. Un cas concret de « ligne rouge » à inscrire dans les chartes RH.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Droit social · surveillance</span>
+      <h3><a href="https://www.village-justice.com/articles/chatgpt-claude-agents-comment-concilier-innovation-pouvoir-direction-protection,59827.html" target="_blank" rel="noopener">ChatGPT, Claude et agents IA : concilier innovation, pouvoir de direction et protection des salariés</a></h3>
+      <p class="srcline"><span class="src">Village de la Justice (Sophie Reichman, avocate)</span> · <span class="date">5 novembre 2026</span></p>
+      <p>La <b>journalisation nominative des prompts</b> d'un salarié relève du contrôle de l'activité et suppose information/consultation du CSE (art. L.2312-38) ; une charte IA impérative doit suivre le régime du règlement intérieur. Rappel : le recrutement et le <i>scoring</i> IA sont <b>« à haut risque »</b> (AI Act, annexe III) — obligations reportées au 2 décembre 2027, mais RGPD et droit commun déjà applicables.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Résistances sociales · assurance</span>
+      <h3><a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank" rel="noopener">Assurance : quatre syndicats appellent à la grève le 5 novembre</a></h3>
+      <p class="srcline"><span class="src">L'Argus de l'assurance</span> · <span class="date">4 novembre 2026</span></p>
+      <p>CFDT, CGT, CFTC et FO appellent les salariés de l'assurance à rejoindre la mobilisation intersyndicale du 5 novembre, dénonçant la <b>hausse des charges de travail</b> et réclamant des augmentations. Signal social : la transformation (IA, productivité) alimente les tensions salariales au moment où les plans d'IA s'accélèrent.</p>
+    </article>
+  </section>
+
+  <!-- AXE 4 -->
+  <section id="axe4">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Dispositifs d'accompagnement</h2>
+      <span class="sec-note">cas concrets · gouvernance</span>
+    </div>
+
+    <article class="card">
+      <span class="tag">Cas concret · banque FR</span>
+      <h3><a href="https://access-international.dev/fr/insights/banque-agents-ia-preparent-gestionnaires-decident/" target="_blank" rel="noopener">Banque : les agents IA préparent, les gestionnaires décident (Société Générale, BNP, Crédit Agricole)</a></h3>
+      <p class="srcline"><span class="src">Access International</span> · <span class="date">4 novembre 2026</span></p>
+      <p>Panorama des déploiements 2026 : SocGen AI (agent « opérations sur titres », fiabilité déclarée 84 %), BNP Paribas (Mistral AI, Google) — avec <b>validation humaine systématique</b> des décisions ; la Banque de France / ACPR supervisera les systèmes à haut risque dès décembre 2027. Le modèle dominant reste « <b>préparer, pas décider</b> », réplicable dans les processus RH.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Dispositif de gouvernance</span>
+      <h3><a href="https://www.fticonsulting.com/fr-fr/france/insights/articles/ai-governance-examination-issue" target="_blank" rel="noopener">La gouvernance IA devient un sujet d'examen pour les banques</a></h3>
+      <p class="srcline"><span class="src">FTI Consulting</span> · <span class="date">6 novembre 2026</span></p>
+      <p>Le CSBS (superviseurs bancaires américains) publie un cadre de supervision IA : inventaire des systèmes, hiérarchisation des risques, preuve du contrôle humain, journalisation des agents. Transposable aux déploiements RH : une gouvernance « sur le papier » ne suffit plus, il faut produire <b>des preuves</b> (approbations, tests, supervision). Écho aux attentes de l'ACPR en Europe.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag">Industrialisation · informatique</span>
+      <h3><a href="https://www.lemagit.fr/actualites/366653539/IA-en-entreprise-lindustrialisation-reste-marginale-etude" target="_blank" rel="noopener">IA en entreprise : l'industrialisation reste marginale (étude TCS)</a></h3>
+      <p class="srcline"><span class="src">LeMagIT (secteur informatique)</span> · <span class="date">4 novembre 2026</span></p>
+      <p>Selon Tata Consultancy Services, <b>moins de 10 %</b> des organisations ont réellement passé l'IA à l'échelle ; 9 % l'utilisent pour orchestrer des <i>workflows</i> métiers et 10 % autorisent des décisions sans humain. Freins : coûts imprévisibles, qualité des données, cybersécurité. Pour la fonction RH, le goulot d'étranglement est la <b>conduite du changement</b>, pas l'outil.</p>
+    </article>
+  </section>
+
+  <!-- SYNTHESE -->
+  <section class="synth" id="synthese">
+    <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+    <p class="lead">Signaux à suivre · liens sources bruts</p>
+
+    <div class="signal">
+      <div class="sig-no">01</div>
+      <div class="sig-body">
+        <h4>L'écart entre l'annonce et l'échelle (le « pilote permanent »)</h4>
+        <p>Partout la même photo : adoption massive, industrialisation minoritaire. À surveiller, car l'IA est souvent annoncée comme acquise dans les feuilles de route RH alors qu'elle reste expérimentale.</p>
+        <ul class="sig-links">
+          <li><a href="https://www.lemagit.fr/actualites/366653539/IA-en-entreprise-lindustrialisation-reste-marginale-etude" target="_blank" rel="noopener">LeMagIT — l'industrialisation reste marginale (TCS), 4 nov. 2026</a></li>
+          <li><a href="https://www.globenewswire.com/fr/news-release/2026/11/05/3396012/0/fr/les-institutions-financi%C3%A8res-acc%C3%A9l%C3%A8rent-leur-transition-vers-l-ia-multi-agents-pour-g%C3%A9n%C3%A9rer-davantage-de-valeur.html" target="_blank" rel="noopener">Capgemini — 59 % en pilote, 10 % orchestrés, 5 nov. 2026</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="signal">
+      <div class="sig-no">02</div>
+      <div class="sig-body">
+        <h4>La paie et les données sociales comme « zone interdite » aux agents IA</h4>
+        <p>La ligne rouge se déplace du recrutement vers le calcul et le versement des salaires, et vers la traçabilité nominative des usages. À anticiper dans les chartes IA et les consultations CSE.</p>
+        <ul class="sig-links">
+          <li><a href="https://www.hcamag.com/ca/specialization/transformation/what-canadas-banks-know-about-ai-agents-that-hr-teams-may-not/596367" target="_blank" rel="noopener">HCAMag — IA et paie, 5 nov. 2026</a></li>
+          <li><a href="https://www.village-justice.com/articles/chatgpt-claude-agents-comment-concilier-innovation-pouvoir-direction-protection,59827.html" target="_blank" rel="noopener">Village de la Justice — journaux de prompts et CSE, 5 nov. 2026</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="signal">
+      <div class="sig-no">03</div>
+      <div class="sig-body">
+        <h4>Le reskilling public devient la colonne vertébrale de l'accompagnement</h4>
+        <p>Plans d'État, EDEC IA, CPF et financements ciblés portent l'essentiel de l'effort de montée en compétences, y compris pour l'IT et la banque-assurance. Enjeu de calendrier immédiat pour les TPE/PME.</p>
+        <ul class="sig-links">
+          <li><a href="https://www.simplon.co/articles/formation-opco-atlas-financer-une-formation-ia-etapes-et-delais" target="_blank" rel="noopener">Simplon — formation IA financée via l'Opco Atlas (IA-tlas, dossiers jusqu'au 15 déc. 2026)</a></li>
+          <li><a href="https://travail-emploi.gouv.fr/sites/travail-emploi/files/2026-09/Cahier%20des%20charges%20AMI%20EDEC%20IA.pdf" target="_blank" rel="noopener">Ministère du Travail — AMI « EDEC IA » (dépôts jusqu'au 30 nov. 2026)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="signal">
+      <div class="sig-no">04</div>
+      <div class="sig-body">
+        <h4>La supervision humaine (« human-in-the-loop ») se normalise dans la finance</h4>
+        <p>Le « préparer, pas décider » cesse d'être un choix d'ergonomie pour devenir une exigence de conformité et de preuve, sous l'œil des superviseurs (ACPR, CSBS). Bon terrain d'expérimentation pour les garde-fous RH.</p>
+        <ul class="sig-links">
+          <li><a href="https://access-international.dev/fr/insights/banque-agents-ia-preparent-gestionnaires-decident/" target="_blank" rel="noopener">Access International — « préparer, pas décider », 4 nov. 2026</a></li>
+          <li><a href="https://www.fticonsulting.com/fr-fr/france/insights/articles/ai-governance-examination-issue" target="_blank" rel="noopener">FTI Consulting — la gouvernance IA comme sujet d'examen, 6 nov. 2026</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="signal">
+      <div class="sig-no">05</div>
+      <div class="sig-body">
+        <h4>Le front social se durcit autour de la charge de travail liée à l'IA</h4>
+        <p>Grèves, « alarmes sociales » et plans de réduction d'effectifs (Generali, Ergo) montrent que le coût social de la transformation se matérialise d'abord sur les collectifs de travail, avant même les gains de productivité.</p>
+        <ul class="sig-links">
+          <li><a href="https://www.argusdelassurance.com/ressources-humaines/mobilisation-du-5-novembre-quatre-syndicats-appellent-les-salaries-de-lassurance-a-faire-greve-et-a-manifester.LL3LKB34B5ANBMURSO37KUM7FM.html" target="_blank" rel="noopener">L'Argus de l'assurance — grève du 5 novembre, 4 nov. 2026</a></li>
+          <li><a href="https://www.lassuranceenmouvement.com/2026/10/28/assurance-et-ia-quels-effets-sur-lemploi/" target="_blank" rel="noopener">L'Assurance en mouvement — Assurance et IA : effets sur l'emploi (Generali/Ergo), 28 oct. 2026</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footgrid">
+      <span><b>Méthode</b> — 12 entrées · 4 axes · fenêtre 7 jours (31/10 → 06/11/2026)</span>
+      <span><b>Dates</b> — vérifiées à la source (JJ/MM/AAAA vs MM/JJ/AAAA)</span>
+      <span><b>Doublons</b> — une dépêche reprise par plusieurs médias = une entrée</span>
+      <span><b>Blacklist</b> — lesnumeriques.com, degrouptest.com non cités</span>
+    </div>
+    <div style="margin-top:12px">O.R.A.C. · profil démonstration · bac à sable de comparaison — aucune donnée de production modifiée.</div>
+  </footer>
+
+</div>
+</body>
+</html>

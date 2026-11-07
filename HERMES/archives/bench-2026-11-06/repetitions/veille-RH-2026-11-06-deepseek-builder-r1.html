@@ -1,0 +1,308 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .theme-toggle{margin-top:10px}
+    .theme-toggle button{
+      background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:999px;
+      padding:5px 14px;font-size:.8rem;cursor:pointer;
+    }
+    .theme-toggle button:hover{background:#334155}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.prospec{border-top:4px solid #8b5cf6}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .dark .card.apports .card-title{color:#2dd4bf}
+    .dark .card.risques .card-title{color:#f87171}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted)}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .flag{font-weight:700}
+    .flag.fort{color:#ef4444}
+    .flag.modere{color:#ea580c}
+    .flag.faible{color:#10b981}
+    .full-card{margin-top:16px}
+    .signals{padding:12px 18px 18px}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    table.dash{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+    table.dash th{background:#0b1220;color:#f3f4f6;padding:10px 12px;text-align:left;font-size:.8rem;letter-spacing:.04em}
+    table.dash td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+    table.dash tr:nth-child(even) td{background:rgba(148,163,184,.07)}
+    .riskcell{font-weight:700}
+    .riskcell.f{color:#ef4444}.riskcell.m{color:#ea580c}.riskcell.w{color:#10b981}
+    .dash-scroll{overflow-x:auto}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      table.dash{font-size:.78rem}
+      table.dash th,table.dash td{padding:8px 8px}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    html[data-theme="light"]{--teal:#0d9488;--danger:#dc2626}
+    .item .flag{display:inline-block;margin-left:6px}
+    .signals li{margin:14px 0}
+    .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+    .source-line{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🧑‍💼 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>Métiers RH, compétences, risques, accompagnement — généré automatiquement par ORAC (Hermes)</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Actualités vérifiées</div><div class="value">12</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">31 oct. – 6 nov. 2026</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 12 actualités</span>
+    <span class="pill teal">🛠️ 3 métiers RH</span>
+    <span class="pill yellow">🎓 3 compétences</span>
+    <span class="pill red">⚠️ 3 risques</span>
+    <span class="pill green">🔄 3 accompagnement</span>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📌 Synthèse de la semaine</div></div>
+    <div class="card-body synthese">
+      Cette édition déplace le curseur de l'outil vers la <strong>gouvernance</strong>. Côté <strong>métiers RH</strong>, les assistants et chatbots RH passent à l'échelle (Bell et son portail résolvant 70 % des requêtes, sophistiqués du SIRH) et la formation se fait rôle par rôle (Deutsche Bank, ISFB). Côté <strong>compétences</strong>, l'écart entre la conviction (92 % croient au reskilling) et le geste réel (recrutement externe qui devance la mobilité interne) reste le principal point de fragilité. Côté <strong>risques</strong>, le tri de candidatures (AEPD) et la surveillance algorithmique (Les Echos) déplacent le sujet sur le terrain juridique et social, avec une supervision humaine qui doit être « effective », pas de façade. Côté <strong>dispositifs</strong>, banque et assurance outillent leur diagnostic : « l'agent prépare, l'humain décide » (Société Générale, BNP Paribas, Crédit Agricole), supervision humaine chez AXA, consultation du CSE en amont — le dialogue social s'installe comme préalable.
+    </div>
+  </div>
+
+<div class="card apports full-card">
+<div class="card-head"><div class="card-title">🛠️ 1. IA dans les métiers RH</div><span class="pill teal">3</span></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesaffaires.com/secteurs/techno-et-ia/bell-branche-ses-rh-au-numerique-edition_4_novembre_2026/" target="_blank" rel="noopener">Bell branche ses RH au numérique (portail RH, assistant virtuel, onboarding automatisé)</a></h3>
+<div class="source-line">Source : Les Affaires · publié le 4 novembre 2026 · secteur : Informatique / Télécom</div>
+<p>Bell (40 000 employés, 70 conventions collectives) a bâti avec ServiceNow un portail RH centralisé reliant recrutement, onboarding, engagement et mentorat. Un assistant virtuel adossé à une bibliothèque de 400 articles résout 70 % des requêtes sans conseiller RH, et l'entreprise pousse désormais l'IA agentique pour le libre-service. Cas d'école d'onboarding automatisé et de chatbot RH à grande échelle.</p>
+<div class="tags"><span class="tag">assistant virtuel</span><span class="tag">onboarding</span><span class="tag">ServiceNow</span><span class="tag">IA agentique RH</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.helloworkplace.fr/defis-ia-recruteurs-enquete/" target="_blank" rel="noopener">Les 6 défis IA qui attendent les recruteurs en 2027</a></h3>
+<div class="source-line">Source : HelloWorkplace (enquête Hellowork) · publié le 4 novembre 2026 · secteur : Transversal</div>
+<p>93 % des recruteurs utilisent l'IA (78 % en 2025) contre 61 % des candidats. 66 % constatent une standardisation des CV générés par IA, mais seuls 8,5 % des recruteurs pré-trient réellement les candidatures par IA. L'annexe III de l'AI Act classe le tri et l'évaluation des candidats à haut risque (obligations reportées au 2 décembre 2027 : supervision humaine, documentation, information des candidats et des représentants du personnel).</p>
+<div class="tags"><span class="tag">ATS</span><span class="tag">matching CV</span><span class="tag">standardisation</span><span class="tag">AI Act</span></div>
+</div>
+<div class="item">
+<h3><a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/" target="_blank" rel="noopener">IA et recrutement : qui assume la décision ? (Fabian Caldarella, Artemys)</a></h3>
+<div class="source-line">Source : myRHline (étude « Recrutement 2040 » avec Teamtailor) · publié le 2 novembre 2026 · secteur : Transversal</div>
+<p>Le directeur du recrutement d'Artemys défend un recruteur qui garde la décision : l'IA accélère le sourcing et compare des profils, mais l'explication d'un choix et la défense d'un potentiel restent humaines. Écho direct à l'avertissement de l'AEPD (art. 22 RGPD) : valider en un clic un classement algorithmique n'est pas un contrôle humain réel.</p>
+<div class="tags"><span class="tag">matching</span><span class="tag">responsabilité</span><span class="tag">décision humaine</span><span class="tag">RGPD</span></div>
+</div>
+</div>
+</div>
+<div class="card accomp full-card">
+<div class="card-head"><div class="card-title">🎓 2. Évolutions des compétences</div><span class="pill yellow">3</span></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1" target="_blank" rel="noopener">Deutsche Bank Private Bank launches AI Academy for more than 20,000 employees</a></h3>
+<div class="source-line">Source : Deutsche Bank (communiqué) · publié le 5 novembre 2026 · secteur : Banque</div>
+<p>La Private Bank lance la « PB AI Academy » : parcours d'apprentissage par rôle (5 à 10 formations recommandées), du prompting et de l'usage responsable de l'IA jusqu'aux agents IA. Déjà ouverte à ~3 500 collaborateurs, elle vise plus de 20 000 salariés ; en Allemagne, le déploiement est subordonné à la consultation des représentants du personnel.</p>
+<div class="tags"><span class="tag">formation par rôle</span><span class="tag">banque</span><span class="tag">agents IA</span><span class="tag">dialogue social</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.morningstar.com/news/pr-newswire/20261104ph87613/new-research-92-of-hr-professionals-believe-employees-can-be-reskilled-for-ai-jobs-yet-external-hiring-outpaces-redeployment" target="_blank" rel="noopener">New Research: 92% of HR Professionals Believe Employees Can Be Reskilled for AI Jobs, Yet External Hiring Outpaces Redeployment</a></h3>
+<div class="source-line">Source : PR Newswire / Morningstar (Careerminds & Censuswide) · publié le 4 novembre 2026 · secteur : Informatique / Télécom</div>
+<p>Enquête auprès de 1 142 professionnels RH et managers (US) : 92 % pensent que leurs salariés peuvent être reconvertis aux métiers de l'IA, mais 51 % recrutent en externe contre 42 % qui redéploient. Dans la tech et les télécoms, l'écart atteint 15 points. Le recrutement externe coûte 3 à 5 fois plus cher et prend jusqu'à 20 jours de plus qu'une mobilité interne (Josh Bersin Company).</p>
+<div class="tags"><span class="tag">reskilling</span><span class="tag">mobilité interne</span><span class="tag">informatique</span><span class="tag">coût</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank" rel="noopener">Séminaire Swiss Banking sur l'IA générative au travail</a></h3>
+<div class="source-line">Source : ISFB (Institut Supérieur de Formation Bancaire) · publié le 3 novembre 2026 · secteur : Banque</div>
+<p>L'ISFB prolonge sa série « De l'adoption à l'appropriation de l'IA » par un webinaire avec Swiss Banking (10 novembre) : compétences, apprentissage, identité professionnelle, autonomie, charge cognitive et santé au travail. Fil rouge : apprendre à travailler avec l'IA sans perdre la valeur de l'expertise humaine — un enjeu de formation continue pour la banque romande.</p>
+<div class="tags"><span class="tag">compétences</span><span class="tag">appropriation</span><span class="tag">banque</span><span class="tag">santé au travail</span></div>
+</div>
+</div>
+</div>
+<div class="card risques full-card">
+<div class="card-head"><div class="card-title">⚠️ 3. Risques &amp; défis</div><span class="pill red">3</span></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank" rel="noopener">L'ère du « management algorithmique » : comment l'IA renforce la surveillance des salariés</a></h3>
+<div class="source-line">Source : Les Echos · publié le 5 novembre 2026 · secteur : Transversal</div>
+<p>Le déploiement « parfois débridé » de l'IA et la quête de productivité accroissent la surveillance des salariés, parfois de façon opaque et disproportionnée. Les « smart reports » d'Anthropic, qui mesurent l'usage de Claude — jusqu'aux conversations jugées « personnelles » ou « inefficaces » — illustrent la porosité entre suivi du déploiement et contrôle des personnes. Proportionnalité (RGPD), consultation du CSE et AIPD redeviennent des exigences de premier plan.</p>
+<div class="tags"><span class="tag">surveillance</span><span class="tag">management algorithmique</span><span class="tag">RGPD</span><span class="tag">AIPD</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.donneespersonnelles.fr/actualite-ia-2026" target="_blank" rel="noopener">AEPD : un humain dans la boucle ne suffit pas pour trier des candidats</a></h3>
+<div class="source-line">Source : donneespersonnelles.fr (veille AI Act / RGPD) · publié le 3 novembre 2026 · secteur : Transversal</div>
+<p>L'autorité espagnole avertit les employeurs après une enquête sur un système de tri de CV, de notation de profils et de priorisation de candidatures : dire que la décision finale revient à une personne ne suffit pas. Elle exige une supervision réellement effective (art. 22 RGPD), l'information des candidats (art. 12-14), des mesures dès la conception (art. 25) et une AIPD (art. 35). Un clic de validation sur une liste pré-classée n'est pas un contrôle humain.</p>
+<div class="tags"><span class="tag">biais algorithmique</span><span class="tag">art. 22 RGPD</span><span class="tag">AIPD</span><span class="tag">tri de CV</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.cfdt2cap.org/ia-chez-apps-quand-la-direction-enterre-le-dialogue-social/" target="_blank" rel="noopener">IA chez APPS : quand la direction enterre le dialogue social…</a></h3>
+<div class="source-line">Source : CFDT UES Capgemini / Altran · publié le 4 novembre 2026 · secteur : Informatique / ESN</div>
+<p>La CFDT dénonce la méthode chez l'ESN : information-consultation sur l'IA obtenue de haute lutte, recours massif à des assistants IA sans implication des élus, et annonce d'une possible réduction de 20 % des effectifs de projets « au nom de l'IA », assortie d'une incitation à « se former » sous menace de licenciement. Cas emblématique de la friction entre déploiement IA et dialogue social dans les services informatiques.</p>
+<div class="tags"><span class="tag">dialogue social</span><span class="tag">CSE</span><span class="tag">ESN</span><span class="tag">résistances</span></div>
+</div>
+</div>
+</div>
+<div class="card prospec full-card">
+<div class="card-head"><div class="card-title">🔄 4. Dispositifs d'accompagnement</div><span class="pill green">3</span></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable" target="_blank" rel="noopener">L'IA : transformer l'incertitude en opportunité responsable (Matthieu Caillat, AXA)</a></h3>
+<div class="source-line">Source : AXA (Parole de leaders) · publié le 6 novembre 2026 · secteur : Assurance</div>
+<p>Le Directeur Technologie & IA du groupe décrit une IA qui « ne remplace pas le jugement humain, elle l'augmente ». L'assistant SmartInAXA équipe plus de 19 000 utilisateurs (IARD particuliers, ~1 500 demandes/jour) et AXA encadre tout le cycle de vie : validation des cas d'usage, qualité des données, choix des modèles, supervision humaine des décisions sensibles. Cas concret assurance, intégré au plan « Growing Forward ».</p>
+<div class="tags"><span class="tag">assurance</span><span class="tag">supervision humaine</span><span class="tag">gouvernance</span><span class="tag">IA augmentée</span></div>
+</div>
+<div class="item">
+<h3><a href="https://access-international.dev/fr/insights/banque-agents-ia-preparent-gestionnaires-decident/" target="_blank" rel="noopener">Banque : les agents IA préparent, les gestionnaires décident. Ce que 2026 a déjà montré</a></h3>
+<div class="source-line">Source : Access International · publié le 4 novembre 2026 · secteur : Banque</div>
+<p>Panorama des agents bancaires en production : agent d'opérations sur titres chez Société Générale (fiabilité déclarée 84 %), BNP Paribas (Mistral puis Google, experts qui valident), paiement agentique du Crédit Agricole validé par le client. L'ACPR supervisera les systèmes à haut risque à partir de décembre 2027 et aucune des offres ne couvre le scoring de crédit, usage à haut risque. Principe commun : l'agent prépare, l'humain décide.</p>
+<div class="tags"><span class="tag">banque</span><span class="tag">IA agentique</span><span class="tag">supervision</span><span class="tag">haut risque</span></div>
+</div>
+<div class="item">
+<h3><a href="https://culture-rh.com/deploiement-ia-en-entreprise-consultation-cse/" target="_blank" rel="noopener">Déploiement de l'IA en entreprise : quand et comment consulter le CSE ?</a></h3>
+<div class="source-line">Source : Culture RH · publié le 2 novembre 2026 · secteur : Transversal</div>
+<p>Rappel opérationnel : ce n'est pas l'IA en soi qui déclenche la consultation, mais ses effets sur l'organisation et les conditions de travail, et elle doit précéder la mise en œuvre. Le CSE est informé en amont des méthodes d'aide au recrutement et des traitements automatisés de gestion du personnel. Un guide pour outiller les négociations GEPP des banques, assureurs et directions informatiques.</p>
+<div class="tags"><span class="tag">CSE</span><span class="tag">consultation</span><span class="tag">GEPP</span><span class="tag">Code du travail</span></div>
+</div>
+</div>
+</div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-body signals">
+      <ol>
+<li><strong>1. Le tri des candidatures par IA devient un point de bascule juridique</strong> — L'AEPD juge insuffisante une supervision humaine de façade sur un outil de tri et de notation de CV ; myRHline replace la décision comme responsabilité humaine et explicable ; HelloWorkplace documente 66 % de CV standardisés par l'IA et un tri automatique encore minoritaire (8,5 %). La conformité (art. 22 RGPD, annexe III de l'AI Act) se joue outil par outil, pas au principe.
+<div class="signal-src">Sources : <a href="https://www.donneespersonnelles.fr/actualite-ia-2026" target="_blank" rel="noopener">https://www.donneespersonnelles.fr/actualite-ia-2026</a> · <a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/" target="_blank" rel="noopener">https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/</a> · <a href="https://www.helloworkplace.fr/defis-ia-recruteurs-enquete/" target="_blank" rel="noopener">https://www.helloworkplace.fr/defis-ia-recruteurs-enquete/</a></div></li>
+<li><strong>2. La surveillance algorithmique des salariés s'installe comme sujet de relations sociales</strong> — Les Echos documentent un « management algorithmique » opaque et disproportionné, jusqu'au suivi de l'usage de Claude par les managers ; la CFDT Capgemini dénonce un déploiement d'IA mené sans les élus. Proportionnalité RGPD, consultation du CSE et analyse d'impact (AIPD) redeviennent des passages obligés du déploiement.
+<div class="signal-src">Sources : <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank" rel="noopener">https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391</a> · <a href="https://www.cfdt2cap.org/ia-chez-apps-quand-la-direction-enterre-le-dialogue-social/" target="_blank" rel="noopener">https://www.cfdt2cap.org/ia-chez-apps-quand-la-direction-enterre-le-dialogue-social/</a></div></li>
+<li><strong>3. La formation à l'IA se joue rôle par rôle, pas au catalogue</strong> — Deutsche Bank déploie des parcours par métier pour plus de 20 000 salariés ; l'ISFB recentre l'enjeu sur l'appropriation et la préservation de l'expertise (autonomie, charge cognitive, santé au travail) ; Careerminds montre que 92 % des RH croient au reskilling mais recrutent surtout en externe. L'écart entre la conviction et le dispositif est le vrai risque de décrochage.
+<div class="signal-src">Sources : <a href="https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1" target="_blank" rel="noopener">https://www.db.com/news/detail/20261105-deutsche-bank-private-bank-launches-ai-academy-for-more-than-20-000-employees?language_id=1</a> · <a href="https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/" target="_blank" rel="noopener">https://www.isfb.ch/2026/11/03/seminaire-swissbanking-sur-lia-generative-au-travail/</a> · <a href="https://www.morningstar.com/news/pr-newswire/20261104ph87613/new-research-92-of-hr-professionals-believe-employees-can-be-reskilled-for-ai-jobs-yet-external-hiring-outpaces-redeployment" target="_blank" rel="noopener">https://www.morningstar.com/news/pr-newswire/20261104ph87613/new-research-92-of-hr-professionals-believe-employees-can-be-reskilled-for-ai-jobs-yet-external-hiring-outpaces-redeployment</a></div></li>
+<li><strong>4. Banque et assurance : « l'agent prépare, l'humain décide » comme argument de confiance</strong> — AXA met en avant SmartInAXA (19 000 utilisateurs) et la supervision humaine des décisions sensibles ; en banque, les agents servent d'abord à préparer les dossiers (Société Générale, BNP Paribas, Crédit Agricole) et l'ACPR supervisera le haut risque dès décembre 2027. L'accompagnement (supervision, gouvernance) devient la contrepartie exigée de la productivité.
+<div class="signal-src">Sources : <a href="https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable" target="_blank" rel="noopener">https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable</a> · <a href="https://access-international.dev/fr/insights/banque-agents-ia-preparent-gestionnaires-decident/" target="_blank" rel="noopener">https://access-international.dev/fr/insights/banque-agents-ia-preparent-gestionnaires-decident/</a></div></li>
+<li><strong>5. La consultation des représentants du personnel s'impose en amont du déploiement</strong> — Culture RH rappelle que la consultation du CSE doit précéder la mise en œuvre ; la CFDT Capgemini illustre le coût social d'un passage en force ; AXA inscrit la supervision humaine dans sa gouvernance IA. Le dialogue social s'installe comme préalable du déploiement, et non comme option a posteriori.
+<div class="signal-src">Sources : <a href="https://culture-rh.com/deploiement-ia-en-entreprise-consultation-cse/" target="_blank" rel="noopener">https://culture-rh.com/deploiement-ia-en-entreprise-consultation-cse/</a> · <a href="https://www.cfdt2cap.org/ia-chez-apps-quand-la-direction-enterre-le-dialogue-social/" target="_blank" rel="noopener">https://www.cfdt2cap.org/ia-chez-apps-quand-la-direction-enterre-le-dialogue-social/</a> · <a href="https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable" target="_blank" rel="noopener">https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable</a></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 6 novembre 2026 par ORAC / Hermes (skill veille-rh-ia). Fichiers : veille-RH-2026-11-06-deepseek-builder-r1.md + .html</p>
+    <p>Corpus : 12 actualités, 4 axes, dates de publication vérifiées page par page.</p>
+    <p>Destinataire du thème : reynald.chapuis@creditmutuel.fr (CCI : dorninem@e-i.com)</p>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

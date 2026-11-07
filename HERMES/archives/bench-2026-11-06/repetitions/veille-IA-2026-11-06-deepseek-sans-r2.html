@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille IA global — 6 novembre 2026</title>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#161b22; --panel2:#1c2230; --ink:#e6edf3; --muted:#9aa4b2;
+    --line:#2a3240; --fr:#3b82f6; --eu:#8b5cf6; --world:#10b981; --mistral:#f59e0b;
+    --pro:#06b6d4; --sig:#ec4899; --accent:#7c9cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+  header{background:linear-gradient(135deg,#1b2b5a 0%,#0e1117 60%);border-bottom:1px solid var(--line);
+    padding:48px 20px 36px;margin-bottom:36px}
+  header .wrap{padding-bottom:0}
+  h1{font-size:2.1rem;margin:0 0 8px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:.95rem}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .badge{font-size:.78rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);
+    background:var(--panel);color:var(--muted)}
+  .badge b{color:var(--ink);font-weight:600}
+  h2{font-size:1.4rem;margin:44px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:10px}
+  h3{font-size:1.08rem;margin:30px 0 14px;color:var(--accent);letter-spacing:.01em}
+  .summary{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:12px;padding:20px 22px;color:#dbe3ee}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+    margin:14px 0;border-left:4px solid var(--fr);transition:transform .12s ease,border-color .12s ease}
+  .card:hover{transform:translateY(-2px)}
+  .card.eu{border-left-color:var(--eu)}
+  .card.world{border-left-color:var(--world)}
+  .card.mistral{border-left-color:var(--mistral)}
+  .card h4{margin:0 0 8px;font-size:1.02rem;line-height:1.4}
+  .card p{margin:0 0 12px;color:#c9d3e0;font-size:.93rem}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.8rem}
+  .src{color:var(--muted)}
+  .date{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:#cdd6e2}
+  a.link{color:var(--accent);text-decoration:none;word-break:break-all;font-size:.8rem}
+  a.link:hover{text-decoration:underline}
+  .pro{background:linear-gradient(180deg,var(--panel),#0d1b22);border:1px solid var(--line);
+    border-left:4px solid var(--pro);border-radius:12px;padding:8px 22px 18px}
+  .pro ol{margin:0;padding-left:20px}
+  .pro li{margin:14px 0;color:#cfd9e6;font-size:.94rem}
+  .pro li b{color:#fff}
+  .signals{display:grid;grid-template-columns:1fr;gap:14px}
+  .signal{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--sig);
+    border-radius:12px;padding:16px 18px}
+  .signal b{display:block;margin-bottom:8px;font-size:.95rem}
+  .signal a{display:block;color:var(--accent);text-decoration:none;word-break:break-all;font-size:.8rem;margin:3px 0}
+  .signal a:hover{text-decoration:underline}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:10px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Veille IA global — 6 novembre 2026</h1>
+    <div class="sub">Intelligence artificielle : France · Europe · Monde · Focus Mistral</div>
+    <div class="badges">
+      <span class="badge">Fenêtre : <b>31/10 → 06/11/2026 (7 j)</b></span>
+      <span class="badge">Sites blacklistés exclus : <b>lesnumeriques.com, degrouptest.com</b></span>
+      <span class="badge"><b>11</b> articles (max. 12)</span>
+      <span class="badge">Anti-doublons : <b>oui</b></span>
+      <span class="badge">Dates de publication : <b>vérifiées</b></span>
+      <span class="badge">Tirage : <b>deepseek-sans-r2</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>Synthèse</h2>
+  <div class="summary">
+    La semaine se lit en trois mouvements. <b>Modèles</b> : la course se déplace vers la cybersécurité — Google (Gemini 4 Carbon), OpenAI (GPT-6 Cyber) et Mistral (Large 4 « Le Chonk », 82 % au benchmark CyberGym-E2E) convertissent les LLM en outils offensifs/défensifs, mais sous accès restreint et garde-fous renforcés. <b>Financement</b> : le robinet se resserre — OpenAI ne boucle que 11 Md$ sur les 30 Md$ visés (valorisation 1 250 Md$), quand Anthropic affiche 17 Md$ de revenus au T3 pour 23,3 Md$ de perte nette. <b>Politique</b> : les data centers deviennent un enjeu électoral (41 mesures locales aux midterms américains ; plus de 150 centres en Île-de-France), et l'Europe active sa réponse « souveraine » (OVHcloud, EDU-EDIC, paquet Éducation &amp; Compétences). En France, la rente politique de Mistral AI s'achève avec l'ère Macron, tandis que le terrain local s'organise : Sète dit non aux affiches générées par IA.
+  </div>
+
+  <h2>Actualités</h2>
+
+  <h3>🇫🇷 France</h3>
+
+  <div class="card">
+    <h4>1. Meta France supprime un tiers de ses effectifs au profit de l'IA</h4>
+    <p>La filiale française s'allège d'environ 100 postes via une rupture conventionnelle collective, pour réallouer ses moyens vers ses projets d'IA. À noter dans le même récapitulatif : la prolifération des data centers en Île-de-France, au-delà de 150 sites, sous forte tension énergétique et foncière.</p>
+    <div class="meta"><span class="src">ZDNET — ZDNET Morning</span><span class="date">06/11/2026</span>
+      <a class="link" href="https://www.zdnet.fr/actualites/zdnet-morning-06-11-2026-restructuration-chez-meta-france-proliferation-des-datacenters-en-ile-de-france-shein-investit-500me-en-pologne-507439.htm">zdnet.fr</a></div>
+  </div>
+
+  <div class="card">
+    <h4>2. OVHcloud annonce un modèle d'IA souveraine et cible le modèle économique de Mistral AI</h4>
+    <p>Octave Klaba annonce la sortie imminente d'un modèle de langage souverain (propriétaire et ouvert) d'ici fin novembre, et qualifie Mistral AI de « société de services du numérique », reprochant à son rival de lever des milliards sans rentabilité.</p>
+    <div class="meta"><span class="src">ZDNET</span><span class="date">02/11/2026 · 07h30</span>
+      <a class="link" href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm">zdnet.fr</a></div>
+  </div>
+
+  <div class="card">
+    <h4>3. Sète refuse d'imprimer et de relayer les affiches générées par IA</h4>
+    <p>Première ville à prendre officiellement position : la mairie (Hérault) n'imprime plus gratuitement, pour ses associations, les visuels créés par IA, au nom de la lutte contre « l'uniformisation » et de la protection des créateurs locaux. Rouen travaillerait à une charte anti-IA.</p>
+    <div class="meta"><span class="src">TF1info</span><span class="date">03/11/2026 · 17h00</span>
+      <a class="link" href="https://www.tf1info.fr/high-tech/video-la-decision-radicale-du-maire-de-sete-face-aux-affiches-generees-par-intelligence-artificielle-2473630.html">tf1info.fr</a></div>
+  </div>
+
+  <h3>🌍 Europe hors France</h3>
+
+  <div class="card eu">
+    <h4>4. La Commission lance le paquet « Éducation et Compétences » et un certificat de maîtrise de l'IA</h4>
+    <p>Quatre priorités : compétences de base, outils numériques/IA pour l'éducation, profession enseignante, enseignement professionnel. Le paquet prévoit la généralisation de la littératie IA à l'école et un « certificat de maîtrise de l'IA » dès 2027/28. Le 3 novembre, huit États membres fondateurs ont créé l'EDU-EDIC (infrastructure numérique souveraine pour l'éducation).</p>
+    <div class="meta"><span class="src">Commission européenne — digital-strategy</span><span class="date">05/11/2026</span>
+      <a class="link" href="https://digital-strategy.ec.europa.eu/en/news/commission-launches-education-and-skills-package-tackle-declining-basic-skills-rapid-digital-change">digital-strategy.ec.europa.eu</a></div>
+  </div>
+
+  <div class="card eu">
+    <h4>5. Virkkunen transmet son rapport annuel sur la simplification, la mise en œuvre et l'application du règlement numérique</h4>
+    <p>La vice-présidente exécutive chargée de la Souveraineté technologique a adressé au Conseil et au Parlement son rapport de progrès annuel, dans le contexte de l'entrée en application de dispositions de l'AI Act (pouvoirs d'enquête et d'amende de l'AI Office sur les modèles à usage général depuis le 2 août 2026).</p>
+    <div class="meta"><span class="src">Commission européenne — Shaping Europe's digital future</span><span class="date">04/11/2026</span>
+      <a class="link" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">digital-strategy.ec.europa.eu</a></div>
+  </div>
+
+  <div class="card eu">
+    <h4>6. Un consortium mené par Capgemini évaluera les cyber-risques de l'IA pour l'AI Office</h4>
+    <p>L'AI Office a retenu un consortium piloté par Capgemini (avec Wavestone et le laboratoire national de métrologie LNE) pour évaluer les risques de cybersécurité des modèles d'IA à usage général avancés et appuyer l'application de l'AI Act : outils d'évaluation, méthodes de notation du risque et expertises techniques.</p>
+    <div class="meta"><span class="src">MLex</span><span class="date">05/11/2026 · 09h18 GMT</span>
+      <a class="link" href="https://www.mlex.com/mlex/articles/2546594/capgemini-led-consortium-selected-to-assess-ai-cyber-risks-for-eu-ai-office">mlex.com</a></div>
+  </div>
+
+  <h3>🌐 Monde</h3>
+
+  <div class="card world">
+    <h4>7. OpenAI ne boucle que 11 Md$ (valorisation 1 250 Md$) sur une cible initiale de 30 Md$</h4>
+    <p>Première tranche d'une levée qui pourrait monter à ~20 Md$, très en deçà des 30 Md$ visés et d'une valorisation initialement espérée à 1,4-1,5 billion de dollars, après un trou d'air boursier sur les valeurs d'IA. Investisseurs cités : Coatue, T. Rowe Price, SoftBank, Sequoia, Founders Fund, a16z, MGX.</p>
+    <div class="meta"><span class="src">TechCrunch (d'après Bloomberg)</span><span class="date">06/11/2026</span>
+      <a class="link" href="https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/">techcrunch.com</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>8. Anthropic : 17 Md$ de revenus au T3 (×12 en un an) mais 23,3 Md$ de perte nette</h4>
+    <p>Mise à jour du dossier S-1 en vue d'une introduction en bourse : la perte intègre une charge non-cash de 21,9 Md$ liée à la forte hausse de la valorisation. Le même jour, le front juridique s'élargit (assignation d'un actionnaire d'Alphabet visant les modèles musicaux Lyria/MusicLM ; amicus briefs croisés dans les contentieux OpenAI/Microsoft).</p>
+    <div class="meta"><span class="src">Music Ally</span><span class="date">03/11/2026</span>
+      <a class="link" href="https://musically.com/2026/11/03/ai-roundup-lyria-lawsuit-anthropics-q3-openai-pile-in/">musically.com</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>9. OpenAI lance GPT-6 Cyber, un modèle de cybersécurité à usage restreint</h4>
+    <p>Modèle dédié à la découverte de vulnérabilités, au développement d'exploits et à la proposition de correctifs ; il aurait permis, via une chaîne d'agents, de produire 948 exploits fonctionnels ciblant le noyau Linux en environnement contrôlé. Accès réservé à des clients vérifiés.</p>
+    <div class="meta"><span class="src">InformatiqueNews</span><span class="date">06/11/2026</span>
+      <a class="link" href="https://www.informatiquenews.fr/openai-gpt-cyber-un-modele-dedie-la-cybersecurite-251556">informatiquenews.fr</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>10. Midterms américains : vague de rejet des data centers</h4>
+    <p>Les électeurs de 10 États ont tranché 41 mesures locales sur les data centers ; toutes celles dont le résultat est connu, sauf une, vont contre le développement (Ohio : 21 mesures ; Illinois : 7 ; Maine : 4 ; Kansas : 3). Les candidats démocrates promettant de freiner les data centers l'emportent au Texas, en Géorgie et dans l'Ohio.</p>
+    <div class="meta"><span class="src">The World of AI (d'après Forbes/Fast Company, Euronews)</span><span class="date">05/11/2026</span>
+      <a class="link" href="https://theworldofai.org/this-week-in-ai/2026-w45/">theworldofai.org</a></div>
+  </div>
+
+  <div class="card world">
+    <h4>11. Google désactive par défaut Gemini pour les élèves</h4>
+    <p>Revirement après des mois de critiques de parents, d'écoles et d'élus : Gemini (et ses fonctions associées dans Classroom, Notebook, Search) ne sera plus activé par défaut pour les comptes scolaires, jusqu'à activation explicite par les administrateurs.</p>
+    <div class="meta"><span class="src">Mediapart (dépêche AFP)</span><span class="date">05/11/2026 · 03h50</span>
+      <a class="link" href="https://www.mediapart.fr/journal/fil-dactualites/051126/google-va-desactiver-par-defaut-ses-outils-d-ia-pour-les-eleves">mediapart.fr</a></div>
+  </div>
+
+  <h2>Focus Mistral</h2>
+
+  <div class="card mistral">
+    <h4>A. Mistral rachète SkipLabs pour automatiser la vérification agentique du code</h4>
+    <p>Cinquième acquisition en moins d'un an : la start-up française SkipLabs (outillage de programmation) doit renforcer l'offensive de Mistral sur la génération de code, segment dominé par les acteurs américains.</p>
+    <div class="meta"><span class="src">ZDNET — rubrique Mistral AI</span><span class="date">06/11/2026</span>
+      <a class="link" href="https://www.zdnet.fr/mistral-ai-6811q.htm">zdnet.fr</a></div>
+  </div>
+
+  <div class="card mistral">
+    <h4>B. Large 4 « Le Chonk » : le meilleur modèle open-weight hors États-Unis et Chine</h4>
+    <p>Modèle nativement multimodal de ~1 000 milliards de paramètres (52 Md actifs), entraîné sur 3 800 GPU NVIDIA dans les data centers européens de Mistral. Sur l'index d'Artificial Analysis, Large 4 obtient 38 points (niveau de GPT-6 Luna) — devancé par trois modèles open-weight chinois moins chers (MiMo-V2.6-Pro 46, GLM-5.3-Flash 42, DeepSeek V4.1 Flash 39) — et résout 82 % des tâches de CyberGym-E2E (C/C++), meilleur score public.</p>
+    <div class="meta"><span class="src">Techniques de l'Ingénieur</span><span class="date">03/11/2026</span>
+      <a class="link" href="https://www.techniques-ingenieur.fr/actualite/articles/avec-large-4-mistral-se-rapproche-des-modeles-dia-americains-et-chinois-165533/">techniques-ingenieur.fr</a></div>
+  </div>
+
+  <div class="card mistral">
+    <h4>C. La rente politique de Mistral AI s'achève avec l'ère Macron</h4>
+    <p>Enquête sur le soutien exceptionnel dont la start-up a bénéficié (marchés publics, crédit d'impôt recherche, lobbying, Bpifrance) et sur son avenir une fois son principal soutien politique parti, dans un contexte de recours contre le mégaprojet « Campus IA ».</p>
+    <div class="meta"><span class="src">Le Canard enchaîné (n° 5530)</span><span class="date">03/11/2026</span>
+      <a class="link" href="https://www.lecanardenchaine.fr/police-justice/55322-mistral-ai-n-est-plus-assure-de-le-jouer-gagnant">lecanardenchaine.fr</a></div>
+  </div>
+
+  <h2>🔮 Prospective</h2>
+  <div class="pro">
+    <ol>
+      <li><b>La cybersécurité devient le banc d'essai de la sûreté.</b> Trois acteurs (Google, OpenAI, Mistral) ont livré en une semaine des modèles « cyber » à accès restreint et garde-fous renforcés. Si cette double contrainte devient la norme, elle préfigure une régulation par l'accès plutôt que par l'interdiction — et un risque de « club » des seuls défenseurs agréés.</li>
+      <li><b>Le financement entre en régime de rigueur.</b> OpenAI sous-performe sa levée et Anthropic publie une perte record malgré des revenus en forte hausse. La question de 2027 ne sera plus « combien lever » mais « quand rentabiliser », ce qui poussera à la consolidation (acquisitions d'équipes et d'outillage, comme Mistral/SkipLabs) et à la pression tarifaire.</li>
+      <li><b>Les data centers deviennent un sujet électoral.</b> Le vote local américain et les tensions franciliennes montrent que l'acceptabilité territoriale remplace le coût énergétique comme premier frein. À prévoir : moratoires locaux, chartes et report de charges sur les opérateurs.</li>
+      <li><b>L'Europe mise sur la souveraineté « par les usages ».</b> EDU-EDIC, certificat de littératie IA, évaluation des cyber-risques par l'AI Office, poussée d'OVHcloud : la stratégie européenne se déplace de la régulation des grands modèles vers l'équipement des administrations et des écoles — un pari sur la demande plus que sur l'offre.</li>
+      <li><b>Le politique redevient un actif… et un passif.</b> Pour Mistral, la fin de l'ère Macron fragilise un avantage historique ; à l'inverse, la défiance scolaire et anti-affiches IA montre que l'acceptation sociale se joue désormais au niveau local et non dans les capitales.</li>
+    </ol>
+  </div>
+
+  <h2>🧭 Synthèse — 5 signaux faibles sourcés</h2>
+  <div class="signals">
+    <div class="signal">
+      <b>Signal 1 — L'acceptabilité territoriale des data centers se retourne.</b>
+      <a href="https://theworldofai.org/this-week-in-ai/2026-w45/">theworldofai.org/this-week-in-ai/2026-w45/</a>
+      <a href="https://www.zdnet.fr/actualites/zdnet-morning-06-11-2026-restructuration-chez-meta-france-proliferation-des-datacenters-en-ile-de-france-shein-investit-500me-en-pologne-507439.htm">zdnet.fr — prolifération des datacenters en Île-de-France</a>
+    </div>
+    <div class="signal">
+      <b>Signal 2 — Les modèles « cyber » de frontière se multiplient et se ferment.</b>
+      <a href="https://www.informatiquenews.fr/openai-gpt-cyber-un-modele-dedie-la-cybersecurite-251556">informatiquenews.fr — OpenAI GPT-6 Cyber</a>
+      <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/">blog.google — Gemini 4 Carbon</a>
+    </div>
+    <div class="signal">
+      <b>Signal 3 — La traçabilité / le marquage des contenus IA s'impose comme obligation datée.</b>
+      <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">digital-strategy.ec.europa.eu — AI Act</a>
+      <a href="https://www.scworld.com/perspective/the-eu-ai-act-has-entered-the-real-world-what-organizations-need-to-do-now">scworld.com — échéances de conformité</a>
+    </div>
+    <div class="signal">
+      <b>Signal 4 — Le financement IA se contracte et se consolide.</b>
+      <a href="https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/">techcrunch.com — OpenAI 11 Md$</a>
+      <a href="https://musically.com/2026/11/03/ai-roundup-lyria-lawsuit-anthropics-q3-openai-pile-in/">musically.com — Anthropic T3</a>
+    </div>
+    <div class="signal">
+      <b>Signal 5 — La souveraineté IA européenne se construit par la demande publique et l'éducation.</b>
+      <a href="https://digital-strategy.ec.europa.eu/en/news/commission-launches-education-and-skills-package-tackle-declining-basic-skills-rapid-digital-change">digital-strategy.ec.europa.eu — paquet Éducation &amp; Compétences</a>
+      <a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm">zdnet.fr — OVHcloud, IA souveraine</a>
+    </div>
+  </div>
+
+  <footer>
+    Veille générée le 06/11/2026 — fenêtre 7 jours — 11 articles — sources datées et vérifiées.
+    <div class="legend">
+      <span><span class="dot" style="background:var(--fr)"></span>France</span>
+      <span><span class="dot" style="background:var(--eu)"></span>Europe</span>
+      <span><span class="dot" style="background:var(--world)"></span>Monde</span>
+      <span><span class="dot" style="background:var(--mistral)"></span>Mistral</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 2026-11-06</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .theme-toggle{margin-top:10px}
+    .theme-toggle button{
+      background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:999px;
+      padding:5px 14px;font-size:.8rem;cursor:pointer;
+    }
+    .theme-toggle button:hover{background:#334155}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.prospec{border-top:4px solid #8b5cf6}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .dark .card.apports .card-title{color:#2dd4bf}
+    .dark .card.risques .card-title{color:#f87171}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted)}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .flag{font-weight:700}
+    .flag.fort{color:#ef4444}
+    .flag.modere{color:#ea580c}
+    .flag.faible{color:#10b981}
+    .full-card{margin-top:16px}
+    .signals{padding:12px 18px 18px}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    table.dash{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+    table.dash th{background:#0b1220;color:#f3f4f6;padding:10px 12px;text-align:left;font-size:.8rem;letter-spacing:.04em}
+    table.dash td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+    table.dash tr:nth-child(even) td{background:rgba(148,163,184,.07)}
+    .riskcell{font-weight:700}
+    .riskcell.f{color:#ef4444}.riskcell.m{color:#ea580c}.riskcell.w{color:#10b981}
+    .dash-scroll{overflow-x:auto}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      table.dash{font-size:.78rem}
+      table.dash th,table.dash td{padding:8px 8px}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    .signals ol li{margin:14px 0}
+    .signals .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>IA dans les métiers RH · compétences · risques · accompagnement — généré automatiquement par Hermes</p>
+    </div>
+    <time datetime="2026-11-06">6 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles vérifiés</div><div class="value">12</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">30 oct. – 6 nov. 2026</div></div>
+  </div>
+
+<div class="card apports full-card">
+<div class="card-head"><div class="card-title">1. IA dans les métiers RH</div><div class="meta">4 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://yapluqua.com/ia-et-rh-meme-les-meilleurs-modeles-ne-calculent-juste-quune-fiche-de-paie-sur-quatre-benchmarks-remote-hrmark-et-paymark/" target="_blank">IA et RH : même les meilleurs modèles ne calculent juste qu'une fiche de paie sur quatre (benchmarks Remote HRmark et PayMark)</a></h3>
+<div class="meta">Yapluqua (communiqué Remote, benchmarks HRmark/PayMark) • 05/11/2026</div>
+<p>Les benchmarks HRmark et PayMark de Remote testent les grands modèles sur des tâches RH et paie réelles : même les meilleurs ne produisent une fiche de paie entièrement correcte qu'environ une fois sur quatre. Un rappel utile pour l'automatisation de la paie et de l'administratif : le contrôle humain reste le maillon de conformité, et l'IA assiste plus qu'elle ne remplace le gestionnaire.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.actuia.com/veille/2026-11-03/" target="_blank">Selon Yonhap, le ministère coréen de la Gestion du personnel développe le premier système d'IA dédié aux tâches RH de l'État (projet A-CUBE)</a></h3>
+<div class="meta">ActuIA (source Yonhap News TV) • 03/11/2026</div>
+<p>Annoncé le 3 novembre, le projet A-CUBE doit passer à l'IA l'ensemble des tâches RH du ministère : examen des dossiers en commission, préparation des documents, rédaction des procès-verbaux et décisions, avec un grand modèle de langage entraîné sur le vocabulaire de la gestion du personnel public. Objectif affiché : recentrer les agents RH sur les tâches de jugement — un cas d'école d'automatisation RH à grande échelle.</p>
+</div>
+<div class="item">
+<h3><a href="https://myrhline.com/type-article/ia-recrutement-responsabilite-fabian-caldarella/" target="_blank">IA et recrutement : qui assume la décision ? La réponse de Fabian Caldarella</a></h3>
+<div class="meta">myRHline (étude « Recrutement 2040 » myRHline / Teamtailor) • 02/11/2026</div>
+<p>Dans le cadre de l'étude « Recrutement 2040 », le directeur du recrutement d'Artemys défend une ligne claire : l'IA peut accélérer le sourcing, analyser les candidatures et comparer des profils, mais la responsabilité de la décision de recruter ou d'écarter doit rester humaine. Le recruteur augmenté reste celui qui questionne le besoin, défend un potentiel et sait expliquer ses choix.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lesaffaires.com/secteurs/techno-et-ia/bell-branche-ses-rh-au-numerique-edition_4_novembre_2026/" target="_blank">Bell branche ses RH au numérique : du chatbot interne vers l'IA agentique</a></h3>
+<div class="meta">Les Affaires • 04/11/2026</div>
+<p>L'opérateur canadien raconte la montée en gamme de sa plateforme RH : conçue pour acheminer les demandes vers les consultants, elle permet désormais aux employés d'obtenir eux-mêmes des réponses à leurs questions, et Bell travaille à intégrer l'IA agentique à sa fonction RH. Un retour d'expérience concret de chatbot RH devenu socle d'onboarding automatisé.</p>
+</div>
+</div>
+</div>
+<div class="card risques full-card">
+<div class="card-head"><div class="card-title">2. Évolutions des compétences</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://yapluqua.com/un-metier-junior-sur-cinq-exige-deja-lia-letude-jobteaser-sur-400-000-offres/" target="_blank">Un métier junior sur cinq exige déjà l'IA : l'étude JobTeaser sur 400 000 offres</a></h3>
+<div class="meta">Yapluqua (communiqué JobTeaser, Gen Z Lab) • 05/11/2026</div>
+<p>JobTeaser a analysé plus de 400 000 offres destinées aux juniors : la part de celles qui exigent des compétences IA a triplé en quatre ans pour atteindre un poste sur cinq. L'IA devient une compétence d'entrée du marché du travail, ce qui pèse directement sur les politiques de recrutement et de formation initiale des banques, assureurs et ESN.</p>
+</div>
+<div class="item">
+<h3><a href="https://yapluqua.com/ocde-ladoption-de-lia-saccelere-mais-dimportants-ecarts-demeurent-entre-entreprises-et-generations/" target="_blank">OCDE : l'adoption de l'IA s'accélère, mais d'importants écarts demeurent entre entreprises et générations</a></h3>
+<div class="meta">Yapluqua (communiqué OCDE, Perspectives 2026) • 05/11/2026</div>
+<p>Les Perspectives 2026 de l'OCDE confirment une accélération de l'adoption de l'IA par les entreprises, mais soulignent des écarts persistants entre grandes et petites structures et entre générations de salariés. Pour les DRH, le risque n'est pas seulement l'automatisation : c'est une adoption à deux vitesses qui creuse les inégalités de compétences en interne.</p>
+</div>
+<div class="item">
+<h3><a href="https://yapluqua.com/ia-en-entreprise-apres-la-course-aux-outils-la-bataille-des-competences-a-commence-galadrim-ai-education/" target="_blank">IA en entreprise : après la course aux outils, la bataille des compétences a commencé (Galadrim AI Education)</a></h3>
+<div class="meta">Yapluqua (communiqué Galadrim) • 05/11/2026</div>
+<p>L'éditeur de formation Galadrim observe un basculement : l'achat d'outils IA ne suffit plus, la vraie compétition se joue sur la montée en compétences des équipes. Un signal qui rejoint la demande des métiers de la banque et de l'assurance pour des parcours certifiants plutôt que des licences supplémentaires.</p>
+</div>
+</div>
+</div>
+<div class="card accomp full-card">
+<div class="card-head"><div class="card-title">3. Risques & défis</div><div class="meta">3 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">L'ère du « management algorithmique » : comment l'IA renforce la surveillance des salariés en entreprise</a></h3>
+<div class="meta">Les Echos • 05/11/2026</div>
+<p>À partir des « smart reports » lancés par Anthropic — qui permettent aux managers d'observer comment leurs équipes utilisent Claude et ce que cela coûte —, le journal décrit l'avènement d'un management algorithmique où l'usage même de l'IA devient un indicateur de performance. Un outil de pilotage du déploiement qui peut vite se muer en instrument de contrôle individuel : sujet direct pour les CSE et les DPO.</p>
+</div>
+<div class="item">
+<h3><a href="https://yapluqua.com/rgpd-cinq-plaintes-contre-scale-ai-plateforme-outlier-qui-surveilleraient-pres-dun-million-de-travailleurs-de-lia/" target="_blank">RGPD : cinq plaintes contre Scale AI (plateforme Outlier), qui surveilleraient près d'un million de travailleurs de l'IA</a></h3>
+<div class="meta">Yapluqua (action de l'ONG noyb) • 05/11/2026</div>
+<p>L'ONG noyb a déposé cinq plaintes RGPD contre Scale AI : sa plateforme Outlier pratiquerait une surveillance intensive de près d'un million de « travailleurs de l'IA » (traçage du travail, données personnelles). Un précédent à suivre pour toute organisation qui outille des prestataires ou des équipes distribuées par des plateformes algorithmiques.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.actuia.com/veille/2026-11-02/" target="_blank">Grèce : un projet de loi sur l'IA au travail et la gestion algorithmique des plateformes présenté en Conseil des ministres</a></h3>
+<div class="meta">ActuIA (ministère grec du Travail) • 02/11/2026</div>
+<p>Le 2 novembre, la ministre grecque du Travail a présenté un projet de loi posant les premières règles nationales sur l'IA et les algorithmes dans l'emploi : transparence renforcée, supervision humaine obligatoire des décisions importantes sur la situation d'emploi, information des travailleurs sur les critères de décision. Première transposition complète de la directive UE 2024/2831 sur le travail de plateforme — un repère pour l'encadrement du management algorithmique en Europe.</p>
+</div>
+</div>
+</div>
+<div class="card prospec full-card">
+<div class="card-head"><div class="card-title">4. Dispositifs d'accompagnement</div><div class="meta">2 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.actuia.com/veille/2026-11-04/" target="_blank">Canva restructure 1 271 postes (22 % de l'effectif) et affirme que l'IA ne remplacera pas les partants</a></h3>
+<div class="meta">ActuIA (sources AAP / The Verge) • 04/11/2026</div>
+<p>Annoncée le 4 novembre, la restructuration touche 1 271 postes sur environ 5 700 salariés, après une première décennie de croissance ininterrompue. Les partants reçoivent au minimum six mois de salaire, douze mois de couverture santé, du coaching carrière et une aide de 10 000 dollars pour créer leur entreprise. L'entreprise nie que l'IA remplace les partants ; le syndicat réclame de l'honnêteté sur son effet réel sur l'emploi — un test grandeur nature du discours d'accompagnement dans la tech.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.actuia.com/veille/2026-11-03/" target="_blank">Royaume-Uni : plus de 800 000 livres du AI Upskilling Challenge Fund pour former à l'IA à Barnsley</a></h3>
+<div class="meta">ActuIA (gouvernement britannique) • 03/11/2026</div>
+<p>Quatre projets de formation pratique à l'IA sont financés à Barnsley : personnels hospitaliers, salariés de plus de 40 ans dans l'industrie et le bâtiment, femmes de retour à l'emploi et petites entreprises. Présenté comme un pilote reproductible à l'échelle nationale dans le cadre de l'objectif de 10 millions de travailleurs formés d'ici 2030, le dispositif illustre le financement public de la montée en compétences IA au-delà des seuls profils techniques.</p>
+</div>
+</div>
+</div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-body signals">
+      <ol>
+<li><strong>1. L'encadrement du management algorithmique quitte la doctrine pour la loi</strong> — Le projet de loi grec (supervision humaine obligatoire, information des travailleurs sur les critères de décision) transpose la directive UE 2024/2831 pendant que les « smart reports » d'Anthropic montrent que l'usage de l'IA devient lui-même un indicateur managérial : les DRH de banque et d'assurance vont devoir cadrer non plus seulement les outils RH, mais l'outillage IA des managers.
+<div class="signal-src">Sources : <a href="https://www.actuia.com/veille/2026-11-02/" target="_blank">https://www.actuia.com/veille/2026-11-02/</a> · <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391</a></div></li>
+<li><strong>2. La fiabilité de l'IA sur les tâches RH de base reste fragile</strong> — Une fiche de paie entièrement correcte sur quatre pour les meilleurs modèles (benchmarks Remote) : l'automatisation paie/administratif progresse, mais la vérification humaine reste un poste de coût et de conformité — à intégrer dans tout business case d'automatisation RH.
+<div class="signal-src">Sources : <a href="https://yapluqua.com/ia-et-rh-meme-les-meilleurs-modeles-ne-calculent-juste-quune-fiche-de-paie-sur-quatre-benchmarks-remote-hrmark-et-paymark/" target="_blank">https://yapluqua.com/ia-et-rh-meme-les-meilleurs-modeles-ne-calculent-juste-quune-fiche-de-paie-sur-quatre-benchmarks-remote-hrmark-et-paymark/</a></div></li>
+<li><strong>3. L'IA devient un prérequis d'entrée, pas une compétence d'expert</strong> — Un métier junior sur cinq exige déjà l'IA (JobTeaser, 400 000 offres) et l'OCDE documente des écarts d'adoption entre entreprises et générations : la montée en compétences ne concerne plus seulement les experts data, elle conditionne l'employabilité d'entrée de gamme — là où banque et assurance recrutent leurs viviers.
+<div class="signal-src">Sources : <a href="https://yapluqua.com/un-metier-junior-sur-cinq-exige-deja-lia-letude-jobteaser-sur-400-000-offres/" target="_blank">https://yapluqua.com/un-metier-junior-sur-cinq-exige-deja-lia-letude-jobteaser-sur-400-000-offres/</a> · <a href="https://yapluqua.com/ocde-ladoption-de-lia-saccelere-mais-dimportants-ecarts-demeurent-entre-entreprises-et-generations/" target="_blank">https://yapluqua.com/ocde-ladoption-de-lia-saccelere-mais-dimportants-ecarts-demeurent-entre-entreprises-et-generations/</a></div></li>
+<li><strong>4. La surveillance des salariés migre des outils RH vers les outils IA eux-mêmes</strong> — Smart Reports d'Anthropic côté managers, plaintes noyb contre Scale AI côté plateformes de travail : deux signaux d'une même semaine qui déplacent le débat RGPD/CSE vers la traçabilité de l'activité IA — un angle mort des chartes d'usage actuelles.
+<div class="signal-src">Sources : <a href="https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391" target="_blank">https://www.lesechos.fr/tech-medias/intelligence-artificielle/lere-du-management-algorithmique-comment-lia-renforce-la-surveillance-des-salaries-en-entreprise-2261391</a> · <a href="https://yapluqua.com/rgpd-cinq-plaintes-contre-scale-ai-plateforme-outlier-qui-surveilleraient-pres-dun-million-de-travailleurs-de-lia/" target="_blank">https://yapluqua.com/rgpd-cinq-plaintes-contre-scale-ai-plateforme-outlier-qui-surveilleraient-pres-dun-million-de-travailleurs-de-lia/</a></div></li>
+<li><strong>5. Le discours d'accompagnement est mis à l'épreuve par les cas réels</strong> — Canva coupe 22 % de son effectif en niant le rôle de l'IA pendant que les partants obtiennent six mois de salaire et une aide à la reconversion, et le Royaume-Uni finance des formations IA grand public à Barnsley : la crédibilité des engagements sociaux se mesure désormais en dispositifs chiffrés, pas en intentions.
+<div class="signal-src">Sources : <a href="https://www.actuia.com/veille/2026-11-04/" target="_blank">https://www.actuia.com/veille/2026-11-04/</a> · <a href="https://www.actuia.com/veille/2026-11-03/" target="_blank">https://www.actuia.com/veille/2026-11-03/</a></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 6 novembre 2026 par Hermes (skill veille-rh-ia). Corpus : 12 articles, 4 axes, dates de publication vérifiées page par page.</p>
+  </footer>
+</div>
+</body></html>
