@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille Mistral AI — 7 novembre 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg:#010409; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --accent:#40dcff; --accent-2:#ffb347; --border:#1f2937;
+      --shadow:0 10px 30px rgba(0,0,0,.45); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:'Rajdhani',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.55}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
+    header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid var(--border);padding-bottom:14px}
+    h1{margin:0;font-size:1.7rem;letter-spacing:.5px}
+    h1::after{content:'';display:block;width:120px;height:3px;margin-top:8px;background:linear-gradient(90deg,var(--accent),transparent)}
+    header p{margin:6px 0 0;color:var(--muted)}
+    time{color:var(--accent-2);font-weight:600;white-space:nowrap}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.6rem;font-weight:700;color:var(--accent)}
+    .kpi-click{cursor:pointer;transition:border-color .2s,transform .15s}
+    .kpi-click:hover{border-color:rgba(64,220,255,.55);transform:translateY(-2px)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+    .pill{border-radius:999px;padding:6px 14px;font-size:.85rem;border:1px solid var(--border)}
+    .pill.blue{background:rgba(64,220,255,.12);border-color:rgba(64,220,255,.4)}
+    .pill.green{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4)}
+    .pill.amber{background:rgba(255,179,71,.12);border-color:rgba(255,179,71,.4)}
+    .synthese{background:linear-gradient(90deg,rgba(64,220,255,.10),rgba(64,220,255,.02));border:1px solid rgba(64,220,255,.35);border-radius:var(--radius);padding:14px 18px;margin:16px 0 8px}
+    .synthese strong{color:var(--accent)}
+    .section-title{margin:34px 0 4px;color:var(--accent);font-size:1.35rem;letter-spacing:.5px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+    .card{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .card-head{padding:12px 18px;border-bottom:1px solid var(--border)}
+    .card-title{font-weight:700;letter-spacing:.3px}
+    .card-body{padding:8px 18px 14px}
+    .item{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .item:last-child{border-bottom:none}
+    .item h3{margin:0 0 4px;font-size:1.02rem}
+    .item h3 a{color:var(--ink);text-decoration:none;border-bottom:1px dotted rgba(64,220,255,.5)}
+    .item h3 a:hover{color:var(--accent)}
+    .meta{font-size:.8rem;color:var(--accent-2);margin-bottom:6px;letter-spacing:.03em}
+    .item p{margin:0;color:var(--muted)}
+    .item .src{margin-top:6px;font-size:.78rem;letter-spacing:.03em}
+    .item .src a{color:var(--accent);text-decoration:none;word-break:break-all}
+    .item .src a:hover{text-decoration:underline}
+    .jalons{margin:0;padding-left:20px;color:var(--muted)}
+    .jalons li{margin:9px 0}
+    .jalons b{color:var(--accent-2)}
+    .weak .w-item{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .weak .w-item:last-child{border-bottom:none}
+    .weak .w-item p{margin:0 0 6px;color:var(--muted)}
+    .weak .w-item p strong{color:var(--ink)}
+    .weak .w-item ul{margin:0;padding-left:18px}
+    .weak .w-item li{font-size:.8rem;word-break:break-all;margin:3px 0}
+    .weak .w-item li a{color:var(--accent);text-decoration:none}
+    .weak .w-item li a:hover{text-decoration:underline}
+    .tarifs{background:linear-gradient(90deg,rgba(255,179,71,.10),rgba(64,220,255,.03));border:1px solid rgba(255,179,71,.35);border-radius:var(--radius);padding:14px 18px;margin:24px 0 8px}
+    .tarifs h2{margin:0 0 8px;color:var(--accent-2);font-size:1.25rem;letter-spacing:.5px}
+    .tarifs p{margin:6px 0;color:var(--muted)}
+    .tarifs ul{margin:6px 0 0;padding-left:20px;color:var(--muted)}
+    .tarifs li{margin:7px 0}
+    .tarifs b, .tarifs strong{color:var(--ink)}
+    .illus{margin:18px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .illus img{display:block;width:100%;height:auto}
+    .illus figcaption{padding:8px 14px;font-size:.8rem;color:var(--muted);background:rgba(15,23,42,.6)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);margin-top:26px}
+    footer p{margin:4px 0}
+    footer a{color:var(--accent);text-decoration:none}
+    .zone-flash{box-shadow:0 0 0 2px var(--accent),var(--shadow);transition:box-shadow .3s}
+    @media (max-width:700px){
+      .kpis{grid-template-columns:1fr 1fr}
+    }
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#f3f4f6);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#40dcff;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,#veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head>
+<body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-MISTRAL-2026-11-07.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🇫🇷 Veille Mistral AI</h1>
+      <p>France · Europe &amp; Monde · Usages entreprises</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous <span style="color:#ffb347">[DEMO]</span></p>
+      <p>Fenêtre : 31 octobre – 7 novembre 2026 · 12 articles · sources France / Europe / Monde</p>
+    </div>
+    <time datetime="2026-11-07">7 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-france')"><div class="label">🇫🇷 France</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-europe')"><div class="label">🌍 Europe &amp; Monde</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-usages')"><div class="label">💼 Usages entreprises</div><div class="value">4</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 07/11/2026</span>
+    <span class="pill amber">🪟 Fenêtre 31/10–07/11/2026</span>
+    <span class="pill">📡 5 signaux faibles</span>
+  </div>
+
+  <div class="synthese">
+    <p><strong>Synthèse.</strong> La semaine acte le basculement de Mistral AI du statut d'éditeur de modèles à celui de <strong>plateforme d'IA d'entreprise</strong>. Le 5 novembre, Mistral ouvre en préversion publique les agents managés, le constructeur de workflows et les applications de <strong>Mistral Studio</strong>, et cite pour la première fois une liste de clients <strong>en production</strong> — BNP Paribas, ABANCA, Accenture, Alten, Capgemini, CMA CGM et Tata Consultancy Services — avec des résultats chiffrés (agent d'investigation d'incidents, ~35 heures/semaine économisées sur une opération produit, mainlevée des marchandises chez CMA CGM). La veille, le groupe confirme sa <strong>cinquième acquisition de l'année</strong>, la start-up française <strong>SkipLabs</strong> (génération et vérification de code). Sur le terrain géopolitique, le PDG <strong>Arthur Mensch</strong> durcit le discours : à Berlin, le 2 novembre, il prévient que l'IA de pointe devient « de qualité militaire » et pourrait tomber sous contrôles à l'export — « une trappe complète » pour l'Europe si elle ne possède pas ses propres modèles de raisonnement ; il salue le plan allemand « nation IA souveraine » 2030, qui cite Mistral, mais réclame une stratégie strictement européenne. La concurrence française se tend : <strong>OVHcloud</strong> (2 novembre) promet un LLM souverain pour fin novembre et cible le modèle économique de Mistral, tandis que <strong>Le Canard enchaîné</strong> (3 novembre) rappelle la dépendance de la start-up au soutien de l'exécutif à l'approche de la fin de l'ère Macron. Côté déploiements, la <strong>Banque de France</strong> confirme l'arrivée prochaine de solutions Mistral en cloud souverain, et l'armée française (AMIAD) détaille ses usages de défense.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" id="zone-france">
+      <div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.lemagit.fr/actualites/366653932/IA-agentique-et-programmation-reactive-pourquoi-Mistral-AI-acquiert-SkipLabs" target="_blank" rel="noopener">Mistral rachète SkipLabs et crée une équipe « Language » dédiée au code vérifié</a></h3>
+          <div class="meta">LeMagIT • 05/11/2026</div>
+          <p>Mistral AI confirme le rachat de <strong>SkipLabs</strong>, start-up française fondée par Julien Verlaguet (ancien ingénieur de Meta), pour un montant non divulgué : sa <strong>cinquième acquisition en 2026</strong>, après Koyeb (infrastructure, février), Emmi AI (industrie, mai), Pimento (marketing, septembre) et New Material (design produit, octobre). Les six collaborateurs forment le cœur d'une nouvelle équipe « Language », rattachée au chercheur en chef et cofondateur Guillaume Lample. Objet : la <strong>vérification du code produit par les agents</strong>. SkipLabs développe Skip, framework open source de programmation réactive, ainsi que Skipper, un agent qui génère des back-ends à partir d'un prompt en langage naturel, et a réimplémenté son propre vérificateur de types. Mistral veut des outils « assez rapides pour tourner dans leur boucle » (compilation, typage, analyse statique), là où les outils classiques ont été conçus pour des humains.</p>
+          <div class="src">🔗 <a href="https://www.lemagit.fr/actualites/366653932/IA-agentique-et-programmation-reactive-pourquoi-Mistral-AI-acquiert-SkipLabs" target="_blank" rel="noopener">lemagit.fr</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank" rel="noopener">OVHcloud défie Mistral : un LLM souverain « très en avance » attendu fin novembre</a></h3>
+          <div class="meta">ZDNet (ZD Tech) • 02/11/2026</div>
+          <p>Désormais rentable (flux de trésorerie positif de 25 M€, chiffre d'affaires de plus de 1,14 Md€), <strong>OVHcloud</strong> prépare la sortie de son propre grand modèle de langage, propriétaire et ouvert, <strong>avant fin novembre</strong>. Son fondateur Octave Klaba, revenu aux commandes, promet un modèle « différent des autres » et « très en avance sur son temps » sur le plan de l'architecture (mécanismes d'attention, traitement des tokens, compression, performance), avec trois axes : cybersécurité (défensive et offensive), assistance au code et IA agentique appliquée aux fonctions support (finance, juridique, RH). Il écarte tout partenariat avec Mistral, qu'il qualifie d'« ESN de l'IA » faisant « avant tout de l'intégration », et lui reproche de lever des milliards sans rentabilité — Mistral génère pourtant déjà plus de 300 M€ de revenus annualisés. Objectif : une alternative souveraine complète, hébergée sur des serveurs français.</p>
+          <div class="src">🔗 <a href="https://www.zdnet.fr/actualites/zd-tech-octave-klaba-attaque-mistral-ai-et-annonce-lia-souveraine-dovhcloud-506584.htm" target="_blank" rel="noopener">zdnet.fr</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lecanardenchaine.fr/police-justice/55322-mistral-ai-n-est-plus-assure-de-le-jouer-gagnant" target="_blank" rel="noopener">Marchés publics, crédit d'impôt, lobbying : Mistral face à la fin de l'ère Macron</a></h3>
+          <div class="meta">Le Canard enchaîné • 03/11/2026</div>
+          <p>Le journal d'investigation revient sur le soutien exceptionnel dont bénéficie Mistral AI depuis 2023, « poussée par le chef de l'État comme aucune autre » : hauts fonctionnaires aux petits soins, batailles législatives gagnées d'avance, participation récurrente de la <strong>Banque publique d'investissement</strong> aux levées de 2023, 2025 et 2026. À l'approche du départ d'Emmanuel Macron, l'article s'interroge sur la pérennité de ce soutien et sur le <strong>crédit d'impôt recherche</strong>, qui déverse « chaque année plusieurs dizaines de millions d'euros » sur la start-up. « Dans la foulée », Le Canard rappelle aussi que <strong>cinq recours d'associations environnementales</strong> menacent « Campus IA », le gigantesque data center prévu en 2027 aux portes de Paris (Fouju, Seine-et-Marne), dont la consommation à terme équivaut à celle d'un réacteur nucléaire. (Article payant.)</p>
+          <div class="src">🔗 <a href="https://www.lecanardenchaine.fr/police-justice/55322-mistral-ai-n-est-plus-assure-de-le-jouer-gagnant" target="_blank" rel="noopener">lecanardenchaine.fr</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.numerama.com/tech/2359979-un-veritable-changement-de-paradigme-comment-lagence-ia-des-armees-planche-sur-cette-technologie-de-rupture-interview.html" target="_blank" rel="noopener">Défense : l'AMIAD détaille les usages de Mistral, des contrats à l'unité robotique Pendragon</a></h3>
+          <div class="meta">Numerama (entretien du 13/10) • 31/10/2026</div>
+          <p>L'Agence ministérielle pour l'intelligence artificielle de défense (<strong>AMIAD</strong>) livre l'un des comptes rendus publics les plus détaillés de ce que l'accord-cadre signé en janvier 2026 avec Mistral change concrètement. Le contrat ouvre l'accès aux <strong>modèles réservés aux clients entreprises</strong>, aux <strong>infrastructures de calcul</strong> de Mistral et à son expertise. Dès qu'un cas d'usage présente « un minimum de sensibilité », le traitement reste <strong>sur les infrastructures du ministère</strong>. Premiers usages : aide à la rédaction des contrats avec les grands industriels (analyse de l'historique des marchés, automatisation de la rédaction à la notification) pour la Direction générale de l'armement ; planification de missions, logistique et déploiement de forces pour la Marine et l'armée de Terre ; <strong>développement agentique autour de la conduite et de la planification de Pendragon</strong>, première unité robotique militaire française. L'identification de cibles et la simulation des réactions adverses relèvent de pistes prospectives, pas de systèmes en service.</p>
+          <div class="src">🔗 <a href="https://www.numerama.com/tech/2359979-un-veritable-changement-de-paradigme-comment-lagence-ia-des-armees-planche-sur-cette-technologie-de-rupture-interview.html" target="_blank" rel="noopener">numerama.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="zone-europe">
+      <div class="card-head"><div class="card-title">🌍 Europe &amp; Monde</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/" target="_blank" rel="noopener">« Une trappe complète » : Mensch alerte sur les contrôles à l'export et appelle à une stratégie IA européenne</a></h3>
+          <div class="meta">POLITICO Europe • 02/11/2026</div>
+          <p>En marge du Digital Summit de Berlin, le PDG Arthur Mensch prévient que l'IA de pointe est de plus en plus considérée comme « de <strong>qualité militaire</strong> » et pourrait donc tomber sous <strong>contrôles à l'export</strong> américains ou chinois, au risque de ne plus être fournie à l'Europe. « L'idée qu'on puisse construire quoi que ce soit de significatif sans posséder le fondement — les <strong>modèles de raisonnement</strong> — est, je pense, une trappe complète », dit-il. Il rappelle que des restrictions américaines ont, en juin, forcé Anthropic à suspendre l'accès à certains modèles pendant près de trois semaines, et compare l'IA à un enjeu industriel comparable au <strong>nucléaire civil</strong>. Le problème européen, selon lui, n'est pas le talent mais le « bilan » : il manque du capital et de la puissance de calcul. « Il n'y a pas de stratégie IA nationale, il faut une stratégie IA européenne. »</p>
+          <div class="src">🔗 <a href="https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/" target="_blank" rel="noopener">politico.eu</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.politico.eu/article/berlin-unveil-blueprint-catch-up-ai-artificial-intelligence/" target="_blank" rel="noopener">Berlin veut devenir « nation IA souveraine » en 2030 — et cite Mistral comme partenaire</a></h3>
+          <div class="meta">POLITICO Europe • 02/11/2026</div>
+          <p>Le gouvernement allemand dévoile son plan pour rattraper son retard, porté par une « task force » IA et présenté au Conseil de sécurité nationale ainsi qu'au sommet de Berlin. Objectif : devenir une « <strong>nation IA souveraine en 2030</strong> », avec « les 12 à 18 prochains mois » présentés comme décisifs. Le rapport cherche à sécuriser l'accès aux meilleurs modèles tout en renforçant les alternatives européennes, notamment via une <strong>coopération accrue avec la France et le Canada</strong> ; il cite explicitement la collaboration avec Mistral AI pour « garantir un accès souverain ». L'État prévoit d'agir en « <strong>client d'ancrage stratégique</strong> » (marchés publics et projets pilotes) pour aider les fournisseurs européens à entrer sur le marché, et veut soutenir au moins trois laboratoires frontières européens d'ici 2030 — tandis que le patron de Siemens juge la course aux grands modèles génériques largement perdue face aux États-Unis et à la Chine.</p>
+          <div class="src">🔗 <a href="https://www.politico.eu/article/berlin-unveil-blueprint-catch-up-ai-artificial-intelligence/" target="_blank" rel="noopener">politico.eu</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://startupfortune.com/mistral-is-racing-openai-and-xai-on-a-fraction-of-their-gpus/" target="_blank" rel="noopener">Mistral face aux géants américains : un modèle de pointe sur une fraction des GPU</a></h3>
+          <div class="meta">Startup Fortune • 03/11/2026</div>
+          <p>Mistral a entraîné son modèle phare <strong>Large 4 sur environ 3 800 puces Nvidia Grace Blackwell</strong>, dans ses propres centres de données européens ; son site principal de Bruyères-le-Châtel (Essonne) donne accès à 13 800 GPU GB300 et 44 MW de puissance, financés par un emprunt de 830 M$ (mars 2026). Le contraste est net : xAI fait tourner son campus Colossus 2 de Memphis sur environ <strong>555 000 GPU</strong> (objectif d'un million début 2027) et OpenAI planifie près de <strong>7 GW</strong> pour Stargate, pour une flotte opérationnelle estimée entre 150 000 et 200 000 puces. L'écart se creuse en valeur absolue même si Mistral lève davantage. Contre-argument : un budget de calcul contraint pousse à l'<strong>efficacité</strong> (le précédent DeepSeek), et Large 4 suggère que la stratégie tient encore à l'échelle du trillion de paramètres.</p>
+          <div class="src">🔗 <a href="https://startupfortune.com/mistral-is-racing-openai-and-xai-on-a-fraction-of-their-gpus/" target="_blank" rel="noopener">startupfortune.com</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.eu-startups.com/2026/11/is-mistral-overlooking-europe-10-homegrown-startups-that-could-join-its-connector-ecosystem/" target="_blank" rel="noopener">Les 12 « connecteurs » de Mistral : aucun n'est européen</a></h3>
+          <div class="meta">EU-Startups • 02/11/2026</div>
+          <p>Parmi les <strong>12 connecteurs</strong> que Mistral liste comme intégrations prêtes à l'emploi pour relier son assistant à des applications externes (Gmail, Slack, Notion, GitHub, Stripe…), <strong>aucun ne vient d'Europe</strong> — un point que le média spécialisé relève comme révélateur du retard du continent sur sa propre pérennité logicielle. EU-Startups propose dix candidats crédibles, tous adossés à des API et à OAuth : Attio et Cloudsmith (Royaume-Uni), Factorial, Perk et Typeform (Espagne), Mews (Pays-Bas), Pennylane (France), Personio (Allemagne), Spott (Belgique), Storyblok (Autriche). Ces plateformes (CRM, RH, hôtellerie, comptabilité, voyage, recrutement, CMS, formulaires) pourraient devenir des connecteurs managés, mais Mistral n'a annoncé aucun plan en ce sens — un angle d'analyse plus qu'une annonce.</p>
+          <div class="src">🔗 <a href="https://www.eu-startups.com/2026/11/is-mistral-overlooking-europe-10-homegrown-startups-that-could-join-its-connector-ecosystem/" target="_blank" rel="noopener">eu-startups.com</a></div>
+        </div>
+        <figure class="illus"><img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-MISTRAL-2026-11-07-1.png" alt="Centre de données d'IA européen de nuit, racks baignés de lumière cyan et ambre, skyline de Paris en arrière-plan et carte du réseau européenne" loading="lazy"><figcaption>🌍 Europe — un data center d'IA aux portes de Paris : la souveraineté se joue autant sur le calcul européen que sur les modèles (illustration)</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card" id="zone-usages">
+      <div class="card-head"><div class="card-title">💼 Usages &amp; cas d'usage entreprises</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://mistral.ai/news/build-with-studio/" target="_blank" rel="noopener">Mistral Studio ouvre les agents managés : sept grands comptes déjà en production</a></h3>
+          <div class="meta">Mistral AI (blog) • 05/11/2026</div>
+          <p>Mistral élargit <strong>Studio</strong>, sa plateforme d'IA d'entreprise, avec des <strong>agents managés</strong>, des applications, un <strong>constructeur de workflows</strong> en langage naturel, le contexte d'entreprise, l'observabilité et les évaluations. Les systèmes se déploient au choix dans le cloud, dans le VPC du client ou <strong>sur site</strong>, via un nouveau serveur MCP Mistral (développer, tester et déployer en une commande). Mistral cite pour la première fois ses clients en production : <strong>ABANCA, Accenture, Alten, BNP Paribas, Capgemini, CMA CGM et Tata Consultancy Services</strong>. Résultats mis en avant : un agent d'investigation d'incidents suit le runbook, demande une validation avant toute action sensible et « économise des centaines d'heures par mois » ; un workflow de tri d'idées produit fait gagner « environ 35 heures par semaine » ; les déploiements privés et sur site sont annoncés pour <strong>fin novembre</strong>.</p>
+          <div class="src">🔗 <a href="https://mistral.ai/news/build-with-studio/" target="_blank" rel="noopener">mistral.ai</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://mistral.ai/fr/industry/financial-services/" target="_blank" rel="noopener">Banque : BNP Paribas fait passer son intégration KYC de plusieurs semaines à quelques jours</a></h3>
+          <div class="meta">Mistral AI (services financiers) • 05/11/2026</div>
+          <p>Chez <strong>BNP Paribas</strong>, Mistral met en avant une accélération du processus d'<strong>entrée en relation client (KYC)</strong>, qui passe « de plusieurs semaines à quelques jours ». La banque indique que les modèles Mistral ont permis de « démocratiser l'accès à l'IA auprès de <strong>65 000 utilisateurs</strong> », en s'exécutant <strong>intégralement sur sa propre infrastructure</strong>, pour des gains de productivité en codage, en recherche et en surveillance, tout en préservant le contrôle des données et la conformité réglementaire. Côté Studio, la banque insiste sur le fait que ses systèmes d'IA « font tourner des processus parmi les plus sensibles » et doivent rester sous son contrôle. Le fournisseur revendique « les trois plus grandes banques européennes » et « un tiers des plus grandes banques mondiales » parmi ses clients, de l'onboarding KYC aux tests d'intrusion.</p>
+          <div class="src">🔗 <a href="https://mistral.ai/fr/industry/financial-services/" target="_blank" rel="noopener">mistral.ai</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://mistral.ai/fr/customers/cma-cgm/" target="_blank" rel="noopener">Logistique : chez CMA CGM, chaque nouveau processus automatisé passe en production « en semaines, pas en mois »</a></h3>
+          <div class="meta">Mistral AI (blog Studio / cas client) • 05/11/2026</div>
+          <p>L'armateur et logisticien <strong>CMA CGM</strong> — plus de 155 000 salariés dans plus de 160 pays — utilise Mistral pour automatiser des processus critiques : <strong>mainlevée des marchandises, assistance client dans le transport maritime et ordres de transport en logistique</strong>, ainsi que la vérification factuelle de contenus et l'analyse de documents. Selon son VP AI, les systèmes d'IA, construits avec les ingénieurs de Mistral, s'exécutent sur <strong>Mistral Studio</strong>, « où chaque nouveau processus que nous automatisons est prêt pour la production en quelques semaines plutôt qu'en plusieurs mois ». L'assistant interne du groupe, MAIA, « Powered by Mistral », est déployé auprès de milliers de collaborateurs et doit être étendu à terme à l'ensemble des salariés. La logique : garder le savoir-faire en interne et permettre aux équipes de construire elles-mêmes la suite.</p>
+          <div class="src">🔗 <a href="https://mistral.ai/fr/customers/cma-cgm/" target="_blank" rel="noopener">mistral.ai</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.tokenpost.com/news/technology/47877" target="_blank" rel="noopener">Secteur public : la Banque de France déploiera Mistral sur un cloud souverain</a></h3>
+          <div class="meta">TokenPost (d'après un discours du 15/10) • 03/11/2026</div>
+          <p>Dans le cadre d'une <strong>doctrine de souveraineté numérique</strong> guidant sa feuille de route stratégique 2028 — « maîtriser nos données, nos infrastructures et les compétences pour les opérer » —, la Banque de France prévoit « l'arrivée prochaine de <strong>solutions Mistral AI hébergées en cloud souverain</strong> », pour un usage quotidien par ses agents <strong>et</strong> pour la protection de ses systèmes d'information. Le gouverneur adjoint Denis Beau, qui a exposé cette orientation le 15 octobre, met en garde contre les risques de <strong>concentration et d'enfermement</strong> liés à la dépendance à une poignée de fournisseurs ; l'institution développe en parallèle une solution de <strong>virtualisation open source</strong> pour son cloud privé. Ses cinq cas d'usage IA déjà en production affichent des gains allant jusqu'à deux heures par agent et par semaine.</p>
+          <div class="src">🔗 <a href="https://www.tokenpost.com/news/technology/47877" target="_blank" rel="noopener">tokenpost.com</a></div>
+        </div>
+        <figure class="illus"><img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-MISTRAL-2026-11-07-2.png" alt="Salle de supervision d'IA d'entreprise : silhouettes humaines devant un mur d'écrans holographiques abstraits, courbes cyan et ambre" loading="lazy"><figcaption>💼 Usages — de l'agent managé au workflow d'entreprise : l'IA entre en production dans la banque, la logistique et le secteur public (illustration)</figcaption></figure>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">🔮 Prospective</h2>
+  <div class="card" id="zone-prospective">
+    <div class="card-body">
+      <p style="margin:6px 0 10px;color:var(--muted)">Jalons cités dans les articles et signaux de cette édition (aucun élément ajouté) :</p>
+      <ul class="jalons">
+        <li><b>Court terme — fin novembre 2026 :</b> OVHcloud vise la publication de son LLM souverain « fin novembre » (art. 2) ; Mistral annonce les déploiements privés et sur site de Studio « fin novembre » (art. 9) ; poids publics du chinois Kimi K3.1 Pro annoncés par Moonshot au 4 novembre (signal 2).</li>
+        <li><b>Moyen terme — 2027 :</b> retrait de Mistral Medium 3.5 et Large 3 de l'API au 30 avril 2027 ; cible de 200 MW de capacité européenne fin 2027 ; ouverture du site suédois de Borlänge (EcoDataCenter).</li>
+        <li><b>Long terme — 2028-2030 :</b> plan allemand « nation IA souveraine » à horizon 2030 avec au moins trois labos frontières européens (art. 6) ; objectif Mistral de 1 GW de capacité souveraine dans l'UE d'ici 2030 ; montée en puissance du Campus IA / Fouju (cible d'environ 3 GW à l'échelle nationale), dont les recours juridiques et l'empreinte énergétique mobilisent déjà riverains et associations (art. 3, signal 4).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-title">📡 Signaux faibles</h2>
+  <div class="card weak" id="zone-signaux">
+    <div class="card-body">
+      <div class="w-item">
+        <p><strong>1. La cybersécurité offensive ravive le débat sur le double usage.</strong> Mistral a ouvert les poids de Large 4 malgré des avertissements sur le risque d'« uplift » en cyberattaque. Rafe Pilling (Sophos) rappelle que des modèles librement disponibles « peuvent aussi être détournés à de mauvaises fins » ; Mistral revendique un taux de refus de 96,6 % sur les requêtes malveillantes et réserve une variante offensive à des partenaires vérifiés.</p>
+        <ul>
+          <li><a href="https://www.csoonline.com/article/4242648/mistral-releases-large-4-weights-despite-warning-of-cyberattack-uplift.html" target="_blank" rel="noopener">csoonline.com</a></li>
+          <li><a href="https://ground.news/article/mistral-ai-publicly-releases-large-4-targets-cybersecurity-users_dd69a9" target="_blank" rel="noopener">ground.news</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>2. Les classements indépendants recadrent la performance.</strong> Sur l'Intelligence Index v5 d'Artificial Analysis, la version finale de Large 4 (mode haut) marque 26 points — troisième modèle ouvert, derrière DeepSeek V4.1 Flash (32) et GLM-5.3 (32) — malgré sa rapidité (161 tokens/s) et son coût par tâche ramené de 5,54 $ à 2,06 $. Mistral reste le meilleur modèle ouvert hors Chine, mais ne prend pas la tête.</p>
+        <ul>
+          <li><a href="https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/" target="_blank" rel="noopener">the-decoder.com</a></li>
+          <li><a href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5" target="_blank" rel="noopener">artificialanalysis.ai</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>3. La souveraineté peine à convaincre quand le prix baisse ailleurs.</strong> Le navigateur Ecosia a quitté Mistral pour un concurrent chinois, « non seulement moins cher mais plus performant » — l'un des exemples que Mensch refuse de commenter, et l'illustration directe de la tension qu'il résume ainsi : « il n'y a pas de compromis entre compétitivité, qualité et souveraineté ».</p>
+        <ul>
+          <li><a href="https://www.techzine.eu/news/applications/145518/is-europe-in-a-complete-trap-without-frontier-ai/" target="_blank" rel="noopener">techzine.eu</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>4. Les data centers de Mistral deviennent un sujet politique et juridique en France.</strong> Cinq recours d'associations environnementales visent « Campus IA », et la construction de onze data centers à Fouju (Seine-et-Marne) suscite manifestations et recours, sur fond de consommation électrique jugée démesurée.</p>
+        <ul>
+          <li><a href="https://www.lecanardenchaine.fr/technologie-sciences/55095-cinq-recours-menacent-le-mega-data-projet-de-mistral-ai" target="_blank" rel="noopener">lecanardenchaine.fr (recours)</a></li>
+          <li><a href="https://www.lecanardenchaine.fr/environnement/54765-ia-pas-d-alternative-tous-a-fouju" target="_blank" rel="noopener">lecanardenchaine.fr (Fouju)</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>5. Le financement et le calcul s'adossent de plus en plus aux industriels.</strong> ASML (~11 % du capital, après 1,3 Md€ en 2025 puis 400 M€ en série D) et Samsung (lead de la levée de 3 Md€, septembre 2026) pèsent au capital, tandis que la coalition d'entreprises (ASML, Amadeus, Capgemini, Caisse des Dépôts, CMA CGM) convertit ses engagements pluriannuels en « European Compute Units » censés financer 200 MW d'ici fin 2027.</p>
+        <ul>
+          <li><a href="https://www.techzine.eu/news/applications/144205/asml-maintains-stake-in-mistral-with-400-million" target="_blank" rel="noopener">techzine.eu (ASML)</a></li>
+          <li><a href="https://thenextweb.com/news/mistral-data-centre-buildout-asml-compute-units" target="_blank" rel="noopener">thenextweb.com (ECUs)</a></li>
+          <li><a href="https://mistral.ai/news/regional-inference-open-models-new-compute/" target="_blank" rel="noopener">mistral.ai (compute)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarifs" id="zone-tarifs">
+    <h2>💰 Tarifs du moment</h2>
+    <p><em>Sources : docs.mistral.ai/fr/inference/pricing, mistral.ai/fr/pricing, grandeecolenumerique.fr et comparateurs tiers — consultés le 07/11/2026. Prix API en dollars, hors taxes ; montants TTC signalés.</em></p>
+    <ul>
+      <li><strong>Mistral Large 4 (API)</strong> : <b>0,70 $ /M</b> de tokens en entrée · <b>0,07 $ /M</b> en entrée mise en cache · <b>2,10 $ /M</b> en sortie. Ces tarifs s'appliquent depuis le <b>29 octobre 2026</b>, après la fin de l'offre de lancement (moitié prix) et un passage par le tarif catalogue (1,36 $ / 4,18 $). Batch API : <b>−50 %</b> ; route UE in-region (OpenRouter) facturée ≈ 1,1× (0,77 $ / 2,31 $).</li>
+      <li><strong>Modèles plus légers</strong> : Mistral Small 4 0,15 $ / 0,60 $ ; Ministral 3 (3B/8B/14B) 0,10 $ à 0,20 $ ; Codestral 0,30 $ / 0,90 $ ; OCR 4.1 4 $ / 1 000 pages ; Voxtral 3 dès 0,0035 $ la minute (tarifs audio de préversion, susceptibles d'évoluer).</li>
+      <li><strong>Vibe (ex-Le Chat)</strong> : <b>Gratuit</b> ; <b>Pro 14,99 $/mois</b> (17,99 € TTC en France) ; <b>Team 24,99 $/utilisateur/mois</b> (29,99 € TTC) ; <b>Enterprise sur devis</b> (modèles, agents et workflows personnalisés, déploiement privé ou sur site, journaux d'audit, SSO SAML, marque blanche). Tarif étudiant vérifié : <b>5,99 $/mois</b>.</li>
+      <li><strong>Licences &amp; cycle de vie</strong> : Large 4 sous « <b>Mistral Ecosystem Open-Weight License</b> » (MIT modifiée : usage interne, fine-tuning et intégration libres ; revente en tant que service = licence commerciale). Mistral Small 4 et Ministral 3 en <b>Apache 2.0</b>. <b>Mistral Medium 3.5 et Mistral Large 3 seront retirés de l'API le 30 avril 2027.</b> Les tarifs Enterprise de Studio et de Mistral Compute (GPU réservés) sont <b>sur devis</b>.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Veille générée le 7 novembre 2026 (skills veille-mistral-ai + veille-html, thème sombre). Fichiers : veille-MISTRAL-2026-11-07.md + .html + résumé vocal .ogg</p>
+    <p>Archives HERMES · <a href="index.html">page passerelle</a></p>
+  </footer>
+</div>
+<script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+</script>
+</body>
+</html>
