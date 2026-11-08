@@ -1,0 +1,284 @@
+<!doctype html><html lang="fr" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Fraude Assurance — 2026-11-03</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:18px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#b45309;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Rajdhani','Segoe UI',Roboto,-apple-system,Arial,sans-serif;
+    background:
+      radial-gradient(900px 600px at 110% -10%,#40dcff1c,transparent),
+      radial-gradient(900px 600px at -10% 10%,#40dcff14,transparent),
+      var(--bg);
+    color:var(--ink); line-height:1.6;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+  header{
+    display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+    padding:22px 22px 20px; border:1px solid var(--border);
+    background:linear-gradient(180deg,#0b1220,var(--panel));
+    border-radius: var(--radius); color:var(--ink);
+    box-shadow: var(--shadow);
+  }
+  header h1{font-size:1.6rem;margin:0;letter-spacing:.02em;text-transform:uppercase;color:var(--accent)}
+  header p{margin:4px 0 0;opacity:.85;font-size:.95rem}
+  header time{font-variant-numeric: tabular-nums;font-family:'Share Tech Mono',monospace;color:var(--accent-2)}
+  .model-badge{
+    display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;
+    font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    border:1px solid var(--border);background:var(--panel);color:var(--muted)
+  }
+  .synthese{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:var(--radius);padding:16px 20px;margin:18px 0;box-shadow:var(--shadow)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+  .kpi{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:14px;padding:14px 16px}
+  .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700;color:var(--accent)}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+  .pill.blue{background:var(--accent);color:#03121a;border-color:var(--accent)}
+  .pill.green{background:#10b981;color:#04120c;border-color:#10b981}
+  .pill.yellow{background:var(--accent-2);color:#1a1204;border-color:var(--accent-2)}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:var(--radius);box-shadow:var(--shadow)}
+  .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+  .card-title{font-size:1.05rem;font-weight:700;color:var(--accent)}
+  .card-body{padding:12px 18px 18px}
+  .item{border-top:1px solid var(--border);padding:14px 0}
+  .item:first-child{border-top:0;padding-top:0}
+  .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+  .item h3 a{color:var(--accent-2);text-decoration:none}
+  .item h3 a:hover{text-decoration:underline}
+  .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px;font-style:italic}
+  .item p{margin:0 0 6px;font-size:.92rem}
+  .item .why{color:var(--accent);font-size:.9rem}
+  .theme-audio{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;margin:14px 0;background:var(--panel)}
+  .theme-audio ul{margin:8px 0 0;padding-left:18px}
+  .theme-audio li{margin:5px 0;font-size:.92rem}
+  .signal{border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:12px 16px;margin:10px 0;background:var(--panel)}
+  .signal a{color:var(--muted);font-size:.8rem;word-break:break-all;display:block;margin-top:6px}
+  footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+  footer p{margin:4px 0}
+  .methode{font-size:.85rem;color:var(--muted)}
+  .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+    font-size:13px;font-weight:600;letter-spacing:.06em;padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+    border:1px solid var(--border);background:var(--panel);color:var(--ink);
+    box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🛰️ Veille Fraude Assurance</h1>
+      <p>Lutte contre la fraude — 7 thématiques — sources d'autorité FR d'abord — généré par ORAC (Hermes)</p>
+      <span class="model-badge">⚙️ Modèle : glm-ct3b (z-ai/glm-5.3-flash)</span>
+    </div>
+    <time datetime="2026-11-03">3 novembre 2026</time>
+  </header>
+
+  <div class="synthese">
+    <b style="color:var(--accent)">Synthèse</b> : Onze sources retenues cette édition, toutes françaises, dont sept publiées au fil d'octobre 2026. La tendance dominante est la migration de la fraude documentaire vers la souscription et l'entrée en relation : le faux est devenu gratuit, et l'identité de l'assuré lui-même devient la cible. Côté institutionnel, les autorités accélèrent — listes noires ACPR/AMF actualisées, proposition de loi sur l'usurpation d'identité déposée à l'Assemblée, décrets de la loi fraude en rédaction. Enfin, deux affaires impliquant directement un acteur de la protection sociale (escroquerie optique à 36 M€, soupçons de corruption interne chez Malakoff Humanis) rappellent que le risque ne vient pas que de l'extérieur.
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles</div><div class="value">11</div></div>
+    <div class="kpi"><div class="label">Thématiques</div><div class="value">7 / 7</div></div>
+    <div class="kpi"><div class="label">Sources FR</div><div class="value">100 %</div></div>
+    <div class="kpi"><div class="label">Sources octobre 2026</div><div class="value">7</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📅 Édition du 3 novembre 2026 — mois couvert : octobre 2026</span>
+    <span class="pill green">🏛️ Autorités : ALFA, ACPR, AMF, IGF-Igas, Assemblée nationale, Médiation de l'assurance</span>
+    <span class="pill yellow">🔗 Chaque signal faible est sourcé</span>
+  </div>
+
+  <div class="card" style="margin:16px 0">
+    <div class="card-head"><div class="card-title">🎧 Résumé par thématique (version audio)</div></div>
+    <div class="card-body">
+      <p class="methode">Section destinée au résumé vocal : les liens sources sont dans les entrées ci-dessous.</p>
+      <div class="theme-audio"><ul>
+        <li><b>Anti-fraude documentaire</b> : L'intelligence artificielle générative a fait tomber le coût d'un faux à zéro, et les cas de fraude assistée par IA ont quadruplé en trois ans. Les assureurs répondent en authentifiant la photo à la source, au moment de la capture, plutôt qu'en cherchant le faux après coup.</li>
+        <li><b>Efficacité de gestion de la fraude</b> : L'agence de lutte contre la fraude à l'assurance chiffre neuf cent quarante-six millions d'euros de fraude identifiée en deux mille vingt-cinq. Un rapport conjoint des inspections préconise de cibler les contrôles avec la science des données et de payer après vérification.</li>
+        <li><b>Exploitation de l'opendata</b> : L'ACPR et l'AMF ont publié fin octobre une nouvelle mise en garde commune avec leurs listes noires actualisées. Le jeu de données des entités non autorisées reste disponible en open data et alimente directement les contrôles d'entrée en relation.</li>
+        <li><b>Lutte contre les bandes organisées</b> : Vingt-deux personnes et quinze structures sont renvoyées devant la justice pour une escroquerie à l'optique de trente-six millions d'euros. Le parquet de Paris y a appliqué pour la première fois des techniques spéciales d'enquête de la criminalité organisée.</li>
+        <li><b>Fraude en entrée en relation</b> : Une proposition de loi déposée début octobre durcirait la répression de l'usurpation d'identité et créerait une alerte consultable à la souscription. Le Médiateur de l'assurance confirme la hausse des fraudes aux versements en assurance vie via de faux relevés bancaires.</li>
+        <li><b>Fraude à la santé</b> : La lutte contre les faux arrêts de travail s'appuie désormais sur des formulaires sécurisés lus automatiquement, pour trente-quatre millions d'euros de fraude empêchée l'an dernier. Sept cents mille assurés ont été contrôlés, et le premier arrêt est plafonné à trente et un jours.</li>
+        <li><b>Divers — sujet émergent</b> : Un grand groupe de protection sociale est éclaboussé par des soupçons de corruption commise en bande organisée visant sa direction générale. Un signalement anonyme interne a déclenché une enquête : le risque de fraude interne mérite d'être traité comme un risque à part entière.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="grid">
+
+<div class="card">
+<div class="card-head"><div class="card-title">1. 🔍 Anti-fraude documentaire</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://algopolis.eu/fr/article/19" target="_blank">La fraude à l'assurance augmentée par l'IA</a></h3>
+<div class="meta">AlgoPolis • 23/10/2026</div>
+<p>L'observatoire AlgoPolis montre que l'IA générative a réduit à zéro le coût d'une fausse preuve : photos de sinistres, factures et certificats médicaux de synthèse sont désormais à la portée de tous. Les cas de fraude assistée par IA ont été multipliés par quatre entre 2022 et 2025 (20 000 à plus de 80 000), l'assureur britannique Admiral constatant +71 % de fraude en 2025. L'article insiste sur la migration du risque du sinistre vers la souscription et l'identité, et sur l'effondrement de la valeur probante du document.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Chercher le faux est une course perdue : il faut authentifier le vrai à la source (provenance, capture certifiée, données de terrain indépendantes) plutôt que détecter le faux après coup.</p>
+<p class="methode"><i>À surveiller</i> : les technologies de provenance et de signature cryptographique des images (type C2PA), transposables en preuve de première notification de sinistre.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html" target="_blank">Assurances : quand l'IA simule des accidents</a></h3>
+<div class="meta">franceinfo (France 2) • 04/07/2026 — article de référence conservé pour ses chiffres assureurs inédits</div>
+<p>Le reportage de France 2 documente la fabrication de faux accidents auto par IA générative : Direct Assurance y déclare avoir multiplié par 3,5 le nombre de faux documents reçus et détecter jusqu'à 16 M€ de demandes frauduleuses par an. La parade décrite est l'application de déclaration de sinistre avec photos géolocalisées et analysées en direct, qui crée un faisceau de preuves capté au moment T.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> C'est le cas d'usage français le plus concret de la bascule du contrôle documentaire vers la capture certifiée à la FNOL, avec des chiffres d'assureur vérifiables.</p>
+</div>
+</div></div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">2. 📈 Efficacité de gestion de la fraude</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.alfa.asso.fr/" target="_blank">Rapport d'activité 2025 — chiffres clés de la fraude à l'assurance</a></h3>
+<div class="meta">ALFA • 17/07/2026 — source de référence annuelle</div>
+<p>Le rapport d'activité de l'agence des assureurs chiffre la fraude identifiée 2025 à 946 M€ (+4,9 %), dont 627 M€ en IARD, avec un taux de fraude de 1,27 % et une fraude réelle estimée à 2,5 Md€. La prévoyance (+25,8 %) et la santé (+11,8 %) progressent vite, l'assurance vie (+101,7 %) reste faible en volume mais double. Les modalités dominantes : fausses déclarations, fraude documentaire (dont photos modifiées par IA) et surévaluation du préjudice.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> C'est le référentiel KPI annuel du marché : benchmark obligatoire pour situer l'efficacité de son propre dispositif de détection et calibrer les objectifs SIU.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.igf.gouv.fr/files/igf/files/contributed/Rapports%20de%20mission/2026/2025-E-047-Fraude-assurance-maladie.pdf" target="_blank">La lutte contre la fraude aux prescriptions et aux facturations à l'assurance maladie</a></h3>
+<div class="meta">IGF-Igas • 29/07/2026</div>
+<p>Le rapport conjoint des deux inspections générales établit que la détection ne couvre qu'une fraction de la fraude estimée (1,4 à 1,9 Md€/an sur le champ évalué) et préconise de cibler les contrôles par la science des données, de couvrir tous les professionnels de santé, de privilégier les dossiers à fort enjeu financier et de renforcer la coordination CPAM-parquets.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Ses recommandations alimentent les décrets de la loi de lutte contre la fraude alors en rédaction — impact réglementaire direct sur les obligations de contrôle et le partage de données entre assureurs et caisses.</p>
+</div>
+</div></div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">3. 🗂️ Exploitation de l'opendata</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-et-lamf-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-0" target="_blank">Escroqueries : l'ACPR et l'AMF mettent en garde le public contre les acteurs Forex et crypto-actifs sans autorisation</a></h3>
+<div class="meta">ACPR-AMF • 22/10/2026</div>
+<p>Mise en garde conjointe des deux autorités avec actualisation régulière de leurs listes noires de sites proposant Forex et produits dérivés sur crypto-actifs sans autorisation, un grand nombre usurpant l'identité de professionnels régulés.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Chaque communiqué actualise la base de référence à croiser automatiquement en entrée en relation : une entité présente sur une liste noire doit déclencher un refus ou une vigilance renforcée à la souscription.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france" target="_blank">Listes noires des entités non autorisées à proposer des produits ou services financiers en France</a></h3>
+<div class="meta">data.gouv.fr (AMF) • jeu de données mis à jour en continu, consulté le 03/11/2026</div>
+<p>Le jeu de données open data de l'AMF recense les acteurs mis en garde ou usurpant un acteur régulé, en CSV structuré (nom, catégorie, date d'inscription), ce qui permet un contrôle automatique et un croisement avec le fichier clients ou prospects d'un assureur.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> C'est la brique d'opendata directement intégrable dans un moteur de contrôle LCB-FT/onboarding : un batch quotidien suffit pour filtrer les entités blacklistées avant toute souscription.</p>
+</div>
+</div></div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">4. 🕸️ Lutte contre les bandes organisées</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.argusdelassurance.com/assurance-de-personnes/fraude-geante-a-loptique-comment-malakoff-humanis-a-demasque-cette-escroquerie-a-36-millions-deuros.4WUOHVNDFBB4NOXFVW2WCTFO4M.html" target="_blank">Fraude géante à l'optique : comment Malakoff Humanis a démasqué cette escroquerie à 36 millions d'euros</a></h3>
+<div class="meta">L'Argus de l'assurance • 29/09/2026</div>
+<p>Vingt-deux ophtalmologues, opticiens et responsables de santé, plus 15 structures, sont poursuivis pour escroquerie et blanchiment en bande organisée : fausses prescriptions, consultations fictives et surfacturation au détriment des organismes complémentaires (36 M€ en trois ans, potentiel estimé à 150 M€/an à Paris). Pour la première fois, des « techniques spéciales » de la criminalité organisée (écoutes, géolocalisation, sonorisation) ont été appliquées à un dossier impliquant des professionnels de santé. Le signalement vient d'un assureur : Malakoff Humanis avait repéré dès 2024 des atypies (50 à 150 paires de lunettes facturées par jour, reste à charge systématiquement nul).</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> La détection d'atypies de consommation par l'assureur, couplée à un signalement précoce au parquet, a déclenché un démantèlement — le modèle de la chaîne détection-signalement-techniques spéciales à répliquer.</p>
+<p class="methode"><i>Impact réglementaire</i> : l'affaire intervient pendant la rédaction des décrets de la loi de lutte contre la fraude, qui renforce justement les relations Ocam-Assurance maladie.</p>
+</div>
+</div></div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">5. 🚪 Fraude en entrée en relation</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.assemblee-nationale.fr/dyn/17/textes/l17b3228_proposition-loi" target="_blank">Proposition de loi n° 3228 — mieux réprimer l'usurpation d'identité et garantir l'accompagnement des victimes</a></h3>
+<div class="meta">Assemblée nationale • 06/10/2026</div>
+<p>Déposée le 6 octobre 2026 et renvoyée en commission des lois, la proposition porte la peine de base de l'usurpation d'identité à cinq ans d'emprisonnement et 50 000 € d'amende, avec un délit aggravé à dix ans et 150 000 € quand les faits servent à souscrire un crédit, ouvrir un compte ou conclure un contrat au nom de la victime. Elle prévoit aussi une « alerte d'identité » consultable par les organismes habilités lors de la souscription d'un contrat d'assurance, et une garantie obligatoire contre les conséquences de l'usurpation dans les contrats couvrant la RC vie privée ou le logement.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Si elle est adoptée, la mesure change directement le KYC assureur : vérification renforcée obligatoire avant toute opération, alerte d'identité à interroger en entrée en relation, et nouvelle garantie produit.</p>
+<p class="methode"><i>Impact réglementaire</i> : texte non adopté à ce stade — à suivre en commission.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.mediation-assurance.org/wp-content/uploads/2026/09/Rapport_annuel_2025_LMA_page-simple.pdf" target="_blank">Rapport d'activité 2025 de La Médiation de l'Assurance — focus « fraude aux versements » en assurance vie</a></h3>
+<div class="meta">La Médiation de l'Assurance • rapport 2025 publié en 2026 (mis en ligne septembre 2026)</div>
+<p>Le Médiateur consacre un focus à la recrudescence des fraudes aux versements : un tiers usurpe l'identité de l'assuré ou du bénéficiaire et obtient un rachat ou un versement au décès sur un relevé d'identité bancaire falsifié. Il rappelle que l'assureur doit vérifier que la demande émane bien de l'assuré, sous peine de voir sa responsabilité engagée, et cite la jurisprudence récente sur le paiement non libératoire effectué sur un faux RIB.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Tout changement de coordonnées bancaires suivi d'une demande de rachat est la signature du schéma : ces contrôles en séquence (canal alternatif, corrélation temporelle) sont directement transposables aux procédures back-office vie.</p>
+</div>
+</div></div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">6. 🩺 Fraude à la santé</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.tf1info.fr/sante/reportage-tf1-arrets-maladie-abusifs-les-mesures-anti-fraude-sont-elles-reellement-efficaces-2463521.html" target="_blank">Arrêts maladie abusifs : les mesures anti-fraude sont-elles réellement efficaces ?</a></h3>
+<div class="meta">TF1 Info • 11/09/2026</div>
+<p>Le reportage fait le bilan des dispositifs anti-fraude sur les arrêts de travail : formulaire CERFA sécurisé obligatoire (étiquette holographique, encre magnétique) lu automatiquement en 0,3 seconde, 34 M€ de fraude empêchés en 2025 (+15 % sur un an), 700 000 assurés contrôlés dont 240 000 convoqués — l'arrêt n'était plus justifié dans la moitié des cas. Depuis septembre, le premier arrêt est plafonné à 31 jours.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Les prévoyances et complémentaires santé traitent les mêmes faux arrêts que la Sécurité sociale : les éléments de sécurité du CERFA et le plafonnement donnent des points de contrôle concrets pour la gestion IJSS et maintien de salaire.</p>
+</div>
+</div></div>
+
+<div class="card">
+<div class="card-head"><div class="card-title">7. 🧪 Divers — sujet émergent</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lefigaro.fr/societes/signalements-anonymes-soupcons-de-corruption-et-enquete-interne-ce-scandale-qui-empoisonne-malakoff-humanis-le-geant-de-la-protection-sociale-20261028" target="_blank">« Signalements anonymes », soupçons de corruption et enquête interne : ce scandale qui empoisonne Malakoff Humanis</a></h3>
+<div class="meta">Le Figaro • 28/10/2026</div>
+<p>Le deuxième groupe français de protection sociale est éclaboussé par des soupçons « de corruption commise en bande organisée » visant sa direction générale, à la suite de signalements anonymes partis de l'interne ; une enquête interne est en cours et un cabinet de chasse de têtes cherche déjà un remplaçant au DG.</p>
+<p class="why"><b>Pourquoi c'est pertinent ?</b> Le risque de fraude interne — corruption en bande organisée au sommet d'un gestionnaire de protection sociale couvrant 10 millions de personnes — appelle les mêmes dispositifs que la fraude externe : lanceurs d'alerte, séparation des pouvoirs, audits ciblés.</p>
+</div>
+</div></div>
+
+</div>
+
+<div class="card" style="margin-top:16px">
+<div class="card-head"><div class="card-title">🩻 Synthèse — 5 signaux faibles à surveiller</div></div>
+<div class="card-body">
+<div class="signal"><b>1. La fraude documentaire migre du sinistre vers la souscription et l'identité</b> : le faux gratuit rend la preuve injustifiable ; les réponses à structurer sont l'authentification à la source et la provenance cryptographique.
+<a href="https://algopolis.eu/fr/article/19" target="_blank">https://algopolis.eu/fr/article/19</a>
+<a href="https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html" target="_blank">https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html</a></div>
+<div class="signal"><b>2. L'assureur devient à la fois détecteur et partie prenante d'affaires internes</b> : signalement d'atypies chez Malakoff Humanis d'un côté, soupçons de corruption interne au sommet du même groupe de l'autre.
+<a href="https://www.argusdelassurance.com/assurance-de-personnes/fraude-geante-a-loptique-comment-malakoff-humanis-a-demasque-cette-escroquerie-a-36-millions-deuros.4WUOHVNDFBB4NOXFVW2WCTFO4M.html" target="_blank">https://www.argusdelassurance.com/assurance-de-personnes/fraude-geante-a-loptique-comment-malakoff-humanis-a-demasque-cette-escroquerie-a-36-millions-deuros.4WUOHVNDFBB4NOXFVW2WCTFO4M.html</a>
+<a href="https://www.lefigaro.fr/societes/signalements-anonymes-soupcons-de-corruption-et-enquete-interne-ce-scandale-qui-empoisonne-malakoff-humanis-le-geant-de-la-protection-sociale-20261028" target="_blank">https://www.lefigaro.fr/societes/signalements-anonymes-soupcons-de-corruption-et-enquete-interne-ce-scandale-qui-empoisonne-malakoff-humanis-le-geant-de-la-protection-sociale-20261028</a></div>
+<div class="signal"><b>3. La réponse pénale se durcit et se professionnalise</b> : techniques spéciales de la criminalité organisée appliquées à la fraude santé, et proposition de loi portant l'usurpation d'identité aggravée à dix ans.
+<a href="https://www.argusdelassurance.com/assurance-de-personnes/fraude-geante-a-loptique-comment-malakoff-humanis-a-demasque-cette-escroquerie-a-36-millions-deuros.4WUOHVNDFBB4NOXFVW2WCTFO4M.html" target="_blank">https://www.argusdelassurance.com/assurance-de-personnes/fraude-geante-a-loptique-comment-malakoff-humanis-a-demasque-cette-escroquerie-a-36-millions-deuros.4WUOHVNDFBB4NOXFVW2WCTFO4M.html</a>
+<a href="https://www.assemblee-nationale.fr/dyn/17/textes/l17b3228_proposition-loi" target="_blank">https://www.assemblee-nationale.fr/dyn/17/textes/l17b3228_proposition-loi</a></div>
+<div class="signal"><b>4. Les listes noires deviennent une brique automatisable du contrôle d'entrée en relation</b> : flux ACPR-AMF régulier et jeu de données open data en CSV directement croisable avec les fichiers clients.
+<a href="https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-et-lamf-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-0" target="_blank">https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-et-lamf-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-0</a>
+<a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france" target="_blank">https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france</a></div>
+<div class="signal"><b>5. Le chantier réglementaire de la loi fraude arrive en phase opérationnelle</b> : décrets en rédaction, recommandations IGF-Igas (science des données, contrôle avant paiement, coordination CPAM-parquets) et alerte d'identité proposée en souscription.
+<a href="https://www.igf.gouv.fr/files/igf/files/contributed/Rapports%20de%20mission/2026/2025-E-047-Fraude-assurance-maladie.pdf" target="_blank">https://www.igf.gouv.fr/files/igf/files/contributed/Rapports%20de%20mission/2026/2025-E-047-Fraude-assurance-maladie.pdf</a>
+<a href="https://www.assemblee-nationale.fr/dyn/17/textes/l17b3228_proposition-loi" target="_blank">https://www.assemblee-nationale.fr/dyn/17/textes/l17b3228_proposition-loi</a></div>
+</div></div>
+
+  <footer>
+    <p class="methode"><b>Méthode</b> : sources sélectionnées sur fenêtre glissante (priorité octobre 2026, tolérance jusqu'à juillet 2026 pour les références ALFA, IGF-Igas, franceinfo et TF1). Date de publication vérifiée sur chaque page source : piège JJ/MM corrigé sur l'article franceinfo (04/07/2026) et sur l'article de l'Argus (29/09/2026, et non 13/10). Aucun site blacklisté (lesnumeriques.com, degrouptest.com) ni blog de cabinet, comparateur ou communiqué d'éditeur retenu. Écartés : reprises multiples du rapport ALFA (une seule entrée), rapport Tessi (whitepaper d'éditeur), articles identifAI et Reality Defender (journaux de fournisseurs), blogs d'avocats sur la PPL 3228 (texte primaire de l'Assemblée nationale retenu).</p>
+    <p>Généré le 2026-11-03 par ORAC (Hermes, profil demo) — veille-fraude-assurance. Fichiers : veille-FRAUDE-2026-11-03-glm-ct3b-r1.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'🌙'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

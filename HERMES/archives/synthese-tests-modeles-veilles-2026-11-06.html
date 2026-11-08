@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded',hvPaint);
 <header>
 <div>
 <h1>Synthèse — Tests de modèles sur les veilles — 6 novembre 2026</h1>
-<p>9 veilles comparées · 3 thèmes × 3 modèles · 196 appels API · 2 juges à l’aveugle · 42 tirages de contrôle · liens, dates et coûts mesurés</p>
+<p>9 veilles comparées · 3 thèmes × 3 modèles · 196 appels API · 2 juges à l’aveugle · 42 tirages de contrôle · campagne fraude : 9 tirages, 7 critères, 2 juges · liens, dates et coûts mesurés</p>
 </div>
 <div style="text-align:right"><a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)"><span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span></a><time datetime="2026-11-06">6 novembre 2026</time></div>
 </header>
@@ -649,7 +649,78 @@ Flash. Répercussions : section « Modèle » des skills <code>veille-ia-quotidi
 entre le 02/11 et le 06/11, l'histoire ne se réécrivant pas. Les douze tirages sont publiés dans
 <code>bench-2026-11-06/contre-test-glm/</code> ; les grilles anonymisées ne le sont pas, comme pour
 les répétitions.</p>
-</div></div><div class="card"><div class="card-head"><div class="card-title">💸 Coût mesuré</div></div><div class="card-body">
+</div></div><div class="card"><div class="card-head"><div class="card-title">🩺 La veille fraude assurance — trois modèles face à sept axes</div></div><div class="card-body">
+<p>Les cinq thèmes du bench du 6 novembre sont des veilles hebdomadaires ou tri-hebdomadaires : quelques
+articles par jour, une fenêtre de sept jours, cinq ou six sections. La veille fraude assurance n'a rien à
+voir. Elle paraît <b>une fois par mois</b>, elle doit remplir <b>sept thématiques obligatoires</b> à raison
+d'une à trois entrées chacune, elle exige <b>80 % de sources françaises</b> et elle place au premier rang les
+sources d'autorité — ACPR, AMF, Assurance Maladie, ALFA, France Assureurs, Europol, ENISA, textes de loi.
+Rien dans les résultats de l'IA, du quantique, de la RH ou de la télésurveillance ne dit ce que vaut un
+modèle sur cette forme-là : un modèle peut écrire des synthèses excellentes en sept jours et se perdre dans
+un mois de matière à répartir sur sept axes.</p>
+
+<p>D'où une campagne séparée, sur le même principe que les autres : <b>trois modèles, trois tirages chacun</b>,
+procédure complète chargée des trois côtés, et un <b>mois de référence unique</b> — octobre 2026, celui que
+couvre l'édition réellement publiée le 3 novembre, qui sert d'ancre de comparaison sans être notée. Les neuf
+veilles ont été mélangées dans une seule grille anonymisée et soumises aux deux juges habituels, Grok 4.7
+et DeepSeek, avec une différence de taille par rapport aux campagnes précédentes : la grille annonce
+<b>sept critères</b> et non cinq. Aux cinq critères de toujours s'ajoutent <b>Couverture</b> (les sept axes
+sont-ils tous servis, avec des entrées solides ou du remplissage) et <b>Autorité des sources</b> (institutions
+contre presse généraliste) — les deux dimensions qui font la valeur d'une veille fraude et que les cinq
+critères génériques mesurent mal.</p>
+
+<p>Le critère de décision a été figé <b>avant</b> de voir la moindre note : on ne touche à l'épinglage que si un
+modèle place ses trois tirages devant les trois de chacun des deux autres chez les deux juges. Sans règle
+écrite d'avance, on finit toujours par lire les chiffres dans le sens qu'on espère.</p>
+<h4>Les neuf tirages, mesures du thème</h4><table><thead><tr><th>Veille</th><th>Mots</th><th>Axes servis</th><th>Entrées</th><th>Liens</th><th>Sources d'autorité</th><th>Sources françaises</th><th>Signaux sourcés</th></tr></thead><tbody><tr><td><b>deepseek</b> <span class="note">ct3b-r1</span></td><td>2910</td><td>7/7</td><td>17</td><td>28</td><td>35.7 %</td><td>71.4 %</td><td>5/5</td></tr><tr><td><b>deepseek</b> <span class="note">ct3b-r2</span></td><td>2882</td><td>7/7</td><td>20</td><td>35</td><td>51.4 %</td><td>74.3 %</td><td>5/5</td></tr><tr><td><b>deepseek</b> <span class="note">ct3b-r3</span></td><td>3135</td><td>7/7</td><td>20</td><td>29</td><td>24.1 %</td><td>62.1 %</td><td>5/5</td></tr><tr><td><b>glm</b> <span class="note">ct3b-r1</span></td><td>2325</td><td>7/7</td><td>11</td><td>21</td><td>38.1 %</td><td>85.7 %</td><td>5/5</td></tr><tr><td><b>glm</b> <span class="note">ct3b-r2</span></td><td>2008</td><td>7/7</td><td>10</td><td>6</td><td>16.7 %</td><td>83.3 %</td><td>5/5</td></tr><tr><td><b>glm</b> <span class="note">ct3b-r3</span></td><td>2492</td><td>7/7</td><td>13</td><td>23</td><td>26.1 %</td><td>60.9 %</td><td>5/5</td></tr><tr><td><b>qwen</b> <span class="note">ct3b-r1</span></td><td>3365</td><td>7/7</td><td>13</td><td>28</td><td>53.6 %</td><td>89.3 %</td><td>5/5</td></tr><tr><td><b>qwen</b> <span class="note">ct3b-r2</span></td><td>4101</td><td>7/7</td><td>16</td><td>31</td><td>32.3 %</td><td>87.1 %</td><td>5/5</td></tr><tr><td><b>qwen</b> <span class="note">ct3b-r3</span></td><td>4572</td><td>7/7</td><td>18</td><td>48</td><td>25.0 %</td><td>85.4 %</td><td>5/5</td></tr></tbody></table>
+<h4>Deux défauts du dispositif, trouvés en route</h4>
+<p>La première campagne, lancée à 16 h 56, a été <b>arrêtée et jetée</b> : l'audit des sessions a montré qu'un
+sous-agent du bras DeepSeek avait listé le dépôt de production et lu l'édition publiée du 3 novembre pour
+s'inspirer de sa structure. Aucune écriture hors du bac à sable, mais la mesure était faussée par
+construction — et la preuve est chiffrée : ce tirage citait <b>51 liens</b> là où le même bras, propre,
+en cite <b>28</b>. Le garde-fou du harnais interdisait d'écrire hors du bac à sable, jamais de lire les
+veilles existantes ; il a été durci, et comme il fait partie de la consigne, les neuf tirages ont été
+refaits pour que tous partagent le même texte. Les dix-huit fichiers de la première campagne sont conservés
+et publiés à part, avec leur note explicative.</p>
+<p>Second défaut, attrapé juste avant l'envoi aux juges : un bras avait écrit dans son pied de page
+« Copie de bac à sable : qwen-ct3b-r2 » — modèle et numéro de tirage en clair, exactement ce qui casse une
+notation aveugle. Le masque ne l'attrapait pas. Étendu, grille régénérée, zéro fuite vérifiée.</p>
+<p>Ces deux incidents disent la même chose que les campagnes précédentes : dans un banc d'essai, les défauts
+sont presque toujours dans le dispositif, pas dans le modèle.</p>
+<h4>Les compteurs, par modèle et par indicateur</h4><table><thead><tr><th>Indicateur</th><th>DeepSeek</th><th>GLM</th><th>Qwen</th><th>Verdict face au bruit</th></tr></thead><tbody><tr><td>entrées</td><td>19.0 <span class="note">(17.0↔20.0)</span></td><td>11.3 <span class="note">(10.0↔13.0)</span></td><td>15.7 <span class="note">(13.0↔18.0)</span></td><td><b>hors bruit</b> : glm → deepseek</td></tr><tr><td>liens cités</td><td>30.7 <span class="note">(28.0↔35.0)</span></td><td>16.7 <span class="note">(6.0↔23.0)</span></td><td>35.7 <span class="note">(28.0↔48.0)</span></td><td>dans le bruit</td></tr><tr><td>sources d'autorité</td><td>37.1 % <span class="note">(24.1 %↔51.4 %)</span></td><td>27.0 % <span class="note">(16.7 %↔38.1 %)</span></td><td>37.0 % <span class="note">(25.0 %↔53.6 %)</span></td><td>dans le bruit</td></tr><tr><td>sources françaises</td><td>69.3 % <span class="note">(62.1 %↔74.3 %)</span></td><td>76.6 % <span class="note">(60.9 %↔85.7 %)</span></td><td>87.3 % <span class="note">(85.4 %↔89.3 %)</span></td><td>dans le bruit</td></tr><tr><td>mots</td><td>2975.7 <span class="note">(2882.0↔3135.0)</span></td><td>2275.0 <span class="note">(2008.0↔2492.0)</span></td><td>4012.7 <span class="note">(3365.0↔4572.0)</span></td><td><b>hors bruit</b> : glm → qwen</td></tr></tbody></table><h4>La notation à l’aveugle — sept critères, neuf veilles</h4><table><thead><tr><th>Juge</th><th>DeepSeek</th><th>GLM</th><th>Qwen</th><th>Verdict</th></tr></thead><tbody><tr><td><b>deepseek</b></td><td>26.7 <span class="note">(26↔27)</span></td><td>21.3 <span class="note">(20↔22)</span></td><td>27.3 <span class="note">(26↔29)</span></td><td>partiel : glm→qwen dépasse le bruit, pas toutes les paires</td></tr><tr><td><b>grok</b></td><td>24.3 <span class="note">(23↔25)</span></td><td>19.7 <span class="note">(17↔23)</span></td><td>24.3 <span class="note">(21↔27)</span></td><td>indistinguables (aucun écart > bruit 6)</td></tr></tbody></table>
+<h4>Ce que la mesure tranche et ce qu'elle ne tranche pas</h4>
+<p>Trois écarts objectifs dépassent la dispersion interne d'un même modèle, et ils disent des choses
+différentes. <b>Le nombre de sources uniques</b> sépare GLM des deux autres : dix liens distincts en moyenne
+contre dix-neuf — GLM ne va pas chercher autant de matière, et cela se voit aussi dans le nombre d'entrées
+(11 contre 19 pour DeepSeek). <b>Le volume</b> sépare Qwen de GLM dans l'autre sens : 4 013 mots contre 2 275,
+soit un peu moins du double. <b>Le nombre d'entrées</b> sépare DeepSeek de GLM. Sur la part de sources
+françaises (87 % pour Qwen, 69 % pour DeepSeek) et sur la part d'autorité (37 % pour les deux), les écarts
+existent mais restent <b>dans le bruit</b> : les trois tirages d'un même modèle varient trop pour qu'on
+l'affirme.</p>
+<p>Un chiffre piège mérite d'être désamorcé : GLM est le modèle qui casse le moins de liens (1,3 contre 5 en
+moyenne). Ce n'est pas une qualité. Les murs anti-robot 403 de ce thème sont surtout ceux de l'ACPR et
+d'<i>economie.gouv.fr</i> ; un modèle qui cite moins d'autorités casse mécaniquement moins de liens. La
+mesure mesure sa faiblesse, pas sa robustesse.</p>
+<p>La notation à l'aveugle est plus instructive que les compteurs, et plus nuancée. <b>Grok 4.7</b> donne
+DeepSeek et Qwen à égalité exacte (24,3), GLM à 19,7, avec des étendues si larges — jusqu'à six points — qu'il
+ne sépare personne. <b>DeepSeek</b>, jugeant ses propres copies, donne Qwen devant (27,3 contre 26,7) et GLM
+nettement derrière (21,3), avec le seul écart hors bruit de la grille. Les deux juges se contredisent donc sur
+le vainqueur — et c'est précisément pourquoi la règle de décision avait été écrite d'avance.</p>
+<p>Mais sur les extrémités, ils sont d'accord, et c'est le résultat le plus solide de la campagne : <b>Grok
+place les deux mêmes Qwen aux deux premières places et les trois GLM aux trois dernières ; DeepSeek place les
+deux mêmes Qwen en tête et les trois GLM en queue</b>. Deux juges qui se contredisent au milieu de la grille
+donnent le même ordre aux deux bouts.</p>
+<p><b>Décision.</b> Aucun modèle ne place ses trois tirages devant les trois de chacun des deux autres : par
+la règle figée d'avance, <b>l'épinglage ne change pas</b> — DeepSeek reste sur la veille fraude. Ce que la
+campagne établit fermement, c'est que <b>GLM n'a pas sa place sur ce thème</b> : dernier chez les deux juges,
+moins d'entrées, moitié moins de sources, six liens dans son tirage le plus pauvre. Qwen apparaît comme une
+alternative crédible — meilleure part de sources françaises, autorité égale, notes à égalité — mais sans
+séparation statistique, donc sans raison de changer un réglage qui fonctionne.</p>
+<p>Une faiblesse, enfin, qui ne tient à aucun modèle : les veilles fraude <b>datent mal</b>. Entre zéro et neuf
+dates citées par veille, là où les veilles IA en citent douze. La procédure demande pourtant la date de
+publication réelle de chaque source ; sur ce thème, elle n'est pas tenue. C'est un défaut de consigne à
+corriger, pas un classement entre modèles.</p>
+<p class="note">Les neuf veilles (Markdown et HTML), la grille anonymisée qui a servi aux juges, les deux notations et les mesures sont publiées dans <code>bench-2026-11-06/fraude-3modeles/</code> — ainsi que, dans le sous-dossier <code>campagne-ecartee-v1/</code>, les dix-huit fichiers de la première campagne jetée pour contamination, avec leur note explicative.</p></div></div><div class="card"><div class="card-head"><div class="card-title">💸 Coût mesuré</div></div><div class="card-body">
 <p>Neuf veilles complètes pour <b>0,4360 $</b>, soit environ 39 centimes d'euro. Mais le total importe moins que
 sa structure, qui est le vrai enseignement de ce bench :</p>
 <ul>
@@ -701,6 +772,6 @@ peut être totalement exclu. Un juge est en outre bruité : le même fichier not
 même bras. Enfin, ces tirages ont été produits sur un seul jour, avec les mêmes sources disponibles pour tous
 les bras — la compétition pour les mêmes articles limite mécaniquement la variété.</p>
 </div></div><div class="card"><div class="card-head"><div class="card-title">🔗 Traçabilité — les neuf veilles et les comparatifs</div></div><div class="card-body"><ul class="src-list"><li><b>IA global</b> : <a href="bench-2026-11-06/veille-IA-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-IA-2026-11-06-qwen.html">Qwen</a> — <a href="bench-ia-2026-11-06.html">comparatif du thème</a></li><li><b>Diabète</b> : <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-DIABETE-2026-11-06-qwen.html">Qwen</a> — <a href="bench-diabete-2026-11-06.html">comparatif du thème</a></li><li><b>IA & mutations RH</b> : <a href="bench-2026-11-06/veille-RH-2026-11-06-deepseek.html">DeepSeek</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-glm.html">GLM</a> · <a href="bench-2026-11-06/veille-RH-2026-11-06-qwen.html">Qwen</a> — <a href="bench-rh-2026-11-06.html">comparatif du thème</a></li></ul><p class="note">Les neuf veilles brutes (HTML + Markdown) sont publiées dans <code>bench-2026-11-06/</code>, volontairement dans un sous-dossier : les index de veille listent les fichiers à plat, et un bras de bench déposé à la racine serait apparu comme une vraie veille dans l'index IA. Le dossier de comparaison de production (profil démo) conserve les sources d'origine.</p></div></div>
-<p class="note" style="text-align:center;margin:26px 0">Rapport produit par ORAC (Hermes) le 6 novembre 2026, complété le 7 novembre par les chapitres des trente tirages de contrôle et du contre-test GLM face à DeepSeek sur les deux veilles épinglées — page statique, thème sombre par défaut, bascule clair/sombre enregistrée par navigateur. Chiffres mesurés, aucune estimation.</p>
+<p class="note" style="text-align:center;margin:26px 0">Rapport produit par ORAC (Hermes) le 6 novembre 2026, complété le 7 novembre par les chapitres des trente tirages de contrôle, du contre-test GLM face à DeepSeek sur les deux veilles épinglées et, le 8 novembre, du test de la veille fraude assurance (trois modèles × trois tirages, sept critères de notation, deux juges) — page statique, thème sombre par défaut, bascule clair/sombre enregistrée par navigateur. Chiffres mesurés, aucune estimation.</p>
 </div>
 </body></html>

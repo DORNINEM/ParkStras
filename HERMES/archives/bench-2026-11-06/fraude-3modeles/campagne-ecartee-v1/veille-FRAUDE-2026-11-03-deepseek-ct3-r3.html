@@ -1,0 +1,361 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Fraude Assurance — 3 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:var(--ink); --ink:#f3f4f6; --muted:#d1d5db;
+      --border:var(--ink); --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius:16px; color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .model-badge{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:5px 12px;border-radius:999px;
+      font-size:.78rem;font-weight:600;letter-spacing:.03em;border:1px solid var(--border);
+      background:linear-gradient(180deg,var(--panel),var(--bg));color:var(--accent-2)}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow);margin-bottom:16px}
+    .dark .card{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0 0 6px;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .why{font-size:.9rem;color:var(--ink)}
+    .why b{color:var(--accent)}
+    .watch{font-size:.87rem;color:var(--accent-2);margin-top:6px}
+    .synthese{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:16px;padding:16px 18px;margin:18px 0;box-shadow:var(--shadow);font-size:.95rem}
+    .signal{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:16px;padding:14px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .dark .signal{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .signal h3{margin:0 0 6px;font-size:.98rem;color:var(--accent)}
+    .signal p{margin:0;font-size:.9rem}
+    .signal a{color:var(--accent-2);text-decoration:none}
+    .signal a:hover{text-decoration:underline}
+    .audio{border:1px dashed var(--border);border-radius:16px;padding:14px 18px;margin:16px 0;background:var(--panel)}
+    .audio ul{margin:8px 0 0;padding-left:18px}
+    .audio li{font-size:.9rem;margin-bottom:6px}
+    h2.section{font-size:1.15rem;margin:26px 0 12px}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (min-width: 1080px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🛡️ Veille Fraude Assurance</h1>
+      <p>7 thématiques anti-fraude — sources FR/EU, autorités et presse spécialisée — généré par Hermes (ORAC)</p>
+    </div>
+    <time datetime="2026-11-03">3 novembre 2026</time>
+  </header>
+
+  <div class="model-badge">🤖 Modèle : DeepSeek V4.1 Flash &nbsp;•&nbsp; Mois de référence : octobre 2026</div>
+
+  <div class="synthèse">
+    <strong>Synthèse</strong> — Cette édition (mois de référence : octobre 2026) retient dix-neuf sources réparties sur les sept thématiques obligatoires, très majoritairement françaises et adossées d'abord à des autorités (AMF, ACPR, ministère de la Justice, data.gouv.fr, Assurance Maladie) et à la presse spécialisée. La tendance de fond se confirme : la fraude change d'échelle et de nature, l'IA générative ramenant à presque rien le coût du faux document et faisant passer des pièces isolées à des dossiers complets mêlant justificatifs authentiques, prête-noms et identités détournées. Ce qui monte : le chiffrage enfin public du ROI de l'IA anti-fraude, la mise en open data des listes noires des régulateurs, et surtout le deepfake d'identité, qui déplace la menace de la preuve de sinistre vers l'authentification des personnes. Côté santé et fraudes en réseau, la coopération entre caisses, parquet et gendarmerie produit des démantèlements records.
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">🎯 Thématiques</div><div class="value">7</div></div>
+    <div class="kpi"><div class="label">📰 Articles retenus</div><div class="value">19</div></div>
+    <div class="kpi"><div class="label">🇫🇷 Sources françaises</div><div class="value">18 / 19</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📅 octobre 2026</span>
+    <span class="pill green">🏛️ Autorités : AMF, ACPR, Justice, Assurance Maladie</span>
+    <span class="pill yellow">🧪 Deepfake &amp; IA générative</span>
+  </div>
+
+  <div class="audio">
+    <strong>🎧 Résumé par thématique (version audio)</strong>
+    <ul>
+      <li><b>🔍 Anti-fraude documentaire</b> : L'IA générative rend le faux document accessible à tous et de plus en plus crédible. Les fraudeurs assemblent désormais des dossiers complets plutôt que de simples pièces falsifiées.</li>
+      <li><b>📈 Efficacité de la fraude</b> : Les assureurs commencent à chiffrer le gain de l'IA, jusqu'à plusieurs centaines de millions d'euros par an. La détection progresse, mais la fraude réelle reste estimée à environ deux milliards et demi d'euros par an.</li>
+      <li><b>🗂️ Opendata</b> : Les régulateurs ouvrent leurs listes noires sur la plateforme publique des données de l'État. Les assureurs peuvent désormais les intégrer à leurs propres systèmes d'alerte.</li>
+      <li><b>🕸️ Bandes organisées</b> : Les démantèlements s'enchaînent dans l'optique, le courtage et les centres de santé, souvent déclenchés par un signalement de mutuelles ou de Tracfin. La coopération porte ses fruits.</li>
+      <li><b>🚪 Entrée en relation</b> : Les condamnations pour usurpation d'identité augmentent de plus d'un quart en dix ans. La fraude au faux RIB reste une menace, et l'identité synthétique complique la vérification.</li>
+      <li><b>🩺 Fraude à la santé</b> : L'Assurance maladie a détecté et stoppé sept cent vingt-trois millions d'euros de fraudes en 2025, un record. Faux arrêts et centres de santé fictifs concentrent les efforts.</li>
+      <li><b>🧪 Divers</b> : Le détournement d'identité par deepfake quitte le seul champ du sinistre pour toucher la parole des professionnels. La couverture de ces fraudes par ingénierie sociale reste incertaine.</li>
+    </ul>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">1. 🔍 Anti-fraude documentaire</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html" target="_blank">Assurances : quand l'IA simule des accidents</a></h3>
+          <div class="meta">franceinfo (France 2) • 4 juillet 2026</div>
+          <p>Des assurés utilisent des outils d'IA générative pour ajouter en quelques clics des impacts de pare-brise ou des rayures sur des photos de véhicule avant de déclarer un sinistre. Direct Assurance indique détecter jusqu'à 16 M€ de demandes frauduleuses par an et avoir « multiplié par 3,5 le nombre de faux documents reçus » ; les assureurs ripostent en imposant des applications qui géolocalisent et analysent les photos en direct.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour la gestion de sinistres et l'expertise auto : le contrôle documentaire bascule vers le contrôle du canal de capture (photo prise dans l'app, horodatée, analysée) plutôt que du seul document reçu.</p>
+          <p class="watch">À surveiller : la capture certifiée en temps réel comme nouvelle norme de recevabilité des preuves de dommage.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://algopolis.eu/fr/article/19" target="_blank">La fraude à l'assurance augmentée par l'IA</a></h3>
+          <div class="meta">AlgoPolis • 23 octobre 2026</div>
+          <p>L'analyse documente l'effondrement du coût de la falsification : les cas de fraude assistée par IA sont passés d'environ 20 000 en 2022 à plus de 80 000 en 2025, l'assureur britannique Admiral constatant +71 % de fraude en 2025. Trois familles de faux (deepfakes, « cheapfakes », documents synthétiques) et un arsenal de détection : analyse multimodale, forensique numérique, imagerie satellitaire, provenance cryptographique.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Le SIU y trouve la distinction opérationnelle entre détecter le faux (course perdue à terme) et authentifier le vrai à la source — un changement de doctrine pour toute la chaîne de preuve.</p>
+          <p class="watch">À surveiller : les technologies de provenance et de signature à la capture, qui déplacent la valeur vers la traçabilité de l'origine.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.planetecsca.fr/actualites/environnement-courtage-assurances/fraude-documentaire-2026-ia-assurance-banque/" target="_blank">Fraude documentaire : l'IA accélère les risques, la coopération devient indispensable</a></h3>
+          <div class="meta">PLANETE CSCA • 13 juillet 2026</div>
+          <p>Synthèse du 2ᵉ rapport de l'Observatoire Tessi : côté assurance, l'ALFA a détecté 903 M€ de fraudes en 2024 (+30 %) pour un coût réel estimé à 2,5 Md€/an, et l'Assurance Maladie 723 M€ en 2025. 32 % des fraudeurs ayant falsifié un document ont utilisé l'IA générative ; les fraudes numériques pèsent 57 % du total. Conclusion : « la technologie détecte, l'humain décide ».</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Un mandat pour le fraude manager : la détection automatisée ne vaut que couplée à l'analyse humaine et à la coopération intersectorielle, le manque de partage d'information restant le principal frein.</p>
+          <p class="watch">Impact réglementaire : cadre eIDAS II, portefeuille d'identité européen et registre européen des IBAN frauduleux (opérationnel depuis mai 2026).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">2. 📈 Efficacité de gestion de la fraude</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.bfmtv.com/economie/evaluer-un-vehicule-accidente-en-4-minutes-traquer-les-depenses-anormales-dans-la-sante-axa-compte-gagner-jusqu-a-700-millions-d-euros-grace-a-l-ia_AD-202609150212.html" target="_blank">Évaluer un véhicule accidenté en 4 minutes, traquer les dépenses anormales dans la santé… Axa compte gagner jusqu'à 700 millions d'euros grâce à l'IA</a></h3>
+          <div class="meta">BFM TV • 15 septembre 2026</div>
+          <p>Axa chiffre publiquement le retour de son IA : entre 500 et 700 M€ de gains récurrents annuels avant impôts d'ici 2029, avec un déploiement systématique dès 2027. Cas d'usage anti-fraude : analyse des photos de véhicules accidentés en moins de quatre minutes (Axa Suisse), tri des demandes de remboursement et repérage des fraudes ou dépenses anormales en santé.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> C'est le chiffrage « gain nommé, année, périmètre » qui manque aux articles de tendance et qui permet de bâtir un dossier de ROI interne pour un dispositif de détection.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lopinion.fr/economie/947-millions-en-2025-dopees-par-lia-les-fraudes-a-lassurance-se-multiplient" target="_blank">947 millions en 2025 : dopées par l'IA, les fraudes à l'assurance se multiplient</a></h3>
+          <div class="meta">L'Opinion • 10 juillet 2026</div>
+          <p>Bilan ALFA : 947 M€ de fraude identifiée en 2025 (+4,9 %), dont 626,6 M€ en IARD, 112,4 M€ en santé (+20,5 %) et 24,8 M€ en vie (+86,5 %), pour un taux de fraude de 1,27 % des prestations. La hausse marque le pas (+5 % contre +28 % en 2024), ce que l'agence lit comme le signe de « l'efficacité des mécanismes de détection ».</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Ces KPI sectoriels (taux de fraude, répartition par branche) sont la base de tout benchmark et de tout objectif annuel d'une direction anti-fraude.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://acpr.banque-france.fr/system/files/2026-07/20260701_document_reflexion_equite_FR.pdf" target="_blank">L'équité algorithmique dans le secteur financier</a></h3>
+          <div class="meta">ACPR (document de réflexion, consultation publique) • 1ᵉʳ juillet 2026</div>
+          <p>Le document traite explicitement des modèles de lutte contre la fraude : biais reflétant les endroits où les équipes ont cherché la fraude plutôt que là où elle s'est produite, risque de contrôles répétés sur certaines catégories d'assurés, intégration de l'équité aux trois lignes de défense, contrôle humain et statut de données sensibles (RGPD) des données de santé.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour le fraude manager comme pour la conformité LCB-FT, c'est la grille de gouvernance qui conditionne la déployabilité des scores : seuils, précision des alertes, supervision humaine documentée.</p>
+          <p class="watch">Impact réglementaire : AI Act (systèmes à haut risque pour la tarification/évaluation des risques applicables en 2027) et RGPD pour les données de santé.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">3. 🗂️ Exploitation de l'opendata</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-lamf/lamf-et-lacpr-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-2" target="_blank">L'AMF et l'ACPR mettent en garde le public contre plusieurs acteurs proposant… Forex et produits dérivés sur crypto-actifs</a></h3>
+          <div class="meta">AMF (communiqué) • 22 octobre 2026</div>
+          <p>Depuis le début 2026, l'AMF et l'ACPR ont ajouté 57 sites non autorisés en catégorie Forex et 36 en produits dérivés sur crypto-actifs, dont 26 et 10 au seul troisième trimestre. Les listes noires sont mises à jour fréquemment et adossées à des outils de vérification (ABEIS, Regafi, Orias, AMF Protect Épargne).</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour l'entrée en relation et la LCB-FT : une source de contrôle automatique à croiser avec les bases clients et les encaissements, notamment contre l'usurpation de l'identité d'acteurs régulés.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france" target="_blank">Listes noires des entités non autorisées à proposer des produits ou services financiers en France</a></h3>
+          <div class="meta">data.gouv.fr (producteur : AMF) • mise à jour quotidienne, consulté le 3 novembre 2026</div>
+          <p>Le jeu de données ouvre les listes noires de l'AMF (sites, adresses mail ou noms d'acteurs non autorisés, y compris interfaces usurpant des acteurs régulés) dans un CSV à séparateur « ; », avec pour chaque entrée le nom, la catégorie de produit et la date d'inscription. Intégralement téléchargeable pour un traitement automatisé, adossé à une API tabulaire et à plusieurs réutilisations.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> La matière première d'un contrôle automatisé : croisement des IBAN, adresses et noms de bénéficiaires avec la liste noire et alimentation d'un système d'alertes plutôt qu'une consultation manuelle.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://acpr.banque-france.fr/en/node/28332" target="_blank">Escroqueries : l'ACPR met en garde le public contre les propositions frauduleuses de crédits, de livrets d'épargne, de services de paiement et d'assurances</a></h3>
+          <div class="meta">ACPR (page listes noires) • mise à jour le 24 septembre 2026</div>
+          <p>L'ACPR tient à jour sa liste des sites ou entités proposant en France des contrats d'assurance — entre autres produits — sans y être autorisés, et la complète régulièrement (les vagues d'inscriptions se comptent en centaines par trimestre).</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Sur l'axe assurance, cette liste noire spécifique permet de détecter les offres d'assurance illégales et les usurpations de courtiers, en complément des listes de l'AMF orientées épargne.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">4. 🕸️ Lutte contre les bandes organisées</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://jss.fr/post/paris-onze-personnes-poursuivies-escroquerie-blanchiment-secteur-optique" target="_blank">A Paris, onze personnes poursuivies pour escroquerie et blanchiment dans le secteur de l'optique</a></h3>
+          <div class="meta">JSS (Journal Spécial des Sociétés) • 25 septembre 2026</div>
+          <p>Le parquet de Paris a déféré onze personnes — dont trois opticiens et trois présidents d'associations — pour escroquerie et blanchiment en bande organisée, après un signalement de plusieurs mutuelles de santé et des perquisitions menées début 2026. Le système gonflait les remboursements optiques au détriment des complémentaires pour « plusieurs millions d'euros par an » depuis 2023 ; jusqu'à dix ans de prison encourus, 1,3 M€ de matériel saisi.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Le dossier illustre la boucle vertueuse signalement d'assureurs → parquet → démantèlement et le rôle des complémentaires santé comme premier détecteur de fraude organisée en réseau.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lanouvellerepublique.fr/poitiers/courtage-d-assurances-entre-abus-de-biens-sociaux-et-escroqueries-un-proces-a-2-5-millions-d-euros-de-prejudices-a-poitiers-1793651487" target="_blank">Courtage d'assurances : entre abus de biens sociaux et escroqueries, un procès à 2,5 millions d'euros de préjudices à Poitiers</a></h3>
+          <div class="meta">La Nouvelle République • 2 novembre 2026</div>
+          <p>C'est un signalement de Tracfin qui a déclenché l'enquête : la société de courtage ABD Solution vendait des « prêts participatifs » promettant 7 %, les nouveaux encaissements couvrant les anciens jusqu'à la banqueroute. Trois anciens associés ont été poursuivis le 17 septembre 2026 pour escroquerie en bande organisée et abus de biens sociaux, pour un préjudice estimé à 2,5 M€.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour la LCB-FT : la valeur du dispositif de déclaration (Tracfin) comme porte d'entrée des enquêtes, et la porosité entre fraude à l'assurance, montage financier et abus de biens sociaux.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.ici.fr/infos/sante-sciences/fraude-dans-les-centres-de-sante-une-criminalite-massive-et-organisee-5706090" target="_blank">Fraude dans les centres de santé : une criminalité massive et organisée</a></h3>
+          <div class="meta">ICI (Radio France) • 27 mars 2026</div>
+          <p>L'enquête détaille le démantèlement d'un réseau soupçonné d'avoir escroqué l'Assurance Maladie de 58 M€ via 18 centres de santé, essentiellement dentaires : facturation robotisée d'actes fictifs, numéros RPPS de médecins utilisés, données de patients usurpées. L'OCLTI et le pôle interrégional d'enquêteurs judiciaires de l'Assurance maladie ont mené les investigations.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Le modèle de la fraude organisée en santé — coquilles vides, données de patients exploitées, demandes dispersées entre caisses pour retarder la détection — des typologies transposables aux mutuelles.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">5. 🚪 Fraude en entrée en relation</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.justice.gouv.fr/sites/default/files/2026-09/Infos_Rapides_Justice_n43.pdf" target="_blank">27 % de condamnations pour usurpation d'identité en plus sur dix ans</a></h3>
+          <div class="meta">Ministère de la Justice (Infos Rapides Justice n°43) • septembre 2026</div>
+          <p>La note statistique du SSER recense 4 208 condamnations pour au moins une infraction d'usurpation d'identité en 2024, soit +27 % en dix ans. Elle précise les conséquences pour les victimes : 40 % des condamnations concernent des usurpations pouvant entraîner des poursuites pénales à leur encontre et 45 % une inscription au fichier des permis de conduire.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour l'onboarding, la donnée objective nourrit l'argumentaire de renforcement du KYC : l'usurpation d'identité est un contentieux en croissance, aux effets durables pour la personne dont l'identité est exploitée.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lemonde.fr/argent/article/2026/09/24/fraude-au-faux-rib-celui-qui-a-de-bonne-foi-vire-l-argent-a-un-escroc-est-il-libere-de-sa-dette_6781340_1657007.html" target="_blank">Fraude au faux RIB : celui qui a de bonne foi viré l'argent à un escroc est-il libéré de sa dette ?</a></h3>
+          <div class="meta">Le Monde • 24 septembre 2026</div>
+          <p>Le 17 juin 2026 (pourvoi n° 24-13.306), la Cour de cassation juge que l'usurpateur qui se fait passer pour un créancier n'est pas un « créancier apparent » : la victime d'un faux RIB reste tenue de sa dette, obligée de payer deux fois. La fraude repose le plus souvent sur le piratage de la messagerie d'un débiteur ou d'un créancier et sur l'envoi d'un faux relevé d'identité bancaire.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour l'entrée en relation et la gestion des mandats : sécuriser en amont la vérification des coordonnées bancaires (contrôle du nom du bénéficiaire, contre-appel) plutôt que de compter sur une protection judiciaire a posteriori.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">6. 🩺 Fraude à la santé</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.lequotidiendumedecin.fr/sante-societe/politique-de-sante/centres-de-sante-fictifs-medecins-complices-723-millions-de-fraudes-lassurance-maladie-en-2025-15" target="_blank">Centres de santé « fictifs », médecins « complices » : 723 millions de fraudes à l'Assurance-maladie en 2025 (+15 %), nouveau record</a></h3>
+          <div class="meta">Le Quotidien du Médecin • 16 avril 2026</div>
+          <p>Le bilan 2025 présenté par le directeur général de la Cnam fait état de 723 M€ de fraudes détectées et stoppées, le triple d'il y a quatre ans. Les centres de santé pèsent à eux seuls 138 M€ ; les fraudes aux arrêts de travail atteignent 49 M€ (+16,7 %), dont 34 M€ de faux arrêts.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> La référence chiffrée du secteur : elle hiérarchise les postes de fraude (centres, arrêts, droits) sur lesquels se calent les plans de contrôle et les objectifs des organismes.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.sudouest.fr/economie/social/qui-fraude-l-assurance-maladie-dans-les-landes-plus-de-2-millions-d-euros-d-arnaques-detectees-en-2025-30999176.php" target="_blank">Qui fraude l'Assurance maladie dans les Landes ? Plus de 2 millions d'euros d'arnaques détectées en 2025</a></h3>
+          <div class="meta">Sud Ouest • 9 octobre 2026</div>
+          <p>Lors d'une conférence de presse du 9 octobre 2026, la CPAM des Landes a chiffré à 2,42 M€ les fraudes, fautes et abus détectés en 2025, dont 1 M€ de préjudice évité avant paiement. Les escroqueries proviennent très majoritairement des professionnels ; l'organisme décrit le schéma des « coquilles vides » (fausses entreprises, faux salariés, faux arrêts).</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Le détail départemental donne un ordre de grandeur « fraudes détectées / prestations versées » (0,2 %) utile pour calibrer les attentes de détection et la communication auprès des assurés.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.ledauphine.com/faits-divers-justice/2026/05/14/un-reseau-soupconne-d-avoir-detourne-3-5-millions-d-euros-a-l-assurance-maladie-demantele" target="_blank">Île-de-France. Un réseau soupçonné d'avoir détourné 3,5 millions d'euros à l'Assurance maladie démantelé</a></h3>
+          <div class="meta">Le Dauphiné Libéré • 14 mai 2026</div>
+          <p>Sept personnes ont été interpellées pour avoir fourni de faux arrêts de travail à près de 1 200 assurés via Snapchat, en usurpant l'identité de médecins et les numéros de Siret d'employeurs ; le préjudice atteint 3,5 M€ sur dix-huit mois. L'Assurance maladie rappelle que les formulaires papier non sécurisés sont désormais rejetés et que les pénalités peuvent atteindre trois fois le préjudice.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Le kit frauduleux « clé en main » diffusé sur les réseaux sociaux et l'usurpation d'identité de prescripteurs sont des typologies réplicables à détecter côté indemnités journalières.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">7. 🧪 Divers — sujet émergent</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.egora.fr/actus-pro/sante-numerique/deepfakes-en-sante-quand-votre-visage-peut-devenir-le-porte-parole-dune" target="_blank">Deepfakes en santé : quand votre visage peut devenir le porte-parole d'une arnaque</a></h3>
+          <div class="meta">Egora • 15 octobre 2026</div>
+          <p>L'article revient sur l'alerte de l'AP-HP et de Sorbonne Université : l'image et la voix du Pr Renaud Piarroux ont été détournées par IA pour promouvoir un prétendu traitement, l'AP-HP ayant porté plainte et saisi Meta. Au-delà de la désinformation, l'affaire ouvre un angle anti-fraude inédit : la parole d'un expert est fabriquée et le repère de confiance (visage, affiliation) devient un outil d'escroquerie.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Pour le fraude manager, le deepfake d'identité n'est plus un sujet de sinistre mais de confiance à l'entrée en relation et de détection en continu, l'image d'un tiers réputé servant d'alibi commercial.</p>
+          <p class="watch">À surveiller : transposabilité aux assureurs (avatars de conseillers, voix de hotline) et procédures de réaction en cas d'usurpation d'identité institutionnelle.</p>
+          <p class="watch">Impact réglementaire : AI Act (obligation de signalement des deepfakes depuis août 2026) et RGPD (usage de l'image).</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.cyberversicherung.ch/fr/sinistres/v-ch-2026-003/" target="_blank">Sinistre : Deepfake — Entreprise, Suisse 2026</a></h3>
+          <div class="meta">Cyberversicherung.ch (base de cas) • état au 6 novembre 2026</div>
+          <p>Des fraudeurs ont usurpé la voix d'un partenaire commercial (clonage IA) pour obtenir plusieurs virements de plusieurs millions de francs vers l'Asie, découverts seulement après paiement (canton de Schwytz, 2026). La fiche analyse ensuite, contrat par contrat, la probabilité de prise en charge par une assurance cyber.</p>
+          <p class="why"><b>Pourquoi c'est pertinent ?</b> Le cas matérialise le « risque de couverture non anticipé » : une fraude par ingénierie sociale (deepfake) n'est indemnisée que si la garantie fraude/ingénierie sociale est explicitement nommée au contrat — point de vigilance majeur pour les souscripteurs.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section">🧭 Synthèse — 5 signaux faibles à surveiller</h2>
+
+  <div class="signal">
+    <h3>1. Industrialisation du faux par IA générative</h3>
+    <p>Un tiers des fraudeurs ayant falsifié un document s'aident désormais de l'IA, et les fraudes numériques pèsent 57 % du total ; le coût du faux devient quasi nul. Sources : <a href="https://www.planetecsca.fr/actualites/environnement-courtage-assurances/fraude-documentaire-2026-ia-assurance-banque/" target="_blank">PLANETE CSCA</a> · <a href="https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html" target="_blank">franceinfo</a> · <a href="https://algopolis.eu/fr/article/19" target="_blank">AlgoPolis</a></p>
+  </div>
+  <div class="signal">
+    <h3>2. Le ROI de l'IA anti-fraude devient chiffrable</h3>
+    <p>Un grand assureur annonce jusqu'à 700 M€ de gains annuels d'ici 2029, tandis que le taux de fraude sectoriel reste à 1,27 % : la détection progresse plus vite que la fraude. Sources : <a href="https://www.bfmtv.com/economie/evaluer-un-vehicule-accidente-en-4-minutes-traquer-les-depenses-anormales-dans-la-sante-axa-compte-gagner-jusqu-a-700-millions-d-euros-grace-a-l-ia_AD-202609150212.html" target="_blank">BFM TV</a> · <a href="https://www.lopinion.fr/economie/947-millions-en-2025-dopees-par-lia-les-fraudes-a-lassurance-se-multiplient" target="_blank">L'Opinion</a></p>
+  </div>
+  <div class="signal">
+    <h3>3. L'opendata des régulateurs, arme de contrôle automatique</h3>
+    <p>Les listes noires AMF/ACPR (57 sites Forex et 36 crypto-actifs ajoutés en 2026) sont désormais diffusées en données ouvertes et réutilisables. Sources : <a href="https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-lamf/lamf-et-lacpr-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-2" target="_blank">AMF</a> · <a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france" target="_blank">data.gouv.fr</a></p>
+  </div>
+  <div class="signal">
+    <h3>4. Le deepfake d'identité sort du sinistre</h3>
+    <p>Des médecins voient leur image détournée et des dirigeants leur voix clonée pour déclencher des virements : l'authentification de la personne devient un point d'attaque de premier ordre. Sources : <a href="https://www.egora.fr/actus-pro/sante-numerique/deepfakes-en-sante-quand-votre-visage-peut-devenir-le-porte-parole-dune" target="_blank">Egora</a> · <a href="https://www.cyberversicherung.ch/fr/sinistres/v-ch-2026-003/" target="_blank">Cyberversicherung.ch</a> · <a href="https://www.lemonde.fr/argent/article/2026/09/24/fraude-au-faux-rib-celui-qui-a-de-bonne-foi-vire-l-argent-a-un-escroc-est-il-libere-de-sa-dette_6781340_1657007.html" target="_blank">Le Monde</a></p>
+  </div>
+  <div class="signal">
+    <h3>5. La fraude organisée ne se démantèle qu'en coopération</h3>
+    <p>Optique, courtage, centres de santé : les affaires partent presque toujours d'un signalement d'assureur, de mutuelle ou de Tracfin avant d'aboutir chez le parquet et l'OCLTI. Sources : <a href="https://jss.fr/post/paris-onze-personnes-poursuivies-escroquerie-blanchiment-secteur-optique" target="_blank">JSS</a> · <a href="https://www.lanouvellerepublique.fr/poitiers/courtage-d-assurances-entre-abus-de-biens-sociaux-et-escroqueries-un-proces-a-2-5-millions-d-euros-de-prejudices-a-poitiers-1793651487" target="_blank">La Nouvelle République</a> · <a href="https://www.ici.fr/infos/sante-sciences/fraude-dans-les-centres-de-sante-une-criminalite-massive-et-organisee-5706090" target="_blank">ICI</a></p>
+  </div>
+
+  <footer>
+    <p>Veille Fraude Assurance — 3 novembre 2026 (mois de référence : octobre 2026). 7 thématiques, 19 entrées, 18 sources françaises sur 19. Sources d'autorité prioritaires (AMF, ACPR, ministère de la Justice, data.gouv.fr, Assurance Maladie), dates de publication vérifiées sur chaque page.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.textContent=d?'☀️':'&#127769;&#65039;'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

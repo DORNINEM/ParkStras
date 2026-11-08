@@ -1,0 +1,282 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Veille Fraude Assurance — 3 novembre 2026</title>
+<style>:root{
+  --bg:#010409;
+  --panel:#0b1220;
+  --ink:#e6f1ff;
+  --muted:#8fb3cc;
+  --accent:#40dcff;
+  --accent-2:#ffb347;
+  --border:rgba(64,220,255,.22);
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+html[data-theme="light"]{
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --ink:#1f2937;
+  --muted:#6b7280;
+  --accent:#0ea5e9;
+  --accent-2:#6366f1;
+  --border:#e5e7eb;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+  background:
+    radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+    radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+    var(--bg);
+  color:var(--ink); line-height:1.65;
+}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+header{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:14px;
+  padding:22px 22px 20px; border:1px solid var(--border);
+  background:linear-gradient(180deg,#0b1220,var(--panel));
+  border-radius:18px; color:#fff; box-shadow:var(--shadow);
+}
+html[data-theme="light"] header{background:linear-gradient(180deg,#fff,var(--panel))}
+header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+header p{margin:0;opacity:.85;font-size:.95rem}
+header time{font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.kpi{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:14px;padding:14px 16px}
+.kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+.pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pill.green{background:#10b981;color:#fff;border-color:#10b981}
+.pill.yellow{background:#f59e0b;color:#111;border-color:#f59e0b}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+.card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+.card-title{font-size:1.05rem;font-weight:700}
+.card-body{padding:12px 18px 18px}
+.item{border-top:1px solid var(--border);padding:14px 0}
+.item:first-child{border-top:0;padding-top:0}
+.item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+.item h3 a{color:var(--accent-2);text-decoration:none}
+.item h3 a:hover{text-decoration:underline}
+.meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+.item p{margin:6px 0;font-size:.92rem;color:var(--ink)}
+.why{font-size:.9rem;margin:6px 0;padding-left:10px;border-left:3px solid var(--accent)}
+.watch{font-size:.86rem;color:var(--muted);margin:6px 0 0}
+.signal{border:1px solid var(--border);border-radius:14px;background:var(--panel);padding:12px 16px;margin:10px 0;font-size:.92rem}
+.signal b{color:var(--accent)}
+.signal a{color:var(--accent-2);word-break:break-all;text-decoration:none}
+.synthesis{border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,var(--panel),var(--bg));box-shadow:var(--shadow);padding:16px 18px;margin:16px 0;font-size:.95rem}
+.audio li{margin:8px 0;font-size:.92rem}
+footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+footer p{margin:4px 0}
+.model-badge{position:fixed;top:14px;left:16px;z-index:50;display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:700;letter-spacing:.05em;padding:6px 12px;border-radius:20px;
+  border:1px solid var(--accent);background:rgba(64,220,255,.12);color:var(--accent)}
+@media (min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1280px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:600;letter-spacing:.06em;
+  padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+  border:1px solid var(--border);background:var(--panel);color:var(--ink);
+  box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+</head><body>
+<div class="model-badge">⚙️ Qwen3 — bac à sable qwen-ct3-r3</div>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🛡️ Veille Fraude Assurance</h1>
+      <p>Édition mensuelle — 7 thématiques · France d'abord · sources d'autorité — ORAC / Hermes (profil démo)</p>
+    </div>
+    <time datetime="2026-11-03">3 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi"><div class="label">🇫🇷 Sources françaises</div><div class="value">13 / 13</div></div>
+    <div class="kpi"><div class="label">📅 Dans la fenêtre octobre 2026</div><div class="value">7 articles</div></div>
+    <div class="kpi"><div class="label">🏛️ Sources d'autorité</div><div class="value">7 (ALFA, IGF, AMF, ACPR, Cour de cassation, DGCCRF, Sénat)</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 13 articles</span>
+    <span class="pill green">🗓️ Mois de référence : octobre 2026</span>
+    <span class="pill yellow">🧭 Tolérance : avril → juillet 2026 (6 références)</span>
+  </div>
+  <div class="synthesis"><b>Synthèse</b> — Treize sources retenues pour l'édition de novembre 2026, dont sept publiées dans la fenêtre prioritaire d'octobre et six références majeures dans la fenêtre tolérée (avril à juillet 2026) — toutes françaises, autorité administrative et judiciaire en tête. La tendance du mois est au déplacement du contrôle : avant le paiement (recommandation IGF/IGAS de basculer de l'aval vers l'amont), avant la souscription (listes noires lisibles en machine, fuite de cartes grises prête à alimenter les faux dossiers) et avant le virement (la Cour de cassation durcit la règle du faux RIB). Ce qui monte : la fraude en série outillée par l'IA générative sur les pièces et les photos de sinistres, et la structuration des réseaux de centres de santé détournant la complémentaire santé solidaire. Ce qui descend : les recours éditoriaux aux blogs de cabinets — cette édition est exclusivement adossée à des sources primaires et à la presse nationale ou régionale rendant compte d'affaires jugées.</div>
+  <div class="card" style="margin:16px 0">
+    <div class="card-head"><div class="card-title">🎧 Résumé par thématique (version audio)</div></div>
+    <div class="card-body"><ul class="audio">
+      <li><b>🔍 Anti-fraude documentaire</b> : Les photos de sinistres générées ou retouchées par intelligence artificielle deviennent un flux de masse chez les assureurs automobile. Les compagnies répondent par la capture contrôlée : photos prises dans leur application, géolocalisées et analysées en direct lors de visio-expertises.</li>
+      <li><b>📈 Efficacité de gestion de la fraude</b> : Le rapport des inspections des finances et des affaires sociales recommande de contrôler avant de payer : rejets automatiques des factures suspectes, ciblage par science des données, coordination renforcée avec les parquets. Neuf cent quarante-six millions d'euros de fraude détectée en France en deux mille vingt-cinq.</li>
+      <li><b>🗂️ Exploitation de l'opendata</b> : Les listes noires de l'Autorité des marchés financiers et de l'ACPR tombent sous forme de fichiers ouverts, actualisés en continu. Un fraudeur qui propose une assurance non agréée ou usurpe un intermédiaire peut désormais être bloqué par rapprochement automatique avant toute entrée en relation.</li>
+      <li><b>🕸️ Lutte contre les bandes organisées</b> : La fraude aux crédits automobiles jugée à Foix montre une pyramide familiale de faux bulletins de salaire. Côté santé, le réseau des dix-huit centres fictifs fonctionnait comme le grand banditisme : prête-noms, brouilleurs, comptes ouverts à Neuilly, cinquante-huit millions visés.</li>
+      <li><b>🚪 Fraude en entrée en relation</b> : La fraude par manipulation a coûté cinq cent seize millions d'euros aux clients des banques en deux mille vingt-cinq, en hausse de trente-quatre pour cent. Faux conseillers, faux relevés d'identité bancaire : la Cour de cassation juge désormais que payer sur un RIB usurpé ne libère pas la dette.</li>
+      <li><b>🩺 Fraude à la santé</b> : La répression des fraudes a contrôlé mille cents cabinets et centres de soins : presque quatre sur dix étaient hors règles d'information, avec des écarts entre sommes déclarées à l'Assurance maladie et sommes réglées. Le Sénat alerte sur les réseaux de soins fictifs nourris par la complémentaire santé solidaire.</li>
+      <li><b>🧪 Divers</b> : Le compteur kilométrique devient un objet réglementaire européen : les eurodéputés veulent un relevé enregistré à chaque réparation chez le garagiste. Huit cents millions d'euros de survalorisation par an en France, et une vraie question pour l'indemnisation auto.</li>
+    </ul></div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><div class="card-title">1. 🔍 Anti-fraude documentaire</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html" target="_blank">Assurances : quand l'IA simule des accidents</a></h3>
+          <div class="meta">franceinfo (reportage France 2) • publié le 04/07/2026 — référence dans la fenêtre tolérée</div>
+          <p>Des assurés envoient des photos de dégâts retouchées ou entièrement générées par IA pour obtenir des remboursements indus ; Direct Assurance, qui détecte jusqu'à 16 millions d'euros de demandes frauduleuses par an, a vu le nombre de faux documents reçus multiplié par 3,5. Les contre-mesures se standardisent : photos captées dans l'application de l'assureur (géolocalisées, horodatées), analyse d'image et visio-expertise.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Le geste de preuve change de côté : aligner les seuils de requalification (L113-8, escroquerie) sur des canaux de capture certifiés plutôt que sur la seule analyse rétrospective des fichiers.</div>
+          <p class="watch">À surveiller : généralisation des photos « in-app » et des faisceaux métadonnées + géoloc, transposable à la souscription. Impact réglementaire : la charge de la preuve de l'intention reste à l'assureur ; 5 ans / 375 000 € encourus.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">2. 📈 Efficacité de gestion de la fraude</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.alfa.asso.fr/fraude-a-lassurance/" target="_blank">Fraude à l'assurance — chiffres clés du rapport d'activité 2025</a></h3>
+          <div class="meta">ALFA (Agence de lutte contre la fraude à l'assurance) • 17/07/2026 — référence annuelle, fenêtre tolérée</div>
+          <p>946 millions d'euros de fraude identifiée en 2025 (+4,9 % ; 2,5 milliards estimés), dont 627 M€ en IARD et un taux de fraude de 1,27 %. La bascule est sur les branches de personnes : vie +101,7 % (24,8 M€), prévoyance +25,8 %, santé +11,8 % (112 M€, dont 53 % en optique).</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Le benchmark de maturité pour arbitrer les budgets : une progression concentrée vie/prévoyance/santé déplace le curseur des controls sinistres IARD vers la souscription et les prestations personnes.</div>
+          <p class="watch">Impact réglementaire : cadre LCB-FT et déclarations Tracfin côté vie ; ces chiffres alimentent les contrôles ACPR des dispositifs internes.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.igf.gouv.fr/rapports-de-mission/la-lutte-contre-la-fraude-aux-prescriptions-et-aux-facturations-lassurance" target="_blank">La lutte contre la fraude aux prescriptions et aux facturations à l'assurance maladie (rapport IGAS-IGF)</a></h3>
+          <div class="meta">IGF • rapport publié le 29/07/2026 (mission du 19/05/2025, rendu en octobre 2025) — fenêtre tolérée</div>
+          <p>Sur 244 Md€ de dépenses du régime général, 628 M€ de fraude détectée en 2024 (jusqu'à 1,9 Md€ estimés), ~70 % imputables aux professionnels de santé et usurpateurs. 15 propositions : contrôle automatique avant paiement (outil METEORe), science des données, délai de facturation ramené à quatre mois, tiers payant conditionné à la carte Vitale, coordination CPAM-parquets.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> La feuille de route du contrôle prédictif pour les assureurs et complémentaires — et les obligations de remontée de données qu'ils devront fournir aux caisses.</div>
+          <p class="watch">À surveiller : le passage des signaux statistiques en règles de rejet automatique, transposable aux moteurs de rules sinistres.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">3. 🗂️ Exploitation de l'opendata</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france/" target="_blank">Listes noires des entités non autorisées à proposer des produits ou services financiers en France</a></h3>
+          <div class="meta">data.gouv.fr (producteur : AMF) • mise à jour consultée le 29/10/2026, dernières inscriptions datées du 08/10/2026</div>
+          <p>L'AMF publie en CSV sous licence ouverte ses listes noires : sites frauduleux, adresses mail et acteurs usurpant l'identité d'un professionnel régulé (catégorie « Usurpation »), avec date d'inscription. Le jeu rend mécaniquement vérifiable toute contrepartie nouvelle — courtier partenaire, société de recouvrement, prestataire d'expertise — et toute « offre d'assurance » reçue par un assuré.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Croisable en API dans les parcours d'onboarding et de gestion sinistre : une liste d'autorité gratuite là où les bases privées d'arnaques sont payantes et opaques.</div>
+          <p class="watch">À surveiller : la mention « fréquence de mise à jour non respectée » sur la fiche — un contrôle quotidien du diff reste nécessaire avant automatisation.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.abe-infoservice.fr/fr/actualites/lamf-et-lacpr-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-3" target="_blank">L'AMF et l'ACPR mettent en garde le public contre plusieurs acteurs non autorisés — T3 2026</a></h3>
+          <div class="meta">ABE-Infoservice (portail ACPR/AMF) • mise en ligne le 22/10/2026</div>
+          <p>Bilan trimestriel officiel : 57 sites Forex et 36 sites de dérivés crypto ajoutés depuis janvier (dont 26 et 10 au T3), avec le renvoi aux listes blanches à interroger : registre REGAFI (banque, paiement, investissement et assurance) et registre ORIAS des intermédiaires. La liste noire ACPR couvre aussi les contrats d'assurance, avec une large part d'usurpations d'acteurs autorisés.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Le réflexe « double liste » — noire + blanche (ORIAS/REGAFI) — est exactement ce qui doit équiper les contrôles de délégation de gestion et de courtage en ligne.</div>
+          <p class="watch">Impact réglementaire : prévention des arnaques et LCB-FT ; une inscription ACPR/AMF vaut signalement à documenter dans un dossier suspect.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">4. 🕸️ Lutte contre les bandes organisées</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.franceinfo.fr/enquetes-franceinfo/leur-objectif-c-est-de-piller-le-systeme-enquete-sur-les-fraudes-massives-dans-les-centres-de-sante_7909325.html" target="_blank">ENQUÊTE. « Leur objectif, c'est de piller le système » : les réseaux qui détournent des millions via les centres de santé</a></h3>
+          <div class="meta">franceinfo / Cellule investigation de Radio France • publié le 02/04/2026 — référence typologique, fenêtre tolérée</div>
+          <p>Le dossier des 18 centres (58 M€, 7 mises en examen) a utilisé prête-noms, fausses identités, brouilleurs et flotte de téléphones ; Alliance Vision : 82 M€ encaissés en 4 ans dont 21 M€ de remboursements présumés injustifiés ; Cosem : 1 M€ de pénalité pour 600 000 € d'indus. La coopération CNAM–OCLTI (60 enquêteurs judiciaires) a stoppé 723 M€ de fraude en 2025, +15 %.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Les signaux décrits (dispersion des demandes entre caisses, activité licite d'habillage, reprise de centres existants) se transposent aux réseaux de faux sinistres corporels qui ciblent les complémentaires.</div>
+          <p class="watch">À surveiller : la task-force nationale CNAM préfigure les dispositifs attendus côté assurance privée.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.ladepeche.fr/2026/10/21/500-000-euros-de-prejudice-faux-dossiers-de-credit-bmw-mercedes-ou-opel-vises-un-reseau-descroquerie-en-bande-organisee-touchant-des-voitures-13591111.php" target="_blank">500 000 euros de préjudice, faux dossiers de crédit : un réseau d'escroquerie en bande organisée démantelé en Ariège</a></h3>
+          <div class="meta">La Dépêche du Midi • publié le 21/10/2026</div>
+          <p>Fait jugé d'octobre : sept condamnations à Foix (de un an de sursis à quatre ans ferme) pour une pyramide de faux bulletins de salaire, fausses déclarations d'impôts et faux dossiers de crédit auto — 28 véhicules subtilisés, 17 revendus, 32 dossiers refusés, 539 000 € de préjudice ; l'organisateur « Tonton » est en fuite.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Hors assurance, le même schéma que les réseaux de fausses déclarations de sinistres : supply chain documentaire, rabatteurs, prête-noms — la détection de schéma (récurrence des faussaires, cohérence sociale du dossier) prime sur le contrôle pièce à pièce.</div>
+          <p class="watch">Impact réglementaire : qualification en bande organisée — la « pyramide » est opposable aux complices de dossiers frauduleux.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">5. 🚪 Fraude en entrée en relation</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.lemonde.fr/argent/article/2026/10/09/arnaques-au-faux-conseiller-bancaire-comment-les-dejouer_6790505_1657007.html" target="_blank">Arnaques au faux conseiller bancaire : comment les déjouer ?</a></h3>
+          <div class="meta">Le Monde • publié le 09/10/2026</div>
+          <p>La fraude par manipulation — usurper le numéro affiché de sa banque (spoofing) pour soutirer codes SMS et validations — pèse 516 millions d'euros en 2025 (+34 %), soit 41,6 % de la fraude aux moyens de paiement selon l'Observatoire de la sécurité des moyens de paiement (Banque de France). Le 15 janvier 2026, le tribunal de Paris a condamné BNP Paribas à rembourser une cliente sans négligence grave.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Le mode opératoire est transposable à l'identique chez l'assureur : « votre contrat a expiré, validez ce code » — chaque validation dictée au téléphone peut souscrire, racheter ou changer un RIB.</div>
+          <p class="watch">À surveiller : le masquage ARCEP des numéros mobiles non authentifiés (janvier 2026) et l'obligation de remboursement qui pèse sur l'établissement.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.courdecassation.fr/publications/lettre-de-la-chambre-commerciale-financiere-et-economique/ndeg20-octobre-2026/creancier-apparent" target="_blank">Créancier apparent — Cass. com., 17 juin 2026, n° 24-13.306 (Lettre de la chambre commerciale n°20)</a></h3>
+          <div class="meta">Cour de cassation • publication officielle d'octobre 2026</div>
+          <p>Première application de l'article 1342-3 du code civil à une fraude au changement de RIB : « n'est pas créancier apparent le tiers qui usurpe l'identité du créancier » — payer de bonne foi sur le compte de l'escroc ne libère pas la dette. Formation plénière de la chambre commerciale, commentée par Le Monde le 24 septembre 2026.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Indemnité versée sur un RIB détourné, rachat vie envoyé à un usurpateur : le payeur ne trouve plus de refuge dans la bonne foi — la vérification du bénéficiaire (callback bancaire) devient une due diligence, plus un simple bon practice.</div>
+          <p class="watch">Impact réglementaire : jurisprudence publiée et stabilisée (FP-B+R) ; impact direct sur les procédures internes de changement de coordonnées bancaires.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.capital.fr/auto/controle-technique-pres-de-18-millions-dautomobilistes-touches-par-un-piratage-les-arnaques-a-craindre-1531450" target="_blank">Contrôle technique : près de 18 millions d'automobilistes touchés par un piratage, les arnaques à craindre</a></h3>
+          <div class="meta">Capital.fr • publié le 31/10/2026</div>
+          <p>Alerte French Breaches du 30 octobre : les prestataires de rendez-vous de contrôle technique Auto-Planning et Auto-Contrôle-Paris ont livré 14 millions de plaques et les coordonnées de 18 millions d'automobilistes, plus 36 500 factures avec RIB — précisément les pièces d'identité, de véhicule et de compte que réclament souscription et indemnisation. Scénarios : fausses amendes SMS, faux agent ANTS, « doublettes » de plaques, faux contrôles techniques.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Une fuite de cette taille crédibilise les faux dossiers auto des mois durant : le scoring d'entrée en relation devrait intégrer le signal « données récemment exposées ».</div>
+          <p class="watch">À surveiller : aucun outil public ne dit qui est concerné — l'assureur ne le saura pas non plus ; prudence renforcée sur les souscriptions 100 % distantes à forte corrélation documentaire.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">6. 🩺 Fraude à la santé</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.economie.gouv.fr/dgccrf/laction-de-la-dgccrf/les-enquetes-et-les-controles/linformation-du-patient-consommateur-par-les-professionnels-de-sante-des-points" target="_blank">L'information du patient consommateur par les professionnels de santé : des points d'amélioration (enquête DGCCRF 2025-2026)</a></h3>
+          <div class="meta">DGCCRF (economie.gouv.fr) • écrit le 12/10/2026, résultats révélés le même jour par Libération</div>
+          <p>1 100 cabinets et structures contrôlés (ciblage via SignalConso, les Ordres et la CNAM) : 39 % de suites correctives ou répressives ; chez les 525 dentistes, 189 injonctions et une trentaine de procès-verbaux pénaux ou amendes — 130 000 € prononcés au 1er octobre 2026. Signalements : paiements uniquement en liquide, écarts entre sommes déclarées à l'Assurance maladie et sommes réglées, structures d'exercice collectif mal documentées.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Le décalage encaissé/déclaré est le terreau du faux décompte en optique et dentaire, premier poste santé d'ALFA (112 M€) ; les suites DGCCRF sont une source de ciblage pour les contrôles a posteriori des complémentaires.</div>
+          <p class="watch">Impact réglementaire : affichage et devis normalisé « 100 % Santé » — un manquement constaté par la DGCCRF peut fonder pénalité et signalement croisé caisse / complémentaire.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.senat.fr/questions/base/2026/qSEQ260609170.html" target="_blank">Structuration de réseaux de fraude à l'assurance maladie — question écrite au Gouvernement</a></h3>
+          <div class="meta">Sénat • question n° 9170 de M. Hervé Maurey, JO du 18/06/2026 — réponse du ministère de la Santé en attente (fenêtre tolérée)</div>
+          <p>Typologie documentée par la représentation nationale : centres dentaires et ophtalmologiques comme supports (13 centres Alliance Vision déconventionnés, 21 M€), 58 M€ pour les réseaux démantelés, et le procès de mai 2026 d'un dentiste marseillais — 2,6 M€ via des patients fictifs et des bénéficiaires de la complémentaire santé solidaire. Le point d'entrée : la CSS, qui supprime l'avance de frais donc le contrôle spontané de l'assuré.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Pour la souscription santé et l'audit de réseaux de soins : le tiers payant intégral sans reste à charge crée une zone aveugle que les complémentaires ne peuvent plus couvrir par les remontées d'assurés.</div>
+          <p class="watch">À surveiller : la réponse ministérielle, qui engagera le Gouvernement sur les mesures préventives ; attendus pour la prochaine LFSS.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">7. 🧪 Divers — sujet émergent</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://journalauto.com/services/fraude-kilometrique-les-garages-a-la-rescousse/" target="_blank">Fraude kilométrique : les garages à la rescousse</a></h3>
+          <div class="meta">Journal Auto • publié le 05/05/2026 (fenêtre tolérée ; cadre européen assumé)</div>
+          <p>Le 5 mai 2026, la commission des transports du Parlement européen a adopté son projet de révision du règlement « contrôle technique » : relevé du compteur enregistré par l'atelier pour toute réparation de plus d'une heure, et poussée des kilomètres des véhicules connectés vers une base nationale. La presse spécialisée chiffre à 800 millions d'euros par an la survalorisation du parc d'occasion français liée aux compteurs trafiqués.</p>
+          <div class="why"><b>Pourquoi c'est pertinent ?</b> Pour la gestion de sinistres auto : un historique kilométrique multi-sources rendra bientôt détectable le « véhicule maquillé » des typologies ALFA, en expertise comme en épave.</div>
+          <p class="watch">À surveiller : le trilogue Parlement-Conseil. (Chiffre carVertical 2026 — 3,2 % de compteurs trafiqués en France — repris par la presse grand public début novembre 2026, donc hors fenêtre : signalé ici sans être compté comme entrée.)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="card-head"><div class="card-title">📡 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-body">
+      <div class="signal"><b>1. Le contrôle se déplace avant le paiement.</b> Le rapport IGAS-IGF (rejet automatique METEORe, délai de facturation ramené à quatre mois) préfigure les moteurs de règles que complémentaires santé et assureurs dommages devront brancher en amont du décaissement : https://www.igf.gouv.fr/rapports-de-mission/la-lutte-contre-la-fraude-aux-prescriptions-et-aux-facturations-lassurance</div>
+      <div class="signal"><b>2. La liste noire devient une donnée ouverte et interrogable.</b> CSV AMF sur data.gouv (entrées du 8 octobre 2026) et bilan trimestriel ACPR/AMF du 22 octobre : le contrôle de légitimité d'un courtier, d'un prestataire ou d'une offre « d'assurance » s'automatise dans l'onboarding. https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france/ · https://www.abe-infoservice.fr/fr/actualites/lamf-et-lacpr-mettent-en-garde-le-public-contre-plusieurs-acteurs-proposant-en-france-des-3</div>
+      <div class="signal"><b>3. La fraude par manipulation explose et la jurisprudence durcit le « payé, perdu ».</b> 516 M€ (+34 %) pour le faux conseiller (Le Monde/OSMP, 9 octobre 2026) ; l'usurpateur de RIB n'est pas un créancier apparent (Cass. com., lettre d'octobre 2026) — le risque de double paiement migre vers le payeur, assureur compris. https://www.lemonde.fr/argent/article/2026/10/09/arnaques-au-faux-conseiller-bancaire-comment-les-dejouer_6790505_1657007.html · https://www.courdecassation.fr/publications/lettre-de-la-chambre-commerciale-financiere-et-economique/ndeg20-octobre-2026/creancier-apparent</div>
+      <div class="signal"><b>4. Les fuites de données automobiles pré-qualifient les dossiers frauduleux.</b> 14 millions de plaques et 36 500 factures avec RIB en vente (Capital, 31 octobre 2026) : le couple identité + véhicule, sésame de la souscription et du changement de RIB, circule massivement — à intégrer au scoring entrée en relation. https://www.capital.fr/auto/controle-technique-pres-de-18-millions-dautomobilistes-touches-par-un-piratage-les-arnaques-a-craindre-1531450</div>
+      <div class="signal"><b>5. L'image de preuve passe sous contrôle natif.</b> Capture in-app géolocalisée et horodatée contre photos IA (franceinfo, 4 juillet 2026), et relevés kilométriques obligatoires à l'atelier (Journal Auto, 5 mai 2026) : la preuve certifiée à la source remplace l'expertise rétrospective. https://www.franceinfo.fr/economie/assurances-quand-l-ia-simule-des-accidents_8094263.html · https://journalauto.com/services/fraude-kilometrique-les-garages-a-la-rescousse/</div>
+    </div>
+  </div>
+  <footer>
+    <p>Édition mensuelle « Veille Fraude Assurance » — mois de référence octobre 2026, publiée le 3 novembre 2026. Fenêtre prioritaire 1 mois, tolérance jusqu'à juillet 2025 pour les références. 13 entrées, 13/13 sources françaises (cadre européen Journal Auto assumé). Fichiers : veille-FRAUDE-2026-11-03-qwen-ct3-r3.md + .html</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de thème" onclick="hvToggleTheme(event)">
+  <span id="hv-ti">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  if(!t){t='dark'} document.documentElement.dataset.theme=t;})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=d?'☀️':'🌙&#65039;'; t.textContent=d?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+</body></html>

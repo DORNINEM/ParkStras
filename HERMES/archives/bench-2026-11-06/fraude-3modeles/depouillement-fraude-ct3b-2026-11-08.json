@@ -1,0 +1,108 @@
+{
+ "fraudect3b": {
+  "grok": {
+   "conditions": {
+    "deepseek": {
+     "moy": 24.333333333333332,
+     "valeurs": [
+      25,
+      25,
+      23
+     ],
+     "mini": 23,
+     "maxi": 25
+    },
+    "glm": {
+     "moy": 19.666666666666668,
+     "valeurs": [
+      17,
+      23,
+      19
+     ],
+     "mini": 17,
+     "maxi": 23
+    },
+    "qwen": {
+     "moy": 24.333333333333332,
+     "valeurs": [
+      21,
+      25,
+      27
+     ],
+     "mini": 21,
+     "maxi": 27
+    }
+   },
+   "bruit": 6,
+   "paires": {
+    "deepseek→glm": {
+     "ecart": -4.7,
+     "hors_bruit": false
+    },
+    "deepseek→qwen": {
+     "ecart": 0.0,
+     "hors_bruit": false
+    },
+    "glm→qwen": {
+     "ecart": 4.7,
+     "hors_bruit": false
+    }
+   },
+   "gagnant": "deepseek",
+   "separe": false,
+   "verdict": "indistinguables (aucun écart > bruit 6)"
+  },
+  "deepseek": {
+   "conditions": {
+    "deepseek": {
+     "moy": 26.666666666666668,
+     "valeurs": [
+      27,
+      26,
+      27
+     ],
+     "mini": 26,
+     "maxi": 27
+    },
+    "glm": {
+     "moy": 21.333333333333332,
+     "valeurs": [
+      20,
+      22,
+      22
+     ],
+     "mini": 20,
+     "maxi": 22
+    },
+    "qwen": {
+     "moy": 27.333333333333332,
+     "valeurs": [
+      26,
+      27,
+      29
+     ],
+     "mini": 26,
+     "maxi": 29
+    }
+   },
+   "bruit": 3,
+   "paires": {
+    "deepseek→glm": {
+     "ecart": -5.3,
+     "hors_bruit": true
+    },
+    "deepseek→qwen": {
+     "ecart": 0.7,
+     "hors_bruit": false
+    },
+    "glm→qwen": {
+     "ecart": 6.0,
+     "hors_bruit": true
+    }
+   },
+   "gagnant": "qwen",
+   "separe": false,
+   "verdict": "partiel : glm→qwen dépasse le bruit, pas toutes les paires"
+  }
+ }
+}

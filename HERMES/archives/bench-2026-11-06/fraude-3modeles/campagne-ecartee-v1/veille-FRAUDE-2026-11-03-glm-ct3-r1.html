@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille Fraude Assurance — 3 novembre 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#010409; --panel:#0a1220; --panel2:#0d1728; --line:#12304a;
+  --cyan:#40dcff; --cyan-dim:#2a9db8; --amber:#ffb347; --txt:#c8dbe8; --muted:#7d97aa;
+}
+html[data-theme="light"]{
+  --bg:#f2f6fa; --panel:#ffffff; --panel2:#e9f1f8; --line:#b9cfdf;
+  --cyan:#0a7fa8; --cyan-dim:#0a7fa8; --amber:#b26a00; --txt:#1a2c3a; --muted:#52708a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:24px 18px 60px}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-family:'Rajdhani',sans-serif;font-size:2rem;color:var(--cyan);letter-spacing:.06em;margin:.2em 0;text-transform:uppercase}
+h2{color:var(--cyan);border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:2.2em;letter-spacing:.04em}
+h3{color:var(--amber);margin:.4em 0 .2em}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
+.badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.75rem;color:var(--bg);background:var(--cyan);border-radius:4px;padding:2px 8px;margin-right:8px;vertical-align:middle}
+.badge.amber{background:var(--amber)}
+.mono{font-family:'Share Tech Mono',monospace;color:var(--muted);font-size:.85rem}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.kpi{flex:1 1 160px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;text-align:center}
+.kpi b{display:block;font-size:1.5rem;color:var(--cyan);font-family:'Share Tech Mono',monospace}
+.kpi span{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.signal{background:var(--panel2);border-left:3px solid var(--amber);border-radius:6px;padding:10px 14px;margin:10px 0}
+.audio-note{color:var(--muted);font-style:italic}
+.theme-toggle{position:fixed;top:14px;right:14px;background:var(--panel);border:1px solid var(--cyan);color:var(--cyan);
+  font-family:'Share Tech Mono',monospace;font-size:.8rem;padding:6px 12px;border-radius:6px;cursor:pointer;z-index:9}
+.model-badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--muted);
+  border:1px solid var(--line);border-radius:4px;padding:2px 8px;margin-top:6px}
+footer{margin-top:50px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.85rem}
+.src{color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()">☀ / ☾ Thème</button>
+<script>
+function toggleTheme(){
+  var r=document.documentElement;
+  var t=r.getAttribute('data-theme')==='light'?'dark':'light';
+  r.setAttribute('data-theme',t);
+  try{localStorage.setItem('hermes-theme',t)}catch(e){}
+}
+try{var s=localStorage.getItem('hermes-theme');if(s)document.documentElement.setAttribute('data-theme',s)}catch(e){}
+</script>
+<div class="wrap">
+<header>
+  <h1>Veille Fraude Assurance</h1>
+  <div class="mono">3 novembre 2026 — mois de référence : octobre 2026</div>
+  <span class="model-badge">Modèle : GLM (z-ai) — tirage comparatif ct3-r1</span>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>13</b><span>sources retenues</span></div>
+  <div class="kpi"><b>12/13</b><span>sources françaises</span></div>
+  <div class="kpi"><b>7</b><span>thématiques couvertes</span></div>
+  <div class="kpi"><b>946 M€</b><span>fraude détectée 2025 (ALFA)</span></div>
+</div>
+
+<div class="card">
+<h3>Synthèse</h3>
+<p>Treize sources solides retenues ce mois-ci, très majoritairement françaises (12 sur 13). La tendance dominante est l'industrialisation de la fraude documentaire assistée par IA : faux justificatifs, faux arrêts de travail et images de sinistres générées tombent à coût quasi nul, pendant que les réponses se structurent (observatoires, serious games, listes noires tenues à jour). Deuxième montée en puissance : les réseaux organisés qui pillent la santé et le financement automobile via des dossiers entiers frauduleux, pas seulement des pièces isolées. Enfin, la fraude en entrée en relation franchit un cap avec la montée des deepfakes d'identité face à des assureurs encore peu outillés.</p>
+</div>
+
+<h2>🎧 Résumé par thématique (version audio)</h2>
+<div class="card">
+<p class="audio-note">Section destinée au résumé vocal : les liens sources sont dans les entrées ci-dessous.</p>
+<ul>
+<li><b>Anti-fraude documentaire</b> : le prix du faux document est tombé à zéro. Les cas de fraude assistée par IA ont quadruplé en trois ans, et la fraude ne se limite plus à une pièce isolée mais à la cohérence d'un dossier entier.</li>
+<li><b>Efficacité de gestion de la fraude</b> : les assureurs français ont détecté neuf cent quarante-six millions d'euros de fraude en deux mille vingt-cinq, en hausse de près de cinq pour cent. La profession mise aussi sur la formation, avec un serious game anti-fraude qui a réuni quatre-vingt-six équipes.</li>
+<li><b>Exploitation de l'opendata</b> : l'AMF et l'ACPR ont actualisé en octobre leurs listes noires d'acteurs non autorisés, disponibles en open data. Ces bases alimentent des contrôles automatiques en souscription et en déclaration de sinistre.</li>
+<li><b>Lutte contre les bandes organisées</b> : en Ariège, un réseau d'escroquerie en bande organisée visant le financement automobile a été démantelé pour un préjudice de cinq cent mille euros, avec de faux dossiers de crédit et une dizaine de personnes impliquées.</li>
+<li><b>Fraude en entrée en relation</b> : l'ACPR alerte sur de fausses attestations de garantie financière usurpant des assureurs européens, utilisées pour tromper les intermédiaires. Le marché de la fraude par deepfake atteindrait quarante milliards de dollars.</li>
+<li><b>Fraude à la santé</b> : un rapport de l'IGAS publié mi-octobre passe au crible la fraude aux prescriptions et aux facturations. La Cnam, elle, cible six cent cinquante généralistes forts prescripteurs d'indemnités journalières.</li>
+<li><b>Divers — sujet émergent</b> : les deepfakes médicaux prolifèrent sur Facebook, au point qu'un médecin hospitalo-universitaire a vu son image détournée pour vendre un produit. Un sujet de désinformation qui fragilise aussi la confiance dans les attestations de santé.</li>
+</ul>
+</div>
+
+<h2>1. 🔍 Anti-fraude documentaire</h2>
+<div class="card">
+<h3><a href="https://algopolis.eu/fr/article/19">La fraude à l'assurance augmentée par l'IA</a></h3>
+<div class="src"><span class="badge">23/10/2026</span>AlgoPolis</div>
+<p>L'observatoire AlgoPolis chiffre la bascule : cas de fraude assistée par IA multipliés par quatre (environ 20 000 en 2022, plus de 80 000 en 2025), hausse de 71 % de la fraude constatée en 2025 par un assureur automobile britannique, en partie imputée aux images générées par IA. Le constat central s'applique directement au marché français : le coût de production d'un faux (photo de sinistre, facture, certificat) est tombé à zéro, et la réponse ne peut plus être seulement de « chercher le faux » mais d'authentifier le vrai à la source.</p>
+<p><b>Pourquoi c'est pertinent ?</b> C'est la feuille de route anti-fraude documentaire en une page : déplacer l'effort de la détection a posteriori vers la traçabilité des preuves dès la souscription et le premier appel de sinistre.</p>
+<p class="src"><i>À surveiller</i> : l'authentification des preuves à la source (horodatage certifié, données EXIF/attestations d'origine) comme contrôleur par défaut au FNOL.</p>
+</div>
+<div class="card">
+<h3><a href="https://www.tessi.eu/wp-content/uploads/2026/07/cp-fraude-documentaire-le-2e-rapport-de-lobservatoire-tessi-20260707.pdf">Fraude documentaire : le 2e rapport de l'Observatoire Tessi</a></h3>
+<div class="src"><span class="badge">07/07/2026</span>Observatoire Tessi — référence indispensable</div>
+<p>Avec 903 millions d'euros de fraudes détectées en assurance (+30 % sur un an) et 13 % des Français déclarant avoir déjà falsifié un document, le rapport documente le passage de la fraude documentaire à la « fraude au processus » : ce n'est plus une pièce qui est fausse, c'est la cohérence d'un dossier, d'un parcours ou d'un circuit de validation. L'IA générative est un accélérateur (32 % des falsificateurs l'utilisent, 57 % des fraudes sont désormais numériques) mais pas encore un faussaire autonome : des artefacts restent détectables.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Il fournit le cadre de lecture et les chiffres de référence pour piloter un plan de contrôle documentaire — y compris la réponse en structuration : eIDAS II, wallet européen, registre des IBAN frauduleux, analyse documentaire automatisée.</p>
+<p class="src"><i>À surveiller</i> : impact réglementaire eIDAS II et wallet d'identité européen, qui vont offrir des canaux d'attestation opposables aux assureurs.</p>
+</div>
+
+<h2>2. 📈 Efficacité de gestion de la fraude</h2>
+<div class="card">
+<h3><a href="https://www.alfa.asso.fr/hunter-game-3/">Hunter Game 3 : 86 équipes formées à la détection de la fraude</a></h3>
+<div class="src"><span class="badge">13/10/2026</span>ALFA</div>
+<p>Pour la troisième année, l'Agence de lutte contre la fraude à l'assurance a organisé son serious game au format « Capture The Flag » du 5 au 9 octobre : 86 équipes d'assureurs, de mutualistes et de courtiers ont résolu des cas de détection de fraude. L'ALFA investit la montée en compétence des équipes de gestion comme levier à part entière du dispositif national, au même titre que les outils.</p>
+<p><b>Pourquoi c'est pertinent ?</b> La maturité d'un dispositif anti-fraude se mesure aussi à la capacité des gestionnaires de première ligne à repérer les indices — le CTF de l'ALFA est le dispositif de montée en compétence collectif le plus concret du marché français.</p>
+</div>
+<div class="card">
+<h3><a href="https://www.lefigaro.fr/conjoncture/les-fraudes-a-l-assurance-en-hausse-de-4-9-en-2025-20260709">Les fraudes à l'assurance en hausse de 4,9 % en 2025</a></h3>
+<div class="src"><span class="badge">09/07/2026</span>Le Figaro — référence indispensable</div>
+<p>Reprendre les chiffres du rapport d'activité 2025 de l'ALFA : 946 millions d'euros de fraude détectée par les assureurs (+4,9 % sur un an), l'IARD restant la ligne la plus touchée, la fraude à la vie en progression. Le mot d'ordre rapporté : « la fraude devient de plus en plus structurée », les réseaux organisés supplantant l'opportuniste isolé.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Le couple « montant détecté + taux de recouvrement » de l'ALFA est l'indicateur de ROI que tout fraude manager doit ressortir en comité de direction — et la base de comparaison annuelle du marché.</p>
+<p class="src"><i>À surveiller</i> : impact réglementaire loi fraude — l'extension des recours et des signalements qui irriguent ces statistiques.</p>
+</div>
+
+<h2>3. 🗂️ Exploitation de l'opendata</h2>
+<div class="card">
+<h3><a href="https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-lamf/lautorite-des-marches-financiers-amf-et-lautorite-de-controle-prudentiel-et-de-resolution-acpr-12">L'AMF et l'ACPR mettent en garde contre plusieurs acteurs non autorisés (Forex, crypto-actifs)</a></h3>
+<div class="src"><span class="badge">22/10/2026</span>AMF / ACPR</div>
+<p>Les deux autorités publient une nouvelle mise en garde conjointe contre des plateformes proposant investissements Forex et produits dérivés sur crypto-actifs sans agrément, et actualisent leurs listes noires. Ces entités usurpent régulièrement des noms d'intermédiaires ou d'assureurs agrées et démarchent les épargnants, y compris pour des produits adossés à l'assurance.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Cette liste est une entrée de contrôle gratuite : croiser les contreparties et bénéficiaires détectés en souscription ou en sinistre avec les listes noires AMF/ACPR filtre une partie des dossiers LCB-FT à risque dès la collecte.</p>
+</div>
+<div class="card">
+<h3><a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france/">Listes noires des entités non autorisées à proposer des produits ou services financiers en France</a></h3>
+<div class="src"><span class="badge amber">jeu de données</span><span class="badge">MAJ 08/10/2026</span>data.gouv.fr / AMF</div>
+<p>Le jeu de données open data centralise les listes noires AMF (et les mises en garde associées) sous forme de fichiers téléchargeables avec historique. Concrètement, il permet d'industrialiser un rapprochement automatique : importer les listes dans le SI réclamations/souscription et filtrer les noms, domaines et SIREN signalés avant toute mise en relation.</p>
+<p><b>Pourquoi c'est pertinent ?</b> C'est le chaînon entre l'alerte réglementaire et le contrôle automatique : un batch quotidien sur ce dataset élimine les faux courtiers et plateformes usurpées sans intervention manuelle.</p>
+</div>
+
+<h2>4. 🕸️ Lutte contre les bandes organisées</h2>
+<div class="card">
+<h3><a href="https://www.ladepeche.fr/2026/10/21/500-000-euros-de-prejudice-faux-dossiers-de-credit-bmw-mercedes-ou-opel-vises-un-reseau-descroquerie-en-bande-organisee-touchant-des-voitures-13591111.php">Un réseau d'escroquerie en bande organisée visant le financement de voitures démantelé en Ariège</a></h3>
+<div class="src"><span class="badge">21/10/2026</span>La Dépêche</div>
+<p>Plus d'une dizaine de personnes impliquées, environ 500 000 euros de préjudice : le réseau montait de faux dossiers de crédit pour acquérir des véhicules haut de gamme (BMW, Mercedes, Opel) revendus ensuite. Le schéma combine usurpation d'identité, faux justificatifs de revenus et plusieurs complicités internes — un mode opératoire qui déborde immédiatement sur les assureurs : financement, garantie, flotte, sinistres sur véhicules mal acquis.</p>
+<p><b>Pourquoi c'est pertinent ?</b> La typologie « dossier complet frauduleux » (identité + revenus + justificatifs) est exactement celle que les fraudeurs réutilisent en souscription assurance auto : un signalement croisé entre organismes de crédit et assureurs est l'anticipation à construire.</p>
+</div>
+
+<h2>5. 🚪 Fraude en entrée en relation</h2>
+<div class="card">
+<h3><a href="https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-met-en-garde-contre-de-fausses-attestations-de-garantie-financiere-usurpant-la-denomination-de-3">Fausses attestations de garantie financière usurpant la dénomination de PI INDEMNITY COMPANY DAC</a></h3>
+<div class="src"><span class="badge">22/10/2026</span>ACPR</div>
+<p>L'ACPR met de nouveau en garde contre des fausses attestations de garantie financière — cette fois usurpant la société irlandaise PI INDEMNITY COMPANY DAC — qui circulent auprès d'intermédiaires et de partenaires commerciaux. Ces faux documents servent à se faire passer pour un acteur assuré, c'est-à-dire à franchir le contrôle d'entrée en relation du canal de distribution.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Le document fraudé n'est plus le justificatif client mais le justificatif de l'apporteur : la vérification d'attestations doit passer par un contrôle direct auprès de l'assureur émetteur, jamais par le document fourni.</p>
+<p class="src"><i>À surveiller</i> : impact réglementaire LCB-FT — l'obligation de vérifier l'identité et l'immatriculation des intermédiaires s'applique aussi aux chaînes de distribution.</p>
+</div>
+<div class="card">
+<h3><a href="https://securitybrief.co.uk/story/deepfake-fraud-market-hits-usd-40-billion-report-says">Le marché de la fraude par deepfake atteindrait 40 milliards de dollars</a></h3>
+<div class="src"><span class="badge">14/10/2026</span>Security Brief (rapport identifAI) — source étrangère assumée</div>
+<p>Première estimation de l'ampleur du phénomène : la fraude financière activée par deepfake (visages synthétiques en visioconférence d'onboarding, voix clonées, documents falsifiés) aurait atteint environ 40 milliards de dollars. L'usage le plus critique pour l'assurance reste la vérification d'identité à distance : passer un contrôle de vérification ne prouve plus qu'une personne est réelle.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Source étrangère assumée (pas d'équivalent chiffré français) : elle quantifie le risque qui pèse sur le KYC vidéo et la souscription en ligne, là où les parcours d'entrée en relation assureurs restent les moins outillés.</p>
+<p class="src"><i>À surveiller</i> : impact réglementaire AI Act — les deepfakes imposent des contrôles de détection proportionnés dans les processus d'onboarding automatisés.</p>
+</div>
+
+<h2>6. 🩺 Fraude à la santé</h2>
+<div class="card">
+<h3><a href="https://igas.gouv.fr/combating-fraud-prescriptions-and-health-insurance-billing">La lutte contre la fraude aux prescriptions et aux facturations à l'Assurance Maladie</a></h3>
+<div class="src"><span class="badge">19/10/2026</span>IGAS</div>
+<p>L'Inspection générale des affaires sociales publie son rapport consacré à la fraude aux prescriptions et aux facturations : surfacturation, actes et prescriptions fictives, montages de professions de santé. Il détaille les leviers de détection (data mining des flux de facturation, croisements de données) et le cadre de recouvrement et de sanction.</p>
+<p><b>Pourquoi c'est pertinent ?</b> C'est la cartographie officielle de la fraude côté émetteurs de soins — la même data mining que l'Assurance Maladie applique est transposable aux réseaux de soins et aux garanties santé des assureurs complémentaires.</p>
+</div>
+<div class="card">
+<h3><a href="https://medecine-generale.lequotidiendumedecin.fr/liberal-soins-de-ville/nouvelle-chasse-aux-forts-prescripteurs-dindemnites-journalieres-650-generalistes-dans-le-viseur-de">Nouvelle chasse aux forts prescripteurs d'indemnités journalières : 650 généralistes dans le viseur de la Cnam</a></h3>
+<div class="src"><span class="badge">15/10/2026</span>Le Quotidien du Médecin</div>
+<p>La Cnam a lancé une nouvelle campagne de ciblage des surprescripteurs d'arrêts de travail : 650 généralistes identifiés par l'analyse des données, syndicats mis devant le fait accompli. Les prescripteurs contestent la méthode (« arbitraire »), mais l'assureur public assume le ciblage statistique comme outil de maîtrise des indemnités journalières.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Le ciblage par prescripteur — et la controverse qu'il déclenche — est le miroir des modèles de scoring que les assureurs complémentaires appliqueront à leurs propres réseaux : l'acceptabilité de la méthode fait partie du projet.</p>
+</div>
+
+<h2>7. 🧪 Divers — sujet émergent</h2>
+<div class="card">
+<h3><a href="https://next.ink/260113/nouvelle-alerte-sur-la-proliferation-de-deepfakes-nourrissant-la-desinformation-en-sante/">Nouvelle alerte sur la prolifération de deepfakes nourrissant la désinformation en santé</a></h3>
+<div class="src"><span class="badge">06/10/2026</span>Next.ink</div>
+<p>Plusieurs vidéos deepfake diffusées sur Facebook contrefaisaient l'image d'une présentatrice de TF1 et d'un médecin des Hôpitaux de Paris pour promouvoir un produit antiparasitaire ; l'AP-HP et Sorbonne Université ont alerté et déposé plainte. Au-delà de la désinformation, c'est la réutilisabilité des visages de personnes réelles à des fins commerciales frauduleuses qui est démontrée à grande échelle.</p>
+<p><b>Pourquoi c'est pertinent ?</b> La même technologie sert à usurper un praticien dans une vidéo publicitaire et un assuré ou un médecin dans un dossier de sinistre : l'usurpation de visage devient un risque de marque ET un risque de preuve.</p>
+<p class="src"><i>À surveiller</i> : technologie transposable — la détection de deepfakes appliquée aux attestations et certificats transmis en gestion.</p>
+</div>
+<div class="card">
+<h3><a href="https://www.ladepeche.fr/2026/10/21/un-couple-fait-croire-a-un-cambriolage-et-incendie-sa-maison-pour-effacer-sa-dette-de-151-000-euros-la-facture-finale-est-encore-plus-salee-13611808.php">Un couple fait croire à un cambriolage et incendie sa maison pour effacer sa dette de 151 000 euros</a></h3>
+<div class="src"><span class="badge">21/10/2026</span>La Dépêche</div>
+<p>Criblés de dettes, un couple a simulé un cambriolage puis incendié sa propre maison pour effacer 151 000 euros d'arriérés : la fraude a échoué, la condamnation est plus lourde que la dette. Cas d'école de la fraude au sinistre « déroute financière », où les indices (disparition de biens, début de feu suspect, situation d'endettement) étaient visibles avant le sinistre.</p>
+<p><b>Pourquoi c'est pertinent ?</b> Rappel utile que le déclencheur n° 1 de la fraude au sinistre habitation reste le surendettement : croiser signes financiers et déclarations au premier appel serait le contrôle le plus rentable.</p>
+</div>
+
+<h2>Synthèse — 5 signaux faibles à surveiller</h2>
+<div class="signal"><b>1. Le coût du faux document tend vers zéro : la fraude documentaire devient une fraude au dossier entier.</b> Les cas assistés par IA ont quadruplé en trois ans et la cohérence d'un parcours, pas une pièce isolée, est la nouvelle cible.<br>
+<a href="https://algopolis.eu/fr/article/19">https://algopolis.eu/fr/article/19</a><br>
+<a href="https://www.tessi.eu/wp-content/uploads/2026/07/cp-fraude-documentaire-le-2e-rapport-de-lobservatoire-tessi-20260707.pdf">https://www.tessi.eu/wp-content/uploads/2026/07/cp-fraude-documentaire-le-2e-rapport-de-lobservatoire-tessi-20260707.pdf</a></div>
+<div class="signal"><b>2. L'usurpation d'identité migre vers les justificatifs de la distribution elle-même.</b> Fausses attestations de garantie financière et deepfakes d'identité visent le contrôle d'entrée en relation des intermédiaires, pas seulement des assurés.<br>
+<a href="https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-met-en-garde-contre-de-fausses-attestations-de-garantie-financiere-usurpant-la-denomination-de-3">https://acpr.banque-france.fr/fr/communiques-de-presse/lacpr-met-en-garde-contre-de-fausses-attestations-de-garantie-financiere-usurpant-la-denomination-de-3</a><br>
+<a href="https://securitybrief.co.uk/story/deepfake-fraud-market-hits-usd-40-billion-report-says">https://securitybrief.co.uk/story/deepfake-fraud-market-hits-usd-40-billion-report-says</a></div>
+<div class="signal"><b>3. La fraude santé s'organise en réseaux et appelle un ciblage statistique assumé — et contesté.</b> Rapport IGAS sur les facturations et campagne Cnam contre 650 surprescripteurs d'indemnités journalières en deux semaines.<br>
+<a href="https://igas.gouv.fr/combating-fraud-prescriptions-and-health-insurance-billing">https://igas.gouv.fr/combating-fraud-prescriptions-and-health-insurance-billing</a><br>
+<a href="https://medecine-generale.lequotidiendumedecin.fr/liberal-soins-de-ville/nouvelle-chasse-aux-forts-prescripteurs-dindemnites-journalieres-650-generalistes-dans-le-viseur-de">https://medecine-generale.lequotidiendumedecin.fr/liberal-soins-de-ville/nouvelle-chasse-aux-forts-prescripteurs-dindemnites-journalieres-650-generalistes-dans-le-viseur-de</a></div>
+<div class="signal"><b>4. Les listes noires des autorités deviennent un dataset de contrôle opérationnel.</b> Actualisations AMF/ACPR d'octobre et publication open data : le croisement automatique avec les contreparties en souscription est désormais faisable sans développement lourd.<br>
+<a href="https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-lamf/lautorite-des-marches-financiers-amf-et-lautorite-de-controle-prudentiel-et-de-resolution-acpr-12">https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-lamf/lautorite-des-marches-financiers-amf-et-lautorite-de-controle-prudentiel-et-de-resolution-acpr-12</a><br>
+<a href="https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france/">https://www.data.gouv.fr/datasets/listes-noires-des-entites-non-autorisees-a-proposer-des-produits-ou-services-financiers-en-france/</a></div>
+<div class="signal"><b>5. La réponse collective passe par la compétence et le chiffre partagé.</b> 86 équipes formées au serious game ALFA, 946 millions d'euros de fraude détectée en 2025 : la montée en maturité du marché devient mesurable.<br>
+<a href="https://www.alfa.asso.fr/hunter-game-3/">https://www.alfa.asso.fr/hunter-game-3/</a><br>
+<a href="https://www.lefigaro.fr/conjoncture/les-fraudes-a-l-assurance-en-hausse-de-4-9-en-2025-20260709">https://www.lefigaro.fr/conjoncture/les-fraudes-a-l-assurance-en-hausse-de-4-9-en-2025-20260709</a></div>
+
+<footer>
+Veille Fraude Assurance — édition comparative (bac à sable, glm-ct3-r1) · 3 novembre 2026 ·
+Sources vérifiées sur leur page de publication. Aucun envoi, aucune publication : fichiers locaux uniquement.
+</footer>
+</div>
+</body>
+</html>
