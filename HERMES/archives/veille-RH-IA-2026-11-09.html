@@ -1,0 +1,438 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 2026-11-09</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .theme-toggle{margin-top:10px}
+    .theme-toggle button{
+      background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:999px;
+      padding:5px 14px;font-size:.8rem;cursor:pointer;
+    }
+    .theme-toggle button:hover{background:#334155}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.prospec{border-top:4px solid #8b5cf6}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .dark .card.apports .card-title{color:#2dd4bf}
+    .dark .card.risques .card-title{color:#f87171}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted)}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .flag{font-weight:700}
+    .flag.fort{color:#ef4444}
+    .flag.modere{color:#ea580c}
+    .flag.faible{color:#10b981}
+    .full-card{margin-top:16px}
+    .signals{padding:12px 18px 18px}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    table.dash{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+    table.dash th{background:#0b1220;color:#f3f4f6;padding:10px 12px;text-align:left;font-size:.8rem;letter-spacing:.04em}
+    table.dash td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+    table.dash tr:nth-child(even) td{background:rgba(148,163,184,.07)}
+    .riskcell{font-weight:700}
+    .riskcell.f{color:#ef4444}.riskcell.m{color:#ea580c}.riskcell.w{color:#10b981}
+    .dash-scroll{overflow-x:auto}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      table.dash{font-size:.78rem}
+      table.dash th,table.dash td{padding:8px 8px}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    html[data-theme="light"]{--teal:#0d9488;--danger:#dc2626}
+    .item .flag{display:inline-block;margin-left:6px}
+    .signals ol li{margin:14px 0}
+    .signals .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    html[data-theme="light"]{--teal:#0d9488;--danger:#dc2626}
+    .item .flag{display:inline-block;margin-left:6px}
+    .signals ol li{margin:14px 0}
+    .signals .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-RH-IA-2026-11-09.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>Apports RH, risques sectoriels, accompagnement des mutations, prospective — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-09">9 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles vérifiés</div><div class="value">23</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">3 – 9 nov. 2026</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 23 articles</span>
+    <span class="pill teal">🛠️ 5 apports RH</span>
+    <span class="pill red">⚠️ 7 risques métiers</span>
+    <span class="pill green">🔄 5 dispositifs</span>
+    <span class="pill purple">🔭 6 prospective</span>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📌 Synthèse de la semaine</div></div>
+    <div class="card-body synthese">
+      Cette édition déplace le curseur de l'outil vers la compétence et la conformité. Côté <strong>apports</strong>, les prédictions 2027 dessinent une IA agentique <em>gouvernée</em> — Gartner anticipe l'abandon de plus de 40 % des projets d'agents d'ici fin 2027 — et un recrutement attaqué de l'intérieur : un CV sur cent contient du texte caché pour tromper les ATS, et 66 % des organisations constatent du Shadow AI faute de cadre. Côté <strong>risques</strong>, l'ajustement frappe d'abord les postes d'entrée et les fonctions support (Société Générale : -1 800 postes nets d'ici 2027 malgré des bénéfices record ; Meta France : -1/3 des effectifs au profit de l'IA ; 20,1 % des offres juniors exigent déjà l'IA). Côté <strong>accompagnement</strong>, les cadres collectifs avancent mais sans automatisme : plan Impulsion IA 2027 (80 M€, EDEC IA par branche), Observatoire des métiers de la banque pour l'orientation, groupe Numeum-Cigref pour les juniors — alors que la moitié des RH recrutent encore en externe plutôt que de reconvertir. Enfin la <strong>prospective</strong> alerte sur un risque documenté de dépendance cognitive : l'IA améliore la production aujourd'hui mais peut éroder les savoir-faire de demain.
+    </div>
+  </div>
+
+<div class="card apports full-card">
+<div class="card-head"><div class="card-title">🛠️ IA dans les métiers RH : apports &amp; outils</div><div class="meta">5 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.gpomag.fr/6-predictions-qui-pourraient-redefinir-les-technologies-rh-en-2027/" target="_blank">6 prédictions qui pourraient redéfinir les technologies RH en 2027</a></h3>
+<div class="meta">GPO Magazine (prédictions Tellent, citant Gartner) • 06/11/2026 • Secteur : transversal</div>
+<p>Tellent, plateforme RH utilisée par plus de 7 000 organisations en Europe, publie ses prédictions 2027 : IA agentique gouvernée, conformité comme avantage concurrentiel, recrutement fondé sur les compétences. L'article cite Gartner, qui anticipe l'abandon de plus de 40 % des projets d'IA agentique d'ici fin 2027 et la rétrogradation ou la désactivation d'agents autonomes dans 40 % des entreprises. Deux échéances européennes structurent l'agenda : transparence salariale au 7 juin 2027 (sociétés de plus de 150 salariés) et AI Act pour les systèmes à haut risque dans l'emploi au 2 décembre 2027.</p>
+<div class="tags"><span class="tag">IA agentique</span><span class="tag">gouvernance</span><span class="tag">conformité</span><span class="tag">recrutement</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.cadremploi.fr/actualites-emploi/367-article-etude-ia/" target="_blank">Pour tromper les IA des recruteurs, des candidats cachent du texte invisible dans leur CV</a></h3>
+<div class="meta">Cadremploi (étude hireEZ / Duke) • 04/11/2026 • Secteur : transversal</div>
+<p>Une étude menée avec la plateforme hireEZ a analysé 196 682 CV : 2 030 contenaient des messages cachés destinés à influencer les ATS, soit environ un CV sur cent. La technique d'« injection de prompt » — texte blanc sur fond blanc — représente plus de 90 % des manipulations détectées ; Teamtailor relève 0,15 % de tentatives en France, quand la Grande Enquête Recrutement Syntec/Le Figaro Emploi Pro chiffre à 37,5 % l'usage de l'IA pour chercher un emploi. Le tri automatisé devient un terrain d'affrontement entre candidats et outils.</p>
+<div class="tags"><span class="tag">ATS</span><span class="tag">recrutement</span><span class="tag">prompt injection</span><span class="tag">CV</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.leparisien.fr/economie/emploi/lia-sinvite-dans-la-chasse-au-job-et-change-les-codes-de-la-recherche-demploi-07-11-2026-GIPRUTWGOVESBNVDBMWVDZDRR4.php" target="_blank">L'IA s'invite dans la chasse au job et change les codes de la recherche d'emploi</a></h3>
+<div class="meta">Le Parisien • 07/11/2026 • Secteur : transversal</div>
+<p>Avec un taux de chômage de 8,3 % de la population active au deuxième trimestre 2026 selon l'Insee, les candidats se tournent massivement vers ChatGPT, Claude ou Gemini pour filtrer les offres et bâtir leur stratégie de recherche. Selon Loïc Le Terrien, directeur exécutif en charge de l'emploi chez Hellowork, 37 % des candidats déclarent utiliser l'IA pour chercher un emploi dans la dernière enquête annuelle de la plateforme. Conséquence directe pour les services recrutement : des candidatures de plus en plus industrialisées, à trier autrement.</p>
+<div class="tags"><span class="tag">recherche d'emploi</span><span class="tag">candidats</span><span class="tag">ChatGPT</span><span class="tag">enquête</span></div>
+</div>
+<div class="item">
+<h3><a href="https://digital-learning-academy.com/ia-en-entreprise-quand-la-regle-et-la-formation-arrivent-tard-lusage-sinstalle-seul/" target="_blank">IA en entreprise : « Quand la règle et la formation arrivent tard, l'usage s'installe seul »</a></h3>
+<div class="meta">Digital Learning Academy (baromètre ESSCA / Forvis Mazars) • 04/11/2026 • Secteur : transversal</div>
+<p>La deuxième édition du Baromètre IA Entreprise et Durabilité (ESSCA et Forvis Mazars, 826 professionnels de l'IT et du digital en France, Royaume-Uni, Allemagne et Espagne) montre que 66 % des répondants constatent du Shadow AI dans leur organisation ; la tolérance reste la réponse la plus fréquente (24 %) et certains usages acceptés — transcription de réunions — ne font l'objet d'aucune règle. Le coauteur du baromètre résume le problème : l'usage s'installe chez les salariés avant que la formation et le cadre ne soient posés.</p>
+<div class="tags"><span class="tag">Shadow AI</span><span class="tag">formation</span><span class="tag">gouvernance</span><span class="tag">baromètre</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.aequitas.fr/intelligence-artificielle-en-entreprise-quelles-obligations-rh-et-sociales-pour-les-employeurs-en-2026/" target="_blank">Intelligence artificielle en entreprise : quelles obligations RH et sociales pour les employeurs en 2026 ?</a></h3>
+<div class="meta">Aequitas • 05/11/2026 • Secteur : transversal</div>
+<p>L'analyse recense les obligations de l'employeur qui déploie l'IA sur des usages RH : libertés individuelles, protection des données, interdiction des discriminations, obligation de sécurité et protection de la santé. L'employeur reste responsable des conséquences d'une décision préparée ou recommandée par un système d'IA, qui doit rester une aide à la décision. Sont détaillés les cas où la consultation du CSE est requise — nouvelle technologie, modification des missions, impact sur l'emploi ou les compétences, influence sur l'évaluation des performances — et les risques liés à la surveillance algorithmique.</p>
+<div class="tags"><span class="tag">conformité</span><span class="tag">AI Act</span><span class="tag">CSE</span><span class="tag">RGPD</span></div>
+</div>
+</div>
+</div>
+<div class="card risques full-card">
+<div class="card-head"><div class="card-title">⚠️ Risques &amp; transformations des métiers (banque · assurance · informatique)</div><div class="meta">7 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.economiematin.fr/societe-generale-milliards-benefices-supprime-postes-france-2026" target="_blank">Société Générale gagne des milliards d'euros, mais supprime encore des postes en France</a></h3>
+<div class="meta">EconomieMatin • 06/11/2026 • Secteur : banque <span class="flag modere">Risque : Modéré</span></div>
+<p>La Société Générale affiche 6 milliards d'euros de bénéfices en 2025 et déjà 5,4 milliards sur les neuf premiers mois de 2026, tout en prévoyant la fermeture de 148 sites supplémentaires en France, dont une quarantaine d'agences. L'opération entraînerait environ 80 suppressions de postes, dont 38 fonctions de directeurs d'agence, et 376 salariés changeraient de lieu de travail, dans le cadre d'un plan de 1 800 postes nets en moins d'ici 2027. Le cas illustre la dissociation entre performance financière et évolution de l'emploi de réseau.</p>
+<div class="tags"><span class="tag">banque</span><span class="tag">emploi</span><span class="tag">restructuration</span><span class="tag">agences</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/it-direction/2026-11-05-1-poste-junior-sur-5-exige-desormais-des-competences-en-ia" target="_blank">1 poste junior sur 5 exige désormais des compétences en IA</a></h3>
+<div class="meta">Le Monde Informatique (étude Gen Z Lab de JobTeaser) • 05/11/2026 • Secteur : informatique <span class="flag modere">Risque : Modéré</span></div>
+<p>L'étude du Gen Z Lab de JobTeaser, fondée sur l'analyse sémantique de plus de 400 000 offres de stage, d'alternance et de premier emploi en France, montre que 20,1 % des métiers juniors exigeaient des compétences en IA au premier semestre 2026 — contre 6,3 % en 2022 (7,8 % en 2023, 10,9 % en 2024, 15,6 % en 2025). L'audit arrive en tête (51 % des offres), devant la data et les statistiques (48 %) ; la banque et l'assurance ne sont qu'à 14 %, contre 64 % dans le numérique et l'IT.</p>
+<div class="tags"><span class="tag">compétences IA</span><span class="tag">juniors</span><span class="tag">JobTeaser</span><span class="tag">banque-assurance</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/it-direction/2026-11-06-ia-les-editeurs-de-logiciels-repensent-leur-modele-de-facturation" target="_blank">IA : les éditeurs de logiciels repensent leur modèle de facturation</a></h3>
+<div class="meta">Le Monde Informatique • 06/11/2026 • Secteur : informatique <span class="flag modere">Risque : Modéré</span></div>
+<p>Les agents IA, qui prennent en charge des tâches jusque-là réalisées par des salariés, poussent les éditeurs de logiciels à abandonner la facturation par utilisateur : les formules à l'usage représenteraient déjà 70 à 80 % du marché. Cette bascule bouscule les modèles de revenus et, en amont, les organisations commerciales et de support du secteur informatique.</p>
+<div class="tags"><span class="tag">informatique</span><span class="tag">agents IA</span><span class="tag">business model</span><span class="tag">facturation</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">Meta réduit ses effectifs français d'un tiers pour financer sa transition vers l'IA</a></h3>
+<div class="meta">ZDNet • 05/11/2026 • Secteur : informatique <span class="flag fort">Risque : Fort</span></div>
+<p>Meta France, environ 300 collaborateurs, finalise la suppression d'une centaine de postes via une rupture conventionnelle collective, avec clôture des candidatures le 5 novembre 2026. La maison mère a supprimé 8 000 postes dans le monde en avril et réaffecté 7 000 salariés à des projets IA. Le cas illustre la réallocation explicite d'effectifs vers l'IA, au détriment des fonctions dépriorisées.</p>
+<div class="tags"><span class="tag">informatique</span><span class="tag">suppressions</span><span class="tag">RCC</span><span class="tag">réallocation</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lesaffaires.com/dossiers/grands-de-lassurance-de-dommages-le-secteur-se-reinvente/lia-aide-a-traiter-les-reclamations-dassurance/" target="_blank">L'IA aide à traiter les réclamations d'assurance</a></h3>
+<div class="meta">Les Affaires (dossier grands de l'assurance de dommages) • 04/11/2026 • Secteur : assurance <span class="flag modere">Risque : Modéré</span></div>
+<p>TD Assurance déploie l'IA pour prédire dès la déclaration les sinistres de véhicules en perte totale et estimer les dommages, avec l'objectif de régler certains dossiers en quinze minutes. Les cas complexes restent confiés aux experts humains, l'assureur misant sur le jugement et l'empathie pour les tâches à forte valeur. Le mouvement redéfinit le métier de gestionnaire de sinistres simples autant qu'il allège la charge.</p>
+<div class="tags"><span class="tag">assurance</span><span class="tag">sinistres</span><span class="tag">IA</span><span class="tag">gestionnaires</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.agefi.fr/news/banque-assurance/olivier-dellenbach-chapsvision-lasset-management-est-le-metier-le-plus-touche-par-lia-apres-le-conseil" target="_blank">L'asset management est le métier le plus touché par l'IA après le conseil</a></h3>
+<div class="meta">Agefi (entretien Olivier Dellenbach, Chapsvision) • 06/11/2026 • Secteur : banque <span class="flag modere">Risque : Modéré</span></div>
+<p>Pour Olivier Dellenbach (Chapsvision), la gestion d'actifs est le métier le plus exposé à l'IA après le conseil : l'IA agentique automatise la recherche des analystes, l'analyse et la chaîne de décision jusqu'à la gestion de portefeuille. Le processus est redéfini de la recherche au trading et au post-marché, obligeant les professionnels à se repositionner vers la supervision et l'arbitrage à valeur ajoutée. Une projection qui déplace le risque des fonctions de back-office vers la salle des marchés.</p>
+<div class="tags"><span class="tag">banque</span><span class="tag">asset management</span><span class="tag">IA agentique</span><span class="tag">trading</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/blogs/green-si/le-si-enjeu-de-pouvoir-le-politique-larchitecte-et-le-commercial-507513.htm" target="_blank">Les ESN bousculées par l'IA agentique : la chute du coût du code redéfinit leurs prestations</a></h3>
+<div class="meta">ZDNet (blog Green SI) • 08/11/2026 • Secteur : informatique <span class="flag fort">Risque : Fort</span></div>
+<p>Dans le contexte d'IA agentique de novembre 2026, les ESN voient leurs prestations traditionnelles de développement menacées par la chute du coût de production de code généré par IA. Elles doivent choisir entre revendre et exploiter les agents des éditeurs ou se repositionner vers l'architecture, l'aide à la refonte des SI clients et la gouvernance de l'IA. Cette bascule redéfinit les compétences attendues des consultants, développeurs et architectes.</p>
+<div class="tags"><span class="tag">informatique</span><span class="tag">ESN</span><span class="tag">développeurs</span><span class="tag">gouvernance IA</span></div>
+</div>
+</div>
+</div>
+<div class="card accomp full-card">
+<div class="card-head"><div class="card-title">🔄 Dispositifs d'accompagnement aux mutations</div><div class="meta">5 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.cnfce.com/actualites/impulsion-ia-impacts-enjeux" target="_blank">Impulsion IA 2027 : impacts et enjeux pour les entreprises</a></h3>
+<div class="meta">CNFCE (décryptage du plan national) • 04/11/2026 • Secteur : transversal <span class="flag">Statut : En cours de déploiement</span></div>
+<p>Décryptage du plan national Impulsion IA 2027, présenté le 22 septembre 2026 : douze mesures dotées de plus de 80 M€ visant à former massivement les actifs, avec un accompagnement renforcé des TPE-PME (diagnostic RH, feuille de route, formation) et des EDEC IA confiés aux branches pour analyser les impacts métier par métier. L'usage de l'IA a été multiplié par trois dans les entreprises françaises entre 2023 et 2025, alors que seuls 21 % des salariés ont été formés — le plan vise explicitement cet écart. Plusieurs modalités opérationnelles restent à préciser.</p>
+<div class="tags"><span class="tag">Impulsion IA 2027</span><span class="tag">EDEC IA</span><span class="tag">formation</span><span class="tag">TPE-PME</span></div>
+</div>
+<div class="item">
+<h3><a href="https://alliancy.fr/top-250-numeum-la-croissance-des-editeurs-francais-ralentit-9b56edac-d714-44b1-b20a-94ce63da6e84" target="_blank">Top 250 Numeum : la croissance des éditeurs français ralentit, l'emploi des juniors sous surveillance</a></h3>
+<div class="meta">Alliancy (16e Top 250 Numeum, étude EY) • 05/11/2026 • Secteur : informatique <span class="flag">Statut : Existant</span></div>
+<p>Compte rendu de la 16e édition du Top 250 Numeum (4 novembre 2026, Paris), avec l'étude EY : le chiffre d'affaires des éditeurs français atteint 22,4 Md€ en 2025 (+5,2 %, contre +8,9 % l'an passé) et 83 % sont rentables. La croissance des effectifs tombe de 8 % à 4 %, seuls 51 % des éditeurs prévoient d'embaucher (contre 62 %), avec priorité aux profils data et IA ; 69 % des développeurs se positionnent désormais comme « ingénieurs produits » et un groupe de travail Numeum-Cigref a été créé pour préserver l'emploi des juniors.</p>
+<div class="tags"><span class="tag">Numeum</span><span class="tag">ESN</span><span class="tag">compétences IA</span><span class="tag">emploi des juniors</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/les-rh-pensent-que-vous-pouvez-acquerir-des-competences-en-ia-mais-alors-pourquoi-votre-entreprise-recrute-t-elle-ailleurs-507464.htm" target="_blank">« Les RH pensent que vous pouvez acquérir des compétences en IA, mais alors pourquoi votre entreprise recrute-t-elle ailleurs ? »</a></h3>
+<div class="meta">ZDNet France (rapport Careerminds « The AI Redeployment Gap ») • 06/11/2026 • Secteur : transversal <span class="flag">Statut : Existant</span></div>
+<p>Une étude Careerminds menée avec Censuswide auprès de 595 professionnels RH et 547 responsables d'équipe révèle que 92 % des RH et 88 % des managers estiment que leurs collaborateurs pourraient être reconvertis vers des postes liés à l'IA. Pourtant, 51 % des RH et 47 % des managers déclarent recruter en externe pour ces postes, contre seulement 42 % qui redéploient des salariés existants. Le manque de visibilité sur les compétences disponibles est le principal frein, alors que le recrutement externe coûte plus cher et prend plus de temps que la reconversion interne.</p>
+<div class="tags"><span class="tag">reconversion</span><span class="tag">mobilité interne</span><span class="tag">Careerminds</span><span class="tag">recrutement externe</span></div>
+</div>
+<div class="item">
+<h3><a href="https://fbf.fr/fr/un-nouveau-partenariat-pour-rapprocher-les-etudiants-des-metiers-de-la-banque/" target="_blank">Un nouveau partenariat pour rapprocher les étudiants des métiers de la banque</a></h3>
+<div class="meta">Fédération bancaire française (FBF) • 06/11/2026 • Secteur : banque <span class="flag">Statut : En cours de déploiement</span></div>
+<p>La FBF, l'École supérieure de la banque, l'ADIM-BFA et l'Observatoire des métiers de la banque ont conclu un partenariat pour faire connaître les métiers bancaires, accompagner l'orientation des étudiants et faciliter l'accès à l'alternance, via des événements, ateliers, sessions d'information et actions de sourcing. Le réseau de l'ADIM-BFA fédère 14 universités, soit environ 2 000 à 2 500 étudiants, et le secteur revendique plus de 200 métiers, de la finance à la data en passant par la cybersécurité et la conformité.</p>
+<div class="tags"><span class="tag">Observatoire des métiers de la banque</span><span class="tag">FBF</span><span class="tag">alternance</span><span class="tag">orientation</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.axa.com/fr/actualites/parole-de-leaders-l-ia-transformer-l-incertitude-en-opportunite-responsable" target="_blank">L'IA : transformer l'incertitude en opportunité responsable</a></h3>
+<div class="meta">AXA (parole de leaders, Matthieu Caillat) • 06/11/2026 • Secteur : assurance <span class="flag">Statut : Existant</span></div>
+<p>Matthieu Caillat, directeur Technologie & IA du groupe AXA et directeur général d'AXA Group Operations, décrit une adoption encadrée sur tout le cycle de vie des solutions : validation des cas d'usage, qualité des données, sélection des modèles et supervision humaine des décisions sensibles. AXA estime à 3,5 milliards le nombre de documents non structurés que l'IA peut aider à exploiter, et son outil SmartInAXA équipe déjà plus de 19 000 utilisateurs sur le périmètre IARD particuliers, avec environ 1 500 demandes traitées par jour. L'objectif affiché est de libérer du temps pour l'écoute et le conseil, pas de remplacer l'expertise des conseillers.</p>
+<div class="tags"><span class="tag">AXA</span><span class="tag">assurance</span><span class="tag">supervision humaine</span><span class="tag">montée en compétences</span></div>
+</div>
+</div>
+</div>
+<div class="card prospec full-card">
+<div class="card-head"><div class="card-title">🔭 Prospective : travail, IA et société</div><div class="meta">6 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/replay-radio/le-brief-eco/le-secteur-bancaire-directement-touche-par-l-intelligence-artificielle_8233156.html" target="_blank">Le secteur bancaire directement touché par l'intelligence artificielle</a></h3>
+<div class="meta">franceinfo (Le Brief éco, Radio France) • 26/10/2026 • Secteur : banque <span class="flag">Horizon : Court terme (<2 ans)</span></div>
+<p>Barclays s'apprête à supprimer environ 5 000 postes d'ici la fin de l'année, soit 5 % de ses effectifs, en invoquant les gains d'efficacité de l'IA ; près de 60 % de ces coupes visent les fonctions support, dont les développeurs de produits bancaires (prêts, assurance). Le mouvement s'inscrit dans une série d'annonces du secteur : HSBC prévoit 20 000 suppressions sur cinq ans. Un signal de pression durable de l'automatisation sur l'emploi bancaire, y compris en Europe.</p>
+<div class="tags"><span class="tag">banque</span><span class="tag">emploi</span><span class="tag">suppressions de postes</span><span class="tag">Barclays</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lassuranceenmouvement.com/2026/10/28/assurance-et-ia-quels-effets-sur-lemploi/" target="_blank">Assurance et IA : quels effets sur l'emploi ?</a></h3>
+<div class="meta">L'Assurance en Mouvement • 28/10/2026 • Secteur : assurance <span class="flag">Horizon : Moyen (2-5 ans)</span></div>
+<p>Plusieurs assureurs européens ont annoncé des réductions d'effectifs pluriannuelles liées à l'IA : Generali Deutschland environ 800 postes d'ici fin 2030 (près de 9 % de ses 9 100 salariés), Ergo environ 1 000 postes d'ici 2030, Allianz Partners 1 500 à 1 800 postes en Europe (7 à 8 %). En France, l'emploi en assurance progresse (162 700 salariés fin 2025, +0,9 %) mais les recrutements ralentissent (18 400 en 2025, -8,3 %, deuxième recul annuel) — les plans combinent départs volontaires, reconversion, formation et mobilité.</p>
+<div class="tags"><span class="tag">assurance</span><span class="tag">emploi</span><span class="tag">réduction d'effectifs</span><span class="tag">Europe</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.focusrh.com/tribunes/avec-l-ai-act-les-rh-entrent-dans-une-nouvelle-ere-de-responsabilite-par-emily-johnson-36511.html" target="_blank">Avec l'AI Act, les RH entrent dans une nouvelle ère de responsabilité</a></h3>
+<div class="meta">Focus RH (tribune Emily Johnson) • 30/10/2026 • Secteur : transversal <span class="flag">Horizon : Moyen (2-5 ans)</span></div>
+<p>Le Digital Omnibus européen reporte la mise en conformité totale avec l'AI Act à décembre 2027 (au lieu du 2 août 2026), mais le compte à rebours sur l'évaluation de conformité, la surveillance des biais et la documentation de la supervision humaine est lancé. Le recrutement, la sélection, la rémunération, la promotion, la gestion de la performance et le licenciement figurent parmi les usages RH classés « à haut risque », faisant des RH de nouveaux gouvernants de l'IA plus que de simples utilisateurs.</p>
+<div class="tags"><span class="tag">AI Act</span><span class="tag">RH</span><span class="tag">conformité</span><span class="tag">haut risque</span></div>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2610.41854" target="_blank">LLM Recommenders Produce Demographic Inequality Through Content Preferences</a></h3>
+<div class="meta">arXiv (cs.CY), réf. 2610.41854 • 30/10/2026 • Secteur : informatique <span class="flag">Horizon : Moyen (2-5 ans)</span></div>
+<p>À partir de 10 000 publications X/Twitter de 1 000 répondants reliées à neuf attributs démographiques, les auteurs testent la recommandation par LLM (trois fournisseurs, six objectifs, cinq niveaux d'information contextuelle). Ils montrent qu'une inégalité démographique de visibilité émerge du seul contenu textuel, les modèles favorisant systématiquement les textes longs, plus négatifs et plus opinionnés. Un biais qui interroge directement le tri algorithmique des candidatures et la sélection par similarité.</p>
+<div class="tags"><span class="tag">biais algorithmiques</span><span class="tag">LLM</span><span class="tag">discrimination</span><span class="tag">éthique</span></div>
+</div>
+<div class="item">
+<h3><a href="https://arxiv.org/abs/2611.02996" target="_blank">LLMs and the Organization of Scientific Work</a></h3>
+<div class="meta">arXiv (cs.CY), réf. 2611.02996 • 02/11/2026 • Secteur : informatique <span class="flag">Horizon : Moyen (2-5 ans)</span></div>
+<p>L'article propose un cadre où les LLM élargissent les capacités individuelles et réduisent la dépendance aux apports humains complémentaires, favorisant une division du travail plus spécialisée au sein des équipes. À partir d'environ 120 000 articles PLOS ONE (2018-2025), les auteurs constatent, après la sortie de ChatGPT fin 2022, des portefeuilles de tâches plus étroits et un moindre chevauchement entre coauteurs — un déplacement mesuré vers un modèle hybride homme-machine, transposable à bien des fonctions analytiques.</p>
+<div class="tags"><span class="tag">travail hybride</span><span class="tag">division du travail</span><span class="tag">LLM</span><span class="tag">recherche</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.bfmtv.com/tech/intelligence-artificielle/le-cognitive-offloading-ou-delegation-cognitive-pourquoi-l-ia-atrophie-notre-cerveau-et-comment-eviter-d-en-devenir-dependant_AN-202611080134.html" target="_blank">Le « cognitive offloading » : pourquoi l'IA peut atrophier nos compétences, et comment éviter d'en devenir dépendant</a></h3>
+<div class="meta">BFM Tech (BFMTV) • 08/11/2026 • Secteur : transversal <span class="flag">Horizon : Long (>5 ans)</span></div>
+<p>La délégation cognitive survient lorsqu'un utilisateur confie totalement à l'IA une fonction mentale — mémorisation, apprentissage, synthèse, prise de décision — au point d'en perdre le contrôle, selon Stéphane Andrieux (École polytechnique, Académie des technologies). Les premiers travaux pointent une moindre rétention et des apprentissages dégradés en cas d'usage systématique. Un enjeu direct de préservation des compétences pour les directions qui généralisent les assistants IA.</p>
+<div class="tags"><span class="tag">charge mentale</span><span class="tag">cognition</span><span class="tag">dépendance</span><span class="tag">compétences</span></div>
+</div>
+</div>
+</div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">🖼️ Images &amp; schémas analysés</div></div>
+    <div class="card-body synthese">
+      Aucun schéma de données exploitable cette semaine : les visuels rencontrés dans les sources retenues sont des illustrations de presse et des encarts d'annonceurs. Trois éléments chiffrés méritent en revanche d'être reconstruits en support DRH : la courbe de l'exigence d'IA dans les offres juniors de JobTeaser (6,3 % en 2022 → 20,1 % en 2026, banque-assurance à 14 % contre 64 % pour l'IT), la bascule de la facturation des éditeurs logiciels (70 à 80 % du marché à l'usage, signe de la substitution de tâches par les agents) et le tableau des réductions d'effectifs annoncées en assurance européenne (Generali ~800, Ergo ~1 000, Allianz Partners 1 500 à 1 800 postes). La cartographie des systèmes RH « à haut risque » de l'annexe III de l'AI Act reste la représentation à actualiser pour la conformité, avec l'échéance du 2 décembre 2027.
+    </div>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-body signals">
+      <ol>
+<li><strong>1. La dépendance à l'IA devient un risque de compétences, pas seulement de productivité</strong> — Délégation cognitive documentée côté sciences cognitives, Shadow AI constaté chez 66 % des organisations sans cadre posé et division du travail qui se resserre après l'arrivée de ChatGPT : le risque se déplace du poste vers le savoir-faire réellement détenu. Pour un DRH, la question n'est plus « faut-il équiper ? » mais « quelles séquences d'apprentissage sans assistant préserve-t-on ? ».
+<div class="signal-src">Sources : <a href="https://www.bfmtv.com/tech/intelligence-artificielle/le-cognitive-offloading-ou-delegation-cognitive-pourquoi-l-ia-atrophie-notre-cerveau-et-comment-eviter-d-en-devenir-dependant_AN-202611080134.html" target="_blank">https://www.bfmtv.com/tech/intelligence-artificielle/le-cognitive-offloading-ou-delegation-cognitive-pourquoi-l-ia-atrophie-notre-cerveau-et-comment-eviter-d-en-devenir-dependant_AN-202611080134.html</a> · <a href="https://digital-learning-academy.com/ia-en-entreprise-quand-la-regle-et-la-formation-arrivent-tard-lusage-sinstalle-seul/" target="_blank">https://digital-learning-academy.com/ia-en-entreprise-quand-la-regle-et-la-formation-arrivent-tard-lusage-sinstalle-seul/</a> · <a href="https://arxiv.org/abs/2611.02996" target="_blank">https://arxiv.org/abs/2611.02996</a></div></li>
+<li><strong>2. Le choc porte sur les postes d'entrée et les fonctions support</strong> — Société Générale dissocie bénéfices et emploi de réseau (148 sites, -1 800 postes nets d'ici 2027), Meta France réduit ses effectifs d'un tiers au profit de projets IA, et 20,1 % des offres juniors exigent déjà de l'IA (banque-assurance à 14 % seulement) : l'ajustement touche d'abord l'entrée dans les métiers, pas la seule ligne budgétaire.
+<div class="signal-src">Sources : <a href="https://www.economiematin.fr/societe-generale-milliards-benefices-supprime-postes-france-2026" target="_blank">https://www.economiematin.fr/societe-generale-milliards-benefices-supprime-postes-france-2026</a> · <a href="https://www.lemondeinformatique.fr/it-direction/2026-11-05-1-poste-junior-sur-5-exige-desormais-des-competences-en-ia" target="_blank">https://www.lemondeinformatique.fr/it-direction/2026-11-05-1-poste-junior-sur-5-exige-desormais-des-competences-en-ia</a> · <a href="https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm" target="_blank">https://www.zdnet.fr/actualites/meta-reduit-ses-effectifs-francais-dun-tiers-pour-financer-sa-transition-vers-lia-507378.htm</a></div></li>
+<li><strong>3. Le recrutement se durcit : ATS attaqués, candidatures industrialisées</strong> — Un CV sur cent contient du texte caché pour tromper les ATS (196 682 CV analysés), 37 % des candidats utilisent l'IA dans leur recherche, et Gartner anticipe l'abandon de plus de 40 % des projets d'IA agentique d'ici fin 2027 : l'enjeu d'un service recrutement bascule vers la robustesse et la gouvernance des outils de tri.
+<div class="signal-src">Sources : <a href="https://www.cadremploi.fr/actualites-emploi/367-article-etude-ia/" target="_blank">https://www.cadremploi.fr/actualites-emploi/367-article-etude-ia/</a> · <a href="https://www.leparisien.fr/economie/emploi/lia-sinvite-dans-la-chasse-au-job-et-change-les-codes-de-la-recherche-demploi-07-11-2026-GIPRUTWGOVESBNVDBMWVDZDRR4.php" target="_blank">https://www.leparisien.fr/economie/emploi/lia-sinvite-dans-la-chasse-au-job-et-change-les-codes-de-la-recherche-demploi-07-11-2026-GIPRUTWGOVESBNVDBMWVDZDRR4.php</a> · <a href="https://www.gpomag.fr/6-predictions-qui-pourraient-redefinir-les-technologies-rh-en-2027/" target="_blank">https://www.gpomag.fr/6-predictions-qui-pourraient-redefinir-les-technologies-rh-en-2027/</a></div></li>
+<li><strong>4. La conformité sociale de l'IA (AI Act + CSE) devient un métier en soi</strong> — Obligations employeur détaillées (responsabilité de la décision assistée, surveillance algorithmique, consultation du CSE), usages RH classés « à haut risque » par l'AI Act et échéances 2027 (transparence salariale au 7 juin, haut risque emploi au 2 décembre) : la fonction RH devient garante de la conformité des systèmes, pas seulement utilisatrice.
+<div class="signal-src">Sources : <a href="https://www.aequitas.fr/intelligence-artificielle-en-entreprise-quelles-obligations-rh-et-sociales-pour-les-employeurs-en-2026/" target="_blank">https://www.aequitas.fr/intelligence-artificielle-en-entreprise-quelles-obligations-rh-et-sociales-pour-les-employeurs-en-2026/</a> · <a href="https://www.focusrh.com/tribunes/avec-l-ai-act-les-rh-entrent-dans-une-nouvelle-ere-de-responsabilite-par-emily-johnson-36511.html" target="_blank">https://www.focusrh.com/tribunes/avec-l-ai-act-les-rh-entrent-dans-une-nouvelle-ere-de-responsabilite-par-emily-johnson-36511.html</a> · <a href="https://www.gpomag.fr/6-predictions-qui-pourraient-redefinir-les-technologies-rh-en-2027/" target="_blank">https://www.gpomag.fr/6-predictions-qui-pourraient-redefinir-les-technologies-rh-en-2027/</a></div></li>
+<li><strong>5. Les dispositifs sectoriels se mettent en ordre de marche, sans clause de réaffectation automatique</strong> — Plan Impulsion IA 2027 (80 M€, EDEC IA par branche, 21 % de salariés formés pour un usage multiplié par trois), Observatoire des métiers de la banque qui outille l'orientation vers les 200 métiers du secteur, et chez les éditeurs un groupe Numeum-Cigref dédié à l'emploi des juniors : les cadres collectifs avancent, mais 51 % des RH recrutent encore en externe plutôt que de reconvertir.
+<div class="signal-src">Sources : <a href="https://www.cnfce.com/actualites/impulsion-ia-impacts-enjeux" target="_blank">https://www.cnfce.com/actualites/impulsion-ia-impacts-enjeux</a> · <a href="https://fbf.fr/fr/un-nouveau-partenariat-pour-rapprocher-les-etudiants-des-metiers-de-la-banque/" target="_blank">https://fbf.fr/fr/un-nouveau-partenariat-pour-rapprocher-les-etudiants-des-metiers-de-la-banque/</a> · <a href="https://alliancy.fr/top-250-numeum-la-croissance-des-editeurs-francais-ralentit-9b56edac-d714-44b1-b20a-94ce63da6e84" target="_blank">https://alliancy.fr/top-250-numeum-la-croissance-des-editeurs-francais-ralentit-9b56edac-d714-44b1-b20a-94ce63da6e84</a></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head"><div class="card-title">🗺️ Tableau de bord des métiers à risque</div></div>
+    <div class="card-body">
+      <div class="dash-scroll">
+        <table class="dash">
+          <thead>
+            <tr><th>Secteur</th><th>Métier</th><th>Niveau de risque IA</th><th>Horizon</th><th>Piste de reconversion prioritaire</th></tr>
+          </thead>
+          <tbody>
+<tr><td>Banque</td><td>Conseiller clientèle / directeur d'agence</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Conseiller spécialisé (patrimoine, professionnels) et supervision des assistants IA — signaux : 148 sites et -1 800 postes nets d'ici 2027 (Société Générale)</td></tr>
+<tr><td>Banque</td><td>Analyste, asset management, trading</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Supervision et arbitrage à valeur ajoutée (l'asset management jugé le métier le plus exposé après le conseil)</td></tr>
+<tr><td>Banque</td><td>Conformité / lutte anti-fraude (AML)</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Analyste fraude augmenté, contrôle des modèles, audit d'algorithmes — l'adoption reste un goulot organisationnel</td></tr>
+<tr><td>Banque / ESN</td><td>Fonctions support et développement logiciel</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Ingénierie de la donnée, orchestration d'agents, cybersécurité — la chute du coût du code redéfinit la prestation</td></tr>
+<tr><td>Assurance</td><td>Gestionnaire de sinistres simples</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Gestionnaire de sinistres complexes, expertise fraude, relation conseil — l'IA prédit et estime, l'humain garde les cas complexes</td></tr>
+<tr><td>Assurance</td><td>Souscription standardisée, actuariat de premier niveau</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Souscription technique spécialisée, tarification et modélisation (actuariat data)</td></tr>
+<tr><td>Assurance</td><td>Risk manager, conformité</td><td class="riskcell w">Faible</td><td>&gt; 5 ans</td><td>Élargissement du métier : gouvernance des risques algorithmiques, validation des modèles, formation IA/donnée</td></tr>
+<tr><td>Informatique / ESN</td><td>Développeur junior, testeur QA</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Ingénieur produit/plateforme, IA engineering (orchestration, RAG), QA automatisée — préserver des séquences d'apprentissage sans assistant</td></tr>
+<tr><td>Informatique / ESN</td><td>Administrateur systèmes, intégrateur</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Architecture cloud/FinOps, sécurité des agents IA, MLOps</td></tr>
+<tr><td>Informatique (transversal)</td><td>Management intermédiaire technique</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Manager-contributeur hybride, pilotage des usages IA et transmission des savoirs seniors</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 9 novembre 2026 par Hermes (skill veille-rh-ia). Fichiers : veille-RH-IA-2026-11-09.md + .html</p>
+    <p>Corpus : 23 articles, 4 axes, dates de publication vérifiées page par page (HTTP 200 + métadonnée de publication).</p>
+    <p>Destinataire du thème : reynald.chapuis@creditmutuel.fr (CCI : dorninem@e-i.com)</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>
