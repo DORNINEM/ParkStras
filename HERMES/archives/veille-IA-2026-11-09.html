@@ -1,0 +1,315 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 2026-11-09</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.tricolor{background:linear-gradient(90deg,#0055a4,var(--panel) 50%,#ef4135);color:var(--ink);border-color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+    .pill.tricolor{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-IA-2026-11-09.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-09">9 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">5</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 15 articles</span>
+    <span class="pill green">📅 9 novembre 2026</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 2</span>
+    <span class="pill yellow">🧭 5 signaux faibles</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.publicsenat.fr/actualites/politique/souverainete-et-emplois-quelle-est-la-feuille-de-route-du-gouvernement-en-matiere-dintelligence-artificielle" target="_blank">Le gouvernement défend une « troisième voie » souveraine pour l'IA et assume des pertes d'emplois</a></h3>
+<div class="meta">Public Sénat • 06/11/2026</div>
+<p>Auditionnée par le Sénat le 4 novembre, la ministre déléguée à l'IA et au numérique Anne Le Hénanff a détaillé la feuille de route du gouvernement : souveraineté et préférence européenne, soutien aux champions français, adoption de l'IA par plus d'un million d'agents publics. Elle reconnaît que des tâches et des postes disparaîtront, insiste sur la transformation des métiers, la formation et le dialogue social, et juge excessive l'idée d'un remplacement intégral de l'humain.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/sante/l-intelligence-artificielle-pousse-des-patients-a-contester-leur-diagnostic-38-des-soignants-l-ont-constate-selon-un-barometre_8270333.html" target="_blank">L'IA pousse des patients à contester leur diagnostic : 38 % des soignants l'ont constaté</a></h3>
+<div class="meta">franceinfo • 06/11/2026</div>
+<p>Le 2e Baromètre Data & IA en santé (Acsel, réalisé par Toluna) montre que 50 % des Français utilisent désormais l'IA pour leur santé (+5 points en un an), souvent faute de rendez-vous, et que 38 % des soignants ont vu un patient contester son diagnostic après avoir consulté une IA. L'usage précède le cadre : l'IA s'installe dans le parcours de soin avant que les règles de responsabilité ne soient stabilisées.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/actualites/lire-1-poste-junior-sur-5-exige-desormais-des-competences-en-ia-100906.html" target="_blank">Une offre junior sur cinq exige désormais des compétences en IA</a></h3>
+<div class="meta">Le Monde Informatique • 05/11/2026</div>
+<p>Selon l'étude JobTeaser Gen Z Lab portant sur plus de 400 000 offres juniors (stages, alternance, premiers emplois), les compétences en IA apparaissent dans 20,1 % des postes au premier semestre 2026, contre 6,3 % en 2022. Le numérique/IT (64 %) et les fonctions audit, data et ingénierie tirent la demande : la maîtrise de l'IA devient un prérequis d'entrée sur le marché du travail français.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.maddyness.com/2026/11/06/les-startups-francaises-ont-leve-22-millions-deuros-cette-semaine/" target="_blank">Startups françaises : 22 M€ levés cette semaine, portés par la deeptech IA</a></h3>
+<div class="meta">Maddyness • 06/11/2026</div>
+<p>Huit startups françaises ont levé 22,1 M€ en equity (ticket moyen 2,8 M€), dont plus de la moitié en deeptech. Le radar de détection de drones de Gallium Defense mène le classement avec 7,1 M€, tandis que l'IA santé (Granit) et les agents logistiques complètent le tableau. Une semaine modeste en montants, mais qui confirme le poids de l'IA dans l'amorçage français.</p>
+</div>
+<div class="item">
+<h3><a href="https://tech-insider.org/fr/data-centers-ia-contestation-megaprojets-france-europe-2026/" target="_blank">Data centers IA : plus de 30 projets français contestés, les ONG réclament un moratoire</a></h3>
+<div class="meta">Tech-Insider • 06/11/2026</div>
+<p>Alors que plus de 30 projets de data centers IA sont contestés en France (recours juridiques, pétitions et débats publics, du Campus IA de Fouju à Étrechet), la campagne européenne Stop Dirty Data Centres a réclamé un moratoire les 6-7 novembre. Énergie, eau, artificialisation des terres et souveraineté : l'acceptabilité locale devient le premier facteur de risque des plans de calcul.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://fr.euronews.com/2026/11/05/en-europe-plus-de-100-organisations-reclament-un-moratoire-sur-les-grands-centres-de-donne" target="_blank">Plus de 100 organisations européennes réclament un moratoire sur les méga-data centers</a></h3>
+<div class="meta">Euronews • 05/11/2026</div>
+<p>Dans 15 pays européens, plus de 100 organisations ont coordonné des actions du 5 au 7 novembre pour réclamer des moratoires aux niveaux local, national et européen sur les grands centres de données. Elles demandent d'évaluer les impacts sur les réseaux électriques, l'eau et les territoires avant toute nouvelle autorisation — un front commun qui dépasse les seuls collectifs locaux.</p>
+</div>
+<div class="item">
+<h3><a href="https://finance.yahoo.com/technology/ai/articles/capgemini-selected-lead-european-commission-073000347.html" target="_blank">Capgemini pilotera le consortium européen d'évaluation des risques cyber des modèles avancés</a></h3>
+<div class="meta">Capgemini (via Yahoo Finance) • 05/11/2026</div>
+<p>La Commission européenne a retenu Capgemini pour diriger un consortium chargé de modéliser les menaces cyber et d'évaluer les risques systémiques des modèles d'IA à usage général, dans le cadre de l'AI Office et de l'AI Act. Avec Wavestone et le LNE comme partenaires, l'évaluation des modèles de frontière devient une activité institutionnelle : l'Europe outille sa supervision.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.eu-startups.com/2026/11/weekly-funding-round-up-all-of-the-european-startup-funding-rounds-we-tracked-this-week-nov-02-nov-06/" target="_blank">Levées européennes : plus de 1,3 Md€ en une semaine, l'IA en tête</a></h3>
+<div class="meta">EU-Startups • 06/11/2026</div>
+<p>Du 2 au 6 novembre, plus de 60 opérations ont porté le financement des startups européennes au-delà de 1,3 Md€. Les tours liés à l'IA dominent : agents comptables (Kabilio, 10 M€), automatisation logistique (Conlio, 6,4 M€) ou stockage d'énergie piloté par IA (Green Voltis, 13,5 M€). Le fonds Creandum boucle par ailleurs 750 M$ tournés vers l'IA, signe d'un capital-risque européen qui se réarme sur le sujet.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.actu.ai/banque-angleterre-ia-productivite-modeste-croissance-pib-emploi-80105.html" target="_blank">IA et productivité : le constat prudent de la Banque d'Angleterre</a></h3>
+<div class="meta">Actu.ai • 07/11/2026</div>
+<p>Selon la Banque d'Angleterre, l'IA a accru la productivité des entreprises britanniques d'environ 0,5 % en trois ans (0,1 à 0,2 point par an) et représente un peu moins d'un cinquième de la croissance du PIB depuis début 2026. Cette contribution vient surtout de la conception et du déploiement de l'IA, non de son adoption diffuse : la première mesure chiffrée d'une grande banque centrale tempère les promesses de gains généralisés.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.actu.ai/revolut-divise-par-dix-cout-ia-programmation-modele-ouvert-glm-80097.html" target="_blank">Revolut divise par dix le coût de son IA de programmation en hébergeant un modèle ouvert</a></h3>
+<div class="meta">Actu.ai • 04/11/2026</div>
+<p>La néobanque Revolut dit avoir réduit d'environ 90 % le coût de l'IA utilisée pour programmer, en faisant tourner des modèles ouverts GLM (Z.ai) sur 56 GPU Nvidia B200 pour environ 2 000 ingénieurs : près de 0,30 $ par million de jetons, soit un dixième du coût annoncé de Codex ou Claude Code. Les tâches visuelles restent confiées à des modèles commerciaux — une hybridation qui se répand en Europe.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://psi.inc/research/aaronson-ambainis/" target="_blank">Un modèle Anthropic non public prouve une conjecture quantique ouverte depuis 2008</a></h3>
+<div class="meta">Physical Superintelligence (PSI) • 06/11/2026</div>
+<p>Le laboratoire PSI annonce qu'un système de recherche interne, exécutant un modèle Anthropic non public, a produit en trois jours une preuve complète de la conjecture Aaronson-Ambainis (2008), acceptée par l'assistant de preuve Lean puis renforcée deux fois. La conjecture démontrée borne les accélérations quantiques sur entrées aléatoires : un jalon pour l'IA mathématique et pour la vérification formelle par ordinateur.</p>
+</div>
+<div class="item">
+<h3><a href="https://dealroom.co/news/168544-openai-closes-first-11b-tranche-at-1-25t-valuation/" target="_blank">OpenAI clôt une première tranche de 11 Md$ à 1 250 Md$ de valorisation, sous son objectif</a></h3>
+<div class="meta">Dealroom (d'après Bloomberg) • 06/11/2026</div>
+<p>OpenAI a encaissé environ 11 Md$, première tranche d'une levée qui valorise l'entreprise à 1 250 Md$ (fonds virés le 6 novembre ; solde possible jusqu'à 20 Md$). L'objectif initial de 30 Md$ et plus à 1 400 Md$ a été revu à la baisse après la correction des valeurs IA de la semaine : les marchés arbitrent désormais explicitement le rythme d'investissement du secteur.</p>
+</div>
+<div class="item">
+<h3><a href="https://the-decoder.com/thinking-machines-inkling-2-small-claims-top-spot-among-western-open-weight-models/" target="_blank">Thinking Machines dévoile Inkling 2 Small, un MoE de 594 Md de paramètres</a></h3>
+<div class="meta">The Decoder • 06/11/2026</div>
+<p>Le laboratoire de Mira Murati (ex-CTO d'OpenAI) lance Inkling 2 Small : un modèle à mélange d'experts de 594 milliards de paramètres (17 Md actifs par jeton), texte et images, qui obtient 31 sur l'Artificial Analysis Intelligence Index — au sommet des modèles à poids ouverts occidentaux. Disponible d'abord sur la plateforme Tinker à poids fermés, la publication complète sous licence Apache 2.0 est promise après tests de sûreté.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.actu.ai/artex-agents-ia-cybercriminels-autonomes-check-point-certificats-apple-80108.html" target="_blank">Des agents d'IA ont mené seuls des campagnes de piratage pour quelques centaines de dollars</a></h3>
+<div class="meta">Actu.ai (d'après Check Point Research) • 08/11/2026</div>
+<p>Selon Check Point Research, des opérateurs ont utilisé l'outil ARTEX pour confier des campagnes entières à des agents d'IA, presque sans intervention humaine. Une campagne de deux semaines a dérobé plus de 300 certificats de signature d'applications iOS — dont trois ont passé tous les contrôles — pour 36 milliards de jetons de modèles chinois et un coût estimé entre 700 et 1 500 $. La cyberattaque autonome de bout en bout passe de la prospective au constat.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.frontiermodelforum.org/updates/introducing-the-fmf-jailbreak-rating-framework-for-frontier-cyber-threats/" target="_blank">Frontier Model Forum : un référentiel commun pour noter les « jailbreaks » cyber</a></h3>
+<div class="meta">Frontier Model Forum • 05/11/2026</div>
+<p>Le Frontier Model Forum (OpenAI, Anthropic, Google DeepMind, Microsoft, Amazon) publie la version 1.0 de son référentiel d'évaluation des « jailbreaks » à finalité cyber. Chaque réussite est notée sur quatre échelles (gain de capacité, portée, facilité de déploiement, découverte) pour produire des bandes de risque graduées, de négligeable à critique — une tentative d'auto-régulation coordonnée face à la montée de l'IA offensive.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles à surveiller</div></div>
+<div class="card-body">
+<div class="signal"><h4>1. L'IA s'installe dans le soin avant que le cadre ne soit posé</h4><p>La moitié des Français utilisent l'IA pour leur santé et 38 % des soignants voient des patients contester un diagnostic après l'avoir consultée : l'usage précède les règles de responsabilité et de remboursement. À suivre : la doctrine de la CNIL et des ordres professionnels sur l'IA en santé.</p><div class="src"><a href="https://www.franceinfo.fr/sante/l-intelligence-artificielle-pousse-des-patients-a-contester-leur-diagnostic-38-des-soignants-l-ont-constate-selon-un-barometre_8270333.html" target="_blank">https://www.franceinfo.fr/sante/l-intelligence-artificielle-pousse-des-patients-a-contester-leur-diagnostic-38-des-soignants-l-ont-constate-selon-un-barometre_8270333.html</a></div></div>
+<div class="signal"><h4>2. Le moratoire sur les data centers devient un sujet politique européen</h4><p>Plus de 30 projets contestés en France et plus de 100 organisations mobilisées dans 15 pays : l'acceptabilité locale des méga-centres de calcul change de statut et s'invite dans la campagne présidentielle. À suivre : les recours en cours et la réponse du gouvernement au moratoire réclamé.</p><div class="src"><a href="https://tech-insider.org/fr/data-centers-ia-contestation-megaprojets-france-europe-2026/" target="_blank">https://tech-insider.org/fr/data-centers-ia-contestation-megaprojets-france-europe-2026/</a> · <a href="https://fr.euronews.com/2026/11/05/en-europe-plus-de-100-organisations-reclament-un-moratoire-sur-les-grands-centres-de-donne" target="_blank">https://fr.euronews.com/2026/11/05/en-europe-plus-de-100-organisations-reclament-un-moratoire-sur-les-grands-centres-de-donne</a></div></div>
+<div class="signal"><h4>3. La compétence IA devient le filtre d'entrée du marché du travail junior</h4><p>Un poste junior sur cinq exige déjà des compétences en IA, contre un sur seize en 2022 : le tri se fait désormais à l'entrée, dans un marché où l'embauche des jeunes recule dans les métiers exposés. À suivre : l'effet sur les formations et l'alternance en France.</p><div class="src"><a href="https://www.lemondeinformatique.fr/actualites/lire-1-poste-junior-sur-5-exige-desormais-des-competences-en-ia-100906.html" target="_blank">https://www.lemondeinformatique.fr/actualites/lire-1-poste-junior-sur-5-exige-desormais-des-competences-en-ia-100906.html</a></div></div>
+<div class="signal"><h4>4. Le coût de l'IA se déplace du modèle vers l'infrastructure</h4><p>Revolut divise par dix sa facture de codage en hébergeant un modèle ouvert, pendant qu'OpenAI doit revoir à la baisse son objectif de levée : la valeur se déplace vers l'infrastructure et la maîtrise des coûts plus que vers l'accès au modèle. À suivre : l'effet sur les tarifs des API de frontière.</p><div class="src"><a href="https://www.actu.ai/revolut-divise-par-dix-cout-ia-programmation-modele-ouvert-glm-80097.html" target="_blank">https://www.actu.ai/revolut-divise-par-dix-cout-ia-programmation-modele-ouvert-glm-80097.html</a> · <a href="https://dealroom.co/news/168544-openai-closes-first-11b-tranche-at-1-25t-valuation/" target="_blank">https://dealroom.co/news/168544-openai-closes-first-11b-tranche-at-1-25t-valuation/</a></div></div>
+<div class="signal"><h4>5. L'IA offensive autonome sort du laboratoire</h4><p>Des agents pilotés par IA ont mené seuls des campagnes de piratage pour quelques centaines de dollars, tandis que les grands laboratoires publient un référentiel commun de notation des « jailbreaks » cyber. À suivre : la transposition de ces travaux dans l'AI Act et les cadres de double usage européens.</p><div class="src"><a href="https://www.actu.ai/artex-agents-ia-cybercriminels-autonomes-check-point-certificats-apple-80108.html" target="_blank">https://www.actu.ai/artex-agents-ia-cybercriminels-autonomes-check-point-certificats-apple-80108.html</a> · <a href="https://www.frontiermodelforum.org/updates/introducing-the-fmf-jailbreak-rating-framework-for-frontier-cyber-threats/" target="_blank">https://www.frontiermodelforum.org/updates/introducing-the-fmf-jailbreak-rating-framework-for-frontier-cyber-threats/</a></div></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item"><p>La semaine qui vient sera dominée par la tenue des marchés : après la correction des valeurs technologiques à la suite des élections de mi-mandat américaines, l'IPO d'Anthropic et la clôture de la levée d'OpenAI diront si le rythme d'investissement se maintient ou se normalise. Côté européen, l'approche de la première grande échéance de l'AI Act sur le marquage des contenus génératifs (2 décembre) met sous pression les fournisseurs de modèles, Grok ayant déjà activé un filigrane invisible par défaut sur son API. En France, la mobilisation contre les méga-data centers et le déploiement sur site de Mistral Studio promettent de nourrir le débat sur les infrastructures et la souveraineté avant l'échéance de fin novembre.</p></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.actu.ai/mistral-studio-agents-geres-workflows-apps-entreprises-80104.html" target="_blank">Mistral Studio : les agents gérés passent en aperçu public, BNP Paribas et CMA CGM en production</a></h3>
+<div class="meta">Actu.ai • 07/11/2026</div>
+<p>Après l'annonce du 5 novembre, Mistral ouvre en aperçu public les agents gérés, les workflows et les applications de Mistral Studio, déployables dans le cloud, dans un cloud privé ou sur l'infrastructure du client. Des groupes comme BNP Paribas et CMA CGM apparaissent comme utilisateurs en production, et le déploiement sur site est annoncé pour fin novembre : la vitrine souveraine devient une offre d'exécution.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/donnees-ia/2026-11-06-mistral-rachete-skiplabs-et-cree-une-equipe-dediee-aux-langages" target="_blank">Rachat de SkipLabs : Mistral structure une équipe « Language » pour vérifier le code des agents</a></h3>
+<div class="meta">Le Monde Informatique • 06/11/2026</div>
+<p>Mistral confirme l'acquisition de la start-up française SkipLabs et intègre ses six ingénieurs dans une nouvelle équipe « Language » consacrée aux compilateurs, à l'analyse statique et aux mécanismes d'auto-correction du code produit par des agents. Cinquième opération de croissance externe de l'année : la fiabilité du code généré devient un axe produit à part entière de la plateforme.</p>
+</div>
+</div>
+</div>
+  <footer>
+    <p>Généré le 2026-11-09 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-11-09.md + .html</p>
+    <p>Corpus : 15 articles d'actualité (France 5 / Europe 5 / Monde 5) + 2 articles Focus Mistral. Dates de publication vérifiées sur chaque page source.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>

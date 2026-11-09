@@ -1,0 +1,490 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Informatique Quantique — 9 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.violet{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tag{display:inline-block;margin:8px 6px 0 0;padding:2px 8px;border-radius:8px;font-size:.72rem;background:rgba(99,102,241,.10);color:var(--accent-2);border:1px solid rgba(99,102,241,.25)}
+    .maturite,.horizon{display:inline-block;margin:8px 6px 0 0;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700}
+    .m-b{background:rgba(16,185,129,.14);color:#059669;border:1px solid rgba(16,185,129,.4)}
+    .m-r{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .m-t{background:rgba(239,68,68,.12);color:#dc2626;border:1px solid rgba(239,68,68,.35)}
+    .m-d{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-c{background:rgba(14,165,233,.14);color:#0284c7;border:1px solid rgba(14,165,233,.4)}
+    .h-m{background:rgba(245,158,11,.14);color:#b45309;border:1px solid rgba(245,158,11,.4)}
+    .h-l{background:rgba(139,92,246,.14);color:#7c3aed;border:1px solid rgba(139,92,246,.4)}
+    .flag{color:#b45309;font-weight:600;font-size:.8rem}
+    .note{border:1px dashed var(--border);border-radius:14px;padding:10px 14px;margin:10px 18px 16px;color:var(--muted);font-size:.85rem;background:var(--panel)}
+    .visuels{margin-top:22px}
+    .visuels h2{font-size:1.1rem;margin:0 0 10px}
+    .synthese{margin-top:22px}
+    .synthese h2{font-size:1.1rem;margin:0 0 10px}
+    .signal{border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:var(--panel)}
+    .signal b{color:var(--accent-2)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+      .kpis{grid-template-columns:repeat(4,1fr)}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal-src{margin-top:8px;font-size:12.5px;color:var(--muted);}
+    .signal-src a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+    .signal-src a:hover{color:var(--accent-2);border-bottom-color:var(--accent-2);}
+
+.maturite.m-d{background:rgba(16,185,129,.16);color:#34d399;border:1px solid rgba(16,185,129,.45)}
+.maturite.m-b{background:rgba(64,220,255,.14);color:#40dcff;border:1px solid rgba(64,220,255,.45)}
+.maturite.m-r{background:rgba(255,179,71,.14);color:#ffb347;border:1px solid rgba(255,179,71,.45)}
+.maturite.m-t{background:rgba(167,139,250,.16);color:#a78bfa;border:1px solid rgba(167,139,250,.45)}
+.horizon.h-c{background:rgba(16,185,129,.16);color:#34d399;border:1px solid rgba(16,185,129,.45)}
+.horizon.h-m{background:rgba(255,179,71,.14);color:#ffb347;border:1px solid rgba(255,179,71,.45)}
+.horizon.h-l{background:rgba(167,139,250,.16);color:#a78bfa;border:1px solid rgba(167,139,250,.45)}</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-quantique-2026-11-09.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+<header>
+  <div>
+    <h1>⚛️ Veille Informatique Quantique</h1>
+    <p>France &amp; Europe • Monde • Matériel &amp; Logiciel • Prospective — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+  </div>
+  <time datetime="2026-11-09">9 novembre 2026</time>
+</header>
+<div class="kpis">
+  <div class="kpi kpi-click" onclick="document.getElementById('zone-france').scrollIntoView({behavior:'smooth',block:'start'});this.classList.remove('zone-flash');void this.offsetWidth;this.classList.add('zone-flash');">
+    <div class="label">🇫🇷🇪🇺 France &amp; Europe</div>
+    <div class="value">6</div>
+  </div>
+  <div class="kpi kpi-click" onclick="document.getElementById('zone-monde').scrollIntoView({behavior:'smooth',block:'start'});this.classList.remove('zone-flash');void this.offsetWidth;this.classList.add('zone-flash');">
+    <div class="label">🌍 Monde</div>
+    <div class="value">6</div>
+  </div>
+  <div class="kpi kpi-click" onclick="document.getElementById('zone-innov').scrollIntoView({behavior:'smooth',block:'start'});this.classList.remove('zone-flash');void this.offsetWidth;this.classList.add('zone-flash');">
+    <div class="label">🔬 Innovations</div>
+    <div class="value">6</div>
+  </div>
+  <div class="kpi kpi-click" onclick="document.getElementById('zone-prospect').scrollIntoView({behavior:'smooth',block:'start'});this.classList.remove('zone-flash');void this.offsetWidth;this.classList.add('zone-flash');">
+    <div class="label">🚀 Prospective</div>
+    <div class="value">6</div>
+  </div>
+</div>
+<div class="badges">
+  <span class="pill blue">📰 24 articles</span>
+  <span class="pill green">📅 9 novembre 2026</span>
+  <span class="pill yellow">🔬 Préprints / chiffres non répliqués ⚠️ : 3</span>
+  <span class="pill violet">🔎 Fenêtre unique : 7 jours (02/11 → 09/11/2026)</span>
+</div>
+<div class="grid">
+  <div class="card">
+    <div class="card-head" id="zone-france"><div class="card-title">🇫🇷🇪🇺 Marché France &amp; Europe</div></div>
+    <div class="card-body">
+      <div class="item">
+        <h3><a href="https://www.lefigaro.fr/economie/qolumbus-la-france-dans-la-course-mondiale-au-quantique-20261106" target="_blank" rel="noopener">Qolumbus : une deeptech française parie sur une architecture quantique hybride silicium + supraconducteur</a></h3>
+        <div class="meta">Le Figaro • 06/11/2026</div>
+        <p>La deeptech française Qolumbus mise sur une architecture hybride : des qubits de spin dans le silicium, réputés stables, couplés à des qubits supraconducteurs par un « bus quantique » pour gagner en connectivité. La feuille de route vise plusieurs centaines puis plusieurs milliers de qubits avant la fin de la décennie, avec des cas d'usage ciblés (matériaux, batteries). L'ambition affichée est de faire émerger depuis la France un acteur européen sur le cœur technologique du quantique, face aux États-Unis et à la Chine.</p>
+        <span class="tag">France</span>
+        <span class="tag">deeptech</span>
+        <span class="tag">qubits hybrides</span>
+        <span class="tag">silicium</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.lemondeinformatique.fr/actualites/lire-bull-et-schwarz-digits-s-allient-pour-developper-un-cloud-souverain-europeen-dedie-a-l-ia-100903.html" target="_blank" rel="noopener">Bull (Atos) et Schwarz Digits s'allient pour un cloud souverain européen, avec un volet quantique</a></h3>
+        <div class="meta">Le Monde Informatique • 04/11/2026</div>
+        <p>Bull (Atos/Eviden) et l'allemand Schwarz Digits ont signé un protocole d'accord pour une offre commune de cloud et d'IA souveraine destinée aux secteurs sensibles européens : le cloud STACKIT de Schwarz allié à l'expertise HPC, IA et serveurs de Bull, avec un site industriel à Angers. Le partenariat prévoit aussi d'explorer des synergies en calcul quantique. Le mouvement illustre la construction d'une filière européenne intégrée du calcul intensif, où le quantique s'adosse à l'infrastructure HPC souveraine.</p>
+        <span class="tag">Bull</span>
+        <span class="tag">Schwarz Digits</span>
+        <span class="tag">cloud souverain</span>
+        <span class="tag">HPC</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.quantonation.com/news/quantonation-backs-quint-computing-in-e9-1-million-funding-round" target="_blank" rel="noopener">Quantonation soutient l'allemand Quint Computing : un tour d'amorçage de 9,1 M€</a></h3>
+        <div class="meta">Quantonation (communiqué) • 03/11/2026</div>
+        <p>Le fonds parisien Quantonation, premier fonds de capital-risque dédié aux technologies quantiques, participe au tour d'amorçage de 9,1 M€ de l'allemand Quint Computing (Erlangen) — présenté comme le plus important premier financement d'une société quantique allemande. Le tour est mené par Vsquared Ventures, avec Nucleus Capital, Faber, Vanagon Ventures et Mikko Möttönen, fondateur d'IQM. Quint développe une architecture supraconductrice corrigeant les erreurs au niveau matériel et a obtenu une subvention EIC Pathfinder de 2,2 M€ de la Commission européenne.</p>
+        <span class="tag">Quantonation</span>
+        <span class="tag">levée de fonds</span>
+        <span class="tag">Allemagne</span>
+        <span class="tag">EIC</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://imtech.imt.fr/2026/11/05/lia-piq-alliance-photonique-et-quantique/" target="_blank" rel="noopener">LIA-PIQ : Télécom Paris et l'Université Laval créent un laboratoire international de photonique quantique</a></h3>
+        <div class="meta">Institut Mines-Télécom • 05/11/2026</div>
+        <p>Télécom Paris et l'Université Laval (Québec) inaugurent le LIA-PIQ, présenté comme l'un des premiers laboratoires internationaux associés entièrement dédié à la photonique quantique. Le laboratoire formalise une coopération déjà installée entre le Groupe des Télécommunications Optiques de Télécom Paris et le COPL de Laval, autour de dispositifs photoniques (lasers à boîtes quantiques), de la formation de doctorants et d'applications industrielles. Un axe structurant pour la filière photonique quantique européenne.</p>
+        <span class="tag">Télécom Paris</span>
+        <span class="tag">Laval</span>
+        <span class="tag">photonique</span>
+        <span class="tag">partenariat académique</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.science-et-vie.com/technos-et-futur/en-france-le-chiffrement-utilise-pour-proteger-les-donnees-bancaires-pourrait-etre-casse-en-3-jours-par-un-ordinateur-quantique-de-22-593-qubits-265771.html" target="_blank" rel="noopener">Alice &amp; Bob : casser RSA-2048 ne demanderait que 22 593 qubits « chat » et trois jours</a></h3>
+        <div class="meta">Science et Vie • 08/11/2026</div>
+        <p>Selon une prépublication déposée fin octobre 2026 (Cryptology ePrint Archive) par Alice &amp; Bob et un chercheur de l'Université de Rennes, casser RSA-2048 ne nécessiterait que 22 593 qubits « chat » et 3,14 jours de calcul, soit environ quinze fois moins que les estimations de 2023. En répartissant la charge sur dix machines (611 000 qubits), l'opération tomberait à 1,25 heure, et environ 30 000 qubits suffiraient pour les courbes elliptiques du bitcoin. Aucune machine de cette taille n'existe ; estimation constructeur issue d'un preprint. <span class="flag">⚠️ Prépublication non encore validée par les pairs.</span></p>
+        <span class="tag">France</span>
+        <span class="tag">cryptanalyse</span>
+        <span class="tag">RSA-2048</span>
+        <span class="tag">qubits chat</span>
+        <span class="tag">post-quantique</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://lafrenchtechest.fr/appel/maquest-pack-quantique-grand-est/" target="_blank" rel="noopener">Grand Est : un « Pack Quantique » jusqu'à 150 000 € pour les entreprises</a></h3>
+        <div class="meta">La French Tech Est • 03/11/2026</div>
+        <p>La région Grand Est ouvre l'appel à projets MaQuEst « Pack Quantique » (jusqu'au 16 novembre 2026) pour soutenir les entreprises qui explorent le calcul quantique ou hybride HPC/quantique. Deux volets d'aide : un diagnostic quantique jusqu'à 15 000 € (20 à 50 % des dépenses) et un projet de R&amp;D et innovation quantique jusqu'à 150 000 € (25 à 45 %). Un dispositif public régional qui vise l'adoption industrielle du quantique par les PME et ETI du territoire.</p>
+        <span class="tag">Grand Est</span>
+        <span class="tag">financement public</span>
+        <span class="tag">calcul hybride</span>
+        <span class="tag">appel à projets</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" id="zone-monde"><div class="card-title">🌍 Monde — Pertinence Europe</div></div>
+    <div class="card-body">
+      <div class="item">
+        <h3><a href="https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future" target="_blank" rel="noopener">IBM met en service son ordinateur quantique le plus avancé à Chicago (processeur Nighthawk, 120 qubits)</a></h3>
+        <div class="meta">IBM Newsroom • 06/11/2026</div>
+        <p>IBM, l'Université de Chicago et l'État de l'Illinois ont inauguré un IBM Quantum System Two équipé du processeur supraconducteur Nighthawk à 120 qubits (218 coupleurs accordables en réseau carré), installé au Hyde Park Labs avant son transfert vers l'Illinois Quantum and Microelectronics Park. Soutenu par une subvention de 25 M$ de l'État, le système alimentera le National Quantum Algorithm Center et des cas d'usage (découverte de médicaments, réseaux électriques). Un modèle public-privé transposable aux stratégies quantiques européennes.</p>
+        <div class="meta" style="margin-top:4px">Analyse complémentaire : IBM Quantum Blog, 06/11/2026 — <a href="https://www.ibm.com/quantum/blog/chicago-quantum-computer" target="_blank" rel="noopener">https://www.ibm.com/quantum/blog/chicago-quantum-computer</a></div>
+        <span class="tag">IBM</span>
+        <span class="tag">120 qubits</span>
+        <span class="tag">Nighthawk</span>
+        <span class="tag">infrastructure</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.ionq.com/news/ionq-announces-record-3q26-revenues-and-raises-fy2026-guidance-to-505---515-million-as-backlog-grows-to-1-2-billion" target="_blank" rel="noopener">IonQ : chiffre d'affaires record au T3 2026 et prévisions annuelles relevées à 505-515 M$</a></h3>
+        <div class="meta">IonQ (communiqué) • 05/11/2026</div>
+        <p>IonQ annonce un chiffre d'affaires GAAP record de 173,8 M$ au troisième trimestre 2026 (+336 % sur un an), son sixième trimestre record consécutif, et relève ses prévisions annuelles à 505-515 M$. Les obligations de performance restantes atteignent 1,2 Md$, avec 90,3 M$ issus de la plateforme IonQ et 83,5 M$ des services de fonderie SkyWater. Signal de passage à l'échelle commerciale côté matériel quantique (ions piégés + fonderie).</p>
+        <div class="meta" style="margin-top:4px">Reprise : The Quantum Insider, 05/11/2026 — <a href="https://thequantuminsider.com/2026/11/05/ionq-raises-revenue-forecast-as-quarterly-sales-climb-to-173-8-million/" target="_blank" rel="noopener">https://thequantuminsider.com/2026/11/05/ionq-raises-revenue-forecast-as-quarterly-sales-climb-to-173-8-million/</a></div>
+        <span class="tag">IonQ</span>
+        <span class="tag">résultats</span>
+        <span class="tag">ions piégés</span>
+        <span class="tag">SkyWater</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.japantimes.co.jp/business/2026/11/07/economy/japan-priority-items-investments/" target="_blank" rel="noopener">Le Japon place le calcul quantique parmi 28 priorités pour plus de 370 000 milliards de yens d'investissements</a></h3>
+        <div class="meta">The Japan Times • 07/11/2026</div>
+        <p>Le gouvernement japonais a retenu 28 produits et technologies prioritaires — dont le calcul quantique, à côté des semi-conducteurs, de l'IA, des data centers et des biopharmaceutiques — sur 62 candidats répartis en 17 domaines stratégiques, pour plus de 370 000 milliards de yens d'investissements publics et privés. La liste, présentée au Conseil pour la stratégie de croissance présidé par le Premier ministre, guidera un plan de mise en œuvre sur cinq ans. Le quantique devient un objet explicite de politique industrielle.</p>
+        <div class="meta" style="margin-top:4px">Reprise accessible : nippon.com, 06/11/2026 — <a href="https://www.nippon.com/en/articles/-/57052" target="_blank" rel="noopener">https://www.nippon.com/en/articles/-/57052</a></div>
+        <span class="tag">Japon</span>
+        <span class="tag">politique industrielle</span>
+        <span class="tag">financement public</span>
+        <span class="tag">souveraineté</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://techcommunity.microsoft.com/blog/post-quantum-crypto-tech-blog/azure-front-door-now-supports-post-quantum-resilient-hybrid-tls-1-3/4571081" target="_blank" rel="noopener">Microsoft active un TLS 1.3 hybride post-quantique par défaut dans Azure Front Door (ML-KEM)</a></h3>
+        <div class="meta">Microsoft Tech Community • 06/11/2026</div>
+        <p>Microsoft propose par défaut un TLS 1.3 hybride post-quantique dans Azure Front Door, combinant l'échange de clés classique X25519 avec l'algorithme NIST ML-KEM (FIPS 203). La mesure répond au risque « harvest now, decrypt later » avec un impact de performance minimal, en protégeant les connexions client-vers-edge. Exemple opérationnel de migration PQC à l'échelle d'un grand cloud, directement transposable aux organisations européennes alignées sur les calendriers NIST et ANSSI.</p>
+        <span class="tag">post-quantique</span>
+        <span class="tag">ML-KEM</span>
+        <span class="tag">cybersécurité</span>
+        <span class="tag">cloud</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://thequantuminsider.com/2026/11/04/chinas-photonic-quantum-computer-among-wic-award-winners/" target="_blank" rel="noopener">Jiuzhang 4.0 : le prototype photonique chinois de l'USTC primé à la Conférence mondiale de l'Internet</a></h3>
+        <div class="meta">The Quantum Insider • 04/11/2026</div>
+        <p>Le prototype d'ordinateur quantique photonique « Jiuzhang 4.0 », développé par l'USTC et le Hefei National Laboratory, figure parmi les 20 projets primés aux World Internet Conference Leading Science and Technology Awards à Wuzhen. Ses concepteurs annoncent la détection de jusqu'à 3 050 photons et une vitesse environ 10⁵⁴ fois supérieure à celle du meilleur supercalculateur sur l'échantillonnage de bosons gaussiens. La montée en puissance de la photonique chinoise concerne directement la filière européenne (Quandela). <span class="flag">⚠️ Chiffre annoncé par les concepteurs, non répliqué indépendamment.</span></p>
+        <span class="tag">Chine</span>
+        <span class="tag">USTC</span>
+        <span class="tag">photonique</span>
+        <span class="tag">avantage quantique</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.quantinuum.com/press-releases/quantinuum-reports-third-quarter-2026-results-and-raises-full-year-revenue-outlook" target="_blank" rel="noopener">Quantinuum : chiffre d'affaires trimestriel en hausse de 233 % et objectif de tolérance aux fautes confirmé pour 2029</a></h3>
+        <div class="meta">Quantinuum (communiqué) • 05/11/2026</div>
+        <p>Quantinuum publie un chiffre d'affaires trimestriel de 9,1 M$ (+233 % sur un an) et relève ses prévisions annuelles 2026 à 31-34 M$, avec un carnet de commandes en forte hausse. Le communiqué met en avant ses records de fidélité logique sur le système à ions piégés Helios et sa feuille de route Nexus/Apollo vers un ordinateur tolérant aux fautes en 2029. Un signal de maturité commerciale pour un fournisseur de qubits logiques accessible en cloud aux entreprises européennes.</p>
+        <span class="tag">Quantinuum</span>
+        <span class="tag">ions piégés</span>
+        <span class="tag">tolérance aux fautes</span>
+        <span class="tag">cloud</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" id="zone-innov"><div class="card-title">🔬 Innovations Matérielles &amp; Logicielles</div></div>
+    <div class="card-body">
+      <div class="item">
+        <h3><a href="https://universalquantum.com/knowledge-hub/universal-quantum-launches-the-iqpu-a-chip-designed-to-take-quantum-computers-to-scale" target="_blank" rel="noopener">Universal Quantum dévoile l'iQPU, une puce à ions piégés conçue pour passer à l'échelle</a></h3>
+        <div class="meta">Universal Quantum • 03/11/2026</div>
+        <span class="maturite m-r">Maturité : R&D</span>
+        <p>Universal Quantum a dévoilé l'iQPU, une unité de calcul à ions piégés intégrée combinant une large surface de calcul (architecture QCCD), une électronique de contrôle bas bruit intégrée (ASIC) et l'interconnexion modulaire UQConnect. La puce est fabriquée sur une ligne commerciale de semi-conducteurs de 200 mm et destinée aux systèmes livrés à des clients comme le DLR allemand. L'intégration en fonderie standard est la brique qui manquait pour industrialiser les ions piégés.</p>
+        <span class="tag">ions piégés</span>
+        <span class="tag">UQConnect</span>
+        <span class="tag">fonderie 200 mm</span>
+        <span class="tag">modularité</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://optics.org/news/psiquantum-launches-optical-circuit-switch-technology-based-on-silicon-photonics" target="_blank" rel="noopener">PsiQuantum adapte sa photonique silicium à un commutateur optique 8×8</a></h3>
+        <div class="meta">optics.org • 03/11/2026</div>
+        <span class="maturite m-r">Maturité : R&D</span>
+        <p>PsiQuantum a dévoilé une technologie de commutation optique (OCS) 8×8 bâtie sur sa plateforme photonique silicium à faibles pertes, développée à l'origine pour l'informatique quantique tolérante aux fautes. Les tests en laboratoire donnent 1,2 dB de perte d'insertion, 40 dB de diaphonie et moins de 3 ms de temps de reconfiguration, sans amplification. Des échantillons sont fournis à des clients ; la même brique adresse les interconnexions des centres de données IA.</p>
+        <span class="tag">photonique silicium</span>
+        <span class="tag">commutateur optique</span>
+        <span class="tag">PsiQuantum</span>
+        <span class="tag">interconnexion</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://newsroom.ibm.com/2026-11-05-oak-ridge-national-lab,-ibm,-and-amd-launch-new-co-design-platform-for-quantum-error-correction" target="_blank" rel="noopener">IBM, Oak Ridge et AMD lancent une plateforme co-conçue pour la correction d'erreurs quantique</a></h3>
+        <div class="meta">IBM Newsroom • 05/11/2026</div>
+        <span class="maturite m-r">Maturité : R&D</span>
+        <p>IBM, le Oak Ridge National Laboratory et AMD présentent une plateforme co-conçue qui co-localise le processeur quantique Nighthawk à 120 qubits et le supercalculateur Umbra à accélérateurs AMD Instinct, pour tester en temps réel les codes de correction d'erreurs et l'intégration quantique-HPC. L'initiative alimente la Quantum Genesis Mission du DOE, qui vise 100 qubits logiques d'ici 2028. Enjeu direct pour les centres de calcul européens qui doivent coupler QPU et HPC classique.</p>
+        <div class="meta" style="margin-top:4px">Communiqué ORNL, 04/11/2026 — <a href="https://www.ornl.gov/news/ornl-ibm-and-amd-launch-new-co-design-platform-for-quantum-error-correction/" target="_blank" rel="noopener">https://www.ornl.gov/news/ornl-ibm-and-amd-launch-new-co-design-platform-for-quantum-error-correction/</a></div>
+        <span class="tag">correction d'erreurs</span>
+        <span class="tag">HPC</span>
+        <span class="tag">IBM</span>
+        <span class="tag">AMD</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.prnewswire.com/news-releases/quantinuum-unveils-nexus-roadmap-to-deliver-the-first-developer-platform-designed-for-the-fault-tolerant-quantum-era-302930183.html" target="_blank" rel="noopener">Quantinuum dévoile la feuille de route Nexus pour l'ère tolérante aux fautes</a></h3>
+        <div class="meta">Quantinuum / PR Newswire • 05/11/2026</div>
+        <span class="maturite m-b">Maturité : Beta</span>
+        <p>Quantinuum publie une feuille de route pluriannuelle de sa plateforme cloud Nexus, présentée comme la première plateforme de développement pensée pour l'ère tolérante aux fautes : automatisation progressive de l'encodage de correction d'erreurs, de la gestion des ressources et des flux hybrides. Les capacités s'alignent sur les générations matérielles Helios (actuelle), Sol (2027) et Apollo (2029) ; Nexus dépasse 200 organisations avec un volume de tâches multiplié par plus de 10 sur un an. La couche logicielle tente de masquer la complexité des qubits logiques aux développeurs.</p>
+        <span class="tag">cloud quantique</span>
+        <span class="tag">Nexus</span>
+        <span class="tag">tolérance aux fautes</span>
+        <span class="tag">ions piégés</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://github.com/Qiskit/qiskit/releases/tag/2.6.2" target="_blank" rel="noopener">Qiskit SDK 2.6.2 : durcissement de la désérialisation QPY et correctifs QASM3</a></h3>
+        <div class="meta">Qiskit (GitHub) • 05/11/2026</div>
+        <span class="maturite m-d">Maturité : Disponible</span>
+        <p>Le SDK Qiskit reçoit sa version 2.6.2 : la mise à jour limite la récursion et renforce la sécurité de la désérialisation QPY, corrige l'export QASM3 des paramètres de portes décomposées et la gestion du contrôle de flux pour la compilation Clifford+T. Elle prolonge la série 2.6 publiée en octobre 2026. Le durcissement de la désérialisation compte désormais pour les chaînes d'exécution quantique exposées à des circuits tiers.</p>
+        <span class="tag">Qiskit</span>
+        <span class="tag">SDK</span>
+        <span class="tag">QPY</span>
+        <span class="tag">compilation</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://quantumcomputingreport.com/riverlane-demonstrates-data-driven-dem-augmentation-to-reduce-surface-code-logical-errors/" target="_blank" rel="noopener">Riverlane : augmenter les modèles d'erreur réduit les erreurs logiques des codes de surface</a></h3>
+        <div class="meta">Quantum Computing Report • 08/11/2026</div>
+        <span class="maturite m-r">Maturité : R&D</span>
+        <p>Riverlane démontre qu'augmenter de façon pilotée par les données les modèles d'erreur (DEM) utilisés par le décodeur permet de réduire le taux d'erreur logique d'un code de surface, sans modifier le matériel. La piste consiste à mieux décrire le bruit réel du processeur pour que le décodeur corrige plus efficacement, un levier logiciel de premier ordre dans l'équation de la tolérance aux fautes. Approche directement applicable aux machines supraconductrices et à ions piégés.</p>
+        <span class="tag">correction d'erreurs</span>
+        <span class="tag">codes de surface</span>
+        <span class="tag">décodeur</span>
+        <span class="tag">logiciel</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" id="zone-prospect"><div class="card-title">🚀 Prospective &amp; Impacts Sectoriels</div></div>
+    <div class="card-body">
+      <div class="item">
+        <h3><a href="https://thequantuminsider.com/2026/11/06/study-maps-24-problems-where-quantum-computers-could-gain-an-edge/" target="_blank" rel="noopener">Une étude cartographie 24 problèmes où l'ordinateur quantique pourrait réellement prendre l'avantage</a></h3>
+        <div class="meta">The Quantum Insider • 06/11/2026</div>
+        <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
+        <p>Des chercheurs de l'Open Quantum Institute (hébergé au CERN), de Google Quantum AI, Microsoft, NVIDIA, JPMorganChase, du MIT et de Harvard répertorient 24 problèmes de calcul — chimie, optimisation, analyse de données — offrant des perspectives crédibles d'avantage quantique super-quadratique. Pour chacun, l'étude précise les conditions (structure mathématique, préparation des données, correction d'erreurs, lecture des résultats) à remplir pour que le gain théorique devienne pratique, en prévenant que ces surcoûts peuvent annuler l'avantage. Une feuille de route pour les spécialistes métier.</p>
+        <span class="tag">avantage quantique</span>
+        <span class="tag">prospective</span>
+        <span class="tag">chimie</span>
+        <span class="tag">optimisation</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.fca.org.uk/news/press-releases/fca-explore-quantum-computing-tackle-financial-crime" target="_blank" rel="noopener">La FCA britannique lance un groupe d'expérimentation quantique contre la criminalité financière</a></h3>
+        <div class="meta">Financial Conduct Authority (FCA) • 05/11/2026</div>
+        <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
+        <p>Le régulateur britannique crée le Quantum Experimentation Group, première initiative du genre portée par une autorité de supervision : il réunira établissements financiers, fournisseurs de technologies quantiques et laboratoires nationaux pour tester l'apprentissage automatique quantique sur la détection du blanchiment et de la fraude. Le groupe démarrera au premier trimestre 2027, en s'appuyant sur un jeu de données synthétiques de la FCA pour lever l'obstacle de l'accès aux données. Objectif : mesurer les apports réels du quantique en finance et éclairer la régulation.</p>
+        <span class="tag">finance quantique</span>
+        <span class="tag">QML</span>
+        <span class="tag">détection de fraude</span>
+        <span class="tag">régulation</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://en.sedaily.com/technology/2026/11/04/yonsei-launches-ibms-newest-quantum-computer-to-speed-drug" target="_blank" rel="noopener">Yonsei met en service un IBM Nighthawk pour accélérer la découverte de médicaments</a></h3>
+        <div class="meta">Seoul Economic Daily • 04/11/2026</div>
+        <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
+        <p>L'université Yonsei (Corée du Sud) met en ligne un calculateur quantique équipé du processeur IBM Nighthawk — l'une de ses premières installations externes — pour accélérer la recherche de médicaments. L'équipe construit un pipeline combinant calcul quantique et intelligence artificielle, visant à ramener l'identification d'une cible thérapeutique de 2 ans à 5 mois et le passage d'un composé au médicament de 4 ans à 2 ans. Des coopérations sont prévues avec le RIKEN japonais et l'université de Cambridge.</p>
+        <span class="tag">pharma</span>
+        <span class="tag">découverte de médicaments</span>
+        <span class="tag">IA quantique</span>
+        <span class="tag">IBM Nighthawk</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.dwavequantum.com/company/newsroom/press-release/d-wave-boosts-stride-hybrid-solver-performance-launches-developer-training-to-accelerate-quantum-optimization-adoption/" target="_blank" rel="noopener">D-Wave améliore son solveur hybride Stride pour l'optimisation industrielle</a></h3>
+        <div class="meta">D-Wave Quantum • 04/11/2026</div>
+        <span class="horizon h-c">Horizon : Court terme <2 ans</span>
+        <p>D-Wave annonce des gains de performance sur son solveur hybride Stride : sur des benchmarks (problème du voyageur de commerce jusqu'à 10 000 localisations, équilibrage de chaînes d'assemblage), la nouvelle version trouve en 15 secondes de meilleures solutions que l'ancienne en 120 secondes. La société lance en parallèle un parcours de formation en trois cours sur l'optimisation quantique appliquée, via son cloud Leap. Signal d'adoption industrielle de l'optimisation hybride sur des cas réels (logistique, planification, supply chain).</p>
+        <span class="tag">logistique</span>
+        <span class="tag">optimisation</span>
+        <span class="tag">recuit quantique</span>
+        <span class="tag">supply chain</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://www.cisa.gov/resources-tools/resources/post-quantum-questions-ask-your-vendors" target="_blank" rel="noopener">PQC : le CISA, la NSA et l'ASD publient les questions à poser à ses fournisseurs</a></h3>
+        <div class="meta">CISA (avec NSA et ASD/ACSC) • 05/11/2026</div>
+        <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
+        <p>Les agences CISA (États-Unis), NSA et ASD/ACSC (Australie) publient une guidance commune et une liste de questions pour évaluer la préparation des fournisseurs à la migration vers la cryptographie post-quantique. L'approche, structurée autour du cadre LATICE, couvre les inventaires cryptographiques, les dépendances matérielles, les modes hybrides et la capacité à tenir les échéances avant 2030. Elle outille directement les DSI face au risque « récolter maintenant, déchiffrer plus tard ».</p>
+        <span class="tag">PQC</span>
+        <span class="tag">migration PKI</span>
+        <span class="tag">hybride</span>
+        <span class="tag">fournisseurs</span>
+      </div>
+      <div class="item">
+        <h3><a href="https://arxiv.org/abs/2611.03777" target="_blank" rel="noopener">Noyaux quantiques à rang faible : des garanties pour les SVM quantiques (prépublication)</a></h3>
+        <div class="meta">arXiv (prépublication) • 02/11/2026</div>
+        <span class="horizon h-l">Horizon : Long >5 ans</span>
+        <p>Cette prépublication propose ICAQKL, une méthode adaptative à rang faible (factorisation de Cholesky incomplète) pour construire efficacement les noyaux quantiques d'un SVM quantique sous un nombre fini de mesures. Les auteurs établissent des garanties de perturbation non asymptotiques et montrent un compromis précision/coût favorable face aux QSVMs complets et aux références de Nyström. Travail théorique : aucun avantage pratique sur données réelles n'est démontré à ce stade. <span class="flag">⚠️ Prépublication théorique, non validée par les pairs.</span></p>
+        <span class="tag">QML</span>
+        <span class="tag">noyaux quantiques</span>
+        <span class="tag">SVM quantique</span>
+        <span class="tag">prépublication</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="visuels">
+  <h2>🖼️ Images &amp; schémas analysés</h2>
+  <p>Collecte text-first : aucun visuel n'a été extrait et analysé pixel par pixel lors de cette exécution. Visuels disponibles aux sources et contextualisés dans ce rapport : schéma du Quantum System Two et du processeur Nighthawk à 120 qubits (IBM), vue de la puce à ions piégés iQPU et de l'interconnexion UQConnect (Universal Quantum), courbe de perte d'insertion du commutateur optique 8×8 (PsiQuantum), architecture de la plateforme co-conçue QPU + supercalculateur Umbra (ORNL/IBM/AMD), schéma du groupe d'expérimentation quantique de la FCA, et calendriers de migration post-quantique (CISA/NSA/ASD, cadre LATICE).</p>
+</div>
+<div class="synthese">
+  <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+  <div class="signal">
+    <b>1. La cryptanalyse quantique passe du « un jour » au chiffre daté.</b> Alice &amp; Bob ramènent la factorisation de RSA-2048 à environ 22 600 qubits « chat » et une poignée de jours, soit un facteur quinze sur les estimations de 2023. Implication RSSI : les hypothèses de durée de vie des clés RSA/ECC ne sont pas un acquis, elles se dégradent à mesure que les estimations de ressources chutent — l'inventaire cryptographique cesse d'être un projet de conformité pour devenir une échéance opposable.
+    <div class="signal-src">Sources : <a href="https://www.science-et-vie.com/technos-et-futur/en-france-le-chiffrement-utilise-pour-proteger-les-donnees-bancaires-pourrait-etre-casse-en-3-jours-par-un-ordinateur-quantique-de-22-593-qubits-265771.html" target="_blank" rel="noopener">Science et Vie (Alice &amp; Bob)</a></div>
+  </div>
+  <div class="signal">
+    <b>2. La migration post-quantique entre en phase opérationnelle.</b> Microsoft active un TLS hybride ML-KEM par défaut dans Azure Front Door, tandis que le CISA, la NSA et l'ASD publient les questions à poser aux fournisseurs sur leur préparation PQC. Implication DSI : l'hybridation et l'inventaire cryptographique (exigences d'agilité, dépendances matérielles, échéances avant 2030) deviennent des critères opposables dans les appels d'offres, pas seulement des bonnes pratiques.
+    <div class="signal-src">Sources : <a href="https://techcommunity.microsoft.com/blog/post-quantum-crypto-tech-blog/azure-front-door-now-supports-post-quantum-resilient-hybrid-tls-1-3/4571081" target="_blank" rel="noopener">Microsoft Tech Community</a> · <a href="https://www.cisa.gov/resources-tools/resources/post-quantum-questions-ask-your-vendors" target="_blank" rel="noopener">CISA</a></div>
+  </div>
+  <div class="signal">
+    <b>3. Le scaling sort de la puce unique et l'intégration quantique-HPC se structure.</b> IBM met en service un System Two à 120 qubits à Chicago et lance avec Oak Ridge et AMD une plateforme co-conçue QPU + supercalculateur pour la correction d'erreurs en temps réel ; Universal Quantum industrialise sa puce à ions piégés en fonderie 200 mm ; PsiQuantum recycle sa photonique silicium en commutateur optique. Implication R&amp;D/DSI : évaluer les fournisseurs sur l'intégration HPC, les interconnexions et la fabricabilité, pas sur le nombre de qubits annoncé.
+    <div class="signal-src">Sources : <a href="https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future" target="_blank" rel="noopener">IBM Newsroom (Chicago)</a> · <a href="https://newsroom.ibm.com/2026-11-05-oak-ridge-national-lab,-ibm,-and-amd-launch-new-co-design-platform-for-quantum-error-correction" target="_blank" rel="noopener">IBM Newsroom (ORNL/AMD)</a> · <a href="https://universalquantum.com/knowledge-hub/universal-quantum-launches-the-iqpu-a-chip-designed-to-take-quantum-computers-to-scale" target="_blank" rel="noopener">Universal Quantum</a></div>
+  </div>
+  <div class="signal">
+    <b>4. La correction d'erreurs se joue désormais sur la pile logicielle.</b> Quantinuum publie une feuille de route cloud (Nexus) pensée pour l'ère tolérante aux fautes, Riverlane montre qu'augmenter les modèles d'erreur du décodeur réduit les erreurs logiques d'un code de surface sans changer le matériel, et Qiskit durcit sa désérialisation. Implication R&amp;D : la bonne question n'est plus « quand la fault-tolerance ? » mais « quel surcoût par opération logique, avec quel décodeur et quelles données de bruit ? ».
+    <div class="signal-src">Sources : <a href="https://www.prnewswire.com/news-releases/quantinuum-unveils-nexus-roadmap-to-deliver-the-first-developer-platform-designed-for-the-fault-tolerant-quantum-era-302930183.html" target="_blank" rel="noopener">Quantinuum (Nexus)</a> · <a href="https://quantumcomputingreport.com/riverlane-demonstrates-data-driven-dem-augmentation-to-reduce-surface-code-logical-errors/" target="_blank" rel="noopener">Riverlane / QCR</a> · <a href="https://github.com/Qiskit/qiskit/releases/tag/2.6.2" target="_blank" rel="noopener">Qiskit 2.6.2</a></div>
+  </div>
+  <div class="signal">
+    <b>5. L'adoption avance par consortiums, régulateurs et politiques industrielles.</b> La FCA britannique crée un groupe d'expérimentation quantique sur la détection de fraude, une étude CERN/Google/Microsoft/NVIDIA cartographie 24 problèmes à avantage crédible, le Japon intègre le quantique à 28 priorités pour plus de 370 000 Md¥ et la région Grand Est ouvre un Pack Quantique. Implication directions R&amp;D : privilégier un siège dans un dispositif encadré (régulateur, consortium, programme public) à un achat de capacité brute, et suivre les feuilles de route publiques comme signal d'usage réel.
+    <div class="signal-src">Sources : <a href="https://www.fca.org.uk/news/press-releases/fca-explore-quantum-computing-tackle-financial-crime" target="_blank" rel="noopener">FCA</a> · <a href="https://thequantuminsider.com/2026/11/06/study-maps-24-problems-where-quantum-computers-could-gain-an-edge/" target="_blank" rel="noopener">The Quantum Insider (étude 24 problèmes)</a> · <a href="https://www.japantimes.co.jp/business/2026/11/07/economy/japan-priority-items-investments/" target="_blank" rel="noopener">The Japan Times</a></div>
+  </div>
+</div>
+<footer>
+  <p>Généré le 9 novembre 2026 par Hermes (veille-quantique). Template Jarvis inline (cards, KPIs, badges maturité/horizon, responsive). Fichier : veille-quantique-2026-11-09.html</p>
+  <p>24 articles — fenêtre unique de 7 jours (02/11 → 09/11/2026) ; sources primaires privilégiées (communiqués constructeurs, IBM, Quantinuum, IonQ, D-Wave, CISA, FCA, arXiv). Préprints et chiffres constructeurs signalés ⚠️.</p>
+  <p>Dernière modification : <span id="lastmod"></span></p>
+  <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+</footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+
+</body></html>
