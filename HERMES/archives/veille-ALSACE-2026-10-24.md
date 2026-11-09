@@ -21,7 +21,7 @@ Septième édition de la conférence franco-allemande AIxIA le 22 octobre au Pal
 
 Alsace Digitale a proposé les 19 et 20 octobre un atelier sur deux jours pour les collégiens et lycéens : reconnaître les contenus générés par IA, repérer les messages suspects et protéger ses données personnelles. Un signe de la montée en puissance de l'éducation à l'IA dans l'écosystème numérique alsacien.
 
-### [« Le sens des mots à l'épreuve de l'intelligence artificielle » au Shadok](https://www.strasbourg.eu/evenement/-/entity/id/605343777/le-sens-des-mots-a-l-epreuve-de-l-intelligence-artificielle)
+### [« Le sens des mots à l'épreuve de l'intelligence artificielle » au Shadok](https://shadok-strasbourg.eu/event/evenement-lti-a-lere-de-lia/)
 *Strasbourg.eu • 17/10/2026*
 
 Le 17 octobre au Shadok à Strasbourg, citoyens et professionnels ont exploré l'impact de l'IA sur le langage, la traduction et le sens : table ronde, ateliers pratiques et projection du documentaire « La langue ne ment pas ». Une illustration du débat sociétal qui accompagne la diffusion de l'IA générative dans la région.
@@ -50,7 +50,7 @@ Strasbourg a accueilli la 29e conférence MICCAI, référence mondiale de l'IA p
 
 L'usine alsacienne de thyssenkrupp Automotive Systèmes France a intégré deux cobots Universal Robots équipés de caméras 3D Inbolt pour le vissage automatisé sur une ligne de montage moteur en mouvement. Résultat : taux de défauts ramené sous la barre des 1 % et réduction de la pénibilité des opérateurs, avec l'ambition d'étendre le déploiement robotique sur le site.
 
-### [RobotKraft : le hackathon IA & robotique Alsace Digitale / Stras-IA a formé 48 h durant](https://www.adira.com/agenda/robotkraft-challenge-ia-robotique/)
+### [RobotKraft : le hackathon IA & robotique Alsace Digitale / Stras-IA a formé 48 h durant](https://www.meetup.com/fr-FR/strasbourg-deep-learning-meetup/events/316403360/)
 *ADIRA • 02-04/10/2026*
 
 Pendant trois jours au Parc d'Innovation d'Illkirch-Graffenstaden, les équipes ont entraîné de vrais bras robotiques SO-ARM100 avec l'écosystème open source LeRobot de Hugging Face : vision par ordinateur, apprentissage par imitation et défis inspirés des industries spatiale et de santé. Un pont concret entre la communauté IA strasbourgeoise et la robotique réelle.

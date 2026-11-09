@@ -55,7 +55,7 @@ La biotech strasbourgeoise AdipoPharma, créée en 2017, franchit une nouvelle �
 
 Le groupe d'équipements électriques de Benfeld déploie sa stratégie industrie 5.0 : trois cellules cobot d'ébavurage combinent vision industrielle par caméra, précision des gestes et contrôle fin des paramètres. Mises en service fin 2025 en Alsace et sur le site tunisien du groupe, elles réduisent le taux de rebut et la pénibilité « sans réduire les effectifs » — une illustration de la complémentarité humain-robot revendiquée par l'entreprise.
 
-### [Découverte de la programmation et de la robotique à la médiathèque André Malraux](https://www.strasbourg.eu/evenement/-/entity/id/598031618/decouverte-de-la-programmation-et-de-la-robotique)
+### [Découverte de la programmation et de la robotique à la médiathèque André Malraux](https://www.mediatheques.strasbourg.eu/Default/doc/CALENDAR/21071/decouverte-de-la-programmation-et-de-la-robotique?_lg=fr-FR)
 *Strasbourg.eu • 24/10/2026*
 
 Samedi 24 octobre, la médiathèque André Malraux de Strasbourg proposait deux séances d'ateliers robotiques pour les 4-6 ans : robots à programmer Beebot et Bluebot pour les aventures codées, et Whalesbot à assembler soi-même avant de programmer ses mouvements, ses sons et ses actions. La culture robotique s'installe dès le plus jeune âge dans les équipements de la ville.

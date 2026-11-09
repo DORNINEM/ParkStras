@@ -9,7 +9,7 @@
 ## 🇫🇷 France — Réglementation, alarmes & opérateurs
 
 ### « Je pensais que l'alarme de la maison appelait toujours mon téléphone » : ce qui s'arrête le 20 octobre dans 43 départements
-*Journaldeseniors (20 Minutes) • 09/10/2026 — [source](https://journaldesseniors.20minutes.fr/actualite/je-pensais-que-l-alarme-de-la-maison-appelait-toujours-mon-telephone-ce-qui-s-arrete-le-20-octobre-dans-43-departements-paris-compris/)*
+*Numerama • 20/10/2026 — [source](https://www.numerama.com/tech/2356997-orange-eteint-definitivement-sa-2g-17-million-de-sim-concernees-sfr-et-bouygues-suivront-en-decembre.html)*
 
 Orange éteint sa 2G le 20 octobre 2026 dans 43 départements, Paris compris. Les transmetteurs d'alarme et automates de télésurveillance 2G uniquement ne pourront plus appeler ni envoyer de SMS : le voyant vert peut rester allumé alors que la liaison est coupée. Les particuliers comme les professionnels doivent tester leurs équipements avec leur installateur ou leur centre de télésurveillance avant l'échéance.
 
@@ -94,7 +94,7 @@ L'IA agentique s'invite dans les systèmes de vidéosécurité : filtrage des fa
 ## Synthèse — 5 signaux faibles à surveiller
 
 1. **La 2G devient un argument commercial d'obsolescence, pas qu'un problème technique.** Somfy ferme les serveurs d'alarmes anciennes en invoquant la fin du réseau. *Implication installateur/CTS : auditer dès maintenant le parc clients (transmetteurs ET cloud des alarmes connectées) et transformer la migration 4G en offre de renouvellement contractualisée, avant que la concurrence ne le fasse.*
-  Sources (signaux) : https://journaldesseniors.20minutes.fr/actualite/je-pensais-que-l-alarme-de-la-maison-appelait-toujours-mon-telephone-ce-qui-s-arrete-le-20-octobre-dans-43-departements-paris-compris/ · https://www.igen.fr/domotique/2026/09/somfy-invoque-la-fin-de-la-2g-pour-couper-les-serveurs-dedies-ses-anciennes-alarmes-158347
+  Sources (signaux) : https://www.numerama.com/tech/2356997-orange-eteint-definitivement-sa-2g-17-million-de-sim-concernees-sfr-et-bouygues-suivront-en-decembre.html · https://www.igen.fr/domotique/2026/09/somfy-invoque-la-fin-de-la-2g-pour-couper-les-serveurs-dedies-ses-anciennes-alarmes-158347
 
 
 

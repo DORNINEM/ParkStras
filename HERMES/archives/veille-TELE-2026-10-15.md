@@ -16,7 +16,7 @@ Cette semaine, deux grands récits dominent la sécurité électronique françai
 L'extinction progressive de la 2G en France d'ici fin 2026 va rendre inopérants environ 1,7 million d'appareils : systèmes d'alarme, équipements de télésurveillance, ascenseurs et téléassistance seniors équipés de cartes SIM 2G. Orange et les autres opérateurs libèrent les fréquences au profit de la 4G/5G. Un chantier massif de migration pour les installateurs et les centres de télésurveillance, avec un risque élevé de pannes silencieuses non détectées par les abonnés.
 
 ### « Je pensais que l'alarme appelait toujours mon téléphone » : ce qui s'arrête le 20 octobre dans 43 départements
-**Journaldeseniors (20 Minutes) • 11/10/2026** — [Lien source](https://journaldesseniors.20minutes.fr/actualite/je-pensais-que-l-alarme-de-la-maison-appelait-toujours-mon-telephone-ce-qui-s-arrete-le-20-octobre-dans-43-departements-paris-compris/)
+**Numerama • 20/10/2026** — [Lien source](https://www.numerama.com/tech/2356997-orange-eteint-definitivement-sa-2g-17-million-de-sim-concernees-sfr-et-bouygues-suivront-en-decembre.html)
 
 Orange éteint sa 2G le 20 octobre dans 43 départements, Paris compris. Les transmetteurs d'alarme et automates de télésurveillance 2G uniquement ne pourront plus appeler ni envoyer de SMS : le voyant vert peut rester allumé alors que la liaison est coupée. Particuliers comme professionnels doivent tester leurs équipements avec leur installateur ou leur centre de télésurveillance avant l'échéance — un angle mort critique pour la téléassistance des personnes âgées.
 
@@ -91,15 +91,23 @@ AXIS a introduit le radar 360° D2124-VE sur plateforme ARTPEC-9, capable de cla
 
 **1. La coupure 2G crée une urgence silencieuse — le voyant vert reste allumé.**
 Les transmetteurs 2G peuvent sembler fonctionner alors que la liaison est morte. **Implication installateur/CTS :** lancer une campagne d'audit et de test du parc clients *avant* le 20 octobre et transformer l'urgence en offre de migration 4G payante — puis documenter les tests pour se prémunir contre toute mise en cause de responsabilité.
+  Sources (signaux) : https://www.capital.fr/conso/fin-de-la-2g-le-20-octobre-alarmes-ascenseurs-teleassistance-ce-qui-va-cesser-de-fonctionner-1530720 · https://www.numerama.com/tech/2356997-orange-eteint-definitivement-sa-2g-17-million-de-sim-concernees-sfr-et-bouygues-suivront-en-decembre.html
+
 
 **2. La télésurveillance se vend en protection de la personne, plus en protection des biens.**
 Verisure met l'incendie, le malaise et la santé au cœur de son discours de croissance. **Implication CTS :** élargir les protocoles de levée de doute et les formations opérateurs aux urgences vitales (inertie, détresse, incendie), et revoir les scripts de vente des abonnements en conséquence.
+  Sources (signaux) : https://www.capital.fr/entreprises-marches/pourquoi-le-secteur-de-l-alarme-connectee-est-en-plein-boom-1530945
+
 
 **3. Tout équipement « à distance » non sécurisé devient une cible générique — alarmes comprises.**
 L'alerte CERT-FR sur les régulateurs frigorifiques (Danfoss, Copeland, Dixell) vaut pour tout transmetteur IP exposé. **Implication intégrateur :** inventorier les accès à distance de tous les équipements installés, imposer VPN/cloud sécurisé plutôt qu'ouverture de port, et packager un audit « exposition Internet » récurrent dans les contrats de maintenance.
+  Sources (signaux) : https://refindustry.com/fr/news/la-cybersecurite-francaise-alerte-sur-des-attaques-visant-des-regulateurs-frigorifiques/
+
 
 **4. La biométrie en temps réel bascule d'un pays à l'autre — l'Europe expérimente sans harmonie.**
 L'Italie active la reconnaissance faciale en temps réel pendant que la France l'interdit explicitement (loi Ripost). **Implication intégrateur français :** ne pas présumer des règles d'un projet à l'autre en Europe ; pour les projets français, valoriser la conformité « sans biométrie » comme argument de sécurisation juridique des marchés publics.
+  Sources (signaux) : https://www.biometricupdate.com/202610/italy-switches-on-real-time-facial-recognition-as-eu-calculates-risk-to-basic-rights · https://www.lexing.law/avocats/videoprotection-algorithmique-elargissement-du-cadre/2026/10/07/
+
 
 **5. L'exploitation vidéo devient conversationnelle : la valeur se déplace du stockage vers la sémantique.**
 La recherche en langage naturel (Synology/Genetec) réduit l'exploitation des images de plusieurs heures à quelques secondes. **Implication CTS et intégrateurs :** privilégier les VMS/NVR avec indexation sémantique native dans les futurs appels d'offres, et anticiper l'impact sur la politique de rétention des enregistrements (l'archive devient exploitable, donc plus sensible RGPD).
@@ -107,3 +115,5 @@ La recherche en langage naturel (Synology/Genetec) réduit l'exploitation des im
 ---
 
 *Généré le 15 octobre 2026 par Hermes (veille-telesurveillance). Fichiers : veille-TELE-2026-10-15.md + .html*
+  Sources (signaux) : https://www.zdnet.fr/actualites/parler-a-vos-cameras-pour-trouver-des-indices-cest-la-promesse-de-cette-ia-505822.htm
+

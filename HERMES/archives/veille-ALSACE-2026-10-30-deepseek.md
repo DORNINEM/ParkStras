@@ -11,7 +11,7 @@ Synthèse : la semaine alsacienne reste dominée par l'intelligence artificielle
 
 Des journalistes des Dernières Nouvelles d'Alsace expriment leur colère face au plan « EBRA 2030 » porté par leur actionnaire principal, le Crédit Mutuel : « départs volontaires » d'une cinquantaine de rédacteurs et déploiement dès 2027 d'un assistant rédactionnel et d'une mise en page automatisés, qualifiés de « sauvages et débridés ». Un cas d'école alsacien des tensions entre restructuration de la presse et IA générative dans les rédactions.
 
-### [AI_Lab : un atelier pour prendre en main l'IA générative à la médiathèque de Haguenau](https://agglo-haguenau.fr/fr/les-evenements/ai_lab/216010797)
+### [AI_Lab : un atelier pour prendre en main l'IA générative à la médiathèque de Haguenau](https://lafrenchtechest.fr/event/ai_lab_haguenau-7/)
 *Communauté d'agglomération de Haguenau • 29/10/2026*
 
 Jeudi 29 octobre, l'AI_Lab de la médiathèque de Haguenau a proposé sa séance mensuelle : un atelier débutants sur les possibilités et limites de l'IA, les bases du prompting et des exercices pratiques, avec remise d'un « starter kit » pour démarrer. La montée en compétences IA du grand public s'ancre dans les équipements de proximité, du Bas-Rhin à l'Eurométropole.
@@ -60,7 +60,7 @@ L'intégrateur certifié Universal Robots RobotIndus (Sarrebourg) a équipé le 
 
 Le groupe alsacien d'équipements électriques de Benfeld déploie sa stratégie industrie 5.0 : trois cellules cobot d'ébavurage combinant vision industrielle par caméra, précision des gestes et contrôle fin des paramètres. En service depuis fin 2025 en Alsace et sur le site tunisien du groupe, elles réduisent le taux de rebut et la pénibilité « sans réduire les effectifs » — la complémentarité humain-robot revendiquée par l'entreprise.
 
-### [RobotKraft : un hackathon IA & robotique à Illkirch-Graffenstaden](https://www.adira.com/agenda/robotkraft-challenge-ia-robotique/)
+### [RobotKraft : un hackathon IA & robotique à Illkirch-Graffenstaden](https://www.meetup.com/fr-FR/strasbourg-deep-learning-meetup/events/316403360/)
 *ADIRA / Alsace Digitale • 2-4 octobre 2026*
 
 Organisé par Alsace Digitale avec Strasbourg IA, l'InnovLab de Télécom Physique Strasbourg, le cluster IA Grand Est ENACT et le projet IMARA, RobotKraft a rassemblé des équipes autour de bras robotiques open source SO-ARM100 et de l'écosystème Hugging Face LeRobot : téléopération, enregistrement de datasets, entraînement de politiques (ACT, Diffusion Policy, SmolVLA) et déploiement sur des robots physiques. Un maillon clé de la culture robotique alsacienne.

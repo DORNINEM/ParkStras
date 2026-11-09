@@ -26,7 +26,7 @@ Retour sur le véhicule annoncé : le Peugeot e-Traveller « L4-Ready », un van
 
 Waymo ajoute près de 250 miles carrés (environ 650 km²) de zone desservie en une semaine, répartis sur cinq marchés (Los Angeles, baie de San Francisco, San Diego, Nashville et Orlando). Cette accélération américaine est le miroir de ce qui se prépare en Europe : plus la zone s'étend, plus le nombre de courses assurées par des véhicules sans conducteur augmente — et plus le volume de travail de conduite déplacé hors des taxis et VTC traditionnels augmente mécaniquement. L'échelle atteinte outre-Atlantique donne la mesure de la pression qui arrivera en Europe à partir de 2028.
 
-### [À San Diego, des Waymo bloqués par la marée : la police reprend le volant](https://weather.com/2026/10/30/news/weather/video/waymos-freeze-in-san-diego-king-tide-flooding-police-take-the-wheel)
+### [À San Diego, des Waymo bloqués par la marée : la police reprend le volant](https://autos.yahoo.com/policy-and-environment/articles/san-diego-king-tide-left-171200796.html)
 *The Weather Channel • 30/10/2026*
 
 Des robotaxis Waymo se sont arrêtés, ont reculé puis sont restés figés dans une inondation de grande marée à San Diego, bloquant un passager à l'intérieur et provoquant un embouteillage ; c'est finalement la police qui a réussi à faire repartir un véhicule. L'incident illustre l'angle emploi le plus concret du dossier : lorsqu'une situation sort du cadre prévu, l'intervention humaine redevient nécessaire — mais elle se déplace du volant vers la supervision à distance et l'intervention d'urgence, des métiers qui restent à structurer.
