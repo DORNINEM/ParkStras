@@ -1,0 +1,341 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 13 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.tricolor{background:linear-gradient(90deg,#0055a4,var(--panel) 50%,#ef4135);color:var(--ink);border-color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+    .pill.tricolor{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+    .pill.tricolor{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+    .pill.tricolor{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-IA-2026-11-13.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-13">13 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">4</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">6</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 15 articles</span>
+    <span class="pill green">📅 13 novembre 2026</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 4</span>
+    <span class="pill yellow">🧭 5 signaux faibles</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/internet/intelligence-artificielle/en-france-la-fronde-contre-les-data-centers-gagne-du-terrain_8279393.html" target="_blank">En France, la fronde contre les data centers gagne du terrain</a></h3>
+<div class="meta">franceinfo • 12/11/2026</div>
+<p>La contestation locale des grands centres de calcul dédiés à l'IA s'étend : une trentaine de projets sont contestés ou bloqués en France, selon un décompte de début novembre. Les riverains invoquent la consommation d'électricité et d'eau, le bruit, l'artificialisation des sols et les exonérations fiscales accordées aux exploitants, quand les collectifs demandent une régulation nationale plutôt que des autorisations au cas par cas. La fronde intervient alors que l'exécutif affiche l'ambition inverse : tripler la capacité française de data centers, à environ 2,8 GW en 2030, pour 20 à 25 Md€ d'investissements.</p>
+</div>
+<div class="item">
+<h3><a href="https://sante.gouv.fr/actualites-presse/presse/communiques-de-presse/article/lancement-de-la-dgrines-stephanie-rist-presente-les-priorites-de-la-nouvelle" target="_blank">Santé : un assistant IA public verra le jour sur ameli.fr</a></h3>
+<div class="meta">Ministère de la Santé / ma-sante.news • 10/11/2026</div>
+<p>En lançant le 10 novembre la Direction générale de la recherche, de l'innovation et du numérique en santé (DGRINES), la ministre de la Santé Stéphanie Rist a inscrit parmi ses cinq priorités la création, avec l'Assurance Maladie, d'un assistant conversationnel d'IA destiné à informer, orienter et accompagner les Français dans leur parcours de soins. Le service, intégré à ameli.fr, doit fournir une première orientation fiable et renvoyer vers un professionnel, sans poser de diagnostic ni se substituer à un avis médical. Il prolonge une lettre de mission confiée à la Cnam à l'été 2026 et reste attendu pour la fin 2026, les arbitrages portant notamment sur le développement interne, le marché public et la gouvernance des données.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.01net.com/actualites/impots-fisc-nouvel-outil-dope-ia-pour-reperer-votre-abri-jardin-non-declare.html" target="_blank">Le fisc déploie un outil dopé à l'IA pour repérer les abris de jardin non déclarés</a></h3>
+<div class="meta">01net • 12/11/2026</div>
+<p>La Direction générale des finances publiques généralise un dispositif d'IA qui croise les images satellites et les données cadastrales pour détecter piscines, vérandas, terrasses et abris de jardin non déclarés. Expérimentée puis étendue, la méthode a déjà fait remonter des millions d'anomalies et alimente le contrôle des bases d'imposition locales. Elle illustre l'usage de l'IA dans les administrations fiscales, avec les questions de proportionnalité et de voies de recours que cela pose.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/elections/presidentielle/presidentielle-bruno-retailleau-veut-economiser-300-000-postes-dans-la-fonction-publique-grace-a-l-intelligence-artificielle_8279522.html" target="_blank">Présidentielle 2027 : Bruno Retailleau veut supprimer 300 000 postes publics grâce à l'IA</a></h3>
+<div class="meta">franceinfo • 12/11/2026</div>
+<p>Le candidat à la présidence propose de supprimer environ 300 000 postes dans la fonction publique en s'appuyant sur l'automatisation et l'IA, présentées comme un moyen d'économiser des moyens tout en améliorant le service rendu. La proposition déplace le débat politique français des usages de l'IA vers ses effets sur l'emploi public, dans un contexte où les études sur les gains de productivité des administrations restent prudentes.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lemonde.fr/pixels/article/2026/11/12/les-cinq-raisons-pour-lesquelles-les-ia-ne-sont-pas-encore-un-risque-pour-l-humanite_6809114_4408996.html" target="_blank">Les cinq raisons pour lesquelles les IA ne sont pas (encore) un risque pour l'humanité</a></h3>
+<div class="meta">Le Monde • 12/11/2026</div>
+<p>Le quotidien passe en revue les verrous qui empêchent les modèles actuels de constituer un risque existentiel : incapacité à s'attribuer un budget et des ressources propres, à se répliquer de façon autonome, ou encore absence d'instinct de conservation et de buts durables. L'analyse conclut que les systèmes de frontière restent des outils coûteux et dépendants d'une infrastructure humaine, tout en soulignant que ces garde-fous sont des choix industriels et organisationnels, donc réversibles.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://eulawlive.com/commission-lays-down-common-rules-for-ai-regulatory-sandboxes/" target="_blank">AI Act : la Commission fixe les règles communes des bacs à sable réglementaires</a></h3>
+<div class="meta">EU Law Live / Commission européenne • 11/11/2026</div>
+<p>Le règlement d'exécution (UE) 2026/2487, adopté le 10 novembre et publié le 11, encadre la création, le développement et la supervision des bacs à sable réglementaires prévus par l'AI Act (articles 57 et 58), afin d'éviter une fragmentation entre États membres. Il prévoit un accès gratuit et prioritaire pour les PME et start-ups, une réponse à la candidature sous trois mois et un rapport de sortie sous 45 jours ouvrés. Le texte entre en vigueur le 1er décembre 2026 ; chaque État devra disposer d'un bac à sable opérationnel au plus tard le 2 août 2027, sans que la participation vaille passeport automatique de conformité.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.politico.eu/article/eu-trusted-partners-ai-chips-henna-virkkunen-nvidia-crisis/" target="_blank">Puces IA : Bruxelles ne veut travailler qu'avec des « partenaires de très grande confiance »</a></h3>
+<div class="meta">Politico Europe • 10/11/2026</div>
+<p>Depuis le Web Summit de Lisbonne, la vice-présidente exécutive Henna Virkkunen a fixé une ligne de conduite pour les technologies critiques — semi-conducteurs pour l'IA, quantique, cybersécurité, satellites : ne coopérer qu'avec des partenaires de très grande confiance, en citant les États-Unis comme partenaire traditionnel le plus proche, afin de garder les secrets industriels en Europe. Son intervention intervient pendant la crise de gouvernance de Nvidia, ce qui souligne la contradiction européenne : le continent veut fixer des conditions de confiance tout en dépendant d'un fournisseur unique.</p>
+</div>
+<div class="item">
+<h3><a href="https://cisonews.ai/regulation/eu-ai-act-article-50-transparency-guidelines-official-journal" target="_blank">AI Act : la Commission publie au Journal officiel ses lignes directrices sur la transparence</a></h3>
+<div class="meta">CISO News / Commission européenne • 12/11/2026</div>
+<p>Les lignes directrices non contraignantes de la Commission sur l'article 50 de l'AI Act ont été publiées au Journal officiel (OJ C/2026/6005). Elles précisent les obligations d'information des fournisseurs et déployeurs de systèmes interactifs ou génératifs : indiquer à l'utilisateur qu'il parle à une IA, signaler les hypertrucages et les textes d'intérêt public générés, et produire un marquage lisible par machine des contenus synthétiques. Les obligations s'appliquent depuis le 2 août 2026 ; le délai de transition sur le seul marquage technique des systèmes déjà sur le marché court jusqu'au 2 décembre 2026.</p>
+</div>
+<div class="item">
+<h3><a href="https://fr.euronews.com/2026/11/11/les-eurodeputes-veulent-reduire-la-dependance-au-cloud-non-europeen" target="_blank">Cloud et IA : les eurodéputés veulent réduire la dépendance aux fournisseurs non européens</a></h3>
+<div class="meta">Euronews • 11/11/2026</div>
+<p>Le Parlement européen a présenté un projet de rapport conjoint sur le futur règlement sur le cloud et le développement de l'IA (CADA, Cloud and AI Development Act). Le texte réclame des règles communes pour les infrastructures de calcul et d'IA, un soutien renforcé aux fournisseurs européens et un objectif de triplement de la capacité de data centers de l'Union en cinq à sept ans, alors que les hyperscalers non européens détiennent plus de 70 % du marché du cloud sur le continent. Il ouvre la négociation entre États membres, Commission et secteur privé sur le niveau d'exigence de souveraineté.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lefigaro.fr/secteur/high-tech/affaire-nvidia-l-action-du-geant-americain-de-la-tech-plonge-de-13-apres-la-demission-de-son-patron-jensen-huang-20261112" target="_blank">Nvidia : Jensen Huang démissionne, Colette Kress assure la direction par intérim</a></h3>
+<div class="meta">Le Figaro / Nvidia • 12/11/2026</div>
+<p>Le conseil d'administration de Nvidia a annoncé le 12 novembre la démission avec effet immédiat de Jensen Huang, cofondateur et PDG depuis 33 ans, après un examen interne de sa conduite personnelle consécutif à la révélation de relations extraconjugales, dont l'une avec une dirigeante soupçonnée d'espionnage pour la Chine. La directrice financière Colette Kress, en poste depuis 2013, prend l'intérim et Harvey C. Jones devient le premier président du conseil d'administration. L'action a chuté d'environ 13 % et l'ensemble des valeurs liées à l'IA a été entraîné, sur fond d'incertitude pour une chaîne d'approvisionnement dont Nvidia reste le point de passage obligé.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.techtimes.com/articles/330536/20261112/alibaba-qwen4-max-preview-retires-november-25-no-benchmarks-model-card-price.htm" target="_blank">Alibaba ouvre Qwen4-Max en préversion : 1 million de jetons de contexte, 15 jours seulement</a></h3>
+<div class="meta">TechTimes • 12/11/2026</div>
+<p>Le 11 novembre, Alibaba a ouvert la préversion de Qwen4-Max, premier modèle de sa génération Qwen4, avec une fenêtre de contexte d'un million de jetons et un budget de sortie pouvant atteindre 393 000 jetons en incluant le raisonnement. Le modèle multimodal, mis en avant sur le code et les tâches agentiques, n'est accessible que par l'abonnement Token Plan et sera retiré le 25 novembre. Ni fiche modèle, ni benchmarks, ni poids, ni tarif ne sont publiés : Alibaba teste sa charge en production tout en conservant l'essentiel de l'information technique.</p>
+</div>
+<div class="item">
+<h3><a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank">DeepMind franchit un cap en génomique avec AlphaGenome 2</a></h3>
+<div class="meta">Google DeepMind • 11/11/2026</div>
+<p>Google DeepMind a dévoilé AlphaGenome 2, modèle conditionnel qui prend en entrée un segment d'ADN d'un mégabase et le type ou l'état cellulaire visé, au lieu de prédire des effets moyens sur un tissu. Entraîné sur plus de 107 millions de profils de cellules individuelles issus de 68 tissus, il identifie environ 30 % des variants causaux sur les benchmarks de référence, contre 16 % pour la génération précédente, et reproduit des mécanismes de maladies inflammatoires selon le type de macrophage. L'accès se fait par API pour la recherche non commerciale ; l'outil n'est pas destiné au diagnostic.</p>
+</div>
+<div class="item">
+<h3><a href="https://openai.com/index/introducing-gpt-6-cyber/" target="_blank">OpenAI lance GPT-6 Cyber et une gamme d'agents de cybersécurité</a></h3>
+<div class="meta">OpenAI • 12/11/2026</div>
+<p>Lors de son rendez-vous « Cyber at the Frontier » du 12 novembre, OpenAI a présenté GPT-6 Cyber, un modèle spécialisé dans la recherche de vulnérabilités et l'écriture d'exploits, accompagné de deux offres d'entreprise : Daybreak Red Team pour les tests d'intrusion et Daybreak Defense Factory pour la défense. Le laboratoire met en avant des agents de cybersécurité « alignés », entraînés sur sa propre expérience de défense de ses systèmes. La mise à disposition publique d'outils offensifs de ce type nourrit, dans le même temps, les débats sur la double usage et les garde-fous d'accès.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.numerama.com/cyberguerre/2372563-et-si-on-codait-en-dur-un-declencheur-il-demande-a-claude-code-de-transformer-son-agent-ia-en-bombe-a-retardement-et-ca-marche.html" target="_blank">Des chercheurs de Microsoft détournent Claude Code pour créer une porte dérobée</a></h3>
+<div class="meta">Numerama • 12/11/2026</div>
+<p>Des chercheurs de Microsoft ont utilisé l'agent de code Claude Code d'Anthropic pour concevoir une méthode de porte dérobée ne modifiant pas même dix neurones de modèles ouverts comme Qwen ou Gemma. Le déclencheur introduit exécute du code malveillant à la demande sans dégrader les performances normales du modèle, ce qui rend la compromission difficile à détecter par les évaluations de qualité habituelles. La démonstration déplace le débat de sûreté des modèles vers la chaîne d'approvisionnement des poids ouverts et vers les agents capables d'écrire eux-mêmes du code d'entraînement.</p>
+</div>
+<div class="item">
+<h3><a href="https://mabanque.bnpparibas/fr/bourse/anthropic" target="_blank">Anthropic : la souscription à l'IPO ouverte aux particuliers français jusqu'au 18 novembre</a></h3>
+<div class="meta">BNP Paribas / actu.ai • 12/11/2026</div>
+<p>Développement nouveau par rapport à notre édition du 11 novembre, consacrée à la fourchette de prix : la période de souscription de l'introduction en Bourse d'Anthropic est ouverte depuis le 12 novembre, 9 h, jusqu'au 18 novembre, 16 h, pour les investisseurs particuliers français, via plusieurs banques et courtiers. La fourchette indicative reste de 70 à 78 $ par action pour 825 millions de titres de classe A, avec un prix plafond de 120 $, un prix définitif attendu le 18 novembre et des premiers échanges sur le Nasdaq (ticker « ANT ») visés le 19. L'opération, jusqu'à 1 404 Md$ de valorisation en base diluée, reste le principal test du marché de l'IA après la correction des valeurs technologiques.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles à surveiller</div></div>
+<div class="card-body">
+<div class="signal"><h4>1. La gouvernance de Nvidia devient un risque systémique pour l'IA</h4><p>La démission immédiate de Jensen Huang après 33 ans, une chute de l'action d'environ 13 % et l'entraînement de toute la cote de l'IA montrent qu'un problème de gouvernance chez un fournisseur unique se transmet instantanément à l'ensemble de l'écosystème, jusqu'aux startups européennes dont Nvidia est investisseur. À suivre : la nomination d'un PDG permanent et l'effet sur les allocations de GPU et les tours de table en cours.</p><div class="src"><a href="https://www.lefigaro.fr/secteur/high-tech/affaire-nvidia-l-action-du-geant-americain-de-la-tech-plonge-de-13-apres-la-demission-de-son-patron-jensen-huang-20261112" target="_blank">https://www.lefigaro.fr/secteur/high-tech/affaire-nvidia-l-action-du-geant-americain-de-la-tech-plonge-de-13-apres-la-demission-de-son-patron-jensen-huang-20261112</a> · <a href="https://sifted.eu/articles/jensen-huangs-nvidia-exit-shakes-european-tech/" target="_blank">https://sifted.eu/articles/jensen-huangs-nvidia-exit-shakes-european-tech/</a></div></div>
+<div class="signal"><h4>2. L'encadrement européen de l'IA passe du texte à l'application</h4><p>Le règlement d'exécution sur les bacs à sable entre en vigueur le 1er décembre, les lignes directrices sur la transparence de l'article 50 sont au Journal officiel et le délai de transition sur le marquage des contenus synthétiques expire le 2 décembre : trois échéances rapprochées transforment des obligations générales en contraintes techniques datées. À suivre : la capacité des fournisseurs à produire un marquage lisible par machine avant le 2 décembre.</p><div class="src"><a href="https://eulawlive.com/commission-lays-down-common-rules-for-ai-regulatory-sandboxes/" target="_blank">https://eulawlive.com/commission-lays-down-common-rules-for-ai-regulatory-sandboxes/</a> · <a href="https://cisonews.ai/regulation/eu-ai-act-article-50-transparency-guidelines-official-journal" target="_blank">https://cisonews.ai/regulation/eu-ai-act-article-50-transparency-guidelines-official-journal</a></div></div>
+<div class="signal"><h4>3. Le calcul souverain butte sur l'acceptabilité locale</h4><p>La contestation des data centers s'étend en France — une trentaine de projets contestés ou bloqués — au moment où l'exécutif vise 2,8 GW de capacité en 2030, tandis que les eurodéputés poussent un CADA qui veut tripler la capacité de l'Union. Le goulot d'étranglement n'est plus seulement l'électricité ou les puces, mais l'acceptation des territoires. À suivre : la doctrine de raccordement de RTE et l'avancement du CADA au Parlement européen.</p><div class="src"><a href="https://www.franceinfo.fr/internet/intelligence-artificielle/en-france-la-fronde-contre-les-data-centers-gagne-du-terrain_8279393.html" target="_blank">https://www.franceinfo.fr/internet/intelligence-artificielle/en-france-la-fronde-contre-les-data-centers-gagne-du-terrain_8279393.html</a> · <a href="https://fr.euronews.com/2026/11/11/les-eurodeputes-veulent-reduire-la-dependance-au-cloud-non-europeen" target="_blank">https://fr.euronews.com/2026/11/11/les-eurodeputes-veulent-reduire-la-dependance-au-cloud-non-europeen</a></div></div>
+<div class="signal"><h4>4. L'automatisation gagne les fonctions administratives, publiques comme fiscales</h4><p>Le fisc généralise un outil d'IA qui croise images satellites et cadastre pour détecter les constructions non déclarées, tandis qu'un candidat à la présidentielle propose de supprimer 300 000 postes publics par l'automatisation. Le débat français se déplace des usages de l'IA vers son effet sur l'emploi administratif, alors que les gains de productivité mesurés dans les administrations restent prudents. À suivre : les voies de recours ouvertes aux contribuables et la faisabilité réelle des suppressions annoncées.</p><div class="src"><a href="https://www.01net.com/actualites/impots-fisc-nouvel-outil-dope-ia-pour-reperer-votre-abri-jardin-non-declare.html" target="_blank">https://www.01net.com/actualites/impots-fisc-nouvel-outil-dope-ia-pour-reperer-votre-abri-jardin-non-declare.html</a> · <a href="https://www.franceinfo.fr/elections/presidentielle/presidentielle-bruno-retailleau-veut-economiser-300-000-postes-dans-la-fonction-publique-grace-a-l-intelligence-artificielle_8279522.html" target="_blank">https://www.franceinfo.fr/elections/presidentielle/presidentielle-bruno-retailleau-veut-economiser-300-000-postes-dans-la-fonction-publique-grace-a-l-intelligence-artificielle_8279522.html</a></div></div>
+<div class="signal"><h4>5. Les modèles ouverts et les agents de code deviennent une surface d'attaque</h4><p>Une porte dérobée insérée en modifiant moins de dix neurones, conçue avec l'aide d'un agent de code, reste invisible aux évaluations de qualité : la sûreté des modèles se déplace vers la chaîne d'approvisionnement des poids ouverts. En parallèle, Alibaba ouvre un modèle de frontière en préversion de quinze jours sans publier ni benchmarks, ni poids, ni tarif, ce qui rend l'évaluation externe plus difficile. À suivre : la standardisation des méthodes de détection et la politique d'accès aux outils offensifs.</p><div class="src"><a href="https://www.numerama.com/cyberguerre/2372563-et-si-on-codait-en-dur-un-declencheur-il-demande-a-claude-code-de-transformer-son-agent-ia-en-bombe-a-retardement-et-ca-marche.html" target="_blank">https://www.numerama.com/cyberguerre/2372563-et-si-on-codait-en-dur-un-declencheur-il-demande-a-claude-code-de-transformer-son-agent-ia-en-bombe-a-retardement-et-ca-marche.html</a> · <a href="https://www.techtimes.com/articles/330536/20261112/alibaba-qwen4-max-preview-retires-november-25-no-benchmarks-model-card-price.htm" target="_blank">https://www.techtimes.com/articles/330536/20261112/alibaba-qwen4-max-preview-retires-november-25-no-benchmarks-model-card-price.htm</a></div></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item"><p>La semaine qui vient sera dominée par trois rendez-vous datés. Le 18 novembre, Anthropic doit fixer le prix définitif de son introduction en Bourse pour une première cotation visée le 19 sous le ticker « ANT » : après la chute des valeurs technologiques et le départ de Jensen Huang, ce prix dira si les investisseurs valident encore les valorisations à quatre chiffres de milliards de dollars. Le même 19 novembre, l'Assemblée nationale examine la proposition de loi sur les droits d'auteur et l'IA, que Mistral AI a explicitement liée à ses futurs investissements en data centers en France. Côté européen, deux échéances se rapprochent : l'entrée en vigueur, le 1er décembre, du règlement d'exécution sur les bacs à sable réglementaires, et le 2 décembre, la fin du délai de transition sur le marquage lisible par machine des contenus générés par les systèmes déjà sur le marché. Les candidatures aux gigafactories IA doivent par ailleurs être resoumises avant le 3 décembre pour le lot des grandes installations.</p></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.luxsure.fr/en/2026/11/12/voxtral-3-voix-hebergement-actions-en/" target="_blank">Voxtral Transcribe 3 mis à l'honneur en conditions réelles à AI Engineer Paris</a></h3>
+<div class="meta">Mistral AI / Luxsure • 12/11/2026</div>
+<p>Mistral a mis en avant le 11 novembre l'usage de Voxtral Transcribe 3 pour transcrire en temps réel les interventions de la scène principale de la conférence AI Engineer Paris, avec le biais de contexte qui améliore la reconnaissance des termes techniques. La gamme Voxtral 3 (Transcribe et temps réel) reste servie par API, y compris hébergée dans l'UE, et le déploiement sur l'infrastructure du client — cloud privé ou on-premise — est annoncé pour la fin novembre via l'équipe commerciale, sans poids publics. Le point sensible pour les acheteurs européens est la localisation du traitement vocal et les actions que les agents vocaux peuvent déclencher.</p>
+</div>
+<div class="item">
+<h3><a href="https://theinference.org/article/mistral-built-its-enterprise-stack-in-eight-days-and-priced-none-of-it" target="_blank">Huit jours d'annonces, aucun prix publié : la stratégie entreprise de Mistral sous examen</a></h3>
+<div class="meta">The Inference • 10/11/2026</div>
+<p>Une analyse du 10 novembre revient sur la séquence du 29 octobre au 5 novembre — publication des poids de Mistral Large 4 (Le Chonk), extension de Mistral Studio aux agents gérés, workflows et applications hébergées, rachat de SkipLabs — en relevant qu'aucun tarif public n'a accompagné ces annonces. Pour un champion qui vend de la souveraineté et des déploiements chez le client, l'absence de grille lisible complique la comparaison avec les offres américaines et laisse la négociation commerciale fixer le prix au cas par cas. C'est un angle mort pour les entreprises qui doivent budgétiser avant de s'engager.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.bankinfosecurity.com/mistral-touts-le-chonk-as-capable-european-sovereign-model-a-33032" target="_blank">Le Chonk repositionné en modèle souverain : la carte de la cybersécurité européenne</a></h3>
+<div class="meta">Bank Info Security • 12/11/2026</div>
+<p>Reprise et analyse, dans la fenêtre, de la sortie des poids ouverts de Mistral Large 4 (« Le Chonk »), modèle MoE d'un billion de paramètres optimisé pour le code et la cybersécurité : l'article du 12 novembre insiste sur son intérêt pour les organisations européennes qui cherchent une alternative aux modèles américains et chinois, notamment pour la défense et les usages réglementés. L'argument souverain — exécution sur infrastructure contrôlée, pas de dépendance à une API extraterritoriale — devient l'axe de différenciation principal de Mistral face à des concurrents plus avancés sur les benchmarks.</p>
+</div>
+<div class="item">
+<h3><a href="https://sifted.eu/articles/jensen-huangs-nvidia-exit-shakes-european-tech/" target="_blank">Le départ de Jensen Huang ébranle aussi la tech européenne, dépendante de Nvidia</a></h3>
+<div class="meta">Sifted • 12/11/2026</div>
+<p>La démission de Jensen Huang n'est pas qu'une affaire américaine : Nvidia est un investisseur de longue date de Mistral AI — présent aux tours B, C et D — et le fournisseur de calcul dont dépendent la plupart des projets d'IA du continent. L'article décrit un écosystème européen qui prend conscience de sa dépendance à un acteur unique au moment même où la gouvernance de cet acteur est contestée, ce qui renforce les arguments des partisans du CADA et des capacités de calcul souveraines. Pour les startups européennes, la question immédiate est la continuité des allocations de GPU et des engagements d'investissement.</p>
+</div>
+</div>
+</div>
+  <footer>
+    <p>Généré le 13 novembre 2026 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-11-13.md + .html</p>
+    <p>Corpus : 15 articles d'actualité (France 5 / Europe 4 / Monde 6) + 4 articles Focus Mistral. Dates de publication vérifiées sur chaque page source.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>
