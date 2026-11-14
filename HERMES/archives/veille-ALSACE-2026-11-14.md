@@ -46,7 +46,7 @@ La startup ADEMUS a bouclé une levée de fonds de 1,5 M€, annoncée le 12 nov
 ### [Robotique et industrie du futur : l'Alsace ouvre ses usines et son salon Euro Industries](https://alsace-industrie.com/semaine-industrie-alsace)
 *Alsace Industrie / Le Revenu / Elles bougent • 16-22/11/2026*
 
-La 15e Semaine de l'industrie se tiendra du 16 au 22 novembre : en Alsace, visites d'usines (Kuhn à Saverne, Siemens, Safran Landing Systems à Molsheim), RoboTech Girls Day à Haguenau le 17 novembre et portes ouvertes du pôle formation UIMM Alsace le 21. Les 17 et 18 novembre, le salon Euro Industries (ex-BE 5.0), dixième édition, réunira plus de 200 exposants au parc des expositions de Mulhouse autour de la robotique, de la cobotique, de l'automatisation et de l'IA. La robotique transfrontalière sera aussi à l'honneur avec l'Upper Rhine Mobile Robotic Challenge (17-18 novembre, Mulhouse).
+La 15e Semaine de l'industrie se tiendra du 16 au 22 novembre : en Alsace, visites d'usines (Kuhn à Saverne, Siemens, Safran Landing Systems à Molsheim), [RoboTech Girls Day](https://www.entreprises.gouv.fr/semaine-de-lindustrie/19044937_robotech-girls-day-8217623) à Haguenau le 17 novembre et portes ouvertes du pôle formation UIMM Alsace le 21. Les 17 et 18 novembre, le salon Euro Industries (ex-BE 5.0), dixième édition, réunira plus de 200 exposants au parc des expositions de Mulhouse autour de la robotique, de la cobotique, de l'automatisation et de l'IA. La robotique transfrontalière sera aussi à l'honneur avec l'Upper Rhine Mobile Robotic Challenge (17-18 novembre, Mulhouse).
 
 ## 🏛️ Territoires & institutions
 
@@ -87,7 +87,7 @@ Bonne nouvelle pour l'Eurométropole de Strasbourg : le coût prévisionnel de l
 ## 🔮 Prospective
 
 ### Horizon court (0–6 mois)
-- Événements à venir : Semaine de l'industrie en Alsace (16-22 novembre), salon Euro Industries à Mulhouse et RoboTech Girls Day à Haguenau (17-18 novembre), AI Grand Est ENACT Cluster Days à Strasbourg (26-27 novembre), ouverture des marchés de Noël dès le 20 novembre.
+- Événements à venir : [Semaine de l'industrie en Alsace](https://alsace-industrie.com/semaine-industrie-alsace) (16-22 novembre) ; salon Euro Industries à Mulhouse (17-18 novembre) et [RoboTech Girls Day à Haguenau](https://www.entreprises.gouv.fr/semaine-de-lindustrie/19044937_robotech-girls-day-8217623) (17 novembre) ; AI Grand Est ENACT Cluster Days à Strasbourg (26-27 novembre) ; ouverture des marchés de Noël dès le 20 novembre.
 - À surveiller : arbitrages du budget 2027 de la Région Grand Est, échéances budgétaires de l'Eurométropole de Strasbourg, et suites judiciaires du mouvement étudiant après l'arrêté de l'Unistra.
 
 ### Horizon moyen (1–3 ans)

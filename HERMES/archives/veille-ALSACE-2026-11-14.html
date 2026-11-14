@@ -7,25 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
     :root{
-    --bg:#010409;
-    --panel:#0b1220;
-    --ink:#e6f1ff;
-    --muted:#8fb3cc;
-    --accent:#40dcff;
-    --accent-2:#ffb347;
-    --border:rgba(64,220,255,.22);
-    --shadow:0 10px 30px rgba(0,0,0,.45);
-    --radius:16px;
-  }
-  html[data-theme="light"]{
-    --bg:#f8fafc;
-    --panel:#ffffff;
-    --ink:#1f2937;
-    --muted:#6b7280;
-    --accent:#0ea5e9;
-    --accent-2:#6366f1;
-    --border:#e5e7eb;
-    --shadow:0 10px 30px rgba(15,23,42,.08);
+    --bg:#010409;--panel:#0b1220;--ink:#e6f1ff;--muted:#8fb3cc;--accent:#40dcff;--accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);--shadow:0 10px 30px rgba(0,0,0,.45);--radius:16px;
   }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -79,45 +62,14 @@
       100%{box-shadow:0 10px 30px rgba(0,0,0,.45);border-color:rgba(64,220,255,.22)}
     }
     @media (max-width:640px){.kpis{grid-template-columns:1fr}}
-
-    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
-      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
-      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
-      border:1px solid var(--border);background:var(--panel);color:var(--ink);
-      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
-    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
-</style>
-<style>
-#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
-#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
- text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
- background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
- border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
- animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
-#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
-#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
-#veille-audio-banner .vab-txt b{color:#0e7490;}
-@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
-@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
-@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
 </style>
 </head>
 <body>
-<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-14.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
-<script id="veille-audio-banner-js">(function(){
-  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
-  var u=l.getAttribute('href');
-  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
-  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
-    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
-  });
-})();</script>
 <div class="wrap">
   <header>
     <div>
       <h1>🚀 Veille Alsace — Économie · Innovation &amp; IA · Territoires</h1>
       <p>Actualité régionale Alsace / Grand Est — généré par ORAC (skills veille-alsace + veille-html)</p>
-      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous <span style="color:#ffb347">[DEMO]</span></p>
     </div>
     <time datetime="2026-11-14">14 novembre 2026</time>
   </header>
@@ -188,7 +140,7 @@
         <div class="item">
           <h3><a href="https://alsace-industrie.com/semaine-industrie-alsace" target="_blank">Robotique et industrie du futur : l&#x27;Alsace ouvre ses usines et son salon Euro Industries</a></h3>
           <div class="meta">Alsace Industrie / Le Revenu / Elles bougent • 16-22/11/2026</div>
-          <p>La 15e Semaine de l&#x27;industrie se tiendra du 16 au 22 novembre : en Alsace, visites d&#x27;usines (Kuhn à Saverne, Siemens, Safran Landing Systems à Molsheim), RoboTech Girls Day à Haguenau le 17 novembre et portes ouvertes du pôle formation UIMM Alsace le 21. Les 17 et 18 novembre, le salon Euro Industries (ex-BE 5.0), dixième édition, réunira plus de 200 exposants au parc des expositions de Mulhouse autour de la robotique, de la cobotique, de l&#x27;automatisation et de l&#x27;IA. La robotique transfrontalière sera aussi à l&#x27;honneur avec l&#x27;Upper Rhine Mobile Robotic Challenge (17-18 novembre, Mulhouse).</p>
+          <p>La 15e Semaine de l&#x27;industrie se tiendra du 16 au 22 novembre : en Alsace, visites d&#x27;usines (Kuhn à Saverne, Siemens, Safran Landing Systems à Molsheim), <a href="https://www.entreprises.gouv.fr/semaine-de-lindustrie/19044937_robotech-girls-day-8217623" target="_blank" rel="noopener">RoboTech Girls Day</a> à Haguenau le 17 novembre et portes ouvertes du pôle formation UIMM Alsace le 21. Les 17 et 18 novembre, le salon Euro Industries (ex-BE 5.0), dixième édition, réunira plus de 200 exposants au parc des expositions de Mulhouse autour de la robotique, de la cobotique, de l&#x27;automatisation et de l&#x27;IA. La robotique transfrontalière sera aussi à l&#x27;honneur avec l&#x27;Upper Rhine Mobile Robotic Challenge (17-18 novembre, Mulhouse).</p>
         </div>
 
         <figure class="illus">
@@ -255,7 +207,7 @@
     <div class="card-body prose">
       <h3>Horizon court (0–6 mois)</h3>
       <ul>
-        <li>Événements à venir : Semaine de l&#x27;industrie en Alsace (16-22 novembre), salon Euro Industries à Mulhouse et RoboTech Girls Day à Haguenau (17-18 novembre), AI Grand Est ENACT Cluster Days à Strasbourg (26-27 novembre), ouverture des marchés de Noël dès le 20 novembre.</li>
+        <li>Événements à venir : <a href="https://alsace-industrie.com/semaine-industrie-alsace" target="_blank" rel="noopener">Semaine de l&#x27;industrie en Alsace</a> (16-22 novembre) ; salon Euro Industries à Mulhouse (17-18 novembre) et <a href="https://www.entreprises.gouv.fr/semaine-de-lindustrie/19044937_robotech-girls-day-8217623" target="_blank" rel="noopener">RoboTech Girls Day à Haguenau</a> (17 novembre) ; AI Grand Est ENACT Cluster Days à Strasbourg (26-27 novembre) ; ouverture des marchés de Noël dès le 20 novembre.</li>
         <li>À surveiller : arbitrages du budget 2027 de la Région Grand Est, échéances budgétaires de l&#x27;Eurométropole de Strasbourg, et suites judiciaires du mouvement étudiant après l&#x27;arrêté de l&#x27;Unistra.</li>
       </ul>
       <h3>Horizon moyen (1–3 ans)</h3>
@@ -318,26 +270,5 @@
 <script>
 function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
 </script>
-<!-- theme-toggle -->
-<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
-  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
-</a>
-<script>
-(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
-  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
-function hvToggleTheme(e){if(e)e.preventDefault();
-  var cur=document.documentElement.dataset.theme||'dark';
-  var nxt=(cur==='dark')?'light':'dark';
-  document.documentElement.dataset.theme=nxt;
-  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
-  hvPaint();}
-function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
-  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
-  if(!i||!t)return;
-  i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
-  t.textContent=dark?'Mode clair':'Mode sombre';}
-document.addEventListener('DOMContentLoaded',hvPaint);
-</script>
-
 </body>
 </html>
