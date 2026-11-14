@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille Robotaxi &amp; Emploi — 14 novembre 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+    :root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:18px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:'Rajdhani',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.55}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
+    header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid var(--border);padding-bottom:14px}
+    h1{margin:0;font-size:1.7rem;letter-spacing:.5px}
+    h1::after{content:'';display:block;width:120px;height:3px;margin-top:8px;background:linear-gradient(90deg,var(--accent),transparent)}
+    header p{margin:6px 0 0;color:var(--muted)}
+    time{color:var(--accent-2);font-weight:600;white-space:nowrap}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .kpi{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.6rem;font-weight:700;color:var(--accent)}
+    .kpi-click{cursor:pointer;transition:border-color .2s,transform .15s}
+    .kpi-click:hover{border-color:rgba(64,220,255,.55);transform:translateY(-2px)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+    .pill{border-radius:999px;padding:6px 14px;font-size:.85rem;border:1px solid var(--border)}
+    .pill.blue{background:rgba(64,220,255,.12);border-color:rgba(64,220,255,.4)}
+    .pill.green{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4)}
+    .pill.amber{background:rgba(255,179,71,.12);border-color:rgba(255,179,71,.4)}
+    .synthese{background:linear-gradient(90deg,rgba(64,220,255,.10),rgba(64,220,255,.02));border:1px solid rgba(64,220,255,.35);border-radius:var(--radius);padding:14px 18px;margin:16px 0 8px}
+    .synthese strong{color:var(--accent)}
+    .section-title{margin:34px 0 4px;color:var(--accent);font-size:1.35rem;letter-spacing:.5px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+    .card{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .card-head{padding:12px 18px;border-bottom:1px solid var(--border)}
+    .card-title{font-weight:700;letter-spacing:.3px}
+    .card-body{padding:8px 18px 14px}
+    .item{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .item:last-child{border-bottom:none}
+    .item h3{margin:0 0 4px;font-size:1.02rem}
+    .item h3 a{color:var(--ink);text-decoration:none;border-bottom:1px dotted rgba(64,220,255,.5)}
+    .item h3 a:hover{color:var(--accent)}
+    .meta{font-size:.8rem;color:var(--accent-2);margin-bottom:6px;letter-spacing:.03em}
+    .item p{margin:0;color:var(--muted)}
+    .item .src{margin-top:6px;font-size:.78rem;letter-spacing:.03em}
+    .item .src a{color:var(--accent);text-decoration:none;word-break:break-all}
+    .item .src a:hover{text-decoration:underline}
+    .jalons{margin:0;padding-left:20px;color:var(--muted)}
+    .jalons li{margin:9px 0}
+    .jalons b{color:var(--accent-2)}
+    .weak .w-item{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .weak .w-item:last-child{border-bottom:none}
+    .weak .w-item p{margin:0 0 6px;color:var(--muted)}
+    .weak .w-item p strong{color:var(--ink)}
+    .weak .w-item ul{margin:0;padding-left:18px}
+    .weak .w-item li{font-size:.8rem;word-break:break-all;margin:3px 0}
+    .weak .w-item li a{color:var(--accent);text-decoration:none}
+    .weak .w-item li a:hover{text-decoration:underline}
+    .illus{margin:18px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .illus img{display:block;width:100%;height:auto}
+    .illus figcaption{padding:8px 14px;font-size:.8rem;color:var(--muted);background:rgba(15,23,42,.6)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);margin-top:26px}
+    footer p{margin:4px 0}
+    footer a{color:var(--accent);text-decoration:none}
+    .zone-flash{box-shadow:0 0 0 2px var(--accent),var(--shadow);transition:box-shadow .3s}
+    @media (max-width:700px){
+      .kpis{grid-template-columns:1fr 1fr}
+    }
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,#veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head>
+<body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ROBOTAXI-2026-11-14.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🚕 Veille Robotaxi &amp; Emploi</h1>
+      <p>Fenêtre : 8 – 14 novembre 2026 · 12 articles · sources France / Europe / Monde</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous <span style="color:#ffb347">[DEMO]</span></p>
+      <p>Angle : impacts emploi de la conduite autonome et des robotaxis (téléopérateurs et superviseurs, chauffeurs taxi/VTC/routiers, homologation, réglementation).</p>
+    </div>
+    <time datetime="2026-11-14">14 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-france')"><div class="label">🇫🇷 France</div><div class="value">3</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-europe')"><div class="label">🌍 Europe</div><div class="value">3</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-monde')"><div class="label">🌐 Monde</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-emploi')"><div class="label">💼 Impact emplois</div><div class="value">2</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 14/11/2026</span>
+    <span class="pill amber">🪟 Fenêtre 08/11–14/11/2026</span>
+    <span class="pill">📡 5 signaux faibles</span>
+  </div>
+
+  <div class="synthese">
+    <p><strong>Synthèse.</strong> La semaine confirme que le point de bascule se déplace <strong>de la voiture vers son exploitation</strong>. En <strong>France</strong>, la Métropole du Grand Paris et la RATP avancent de concert : partenariat Stellantis/Bolt (logiciel chinois Pony.ai) pour des vans autonomes dès 2028, et navettes sans conducteur au Plessis-Trévise, où la RATP vise le niveau 4 <strong>« piloté à distance » depuis des centres de supervision</strong> — un glissement explicite du métier de conduite vers un métier de supervision. En <strong>Europe</strong>, Verne (déjà à Zagreb) prépare <strong>Berlin</strong> en recrutant un chef de dépôt et des opérateurs AV, Manchester cartographie ses rues avec un conducteur de sécurité à bord et Madrid insère 20 robotaxis <strong>sans créer de nouvelles licences</strong>. Dans le <strong>monde</strong>, Tesla met en vente son Cybercab et ouvre San Antonio, Uber affiche 700 robotaxis fin 2026 puis plus de 2 000 fin 2027, et à <strong>Washington les syndicats</strong> dénoncent une menace « existentielle » pour les chauffeurs — quand une étude sur <strong>Wuhan</strong> chiffre à <strong>−10,9 %</strong> la baisse du revenu des taxis après l'arrivée des robotaxis.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" id="zone-france">
+      <div class="card-head"><div class="card-title">🇫🇷 France</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://rmc.bfmtv.com/actualites/societe/transports/bientot-des-navettes-autonomes-dans-le-grand-paris-quand-on-voit-que-des-hackers-peuvent-pirater-un-peu-tout-ce-qu-ils-veulent_AV-202611130507.html" target="_blank" rel="noopener">Des navettes autonomes bientôt dans le Grand Paris ?</a></h3>
+          <div class="meta">RMC / BFM (Apolline Matin) • 13/11/2026</div>
+          <p>La Métropole du Grand Paris a acté un partenariat avec Stellantis et l'opérateur de VTC Bolt pour tester des vans autonomes en région parisienne dès 2028. Sur RMC, le 13 novembre, Geoffroy Boulard, vice-président de la Métropole, résume le véhicule : « c'est comme un bus, un véhicule que vous côtoyez tous les jours mais qui n'a pas de chauffeur », tout en pointant le risque de cybersécurité. <strong>Angle emploi :</strong> la séquence met directement en jeu le devenir des chauffeurs — un conducteur professionnel de Gironde de 44 ans, interrogé, se dit prêt à monter à bord « avec grand plaisir », y voyant moins de risque d'accident et la possibilité de se reposer.</p>
+          <div class="src">🔗 <a href="https://rmc.bfmtv.com/actualites/societe/transports/bientot-des-navettes-autonomes-dans-le-grand-paris-quand-on-voit-que-des-hackers-peuvent-pirater-un-peu-tout-ce-qu-ils-veulent_AV-202611130507.html" target="_blank" rel="noopener">rmc.bfmtv.com</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://actu.fr/ile-de-france/le-plessis-trevise_94059/il-faut-bien-s-attacher-la-ratp-fait-circuler-sa-nouvelle-navette-sans-conducteur-au-plessis-trevise_65051997.html" target="_blank" rel="noopener">La RATP fait circuler sa navette sans conducteur au Plessis-Trévise</a></h3>
+          <div class="meta">actu.fr (Île-de-France) • 13/11/2026</div>
+          <p>Depuis septembre et jusqu'à fin décembre 2026, deux navettes autonomes Milla (base Renault Master électrique) desservent 9 arrêts sur une boucle de 4,5 km au Plessis-Trévise (Val-de-Marne), gratuitement. Un <em>safety driver</em> reste à bord, prêt à reprendre la main, et <strong>un agent supervise en même temps les deux véhicules depuis un centre à Bercy</strong>. <strong>Angle emploi :</strong> la RATP veut décrocher l'homologation de niveau 4 d'ici trois ans pour faire rouler des navettes <strong>sans <em>safety driver</em></strong>, pilotées à distance depuis les centres de supervision — la bascule d'un emploi de conduite vers un emploi de télésurveillance.</p>
+          <div class="src">🔗 <a href="https://actu.fr/ile-de-france/le-plessis-trevise_94059/il-faut-bien-s-attacher-la-ratp-fait-circuler-sa-nouvelle-navette-sans-conducteur-au-plessis-trevise_65051997.html" target="_blank" rel="noopener">actu.fr</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.latribune.fr/article/tech/89204061208483/voiture-autonome-stellantis-bolt-et-la-metropole-du-grand-paris-vont-s-associer-pour-lancer-des-robots-taxis-pilotes-par-le-logiciel-chinois-pony-ai" target="_blank" rel="noopener">Stellantis, Bolt et la Métropole du Grand Paris s'allient pour des robotaxis pilotés par Pony.ai</a></h3>
+          <div class="meta">La Tribune • 23/10/2026 (fenêtre élargie)</div>
+          <p>La Métropole du Grand Paris officialise un partenariat avec Stellantis et Bolt pour déployer des <strong>vans Peugeot électriques « L4-Ready »</strong> (sécurité doublée dès l'usine : direction, freins, électricité), le logiciel autonome étant fourni par le chinois <strong>Pony.ai</strong>. Les premiers déploiements visent cinq communes du nord-ouest francilien <strong>à partir de 2028</strong>, avec l'ambition d'une trentaine de communes d'ici 2030. La Tribune indique que le projet devra affronter <strong>les réticences des syndicats de taxis</strong> et les critiques du secteur industriel sur le choix d'un prestataire chinois. <strong>Angle emploi :</strong> le débat porte autant sur la souveraineté (emplois et compétences conservés en Europe) que sur la place des taxis et VTC dans le futur service.</p>
+          <div class="src">🔗 <a href="https://www.latribune.fr/article/tech/89204061208483/voiture-autonome-stellantis-bolt-et-la-metropole-du-grand-paris-vont-s-associer-pour-lancer-des-robots-taxis-pilotes-par-le-logiciel-chinois-pony-ai" target="_blank" rel="noopener">latribune.fr</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="zone-europe">
+      <div class="card-head"><div class="card-title">🌍 Europe</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.electrive.com/2026/11/11/verne-robotaxi-service-prepares-for-launch-in-berlin/" target="_blank" rel="noopener">Verne prépare son lancement de robotaxi à Berlin… et recrute</a></h3>
+          <div class="meta">electrive • 11/11/2026</div>
+          <p>Le croate Verne — à l'origine, en avril 2026 à Zagreb, du premier service commercial de robotaxi en Europe, avec Pony.ai et Uber — prépare son entrée en Allemagne. Deux annonces d'emploi révèlent les structures visées : un <strong>« Fleet Operations Manager »</strong> chargé de piloter un dépôt (véhicules, opérateurs AV, techniciens d'atelier, recharge, pièces) et un <strong>« AV Operator »</strong> qui testera les prototypes et calibrera LiDAR, radar, caméras et GPS. Verne exige une expérience de gestion d'une <strong>flotte de 20 à 50 véhicules</strong>, sans confirmer date, périmètre ni autorisation du KBA. <strong>Angle emploi :</strong> la création concrète de métiers d'exploitation (chef de dépôt, opérateur de sécurité, technicien) <strong>distincts du conducteur</strong>.</p>
+          <div class="src">🔗 <a href="https://www.electrive.com/2026/11/11/verne-robotaxi-service-prepares-for-launch-in-berlin/" target="_blank" rel="noopener">electrive.com</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://thetab.com/2026/11/12/self-driving-taxis-are-coming-to-manchester-heres-what-we-know" target="_blank" rel="noopener">Manchester : les taxis autonomes d'Uber cartographient la ville, conducteur à bord</a></h3>
+          <div class="meta">The Tab • 12/11/2026</div>
+          <p>À Manchester, les véhicules d'Uber — technologie <strong>Pony.ai</strong>, exploitation par <strong>Verne</strong> — ont commencé à cartographier les rues sous licence de la DVSA et du ministère des Transports britannique, <strong>sans passagers et avec un conducteur humain derrière le volant</strong>. Transport for Greater Manchester indique n'avoir reçu <strong>aucune demande</strong> d'exploitation de taxis sans conducteur. <strong>Angle emploi :</strong> le schéma reste celui du <em>safety driver</em> rémunéré, mais l'ouverture en mai des candidatures au pilote gouvernemental de services sans conducteur entretient l'inquiétude des syndicats de chauffeurs quant à la suppression à terme de la fonction.</p>
+          <div class="src">🔗 <a href="https://thetab.com/2026/11/12/self-driving-taxis-are-coming-to-manchester-heres-what-we-know" target="_blank" rel="noopener">thetab.com</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.merca2.es/2026/11/03/robotaxi-madrid-uber-piloto-comercial-2491371/" target="_blank" rel="noopener">Madrid : la DGT autorise 20 robotaxis Uber/WeRide/Avomo sans créer de nouvelles licences</a></h3>
+          <div class="meta">Merca2 • 03/11/2026 (fenêtre élargie)</div>
+          <p>La DGT espagnole autorise les essais sur voie publique de <strong>20 véhicules autonomes d'Uber, WeRide et Avomo</strong>, avant un premier pilote commercial à la demande attendu fin 2026. Le signal fort pour l'emploi : le projet <strong>« intègre le taxi et le VTC sans créer de nouvelles licences »</strong> — les robotaxis s'insèrent dans les flottes autorisées plutôt que d'ajouter de la capacité. Zones initiales : Madrid capitale, Alcobendas et Getafe (Mercamadrid comme banc d'essai). <strong>Angle emploi :</strong> le « galop d'essai » d'un service commandable depuis le mobile interroge la place du chauffeur dans le modèle économique.</p>
+          <div class="src">🔗 <a href="https://www.merca2.es/2026/11/03/robotaxi-madrid-uber-piloto-comercial-2491371/" target="_blank" rel="noopener">merca2.es</a></div>
+        </div>
+        <figure class="illus"><img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ROBOTAXI-2026-11-14-1.png" alt="Véhicule autonome sans conducteur dans une rue d'une ville européenne, de nuit sous la pluie" loading="lazy"><figcaption>🚕 Europe — un robotaxi sans conducteur en milieu urbain européen : Berlin, Manchester, Madrid et Zagreb se disputent le rôle de laboratoire (illustration)</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card" id="zone-monde">
+      <div class="card-head"><div class="card-title">🌐 Monde</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://techcrunch.com/2026/11/09/tesla-expands-robotaxi-service-to-san-antonio/" target="_blank" rel="noopener">Tesla ouvre son robotaxi à San Antonio et met le Cybercab en vente</a></h3>
+          <div class="meta">TechCrunch • 09/11/2026 (et Bloomberg pour la vente, 14/11/2026)</div>
+          <p>Tesla a ouvert son service de robotaxi à <strong>San Antonio (8e ville américaine)</strong> le 9 novembre, après Dallas, Houston et Austin, et fait désormais rouler ses véhicules sans superviseur 24 h/24 dans les villes non supervisées. Le 14 novembre, le groupe a commencé à <strong>inviter des clients à commander le Cybercab</strong>, le véhicule à deux places sans volant ni pédales, en série limitée dans les zones desservies. <strong>Angle emploi :</strong> en sacrifiant le Cybertruck au profit des lignes Cybercab, Tesla <strong>réaffecte les compétences de la production automobile classique</strong> vers la fabrication et l'exploitation de flottes autonomes.</p>
+          <div class="src">🔗 <a href="https://techcrunch.com/2026/11/09/tesla-expands-robotaxi-service-to-san-antonio/" target="_blank" rel="noopener">techcrunch.com</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.reuters.com/commentary/breakingviews/robotaxi-wars-will-end-uber-waymo-union-2026-11-10/" target="_blank" rel="noopener">La guerre des robotaxis finira par un rapprochement Uber-Waymo</a></h3>
+          <div class="meta">Reuters Breakingviews • 10/11/2026</div>
+          <p>Analyse chiffrée : Waymo exploite <strong>plus de 4 000 robotaxis</strong>, soit environ 77 % des véhicules autonomes en circulation aux États-Unis (estimations Bernstein), tandis qu'Uber veut <strong>700 véhicules sans conducteur fin 2026, plus de 2 000 fin 2027 et des dizaines de milliers en 2028</strong>. La chronique souligne le poids des <strong>« deadhead miles »</strong> (kilomètres à vide) et d'un véhicule bardé de capteurs à <strong>plus de 100 000 $</strong> (MoffettNathanson), qui ne baisserait pas sous la barre des cinq chiffres avant 2029. <strong>Angle emploi :</strong> l'équation économique — faire passer le coût du kilomètre <strong>sous le coût d'un chauffeur</strong> — détermine l'avenir des conducteurs ; jusqu'à 350 000 voitures sans conducteur seraient nécessaires pour couvrir la demande actuelle de VTC.</p>
+          <div class="src">🔗 <a href="https://www.reuters.com/commentary/breakingviews/robotaxi-wars-will-end-uber-waymo-union-2026-11-10/" target="_blank" rel="noopener">reuters.com</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.autoplus.fr/actualite/may-mobility-10-000-volkswagen-id-buzz-robotaxis-1476937.html" target="_blank" rel="noopener">May Mobility veut convertir 10 000 Volkswagen ID. Buzz en robotaxis d'ici 2031</a></h3>
+          <div class="meta">Autoplus (d'après communiqué May Mobility) • 13/11/2026 (annonce du 12/11/2026)</div>
+          <p>Annoncé à Ann Arbor le 12 novembre 2026, le projet associe la start-up américaine <strong>May Mobility</strong> à <strong>Volkswagen</strong> pour produire <strong>plus de 10 000 ID. Buzz « AV-ready »</strong> destinés à des plateformes de robotaxi : essais sur route dès début 2027 aux États-Unis, véhicules de production en 2028, le van électrique étant adapté dès l'usine au May Mobility Autonomous Driving Kit. <strong>Angle emploi :</strong> la conversion d'un véhicule de série en base robotaxi industrielle <strong>déplace une part de la valeur et des compétences</strong> vers l'adaptation en usine, la maintenance et l'exploitation de flottes.</p>
+          <div class="src">🔗 <a href="https://www.autoplus.fr/actualite/may-mobility-10-000-volkswagen-id-buzz-robotaxis-1476937.html" target="_blank" rel="noopener">autoplus.fr</a></div>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.automotiveworld.com/news/terawatt-expands-robotaxi-ready-charging-to-four-cities/" target="_blank" rel="noopener">Terawatt ouvre quatre dépôts de recharge dédiés aux flottes autonomes</a></h3>
+          <div class="meta">Automotive World • 13/11/2026</div>
+          <p>Terawatt Infrastructure met en service <strong>quatre dépôts de recharge</strong> pour flottes commerciales et autonomes (South San Francisco, Nashville, Miami, Dallas), soit près de <strong>22 MW de capacité dédiée</strong> capables de recharger plus de <strong>3 000 véhicules par jour</strong>, rejoignant une trentaine de sites en développement. Terawatt ne nomme pas les flottes, mais les quatre villes sont des marchés <strong>Waymo</strong>, et trois dépôts sont situés près d'aéroports. <strong>Angle emploi :</strong> ces dépôts matérialisent les <strong>emplois d'exploitation</strong> (préparation, recharge, maintenance, récupération), que Waymo externalise de plus en plus à des partenaires (Element, Moove).</p>
+          <div class="src">🔗 <a href="https://www.automotiveworld.com/news/terawatt-expands-robotaxi-ready-charging-to-four-cities/" target="_blank" rel="noopener">automotiveworld.com</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">💼 Impact emplois &amp; métiers</h2>
+  <div class="card" id="zone-emploi">
+    <div class="card-body">
+      <div class="item">
+        <h3><a href="https://news.bloomberglaw.com/states-of-play/unions-raise-job-loss-issue-in-fight-to-limit-waymo-cars-in-dc" target="_blank" rel="noopener">Washington DC : les syndicats montent au front contre les robotaxis au nom de l'emploi</a></h3>
+        <div class="meta">Bloomberg Law • 09/11/2026</div>
+        <p>À Washington, le conseil municipal doit se prononcer d'ici la fin de l'année sur un texte (B26-0684) autorisant l'exploitation commerciale des robotaxis. Les syndicats (App Drivers Union, SEIU, Teamsters, ATU) dénoncent une menace <strong>« existentielle »</strong> pour les chauffeurs — « cela dévasterait des milliers et des milliers d'emplois » — et réclament de meilleures garanties. Le texte prévoit un <strong>fonds pour financer la reconversion des conducteurs déplacés</strong>, un plafond initial de 200 véhicules, une <strong>redevance de 15 cents par mille parcouru</strong> et des frais de dossier élevés. <strong>Angle emploi :</strong> Waymo promet de son côté <strong>« des centaines d'emplois »</strong> de maintenance et de gestion d'installations — l'illustration directe du rapport emplois détruits / emplois créés.</p>
+        <div class="src">🔗 <a href="https://news.bloomberglaw.com/states-of-play/unions-raise-job-loss-issue-in-fight-to-limit-waymo-cars-in-dc" target="_blank" rel="noopener">bloomberglaw.com</a></div>
+      </div>
+      <div class="item">
+        <h3><a href="https://jobs.lever.co/tsmg?location=Paris" target="_blank" rel="noopener">Exploitation et télécopération de flottes autonomes : une filière d'emploi qui se structure en Europe</a></h3>
+        <div class="meta">Offres d'emploi TSMG (Paris, Genève, Zurich, Valence…) • consultées le 13/11/2026</div>
+        <p>Le prestataire TSMG recrute pour les opérations de flottes autonomes et robotaxi en Europe : <strong>« Autonomous Vehicle Safety Operator »</strong> (Paris, Genève, Zurich, Saint-Gall…, 5 ans de conduite requis mais <strong>aucune expérience AV nécessaire</strong>, formation fournie), <strong>« Senior Autonomous Vehicle Technician »</strong> (maintenance et opérations techniques de flottes robotaxi), <strong>« Self-Driving Systems Specialist »</strong> (diagnostic et calibration), <strong>« Autonomous Vehicle Operations Lead »</strong> et <strong>« Dépôt Specialist »</strong>. On trouve aussi des postes de <strong>« Remote Vehicle Supervisor / Téléopérateur »</strong> (Berne, Suisse). <strong>Angle emploi :</strong> ces intitulés matérialisent les nouveaux métiers — supervision à distance, maintenance EV, calibration de capteurs — qui <strong>remplacent partiellement la conduite</strong>.</p>
+        <div class="src">🔗 <a href="https://jobs.lever.co/tsmg?location=Paris" target="_blank" rel="noopener">jobs.lever.co/tsmg</a></div>
+      </div>
+      <figure class="illus"><img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ROBOTAXI-2026-11-14-2.png" alt="Centre de supervision et de téléopération d'une flotte de véhicules autonomes" loading="lazy"><figcaption>💼 Emploi — un centre de supervision/téléopération : opérateurs et superviseurs surveillent les flottes de robotaxis, un métier qui se structure en Europe comme aux États-Unis (illustration)</figcaption></figure>
+    </div>
+  </div>
+
+  <h2 class="section-title">🔮 Prospective</h2>
+  <div class="card" id="zone-prospective">
+    <div class="card-body">
+      <p style="margin:6px 0 10px;color:var(--muted)">Jalons cités dans les articles et signaux de cette édition (aucun élément ajouté) :</p>
+      <ul class="jalons">
+        <li><b>Court terme — fin 2026 :</b> concertation française sur le cadre des véhicules de transport automatisés (VTA) avec taxis et VTC d'ici fin 2026 (contexte Assises) ; navettes RATP au Plessis-Trévise jusqu'au 31/12/2026 (art. 2) ; premiers passagers commerciaux visés à Madrid, sous superviseur à bord (art. 6).</li>
+        <li><b>Court terme — fin 2026 / 2027 :</b> Uber ~700 robotaxis fin 2026 puis plus de 2 000 fin 2027 (art. 8) ; lancement Zoox à Las Vegas puis Motional.</li>
+        <li><b>Moyen terme — 2027 :</b> doctrine d'homologation au 1er semestre en France et guichet unique (art. 3) ; cadre complet de l'Automated Vehicles Act britannique au 2e semestre (contexte) ; essais sur route du Volkswagen ID. Buzz autonome de May Mobility aux États-Unis (art. 9).</li>
+        <li><b>Moyen terme — 2028 :</b> premiers déploiements de vans autonomes en Île-de-France (art. 3) ; cible de niveau 4 « piloté à distance » pour la RATP (art. 2) ; fin de l'exclusivité Waymo–Uber à Austin et Atlanta en janvier (art. 8).</li>
+        <li><b>Long terme — 2030 et au-delà :</b> extension visée à une trentaine de communes du Grand Paris (art. 3) ; plus de 10 000 ID. Buzz robotaxis de May Mobility/Volkswagen d'ici 2031 (art. 9) ; expansion Europe/Moyen-Orient de Pony.ai et WeRide avec exploitation locale (art. 4 et 6).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-title">📡 Signaux faibles</h2>
+  <div class="card weak" id="zone-signaux">
+    <div class="card-body">
+      <div class="w-item">
+        <p><strong>1. Wuhan : les robotaxis font baisser de 10,9 % le revenu quotidien des taxis.</strong> Étude académique (méthode de double différence sur plus de 200 000 observations quotidiennes de chauffeurs, service Baidu Apollo Go) : baisse de <strong>10,9 %</strong> du revenu journalier moyen, heures de travail plus longues, stress accru — et <strong>83,74 %</strong> des chauffeurs des zones très couvertes envisagent de quitter le métier. Un contrepoint chiffré au discours « les robotaxis créent plus qu'ils ne détruisent ».</p>
+        <ul>
+          <li><a href="https://link.springer.com/article/10.1057/s41599-026-07366-x" target="_blank" rel="noopener">link.springer.com (étude)</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>2. Londres : la mairie veut plafonner le nombre de robotaxis, les chauffeurs manifestent.</strong> Le maire Sadiq Khan a demandé (1er novembre) un <strong>plafond</strong> sur le nombre de robotaxis, jugeant les conséquences « pas pleinement appréhendées par les politiques » ; la commission Transports de l'Assemblée de Londres recommande de <strong>conserver des pouvoirs locaux</strong> (permis, plafond) et l'ADCU a manifesté devant le siège de Wayve en réclamant l'arrêt des essais.</p>
+        <ul>
+          <li><a href="https://www.imeche.org/news/news-article/answer-65-driverless-car-questions-before-industry-takes-shape-institute-urges-public-bodies" target="_blank" rel="noopener">imeche.org</a></li>
+          <li><a href="https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-press-releases/dft-v-tfl-whos-behind-wheel-robocabs" target="_blank" rel="noopener">london.gov.uk</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>3. Royaume-Uni : le syndicat GMB réclame un fonds de transition financé par les opérateurs AV.</strong> Le GMB, qui estime que <strong>plus de 300 000 emplois</strong> de chauffeurs sont concernés au Royaume-Uni, propose qu'une contribution imposée aux entreprises de véhicules autonomes alimente un fonds destiné aux chauffeurs dont l'activité serait réduite ou supprimée.</p>
+        <ul>
+          <li><a href="https://www.autoplus.fr/actualite/avec-lemergence-des-robotaxis-un-syndicat-britannique-reclame-un-fonds-pour-indemniser-les-chauffeurs-menaces-1470161.html" target="_blank" rel="noopener">autoplus.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>4. Madrid : Mutua Madrileña assurera les 20 premiers robotaxis.</strong> L'assureur annonce couvrir les véhicules autonomes d'Uber/WeRide en test dans la capitale depuis octobre — un signal sur la <strong>responsabilité et l'assurabilité</strong> du niveau 4, condition souvent citée comme préalable à tout déploiement commercial et donc à l'industrialisation des métiers d'exploitation.</p>
+        <ul>
+          <li><a href="https://ground.news/article/mutua-madrilena-ensures-ubers-driverless-cars-in-madrid" target="_blank" rel="noopener">ground.news</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>5. Zoox (Amazon) enverra sa flotte de test en Europe et en Asie début 2027.</strong> La PDG Aicha Evans cite <strong>Londres</strong>, d'autres villes européennes, la Corée du Sud et le Japon : des véhicules de test bardés de capteurs censés <strong>collecter des données d'abord</strong>, sans service annoncé — une nouvelle vague européenne qui pèsera sur les arbitrages d'emploi locaux.</p>
+        <ul>
+          <li><a href="https://www.driverless.news/" target="_blank" rel="noopener">driverless.news</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Veille générée le 14 novembre 2026 (skill veille-conduite-autonome + template veille-html). Fichiers : veille-ROBOTAXI-2026-11-14.md + .html (+ 2 illustrations et résumé vocal .ogg).</p>
+    <p>Archives HERMES · <a href="index.html">page passerelle</a></p>
+  </footer>
+</div>
+<script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+</script>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return;
+  i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body>
+</html>

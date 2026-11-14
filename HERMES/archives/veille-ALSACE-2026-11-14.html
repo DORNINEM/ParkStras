@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille Alsace — 14 novembre 2026 — Archives HERMES</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+    :root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --radius:16px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:'Rajdhani',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.55}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
+    header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid var(--border);padding-bottom:14px}
+    h1{margin:0;font-size:1.7rem;letter-spacing:.5px}
+    h1::after{content:'';display:block;width:120px;height:3px;margin-top:8px;background:linear-gradient(90deg,var(--accent),transparent)}
+    header p{margin:6px 0 0;color:var(--muted)}
+    time{color:var(--accent-2);font-weight:600;white-space:nowrap}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.6rem;font-weight:700;color:var(--accent)}
+    .kpi-click{cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .kpi-click:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 8px 22px rgba(64,220,255,.18)}
+    .synthese{background:linear-gradient(90deg,rgba(64,220,255,.10),rgba(64,220,255,.02));border:1px solid rgba(64,220,255,.35);border-radius:var(--radius);padding:14px 18px;margin:16px 0 8px}
+    .section-title{margin:34px 0 4px;color:var(--accent);font-size:1.35rem;letter-spacing:.5px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+    .card{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .card-head{padding:12px 18px;border-bottom:1px solid var(--border)}
+    .card-title{font-weight:700;letter-spacing:.3px;font-size:1.1rem}
+    .card-body{padding:8px 18px 14px}
+    .item{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .item:last-child{border-bottom:none}
+    .item h3{margin:0 0 4px;font-size:1.02rem}
+    .item h3 a{color:var(--ink);text-decoration:none;border-bottom:1px dotted rgba(64,220,255,.5)}
+    .item h3 a:hover{color:var(--accent)}
+    .meta{font-size:.8rem;color:var(--accent-2);margin-bottom:6px;letter-spacing:.03em}
+    .item p{margin:0;color:var(--muted)}
+    .illus{margin:18px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .illus img{display:block;width:100%;height:auto}
+    .illus figcaption{padding:8px 14px;font-size:.8rem;color:var(--muted);background:rgba(15,23,42,.6)}
+    .prose{padding:6px 2px 2px}
+    .prose h3{margin:14px 0 4px;color:var(--accent-2);font-size:1rem}
+    .prose ul{margin:0;padding-left:20px}
+    .prose li{margin:3px 0;color:var(--muted)}
+    .weak .w-item{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .weak .w-item:last-child{border-bottom:none}
+    .weak .w-item p{margin:0 0 6px;color:var(--ink)}
+    .weak .w-item ul{margin:0;padding-left:18px}
+    .weak .w-item li{font-size:.82rem;word-break:break-all}
+    .weak .w-item li a{color:var(--accent);text-decoration:none}
+    .weak .w-item li a:hover{text-decoration:underline}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);margin-top:26px}
+    footer p{margin:4px 0}
+    .zone-flash{animation:zoneflash 1.6s ease}
+    @keyframes zoneflash{
+      0%{box-shadow:0 0 0 0 rgba(64,220,255,.65);border-color:#40dcff}
+      35%{box-shadow:0 0 0 7px rgba(64,220,255,.18);border-color:#40dcff}
+      100%{box-shadow:0 10px 30px rgba(0,0,0,.45);border-color:rgba(64,220,255,.22)}
+    }
+    @media (max-width:640px){.kpis{grid-template-columns:1fr}}
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head>
+<body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-14.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🚀 Veille Alsace — Économie · Innovation &amp; IA · Territoires</h1>
+      <p>Actualité régionale Alsace / Grand Est — généré par ORAC (skills veille-alsace + veille-html)</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous <span style="color:#ffb347">[DEMO]</span></p>
+    </div>
+    <time datetime="2026-11-14">14 novembre 2026</time>
+  </header>
+
+  <!-- Blocs KPI cliquables (flash cyan via .zone-flash) -->
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-economie')"><div class="label">🏭 Économie &amp; entreprises</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-innovation')"><div class="label">💡 Innovation &amp; IA</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-territoires')"><div class="label">🏛️ Territoires &amp; institutions</div><div class="value">4</div></div>
+  </div>
+
+  <div class="synthese">
+    <strong>Synthèse.</strong> Une semaine marquée par les arbitrages budgétaires et le climat social alsacien, sur fond de vie économique contrastée. Côté économie, la Région Grand Est prépare une baisse de plus de 20 % de son budget d&#x27;investissement en 2027 et les difficultés d&#x27;approvisionnement en carburant touchent 22 % des stations du quart Nord-Est, tandis que le Rhin regagne quelques centimètres et que de nouveaux acteurs s&#x27;implantent (Promovacances à Houssen, les Établissements Schaechtelin à Muntzenheim). L&#x27;innovation reste portée par le numérique et la mobilité : le festival IAgora fait de Strasbourg, ce 14 novembre, une scène grand public de l&#x27;intelligence artificielle, les ingénieurs d&#x27;IESF Alsace ont confronté les usages réels de l&#x27;IA en entreprise et la startup ADEMUS (Grand Est) a bouclé une levée de 1,5 M€. Sur le plan institutionnel et social, la présidente de l&#x27;Université de Strasbourg interdit les blocages de plusieurs bâtiments dès le 16 novembre après une nouvelle journée de tensions lycéennes et étudiantes, le Haut-Rhin réunit ses États généraux de la santé face à la pénurie de médecins, et la passerelle Rosa Luxemburg à Strasbourg coûtera finalement 1,1 M€ de moins.
+  </div>
+
+  <div class="grid">
+    <!-- ===== 🏭 Économie &amp; entreprises ===== -->
+    <div class="card" id="zone-economie">
+      <div class="card-head"><div class="card-title">🏭 Économie &amp; entreprises</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.lalsace.fr/economie/2026/11/12/vers-une-baisse-de-plus-de-20-du-budget-investissement-de-la-region" target="_blank">Grand Est : vers une baisse de plus de 20 % du budget d&#x27;investissement de la Région en 2027</a></h3>
+          <div class="meta">L&#x27;Alsace / DNA • 12/11/2026</div>
+          <p>Réuni en séance plénière à Metz le 12 novembre, l&#x27;exécutif de la Région Grand Est a présenté ses orientations budgétaires pour 2027 : le budget d&#x27;investissement devrait reculer de plus de 20 %. Le président Franck Leroy résume un contexte « dans le brouillard », entre crises multiples et incertitude sur le projet de loi de finances. L&#x27;État attend une contribution de 107 M€ de la collectivité, qui s&#x27;ajouterait à 158 M€ déjà mobilisés. Les oppositions réclament des précisions sur les projets qui seront reportés.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lalsace.fr/economie/2026/11/12/transport-fluvial-le-niveau-du-rhin-gagne-quelques-precieux-centimetres" target="_blank">Alsace : le niveau du Rhin gagne quelques précieux centimètres</a></h3>
+          <div class="meta">L&#x27;Alsace • 12/11/2026</div>
+          <p>Les précipitations sur les Vosges et la Forêt-Noire ont fait remonter le niveau du Rhin, qui contraignait la navigation depuis l&#x27;automne. Le bac de Seltz a repris du service le 12 novembre et, dès le 16 novembre, l&#x27;échelle de Kaub devrait atteindre 190 cm, seuil garantissant des conditions de navigation confortables. Les péniches circulaient jusqu&#x27;ici entre 15 % et 30 % de leur capacité. Les opérateurs du port de Strasbourg et de Reichstett restent prudents : le fret ferroviaire continue de compenser une partie du déficit.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lalsace.fr/economie/2026/11/13/promovacances-installe-sa-premiere-agence-en-alsace" target="_blank">Houssen : Promovacances installe sa première agence en Alsace</a></h3>
+          <div class="meta">L&#x27;Alsace • 13/11/2026</div>
+          <p>Le voyagiste français Promovacances, lancé en 1998 sur internet comme acteur low-cost, a ouvert le 16 octobre sa première agence physique en Alsace, dans la galerie commerciale de Carrefour à Houssen (Haut-Rhin). L&#x27;implantation est portée par la directrice Lily Kannengieser. Une étape de plus dans le maillage territorial de l&#x27;enseigne, qui complète son modèle en ligne par un réseau d&#x27;agences de proximité.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.lalsace.fr/economie/2026/11/09/sur-pres-de-6-000-m2-un-nouveau-site-pour-les-ets-schaechtelin" target="_blank">Muntzenheim : près de 6 000 m² de nouveaux locaux pour les Établissements Schaechtelin</a></h3>
+          <div class="meta">L&#x27;Alsace • 09/11/2026</div>
+          <p>L&#x27;entreprise familiale Établissements Schaechtelin, née en 1948 dans la forge et la maréchalerie à Muntzenheim (Haut-Rhin), a pris possession le 15 octobre de son nouveau site dans la zone d&#x27;activité de la commune : un bâtiment principal de 3 330 m² et un abri ouvert de 2 500 m² capable d&#x27;accueillir les plus gros engins agricoles. Une illustration de la capacité du tissu industriel et artisanal alsacien à investir pour accompagner la mécanisation agricole.</p>
+        </div>
+
+        <figure class="illus">
+          <img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-14-1.png" alt="Corridor fluvial rhénan au crépuscule : péniches, port à conteneurs et écluse en ambiance HUD sombre, cyan et ambre" loading="lazy">
+          <figcaption>Logistique rhénane et industrie en Alsace — trafic fluvial, port et écluse, illustration HUD (fond #010409, accents #40dcff / #ffb347).</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- ===== 💡 Innovation &amp; IA ===== -->
+    <div class="card" id="zone-innovation">
+      <div class="card-head"><div class="card-title">💡 Innovation &amp; IA</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.inria.fr/fr/iagora-strasbourg-une-journee-pour-explorer-lintelligence-artificielle" target="_blank">IAgora Strasbourg : une journée grand public pour comprendre et expérimenter l&#x27;intelligence artificielle</a></h3>
+          <div class="meta">Inria / Le Shadok Strasbourg • 14/11/2026</div>
+          <p>Ce samedi 14 novembre, le Shadok (25 presqu&#x27;île André-Malraux, Strasbourg) accueille IAgora, journée gratuite et ouverte à tous consacrée à l&#x27;intelligence artificielle, organisée par le Shadok et IAgora avec le concours d&#x27;Inria. Au programme : conférences, ateliers immersifs, expériences interactives, escape games, tables rondes et débats sur les enjeux éthiques, sociaux et environnementaux de l&#x27;IA. La journée se clôt par la projection du film « Les Sacrifiés de l&#x27;IA » à 17 h 30.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.echosciences-grandest.fr/evenements/ateliers-transdisciplinaires-l-ia-dans-les-metiers-de-l-ingenieur" target="_blank">L&#x27;IA en entreprise : les ingénieurs d&#x27;IESF Alsace confrontent les usages réels</a></h3>
+          <div class="meta">IESF Alsace (ARISAL) / Echosciences Grand Est • 12/11/2026</div>
+          <p>Le 12 novembre, IESF Alsace (ARISAL) a réuni au CESI de Lingolsheim, près de Strasbourg, une après-midi d&#x27;ateliers transdisciplinaires inter-entreprises sur l&#x27;IA dans les métiers de l&#x27;ingénierie. Trois séquences de 45 minutes ont croisé les regards d&#x27;ingénieurs, de scientifiques, de managers et d&#x27;acteurs de l&#x27;industrie : usages à réelle valeur ajoutée, passage de l&#x27;expérimentation au déploiement maîtrisé, et répartition des tâches entre l&#x27;humain et l&#x27;IA. Un événement labellisé « Semaine de l&#x27;industrie 2026 ».</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.yeast.fr/yeast-accompagne-de-nouveau-ademus-systeme-de-production-de-son-pour-vehicules-electriques/" target="_blank">ADEMUS (Grand Est) boucle une levée de 1,5 M€ pour sa technologie sonore RETA</a></h3>
+          <div class="meta">YEAST / Blue Omingmak • 12/11/2026</div>
+          <p>La startup ADEMUS a bouclé une levée de fonds de 1,5 M€, annoncée le 12 novembre, pour accélérer la commercialisation de sa technologie RETA et poursuivre ses travaux de R&amp;D. Inspirée du fonctionnement d&#x27;un instrument à vent, RETA produit mécaniquement du son et vise l&#x27;identité sonore des véhicules électriques : mieux les signaler, enrichir les sensations de conduite et permettre aux constructeurs de développer leur signature acoustique. Le tour réunit YEAST, Alsace Business Angels, Business Angels Marne Ardennes, Bpifrance, la Caisse d&#x27;Épargne, BNP et le CIC. Précision : l&#x27;entreprise est basée dans le Grand Est (Lorraine).</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://alsace-industrie.com/semaine-industrie-alsace" target="_blank">Robotique et industrie du futur : l&#x27;Alsace ouvre ses usines et son salon Euro Industries</a></h3>
+          <div class="meta">Alsace Industrie / Le Revenu / Elles bougent • 16-22/11/2026</div>
+          <p>La 15e Semaine de l&#x27;industrie se tiendra du 16 au 22 novembre : en Alsace, visites d&#x27;usines (Kuhn à Saverne, Siemens, Safran Landing Systems à Molsheim), RoboTech Girls Day à Haguenau le 17 novembre et portes ouvertes du pôle formation UIMM Alsace le 21. Les 17 et 18 novembre, le salon Euro Industries (ex-BE 5.0), dixième édition, réunira plus de 200 exposants au parc des expositions de Mulhouse autour de la robotique, de la cobotique, de l&#x27;automatisation et de l&#x27;IA. La robotique transfrontalière sera aussi à l&#x27;honneur avec l&#x27;Upper Rhine Mobile Robotic Challenge (17-18 novembre, Mulhouse).</p>
+        </div>
+
+        <figure class="illus">
+          <img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-14-2.png" alt="Journée grand public autour de l&#x27;intelligence artificielle : visiteurs devant des écrans holographiques, ambiance HUD sombre" loading="lazy">
+          <figcaption>IA grand public à Strasbourg — ateliers, démonstrations et échanges autour de l&#x27;intelligence artificielle, illustration HUD (fond #010409, accents #40dcff / #ffb347).</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- ===== 🏛️ Territoires &amp; institutions ===== -->
+    <div class="card" id="zone-territoires">
+      <div class="card-head"><div class="card-title">🏛️ Territoires &amp; institutions</div></div>
+      <div class="card-body">
+        <div class="item">
+          <h3><a href="https://www.rue89strasbourg.com/presidente-universite-de-strasbourg-blocages-402458" target="_blank">Unistra : la présidente interdit les blocages de plusieurs bâtiments dès le 16 novembre</a></h3>
+          <div class="meta">Rue89 Strasbourg / DNA / France 3 Grand Est • 12/11/2026</div>
+          <p>La présidente de l&#x27;Université de Strasbourg, Frédérique Berrod, a signé le 12 novembre un arrêté interdisant, à partir du lundi 16 novembre, les blocages de plusieurs bâtiments du campus de l&#x27;Esplanade : institut Le Bel, facultés de droit, sciences politiques et de gestion, ainsi que les facultés de chimie, physique, ingénierie et sciences de la vie, pour permettre la tenue des examens et des travaux pratiques. L&#x27;article 5 autorise la présidente à prendre « toute mesure nécessaire » pour rétablir l&#x27;accès. Les syndicats étudiants dénoncent une menace d&#x27;appel systématique aux forces de l&#x27;ordre et s&#x27;apprêtent à la rejeter en bloc.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.dna.fr/social/2026/11/12/de-nouveaux-blocages-a-l-universite-tirs-de-mortiers-devant-le-lycee-jean-monnet" target="_blank">Strasbourg : nouvelle journée de tensions lycéennes et étudiantes, neuf interpellations</a></h3>
+          <div class="meta">DNA / L&#x27;Alsace / France 3 Grand Est • 12/11/2026</div>
+          <p>Ce jeudi 12 novembre, de nombreux lycées et bâtiments universitaires strasbourgeois ont de nouveau été bloqués (Couffignal, Jean-Monnet, Marie-Curie, René-Cassin, Louis-Pasteur, Marc-Bloch à Bischheim…). Des tirs de mortiers ont eu lieu, notamment dans l&#x27;enceinte du lycée Couffignal — où les cours sont passés en distanciel — et des examens de droit ont été reportés à l&#x27;Unistra. Selon la préfecture du Bas-Rhin, neuf personnes ont été interpellées, dont six près du lycée Marie-Curie. Une centaine de personnes se sont rassemblées face au commissariat central pour dénoncer « des interpellations ciblées ».</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://www.radiofrance.fr/ici/podcasts/l-info-d-ici-ici-alsace/haut-rhin-comment-attirer-durablement-de-jeunes-medecins-8466515" target="_blank">Haut-Rhin : comment attirer durablement de jeunes médecins ?</a></h3>
+          <div class="meta">ICI Alsace (Radio France) • 12/11/2026</div>
+          <p>Le 12 novembre se sont tenus à Mulhouse des « États généraux de la santé », alors que le Haut-Rhin peine à recruter des praticiens. Plus d&#x27;une centaine d&#x27;internes arrivent chaque semestre au groupement hospitalier Mulhouse Sud Alsace, mais beaucoup hésitent à s&#x27;y projeter : éloignement de leurs repères strasbourgeois, temps de trajet, logements insuffisants. La direction de l&#x27;hôpital assure garantir un logement aux volontaires et la municipalité joue la carte de l&#x27;accueil, à l&#x27;image du mot du maire Frédéric Marquet adressé aux nouveaux internes.</p>
+        </div>
+        <div class="item">
+          <h3><a href="https://actu.fr/grand-est/strasbourg_67482/strasbourg-la-tres-attendue-passerelle-rosa-luxemburg-coutera-moins-cher-que-prevu-et-sera-livree-en-avance_65026776.html" target="_blank">Strasbourg : la passerelle Rosa Luxemburg coûtera 1,1 M€ de moins et ouvrira dès janvier 2027</a></h3>
+          <div class="meta">Actu Strasbourg (actu.fr) • 10/11/2026</div>
+          <p>Bonne nouvelle pour l&#x27;Eurométropole de Strasbourg : le coût prévisionnel de la passerelle piétons-cyclistes Rosa Luxemburg, en construction dans le quartier Citadelle, est revu à la baisse de 1,1 M€. La rampe cyclable du quai des Belges, initialement prévue après la passerelle en raison d&#x27;une importante canalisation d&#x27;eau potable, a pu être réalisée simultanément, ce qui a permis de ne pas démobiliser la grue et les équipes. Coût actualisé : 12 326 273 € HT, dont 9 627 406 € financés par l&#x27;Eurométropole. L&#x27;ouverture est attendue dès janvier 2027.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== LECTURE TRANSVERSALE ===== -->
+  <h2 class="section-title">🧭 Lecture transversale</h2>
+  <div class="card">
+    <div class="card-body prose">
+      <h3>Économie &amp; entreprises</h3>
+      <ul>
+        <li>Tous les budgets se resserrent : la Région Grand Est prépare une baisse de plus de 20 % de son investissement en 2027, sur fond de contribution demandée par l&#x27;État.</li>
+        <li>La logistique rhénane respire un peu (remontée du Rhin, bac de Seltz relancé) mais reste fragile, tandis que le commerce de proximité continue de se mailler (Promovacances à Houssen, Schaechtelin à Muntzenheim).</li>
+      </ul>
+      <h3>Innovation &amp; IA</h3>
+      <ul>
+        <li>L&#x27;IA descend dans la rue et dans l&#x27;entreprise : festival grand public IAgora à Strasbourg, ateliers d&#x27;IESF Alsace sur les usages réels de l&#x27;IA dans l&#x27;ingénierie.</li>
+        <li>Le logiciel (IA) et la mobilité décarbonée attirent les financements, avec la levée de 1,5 M€ d&#x27;ADEMUS, tandis que l&#x27;agenda industriel se robotise (Semaine de l&#x27;industrie, Euro Industries, défi robotique transfrontalier du Rhin supérieur).</li>
+      </ul>
+      <h3>Territoires &amp; institutions</h3>
+      <ul>
+        <li>Le climat universitaire se durcit : l&#x27;Unistra encadre les blocages par arrêté à compter du 16 novembre après une journée de tensions et neuf interpellations.</li>
+        <li>Les services publics de proximité sont sous tension — santé dans le Haut-Rhin (États généraux à Mulhouse) — tandis que les chantiers métropolitains avancent, à l&#x27;exemple de la passerelle Rosa Luxemburg livrée en avance.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PROSPECTIVE ===== -->
+  <h2 class="section-title">🔮 Prospective</h2>
+  <div class="card">
+    <div class="card-body prose">
+      <h3>Horizon court (0–6 mois)</h3>
+      <ul>
+        <li>Événements à venir : Semaine de l&#x27;industrie en Alsace (16-22 novembre), salon Euro Industries à Mulhouse et RoboTech Girls Day à Haguenau (17-18 novembre), AI Grand Est ENACT Cluster Days à Strasbourg (26-27 novembre), ouverture des marchés de Noël dès le 20 novembre.</li>
+        <li>À surveiller : arbitrages du budget 2027 de la Région Grand Est, échéances budgétaires de l&#x27;Eurométropole de Strasbourg, et suites judiciaires du mouvement étudiant après l&#x27;arrêté de l&#x27;Unistra.</li>
+      </ul>
+      <h3>Horizon moyen (1–3 ans)</h3>
+      <ul>
+        <li>Finances locales et régionales sous contrainte : contribution accrue des collectivités à l&#x27;effort national, arbitrages sur les mobilités et l&#x27;enseignement supérieur.</li>
+        <li>Industrie et numérique : montée en puissance de l&#x27;automatisation et de la cobotique dans les usines alsaciennes, structuration de l&#x27;écosystème IA régional autour du cluster ENACT et de la santé numérique.</li>
+      </ul>
+      <h3>Horizon long (3–10 ans)</h3>
+      <ul>
+        <li>Électrification de l&#x27;automobile alsacienne (Stellantis Mulhouse, équipementiers) et requalification des sites face à la concurrence internationale.</li>
+        <li>Résilience logistique du Rhin face aux étiages répétés et attractivité médicale des territoires du Haut-Rhin : deux enjeux structurels de moyen-long terme.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SIGNAUX FAIBLES ===== -->
+  <h2 class="section-title">📡 Signaux faibles</h2>
+  <div class="card">
+    <div class="card-body weak">
+      <div class="w-item">
+        <p><strong>Alsace/Carburants : 22 % des stations-service du Grand Est rencontraient des difficultés d&#x27;approvisionnement (essence ou gazole) le 12 novembre, contre 12 % à l&#x27;échelle nationale ; le Bas-Rhin, le Haut-Rhin et le Territoire de Belfort concentrent les tensions.</strong></p>
+        <ul>
+          <li><a href="https://www.lalsace.fr/economie/2026/11/12/carburant-pourquoi-certaines-stations-du-nord-est-de-la-france-rencontrent-des-difficultes-d-approvisionnement" target="_blank">lalsace.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Grand Est/CCI : les chambres de commerce alertent sur la ponction de 125 M€ prévue par le projet de loi de finances 2027 (8,5 M€ pour le Grand Est) ; 100 à 150 emplois, soit environ 20 % des effectifs régionaux, pourraient être menacés.</strong></p>
+        <ul>
+          <li><a href="https://www.dna.fr/economie/2026/11/03/les-cci-a-nouveau-sous-la-menace-d-une-crise-budgetaire" target="_blank">dna.fr</a></li>
+          <li><a href="https://pointecoalsace.fr/fil-info/budget-2027-les-cci-alertent-sur-un-recul-de-lappui-aux-entreprises-245edb72-4442-4ea8-ac8f-d322904ae6f4" target="_blank">pointecoalsace.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Robotique/Herrlisheim (Bas-Rhin) : thyssenkrupp Automotive Systems France a robotisé un poste de vissage sur ligne en mouvement avec deux cobots UR30 guidés par vision 3D (Inbolt, intégration RobotIndus), sans arrêter la production ; passage à quatre robots annoncé.</strong></p>
+        <ul>
+          <li><a href="https://www.lefilrobotique.fr/article/6427803-universal-robots-automatise-le-vissage-en-mouvement-chez-thyssenkrupp" target="_blank">lefilrobotique.fr</a></li>
+          <li><a href="https://www.lejournaldesentreprises.com/article/thyssenkrupp-automotive-systemes-france-equipe-son-usine-dherrlisheim-de-deux-cobots-de-vissage-2148141" target="_blank">lejournaldesentreprises.com</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Bas-Rhin : le département impose le port du casque aux utilisateurs de trottinettes électriques, dans un contexte de sécurité routière et de cohabitation croissante avec les nouveaux véhicules de mobilité, y compris robotisés.</strong></p>
+        <ul>
+          <li><a href="https://france3-regions.franceinfo.fr/grand-est/bas-rhin" target="_blank">france3-regions.franceinfo.fr</a></li>
+        </ul>
+      </div>
+      <div class="w-item">
+        <p><strong>Grand Est/Souveraineté numérique : le IVe Forum franco-allemand Metz-Saarbrücken, accueilli pour la première fois en Allemagne le 10 novembre, a réuni acteurs français, allemands et luxembourgeois autour de l&#x27;économie numérique, de l&#x27;IA et des villes intelligentes.</strong></p>
+        <ul>
+          <li><a href="https://remiremontvallees.com/2026/11/10/la-region-grand-est-mise-sur-la-cooperation-europeenne-pour-renforcer-la-souverainete-numerique/" target="_blank">remiremontvallees.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Archives HERMES · Veille Alsace — Économie · Innovation &amp; IA · Territoires. Fenêtre : 7 au 14 novembre 2026 · 12 articles + 5 signaux faibles. Deux illustrations HUD intégrées (veille-ALSACE-2026-11-14-1.png / -2.png).</p>
+    <p>Généré le 14 novembre 2026 par ORAC (skills veille-alsace + veille-html). · <a href="index.html">page passerelle</a></p>
+  </footer>
+</div>
+<script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+</script>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return;
+  i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body>
+</html>

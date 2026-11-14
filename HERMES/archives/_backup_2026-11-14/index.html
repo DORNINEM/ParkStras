@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>HERMES Archives — Terminal Général</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #010409; --line: rgba(64,220,255,.18); --cyan: #40dcff; --amber: #ffb347;
+  --text: #cfeaff; --dim: #4d7c99;
+  --font-hud: "Rajdhani", sans-serif; --font-mono: "Share Tech Mono", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh; color: var(--text); font-family: var(--font-hud);
+  background:
+    radial-gradient(1100px 650px at 50% 30%, rgba(20,60,100,.35) 0%, transparent 60%),
+    var(--bg);
+  overflow-x: hidden; position: relative;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5; z-index: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(64,220,255,.028) 0 1px, transparent 1px 3px),
+    linear-gradient(rgba(64,220,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,220,255,.045) 1px, transparent 1px);
+  background-size: 100% 3px, 52px 52px, 52px 52px;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  box-shadow: inset 0 0 220px rgba(0,0,0,.85);
+}
+.wrap { position: relative; z-index: 1; max-width: 1150px; margin: 0 auto; padding: 46px 26px 70px; }
+
+.corner { position: fixed; width: 46px; height: 46px; pointer-events: none; z-index: 5; }
+.corner::before { content: ""; position: absolute; inset: 0; border: 2px solid var(--cyan); opacity: .55; }
+.corner.tl { top: 14px; left: 14px; } .corner.tl::before { border-right: 0; border-bottom: 0; }
+.corner.tr { top: 14px; right: 14px; } .corner.tr::before { border-left: 0; border-bottom: 0; }
+.corner.bl { bottom: 14px; left: 14px; } .corner.bl::before { border-right: 0; border-top: 0; }
+.corner.br { bottom: 14px; right: 14px; } .corner.br::before { border-left: 0; border-top: 0; }
+
+#topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+  letter-spacing: .28em; text-transform: uppercase; margin-bottom: 44px;
+}
+#topbar .sys { color: var(--cyan); text-shadow: 0 0 12px rgba(64,220,255,.8); }
+#clock { color: var(--amber); }
+
+header.main { text-align: center; margin-bottom: 50px; }
+header.main img { height: 165px; filter: drop-shadow(0 0 22px rgba(64,220,255,.35)); margin-bottom: 10px; cursor: zoom-in; transition: transform .25s; }
+header.main img:hover { transform: scale(1.03); }
+header.main h1 {
+  font-size: 30px; letter-spacing: .42em; text-transform: uppercase; font-weight: 700;
+  color: var(--text); text-shadow: 0 0 24px rgba(64,220,255,.5);
+}
+header.main .sub {
+  font-family: var(--font-mono); font-size: 12px; color: var(--dim);
+  letter-spacing: .3em; text-transform: uppercase; margin-top: 8px;
+}
+header.main .sub b { color: var(--cyan); }
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px; margin-bottom: 46px;
+}
+.card {
+  position: relative; display: block; text-decoration: none; color: var(--text);
+  background: linear-gradient(135deg, rgba(64,220,255,.10), rgba(6,14,24,.85) 45%);
+  border: 1px solid var(--line); padding: 20px 20px 16px;
+  backdrop-filter: blur(6px);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  transition: border-color .18s, background .18s, transform .18s;
+  animation: materialize .5s cubic-bezier(.2,.9,.3,1) backwards;
+}
+.card:nth-child(1){animation-delay:.02s}.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.14s}.card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.26s}.card:nth-child(6){animation-delay:.32s}
+@keyframes materialize {
+  0% { transform: translateX(-24px) skewX(-4deg); opacity: 0; filter: brightness(3); }
+  60% { filter: brightness(1.6); }
+  100% { transform: none; opacity: 1; filter: none; }
+}
+.card:hover {
+  border-color: rgba(64,220,255,.55); transform: translateY(-3px);
+  background: linear-gradient(135deg, rgba(64,220,255,.18), rgba(6,14,24,.9) 45%);
+  box-shadow: 0 0 30px rgba(64,220,255,.15);
+}
+.tag {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .3em;
+  color: var(--dim); margin-bottom: 8px;
+}
+.card h2 {
+  font-size: 19px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cyan); text-shadow: 0 0 14px rgba(64,220,255,.5); margin-bottom: 6px;
+}
+.card p { font-size: 13.5px; color: #9fd4f5; opacity: .8; line-height: 1.45; }
+.card .meta {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 14px;
+  border-top: 1px solid var(--line); padding-top: 10px;
+}
+.card .count { font-family: var(--font-mono); font-size: 11px; color: var(--amber); letter-spacing: .2em; }
+.card .arrow { color: var(--cyan); font-size: 16px; transition: transform .18s; }
+.card:hover .arrow { transform: translateX(5px); }
+.card.obsolete { opacity: .62; border-style: dashed; }
+.card.obsolete:hover { opacity: .85; }
+.badge-obsolete {
+  position: absolute; top: 10px; right: 12px;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: .22em;
+  color: #ffb347; border: 1px dashed #ffb347; padding: 3px 8px;
+  background: rgba(255,179,71,.08); text-transform: uppercase;
+}
+.badge-obsolete::before { content: "⚠ "; }
+
+footer {
+  text-align: center; font-family: var(--font-mono); font-size: 11px;
+  color: var(--dim); letter-spacing: .2em; text-transform: uppercase;
+}
+footer .lm { color: var(--cyan); }
+
+/* ------------------------------------------------ lightbox vortex */
+#vortex {
+  position: fixed; inset: 0; z-index: 50; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(1,4,9,.92); backdrop-filter: blur(10px);
+}
+#vortex.open { display: flex; animation: vfade .35s ease; }
+@keyframes vfade { from { opacity: 0; } to { opacity: 1; } }
+#vortex .ring {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  border: 2px solid transparent;
+}
+#vortex .r1 { width: 46vmin; height: 46vmin; border-top-color: rgba(64,220,255,.75); border-right-color: rgba(64,220,255,.15); animation: spin 3.2s linear infinite; box-shadow: 0 0 45px rgba(64,220,255,.25); }
+#vortex .r2 { width: 62vmin; height: 62vmin; border-left-color: rgba(255,179,71,.55); border-bottom-color: rgba(255,179,71,.12); animation: spin 5s linear infinite reverse; }
+#vortex .r3 { width: 80vmin; height: 80vmin; border-top-color: rgba(64,220,255,.30); border-left-color: rgba(64,220,255,.06); animation: spin 7.5s linear infinite; }
+#vortex .r4 { width: 100vmin; height: 100vmin; border-right-color: rgba(255,179,71,.18); border-bottom-color: rgba(64,220,255,.10); animation: spin 10s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+#vortex .core {
+  position: absolute; width: 58vmin; height: 58vmin; border-radius: 50%;
+  background: radial-gradient(circle, rgba(64,220,255,.16) 0%, transparent 65%);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { transform: scale(1); opacity:.8; } 50% { transform: scale(1.07); opacity:1; } }
+#vortex img {
+  position: relative; z-index: 2; max-width: 82vw; max-height: 80vh;
+  border: 1px solid var(--line); box-shadow: 0 0 80px rgba(64,220,255,.28);
+  cursor: zoom-out; animation: vzoom .4s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes vzoom { from { transform: scale(.82); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+#vortex .hint {
+  position: absolute; bottom: 26px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--dim); z-index: 2;
+}
+
+/* ------------------------------------------------ vortex de fond permanent */
+#vortex-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+#vortex-bg .ring {
+  position: absolute; left: 50%; top: 170px;
+  width: 0; height: 0; border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+#vortex-bg .r1 {
+  width: 420px; height: 420px;
+  border: 4px solid transparent;
+  border-top-color: rgba(64,220,255,.30); border-right-color: rgba(64,220,255,.08);
+  animation: spin 6s linear infinite;
+}
+#vortex-bg .r2 {
+  width: 580px; height: 580px;
+  border: 4px solid transparent;
+  border-left-color: rgba(255,179,71,.26); border-bottom-color: rgba(255,179,71,.07);
+  animation: spin 9s linear infinite reverse;
+}
+#vortex-bg .r3 {
+  width: 760px; height: 760px;
+  border: 4px solid transparent;
+  border-top-color: rgba(64,220,255,.20); border-left-color: rgba(64,220,255,.06);
+  animation: spin 13s linear infinite;
+}
+#vortex-bg .r4 {
+  width: 960px; height: 960px;
+  border: 4px solid transparent;
+  border-right-color: rgba(255,179,71,.14); border-bottom-color: rgba(64,220,255,.08);
+  animation: spin 19s linear infinite reverse;
+}
+#vortex-bg .core {
+  position: absolute; left: 50%; top: 170px; width: 520px; height: 520px;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(64,220,255,.09) 0%, transparent 62%);
+  animation: pulse 5s ease-in-out infinite;
+}
+@keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+
+<div id="vortex-bg" aria-hidden="true">
+  <div class="ring r4"></div><div class="ring r3"></div>
+  <div class="ring r2"></div><div class="ring r1"></div>
+  <div class="core"></div>
+</div>
+
+<div id="vortex" onclick="this.classList.remove('open')">
+  <div class="ring r4"></div><div class="ring r3"></div>
+  <div class="ring r2"></div><div class="ring r1"></div>
+  <div class="core"></div>
+  <img src="innovia2.png" alt="Logo Innov'IA">
+  <div class="hint">CLIQUEZ POUR FERMER</div>
+</div>
+
+<div class="wrap">
+  <div id="topbar">
+    <span class="sys">◈ HERMES — TERMINAL D'ARCHIVES</span>
+    <span id="clock">--:--:--</span>
+  </div>
+
+  <header class="main">
+    <img src="innovia2.png" alt="Innovia">
+    <h1>Archives</h1>
+    <div class="sub">Sélectionnez un module de veille · <b>91 publications indexées</b></div>
+  </header>
+
+  <div class="grid">
+<a class="card" href="index-alsace.html">
+  <div class="tag">ALSACE [DEMO]</div>
+  <h2>Veille Alsace <span style="color:#ffb347;font-size:.7em">[DEMO]</span></h2>
+  <p>Économie · Innovation &amp; IA · Territoires (profil démo)</p>
+  <div class="meta"><span class="count">6 ARCHIVES</span><span class="arrow">▸</span></div>
+</a>
+<a class="card" href="index-robotaxi.html">
+  <div class="tag">ROBOTAXI [DEMO]</div>
+  <h2>Veille Robotaxi &amp; Emploi <span style="color:#ffb347;font-size:.7em">[DEMO]</span></h2>
+  <p>Conduite autonome &amp; impact emplois (profil démo)</p>
+  <div class="meta"><span class="count">5 ARCHIVES</span><span class="arrow">▸</span></div>
+</a>
+<a class="card" href="index-fraude.html">
+  <div class="tag">FRAUDE</div>
+  <h2>Veille Fraude Assurance</h2>
+  <p>Documentaire · opendata · bandes organisées · santé</p>
+  <div class="meta"><span class="count">3 ARCHIVES</span><span class="arrow">▸</span></div>
+</a>
+<a class="card obsolete" href="index-mistral.html">
+  <div class="badge-obsolete">Obsolète — fusionné dans IA Global</div>
+  <div class="tag">MISTRAL</div>
+  <h2>Actualités Mistral</h2>
+  <p>Archives gelées · la veille continue dans <b>Veille IA Global</b> (rubrique Focus Mistral)</p>
+  <div class="meta"><span class="count">16 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-ia.html">
+  <div class="tag">IA</div>
+  <h2>Veille IA Global</h2>
+  <p>France · Europe · Monde</p>
+  <div class="meta"><span class="count">31 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-tele.html">
+  <div class="tag">TELE</div>
+  <h2>Télésurveillance</h2>
+  <p>Alarmes · biométrie · vidéo</p>
+  <div class="meta"><span class="count">25 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-rh.html">
+  <div class="tag">RH</div>
+  <h2>Veille IA RH</h2>
+
+  <p>Mutations des métiers</p>
+  <div class="meta"><span class="count">23 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-q.html">
+  <div class="tag">Q</div>
+  <h2>Veille Quantique</h2>
+  <p>Computing · recherche</p>
+  <div class="meta"><span class="count">22 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-diabete.html">
+  <div class="tag">DIABETE</div>
+  <h2>Veille Diabète</h2>
+  <p>Innovations santé</p>
+  <div class="meta"><span class="count">6 ARCHIVES</span><span class="arrow">▸</span></div>
+</a><a class="card" href="index-bench.html">
+  <div class="tag">TESTS BENCH</div>
+  <h2>Tests bench</h2>
+  <p>Comparatifs de modèles · 42 tirages de contrôle · 2 juges à l'aveugle</p>
+  <div class="meta"><span class="count">2 SYNTHÈSES · 42 TIRAGES</span><span class="arrow">▸</span></div>
+</a>
+  </div>
+
+  <footer>
+    Système local · GitHub Pages · dernière mise à jour : <span class="lm" id="lm">--</span>
+  </footer>
+</div>
+
+<script>
+setInterval(() => {
+  document.getElementById("clock").textContent = new Date().toLocaleTimeString("fr-FR");
+}, 1000);
+
+/* lightbox vortex au clic sur le logo */
+document.querySelector("header.main img").addEventListener("click", (e) => {
+  e.stopPropagation();
+  document.getElementById("vortex").classList.add("open");
+});
+document.getElementById("lm").textContent = document.lastModified;
+</script>
+
+<!-- EDO JARVIS widget -->
+<div id="edo-widget" title="EDO — cœur de la passerelle">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+
+</body>
+</html>
