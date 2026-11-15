@@ -73,16 +73,16 @@ Bonne nouvelle pour l'Eurométropole de Strasbourg : le coût prévisionnel de l
 ## 🧭 Lecture transversale
 
 ### Économie & entreprises
-- Tous les budgets se resserrent : la Région Grand Est prépare une baisse de plus de 20 % de son investissement en 2027, sur fond de contribution demandée par l'État.
-- La logistique rhénane respire un peu (remontée du Rhin, bac de Seltz relancé) mais reste fragile, tandis que le commerce de proximité continue de se mailler (Promovacances à Houssen, Schaechtelin à Muntzenheim).
+- Tous les budgets se resserrent : la Région Grand Est prépare une baisse de plus de 20 % de son investissement en 2027, sur fond de contribution demandée par l'État. — [L'Alsace](https://www.lalsace.fr/economie/2026/11/12/vers-une-baisse-de-plus-de-20-du-budget-investissement-de-la-region)
+- La logistique rhénane respire un peu (remontée du Rhin, bac de Seltz relancé) mais reste fragile, tandis que le commerce de proximité continue de se mailler (Promovacances à Houssen, Schaechtelin à Muntzenheim). — [L'Alsace](https://www.lalsace.fr/economie/2026/11/12/transport-fluvial-le-niveau-du-rhin-gagne-quelques-precieux-centimetres) ; [L'Alsace](https://www.lalsace.fr/economie/2026/11/13/promovacances-installe-sa-premiere-agence-en-alsace)
 
 ### Innovation & IA
-- L'IA descend dans la rue et dans l'entreprise : festival grand public IAgora à Strasbourg, ateliers d'IESF Alsace sur les usages réels de l'IA dans l'ingénierie.
-- Le logiciel (IA) et la mobilité décarbonée attirent les financements, avec la levée de 1,5 M€ d'ADEMUS, tandis que l'agenda industriel se robotise (Semaine de l'industrie, Euro Industries, défi robotique transfrontalier du Rhin supérieur).
+- L'IA descend dans la rue et dans l'entreprise : festival grand public IAgora à Strasbourg, ateliers d'IESF Alsace sur les usages réels de l'IA dans l'ingénierie. — [Inria](https://www.inria.fr/fr/iagora-strasbourg-une-journee-pour-explorer-lintelligence-artificielle) ; [Échosciences Grand Est](https://www.echosciences-grandest.fr/evenements/ateliers-transdisciplinaires-l-ia-dans-les-metiers-de-l-ingenieur)
+- Le logiciel (IA) et la mobilité décarbonée attirent les financements, avec la levée de 1,5 M€ d'ADEMUS, tandis que l'agenda industriel se robotise (Semaine de l'industrie, Euro Industries, défi robotique transfrontalier du Rhin supérieur). — [YEAST](https://www.yeast.fr/yeast-accompagne-de-nouveau-ademus-systeme-de-production-de-son-pour-vehicules-electriques/) ; [Alsace Industrie](https://alsace-industrie.com/semaine-industrie-alsace)
 
 ### Territoires & institutions
-- Le climat universitaire se durcit : l'Unistra encadre les blocages par arrêté à compter du 16 novembre après une journée de tensions et neuf interpellations.
-- Les services publics de proximité sont sous tension — santé dans le Haut-Rhin (États généraux à Mulhouse) — tandis que les chantiers métropolitains avancent, à l'exemple de la passerelle Rosa Luxemburg livrée en avance.
+- Le climat universitaire se durcit : l'Unistra encadre les blocages par arrêté à compter du 16 novembre après une journée de tensions et neuf interpellations. — [Rue89 Strasbourg](https://www.rue89strasbourg.com/presidente-universite-de-strasbourg-blocages-402458)
+- Les services publics de proximité sont sous tension — santé dans le Haut-Rhin (États généraux à Mulhouse) — tandis que les chantiers métropolitains avancent, à l'exemple de la passerelle Rosa Luxemburg livrée en avance. — [ICI Alsace](https://www.radiofrance.fr/ici/podcasts/l-info-d-ici-ici-alsace/haut-rhin-comment-attirer-durablement-de-jeunes-medecins-8466515) ; [Actu.fr](https://actu.fr/grand-est/strasbourg_67482/strasbourg-la-tres-attendue-passerelle-rosa-luxemburg-coutera-moins-cher-que-prevu-et-sera-livree-en-avance_65026776.html)
 
 ## 🔮 Prospective
 
@@ -91,12 +91,12 @@ Bonne nouvelle pour l'Eurométropole de Strasbourg : le coût prévisionnel de l
 - À surveiller : arbitrages du budget 2027 de la Région Grand Est, échéances budgétaires de l'Eurométropole de Strasbourg, et suites judiciaires du mouvement étudiant après l'arrêté de l'Unistra.
 
 ### Horizon moyen (1–3 ans)
-- Finances locales et régionales sous contrainte : contribution accrue des collectivités à l'effort national, arbitrages sur les mobilités et l'enseignement supérieur.
-- Industrie et numérique : montée en puissance de l'automatisation et de la cobotique dans les usines alsaciennes, structuration de l'écosystème IA régional autour du cluster ENACT et de la santé numérique.
+- Finances locales et régionales sous contrainte : contribution accrue des collectivités à l'effort national, arbitrages sur les mobilités et l'enseignement supérieur. — [L'Alsace](https://www.lalsace.fr/economie/2026/11/12/vers-une-baisse-de-plus-de-20-du-budget-investissement-de-la-region)
+- Industrie et numérique : montée en puissance de l'automatisation et de la cobotique dans les usines alsaciennes, structuration de l'écosystème IA régional autour du cluster ENACT et de la santé numérique. — [Alsace Industrie](https://alsace-industrie.com/semaine-industrie-alsace)
 
 ### Horizon long (3–10 ans)
 - Électrification de l'automobile alsacienne (Stellantis Mulhouse, équipementiers) et requalification des sites face à la concurrence internationale.
-- Résilience logistique du Rhin face aux étiages répétés et attractivité médicale des territoires du Haut-Rhin : deux enjeux structurels de moyen-long terme.
+- Résilience logistique du Rhin face aux étiages répétés et attractivité médicale des territoires du Haut-Rhin : deux enjeux structurels de moyen-long terme. — [L'Alsace](https://www.lalsace.fr/economie/2026/11/12/transport-fluvial-le-niveau-du-rhin-gagne-quelques-precieux-centimetres) ; [ICI Alsace](https://www.radiofrance.fr/ici/podcasts/l-info-d-ici-ici-alsace/haut-rhin-comment-attirer-durablement-de-jeunes-medecins-8466515)
 
 ## 📡 Signaux faibles
 
