@@ -1,0 +1,310 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA global — 18 novembre 2026</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:var(--ink); --ink:#f3f4f6; --muted:#d1d5db;
+      --border:var(--ink); --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,var(--panel));
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,var(--panel),#0b1220)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .arxiv-empty{border:1px dashed var(--border);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:.92rem;background:var(--panel)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (min-width: 1080px){
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    .signal{background:rgba(64,220,255,.05);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:10px 0}
+    .signal h4{margin:0 0 6px;font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--accent)}
+    .signal p{margin:4px 0;font-size:14.5px;color:var(--ink)}
+    .signal .src{margin-top:8px;font-size:12px;word-break:break-all}
+    .signal .src a{color:var(--accent-2);text-decoration:none}
+    .signal .src a:hover{text-decoration:underline}
+    .pill.tricolor{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-IA-2026-11-18.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA global</h1>
+      <p>Sources FR/EU + Monde — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-18">18 novembre 2026</time>
+  </header>
+  <div class="kpis">
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-france');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">5</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-europe');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌍 Europe hors France"><div class="label">🌍 Europe hors France</div><div class="value">4</div></div>
+<div class="kpi kpi-click" onclick="var z=document.getElementById('zone-monde');z&&z.scrollIntoView({behavior:'smooth'});z&&z.classList.add('zone-flash');setTimeout(function(){z&&z.classList.remove('zone-flash')},1600)" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">6</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 15 articles</span>
+    <span class="pill green">📅 18 novembre 2026</span>
+    <span class="pill tricolor">🇫🇷 Focus Mistral : 4</span>
+    <span class="pill yellow">🧭 5 signaux faibles</span>
+  </div>
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.numerama.com/tech/2376025-ovh-devoile-olala-son-premier-modele-dia-open-source-mistral-nest-plus-seul-en-france.html" target="_blank">OVHcloud dévoile Olala mini 7A1B, son premier modèle d'IA ouvert</a></h3>
+<div class="meta">Numerama • 17/11/2026</div>
+<p>Le 17 novembre, OVHcloud a présenté Olala mini 7A1B, premier modèle de sa famille Olala : 7 milliards de paramètres dont 1 milliard actifs, entraîné depuis zéro sur des supercalculateurs publics européens (Jean Zay, Jupiter, MeluXina) et publié en poids ouverts sous licence Apache 2.0 sur Hugging Face. Il tourne sur 8 Go de mémoire graphique, voire sur processeur seul, alimente déjà des fonctions de Qwant, et le fondateur Octave Klaba vise une centaine de millions d'utilisateurs ; les détails complets sont annoncés pour l'OVHcloud AI Summit du 19 novembre. Effet immédiat : la France n'a plus un seul acteur de modèles, et la concurrence se déplace sur le coût d'inférence et l'intégration au cloud plutôt que sur la performance brute — aucun benchmark de qualité n'est d'ailleurs publié.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.leparisien.fr/high-tech/intelligence-artificielle-le-parisien-et-les-medias-du-groupe-lvmh-signent-un-partenariat-avec-openai-16-11-2026-3SN5FRYKKJH2PC44VTDISBJMUI.php" target="_blank">Le Parisien et les médias du groupe LVMH signent un partenariat avec OpenAI</a></h3>
+<div class="meta">Le Parisien • 16/11/2026</div>
+<p>Le pôle médias du groupe LVMH — Le Parisien, Les Échos et quinze autres titres, environ 700 journalistes — a annoncé le 16 novembre un partenariat stratégique avec OpenAI : déploiement de ChatGPT Enterprise dans les rédactions et intégration de contenus journalistiques dans ChatGPT sous forme de résumés et d'extraits sourcés. C'est le deuxième accord de ce type en France après celui du Monde, et il intervient en plein débat parlementaire sur le droit d'auteur et l'IA. Le modèle économique qui se dessine n'est plus la seule indexation : les éditeurs monétisent la licence de leurs contenus auprès des fournisseurs de modèles, ce qui déplace la négociation du terrain judiciaire vers celui du contrat.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/internet/intelligence-artificielle/25-000-offres-d-emploi-supprimees-sur-france-travail-a-cause-de-l-ia-quels-secteurs-sont-concernes_8286617.html" target="_blank">L'IA fait disparaître 25 000 offres d'emploi des métiers les plus exposés</a></h3>
+<div class="meta">franceinfo • 17/11/2026</div>
+<p>Une étude de Coface exploitant les données de France Travail chiffre à environ 25 000 le nombre d'offres d'emploi disparues au troisième trimestre 2026 dans les métiers les plus exposés à l'IA, soit une baisse de 12,4 % des annonces pour chaque tranche de 10 % d'exposition. Les fonctions transverses paient le plus lourd — ressources humaines en recul de plus de 40 %, comptabilité, marketing — et les profils expérimentés sont désormais touchés. L'effet est mesuré sur les annonces et non sur les emplois détruits, mais il déplace la question : ce n'est plus l'automatisation d'un poste qui compte, c'est la disparition progressive de fonctions de support entières, là où l'IA générative se substitue directement à la rédaction et au tri.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lefigaro.fr/flash-eco/ia-et-droit-d-auteur-une-proposition-de-loi-pour-proteger-la-creation-toujours-enlisee-a-l-assemblee-20261117" target="_blank">IA et droit d'auteur : la proposition de loi Darcos toujours enlisée avant l'examen du 19 novembre</a></h3>
+<div class="meta">Le Figaro • 17/11/2026</div>
+<p>À la veille de son examen par l'Assemblée nationale, prévu le 19 novembre, la proposition de loi de la sénatrice Laure Darcos sur l'IA et le droit d'auteur reste bloquée : 110 amendements, portés notamment par des députés du groupe Renaissance, et un lobbying intense des acteurs de l'IA retardent son passage. Le texte, adopté à l'unanimité au Sénat en avril 2026, instaure une présomption d'utilisation des contenus protégés par les fournisseurs d'IA dès qu'un « indice » la rend vraisemblable, renversant la charge de la preuve. Les ayants droit y voient la condition d'une rémunération effective ; une trentaine de patrons de la French Tech, dont Arthur Mensch (Mistral AI), dénoncent un « sabotage » de la compétitivité française. La France arbitre donc en ce moment même entre protection de la création et soutien à ses champions.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.01net.com/actualites/google-decouvert-agents-ia-pirates-assaut-plusieurs-sites-francais.html" target="_blank">Google repère des agents IA pirates à l'assaut de plusieurs sites français</a></h3>
+<div class="meta">01net • 17/11/2026</div>
+<p>Le rapport AI Threat Tracker de Google (GTIG), publié le 16 novembre, documente la première utilisation observée dans la nature d'un cadre multi-agents autonome, exploit_agent, qui analyse les correctifs de sécurité, identifie les failles, génère des exploits et les déclenche sans intervention humaine. La télémétrie récupérée sur le serveur des attaquants montre un intérêt marqué pour des sites français des secteurs des médias, du divertissement et de l'éducation. Le franchissement de ce seuil change la nature du risque : le délai entre la publication d'un correctif et son exploitation, historiquement de plusieurs jours, tombe à quelques heures, ce qui resserre la fenêtre de mise à jour et déséquilibre le rapport de force au détriment des petites structures.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🌍 Europe hors France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://digital-strategy.ec.europa.eu/fr/news/commission-hosts-apply-ai-summit-boost-europes-ai-innovation-and-uptake" target="_blank">Apply AI Summit : Bruxelles passe de la souveraineté au déploiement</a></h3>
+<div class="meta">Commission européenne • 17/11/2026</div>
+<p>Le 17 novembre, la Commission européenne a réuni près de 1 000 décideurs, start-ups, industriels et chercheurs à Bruxelles pour le sommet Apply AI, un an après l'adoption de sa stratégie d'adoption et en clôture du premier mois européen de l'innovation. L'événement, accueilli par la vice-présidente exécutive Henna Virkkunen, a mis en avant des applications concrètes dans dix secteurs stratégiques — santé, mobilité, énergie, défense, agroalimentaire — et le secteur public, avec la remise du premier prix Apply AI Startup Award. Le message tranche avec les sommets précédents : après la souveraineté et les gigafactories, place au déploiement. C'est précisément le point faible relevé par Bruxelles, l'Europe adoptant l'IA plus lentement que ses concurrents malgré un cadre réglementaire désormais largement stabilisé.</p>
+</div>
+<div class="item">
+<h3><a href="https://digital-strategy.ec.europa.eu/fr/news/commission-seeks-feedback-draft-template-fundamental-rights-impact-assessment-under-ai-act" target="_blank">AI Act : la Commission ouvre la consultation sur l'analyse d'impact des droits fondamentaux</a></h3>
+<div class="meta">Commission européenne • 16/11/2026</div>
+<p>Le 16 novembre, la Commission a ouvert une consultation publique, jusqu'au 15 janvier 2027, sur un projet de modèle d'analyse d'impact sur les droits fondamentaux au titre de l'article 27 de l'AI Act. Ce questionnaire doit aider les déployeurs de systèmes d'IA à haut risque — recrutement, éducation, services essentiels, police — à documenter les effets de leurs systèmes sur les droits des personnes, comme la loi les y oblige déjà. La Commission invite aussi les organisations concernées à tester volontairement l'outil avant sa finalisation. L'enjeu est opérationnel : cette analyse d'impact est l'une des obligations les plus coûteuses du règlement, et la qualité du gabarit déterminera si les entreprises la traitent comme une formalité ou comme un véritable outil de gouvernance.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.europeanscientist.com/en/big-data/europes-own-ai-model-takes-shape-aiming-for-nearly-a-trillion-parameters/" target="_blank">EUROPA : le modèle ouvert européen testé à 952 milliards de paramètres sur JUPITER</a></h3>
+<div class="meta">European Scientist • 16/11/2026</div>
+<p>Le consortium EUROPA, mené par l'italien Domyn avec des partenaires Fraunhofer, a publié le 16 novembre les détails techniques de ses essais à grande échelle pour le modèle ouvert européen soutenu par la Commission : une configuration de 951,9 milliards de paramètres, en architecture à experts mélangés, entraînée sur le supercalculateur exascale public JUPITER à Jülich, en Allemagne. Les optimisations ont porté le débit de 90 à environ 1 293 jetons par seconde et par GPU, ce qui ramènerait le pré-entraînement complet à environ quatre mois. Aucun poids ni résultat de performance n'est encore publié : à ce stade, la démonstration porte sur la capacité à faire tenir un modèle de cette taille sur une machine publique partagée — sur l'infrastructure, pas encore sur le modèle.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.mlex.com/mlex/articles/2550665/eu-uk-plan-digital-partnership-covering-ai-safety-quantum" target="_blank">L'UE et le Royaume-Uni préparent un partenariat numérique sur l'IA et le quantique</a></h3>
+<div class="meta">MLex • 16/11/2026</div>
+<p>Selon un projet de déclaration consulté par MLex et rapporté le 16 novembre, l'Union européenne et le Royaume-Uni doivent annoncer un partenariat numérique lors de leur sommet du 20 novembre à Bruxelles, couvrant la sûreté de l'IA, les technologies quantiques, la connectivité sécurisée, l'identité numérique et les services de confiance. Londres a par ailleurs présenté un ensemble d'accords plus large — jeunesse, agroalimentaire, marché carbone — dans le cadre de sa réinitialisation post-Brexit. Rapprocher les deux cadres de sûreté de l'IA a une portée pratique : les grands laboratoires publient leurs évaluations pour les deux juridictions, et une divergence de critères y ajouterait une couche de conformité sans gain de sécurité.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.cnbc.com/2026/11/16/anthropic-ipo-date-price-range.html" target="_blank">Anthropic obtient son admission au Nasdaq et fixe le prix de son IPO ce 18 novembre</a></h3>
+<div class="meta">CNBC • 16/11/2026</div>
+<p>Anthropic a obtenu son admission au Nasdaq Global Select Market sous le code « ANT » et fixera le prix définitif de son introduction en Bourse dans la soirée du 18 novembre, pour une première cotation le 19. L'offre porte sur 825 millions d'actions de classe A dans une fourchette de 70 à 78 dollars, soit jusqu'à environ 64,4 milliards de dollars levés, auxquels s'ajoute un placement privé de 26 milliards ; la valorisation peut atteindre 1 404 milliards de dollars en base diluée. Jusqu'à 20 % de l'offre est réservée aux particuliers et la demande a dépassé plusieurs fois le nombre de titres. L'opération constitue le principal test de l'appétit du marché pour les valorisations extrêmes de l'IA après la correction du secteur.</p>
+</div>
+<div class="item">
+<h3><a href="https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold" target="_blank">Un cadre d'agents IA exploite des failles sans humain dans la boucle</a></h3>
+<div class="meta">Google Cloud (GTIG) • 16/11/2026</div>
+<p>Le rapport trimestriel AI Threat Tracker de Google Threat Intelligence Group, publié le 16 novembre, décrit exploit_agent : un cadre d'agents d'IA multi-agents fonctionnant de bout en bout qui compare les correctifs aux versions antérieures, en déduit les vulnérabilités, écrit des exploits et les exécute, sans opérateur humain. Le cadre a été retrouvé sur un serveur exposé, et les données de victimes qu'il contenait pointaient vers des sites de médias, de divertissement et d'éducation, notamment français. Google et Mandiant y voient un seuil franchi : l'exploitation de vulnérabilités cesse d'être un travail humain limité par le temps disponible et devient un processus industrialisé à l'échelle de la machine, ce qui déplace la défense vers la réduction du délai de correction.</p>
+</div>
+<div class="item">
+<h3><a href="https://9to5mac.com/2026/11/17/openai-upgrades-chatgpt-and-codex-with-new-gpt-6-2-astra-and-sol-models/" target="_blank">OpenAI lance GPT-6.2 Astra et Sol, moins chers par tâche</a></h3>
+<div class="meta">9to5Mac • 17/11/2026</div>
+<p>OpenAI a mis en ligne le 17 novembre GPT-6.2 Astra, un modèle de frontière destiné aux tâches professionnelles complexes et agentiques, et GPT-6.2 Sol, plus efficace pour les usages quotidiens ; les deux sont accessibles dans ChatGPT, Codex, l'API et GitHub Copilot pour les offres payantes. Astra progresse sur les benchmarks d'agents — notamment « Agents' Last Exam » — tout en coûtant environ un tiers de moins par tâche que ses prédécesseurs, avec un tarif d'API ramené à 8 dollars en entrée et 40 en sortie par million de jetons. OpenAI indique aussi avoir renoncé à une version antérieure pour des motifs de sûreté. La concurrence se déplace ainsi du score brut vers le coût par tâche et la fiabilité en production.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.helpnetsecurity.com/2026/11/17/openai-nato-ai-cyber-defense/" target="_blank">OpenAI ouvre ses modèles de cybersécurité à l'OTAN</a></h3>
+<div class="meta">Help Net Security • 17/11/2026</div>
+<p>Lors du salon NATO Edge 26 à Izmir, l'OTAN et OpenAI ont détaillé le programme Daybreak : les institutions alliées, via l'agence NCIA, accèdent aux modèles de cybersécurité avancés d'OpenAI pour examiner du code, détecter des vulnérabilités, les valider et préparer des correctifs, avec une consommation annoncée pouvant atteindre 300 milliards de jetons par mois. Les modèles ont aussi servi à construire et évaluer des agents lors de l'exercice Crossed Swords 2026, sous supervision humaine. Deux mondes que tout séparait — un laboratoire d'IA commercial et une alliance militaire — formalisent ainsi une relation durable, ce qui pose des questions inédites : dépendance opérationnelle des armées à un fournisseur privé, partage de vulnérabilités et cloisonnement des données entre alliés aux intérêts divergents.</p>
+</div>
+<div class="item">
+<h3><a href="https://technode.com/2026/11/16/alibaba-launches-qwen4-max-with-lower-api-prices-and-a-million-token-context-window/" target="_blank">Alibaba met en disponibilité générale Qwen4-Max, son modèle le plus puissant</a></h3>
+<div class="meta">TechNode • 16/11/2026</div>
+<p>Alibaba a mis en disponibilité générale Qwen4-Max le 16 novembre, après une préversion le 11 : un modèle à experts mélangés de 2 400 milliards de paramètres, avec vision native et une fenêtre de contexte d'un million de jetons, qui revendique les meilleurs scores chinois en codage et en usage agentique tout en réduisant fortement le coût d'exécution des tâches. Le modèle n'est pas en poids ouverts — des variantes plus petites sont annoncées — et l'éditeur met en avant des filtres renforcés contre les usages cyber malveillants. Pour les acheteurs, l'effet est surtout tarifaire : un modèle chinois de premier rang à prix cassé accentue la pression sur les grilles américaines, sans offrir la garantie d'auto-hébergement que recherchent les secteurs régulés.</p>
+</div>
+<div class="item">
+<h3><a href="https://fr.euronews.com/2026/11/17/resultats-trimestriels-cles-pour-nvidia-apres-le-depart-de-jensen-huang" target="_blank">Nvidia double son chiffre d'affaires, mais écarte un retour de Jensen Huang</a></h3>
+<div class="meta">Euronews • 17/11/2026</div>
+<p>Nvidia a publié le 17 novembre ses premiers résultats depuis la démission de Jensen Huang : un chiffre d'affaires de 115,8 milliards de dollars au troisième trimestre, plus que doublé sur un an, et des prévisions supérieures aux attentes. Le conseil d'administration a explicitement écarté le retour de son fondateur, visé par une affaire mêlant relations personnelles et soupçons d'espionnage chinois avec des transferts de puces, et a créé un comité dédié à la sécurité nationale et au contrôle des exportations ; la SEC enquête par ailleurs sur les informations publiées par le groupe. L'action avait perdu plus de 30 % depuis début octobre. Le cas illustre une fragilité nouvelle : la valorisation d'une entreprise indispensable à l'IA repose désormais sur sa gouvernance autant que sur ses puces.</p>
+</div>
+</div>
+</div>
+  </div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🧭 Synthèse — 5 signaux faibles à surveiller</div></div>
+<div class="card-body">
+<div class="signal"><h4>1. L'IA agentique est passée de l'assistant à l'attaquant autonome</h4><p>Un cadre multi-agents, exploit_agent, a été observé exploitant des vulnérabilités sans opérateur humain, avec un intérêt marqué pour des sites français ; au même moment, OpenAI équipe l'OTAN de modèles offensifs-défensifs pour examiner du code et préparer des correctifs. Les deux faces d'une même bascule : la capacité cyber des modèles se banalise et sort du laboratoire pour le terrain opérationnel, militaire comme criminel. Implication concrète : la fenêtre entre publication d'un correctif et exploitation tombe à quelques heures, ce qui rend la gestion des mises à jour — et non la seule détection — décisive pour les organisations sans équipe de sécurité dédiée. À suivre : l'apparition de standards de notification et la riposte des éditeurs sur le durcissement des agents.</p><div class="src"><a href="https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold" target="_blank">https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold</a> · <a href="https://www.01net.com/actualites/google-decouvert-agents-ia-pirates-assaut-plusieurs-sites-francais.html" target="_blank">https://www.01net.com/actualites/google-decouvert-agents-ia-pirates-assaut-plusieurs-sites-francais.html</a> · <a href="https://www.helpnetsecurity.com/2026/11/17/openai-nato-ai-cyber-defense/" target="_blank">https://www.helpnetsecurity.com/2026/11/17/openai-nato-ai-cyber-defense/</a></div></div>
+<div class="signal"><h4>2. La souveraineté européenne se déplace du modèle vers l'infrastructure et l'ingénierie</h4><p>Trois nouvelles de la même semaine dessinent une même stratégie de contournement de la course frontale aux modèles de frontière : OVHcloud publie un modèle compact entraîné sur supercalculateurs publics et joue le coût d'inférence, le consortium EUROPA démontre qu'un modèle de près de 1 000 milliards de paramètres tient sur le supercalculateur public JUPITER, et Mistral vend une IA auto-hébergée pour la simulation industrielle. Implication concrète : l'axe défendable pour les acteurs européens n'est plus le score de benchmark mais le contrôle de l'infrastructure, l'auto-hébergement et l'intégration métier. À suivre : la publication réelle des poids et des performances d'EUROPA et d'Olala, aujourd'hui annoncées sans résultats.</p><div class="src"><a href="https://www.europeanscientist.com/en/big-data/europes-own-ai-model-takes-shape-aiming-for-nearly-a-trillion-parameters/" target="_blank">https://www.europeanscientist.com/en/big-data/europes-own-ai-model-takes-shape-aiming-for-nearly-a-trillion-parameters/</a> · <a href="https://pulse2.com/mistral-develops-sovereign-ai-models-for-industrial-engineering-rd/" target="_blank">https://pulse2.com/mistral-develops-sovereign-ai-models-for-industrial-engineering-rd/</a> · <a href="https://www.numerama.com/tech/2376025-ovh-devoile-olala-son-premier-modele-dia-open-source-mistral-nest-plus-seul-en-france.html" target="_blank">https://www.numerama.com/tech/2376025-ovh-devoile-olala-son-premier-modele-dia-open-source-mistral-nest-plus-seul-en-france.html</a></div></div>
+<div class="signal"><h4>3. Le marché devient le juge de l'IA : l'introduction d'Anthropic et la gouvernance de Nvidia</h4><p>Anthropic fixe ce 18 novembre le prix de la plus grande introduction en Bourse du secteur, jusqu'à 1 404 milliards de dollars de valorisation, tandis que Nvidia double son chiffre d'affaires mais voit son conseil écarter son fondateur et créer un comité de sécurité nationale, sous enquête de la SEC. Les deux événements disent la même chose : la valeur des champions de l'IA se joue désormais autant sur la gouvernance et la conformité que sur la technologie. Implication concrète : une correction du secteur ne viendra pas seulement d'un déficit de demande, mais d'un accident de gouvernance — et les acheteurs de calcul comme les salariés des laboratoires y sont exposés directement. À suivre : le prix définitif et l'accueil de la cotation le 19.</p><div class="src"><a href="https://www.cnbc.com/2026/11/16/anthropic-ipo-date-price-range.html" target="_blank">https://www.cnbc.com/2026/11/16/anthropic-ipo-date-price-range.html</a> · <a href="https://fr.euronews.com/2026/11/17/resultats-trimestriels-cles-pour-nvidia-apres-le-depart-de-jensen-huang" target="_blank">https://fr.euronews.com/2026/11/17/resultats-trimestriels-cles-pour-nvidia-apres-le-depart-de-jensen-huang</a></div></div>
+<div class="signal"><h4>4. L'IA entre dans l'emploi réel et dans le droit du travail par les chiffres</h4><p>Une étude de Coface chiffre à environ 25 000 les offres d'emploi disparues au troisième trimestre dans les métiers exposés à l'IA, avec des reculs de plus de 40 % dans les fonctions RH, tandis que la proposition de loi sur l'IA et le droit d'auteur reste bloquée à la veille de son examen et que les employeurs interrogés par France Travail sous-estiment largement l'effet. Implication concrète : les fonctions de support transverses (ressources humaines, comptabilité, marketing) sont les premières concernées, et ce sont aussi celles qui portent la transformation IA des autres — leur contraction ralentit la capacité d'adaptation des organisations. À suivre : le sort du texte le 19 novembre et la réponse des dispositifs de formation.</p><div class="src"><a href="https://www.franceinfo.fr/internet/intelligence-artificielle/25-000-offres-d-emploi-supprimees-sur-france-travail-a-cause-de-l-ia-quels-secteurs-sont-concernes_8286617.html" target="_blank">https://www.franceinfo.fr/internet/intelligence-artificielle/25-000-offres-d-emploi-supprimees-sur-france-travail-a-cause-de-l-ia-quels-secteurs-sont-concernes_8286617.html</a> · <a href="https://www.lefigaro.fr/flash-eco/ia-et-droit-d-auteur-une-proposition-de-loi-pour-proteger-la-creation-toujours-enlisee-a-l-assemblee-20261117" target="_blank">https://www.lefigaro.fr/flash-eco/ia-et-droit-d-auteur-une-proposition-de-loi-pour-proteger-la-creation-toujours-enlisee-a-l-assemblee-20261117</a> · <a href="https://www.telerama.fr/debats-reportages/ia-et-droits-d-auteur-entre-lobbying-et-obstruction-les-coulisses-d-une-proposition-de-loi-qui-derange-7033858.php" target="_blank">https://www.telerama.fr/debats-reportages/ia-et-droits-d-auteur-entre-lobbying-et-obstruction-les-coulisses-d-une-proposition-de-loi-qui-derange-7033858.php</a></div></div>
+<div class="signal"><h4>5. La licence de contenus devient le modèle économique de l'IA dans les médias</h4><p>Le pôle médias de LVMH — Le Parisien, Les Échos et quinze autres titres — signe avec OpenAI un accord qui mêle déploiement d'outils et exploitation de contenus sourcés, deuxième du genre en France après Le Monde, alors que le débat sur la présomption d'usage des œuvres reste ouvert au Parlement. Implication concrète : la négociation se déplace du contentieux vers le contrat, ce qui avantage les groupes capables de négocier en bloc et laisse les éditeurs isolés et les créateurs individuels sans levier équivalent. À suivre : le contenu réel des contreparties financières — rarement rendues publiques — et l'effet d'entraînement sur les autres titres de presse.</p><div class="src"><a href="https://www.leparisien.fr/high-tech/intelligence-artificielle-le-parisien-et-les-medias-du-groupe-lvmh-signent-un-partenariat-avec-openai-16-11-2026-3SN5FRYKKJH2PC44VTDISBJMUI.php" target="_blank">https://www.leparisien.fr/high-tech/intelligence-artificielle-le-parisien-et-les-medias-du-groupe-lvmh-signent-un-partenariat-avec-openai-16-11-2026-3SN5FRYKKJH2PC44VTDISBJMUI.php</a> · <a href="https://www.mlex.com/mlex/articles/2550665/eu-uk-plan-digital-partnership-covering-ai-safety-quantum" target="_blank">https://www.mlex.com/mlex/articles/2550665/eu-uk-plan-digital-partnership-covering-ai-safety-quantum</a></div></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+<div class="card-body">
+<div class="item"><p>La journée du 18 novembre est chargée : Anthropic fixe le prix définitif de son introduction en Bourse le soir même, pour une cotation attendue le 19 sur le Nasdaq sous le code « ANT », et la Commission européenne doit présenter son Quantum Act. Le 19, deux rendez-vous français se télescopent : l'Assemblée nationale examine la proposition de loi Darcos sur l'IA et le droit d'auteur — un rejet ou un nouveau report dirait beaucoup du poids des industriels de l'IA dans l'arbitrage — et OVHcloud tient son AI Summit, où les poids définitifs d'Olala et ses résultats doivent être publiés. Le 20, le sommet UE-Royaume-Uni à Bruxelles doit sceller un partenariat numérique couvrant la sûreté de l'IA et le quantique. Reste la question des moyens : après le chiffrage de 500 milliards d'euros à Dublin et l'appel de Macron à une commande publique massive, la Commission a promis une proposition de financement d'ici fin novembre, alors que les candidatures aux gigafactories d'IA attendent toujours leurs montages. Enfin, la consultation ouverte le 16 novembre sur l'analyse d'impact droits fondamentaux de l'AI Act court jusqu'au 15 janvier 2027 : les retours des déployeurs y diront si l'obligation est vécue comme une contrainte ou comme un outil.</p></div>
+</div>
+</div>
+  <div class="card">
+<div class="card-head"><div class="card-title">🇫🇷 Focus Mistral</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.sovereignmagazine.com/article/mistral-vibe-pro-free-europe-le-chonk" target="_blank">Mistral offre trois mois de Vibe Pro aux développeurs européens</a></h3>
+<div class="meta">Sovereign Magazine • 17/11/2026</div>
+<p>Le 17 novembre, Mistral AI a annoncé offrir trois mois de Vibe Pro — l'abonnement à 17,99 € par mois de son assistant et agent de codage, anciennement Le Chat — aux développeurs européens, avec le code promotionnel « LECHONK », du nom de Mistral Large 4. L'éditeur accompagne l'offre d'un argument de performance : Le Chonk couplé à Vibe serait le meilleur duo modèle-outil ouvert du marché, devant GLM et DeepSeek sur les tâches de codage agentique. Les codes ont été épuisés en quelques heures, la société promettant de nouvelles disponibilités. La manœuvre est double : gagner des développeurs au moment où les modèles chinois progressent sur le rapport qualité-prix, et transformer une performance de benchmark en base installée.</p>
+</div>
+<div class="item">
+<h3><a href="https://pulse2.com/mistral-develops-sovereign-ai-models-for-industrial-engineering-rd/" target="_blank">Mistral développe une IA souveraine auto-hébergée pour l'ingénierie industrielle</a></h3>
+<div class="meta">Pulse 2.0 • 17/11/2026</div>
+<p>La presse spécialisée a documenté le 17 novembre le chantier industriel de Mistral AI : des modèles souverains auto-hébergés destinés à l'ingénierie et aux secteurs régulés, déployables sur l'infrastructure contrôlée du client. L'effort prolonge le rachat de l'autrichien Emmi AI, spécialiste des modèles « physiques » qui simulent en quelques secondes des calculs de mécanique des fluides, d'aérodynamique ou de contraintes matériaux qui prennent habituellement des jours. Les clients visés — semi-conducteurs, automobile, aéronautique, énergie — sont précisément ceux qui ne peuvent ni envoyer leurs données à un service cloud tiers ni se passer des gains de simulation. Mistral quitte donc la seule course aux modèles généralistes pour vendre une brique verticale, plus défendable et plus difficile à répliquer.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.zdnet.fr/actualites/investissement-tech-leurope-cherche-des-financements-pour-sa-souverainete-numerique-507974.htm" target="_blank">Macron et Mensch appellent l'Europe à investir des milliards dans l'IA</a></h3>
+<div class="meta">ZDNet France • 17/11/2026</div>
+<p>Après le premier sommet européen consacré à l'IA à Dublin, Emmanuel Macron et le PDG de Mistral AI Arthur Mensch ont appelé, dans des interventions rapportées le 17 novembre, les États européens à investir massivement et à attribuer de grands contrats à leurs acteurs technologiques. Le président français cite Mistral parmi les rares champions européens en mesure de rivaliser sur les modèles de frontière, et chiffre l'effort à environ 50 milliards d'euros publics-privés sur cinq ans, avec un objectif de capacité de calcul de l'ordre du gigawatt à l'horizon 2028 — contre au moins 500 milliards d'euros pour l'ensemble du continent. L'argument implicite est que la commande publique, plus que la subvention, a construit les champions américains.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.telerama.fr/debats-reportages/ia-et-droits-d-auteur-entre-lobbying-et-obstruction-les-coulisses-d-une-proposition-de-loi-qui-derange-7033858.php" target="_blank">Droit d'auteur : les coulisses du lobbying de Mistral à l'Assemblée</a></h3>
+<div class="meta">Télérama • 13/11/2026</div>
+<p>Un reportage de Télérama publié le 13 novembre décrit les coulisses du blocage de la proposition de loi Darcos sur l'IA et le droit d'auteur : un lobbying intense des industriels du numérique, Mistral AI en tête, aux côtés de 110 amendements déposés par des députés du groupe Renaissance destinés à empêcher la discussion du texte. L'enjeu porte sur une présomption d'usage des contenus protégés, qui renverserait la charge de la preuve au bénéfice des ayants droit et des éditeurs. L'Alliance de la presse d'information générale dénonce de son côté un contournement du débat parlementaire. Le dossier devient révélateur d'un alignement inattendu : les intérêts du champion national de l'IA pèsent désormais dans l'arbitrage d'une loi sur la création.</p>
+</div>
+</div>
+</div>
+  <footer>
+    <p>Généré le 18 novembre 2026 par Hermes (veille IA global). Template moderne inline (dark theme, KPIs, cartes responsive). Fichiers : veille-IA-2026-11-18.md + .html</p>
+    <p>Corpus : 15 articles d'actualité (France 5 / Europe 4 / Monde 6) + 4 articles Focus Mistral. Dates de publication vérifiées sur chaque page source.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>

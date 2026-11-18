@@ -1,0 +1,291 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille Innovations Diabète — 18 novembre 2026</title>
+<style>
+    :root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background: radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent), radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent), var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius:18px; color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.6rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,#0f172a,#0b1220);
+      border-radius:14px; padding:14px 16px;
+    }
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi-click{cursor:pointer;transition:box-shadow .3s}
+    .kpi-click:hover{box-shadow:0 0 0 2px var(--accent,#40dcff)}
+    .zone-flash{animation:zflash 1.6s ease}
+    @keyframes zflash{0%{box-shadow:0 0 0 3px rgba(64,220,255,.9)}70%{box-shadow:0 0 0 3px rgba(64,220,255,.35)}100%{box-shadow:0 0 0 0 rgba(64,220,255,0)}}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#40dcff;color:#010409;border-color:#40dcff}
+    .pill.green{background:#7bffb2;color:#010409;border-color:#7bffb2}
+    .pill.yellow{background:#ffb347;color:#010409;border-color:#ffb347}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,#0f172a,#0b1220);border-radius:18px;box-shadow:var(--shadow)}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .item p{margin:0;font-size:.92rem;color:#e5e7eb}
+    html[data-theme="light"] .item p{color:#1f2937}
+    .arxiv-section{margin-top:22px}
+    .arxiv-section h2{font-size:1.1rem;margin:0 0 10px}
+    .footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    .footer p{margin:4px 0}
+
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+</head><body>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-11-18.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🩺 Veille Innovations Diabète</h1>
+      <p>Sources FR prioritaires • Technologies, capteurs MCG, pompes &amp; pancréas artificiel, recherche, Big Pharma — généré par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-18">18 novembre 2026</time>
+  </header>
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-france')" title="Aller à la section 🇫🇷 France"><div class="label">🇫🇷 France</div><div class="value">6</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-europe')" title="Aller à la section 🇪🇺 Europe &amp; Suisse"><div class="label">🇪🇺 Europe &amp; Suisse</div><div class="value">3</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-monde')" title="Aller à la section 🌐 Monde"><div class="label">🌐 Monde</div><div class="value">3</div></div>
+  </div>
+  <div class="badges">
+    <span class="pill blue">📰 12 articles</span>
+    <span class="pill green">📅 18 novembre 2026</span>
+    <span class="pill yellow">🔬 4 cartes Prospective</span>
+  </div>
+
+  <div class="grid">
+<div class="card">
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.federationdesdiabetiques.org/federation/actualites/decouvrez-la-nouvelle-campagne-de-collecte-de-dons-de-la-federation-pour-faire-vivre-ses-actions-daccompagnement" target="_blank">La Fédération Française des Diabétiques lance sa campagne de dons : 250 000 € à réunir avant le 31 décembre</a></h3>
+<div class="meta">Fédération Française des Diabétiques • 17/11/2026</div>
+<p>Trois jours après la Journée mondiale du diabète, la Fédération Française des Diabétiques a ouvert, le 17 novembre 2026, sa campagne de collecte de dons de fin d'année : elle doit réunir 250 000 € d'ici le 31 décembre pour poursuivre ses missions, sous un mot d'ordre explicite — « Ne laissons personne seul face à son diabète ». L'argument central de la campagne tient à un écart de temps : sur une année, une personne atteinte d'une maladie chronique passe entre cinq et dix heures avec ses soignants, et se retrouve seule le reste du temps pour gérer son quotidien et se soigner. La Fédération rappelle le poids de cette solitude : 4,4 millions de personnes vivent avec un diabète en France et, dans le monde, 77 % des personnes vivant avec un diabète ont connu un trouble de la santé mentale lié à leur maladie. C'est pourquoi l'accompagnement entre patients, qu'elle place au cœur de ses missions depuis près de vingt ans, est la cible de la collecte. Les rencontres organisées partout en France sont animées par des Bénévoles Patients Experts (BPE), eux-mêmes concernés par la maladie ; ces temps d'échange servent à partager l'expérience vécue, à trouver du soutien et des conseils concrets, mais aussi à alléger la charge mentale, renforcer la confiance en soi et rompre l'isolement. Ces bénévoles suivent une formation de 40 heures dispensée par la Fédération et sont certifiés en éducation thérapeutique du patient. La campagne chiffre ce que finance chaque don : 60 € (20,40 € après réduction fiscale) financent une heure de formation d'un futur Bénévole Patient Expert, 120 € permettent à quatre personnes de bénéficier de la ligne Écoute Solidaire tenue par ces bénévoles, et 200 € financent cinq heures de soutien en ligne.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.leprogres.fr/economie/2026/11/17/comment-sanofi-a-relocalise-un-medicament-contre-le-diabete-a-lyon" target="_blank">Comment Sanofi a relocalisé à Lyon la production du premier traitement qui retarde le diabète de type 1</a></h3>
+<div class="meta">Le Progrès • Semaine de l'Industrie • 17/11/2026</div>
+<p>Sanofi a fait de son site de Lyon Gerland la vitrine de sa « souveraineté sanitaire » : le laboratoire y a transféré la production du téplizumab, commercialisé sous le nom de Tzield, première biothérapie capable de retarder l'apparition du diabète de type 1 au stade 3, c'est-à-dire clinique, de deux à trois ans chez les enfants à partir de 8 ans et chez les adultes. Acquise aux États-Unis en 2023, cette biothérapie était jusqu'ici produite hors de France. Un an après le début du transfert de technologie, le site lyonnais produit les premiers lots destinés à la commercialisation sur une plateforme dédiée. L'article a été publié à l'occasion de la Semaine de l'Industrie : le nouveau syndicat Initiative Pharma a choisi ce site pour une « démonstration de la souveraineté en acte », en présence des médias. L'intérêt de l'annonce tient au médicament lui-même autant qu'à la géographie de sa production. Le téplizumab est un anticorps monoclonal qui agit sur le mécanisme auto-immun à l'origine de la destruction des cellules bêta : il ne guérit pas le diabète de type 1, mais ralentit la progression de la maladie chez les personnes identifiées à un stade précoce. Le décalage de deux à trois ans, modeste à l'échelle d'une vie, change la donne pour de jeunes patients — « cela peut paraître peu, mais pour des jeunes patients cela veut dire finir le collège », résume un responsable du laboratoire cité par le quotidien régional. Pour la France, l'enjeu est aussi industriel : la relocalisation d'une bioproduction complexe sur le territoire, dans un contexte de tensions entre la filière pharmaceutique européenne et les autorités allemandes sur le prix du médicament.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.lequotidiendumedecin.fr/actu-medicale/maladies-cardiometaboliques-et-renales-lihu-ican-plaide-pour-une-approche-integree" target="_blank">Maladies cardiométaboliques et rénales : l'IHU Ican plaide pour une approche intégrée</a></h3>
+<div class="meta">Le Quotidien du Médecin • 16/11/2026</div>
+<p>L'Institut hospitalo-universitaire Cardiométabolisme et nutrition (IHU Ican), basé à la Pitié-Salpêtrière à Paris, a dévoilé début novembre son baromètre annuel sur la perception par les Français des maladies cardiovasculaires, métaboliques et rénales. Quatrième édition consécutive de cette enquête, et même constat : les maladies cardiovasculaires sont bien identifiées comme parmi les plus préoccupantes, mais les maladies métaboliques — dont le diabète — restent méconnues, et surtout les liens qui les unissent le sont tout autant. Le message de l'IHU est que ce déficit de perception n'est pas qu'une question de culture générale : il a des conséquences sur la trajectoire des patients, car un diabète de type 2 mal repéré retarde la détection des atteintes rénales et cardiovasculaires qui l'accompagnent souvent. L'institut plaide donc pour une approche intégrée de ces pathologies, plutôt qu'un suivi cloisonné par spécialité. L'enjeu dépasse le diabète seul : le rein et le cœur sont les deux organes qui décident le plus souvent du pronostic à long terme d'une personne vivant avec un diabète, et les traitements qui les protègent — inhibiteurs de SGLT2, agonistes du récepteur du GLP-1, nouvelles molécules agissant sur le métabolisme — existent désormais. Encore faut-il que les patients et les soignants les associent mentalement à leur maladie. Pour un institut de recherche comme Ican, qui travaille sur le continuum entre obésité, diabète, insuffisance rénale et maladies cardiovasculaires, cette enquête sert d'argument pour faire évoluer les parcours de soins vers une prise en charge qui ne sépare plus ce que la biologie réunit.</p>
+</div>
+<div class="item">
+<h3><a href="https://info.medadom.com/blog/arret-medicaments-diabete" target="_blank">Novo Nordisk arrête cinq présentations antidiabétiques en France au 31 décembre 2026</a></h3>
+<div class="meta">MEDADOM (d'après Novo Nordisk, ANSM, EMA) • 17/11/2026</div>
+<p>Le laboratoire Novo Nordisk a prévu l'arrêt de la commercialisation de cinq présentations utilisées dans le traitement du diabète au 31 décembre 2026, selon un courrier adressé aux professionnels de santé et rédigé en accord avec l'ANSM : toute la gamme Levemir (insuline détémir, en stylo FlexPen et en cartouche Penfill), NovoMix 50 FlexPen (insuline asparte biphasique), Fiasp Pumpcart (cartouche d'insuline rapide pour pompe) et Victoza (liraglutide, analogue du GLP-1 indiqué dans le diabète de type 2). Pour Fiasp Pumpcart et Victoza, l'Agence européenne du médicament confirme qu'il s'agit d'une décision commerciale, sans lien avec un problème de qualité ou de sécurité : le laboratoire recentre sa production sur ses traitements les plus récents, comme il l'avait déjà fait pour NovoNorm, Actrapid et Insulatard fin septembre 2025. Le retrait est progressif et la disponibilité peut se réduire avant l'échéance ; des ruptures ponctuelles de Victoza sont signalées dans certains pays européens. Ne sont pas concernés Fiasp en flacon, Fiasp FlexTouch, Fiasp Penfill, NovoMix 30 FlexPen et NovoMix 30 en cartouche. Le point le plus sensible concerne les pompes à insuline : selon l'ANSM, les cartouches NovoRapid Pumpcart devraient rester en tension d'approvisionnement en ville jusqu'au troisième trimestre 2027, et l'agence recommande de ne pas prescrire NovoRapid Pumpcart ni Fiasp Pumpcart à de nouveaux patients. Le bon réflexe rappelé par l'article est d'en parler dès maintenant à son médecin pour organiser le relais, sans jamais changer de traitement soi-même : un changement d'insuline demande souvent d'ajuster les doses et les horaires, avec une surveillance glycémique renforcée les premières semaines.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.franceinfo.fr/replay-radio/c-est-ma-sante-conseils/quels-sont-les-nouveaux-moyens-pour-surveiller-son-diabete-de-type-2_8242234.html" target="_blank">Surveiller son diabète de type 2 : ce que change la mesure continue du glucose</a></h3>
+<div class="meta">franceinfo — « C'est ma santé conseils » (avec l'AP-HP) • 15/11/2026</div>
+<p>À l'occasion de la Journée mondiale du diabète, franceinfo consacre son émission de conseils santé au suivi du diabète de type 2, avec le docteur Chloé Amouyal, endocrinologue-diabétologue et praticienne hospitalière au service de diabétologie de la Pitié-Salpêtrière à Paris. Le rappel de base : plus de 4 millions de personnes vivent avec un diabète en France, dont seulement environ 6 % de type 1 — une forme à symptômes brutaux, qu'il faut savoir reconnaître (« je fais beaucoup de pipi, je bois beaucoup et je perds du poids »). Le diabète de type 2, lui, ne présente pratiquement aucun symptôme au début, d'où la règle française d'un dépistage systématique au-delà de 45 ans en présence d'autres facteurs de risque. Sur le suivi, l'entretien détaille la bascule en cours : le contrôle repose d'abord sur des marqueurs sanguins mesurés tous les trois mois, mais lorsque le traitement fait baisser la glycémie — en particulier l'insuline — on utilise des capteurs, remboursés chez les personnes traitées par insuline. La praticienne décrit un capteur comme une petite fiche ancrée sous la peau qui mesure le glucose en continu : la pose est simple, comparable à celle d'un tampon sur le bras. L'avantage sur la goutte de sang classique est double : le capteur donne non seulement la valeur du moment, mais aussi tout ce qui s'est passé avant, et il affiche une « flèche de tendance », sorte de prédiction de l'évolution de la glycémie. Pour une personne vivant avec un diabète de type 2, cela permet de voir concrètement quel repas fait monter la glycémie et d'adapter ses choix, sans se substituer au médecin, seul habilité à ajuster la prise en charge.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.midilibre.fr/2026/11/12/a-nimes-medecins-et-patients-poursuivent-ensemble-le-combat-contre-le-diabete-13648916.php" target="_blank">À Nîmes, médecins et patients poursuivent ensemble le combat contre le diabète</a></h3>
+<div class="meta">Midi Libre • 12/11/2026</div>
+<p>À deux jours de la Journée mondiale du diabète du 14 novembre, un stand a été installé le jeudi 12 novembre dans le hall du CHU de Nîmes, à l'initiative de l'hôpital et de l'association des diabétiques du Gard. Le quotidien régional en profite pour dresser un état des lieux local : rien que dans le Gard, la Fédération Française des Diabétiques recense plus de 53 000 malades, tous types de diabète confondus, dans un contexte d'explosion du nombre de cas en France. L'article met en avant deux mouvements parallèles. D'un côté, les avancées technologiques qui ont soulagé le quotidien : capteurs de glycémie en temps réel, pompes à insuline « presque dotées d'IA », et progrès notables dans la détection du diabète de type 1 chez les enfants avant qu'il ne se déclare. La cheffe du service maladies métaboliques et endocriniennes du CHU souligne un effet moins attendu : la maladie est devenue plus visible, à la fois par les capteurs portés au bras et par des personnalités qui en parlent publiquement, alors qu'être malade était auparavant un tabou. De l'autre côté, les alertes restent vives : la clinique du pied diabétique du CHU enregistre environ 800 nouveaux patients par an, et une personne y est amputée d'un membre chaque semaine en moyenne à la suite d'une infection du pied favorisée par un diabète déséquilibré. Le constat social est explicite : les catégories les plus défavorisées restent celles qui souffrent le plus des complications. L'association du Gard organise en réponse un forum gratuit le samedi 28 novembre aux archives départementales de Nîmes, qui avait accueilli plus de 300 personnes l'an dernier.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-europe"><div class="card-title">🇪🇺 Europe &amp; Suisse</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.sib.swiss/news/from-risk-markers-to-drug-leads-4-discoveries-for-world-diabetes-day" target="_blank">Journée mondiale du diabète : quatre découvertes de la bio-informatique suisse, des marqueurs de risque aux pistes médicamenteuses</a></h3>
+<div class="meta">Institut suisse de bio-informatique (SIB), Lausanne • 12/11/2026</div>
+<p>À l'occasion de la Journée mondiale du diabète, l'Institut suisse de bio-informatique (SIB) met en avant quatre résultats issus de ses travaux dans de grands consortiums européens public-privé consacrés au diabète de type 2. Premier résultat, sur l'évaluation du risque : l'âge est le facteur de risque le plus fortement associé au diabète de type 2, mais vieillissement et maladie laissent des empreintes de méthylation de l'ADN presque entièrement distinctes dans les îlots pancréatiques. Un score fondé sur les modifications liées à l'âge distingue mieux les donneurs atteints de diabète qu'un score de risque génétique, et la combinaison des deux pourrait affiner l'évaluation. Deuxième résultat, le plus directement thérapeutique : des cellules bêta productrices d'insuline provenant de 13 des 21 donneurs diabétiques étudiés ont retrouvé une partie de leur réponse au sucre après seulement trois jours replacées à des niveaux de glucose normaux — un taux proche de celui observé après chirurgie de l'obésité ou régime très hypocalorique. Les gènes activés pendant cette récupération ressemblaient à ceux activés par le baricitinib, un anti-inflammatoire autorisé dans la polyarthrite rhumatoïde ; traiter des cellules bêta humaines avec ce médicament a amélioré la sécrétion d'insuline et ralenti la défaillance des cellules bêta chez des souris diabétiques. Troisième résultat : un test urinaire pourrait dire qui bénéficie le plus de l'atrasentan, un médicament qui ralentit la maladie rénale du diabète de type 2 — les patients ayant davantage de clusterine urinaire ont les moins bons pronostics rénaux, et six semaines de traitement réduisaient ce taux de 43 %, la baisse étant d'autant plus protectrice qu'elle est forte. Quatrième résultat : les podocytes, cellules qui filtrent le sang dans le rein, dépendent de la signalisation de l'insuline et de l'IGF1 pour rester sains, une piste nouvelle pour comprendre leur perte dans la maladie rénale.</p>
+</div>
+<div class="item">
+<h3><a href="https://hadea.ec.europa.eu/news/intercept-t2d-project-personalising-type-2-diabetes-prevention-and-treatment-through-inflammation-2026-11-13_en" target="_blank">Diabète de type 2 : quatre profils immunitaires détectables par une simple prise de sang</a></h3>
+<div class="meta">HaDEA — Commission européenne (projet INTERCEPT-T2D) • 13/11/2026</div>
+<p>L'Agence exécutive européenne pour la santé et le numérique (HaDEA) consacre, en cette Journée mondiale du diabète, une interview au projet Horizon Europe INTERCEPT-T2D, qui cherche pourquoi certaines personnes vivant avec un diabète de type 2 développent des complications graves beaucoup plus tôt que d'autres. L'hypothèse de travail est l'inflammation chronique de bas grade, possible déclencheur précoce des atteintes cardiovasculaires, rénales, oculaires, nerveuses et hépatiques. Le résultat principal, publié dans Cell Metabolism, est l'identification de quatre sous-groupes immunométaboliques — des endotypes — à partir des seules numérations formule sanguine de plus de 1 500 personnes récemment diagnostiquées, dans trois cohortes européennes. Deux de ces profils sont associés à un risque plus élevé de complications cardiovasculaires et rénales et de mortalité. Leur intérêt pratique tient à trois propriétés : ils sont détectables tôt, ils restent relativement stables dans le temps, et ils reposent sur un examen de routine, ce qui les rend utilisables sans technologie nouvelle. L'entretien revient aussi sur un jalon clinique du projet : le lancement de l'essai de phase II DAPAN-DIA, qui doit inclure environ 300 personnes atteintes de diabète de type 2 dans plusieurs centres européens et évaluer le dapansutrile, une molécule qui agit sur la voie inflammatoire NLRP3. Le message d'ensemble est celui d'une médecine qui cesse de traiter « le diabète de type 2 » comme une maladie unique : à côté des sous-types déjà décrits par la clinique, les profils immunitaires pourraient servir à cibler la prévention et à ajuster les traitements selon le risque réel de chaque patient.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.rtbf.be/article/pompes-a-insuline-capteurs-de-glycemie-a-qui-profitent-les-donnees-des-diabetiques-11816675" target="_blank">Pompes à insuline et capteurs : à qui profitent les données des personnes diabétiques ?</a></h3>
+<div class="meta">RTBF (Belgique) • 17/11/2026</div>
+<p>La RTBF ouvre un dossier sur un angle mort du matériel connecté du diabète : la propriété et l'accès aux données de glycémie. Il y a quinze ans, une personne diabétique notait sa glycémie sur un carnet, après une piqûre au doigt ; aujourd'hui, capteurs et pompes transmettent en continu des données au smartphone du patient — mais aussi, et sans option possible, dans des clouds qui appartiennent aux fabricants. Le déclencheur du sujet est un épisode d'octobre : l'américain Dexcom a demandé à ses utilisateurs aux États-Unis et au Royaume-Uni d'accepter de nouvelles conditions légales d'utilisation de son application, sous peine de devoir la désinstaller. Une entreprise peut-elle conditionner l'accès d'un patient à ses propres données de santé, et donc à la gestion de sa maladie, à l'acceptation de nouvelles clauses ? Le dossier relaie le travail du Dr Shane O'Donnell, chercheur à l'University College de Dublin et lui-même diabétique, coauteur de la Charte des droits relatifs aux données sur le diabète : le texte, né en novembre 2023 de sept tables rondes réunissant plus de 40 personnes concernées issues de 16 pays, avec des chercheurs en médecine et en droit de Birmingham et Dublin, réclame plus de transparence et de collaboration de la part des industriels. Le témoignage d'un patient est cité : les fabricants ne montrent qu'un aperçu des données, pas les données elles-mêmes, et il ne peut pas récupérer son historique — « mes données sont captives, alors qu'il s'agit de mes propres données, générées par mon corps ». Le professeur Laurent Crenier, chef du service d'endocrinologie de l'Hôpital universitaire de Bruxelles, ajoute une conséquence scientifique : sans l'accord de la firme, ni lui ni ses patients ne peuvent utiliser ces données, même pour une étude locale sur le contrôle glycémique.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.prnewswire.com/news-releases/fda-clears-minimed-fit--worlds-first-and-only-tubeless-insulin-pump-with-up-to-seven-day-wear-and-zero-interruptions-302940510.html" target="_blank">La FDA autorise le MiniMed Fit, première pompe à insuline sans tubulure du groupe</a></h3>
+<div class="meta">MiniMed / PR Newswire (traduit) • 16/11/2026</div>
+<p>MiniMed a annoncé le 16 novembre 2026 l'autorisation par la FDA américaine du MiniMed Fit, sa première pompe à insuline sans tubulure — une étape réglementaire obtenue avant le calendrier prévu. Le dispositif combine jusqu'à sept jours de port sans recharge ni changement de cartouche, une capacité de 300 unités d'insuline, le pilotage par application sur iOS et Android et la technologie d'administration automatisée SmartGuard, déjà éprouvée sur les pompes à tubulure du groupe. À la commercialisation, il acceptera deux capteurs tout-en-un : le Simplera Sync, porté jusqu'à sept jours, et l'Instinct d'Abbott, porté jusqu'à quinze jours. Sur le papier, le MiniMed Fit affiche jusqu'à deux fois la durée de port et 50 % de capacité d'insuline en plus par rapport aux autres pompes sans tubulure, ce qui réduit le nombre de changements de dispositif. L'automatisation fonctionne par paliers de cinq minutes — le système ajuste la délivrance d'insuline et peut administrer des doses correctives à ce rythme — et une fonction de détection des repas permet de délivrer de l'insuline supplémentaire lorsqu'une dose de repas a été oubliée ou sous-estimée. MiniMed cite des utilisateurs réels de SmartGuard atteignant jusqu'à 80 % de temps dans la cible glycémique, dont 91 % la nuit, avec les réglages recommandés. La pompe est conçue pour être portée au bras, au bas du dos, aux fesses, à l'abdomen ou à la cuisse, et n'est compatible qu'avec trois insulines rapides (Humalog, NovoLog, Admelog). Le lancement américain est prévu au printemps 2027, par étapes, via le circuit de la pharmacie, après une phase d'évaluation par de premiers utilisateurs ; MiniMed annonce par ailleurs travailler à une boucle entièrement fermée de nouvelle génération, encore à l'état de recherche.</p>
+</div>
+<div class="item">
+<h3><a href="https://fr.finance.yahoo.com/actualites/tandem-diabetes-care-re%C3%A7oit-plusieurs-133000366.html" target="_blank">Santé Canada élargit les indications du t:slim X2 : capteur FreeStyle Libre 3 Plus, grossesse et diabète de type 2</a></h3>
+<div class="meta">Tandem Diabetes Care — communiqué (via Yahoo Finance France) • 12/11/2026</div>
+<p>Tandem Diabetes Care a annoncé le 12 novembre 2026 avoir obtenu de Santé Canada une modification de licence pour sa pompe à insuline t:slim X2 équipée de la technologie d'administration automatisée d'insuline Control-IQ+. Trois changements en découlent. Le premier est l'ajout de la compatibilité avec le capteur FreeStyle Libre 3 Plus d'Abbott : le t:slim X2 rejoint donc les systèmes capables de faire fonctionner une boucle semi-fermée avec un capteur à quinze jours de port, aux côtés du Dexcom G7 aujourd'hui remboursé en France avec cette même pompe. Le deuxième est l'extension de l'indication au diabète de type 1 pendant la grossesse — une période où l'équilibre glycémique est particulièrement difficile à tenir et où l'automatisation partielle a montré des bénéfices dans plusieurs essais. Le troisième est l'extension de l'indication aux adultes atteints de diabète de type 2 : la boucle fermée hybride, longtemps réservée au diabète de type 1, gagne progressivement le type 2, où l'insulinothérapie concernait jusqu'ici surtout des schémas basaux simples. La société précise que la compatibilité avec le capteur FreeStyle Libre 3 Plus et la disponibilité de ces indications élargies sont attendues au deuxième trimestre 2027 au Canada. Cette annonce s'inscrit dans un mouvement plus large observé tout au long de l'automne : la fin du verrouillage entre marques de capteurs et marques de pompes, qui redonne aux patients et aux équipes qui les équipent une marge de choix — sous réserve, comme toujours, des règles de remboursement propres à chaque pays.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.auckland.ac.nz/en/news/2026/11/13/researchers-trial-AI-coach-for-diabetes.html" target="_blank">Nouvelle-Zélande : l'université d'Auckland teste DiNa, un coach vocal assisté par IA pour le diabète de type 2</a></h3>
+<div class="meta">University of Auckland (Waipapa Taumata Rau) • 13/11/2026</div>
+<p>L'Institut de bio-ingénierie d'Auckland (ABI) teste DiNa, un coach de santé numérique propulsé par l'intelligence artificielle, conçu pour aider les personnes vivant avec un diabète de type 2 à tenir leurs habitudes favorables à la santé entre deux rendez-vous médicaux. Le projet, dirigé par le Dr Gonzalo Maso Talou avec le doctorant Kekayan Nanthakumar, bénéficie de plus de 4 millions de dollars néo-zélandais de financement public et s'inscrit dans le programme de jumeau numérique de l'institut. Le constat de départ est simple : pour beaucoup de personnes vivant avec un diabète de type 2, la difficulté n'est pas de comprendre ce qu'il faut faire, mais de le faire régulièrement, car la maladie progresse silencieusement et un oubli n'a pas de conséquence immédiate. Le principe de DiNa est de ne pas guérir, mais d'augmenter les chances de suivre le plan décidé avec le clinicien : « Ce que nous essayons de faire, c'est augmenter les chances des gens de suivre le plan de traitement qu'ils ont élaboré avec leur clinicien », résume le chercheur. Le système s'appuie sur des photos de repas, le suivi des médicaments, les données d'activité du téléphone et des capteurs de glucose en continu ; l'utilisateur photographie un repas et l'IA identifie les aliments et estime calories, glucides et protéines, avec correction possible à la voix. Surtout, l'interface est uniquement vocale : les premiers prototypes à avatar parlant n'ont pas convaincu, alors que la conversation semble moins exigeante et plus naturelle. DiNa n'est pas un substitut du clinicien : ses informations proviennent de ressources néo-zélandaises sélectionnées avec des partenaires cliniques et il renvoie vers un professionnel quand un avis médical est nécessaire. L'étude en cours suit 10 participants pendant trois mois, la moitié avec DiNa, l'autre avec un outil existant — dans un pays où plus de 365 000 personnes vivaient avec un diabète en 2025, un chiffre en hausse de plus de 40 % depuis 2011.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class="arxiv-section">
+    <h2>🔬 Prospective &amp; Recherche</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Recherche &amp; essais précoces</div></div>
+        <div class="card-body">
+<div class="item">
+<h3><a href="https://www.medtechfrance.fr/actualites/diabete-organoides-ilots-pancreatiques-puce-cea/" target="_blank">Des organoïdes d'îlots pancréatiques « sur puce » au CEA pour modéliser le diabète de type 1</a></h3>
+<div class="meta">MedTech France (travaux du CEA-Irig et du CEA-Leti) • 15/11/2026</div>
+<p>Le CEA met en lumière les travaux d'Emily Tubbs, chercheuse au CEA-Irig, sur des organoïdes d'îlots pancréatiques associés à la microfluidique du CEA-Leti, dans le cadre de son réseau « Femmes de Tech » de l'Académie des technologies. L'objectif n'est pas un nouveau traitement, mais un modèle : les îlots pancréatiques régulent la glycémie, et les reproduire partiellement sur puce doit servir à mieux comprendre le diabète de type 1, à étudier l'effet de médicaments et à suivre les greffes d'îlots. La chercheuse décrit une difficulté très concrète : échantillons humains, dispositif technique et suivi expérimental doivent être coordonnés, une simple bulle d'air pouvant perturber une expérience — d'où l'intérêt d'une collaboration entre biologistes et ingénieurs. L'article prend soin d'encadrer la promesse : l'expression « sur puce » ne signifie pas qu'un organe complet est reproduit, et aucune donnée d'essai clinique n'établit à ce stade la performance d'un test diagnostique. La question ouverte est méthodologique avant d'être technologique : comment passer d'un modèle de laboratoire à une information qui éclaire réellement une décision médicale. La prochaine étape à examiner sera une validation documentée sur une question précise, plus que la présence d'une puce dans le dispositif.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.breakthrought1d.org/for-the-media/press-releases/allarta-life-science-moves-canadian-developed-type-1-diabetes-cell-therapy-closer-to-the-clinic-with-breakthrough-t1d-award/" target="_blank">Une bourse de Breakthrough T1D pour rapprocher de la clinique une thérapie cellulaire du diabète de type 1 sans immunosuppression</a></h3>
+<div class="meta">Breakthrough T1D / Allarta Life Science (Canada) • 16/11/2026</div>
+<p>L'entreprise canadienne Allarta Life Science a reçu une bourse de Breakthrough T1D, principale organisation de recherche et de plaidoyer sur le diabète de type 1, pour l'étape de développement suivante de sa technologie d'hydrogel immuno-protecteur LifeSpheres, destinée à amener sa thérapie cellulaire jusqu'aux essais cliniques. Le principe : protéger physiquement les cellules productrices d'insuline transplantées de l'attaque immunitaire, sans imposer au receveur un traitement immunosuppresseur à vie. C'est précisément cette contrainte qui limite aujourd'hui l'accès à la greffe d'îlots : peu de patients sont éligibles, faute de pouvoir supporter les anti-rejet. Fondée en 2019 par le Dr Harald Stover, professeur de chimie à l'université McMaster, et Maria Antonakos, la société prolonge une longue tradition canadienne — l'insuline a été découverte à Toronto en 1921 et la Journée mondiale du diabète est fixée au 14 novembre, jour de naissance de Frederick Banting ; en 2000, le protocole d'Edmonton avait montré qu'une greffe de cellules productrices d'insuline pouvait rétablir la sécrétion d'insuline. L'annonce a ouvert la vitrine d'innovation de McMaster. Environ 9,5 millions de personnes vivent avec un diabète de type 1 dans le monde, dont 300 000 au Canada. La technologie reste préclinique : la bourse finance l'étape qui mène vers un premier essai chez l'humain, à partir d'îlots de donneurs.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.giornaleadige.it/2026/11/13/diabete-di-tipo-1-a-verona-la-prevenzione-anticipa-la-malattia/" target="_blank">Vérone, première structure hospitalière italienne à administrer le téplizumab à un enfant pour retarder le diabète de type 1</a></h3>
+<div class="meta">L'Adige di Verona (Azienda ospedaliera universitaria integrata) • 13/11/2026</div>
+<p>L'hôpital universitaire intégré de Vérone est devenu la première structure hospitalière italienne à administrer le téplizumab à un patient pédiatrique, un traitement immunothérapique capable de retarder de deux à cinq ans l'apparition du diabète de type 1 ; l'établissement fait aussi partie des premiers centres italiens à l'avoir utilisé chez l'adulte. Le raisonnement repose sur les trois stades de la maladie : au premier, des auto-anticorps sont présents dans le sang sans symptôme ; au deuxième apparaissent les premières anomalies glycémiques ; au troisième survient l'expression clinique, alors qu'environ 90 % des cellules pancréatiques productrices d'insuline ont été détruites. Détecter les deux premiers stades permet donc d'agir avant l'effondrement de la fonction bêta, en réduisant aussi le risque de cétoacidose diabétique, complication aiguë des diagnostics tardifs. Le programme verronais associe la pédiatrie et l'endocrinologie-diabétologie, avec des psychologues dédiés. La pédiatrie dépiste les apparentés au premier degré depuis 1993 : 370 personnes testées ces cinq dernières années, une cinquantaine de positifs aux auto-anticorps, plus 20 positifs parmi 250 enfants et adolescents atteints d'autres maladies auto-immunes associées. Sept patients pédiatriques ont été traités à ce jour. Côté adultes, le programme a inclus 86 personnes depuis décembre 2024, identifiant 15 positifs, dont trois traités au stade 2 depuis août 2026 et deux interceptés au stade 3 avant toute cétoacidose. L'étape suivante est l'extension du dépistage à tous les enfants de 5 et 6 ans en 2027.</p>
+</div>
+<div class="item">
+<h3><a href="https://www.policlinicogemelli.it/news-eventi/14-novembre-giornata-mondiale-del-diabete-le-ricerche-presentate-al-congresso-easd/" target="_blank">EASD 2026 : neuf études de jeunes chercheurs milanais, du pancréas avant la maladie au temps passé dans la cible</a></h3>
+<div class="meta">Fondation Policlinico Universitario A. Gemelli IRCCS (Rome) / Université catholique • 13/11/2026</div>
+<p>À l'occasion de la Journée mondiale du diabète, la fondation romaine Policlinico Gemelli revient sur les neuf travaux présentés par ses jeunes chercheurs — doctorants, post-doctorant et internes — au congrès européen de diabétologie EASD, qui s'est tenu cette année au centre MiCo de Milan. Une question traverse plusieurs de ces études : que se passe-t-il dans le pancréas bien avant que le diabète ne se manifeste ? Chez les personnes ayant d'importants dépôts de graisse intrapancréatique, la sécrétion d'insuline est plus élevée, comme si la cellule bêta forçait pour répondre à une demande croissante ; plus tard, quand le tissu se durcit et se remodèle, c'est la capacité à amplifier la réponse insulinique qui diminue, deux étapes successives d'une même trajectoire. Chez les patients atteints de pancréatite, l'atrophie de l'organe pèse davantage : dans les formes diffuses, la glycémie à une heure du test de charge dépasse en moyenne de plus de 77 mg/dl celle des patients sans atrophie. D'autres travaux descendent au niveau cellulaire : les îlots de personnes dont la sécrétion insulinique précoce est réduite sont moins sensibles au GLP-1, l'hormone ciblée par la nouvelle génération de traitements, et chez ces patients les cellules bêta portant le récepteur du GLP-1 sont plus nombreuses, non moins — possible réaction compensatoire. Sur 166 adultes atteints de diabète de type 1 suivis quatre ans, les systèmes de microperfusion automatisée ont apporté près de dix points de pourcentage de temps supplémentaire dans la cible, avec de meilleurs résultats chez les plus de 65 ans. D'autres données, préliminaires et sur effectifs réduits, explorent le lien entre métabolisme et oncologie.</p>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Généré le 18 novembre 2026 par Hermes (veille-diabete). Fichiers : veille-diabete-2026-11-18.md + .html. Fenêtre de recherche : 7 jours (11 – 18 novembre 2026). Contenu 100 % en français, sources anglophones traduites.</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");
+</script>
+  </div>
+</div>
+
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+<!-- EDO JARVIS widget (réservé veille diabète — à coller juste avant </body>) -->
+<div id="edo-widget" title="EDO — cœur de la veille">
+  <div class="edo-ring r1"></div>
+  <div class="edo-ring r2"></div>
+  <div class="edo-ring r3"></div>
+  <div class="edo-core">EDO</div>
+</div>
+<style>
+#edo-widget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;z-index:9998;
+  pointer-events:none;font-family:'Rajdhani',sans-serif}
+#edo-widget .edo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+#edo-widget .r1{border-top-color:#40dcff;border-right-color:#40dcff33;animation:edoSpin 3.2s linear infinite}
+#edo-widget .r2{inset:6px;border-bottom-color:#7bffb2;border-left-color:#7bffb233;animation:edoSpin 2.1s linear infinite reverse}
+#edo-widget .r3{inset:12px;border-top-color:#ffb347;border-right-color:#ffb34733;animation:edoSpin 1.4s linear infinite}
+#edo-widget .edo-core{position:absolute;inset:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0a2233 0%,#010409 80%);color:#40dcff;font-size:11px;font-weight:700;
+  letter-spacing:1px;box-shadow:0 0 10px #40dcff88, inset 0 0 6px #40dcff44;
+  animation:edoPulse 2.4s ease-in-out infinite}
+@keyframes edoSpin{to{transform:rotate(360deg)}}
+@keyframes edoPulse{0%,100%{box-shadow:0 0 8px #40dcff66, inset 0 0 5px #40dcff33}
+  50%{box-shadow:0 0 16px #40dcffcc, inset 0 0 9px #40dcff66}}
+@media (prefers-reduced-motion:reduce){#edo-widget .edo-ring,#edo-widget .edo-core{animation:none}}
+</style>
+</body></html>
