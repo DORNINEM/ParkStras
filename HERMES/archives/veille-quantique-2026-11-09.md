@@ -35,10 +35,10 @@ _Fenêtre de recherche : 7 jours glissants — période couverte du 02/11/2026 a
 - 🔗 [Lien source](https://www.science-et-vie.com/technos-et-futur/en-france-le-chiffrement-utilise-pour-proteger-les-donnees-bancaires-pourrait-etre-casse-en-3-jours-par-un-ordinateur-quantique-de-22-593-qubits-265771.html)
 
 ### Grand Est : un « Pack Quantique » jusqu'à 150 000 € pour les entreprises
-- **Source** : La French Tech Est — **Date** : 03/11/2026
+- **Source** : MaQuEst — Maison du Quantique Grand Est (relais La French Tech Est) — **Date** : 03/11/2026
 - **Résumé** : La région Grand Est ouvre l'appel à projets MaQuEst « Pack Quantique » (jusqu'au 16 novembre 2026) pour soutenir les entreprises qui explorent le calcul quantique ou hybride HPC/quantique. Deux volets d'aide : un diagnostic quantique jusqu'à 15 000 € (20 à 50 % des dépenses) et un projet de R&D et innovation quantique jusqu'à 150 000 € (25 à 45 %). Un dispositif public régional qui vise l'adoption industrielle du quantique par les PME et ETI du territoire.
 - **Tags** : Grand Est, financement public, calcul hybride, appel à projets
-- 🔗 [Lien source](https://lafrenchtechest.fr/appel/maquest-pack-quantique-grand-est/)
+- 🔗 [Lien source](https://www.maquest.fr/fr/component/content/article/lappel-a-projet-maquest-pour-soutenir-vos-projets-dinnovation-quantique-et-hybride-est-ouvert?catid=14)
 
 ## 🌍 Monde — Pertinence Europe (6 articles)
 
@@ -61,7 +61,7 @@ _Fenêtre de recherche : 7 jours glissants — période couverte du 02/11/2026 a
 - **Résumé** : Le gouvernement japonais a retenu 28 produits et technologies prioritaires — dont le calcul quantique, à côté des semi-conducteurs, de l'IA, des data centers et des biopharmaceutiques — sur 62 candidats répartis en 17 domaines stratégiques, pour plus de 370 000 milliards de yens d'investissements publics et privés. La liste, présentée au Conseil pour la stratégie de croissance présidé par le Premier ministre, guidera un plan de mise en œuvre sur cinq ans. Le quantique devient un objet explicite de politique industrielle.
 - **Tags** : Japon, politique industrielle, financement public, souveraineté
 - 🔗 [Lien source](https://www.japantimes.co.jp/business/2026/11/07/economy/japan-priority-items-investments/)
-- 🔗 [Lien complémentaire](https://www.nippon.com/en/articles/-/57052)
+- 🔗 [Lien complémentaire](https://asiascoop.org/fr/2026/11/07/japon-28-technologies-prioritaires-370-000-milliards-yens-strategie-croissance/)
 
 ### Microsoft active un TLS 1.3 hybride post-quantique par défaut dans Azure Front Door (ML-KEM)
 - **Source** : Microsoft Tech Community — **Date** : 06/11/2026
