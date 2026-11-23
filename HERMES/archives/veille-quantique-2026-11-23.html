@@ -141,7 +141,25 @@
 @keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
 @media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
 </style>
-</head><body>
+<style id="veille-toc-css">
+#veille-toc{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+ padding:10px 160px 10px 18px;margin:0 auto 14px;max-width:1100px;background:rgba(1,4,9,.92);
+ backdrop-filter:blur(6px);border-bottom:1px solid rgba(64,220,255,.20);}
+html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(14,116,144,.22);}
+#veille-toc .vt-lab{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+ text-transform:uppercase;opacity:.55;margin-right:4px;}
+#veille-toc a.vt{padding:5px 12px;border-radius:999px;border:1px solid rgba(64,220,255,.35);
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.88rem;
+ white-space:nowrap;transition:transform .15s;animation:vtGlow 2.6s ease-in-out infinite;}
+#veille-toc a.vt:hover{transform:translateY(-1px);border-color:var(--accent,#40dcff);}
+@keyframes vtGlow{0%,100%{box-shadow:0 0 4px rgba(64,220,255,.18);}50%{box-shadow:0 0 14px rgba(64,220,255,.45);}}
+.retour-haut{display:inline-flex;align-items:center;gap:5px;margin-left:10px;padding:2px 9px;
+ border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
+ text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
+.retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+[id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+@media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
+</style></head><body><span id="veille-toc-haut"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-france">🇫🇷🇪🇺 Marché France & Europe</a><a class="vt" href="#zone-monde">🌍 Monde — Pertinence Europe</a><a class="vt" href="#zone-innov">🔬 Innovations Matérielles &</a><a class="vt" href="#zone-prospect">🚀 Prospective & Impacts Sectoriels</a><a class="vt" href="#zone-images-schemas-analyses">🖼️ Images & schémas analysés</a><a class="vt" href="#zone-synthese">📊 Synthèse</a></nav>
 <div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-quantique-2026-11-23.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
 <script id="veille-audio-banner-js">(function(){
   var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
@@ -186,7 +204,7 @@
 </div>
 <div class="grid">
   <div class="card">
-    <div class="card-head" id="zone-france"><div class="card-title">🇫🇷🇪🇺 Marché France &amp; Europe</div></div>
+    <div class="card-head" id="zone-france"><div class="card-title">🇫🇷🇪🇺 Marché France &amp; Europe<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
       <div class="item">
         <h3><a href="https://systematic-paris-region.org/projet-qubit-control-2030" target="_blank" rel="noopener">France 2030 soutient « Qubit Control 2030 » : 14 M€ pour la chaîne de contrôle souveraine des processeurs quantiques</a></h3>
@@ -260,7 +278,7 @@
     </div>
   </div>
   <div class="card">
-    <div class="card-head" id="zone-monde"><div class="card-title">🌍 Monde — Pertinence Europe</div></div>
+    <div class="card-head" id="zone-monde"><div class="card-title">🌍 Monde — Pertinence Europe<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
       <div class="item">
         <h3><a href="https://newsroom.ibm.com/2026-11-16-ibm,-fermilab,-and-nvidia-announce-plans-for-new-co-design-platform-to-accelerate-the-development-of-next-generation,-modular-quantum-computers" target="_blank" rel="noopener">IBM, Fermilab et NVIDIA annoncent une plateforme de co-conception quantique-classique pour les machines modulaires</a></h3>
@@ -330,7 +348,7 @@
     </div>
   </div>
   <div class="card">
-    <div class="card-head" id="zone-innov"><div class="card-title">🔬 Innovations Matérielles &amp; Logicielles</div></div>
+    <div class="card-head" id="zone-innov"><div class="card-title">🔬 Innovations Matérielles &amp; Logicielles<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
       <div class="item">
         <h3><a href="https://pennylane.ai/blog/2026/11/choose-your-rdma-engine-backline-grace-hopper" target="_blank" rel="noopener">PennyLane fait tourner sa plateforme de co-traitement temps réel Backline sur NVIDIA Grace Hopper</a></h3>
@@ -394,7 +412,7 @@
     </div>
   </div>
   <div class="card">
-    <div class="card-head" id="zone-prospect"><div class="card-title">🚀 Prospective &amp; Impacts Sectoriels</div></div>
+    <div class="card-head" id="zone-prospect"><div class="card-title">🚀 Prospective &amp; Impacts Sectoriels<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
       <div class="item">
         <h3><a href="https://www.iosco.org/library/pubdocs/pdf/IOSCOPD833.pdf" target="_blank" rel="noopener">L'IOSCO appelle le secteur financier mondial à préparer le risque quantique sans attendre</a></h3>
@@ -471,11 +489,11 @@
   </div>
 </div>
 <div class="visuels">
-  <h2>🖼️ Images &amp; schémas analysés</h2>
+  <h2 id="zone-images-schemas-analyses">🖼️ Images &amp; schémas analysés<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
   <p>Collecte text-first : aucun visuel n'a été extrait ni analysé pixel par pixel lors de cette exécution. Visuels disponibles aux sources et contextualisés dans ce rapport : figures d'inégalités de Bell-Kochen-Specker et courbes de séparation quantique-classique jusqu'à 105 qubits (Google Quantum AI / Science), schéma du banc de co-conception DGX B200 + Nighthawk de Fermilab (IBM / NVIDIA), topologie du réseau QuLore à cinq nœuds et prises optiques 1,6 Tb/s et 800 Gb/s (PCSS / Luxquanta / Ciena), figures 36 à 40 du rapport d'évaluation des risques de l'EBA (statut des feuilles de route PQC, inventaire cryptographique, obstacles), feuille de route modulaire 2026-2034 d'Alice &amp; Bob (Helium, Beryllium, Oxygen, Neon), logotype et architecture du consortium Qubit Control 2030 (Systematic Paris-Region), et schémas des dispositifs expérimentaux des prépublications arXiv 2611.23383 (transducteur collectif) et 2611.24910 (puce à piège multicouche à résonateur RF intégré).</p>
 </div>
 <div class="synthese">
-  <h2>📊 Synthèse — 5 signaux faibles à surveiller</h2>
+  <h2 id="zone-synthese">📊 Synthèse — 5 signaux faibles à surveiller<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
   <div class="signal">
     <b>1. Le calendrier post-quantique est désormais opposable, avant toute démonstration de menace.</b> L'IOSCO publie un rapport final qui fait de la préparation quantique une priorité 2027 et invite explicitement à ne pas attendre l'apparition d'un ordinateur cryptographiquement pertinent ; l'Autorité bancaire européenne compte 8 % de banques européennes dotées d'une feuille de route opérationnelle et 73 % sans connaissance documentée des plans de leurs fournisseurs ; l'ANSSI publie un guide d'implémentation d'IPsec hybridé qui devient la référence technique opposable en France. Implication RSSI : l'inventaire cryptographique, la crypto-agilité et la pression contractuelle sur les éditeurs passent du chantier exploratoire à l'exigence de conformité.
     <div class="signal-src">Sources : <a href="https://www.iosco.org/library/pubdocs/pdf/IOSCOPD833.pdf" target="_blank" rel="noopener">IOSCO — rapport final sur le calcul quantique et les marchés financiers</a> · <a href="https://www.eba.europa.eu/sites/default/files/2026-11/828f300c-6a34-45c0-bbad-82ea626bf8fa/Risk%20Assessment%20Report%20-%20Autumn%202026_0.pdf" target="_blank" rel="noopener">EBA — rapport d'évaluation des risques, automne 2026</a> · <a href="https://messervices.cyber.gouv.fr/documents-guides/IPsec_PQC_DR.pdf" target="_blank" rel="noopener">ANSSI — guide d'implémentation IPsec post-quantique</a></div>
