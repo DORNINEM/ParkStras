@@ -151,7 +151,25 @@
 @keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
 @media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
 </style>
-</head><body>
+<style id="veille-toc-css">
+#veille-toc{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+ padding:10px 160px 10px 18px;margin:0 auto 14px;max-width:1100px;background:rgba(1,4,9,.92);
+ backdrop-filter:blur(6px);border-bottom:1px solid rgba(64,220,255,.20);}
+html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(14,116,144,.22);}
+#veille-toc .vt-lab{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+ text-transform:uppercase;opacity:.55;margin-right:4px;}
+#veille-toc a.vt{padding:5px 12px;border-radius:999px;border:1px solid rgba(64,220,255,.35);
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.88rem;
+ white-space:nowrap;transition:transform .15s;animation:vtGlow 2.6s ease-in-out infinite;}
+#veille-toc a.vt:hover{transform:translateY(-1px);border-color:var(--accent,#40dcff);}
+@keyframes vtGlow{0%,100%{box-shadow:0 0 4px rgba(64,220,255,.18);}50%{box-shadow:0 0 14px rgba(64,220,255,.45);}}
+.retour-haut{display:inline-flex;align-items:center;gap:5px;margin-left:10px;padding:2px 9px;
+ border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
+ text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
+.retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+[id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+@media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
+</style></head><body><span id="veille-toc-haut"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-synthese-de-la-semaine">📌 Synthèse de la semaine</a><a class="vt" href="#zone-ia-dans-les-metiers-rh">🛠️ IA dans les métiers RH</a><a class="vt" href="#zone-risques-transformations-des-metiers-banque">⚠️ Risques & transformations des</a><a class="vt" href="#zone-dispositifs-d-accompagnement-aux-mutations">🔄 Dispositifs d'accompagnement</a><a class="vt" href="#zone-prospective">🔭 Prospective</a><a class="vt" href="#zone-images-schemas-analyses">🖼️ Images & schémas analysés</a><a class="vt" href="#zone-synthese">📊 Synthèse</a><a class="vt" href="#zone-tableau-de-bord-des-metiers">🗺️ Tableau de bord des métiers à</a></nav>
 <div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-RH-IA-2026-11-24.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
 <script id="veille-audio-banner-js">(function(){
   var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
@@ -186,14 +204,14 @@
   </div>
 
   <div class="card full-card">
-    <div class="card-head"><div class="card-title">📌 Synthèse de la semaine</div></div>
+    <div class="card-head" id="zone-synthese-de-la-semaine"><div class="card-title">📌 Synthèse de la semaine<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body synthese">
       Cette édition déplace le curseur du déploiement vers la mesure et le dialogue social. Côté <strong>apports</strong>, les grands SIRH industrialisent : Sanofi met un agent de planification des entretiens et un coach de carrière en production (50 000 conversations en un mois), Adecco déploie son agent de présélection dans plus de 40 pays — mais 72 % des DRH n'ont toujours pas de feuille de route IA et 8 % seulement d'analyse prédictive opérationnelle. Côté <strong>risques</strong>, l'ajustement reste discret et ne passe plus d'abord par les licenciements : −12,4 % d'offres pour dix points d'exposition à l'IA (25 000 annonces perdues au 3e trimestre selon Coface), −42,8 % d'annonces RH depuis 2022, et un « déficit d'apprentissage » documenté chez les juniors du conseil et de la technique. Côté <strong>accompagnement</strong>, le fait marquant est la contractualisation : accord-cadre IA de La Poste signé le 19 novembre avec quatre organisations syndicales (~93 000 postiers formés, comité IA, reconversions via la GEPP), 35 000 collaborateurs et 8 500 managers formés au prompting chez Generali — pendant que ver.di bloque les négociations des banques privées allemandes faute de règles contraignantes sur l'IA. Enfin la <strong>prospective</strong> se joue sur deux terrains : l'acceptabilité, où l'usage et la clarté du cadre pèsent plus que la génération (mais où le discernement doit se former explicitement), et le contrôle, le CEPD faisant de la décision automatisée de recrutement le thème de son action coordonnée 2027.
     </div>
   </div>
 
 <div class="card apports full-card">
-<div class="card-head"><div class="card-title">🛠️ IA dans les métiers RH : apports &amp; outils</div><div class="meta">6 articles</div></div>
+<div class="card-head" id="zone-ia-dans-les-metiers-rh"><div class="card-title">🛠️ IA dans les métiers RH : apports &amp; outils<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">6 articles</div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.lemagit.fr/etude/Sanofi-nettoie-son-SIRH-avant-dy-lacher-ses-agents-IA" target="_blank">Sanofi nettoie son SIRH avant d'y lâcher ses agents IA</a></h3>
@@ -234,7 +252,7 @@
 </div>
 </div>
 <div class="card risques full-card">
-<div class="card-head"><div class="card-title">⚠️ Risques &amp; transformations des métiers (banque · assurance · informatique)</div><div class="meta">6 articles</div></div>
+<div class="card-head" id="zone-risques-transformations-des-metiers-banque"><div class="card-title">⚠️ Risques &amp; transformations des métiers (banque · assurance · informatique)<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">6 articles</div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.bfmtv.com/economie/emploi/pour-la-premiere-fois-une-etude-etablit-un-lien-entre-l-ia-et-les-recrutements-25-000-offres-d-emploi-ont-disparu-en-seulement-trois-mois-en-france_AD-202611170400.html" target="_blank">« Pour la première fois, une étude établit un lien entre l'IA et les recrutements » : 25 000 offres disparues en trois mois</a></h3>
@@ -275,7 +293,7 @@
 </div>
 </div>
 <div class="card accomp full-card">
-<div class="card-head"><div class="card-title">🔄 Dispositifs d'accompagnement aux mutations</div><div class="meta">6 articles</div></div>
+<div class="card-head" id="zone-dispositifs-d-accompagnement-aux-mutations"><div class="card-title">🔄 Dispositifs d'accompagnement aux mutations<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">6 articles</div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.lapostegroupe.com/fr/actualite/la-poste-signe-un-accord-cadre-dedie-a-lia-pour-accompagner-sa-transformation-et-placer-lhumain-au-coeur-des-usages" target="_blank">La Poste signe un accord cadre dédié à l'IA pour placer l'humain au cœur des usages</a></h3>
@@ -316,7 +334,7 @@
 </div>
 </div>
 <div class="card prospec full-card">
-<div class="card-head"><div class="card-title">🔭 Prospective : travail, IA et société</div><div class="meta">7 articles</div></div>
+<div class="card-head" id="zone-prospective"><div class="card-title">🔭 Prospective : travail, IA et société<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">7 articles</div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.francetravail.org/statistiques-analyses/entreprises/metiers/l-intelligence-artificielle-et-les-metiers-a-5-ans-la-vision-des-employeurs.html?type=article" target="_blank">L'intelligence artificielle et les métiers à 5 ans : la vision des employeurs</a></h3>
@@ -364,14 +382,14 @@
 </div>
 
   <div class="card full-card">
-    <div class="card-head"><div class="card-title">🖼️ Images &amp; schémas analysés</div></div>
+    <div class="card-head" id="zone-images-schemas-analyses"><div class="card-title">🖼️ Images &amp; schémas analysés<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body synthese">
       Aucun schéma de données directement réutilisable cette semaine : les visuels des sources retenues sont majoritairement des illustrations de presse et des encarts d'annonceurs. Cinq éléments chiffrés méritent en revanche d'être reconstruits en support DRH : la courbe de décrochage des offres d'emploi par exposition à l'IA (Coface/OEM : −12,4 % pour dix points d'exposition, 25 000 annonces perdues au 3e trimestre, plus de 100 000 en rythme annuel ; −42,8 % dans les RH et −40 % dans le secrétariat depuis 2022) ; la partition des métiers par France Travail en trois familles — « fragilisés », « augmentés », « développent l'IA » — à croiser avec les taux d'impact déclarés (ingénieurs informatique 94 %, banque-assurance 75 %) ; l'escalier de la gouvernance de l'IA en assurance, des agents encore en pilote aux agents « gouvernés » branchés sur les systèmes cœur (seuils d'autorité, journalisation, décision finale humaine) ; la courbe d'acceptabilité selon la fréquence d'usage (37,2/100 chez les non-utilisateurs, 66,7/100 chez les utilisateurs très fréquents) avec le décalage utilité/confiance (95,8 % contre 33,1 %) et l'effet du cadre (80,4 % contre 28,1 % quand les règles sont claires) ; et le tableau de bord de pilotage de la GEPP en deux colonnes — emplois exposés / dispositifs d'accompagnement déjà contractualisés (accord-cadre La Poste du 19 novembre, Objectif IA : ~93 000 postiers formés, Generali : 35 000 formés au prompting et 8 500 managers, LCL : quatre priorités d'employabilité).
     </div>
   </div>
 
   <div class="card full-card">
-    <div class="card-head"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller</div></div>
+    <div class="card-head" id="zone-synthese"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body signals">
       <ol>
 <li><strong>1. Le frein ne passe plus par le licenciement, mais par le gel des recrutements</strong> — Dix points d'exposition supplémentaires à l'IA sont associés à 12,4 % d'offres en moins (25 000 annonces perdues au 3e trimestre, plus de 100 000 en rythme annuel), la chute atteint 42,8 % dans les RH et 40 % dans le secrétariat depuis 2022, alors que seuls 6 % des employeurs anticipent une automatisation importante : l'ajustement se fait à bas bruit, en différant une embauche ou en ne remplaçant pas un départ — un risque qui touche aussi les postes expérimentés (−14 % à −19,4 %).
@@ -389,7 +407,7 @@
   </div>
 
   <div class="card full-card">
-    <div class="card-head"><div class="card-title">🗺️ Tableau de bord des métiers à risque</div></div>
+    <div class="card-head" id="zone-tableau-de-bord-des-metiers"><div class="card-title">🗺️ Tableau de bord des métiers à risque<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
       <div class="dash-scroll">
         <table class="dash">
