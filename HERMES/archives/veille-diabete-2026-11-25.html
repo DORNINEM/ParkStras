@@ -96,7 +96,25 @@
 @keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
 @media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
 </style>
-</head><body>
+<style id="veille-toc-css">
+#veille-toc{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+ padding:10px 160px 10px 18px;margin:0 auto 14px;max-width:1100px;background:rgba(1,4,9,.92);
+ backdrop-filter:blur(6px);border-bottom:1px solid rgba(64,220,255,.20);}
+html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(14,116,144,.22);}
+#veille-toc .vt-lab{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+ text-transform:uppercase;opacity:.55;margin-right:4px;}
+#veille-toc a.vt{padding:5px 12px;border-radius:999px;border:1px solid rgba(64,220,255,.35);
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.88rem;
+ white-space:nowrap;transition:transform .15s;animation:vtGlow 2.6s ease-in-out infinite;}
+#veille-toc a.vt:hover{transform:translateY(-1px);border-color:var(--accent,#40dcff);}
+@keyframes vtGlow{0%,100%{box-shadow:0 0 4px rgba(64,220,255,.18);}50%{box-shadow:0 0 14px rgba(64,220,255,.45);}}
+.retour-haut{display:inline-flex;align-items:center;gap:5px;margin-left:10px;padding:2px 9px;
+ border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
+ text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
+.retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+[id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+@media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
+</style></head><body><span id="veille-toc-haut"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-france">🇫🇷 France</a><a class="vt" href="#zone-europe">🇪🇺 Europe & Suisse</a><a class="vt" href="#zone-monde">🌐 Monde</a><a class="vt" href="#zone-prospective-recherche">🔬 Prospective & Recherche</a><a class="vt" href="#zone-recherche-essais-precoces">Recherche & essais précoces</a></nav>
 <div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-11-25.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
 <script id="veille-audio-banner-js">(function(){
   var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
@@ -128,7 +146,7 @@
 
   <div class="grid">
 <div class="card">
-<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France</div></div>
+<div class="card-head" id="zone-france"><div class="card-title">🇫🇷 France<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.diabetecampus.com/blog/technologie/minimed-fit-pompe-patch-7-jours" target="_blank">MiniMed Fit : ce que change la pompe patch de sept jours de MiniMed, et pourquoi la France attend encore</a></h3>
@@ -163,7 +181,7 @@
 </div>
 </div>
 <div class="card">
-<div class="card-head" id="zone-europe"><div class="card-title">🇪🇺 Europe &amp; Suisse</div></div>
+<div class="card-head" id="zone-europe"><div class="card-title">🇪🇺 Europe &amp; Suisse<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://www.em-consulte.com/article/1853719" target="_blank">TREAT2D : en Europe, l'intensification du traitement du diabète de type 2 reste trop tardive</a></h3>
@@ -183,7 +201,7 @@
 </div>
 </div>
 <div class="card">
-<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde</div></div>
+<div class="card-head" id="zone-monde"><div class="card-title">🌐 Monde<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
 <div class="card-body">
 <div class="item">
 <h3><a href="https://medicalxpress.com/news/2026-11-common-diabetes-score-partial-remissions.html" target="_blank">Le score IDAA1c laisse échapper plus de la moitié des rémissions partielles chez les jeunes en surpoids</a></h3>
@@ -205,10 +223,10 @@
   </div>
 
   <div class="arxiv-section">
-    <h2>🔬 Prospective &amp; Recherche</h2>
+    <h2 id="zone-prospective-recherche">🔬 Prospective &amp; Recherche<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
     <div class="grid">
       <div class="card">
-        <div class="card-head"><div class="card-title">Recherche &amp; essais précoces</div></div>
+        <div class="card-head" id="zone-recherche-essais-precoces"><div class="card-title">Recherche &amp; essais précoces<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
 <div class="item">
 <h3><a href="https://www.inserm.fr/actualite/prix-inserm-2026/" target="_blank">Prix Inserm 2026 : un Prix Innovation pour la greffe de cellules pancréatiques</a></h3>
