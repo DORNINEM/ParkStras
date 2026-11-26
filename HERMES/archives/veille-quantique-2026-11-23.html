@@ -163,6 +163,25 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
 /* sous la barre collante : sans cela, le titre visé arrive caché derrière elle */
 [id^="zone-"]{scroll-margin-top:72px}
 [id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+/* TÉLÉPHONE : la barre tient sur UNE ligne et se balaie du doigt. Sans cela les pastilles
+   passent à la ligne (mesuré le 27/11/2026, écran 390 × 844 : 5 lignes, 229 px de haut, soit
+   27 % de l'écran) et, comme la barre est collante, elle ne s'efface jamais pour rendre la
+   place. Une seule ligne, défilante horizontalement, garde le sommaire accessible et discret. */
+@media (max-width:700px){
+  /* Le bouton de thème est FIXE en haut à droite (124 px de large sur un écran de 390 px) et
+     se superposait à la barre : les appuis à droite tombaient dessus au lieu de la pastille —
+     d'où « sur mon Safari mobile le bloc du sommaire ne défile pas ». On lui réserve sa place
+     dans la barre (comme les 160 px du bureau) et on le réduit à son icône. */
+  html .theme-toggle{top:11px;right:12px;padding:6px 9px}
+  html .theme-toggle #hv-tt{display:none}
+  #veille-toc{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+   scrollbar-width:none;padding:7px 64px 7px 10px;margin-bottom:10px;}
+  #veille-toc::-webkit-scrollbar{display:none}
+  #veille-toc a.vt{flex:0 0 auto;font-size:.76rem;padding:6px 11px;}
+  #veille-toc .vt-lab{font-size:.66rem;margin-right:2px;}
+  [id^="zone-"]{scroll-margin-top:54px}
+  .retour-haut{padding:6px 11px}
+}
 @media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
 </style></head><body><span id="veille-toc-haut" class="rth"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-france">🇫🇷🇪🇺 Marché France & Europe</a><a class="vt" href="#zone-monde">🌍 Monde — Pertinence Europe</a><a class="vt" href="#zone-innov">🔬 Innovations Matérielles &</a><a class="vt" href="#zone-prospect">🚀 Prospective & Impacts Sectoriels</a><a class="vt" href="#zone-images-schemas-analyses">🖼️ Images & schémas analysés</a><a class="vt" href="#zone-synthese">📊 Synthèse</a></nav>
 <div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-quantique-2026-11-23.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
@@ -211,7 +230,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
   <div class="card">
     <div class="card-head" id="zone-france"><div class="card-title">🇫🇷🇪🇺 Marché France &amp; Europe<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://systematic-paris-region.org/projet-qubit-control-2030" target="_blank" rel="noopener">France 2030 soutient « Qubit Control 2030 » : 14 M€ pour la chaîne de contrôle souveraine des processeurs quantiques</a></h3>
         <div class="meta">Systematic Paris-Region (communiqué) • 18/11/2026</div>
         <p>Le projet Qubit Control 2030, lauréat de l'appel à projets i-Démo opéré par Bpifrance dans le cadre de la Stratégie nationale quantique, réunit trois membres de Systematic — Viqthor (porteur), Isentroniq et Silent Waves — aux côtés de Radiall et de SEDI-ATI Fibres Optiques, pour 14 M€ sur 48 mois (octobre 2026 – septembre 2030). Objectif : remplacer le câblage coaxial cuivre — 40 000 câbles pour 10 000 qubits — par 32 cordons optiques, et diviser par dix le coût de contrôle par qubit en 2030 puis par cent en 2040. Deux démonstrateurs sont prévus sur iXcampus à Saint-Germain-en-Laye : 1 000 qubits contrôlés en 2028, puis 10 000 qubits en 2030 dans un cryostat unique. <span class="flag">⚠️ Cibles du consortium, non encore démontrées.</span></p>
@@ -223,7 +242,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">photonique</span>
         <span class="tag">souveraineté</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.silicon.fr/business-1367/qluster-leve-47-millions-e-pour-un-ordinateur-quantique-photonique-230429" target="_blank" rel="noopener">Qluster lève 4,7 M€ en pré-amorçage pour un ordinateur quantique photonique à variables continues</a></h3>
         <div class="meta">Silicon.fr • 17/11/2026</div>
         <p>La start-up parisienne Qluster, spin-off du Laboratoire Kastler Brossel, a levé 4,7 M€ en pré-amorçage auprès du fonds spécialisé Quantonation, avec Quantum Launchpad et Bpifrance. Elle développe une architecture photonique à variables continues reposant sur une source de photons miniaturisée brevetée, fonctionnant sans cryogénie, et annonce un premier calculateur intermédiaire vers 2032 puis un ordinateur universel tolérant aux fautes vers 2036. Les fonds financent un laboratoire de R&amp;D interne et le recrutement de physiciens expérimentateurs.</p>
@@ -235,7 +254,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">Bpifrance</span>
         <span class="tag">France</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://thequantuminsider.com/2026/11/18/alice-bobs-updated-roadmap-targets-200-logical-qubits-from-3600-physical-qubits-by-2030/" target="_blank" rel="noopener">Alice &amp; Bob double son objectif : 200 qubits logiques en 2030 à partir de 3 600 qubits physiques « cat »</a></h3>
         <div class="meta">The Quantum Insider • 18/11/2026</div>
         <p>La deeptech franco-américaine Alice &amp; Bob relève sa feuille de route : 200 qubits logiques visés en 2030, contre 100 annoncés auparavant, à bâtir à partir de seulement 3 600 qubits physiques « cat » répartis sur neuf modules de 400 qubits reliés à froid. Les jalons suivants visent 6 qubits logiques en 2028 (système Beryllium), 1 024 en 2032 (Oxygen) et 2 048 en 2034 (Neon, dimensionnée pour stresser RSA-2048). Le programme s'appuie sur les trois processeurs déjà assemblés dans le cadre du plan français PROQCIMA ; l'entreprise affiche 180 M€ levés et plus de 250 salariés. <span class="flag">⚠️ Cibles d'entreprise : aucun de ces systèmes n'existe à ce jour.</span></p>
@@ -247,7 +266,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">feuille de route</span>
         <span class="tag">France</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://quantumcomputingreport.com/planckian-selected-for-e10-million-11-million-usd-eic-accelerator-blended-finance-package-to-scale-shared-control-superconducting-processors/" target="_blank" rel="noopener">Planckian obtient 10 M€ de l'EIC Accelerator pour ses processeurs supraconducteurs à contrôle partagé</a></h3>
         <div class="meta">Quantum Computing Report • 17/11/2026</div>
         <p>La société italienne Planckian, spin-off de l'Université de Pise et de la Scuola Normale Superiore, a été retenue par le Conseil européen de l'innovation au titre de l'EIC Accelerator : 2,5 M€ de subvention et 7,5 M€ d'investissement en fonds propres du fonds EIC, mobilisés autour de sa prochaine série A. Elle fait partie des 35 entreprises sélectionnées sur 453 candidatures complètes. Son architecture supraconductrice permet à plusieurs qubits de partager les mêmes lignes de contrôle, un programme de 24 mois devant aboutir à un système utilisable par des utilisateurs externes — la même intuition industrielle que le projet français Qubit Control 2030.</p>
@@ -257,7 +276,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">contrôle partagé</span>
         <span class="tag">Italie</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.electroniques.biz/telecoms-reseaux/communications-quantiques-leurope-prepare-son-reseau-satellitaire/" target="_blank" rel="noopener">Communications quantiques : l'Europe prépare son réseau satellitaire autour de TeQuantS et QINSAT</a></h3>
         <div class="meta">Electroniques (electroniques.biz) • 20/11/2026</div>
         <p>Le projet européen TeQuantS, lancé en 2023 et soutenu par l'Agence spatiale européenne et le Cnes, franchit une nouvelle étape : Thales Alenia Space et Airbus vont installer un laboratoire quantique au Cnes pour tester une source de photons intriqués, la synchronisation temporelle satellite-sol et la détection des photons reçus en conditions réelles. Ces travaux préparent la mission QINSAT, qui doit démontrer la transmission de photons intriqués entre l'espace et la Terre — les fibres optiques terrestres ne transportant l'information quantique que sur environ 150 km. La brique spatiale est le chaînon manquant de l'infrastructure EuroQCI.</p>
@@ -269,7 +288,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">QINSAT</span>
         <span class="tag">souveraineté</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://alliancy.fr/post-quantique-les-banques-veulent-migrer-pas-experimenter-e08533e6-0850-4e04-9618-c2a8b4104113" target="_blank" rel="noopener">Post-quantique : les banques veulent migrer sans attendre, avec des feuilles de route encore embryonnaires</a></h3>
         <div class="meta">Alliancy • 20/11/2026</div>
         <p>Au World Quantum Cannes Festival, BNP Paribas et Bank of Ireland ont détaillé leur migration vers la cryptographie post-quantique sans attendre l'arrivée d'un « Q-Day » : la feuille de route européenne de juin 2025 recommande d'engager la transition avant fin 2026 et de protéger les usages à haut risque d'ici 2030, sans caractère obligatoire selon la Commission. L'écart entre intention et exécution reste large : selon l'enquête de l'Autorité bancaire européenne de novembre, seules 8 % des banques disposent d'une feuille de route opérationnelle, 45 % en restent au stade conceptuel et 73 % n'ont aucune connaissance documentée des plans de leurs fournisseurs. Le débat souligne le clivage souveraineté entre la QKD, où la Chine a pris une avance considérable, et la PQC privilégiée par les États-Unis, l'Europe investissant dans les deux.</p>
@@ -285,7 +304,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
   <div class="card">
     <div class="card-head" id="zone-monde"><div class="card-title">🌍 Monde — Pertinence Europe<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://newsroom.ibm.com/2026-11-16-ibm,-fermilab,-and-nvidia-announce-plans-for-new-co-design-platform-to-accelerate-the-development-of-next-generation,-modular-quantum-computers" target="_blank" rel="noopener">IBM, Fermilab et NVIDIA annoncent une plateforme de co-conception quantique-classique pour les machines modulaires</a></h3>
         <div class="meta">IBM Newsroom • 16/11/2026</div>
         <p>IBM, NVIDIA et le Fermi National Accelerator Laboratory co-localisent des systèmes NVIDIA DGX B200 et des processeurs quantiques IBM Nighthawk — jusqu'à 7 500 opérations à deux qubits sur 120 qubits, 100 000 échantillons par seconde — dans un banc de co-conception, avec la participation de Pasqal. L'interface ouverte QRMI est intégrée aux nouvelles capacités Hierarchical Resources de Slurm, ce qui permet de traiter un QPU comme une ressource HPC ordinaire, sans file d'attente séparée. La même annonce livre le décodeur TCBP-JOBS dans la bibliothèque CUDA-Q QEC 0.9.0 : jusqu'à 13 000× plus rapide que la référence sur des codes bivariate-bicycle, ramenant une étude de conception de 12 semaines à 45 minutes sur un seul GPU GB200. <span class="flag">⚠️ Chiffres constructeurs non répliqués ; le facteur 13 000× porte sur une configuration de référence non optimisée.</span></p>
@@ -300,7 +319,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">décodage</span>
         <span class="tag">modularité</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.psnc.pl/demonstration-presented-at-the-sc26-conference-in-chicago-qulore-an-adaptive-security-framework-to-extend-quantum-safe-communications/" target="_blank" rel="noopener">Un réseau quantique hybride QKD-PQC de 8 000 km relie Chicago, Amsterdam et Bilbao</a></h3>
         <div class="meta">Poznań Supercomputing and Networking Center (PCSS) • 19/11/2026</div>
         <p>À l'occasion de la conférence SC26, un consortium européen (EHU, Luxquanta, Ciena, GÉANT, PCSS, RedIRIS, SURF) démontre un réseau quantique sécurisé à cinq nœuds couvrant environ 8 000 km entre Chicago, Amsterdam et le Pays basque. La distribution quantique de clés (systèmes Nova lq de Luxquanta) protège les deux liaisons courtes — moins de 1 km à Chicago, 25 km en Biscaye — tandis que la cryptographie post-quantique (ML-KEM normalisé par le NIST) couvre les longues distances, environ 1 200 km entre Bilbao et Amsterdam et 7 000 km entre Amsterdam et Chicago ; le cadriciel QuLore choisit automatiquement la meilleure méthode disponible. La protection est empilée sur trois couches : optique (1,6 Tb/s à Chicago, 800 Gb/s à Bilbao), réseau (IPsec) et application (appel vidéo chiffré). Un modèle pour les organisations qui n'auront pas de matériel QKD partout.</p>
@@ -314,7 +333,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">réseaux hybrides</span>
         <span class="tag">Europe</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/" target="_blank" rel="noopener">Google mesure la contextualité quantique à l'échelle, jusqu'à 105 qubits (Science)</a></h3>
         <div class="meta">Google Research (blog) • 19/11/2026</div>
         <p>Publié en couverture de la revue Science, le travail de Google Quantum AI montre que la contextualité — propriété quantique supposée motrice de certains algorithmes — survit à grande échelle sur le processeur supraconducteur Willow. Les qubits remportent le « magic square game » dans 98,30 % ± 0,0001 des cas, contre une limite classique de 88,89 %, et mesurent un paramètre de Bell-Kochen-Specker χ = 5,590 ± 0,008 (borne classique 4, optimum quantique 6) ; l'intrication est vérifiée jusqu'à 45 qubits et le test sépare circuits quantiques et classiques jusqu'à 105 qubits. Ces expériences servent aussi de révélateur d'erreurs matérielles fines, en appui de la chimie et de la science des matériaux.</p>
@@ -326,7 +345,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">Willow</span>
         <span class="tag">benchmark</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://journals.aps.org/prx/abstract/10.1103/gnq3-c2df" target="_blank" rel="noopener">Quantinuum et JPMorganChase exécutent des algorithmes entièrement corrigés d'erreurs sur qubits logiques</a></h3>
         <div class="meta">Physical Review X (APS) • 19/11/2026</div>
         <p>Publié dans Physical Review X, le travail exécute de bout en bout les algorithmes QAOA et HHL à partir de composants uniquement tolérants aux fautes, sur les processeurs à ions piégés H2 et Helios de Quantinuum avec le code de Steane ⟦7,1,3⟧. La plus grande exécution QAOA mobilise 12 qubits logiques (97 physiques) et 2 132 portes physiques à deux qubits, avec des performances supérieures au hasard ; une porte T logique atteint une infidélité de 2,7(4)×10⁻³. Les auteurs restent « proches de l'équilibre » (near-breakeven) et précisent ne pas garantir la tolérance aux fautes pour la totalité du calcul : c'est une démonstration de principe, pas encore un avantage.</p>
@@ -339,7 +358,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">QAOA</span>
         <span class="tag">HHL</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://news.harvard.edu/gazette/story/2026/11/harvard-led-team-receives-12-million-in-federal-funds-to-advance-quantum-computing-with-ai/" target="_blank" rel="noopener">Un projet piloté par Harvard reçoit 12 M$ pour accélérer le quantique par l'IA (Genesis Mission)</a></h3>
         <div class="meta">Harvard Gazette • 20/11/2026</div>
         <p>Une collaboration menée par Mikhail Lukin (Harvard, avec le MIT, Cornell, trois laboratoires nationaux, QuEra, NVIDIA et Anthropic) obtient 12 M$ du département de l'Énergie américain dans le cadre de la Genesis Mission. Le projet ASQC développera un système de correction d'erreurs tolérant aux fautes piloté par l'IA, capable d'apprendre quelles erreurs comptent vraiment et de concevoir codes et décodeurs adaptés à la simulation quantique, la science des matériaux, la chimie et la physique nucléaire. Il s'appuie sur un décodeur neuronal antérieur réduisant les taux d'erreur jusqu'à 17 fois en tournant des milliers de fois plus vite.</p>
@@ -355,7 +374,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
   <div class="card">
     <div class="card-head" id="zone-innov"><div class="card-title">🔬 Innovations Matérielles &amp; Logicielles<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://pennylane.ai/blog/2026/11/choose-your-rdma-engine-backline-grace-hopper" target="_blank" rel="noopener">PennyLane fait tourner sa plateforme de co-traitement temps réel Backline sur NVIDIA Grace Hopper</a></h3>
         <div class="meta">PennyLane Blog (Xanadu) • 17/11/2026</div>
         <span class="maturite m-b">Maturité : Beta</span>
@@ -367,7 +386,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">temps réel</span>
         <span class="tag">correction d'erreurs</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.pasqal.com/newsroom/pasqal-makes-its-quantum-processors-native-to-slurm-with-nvidia-expansion-to-support-hierarchical-resources/" target="_blank" rel="noopener">Pasqal rend ses processeurs à atomes neutres natifs de l'ordonnanceur Slurm</a></h3>
         <div class="meta">Pasqal (newsroom) • 19/11/2026</div>
         <span class="maturite m-d">Maturité : Disponible</span>
@@ -380,7 +399,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">CUDA-Q</span>
         <span class="tag">ordonnancement</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://arxiv.org/abs/2611.23383" target="_blank" rel="noopener">Transduction micro-onde-optique collective : les exigences de cohérence désormais chiffrées</a></h3>
         <div class="meta">arXiv quant-ph (2611.23383) • 17/11/2026</div>
         <span class="maturite m-t">Maturité : Théorique</span>
@@ -391,7 +410,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">supraconducteur</span>
         <span class="tag">optomécanique</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://arxiv.org/abs/2611.24910" target="_blank" rel="noopener">Un qubit « habillé » par radiofréquence dans une puce à piège ionique multicouche</a></h3>
         <div class="meta">arXiv quant-ph (2611.24910) • 18/11/2026</div>
         <span class="maturite m-r">Maturité : R&amp;D</span>
@@ -402,7 +421,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">qubit habillé</span>
         <span class="tag">radiofréquence</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://arxiv.org/abs/2611.26447" target="_blank" rel="noopener">Un décodeur neuronal temps réel implémenté en FPGA pour le code de surface distance 19</a></h3>
         <div class="meta">arXiv quant-ph (2611.26447) • 19/11/2026</div>
         <span class="maturite m-r">Maturité : R&amp;D</span>
@@ -419,7 +438,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
   <div class="card">
     <div class="card-head" id="zone-prospect"><div class="card-title">🚀 Prospective &amp; Impacts Sectoriels<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
     <div class="card-body">
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.iosco.org/library/pubdocs/pdf/IOSCOPD833.pdf" target="_blank" rel="noopener">L'IOSCO appelle le secteur financier mondial à préparer le risque quantique sans attendre</a></h3>
         <div class="meta">IOSCO — rapport final FR/07/2026 • 19/11/2026</div>
         <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
@@ -432,7 +451,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">crypto-agilité</span>
         <span class="tag">quantum washing</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.eba.europa.eu/sites/default/files/2026-11/828f300c-6a34-45c0-bbad-82ea626bf8fa/Risk%20Assessment%20Report%20-%20Autumn%202026_0.pdf" target="_blank" rel="noopener">Seules 8 % des banques européennes ont une feuille de route post-quantique opérationnelle (EBA)</a></h3>
         <div class="meta">Autorité bancaire européenne — rapport d'évaluation des risques, automne 2026 • 19/11/2026</div>
         <span class="horizon h-c">Horizon : Court terme <2 ans</span>
@@ -444,7 +463,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">inventaire cryptographique</span>
         <span class="tag">Europe</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://messervices.cyber.gouv.fr/documents-guides/IPsec_PQC_DR.pdf" target="_blank" rel="noopener">L'ANSSI publie le guide d'implémentation d'IPsec intégrant la cryptographie post-quantique</a></h3>
         <div class="meta">ANSSI (guide ANSSI-PA-120) • 17/11/2026</div>
         <span class="horizon h-c">Horizon : Court terme <2 ans</span>
@@ -457,7 +476,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">Diffusion Restreinte</span>
         <span class="tag">IKEv2</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://arxiv.org/abs/2611.22834" target="_blank" rel="noopener">Chimie quantique : la précision chimique atteinte sur ions piégés avec un échantillonnage réduit</a></h3>
         <div class="meta">arXiv quant-ph (2611.22834) • 17/11/2026</div>
         <span class="horizon h-l">Horizon : Long >5 ans</span>
@@ -468,7 +487,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">compressed sensing</span>
         <span class="tag">Quantinuum</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://www.unsw.edu.au/news/2026/11/can-quantum-computing-solve-transports-biggest-challenges" target="_blank" rel="noopener">Logistique : ce que le quantique peut — et ne peut pas encore — apporter au transport</a></h3>
         <div class="meta">UNSW Sydney • 16/11/2026</div>
         <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
@@ -479,7 +498,7 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
         <span class="tag">revue</span>
         <span class="tag">hybride</span>
       </div>
-      <div class="item">
+      <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
         <h3><a href="https://arxiv.org/abs/2611.24798" target="_blank" rel="noopener">IA quantique : un « mélange d'experts quantiques » qui se passe d'entraînement variationnel</a></h3>
         <div class="meta">arXiv quant-ph (2611.24798) • 18/11/2026</div>
         <span class="horizon h-m">Horizon : Moyen 2-5 ans</span>
@@ -499,23 +518,23 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
 </div>
 <div class="synthese">
   <h2 id="zone-synthese">📊 Synthèse — 5 signaux faibles à surveiller<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
-  <div class="signal">
+  <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
     <b>1. Le calendrier post-quantique est désormais opposable, avant toute démonstration de menace.</b> L'IOSCO publie un rapport final qui fait de la préparation quantique une priorité 2027 et invite explicitement à ne pas attendre l'apparition d'un ordinateur cryptographiquement pertinent ; l'Autorité bancaire européenne compte 8 % de banques européennes dotées d'une feuille de route opérationnelle et 73 % sans connaissance documentée des plans de leurs fournisseurs ; l'ANSSI publie un guide d'implémentation d'IPsec hybridé qui devient la référence technique opposable en France. Implication RSSI : l'inventaire cryptographique, la crypto-agilité et la pression contractuelle sur les éditeurs passent du chantier exploratoire à l'exigence de conformité.
     <div class="signal-src">Sources : <a href="https://www.iosco.org/library/pubdocs/pdf/IOSCOPD833.pdf" target="_blank" rel="noopener">IOSCO — rapport final sur le calcul quantique et les marchés financiers</a> · <a href="https://www.eba.europa.eu/sites/default/files/2026-11/828f300c-6a34-45c0-bbad-82ea626bf8fa/Risk%20Assessment%20Report%20-%20Autumn%202026_0.pdf" target="_blank" rel="noopener">EBA — rapport d'évaluation des risques, automne 2026</a> · <a href="https://messervices.cyber.gouv.fr/documents-guides/IPsec_PQC_DR.pdf" target="_blank" rel="noopener">ANSSI — guide d'implémentation IPsec post-quantique</a></div>
   </div>
-  <div class="signal">
+  <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
     <b>2. L'Europe finance la chaîne d'approvisionnement plutôt que la course au nombre de qubits.</b> Alice &amp; Bob porte sa cible à 200 qubits logiques en 2030 à partir de 3 600 qubits physiques modulaires, Qluster ouvre une troisième voie photonique française en levant 4,7 M€ sans cryogénie, et le projet Qubit Control 2030 obtient 14 M€ de France 2030 pour diviser par dix le coût de contrôle par qubit. Implication R&amp;D et achats : la valeur se déplace vers le contrôle cryogénique, les interconnexions et les modules — des spécialités européennes — et l'avantage se jouera sur le coût par qubit logique, pas sur le compteur de qubits physiques.
     <div class="signal-src">Sources : <a href="https://thequantuminsider.com/2026/11/18/alice-bobs-updated-roadmap-targets-200-logical-qubits-from-3600-physical-qubits-by-2030/" target="_blank" rel="noopener">The Quantum Insider — feuille de route d'Alice &amp; Bob</a> · <a href="https://www.silicon.fr/business-1367/qluster-leve-47-millions-e-pour-un-ordinateur-quantique-photonique-230429" target="_blank" rel="noopener">Silicon.fr — levée de fonds de Qluster</a> · <a href="https://systematic-paris-region.org/projet-qubit-control-2030" target="_blank" rel="noopener">Systematic Paris-Region — projet Qubit Control 2030</a></div>
   </div>
-  <div class="signal">
+  <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
     <b>3. Le déploiement quantum-safe se fera par briques hybrides, pas par remplacement global.</b> La démonstration QuLore relie Chicago, Amsterdam et Bilbao sur 8 000 km en combinant QKD sur les liaisons courtes et cryptographie post-quantique sur les longues, avec un orchestrateur qui choisit la meilleure clé disponible entre deux points ; le projet TeQuantS prépare la brique satellitaire indispensable au-delà de 150 km de fibre ; l'ANSSI formalise l'hybridation classique plus post-quantique dans IPsec. Implication DSI : les architectures à prévoir sont hétérogènes et agiles dès la conception, avec gestion de clés interopérable — un remplacement monolithique n'est ni finançable ni techniquement disponible.
     <div class="signal-src">Sources : <a href="https://www.psnc.pl/demonstration-presented-at-the-sc26-conference-in-chicago-qulore-an-adaptive-security-framework-to-extend-quantum-safe-communications/" target="_blank" rel="noopener">PCSS — démonstration QuLore à SC26</a> · <a href="https://www.electroniques.biz/telecoms-reseaux/communications-quantiques-leurope-prepare-son-reseau-satellitaire/" target="_blank" rel="noopener">Electroniques — réseau satellitaire européen (TeQuantS / QINSAT)</a> · <a href="https://www.ehuqc.eus/ehu-connects-bilbao-and-chicago-quantum-safe-communications/" target="_blank" rel="noopener">EHU Quantum Center — le lien Bilbao-Chicago</a></div>
   </div>
-  <div class="signal">
+  <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
     <b>4. La preuve de progrès migre du qubit physique vers la démonstration logique de bout en bout.</b> Quantinuum et JPMorganChase exécutent QAOA et HHL uniquement avec des composants tolérants aux fautes — 12 qubits logiques, 97 physiques, 2 132 portes à deux qubits — tout en restant proches du point d'équilibre ; Google établit une séparation quantique-classique vérifiable jusqu'à 105 qubits sur la contextualité ; un décodeur neuronal en FPGA abaisse de 240 fois le taux d'erreur logique du code de surface distance 19, sous la microseconde. Implication gouvernance : les critères d'achat et les jalons contractuels doivent porter sur des métriques logiques (qubits logiques, taux d'erreur logique, latence de décodage), pas sur le nombre de qubits physiques annoncé.
     <div class="signal-src">Sources : <a href="https://journals.aps.org/prx/abstract/10.1103/gnq3-c2df" target="_blank" rel="noopener">Physical Review X — exécution tolérante aux fautes (Quantinuum / JPMorganChase)</a> · <a href="https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/" target="_blank" rel="noopener">Google Research — contextualité à l'échelle (105 qubits)</a> · <a href="https://arxiv.org/abs/2611.26447" target="_blank" rel="noopener">arXiv 2611.26447 — décodeur neuronal FPGA temps réel</a></div>
   </div>
-  <div class="signal">
+  <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
     <b>5. Chimie et simulation restent la tête de pont de l'utilité quantique, désormais accélérées par l'IA.</b> La sparse QPD atteint la précision chimique sur ions piégés avec un nombre d'échantillons logarithmique, là où les méthodes variationnelles en demandaient un nombre linéaire ; le département de l'Énergie américain finance à 12 M$ un décodage piloté par l'IA qui apprend quelles erreurs comptent ; la revue de l'UNSW rappelle que les gains logistiques annoncés (jusqu'à 11× sur certaines instances) ne se transposent pas encore à une classe de problèmes. Implication directions R&amp;D : le retour sur investissement se mesure en précision atteinte et en heures de calcul économisées — l'arbitrage passe par une plateforme hybride quantique-HPC, pas par l'achat d'un QPU isolé.
     <div class="signal-src">Sources : <a href="https://arxiv.org/abs/2611.22834" target="_blank" rel="noopener">arXiv 2611.22834 — précision chimique sur Quantinuum Helios</a> · <a href="https://news.harvard.edu/gazette/story/2026/11/harvard-led-team-receives-12-million-in-federal-funds-to-advance-quantum-computing-with-ai/" target="_blank" rel="noopener">Harvard Gazette — 12 M$ pour un décodage piloté par l'IA (Genesis Mission)</a> · <a href="https://www.unsw.edu.au/news/2026/11/can-quantum-computing-solve-transports-biggest-challenges" target="_blank" rel="noopener">UNSW Sydney — revue des usages quantiques en transport</a></div>
   </div>
@@ -552,33 +571,180 @@ document.addEventListener('DOMContentLoaded',hvPaint);
 <script id="veille-toc-js">
 (function(){
   var HAUT = '#veille-toc-haut';
-  function cible_de(h){
-    return h === HAUT ? null : document.getElementById(h.slice(1));
+  var depart = null, contact = 0;
+  function cible_de(h){ return h === HAUT ? null : document.getElementById(h.slice(1)); }
+  function marge(){                                   /* hauteur réelle de la barre, + air */
+    var b = document.getElementById('veille-toc');
+    return (b ? Math.round(b.getBoundingClientRect().height) : 52) + 10;
   }
   function pos(el){
-    var r = el.getBoundingClientRect();
-    var y = r.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-    return Math.max(0, Math.round(y) - 72);      /* dégagé de la barre collante */
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    return Math.max(0, Math.round(y) - marge());
   }
   function aller(c){
-    if (!c) { window.scrollTo(0, 0); return; }
-    var y = pos(c);
+    var y = c ? pos(c) : 0;
     window.scrollTo(0, y);
-    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* si le moteur a ramené la page */
+    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* le moteur a ramené la page : on rejoue */
       setTimeout(function(){ window.scrollTo(0, y); }, 60);
     }
   }
-  document.addEventListener('click', function(e){
-    var a = e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  function lien(e){
+    return e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  }
+  function suivre(e){
+    var a = lien(e), t = e.changedTouches ? e.changedTouches[0] : null;
+    depart = a ? {lien: a, x: t ? t.clientX : 0, y: t ? t.clientY : 0, t: Date.now()} : null;
+  }
+  function relacher(e){
+    var a = lien(e) || (depart ? depart.lien : null), d = depart;
+    depart = null;
     if (!a) return;
+    if (d) {                                          /* appui ou balayage ? */
+      var t = e.changedTouches ? e.changedTouches[0] : null;
+      var bouge = t ? (Math.abs(t.clientX - d.x) > 10 || Math.abs(t.clientY - d.y) > 10) : false;
+      if (bouge || Date.now() - d.t > 700) return;     /* balayage : on laisse la page défiler */
+    }
     var h = a.getAttribute('href') || '';
     if (h.charAt(0) !== '#') return;
     e.preventDefault();
     var c = cible_de(h);
     if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
     aller(c);
-    setTimeout(function(){ aller(c); }, 120);   /* rejoue après un éventuel rappel de focus */
+    setTimeout(function(){ aller(c); }, 120);          /* après un éventuel rappel de focus */
+  }
+  document.addEventListener('touchstart', function(e){ contact = Date.now(); suivre(e); }, {capture:true, passive:true});
+  document.addEventListener('touchend', function(e){ contact = Date.now(); relacher(e); }, {capture:true, passive:false});
+  document.addEventListener('mousedown', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+  document.addEventListener('click', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+})();
+</script>
+<style id="copier-css">
+.cp-blk{position:relative}
+.cp-btn{position:absolute;top:10px;right:0;width:26px;height:26px;display:inline-flex;align-items:center;
+ justify-content:center;padding:0;border:1px solid var(--border);border-radius:8px;background:transparent;
+ color:var(--muted);opacity:.35;cursor:pointer;font:inherit;line-height:1;
+ transition:opacity .15s,color .15s,border-color .15s}
+.cp-btn .i-ok{display:none}
+.cp-btn:hover,.cp-btn:focus-visible{opacity:1;color:var(--accent-2);border-color:var(--accent-2)}
+.cp-btn.ok{opacity:1;color:#16a34a;border-color:#16a34a}
+.cp-btn.ok .i-copy{display:none}
+.cp-btn.ok .i-ok{display:block}
+.cp-btn.ko{opacity:1;color:#dc2626;border-color:#dc2626}
+.cp-blk>h3:first-child,.cp-blk>h4:first-child,.cp-blk>p:first-child{padding-right:34px}
+@media (hover:none){.cp-btn{opacity:.7}
+ /* Sur écran tactile, la cible visuelle de 26 px est trop petite pour un doigt (44 px
+    recommandés) : on élargit la ZONE sensible sans grossir l'icône — l'icône garde sa
+    discrétion, le doigt a de quoi viser. */
+ .cp-btn::after{content:'';position:absolute;top:-9px;right:-9px;bottom:-9px;left:-9px}}
+#cp-toast{position:fixed;right:18px;bottom:18px;z-index:80;padding:9px 14px;border-radius:10px;
+ font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.06em;background:#0b1220;
+ color:#40dcff;border:1px solid rgba(64,220,255,.45);opacity:0;transform:translateY(6px);
+ transition:opacity .2s,transform .2s;pointer-events:none}
+#cp-toast.ko{color:#fca5a5;border-color:rgba(220,38,38,.5)}
+#cp-toast.visible{opacity:1;transform:translateY(0)}
+html[data-theme="light"] #cp-toast{background:#fff;color:#0e7490;border-color:rgba(14,116,144,.4)}
+</style>
+<script id="copier-js">
+(function(){
+  function texte(n){ return (n.textContent||'').replace(/\s+/g,' ').trim(); }
+
+  /* Copie propre : on retire le bouton lui-même, la flèche de retour, puis TOUT attribut de
+     classe ou de style, et on rend les liens absolus (une URL relative ne survit pas au collage). */
+  function nettoyer(n){
+    var c = n.cloneNode(true);
+    c.querySelectorAll('.cp-btn,.retour-haut,button,script,style,svg').forEach(function(x){ x.remove(); });
+    c.querySelectorAll('*').forEach(function(x){
+      var attrs = x.attributes, i;
+      for (i = attrs.length - 1; i >= 0; i--) { if (attrs[i].name !== 'href') { x.removeAttribute(attrs[i].name); } }
+    });
+    c.querySelectorAll('a[href]').forEach(function(a){
+      try { a.setAttribute('href', new URL(a.getAttribute('href'), location.href).href); } catch(e){}
+    });
+    return c;
+  }
+
+  /* Les pièces sont repérées sur le bloc D'ORIGINE (avant nettoyage) : nettoyer d'abord les
+     classes effacerait `.meta`, `.src`, et la ligne source/date disparaîtrait de la copie. */
+  function morceau(n){ return n ? nettoyer(n) : null; }
+
+  function contenu(el){
+    var t = morceau(el.querySelector('h3,h4'));
+    var m = morceau(el.querySelector('.meta'));
+    var s = morceau(el.querySelector('.src'));
+    var ps = Array.prototype.slice.call(el.querySelectorAll('p')).map(nettoyer);
+
+    var html = '';
+    if (t) html += '<h3>' + t.innerHTML + '</h3>';
+    if (m) html += '<div>' + m.innerHTML + '</div>';
+    ps.forEach(function(p){ html += '<p>' + p.innerHTML + '</p>'; });
+    if (s) html += '<div>' + s.innerHTML + '</div>';
+
+    var lien = t && t.querySelector('a[href]') ? t.querySelector('a').getAttribute('href') : '';
+    var morceaux = [];
+    if (t) morceaux.push(texte(t));
+    if (m) morceaux.push(texte(m));
+    ps.forEach(function(p){ morceaux.push(texte(p)); });
+    if (s) morceaux.push(texte(s));
+    if (lien) morceaux.push(lien);
+
+    return { html: html, text: morceaux.filter(function(x){ return x; }).join('\n') };
+  }
+
+  function dire(ok, btn){
+    var t = document.getElementById('cp-toast');
+    if (!t) { t = document.createElement('div'); t.id = 'cp-toast'; document.body.appendChild(t); }
+    t.textContent = ok ? 'Passage copié' : 'Copie impossible';
+    t.className = (ok ? '' : 'ko ') + 'visible';
+    clearTimeout(dire.t);
+    dire.t = setTimeout(function(){ t.className = ok ? '' : 'ko'; }, 1600);
+    if (btn) {
+      btn.classList.add(ok ? 'ok' : 'ko');
+      setTimeout(function(){ btn.classList.remove('ok','ko'); }, 1600);
+    }
+  }
+
+  /* Repli sans API moderne : sélection invisible + execCommand. C'est le seul chemin disponible
+     quand la page est ouverte depuis un fichier local (file:// n'est pas un contexte sécurisé). */
+  function copie_ancienne(p){
+    var h = document.createElement('div');
+    h.setAttribute('contenteditable','true');
+    h.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
+    h.innerHTML = p.html;
+    document.body.appendChild(h);
+    var r = document.createRange(); r.selectNodeContents(h);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+    s.removeAllRanges(); document.body.removeChild(h);
+    return ok;
+  }
+
+  function copier(el, btn){
+    if (!el) { dire(false, btn); return; }
+    var p = contenu(el);
+    if (!p.html && !p.text) { dire(false, btn); return; }
+    var suivre = function(ok){ dire(ok, btn); };
+    if (navigator.clipboard && window.ClipboardItem && location.protocol !== 'file:') {
+      try {
+        navigator.clipboard.write([new ClipboardItem({
+          'text/html':  new Blob([p.html], {type:'text/html'}),
+          'text/plain': new Blob([p.text], {type:'text/plain'})
+        })]).then(function(){ suivre(true); }, function(){ suivre(copie_ancienne(p)); });
+        return;
+      } catch(e) {}
+    }
+    suivre(copie_ancienne(p));
+  }
+
+  document.addEventListener('click', function(e){
+    var cible = e.target && e.target.closest ? e.target.closest('.cp-btn') : null;
+    if (!cible) return;
+    e.preventDefault();
+    copier(cible.closest('.cp-blk'), cible);
   });
+
+  /* Contrôle : permet de lire le contenu fabriqué sans toucher au presse-papier. */
+  window.__cpContenu = function(el){ return contenu(el); };
 })();
 </script>
 </body></html>

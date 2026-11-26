@@ -118,6 +118,25 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
 /* sous la barre collante : sans cela, le titre visé arrive caché derrière elle */
 [id^="zone-"]{scroll-margin-top:72px}
 [id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+/* TÉLÉPHONE : la barre tient sur UNE ligne et se balaie du doigt. Sans cela les pastilles
+   passent à la ligne (mesuré le 27/11/2026, écran 390 × 844 : 5 lignes, 229 px de haut, soit
+   27 % de l'écran) et, comme la barre est collante, elle ne s'efface jamais pour rendre la
+   place. Une seule ligne, défilante horizontalement, garde le sommaire accessible et discret. */
+@media (max-width:700px){
+  /* Le bouton de thème est FIXE en haut à droite (124 px de large sur un écran de 390 px) et
+     se superposait à la barre : les appuis à droite tombaient dessus au lieu de la pastille —
+     d'où « sur mon Safari mobile le bloc du sommaire ne défile pas ». On lui réserve sa place
+     dans la barre (comme les 160 px du bureau) et on le réduit à son icône. */
+  html .theme-toggle{top:11px;right:12px;padding:6px 9px}
+  html .theme-toggle #hv-tt{display:none}
+  #veille-toc{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+   scrollbar-width:none;padding:7px 64px 7px 10px;margin-bottom:10px;}
+  #veille-toc::-webkit-scrollbar{display:none}
+  #veille-toc a.vt{flex:0 0 auto;font-size:.76rem;padding:6px 11px;}
+  #veille-toc .vt-lab{font-size:.66rem;margin-right:2px;}
+  [id^="zone-"]{scroll-margin-top:54px}
+  .retour-haut{padding:6px 11px}
+}
 @media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
 </style></head><body><span id="veille-toc-haut" class="rth"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-france">🇫🇷 France</a><a class="vt" href="#zone-europe">🇪🇺 Europe & Suisse</a><a class="vt" href="#zone-monde">🌐 Monde</a><a class="vt" href="#zone-prospective-recherche">🔬 Prospective & Recherche</a><a class="vt" href="#zone-recherche-essais-precoces">Recherche & essais précoces</a></nav>
 <div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-diabete-2026-11-25.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
@@ -314,33 +333,51 @@ document.addEventListener('DOMContentLoaded',hvPaint);
 <script id="veille-toc-js">
 (function(){
   var HAUT = '#veille-toc-haut';
-  function cible_de(h){
-    return h === HAUT ? null : document.getElementById(h.slice(1));
+  var depart = null, contact = 0;
+  function cible_de(h){ return h === HAUT ? null : document.getElementById(h.slice(1)); }
+  function marge(){                                   /* hauteur réelle de la barre, + air */
+    var b = document.getElementById('veille-toc');
+    return (b ? Math.round(b.getBoundingClientRect().height) : 52) + 10;
   }
   function pos(el){
-    var r = el.getBoundingClientRect();
-    var y = r.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-    return Math.max(0, Math.round(y) - 72);      /* dégagé de la barre collante */
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    return Math.max(0, Math.round(y) - marge());
   }
   function aller(c){
-    if (!c) { window.scrollTo(0, 0); return; }
-    var y = pos(c);
+    var y = c ? pos(c) : 0;
     window.scrollTo(0, y);
-    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* si le moteur a ramené la page */
+    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* le moteur a ramené la page : on rejoue */
       setTimeout(function(){ window.scrollTo(0, y); }, 60);
     }
   }
-  document.addEventListener('click', function(e){
-    var a = e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  function lien(e){
+    return e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  }
+  function suivre(e){
+    var a = lien(e), t = e.changedTouches ? e.changedTouches[0] : null;
+    depart = a ? {lien: a, x: t ? t.clientX : 0, y: t ? t.clientY : 0, t: Date.now()} : null;
+  }
+  function relacher(e){
+    var a = lien(e) || (depart ? depart.lien : null), d = depart;
+    depart = null;
     if (!a) return;
+    if (d) {                                          /* appui ou balayage ? */
+      var t = e.changedTouches ? e.changedTouches[0] : null;
+      var bouge = t ? (Math.abs(t.clientX - d.x) > 10 || Math.abs(t.clientY - d.y) > 10) : false;
+      if (bouge || Date.now() - d.t > 700) return;     /* balayage : on laisse la page défiler */
+    }
     var h = a.getAttribute('href') || '';
     if (h.charAt(0) !== '#') return;
     e.preventDefault();
     var c = cible_de(h);
     if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
     aller(c);
-    setTimeout(function(){ aller(c); }, 120);   /* rejoue après un éventuel rappel de focus */
-  });
+    setTimeout(function(){ aller(c); }, 120);          /* après un éventuel rappel de focus */
+  }
+  document.addEventListener('touchstart', function(e){ contact = Date.now(); suivre(e); }, {capture:true, passive:true});
+  document.addEventListener('touchend', function(e){ contact = Date.now(); relacher(e); }, {capture:true, passive:false});
+  document.addEventListener('mousedown', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+  document.addEventListener('click', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
 })();
 </script>
 <style id="copier-css">
@@ -356,7 +393,11 @@ document.addEventListener('DOMContentLoaded',hvPaint);
 .cp-btn.ok .i-ok{display:block}
 .cp-btn.ko{opacity:1;color:#dc2626;border-color:#dc2626}
 .cp-blk>h3:first-child,.cp-blk>h4:first-child,.cp-blk>p:first-child{padding-right:34px}
-@media (hover:none){.cp-btn{opacity:.7}}
+@media (hover:none){.cp-btn{opacity:.7}
+ /* Sur écran tactile, la cible visuelle de 26 px est trop petite pour un doigt (44 px
+    recommandés) : on élargit la ZONE sensible sans grossir l'icône — l'icône garde sa
+    discrétion, le doigt a de quoi viser. */
+ .cp-btn::after{content:'';position:absolute;top:-9px;right:-9px;bottom:-9px;left:-9px}}
 #cp-toast{position:fixed;right:18px;bottom:18px;z-index:80;padding:9px 14px;border-radius:10px;
  font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.06em;background:#0b1220;
  color:#40dcff;border:1px solid rgba(64,220,255,.45);opacity:0;transform:translateY(6px);
