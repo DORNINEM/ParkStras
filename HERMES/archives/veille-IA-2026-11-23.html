@@ -381,56 +381,6 @@ function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='
 document.addEventListener('DOMContentLoaded',hvPaint);
 </script>
 
-<script id="veille-toc-js">
-(function(){
-  var HAUT = '#veille-toc-haut';
-  var depart = null, contact = 0;
-  function cible_de(h){ return h === HAUT ? null : document.getElementById(h.slice(1)); }
-  function marge(){                                   /* hauteur réelle de la barre, + air */
-    var b = document.getElementById('veille-toc');
-    return (b ? Math.round(b.getBoundingClientRect().height) : 52) + 10;
-  }
-  function pos(el){
-    var y = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-    return Math.max(0, Math.round(y) - marge());
-  }
-  function aller(c){
-    var y = c ? pos(c) : 0;
-    window.scrollTo(0, y);
-    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* le moteur a ramené la page : on rejoue */
-      setTimeout(function(){ window.scrollTo(0, y); }, 60);
-    }
-  }
-  function lien(e){
-    return e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
-  }
-  function suivre(e){
-    var a = lien(e), t = e.changedTouches ? e.changedTouches[0] : null;
-    depart = a ? {lien: a, x: t ? t.clientX : 0, y: t ? t.clientY : 0, t: Date.now()} : null;
-  }
-  function relacher(e){
-    var a = lien(e) || (depart ? depart.lien : null), d = depart;
-    depart = null;
-    if (!a) return;
-    if (d) {                                          /* appui ou balayage ? */
-      var t = e.changedTouches ? e.changedTouches[0] : null;
-      var bouge = t ? (Math.abs(t.clientX - d.x) > 10 || Math.abs(t.clientY - d.y) > 10) : false;
-      if (bouge || Date.now() - d.t > 700) return;     /* balayage : on laisse la page défiler */
-    }
-    var h = a.getAttribute('href') || '';
-    if (h.charAt(0) !== '#') return;
-    e.preventDefault();
-    var c = cible_de(h);
-    if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
-    aller(c);
-    setTimeout(function(){ aller(c); }, 120);          /* après un éventuel rappel de focus */
-  }
-  document.addEventListener('touchstart', function(e){ contact = Date.now(); suivre(e); }, {capture:true, passive:true});
-  document.addEventListener('touchend', function(e){ contact = Date.now(); relacher(e); }, {capture:true, passive:false});
-  document.addEventListener('mousedown', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
-  document.addEventListener('click', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
-})();
-</script>
 <style id="copier-css">
 .cp-blk{position:relative}
 .cp-btn{position:absolute;top:10px;right:0;width:26px;height:26px;display:inline-flex;align-items:center;
@@ -558,6 +508,56 @@ html[data-theme="light"] #cp-toast{background:#fff;color:#0e7490;border-color:rg
 
   /* Contrôle : permet de lire le contenu fabriqué sans toucher au presse-papier. */
   window.__cpContenu = function(el){ return contenu(el); };
+})();
+</script>
+<script id="veille-toc-js">
+(function(){
+  var HAUT = '#veille-toc-haut';
+  var depart = null, contact = 0;
+  function cible_de(h){ return h === HAUT ? null : document.getElementById(h.slice(1)); }
+  function marge(){                                   /* hauteur réelle de la barre, + air */
+    var b = document.getElementById('veille-toc');
+    return (b ? Math.round(b.getBoundingClientRect().height) : 52) + 10;
+  }
+  function pos(el){
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    return Math.max(0, Math.round(y) - marge());
+  }
+  function aller(c){
+    var y = c ? pos(c) : 0;
+    window.scrollTo(0, y);
+    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* le moteur a ramené la page : on rejoue */
+      setTimeout(function(){ window.scrollTo(0, y); }, 60);
+    }
+  }
+  function lien(e){
+    return e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  }
+  function suivre(e){
+    var a = lien(e), t = e.changedTouches ? e.changedTouches[0] : null;
+    depart = a ? {lien: a, x: t ? t.clientX : 0, y: t ? t.clientY : 0, t: Date.now()} : null;
+  }
+  function relacher(e){
+    var a = lien(e) || (depart ? depart.lien : null), d = depart;
+    depart = null;
+    if (!a) return;
+    if (d) {                                          /* appui ou balayage ? */
+      var t = e.changedTouches ? e.changedTouches[0] : null;
+      var bouge = t ? (Math.abs(t.clientX - d.x) > 10 || Math.abs(t.clientY - d.y) > 10) : false;
+      if (bouge || Date.now() - d.t > 700) return;     /* balayage : on laisse la page défiler */
+    }
+    var h = a.getAttribute('href') || '';
+    if (h.charAt(0) !== '#') return;
+    e.preventDefault();
+    var c = cible_de(h);
+    if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
+    aller(c);
+    setTimeout(function(){ aller(c); }, 120);          /* après un éventuel rappel de focus */
+  }
+  document.addEventListener('touchstart', function(e){ contact = Date.now(); suivre(e); }, {capture:true, passive:true});
+  document.addEventListener('touchend', function(e){ contact = Date.now(); relacher(e); }, {capture:true, passive:false});
+  document.addEventListener('mousedown', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+  document.addEventListener('click', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
 })();
 </script>
 </body></html>
