@@ -137,9 +137,14 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
  border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
  text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
 .retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+/* Ancre du sommaire : une VRAIE boîte (1 px, invisible) et non un span vide — certains moteurs
+   ignorent le défilement vers un élément sans boîte. */
+#veille-toc-haut.rth{display:block;height:1px;margin-top:-1px}
+/* sous la barre collante : sans cela, le titre visé arrive caché derrière elle */
+[id^="zone-"]{scroll-margin-top:72px}
 [id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
 @media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
-</style></head><body><span id="veille-toc-haut"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-france-2">🇫🇷 France</a><a class="vt" href="#zone-europe-hors-france">🌍 Europe hors France</a><a class="vt" href="#zone-monde-2">🌐 Monde</a><a class="vt" href="#zone-juridique-reglementaire">⚖️ Juridique & Réglementaire</a><a class="vt" href="#zone-metiers-de-la-telesurveillance">💼 Métiers de la télésurveillance</a><a class="vt" href="#zone-prospective">🔮 Prospective</a><a class="vt" href="#zone-synthese">🧭 Synthèse</a></nav>
+</style></head><body><span id="veille-toc-haut" class="rth"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-france-2">🇫🇷 France</a><a class="vt" href="#zone-europe-hors-france">🌍 Europe hors France</a><a class="vt" href="#zone-monde-2">🌐 Monde</a><a class="vt" href="#zone-juridique-reglementaire">⚖️ Juridique & Réglementaire</a><a class="vt" href="#zone-metiers-de-la-telesurveillance">💼 Métiers de la télésurveillance</a><a class="vt" href="#zone-prospective">🔮 Prospective</a><a class="vt" href="#zone-synthese">🧭 Synthèse</a></nav>
 <div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-TELE-2026-11-23.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
 <script id="veille-audio-banner-js">(function(){
   var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
@@ -319,4 +324,36 @@ function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='
 document.addEventListener('DOMContentLoaded',hvPaint);
 </script>
 
+<script id="veille-toc-js">
+(function(){
+  var HAUT = '#veille-toc-haut';
+  function cible_de(h){
+    return h === HAUT ? null : document.getElementById(h.slice(1));
+  }
+  function pos(el){
+    var r = el.getBoundingClientRect();
+    var y = r.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    return Math.max(0, Math.round(y) - 72);      /* dégagé de la barre collante */
+  }
+  function aller(c){
+    if (!c) { window.scrollTo(0, 0); return; }
+    var y = pos(c);
+    window.scrollTo(0, y);
+    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* si le moteur a ramené la page */
+      setTimeout(function(){ window.scrollTo(0, y); }, 60);
+    }
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (h.charAt(0) !== '#') return;
+    e.preventDefault();
+    var c = cible_de(h);
+    if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
+    aller(c);
+    setTimeout(function(){ aller(c); }, 120);   /* rejoue après un éventuel rappel de focus */
+  });
+})();
+</script>
 </body></html>

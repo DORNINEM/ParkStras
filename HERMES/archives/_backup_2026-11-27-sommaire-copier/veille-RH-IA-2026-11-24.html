@@ -1,0 +1,464 @@
+<!doctype html><html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille IA &amp; Mutations RH — 2026-11-24</title>
+  <style>:root{
+    --bg:#010409;
+    --panel:#0b1220;
+    --ink:#e6f1ff;
+    --muted:#8fb3cc;
+    --accent:#40dcff;
+    --accent-2:#ffb347;
+    --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-2:#6366f1;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    .dark {
+      --bg:#0b1220; --panel:#0f172a; --ink:#f3f4f6; --muted:#d1d5db;
+      --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 110% -10%,#a78bfa29,transparent),
+        radial-gradient(900px 600px at -10% 10%,#22d3ee29,transparent),
+        var(--bg);
+      color:var(--ink); line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    header{
+      display:grid; grid-template-columns: 1fr auto; align-items:center; gap:14px;
+      padding:22px 22px 20px; border:1px solid var(--border);
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border-radius: var(--radius); color:#fff;
+      box-shadow: var(--shadow);
+    }
+    header h1{font-size:1.55rem;margin:0;letter-spacing:-.2px}
+    header p{margin:0;opacity:.85;font-size:.95rem}
+    header time{font-variant-numeric: tabular-nums}
+    .theme-toggle{margin-top:10px}
+    .theme-toggle button{
+      background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:999px;
+      padding:5px 14px;font-size:.8rem;cursor:pointer;
+    }
+    .theme-toggle button:hover{background:#334155}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{
+      border:1px solid var(--border); background:linear-gradient(180deg,var(--panel),var(--bg));
+      border-radius:14px; padding:14px 16px;
+    }
+    .dark .kpi{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.15rem;margin-top:6px;font-weight:700}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--ink)}
+    .pill.blue{background:#0ea5e9;color:#fff;border-color:var(--accent)}
+    .pill.green{background:#10b981;color:#fff;border-color:#10b981}
+    .pill.teal{background:#0d9488;color:#fff;border-color:#0d9488}
+    .pill.yellow{background:#f59e0b;color:#fff;border-color:#f59e0b}
+    .pill.orange{background:#ea580c;color:#fff;border-color:#ea580c}
+    .pill.red{background:#ef4444;color:#fff;border-color:#ef4444}
+    .pill.purple{background:#8b5cf6;color:#fff;border-color:#8b5cf6}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:18px;box-shadow:var(--shadow)}
+    .dark .card{background:linear-gradient(180deg,#0f172a,#0b1220)}
+    .card.apports{border-top:4px solid var(--teal)}
+    .card.risques{border-top:4px solid var(--danger)}
+    .card.accomp{border-top:4px solid var(--accent)}
+    .card.prospec{border-top:4px solid #8b5cf6}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+    .card-title{font-size:1.05rem;font-weight:700}
+    .card.apports .card-title{color:var(--teal)}
+    .card.risques .card-title{color:var(--danger)}
+    .dark .card.apports .card-title{color:#2dd4bf}
+    .dark .card.risques .card-title{color:#f87171}
+    .card-body{padding:12px 18px 18px}
+    .item{border-top:1px solid var(--border);padding:14px 0}
+    .item:first-child{border-top:0;padding-top:0}
+    .item h3{margin:0 0 6px;font-size:.98rem;line-height:1.4}
+    .item h3 a{color:var(--accent-2);text-decoration:none}
+    .item h3 a:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+    .signal-src{margin-top:6px;font-size:.8rem;color:var(--muted)}
+    .signal-src a{color:var(--muted);text-decoration:underline}
+    .item p{margin:0;font-size:.92rem;color:var(--ink)}
+    .dark .item p{color:#e5e7eb}
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .flag{font-weight:700}
+    .flag.fort{color:#ef4444}
+    .flag.modere{color:#ea580c}
+    .flag.faible{color:#10b981}
+    .full-card{margin-top:16px}
+    .signals{padding:12px 18px 18px}
+    .signals ol{margin:0;padding-left:20px}
+    .signals li{margin:12px 0;font-size:.92rem}
+    .synthese{padding:12px 18px 18px;font-size:.92rem}
+    table.dash{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+    table.dash th{background:#0b1220;color:#f3f4f6;padding:10px 12px;text-align:left;font-size:.8rem;letter-spacing:.04em}
+    table.dash td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+    table.dash tr:nth-child(even) td{background:rgba(148,163,184,.07)}
+    .riskcell{font-weight:700}
+    .riskcell.f{color:#ef4444}.riskcell.m{color:#ea580c}.riskcell.w{color:#10b981}
+    .dash-scroll{overflow-x:auto}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem}
+    footer p{margin:4px 0}
+    @media (min-width: 860px){
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.2rem}
+      header{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      table.dash{font-size:.78rem}
+      table.dash th,table.dash td{padding:8px 8px}
+    }
+  
+    .theme-toggle{position:fixed;top:14px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:7px;
+      font-family:'Rajdhani','Segoe UI',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+      padding:7px 13px;border-radius:20px;cursor:pointer;text-decoration:none;
+      border:1px solid var(--border);background:var(--panel);color:var(--ink);
+      box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .18s}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+    :root{--teal:#0d9488;--danger:#ef4444;--radius:18px}
+    html[data-theme="light"]{--teal:#0d9488;--danger:#dc2626}
+    .item .flag{display:inline-block;margin-left:6px}
+    .signals ol li{margin:14px 0}
+    .signals .signal-src{font-size:.8rem;word-break:break-all;margin-top:4px}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+<style id="veille-toc-css">
+#veille-toc{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+ padding:10px 160px 10px 18px;margin:0 auto 14px;max-width:1100px;background:rgba(1,4,9,.92);
+ backdrop-filter:blur(6px);border-bottom:1px solid rgba(64,220,255,.20);}
+html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(14,116,144,.22);}
+#veille-toc .vt-lab{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+ text-transform:uppercase;opacity:.55;margin-right:4px;}
+#veille-toc a.vt{padding:5px 12px;border-radius:999px;border:1px solid rgba(64,220,255,.35);
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.88rem;
+ white-space:nowrap;transition:transform .15s;animation:vtGlow 2.6s ease-in-out infinite;}
+#veille-toc a.vt:hover{transform:translateY(-1px);border-color:var(--accent,#40dcff);}
+@keyframes vtGlow{0%,100%{box-shadow:0 0 4px rgba(64,220,255,.18);}50%{box-shadow:0 0 14px rgba(64,220,255,.45);}}
+.retour-haut{display:inline-flex;align-items:center;gap:5px;margin-left:10px;padding:2px 9px;
+ border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
+ text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
+.retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+[id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+@media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
+</style></head><body><span id="veille-toc-haut"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-synthese-de-la-semaine">📌 Synthèse de la semaine</a><a class="vt" href="#zone-ia-dans-les-metiers-rh">🛠️ IA dans les métiers RH</a><a class="vt" href="#zone-risques-transformations-des-metiers-banque">⚠️ Risques & transformations des</a><a class="vt" href="#zone-dispositifs-d-accompagnement-aux-mutations">🔄 Dispositifs d'accompagnement</a><a class="vt" href="#zone-prospective">🔭 Prospective</a><a class="vt" href="#zone-images-schemas-analyses">🖼️ Images & schémas analysés</a><a class="vt" href="#zone-synthese">📊 Synthèse</a><a class="vt" href="#zone-tableau-de-bord-des-metiers">🗺️ Tableau de bord des métiers à</a></nav>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-RH-IA-2026-11-24.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🤖 Veille IA &amp; Mutations RH — Banque · Assurance · Informatique</h1>
+      <p>Apports RH, risques sectoriels, accompagnement des mutations, prospective — généré automatiquement par Hermes</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous</p>
+    </div>
+    <time datetime="2026-11-24">24 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Articles vérifiés</div><div class="value">25</div></div>
+    <div class="kpi"><div class="label">Axes couverts</div><div class="value">4</div></div>
+    <div class="kpi"><div class="label">Fenêtre de collecte</div><div class="value">17 – 24 nov. 2026</div></div>
+  </div>
+
+  <div class="badges">
+    <span class="pill blue">📰 25 articles</span>
+    <span class="pill teal">🛠️ 6 apports RH</span>
+    <span class="pill red">⚠️ 6 risques métiers</span>
+    <span class="pill green">🔄 6 dispositifs</span>
+    <span class="pill purple">🔭 7 prospective</span>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head" id="zone-synthese-de-la-semaine"><div class="card-title">📌 Synthèse de la semaine<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+    <div class="card-body synthese">
+      Cette édition déplace le curseur du déploiement vers la mesure et le dialogue social. Côté <strong>apports</strong>, les grands SIRH industrialisent : Sanofi met un agent de planification des entretiens et un coach de carrière en production (50 000 conversations en un mois), Adecco déploie son agent de présélection dans plus de 40 pays — mais 72 % des DRH n'ont toujours pas de feuille de route IA et 8 % seulement d'analyse prédictive opérationnelle. Côté <strong>risques</strong>, l'ajustement reste discret et ne passe plus d'abord par les licenciements : −12,4 % d'offres pour dix points d'exposition à l'IA (25 000 annonces perdues au 3e trimestre selon Coface), −42,8 % d'annonces RH depuis 2022, et un « déficit d'apprentissage » documenté chez les juniors du conseil et de la technique. Côté <strong>accompagnement</strong>, le fait marquant est la contractualisation : accord-cadre IA de La Poste signé le 19 novembre avec quatre organisations syndicales (~93 000 postiers formés, comité IA, reconversions via la GEPP), 35 000 collaborateurs et 8 500 managers formés au prompting chez Generali — pendant que ver.di bloque les négociations des banques privées allemandes faute de règles contraignantes sur l'IA. Enfin la <strong>prospective</strong> se joue sur deux terrains : l'acceptabilité, où l'usage et la clarté du cadre pèsent plus que la génération (mais où le discernement doit se former explicitement), et le contrôle, le CEPD faisant de la décision automatisée de recrutement le thème de son action coordonnée 2027.
+    </div>
+  </div>
+
+<div class="card apports full-card">
+<div class="card-head" id="zone-ia-dans-les-metiers-rh"><div class="card-title">🛠️ IA dans les métiers RH : apports &amp; outils<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">6 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lemagit.fr/etude/Sanofi-nettoie-son-SIRH-avant-dy-lacher-ses-agents-IA" target="_blank">Sanofi nettoie son SIRH avant d'y lâcher ses agents IA</a></h3>
+<div class="meta">LeMagIT • 20/11/2026 • Secteur : transversal</div>
+<p>Le groupe pharmaceutique Sanofi gère 100 000 personnes, dont 75 000 salariés, dans 60 pays, de plus en plus avec des agents IA : l'un d'eux, en production, planifie les entretiens de recrutement et fait passer le délai de calage d'un rendez-vous de deux à trois semaines à moins d'une journée, sur plus d'un million de candidatures par an. Le « coach de carrière » maison, lancé le 1er octobre et adossé au SIRH Workday et à la brique Paradox, a généré 50 000 conversations et séduit 18 000 utilisateurs en moins d'un mois ; présélection des candidatures et benchmark de rémunération sont en préparation. Sanofi a dû nettoyer son instance Workday au préalable — un simple changement de poste comptait encore 441 étapes réparties dans plus de 60 modèles — et juge ses cas d'usage à l'aune de trois critères : expérience du salarié, efficacité, efficience.</p>
+<div class="tags"><span class="tag">SIRH augmenté</span><span class="tag">agents IA</span><span class="tag">recrutement</span><span class="tag">rétention</span></div>
+</div>
+<div class="item">
+<h3><a href="https://culture-rh.com/drh-augmente-transformations-ia/" target="_blank">Le DRH « augmenté » au cœur des transformations de l'IA</a></h3>
+<div class="meta">Culture RH (étude « DRH Augmenté·e », PwC France et Maghreb) • 20/11/2026 • Secteur : transversal</div>
+<p>La 2e édition de l'étude « DRH Augmenté·e » de PwC France et Maghreb montre une fonction RH qui pilote la donnée : 76 % des DRH déclarent avoir déployé avec succès une démarche de planification des effectifs et des compétences et 69 % utilisent des tableaux de bord RH enrichis par l'IA, contre 62 % qui s'en servent pour rédiger leurs politiques RH. L'écart reste toutefois béant sur les usages les plus transformateurs : seuls 8 % disposent d'une analyse prédictive des talents réellement opérationnelle, 72 % n'ont pas de feuille de route IA clairement définie et 52 % portent un regard négatif sur l'usage des données RH pour piloter les compétences.</p>
+<div class="tags"><span class="tag">GPEC</span><span class="tag">people analytics</span><span class="tag">SIRH</span><span class="tag">gouvernance</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.xerfi.com/blog/le-recrutement-digital-une-realite-de-plus-en-plus-tangible_1604" target="_blank">Recrutement digital et IA : les pratiques des prestataires RH basculent</a></h3>
+<div class="meta">Xerfi • 20/11/2026 • Secteur : transversal</div>
+<p>Xerfi décrypte l'intégration de l'IA chez les prestataires RH — cabinets et intérim — où elle sert à rédiger les fiches de poste, préparer les entretiens, assurer le matching des profils, animer des assistants conversationnels pour les candidats et opérer une présélection automatisée. L'adoption progresse vite mais reste inégale : 13 % des ETI et grandes entreprises ont utilisé l'IA pour recruter des cadres en 2025, contre 6 % en 2024, et 31 % des cadres en recherche d'emploi s'en servent dans leurs propres démarches. Côté offre, Adecco a déployé Agentforce Coworker dans plus de 40 pays, dont un agent de présélection, et ManpowerGroup s'est associé à HUBERT pour des entretiens de présélection assistés par IA.</p>
+<div class="tags"><span class="tag">ATS</span><span class="tag">présélection</span><span class="tag">matching CV</span><span class="tag">prestataires RH</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.actionco.fr/management-1214/lia-un-soutien-dans-la-montee-en-competences-44441" target="_blank">L'IA, un soutien dans la montée en compétences</a></h3>
+<div class="meta">Actionco (groupe Les Échos-Le Parisien) • 18/11/2026 • Secteur : assurance</div>
+<p>Comment l'IA transforme la formation des forces de vente : chez CNP Assurances Protection Sociale, elle permet de s'entraîner sur des situations concrètes avec un retour personnalisé, le manager traduisant ensuite les acquis en rendez-vous client. Foncia utilise l'outil Engramm pour des cas d'usage d'une quinzaine de minutes qui génèrent une « score card » et préviennent les baisses de motivation, tandis que chez Sixt l'accès aux outils d'aide à la vente par IA exige au moins 80 % de réussite à un module dédié. Le groupe Les Échos-Le Parisien a pour sa part testé un dispositif de micro-coaching mêlant humain et IA, jugé efficace mais trop coûteux, et donc abandonné.</p>
+<div class="tags"><span class="tag">formation</span><span class="tag">coaching digital</span><span class="tag">microlearning</span><span class="tag">assurance</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.e-tipi.com/blog/lignes-rouges-ia-rh-jacques-adoue" target="_blank">Lignes rouges de l'IA en RH : la doctrine du DRH d'Edenred</a></h3>
+<div class="meta">E-TIPI (propos de Jacques Adoue, DRH du groupe Edenred) • 20/11/2026 • Secteur : transversal</div>
+<p>Le DRH du groupe Edenred — 12 000 collaborateurs, plus de 90 % de produits numériques — expose sa doctrine d'usage de l'IA en RH : sensibilisation dès le recrutement, accélération du tri des candidatures menée en « test and learn » pour vérifier que les profils atypiques ne disparaissent pas de la liste, préservation de la décision humaine, automatisation assumée des tâches sans intérêt (agenda, reporting) et encadrement des usages de données internes. Refus net de toute pratique mettant en danger la sécurité ou la vie privée, le recrutement étant classé parmi les usages à haut risque par le règlement européen sur l'IA.</p>
+<div class="tags"><span class="tag">gouvernance de l'IA</span><span class="tag">tri des CV</span><span class="tag">éthique</span><span class="tag">recrutement</span></div>
+</div>
+<div class="item">
+<h3><a href="https://culture-rh.com/pluxee-ia-travail-quatre-priorites-rh/" target="_blank">IA au travail : quatre priorités RH pour transformer les usages en compétences</a></h3>
+<div class="meta">Culture RH (étude Pluxee × Ipsos 2026) • 23/11/2026 • Secteur : transversal</div>
+<p>À partir des résultats français de l'étude Pluxee × Ipsos 2026, l'article identifie quatre priorités RH pour faire de l'IA un levier de compétences : 42 % des répondants privilégient une formation au discernement plutôt que technique (27 %), et 41 % citent l'apprentissage par la pratique contre 19 % les formations proposées par l'entreprise. 44 % estiment apprendre plus facilement seul avec l'IA tout en étant moins accompagnés par leur manager, tandis que 47 % disent consacrer davantage de temps à la réflexion et à la valeur ajoutée — d'où la conclusion : une formation à l'IA adaptée aux métiers et aux tâches réelles, avec un rôle actif des managers.</p>
+<div class="tags"><span class="tag">formation</span><span class="tag">compétences</span><span class="tag">managers</span><span class="tag">discernement</span></div>
+</div>
+</div>
+</div>
+<div class="card risques full-card">
+<div class="card-head" id="zone-risques-transformations-des-metiers-banque"><div class="card-title">⚠️ Risques &amp; transformations des métiers (banque · assurance · informatique)<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">6 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.bfmtv.com/economie/emploi/pour-la-premiere-fois-une-etude-etablit-un-lien-entre-l-ia-et-les-recrutements-25-000-offres-d-emploi-ont-disparu-en-seulement-trois-mois-en-france_AD-202611170400.html" target="_blank">« Pour la première fois, une étude établit un lien entre l'IA et les recrutements » : 25 000 offres disparues en trois mois</a></h3>
+<div class="meta">BFM Business (indicateur AI-LERT de Coface et de l'Observatoire des emplois menacés et émergents) • 17/11/2026 • Secteur : transversal <span class="flag fort">Risque : Fort</span></div>
+<p>Le nouvel indicateur AI-LERT de Coface et de l'Observatoire des emplois menacés et émergents mesure qu'au 3e trimestre 2026, dix points d'exposition supplémentaires à l'IA sont associés à une évolution des offres d'emploi inférieure de 12,4 % à celle des métiers moins exposés d'un même secteur — soit 25 000 annonces en moins sur le trimestre et plus de 100 000 manquantes en rythme annuel. Le décrochage touche les cols blancs (vente, comptabilité, RH, informatique, conseil, droit, R&D) et pas seulement les débutants : −14 % pour les postes de moins d'un an d'expérience, −19,4 % pour ceux de un à deux ans. Résultats convergents en Allemagne (−10,8 %) et en Suède (−10,2 %) ; les auteurs y voient un signal avancé, sans établir de causalité.</p>
+<div class="tags"><span class="tag">Coface</span><span class="tag">offres d'emploi</span><span class="tag">cols blancs</span><span class="tag">marché du travail</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.01net.com/actualites/travail-ia-ces-metiers-ou-offres-emploi-se-sont-effondrees.html" target="_blank">Ces métiers où les offres d'emploi se sont effondrées</a></h3>
+<div class="meta">01net (lecture croisée des études France Travail et Coface) • 18/11/2026 • Secteur : transversal <span class="flag modere">Risque : Modéré</span></div>
+<p>01net croise les deux études de la semaine — France Travail auprès de 16 000 établissements et Coface — pour dessiner un marché à deux vitesses : 41 % des employeurs anticipent un impact de l'IA sur leur activité d'ici cinq ans, mais seuls 6 % prévoient une automatisation importante, 35 % y voyant un assistant de travail. Les métiers les plus concernés sont les ingénieurs informatiques (94 %), les comptables (83 %) et les banques-assurances (75 %), quand le BTP, les services aux particuliers et la restauration restent peu touchés. La chute des annonces est la plus spectaculaire dans les ressources humaines (−42,8 %) et le secrétariat (−40 %) depuis 2022.</p>
+<div class="tags"><span class="tag">emploi</span><span class="tag">banque-assurance</span><span class="tag">informatique</span><span class="tag">offres d'emploi</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lassuranceenmouvement.com/2026/11/22/ia-agentique-gouvernee-la-course-a-lindustrialisation/" target="_blank">IA agentique gouvernée : l'assurance passe à l'industrialisation</a></h3>
+<div class="meta">L'Assurance en Mouvement • 22/11/2026 • Secteur : assurance <span class="flag modere">Risque : Modéré</span></div>
+<p>Après des années de pilotes, les fournisseurs promettent aux assureurs des agents IA « gouvernés », branchés sur les systèmes cœur et encadrés par des seuils d'autorité : IBM Consulting et Microsoft ont lancé le 10 novembre Imagine Enterprise, une plateforme d'agents sectoriels adossée à plus de 6 000 agents préconfigurés, et Guidewire a présenté fin octobre une approche « plateforme » de l'assurance agentique. La gestion des sinistres sert de vitrine — un coordinateur numérique évalue la complexité du dossier, signale les indices de fraude et l'oriente selon le niveau d'autorité du gestionnaire — mais la décision reste humaine et chaque action est journalisée. Pour les métiers, le rôle du gestionnaire se déplace vers l'arbitrage et la relation avec l'assuré, ce qui suppose formation, refonte des parcours professionnels et gestion des compétences ; le passage à l'échelle se jouera davantage sur le rythme des réorganisations et des accords sociaux que sur la technologie.</p>
+<div class="tags"><span class="tag">assurance</span><span class="tag">IA agentique</span><span class="tag">sinistres</span><span class="tag">compétences</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lassuranceenmouvement.com/2026/11/18/plus-vite-et-plus-sur-lia-redefinit-la-gestion-documentaire-en-assurance/" target="_blank">Plus vite et plus sûr : l'IA redéfinit la gestion documentaire en assurance</a></h3>
+<div class="meta">L'Assurance en Mouvement (entretien croisé avec deux expertes TP) • 18/11/2026 • Secteur : assurance <span class="flag modere">Risque : Modéré</span></div>
+<p>Le traitement intelligent de documents (IDP), qui associe IA générative, apprentissage automatique et extraction de données, divise par dix les temps habituels d'analyse et d'enregistrement d'un sinistre automobile et atteint des taux de détection de fraude de l'ordre de 98 %. Le gestionnaire reste « systématiquement dans la boucle » — il participe à la levée de doute, corrige, valide et décide en dernier lieu — et se voit dispensé d'une grande partie des tâches répétitives de saisie, ce qui libère du temps pour l'accompagnement des sinistres complexes et le rôle de conseil. Le déploiement industriel, qui prenait six à huit mois, se fait aujourd'hui en moins de deux mois, à condition de maîtriser l'écosystème et d'orchestrer les processus IA et humains de bout en bout.</p>
+<div class="tags"><span class="tag">assurance</span><span class="tag">IDP</span><span class="tag">back-office</span><span class="tag">fraude</span></div>
+</div>
+<div class="item">
+<h3><a href="https://itsocial.fr/metiers/metiers-articles/consultants-et-ia-le-modele-en-obelisque-fragilise-la-formation-des-experts-de-demain/" target="_blank">Consultants et IA : le modèle « en obélisque » fragilise la formation des experts de demain</a></h3>
+<div class="meta">IT Social (premier baromètre Emlyon business school sur l'IA dans le conseil) • 23/11/2026 • Secteur : informatique <span class="flag modere">Risque : Modéré</span></div>
+<p>Le baromètre d'Emlyon business school montre que 72 % des consultants utilisent l'IA chaque jour, mais que l'outil absorbe d'abord la recherche et la synthèse — précisément les tâches qui formaient les juniors : ces derniers ne l'utilisent plus que pour bâtir la trame des présentations (59 % contre 35 % des managers). 43 % des répondants anticipent un modèle « en obélisque », avec une base de juniors réduite au profit d'un corps d'experts élargi ; les auteurs qualifient ce « déficit d'apprentissage » de « bombe à retardement » pour la relève. Un signal direct pour les ESN et les cabinets qui recrutent et forment encore leurs consultants sur ces tâches d'exécution.</p>
+<div class="tags"><span class="tag">conseil</span><span class="tag">ESN</span><span class="tag">juniors</span><span class="tag">compétences</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.news.de/wirtschaft/860213785/tarifkonflikt-bei-privaten-banken-zieht-sich-hin-tarifverhandlungen-news-der-dpa-aktuell-zu-bank-tarifen-und-gewerkschaft/1/" target="_blank">Banques privées allemandes : la 3e ronde de négociations échoue, ver.di exige des règles sur l'IA</a></h3>
+<div class="meta">news.de (dpa, en allemand) • 23/11/2026 • Secteur : banque <span class="flag modere">Risque : Modéré</span></div>
+<p>La troisième ronde de négociations salariales dans les banques privées allemandes — environ 150 000 salariés — a échoué le 23 novembre à Berlin, les discussions ne reprenant que le 20 janvier. ver.di réclame 6 % d'augmentation sur douze mois et 300 euros mensuels de plus pour les jeunes, ainsi que des règles contraignantes sur le déploiement de l'IA : protection de l'emploi, planification du personnel et qualification. Le syndicat a multiplié les grèves d'avertissement, notamment chez Deutsche Bank et Commerzbank, sur fond de craintes de suppressions de postes liées à l'automatisation.</p>
+<div class="tags"><span class="tag">ver.di</span><span class="tag">banque</span><span class="tag">négociation collective</span><span class="tag">Allemagne</span></div>
+</div>
+</div>
+</div>
+<div class="card accomp full-card">
+<div class="card-head" id="zone-dispositifs-d-accompagnement-aux-mutations"><div class="card-title">🔄 Dispositifs d'accompagnement aux mutations<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">6 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.lapostegroupe.com/fr/actualite/la-poste-signe-un-accord-cadre-dedie-a-lia-pour-accompagner-sa-transformation-et-placer-lhumain-au-coeur-des-usages" target="_blank">La Poste signe un accord cadre dédié à l'IA pour placer l'humain au cœur des usages</a></h3>
+<div class="meta">La Poste Groupe • 23/11/2026 • Secteur : banque / services publics <span class="flag">Statut : En cours de déploiement</span></div>
+<p>La Poste a signé le 19 novembre 2026, avec la CFDT, la CGT, FO et la CFE-CGC, son premier accord-cadre consacré à l'IA (« Une IA au service des métiers »), en vigueur du 1er décembre 2026 pour 28 mois. Près de 93 000 postiers ont déjà été formés via le dispositif « Objectif IA » et l'accord prévoit des parcours différenciés (prompt, sécurité des données, éthique, AI Act), un label certifiant et un réseau d'ambassadeurs IA. Il instaure un « Comité IA & dialogue social » et s'appuie sur la GEPP pour anticiper les reconversions internes certifiantes et sécuriser les mobilités — un précédent directement transposable aux groupes bancaires et assurantiels à réseau.</p>
+<div class="tags"><span class="tag">accord IA</span><span class="tag">formation</span><span class="tag">GEPP</span><span class="tag">dialogue social</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/donnees-ia/comment-la-poste-axa-et-keolis-integrent-l-ia-dans-leurs-organisations" target="_blank">Comment La Poste, AXA et Keolis intègrent l'IA dans leurs organisations</a></h3>
+<div class="meta">Le Monde Informatique (Tech Show Paris) • 23/11/2026 • Secteur : assurance / informatique <span class="flag">Statut : En cours de déploiement</span></div>
+<p>Fatiha Gas (La Poste), Sandrine Girszyn (DRH d'AXA Group Operations) et Myriem Remal (Keolis) ont détaillé leurs dispositifs d'accompagnement : labs d'expérimentation, capsules vidéo de témoignages et clubs d'usages pour faire monter en compétences des profils très hétérogènes. AXA insiste sur la responsabilité des entreprises vis-à-vis des juniors et sur la gestion des compétences à long terme face à l'automatisation ; La Poste revendique une approche « évaluer pour accompagner », avec l'employabilité comme enjeu central. Le message commun : la technologie n'est pas le facteur limitant, l'appropriation l'est.</p>
+<div class="tags"><span class="tag">acculturation IA</span><span class="tag">AXA</span><span class="tag">employabilité</span><span class="tag">formation</span></div>
+</div>
+<div class="item">
+<h3><a href="https://presse.generali.fr/actualites/generali-en-bonne-voie-pour-depasser-tous-les-objectifs-de-son-plan-strategique-lifetime-partner-27-driving-excellence-50c63-a5035.html" target="_blank">Generali : 35 000 collaborateurs formés au prompting, indice de montée en compétences à 61 %</a></h3>
+<div class="meta">Generali (newsroom presse, plan « Lifetime Partner 27 ») • 18/11/2026 • Secteur : assurance <span class="flag">Statut : En cours de déploiement</span></div>
+<p>L'assureur italien affiche un indice de montée en compétences de 61 % à fin septembre 2026, avec environ 35 000 collaborateurs formés au prompting (Gen)AI et 8 500 managers formés à l'IA, dans le cadre de son plan « Lifetime Partner 27 ». Generali investit 1,2 à 1,3 milliard d'euros dans l'IA et la technologie d'ici fin 2027 (0,9 milliard déjà engagé) et attend plus de 200 millions d'euros de bénéfice récurrent cumulé de l'IA fin 2026. La Generali Excellence Academy accélère les compétences techniques, comportementales et l'upskilling IA de ses 88 000 collaborateurs — un exemple de couplage explicite entre investissement technologique et effort de formation chiffré.</p>
+<div class="tags"><span class="tag">upskilling IA</span><span class="tag">assurance</span><span class="tag">formation</span><span class="tag">investissement</span></div>
+</div>
+<div class="item">
+<h3><a href="https://snb-lcl.com/banque-de-demain-chez-lcl-les-metiers-changent-deja-et-vous/" target="_blank">« Banque de demain » : chez LCL, les métiers changent déjà</a></h3>
+<div class="meta">SNB / CFE-CGC (site SNB LCL) • 19/11/2026 • Secteur : banque <span class="flag">Statut : En cours de déploiement</span></div>
+<p>Le syndicat SNB/CFE-CGC détaille la mutation des métiers bancaires chez LCL sous l'effet de l'IA, de l'automatisation et de la dématérialisation, qui déplace la valeur ajoutée vers le conseil patrimonial, l'épargne, l'assurance et le financement. Quatre priorités d'employabilité sont identifiées : expertise métier, maîtrise des outils numériques et de l'IA, compétences transversales, anticipation du parcours via formations et entretiens de carrière. Dans la négociation GEPP, le syndicat revendique des formations accessibles, des parcours de reconversion et des mobilités accompagnées, en refusant que l'employabilité devienne une responsabilité exclusivement individuelle.</p>
+<div class="tags"><span class="tag">banque</span><span class="tag">métiers</span><span class="tag">GEPP</span><span class="tag">reconversion</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.aefinfo.fr/depeche/760610-edouard-philippe-promeut-les-prepa-apprentissage-et-un-droit-a-la-reconversion-pour-les-salaries-menaces-par-lia" target="_blank">Édouard Philippe promeut les prépa-apprentissage et un droit à la reconversion pour les salariés menacés par l'IA</a></h3>
+<div class="meta">AEF info (dépêche) • 20/11/2026 • Secteur : transversal <span class="flag">Statut : En projet</span></div>
+<p>AEF info rapporte qu'Édouard Philippe a présenté le premier volet de mesures de son programme en vue de l'élection présidentielle, en promouvant les prépa-apprentissage et un « droit à la reconversion » pour les salariés dont le métier est menacé par l'intelligence artificielle. La mesure vise à sécuriser les parcours des salariés exposés à l'automatisation et à financer leur transition — un signal politique à suivre pour les directions RH, qui devront se positionner sur l'articulation entre ce droit et leurs propres dispositifs (GEPP, CPF, plans de reconversion).</p>
+<div class="tags"><span class="tag">reconversion IA</span><span class="tag">politiques publiques</span><span class="tag">formation</span><span class="tag">CPF</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.chance.co/fr/blog/reorganisation-liee-ia-consulter-cse-anticiper-gepp" target="_blank">Réorganisation liée à l'IA : consulter le CSE et anticiper la GEPP</a></h3>
+<div class="meta">Chance (outplacement) • 20/11/2026 • Secteur : transversal <span class="flag">Statut : Existant</span></div>
+<p>Chance rappelle les obligations des employeurs face à l'IA : dans les entreprises d'au moins 50 salariés, un outil d'IA qui modifie l'organisation passe par la consultation du CSE avant décision, et la GEPP permet d'anticiper les emplois touchés — son contenu couvre formation, abondement du CPF, bilan de compétences et mobilité. La société d'outplacement indique proposer depuis octobre 2026 un accompagnement dès la suppression d'un seul poste et avoir suivi depuis 2020 plus de 380 salariés pour 34 employeurs, le plus souvent via un bilan de compétences, qui reste l'outil d'entrée des transitions professionnelles.</p>
+<div class="tags"><span class="tag">outplacement</span><span class="tag">bilan de compétences</span><span class="tag">GEPP</span><span class="tag">CSE</span></div>
+</div>
+</div>
+</div>
+<div class="card prospec full-card">
+<div class="card-head" id="zone-prospective"><div class="card-title">🔭 Prospective : travail, IA et société<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div><div class="meta">7 articles</div></div>
+<div class="card-body">
+<div class="item">
+<h3><a href="https://www.francetravail.org/statistiques-analyses/entreprises/metiers/l-intelligence-artificielle-et-les-metiers-a-5-ans-la-vision-des-employeurs.html?type=article" target="_blank">L'intelligence artificielle et les métiers à 5 ans : la vision des employeurs</a></h3>
+<div class="meta">France Travail (Observatoire du marché du travail, Éclairages et synthèses n° 91, 16 000 établissements) • 17/11/2026 • Secteur : transversal <span class="flag">Horizon : Moyen 2-5 ans</span></div>
+<p>41 % des employeurs anticipent un impact de l'IA sur le principal métier de leur établissement à cinq ans, mais seuls 6 % envisagent une forte automatisation : pour 35 %, l'IA fera surtout gagner du temps, et 59 % n'attendent peu ou pas d'effet. L'étude classe les métiers en trois familles — « fragilisés » (secrétaires, aides-comptables, assistants juridiques), « augmentés » (responsables RH, avocats, chefs de projet) et « développent l'IA » (data scientists, ingénieurs IA, éthiciens de l'IA, prompt engineers) — et note que « les tâches évoluent avant les métiers ». L'impact est maximal en informatique (94 % des employeurs pour les ingénieurs) et élevé en banque-assurance (75 %), avec un décalage de formation persistant : seule la moitié des structures prévoit de former, 22 % l'ont fait.</p>
+<div class="tags"><span class="tag">scénarios</span><span class="tag">marchés du travail</span><span class="tag">nouveaux métiers</span><span class="tag">augmentation</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.itforbusiness.fr/axelle-arquie-ia-marche-du-travail-110217" target="_blank">IA et marché du travail : Axelle Arquié guette la rupture agentique</a></h3>
+<div class="meta">IT for Business (propos d'Axelle Arquié, cofondatrice de l'Observatoire des emplois menacés et émergents) • 20/11/2026 • Secteur : transversal <span class="flag">Horizon : Moyen 2-5 ans</span></div>
+<p>L'économiste situe le principal impact de l'IA non dans les chatbots passifs mais dans l'IA agentique, capable d'automatiser un processus de production entier — en rappelant qu'elle reste encore peu déployée. Elle souligne que le modèle « human in the loop » a un coût : inonder les salariés de contenus générés par l'IA produit un appauvrissement du travail, une surcharge mentale et un risque d'épuisement professionnel lorsque les points de contrôle humain sont mal placés. Elle juge enfin que les annonces de licenciements massifs attribués à l'IA relèvent souvent du prétexte, le phénomène réel étant surtout un ralentissement des embauches — un contrepoint utile aux chiffres du décrochage des offres.</p>
+<div class="tags"><span class="tag">IA agentique</span><span class="tag">human in the loop</span><span class="tag">charge mentale</span><span class="tag">embauches</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.lemondeinformatique.fr/donnees-ia/ia-au-travail-l-usage-fait-l-adhesion-pas-la-confiance" target="_blank">IA au travail : l'usage fait l'adhésion, pas la confiance</a></h3>
+<div class="meta">Le Monde Informatique (étude AlterNego, 26 244 salariés) • 20/11/2026 • Secteur : transversal <span class="flag">Horizon : Court terme (<2 ans)</span></div>
+<p>Menée auprès de 26 244 salariés, l'étude d'AlterNego publiée le 18 novembre montre que le rapport à l'IA dépend moins de l'âge ou du genre que du niveau d'usage : le score d'acceptabilité passe de 37,2 sur 100 chez les non-utilisateurs à 66,7 chez les utilisateurs très fréquents, les écarts femmes/hommes tombant à 0,4 point et moins de 35 ans/plus de 50 ans à un point à usage comparable. Paradoxe central : 95,8 % des utilisateurs très fréquents estiment que l'IA peut améliorer la qualité de leur travail, mais seuls 33,1 % font confiance à ses résultats — un gain de discernement plutôt qu'une défiance. Lorsque les règles d'usage sont jugées très claires, 80,4 % se sentent libres d'utiliser l'IA (28,1 % sinon) ; 41,7 % redoutent toutefois un effet sur leur esprit critique et 40,5 % sur la pérennité de certaines activités.</p>
+<div class="tags"><span class="tag">acceptabilité</span><span class="tag">confiance</span><span class="tag">esprit critique</span><span class="tag">gouvernance</span></div>
+</div>
+<div class="item">
+<h3><a href="https://projetcelsius.com/ia/analyses/quel-avenir-pour-les-metiers-techniques-avec-l-ia/" target="_blank">Quel avenir pour les métiers techniques avec l'IA ?</a></h3>
+<div class="meta">Projet Celsius (synthèse d'essais contrôlés et de séries d'offres d'emploi) • 14/11/2026 • Secteur : informatique <span class="flag">Horizon : Moyen 2-5 ans</span></div>
+<p>La synthèse montre combien la mesure de l'effet de l'IA sur les métiers techniques est fragile : les essais de productivité des développeurs vont d'une tâche terminée 55,8 % plus vite (essai GitHub et Microsoft Research de 2023, sur une tâche isolée et courte) à 19 % de temps en plus (essai METR de 2025, sur 16 développeurs expérimentés travaillant sur un code de plus d'un million de lignes), un essai que METR n'a pas pu reproduire de façon fiable en 2026. Aux États-Unis, les offres d'emploi de développeurs restent 27,5 % sous leur niveau de février 2020 quand l'ensemble des offres l'a retrouvé, et le Bureau of Labor Statistics projette de 2025 à 2035 une hausse de 10 % pour les développeurs mais une baisse de 7 % pour les programmeurs. Point de vigilance pour la relève : les tâches que l'IA prend en premier — le code simple et la recherche de réponses — sont celles des débutants.</p>
+<div class="tags"><span class="tag">développeurs</span><span class="tag">productivité</span><span class="tag">projections</span><span class="tag">juniors</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.cnil.fr/fr/ia-conversationnelle-la-voix-des-jeunesses" target="_blank">Le Groupe VYV et la CNIL publient « La Voix des jeunesses »</a></h3>
+<div class="meta">CNIL (enquête Groupe VYV, initiative AI*me) • 18/11/2026 • Secteur : transversal <span class="flag">Horizon : Long (>5 ans)</span></div>
+<p>Le Groupe VYV et la CNIL croisent une enquête européenne, des témoignages et des expertises sur les usages de l'IA conversationnelle par les jeunes : en France, 48 % des 11-25 ans interrogés déclarent utiliser des outils d'IA pour parler de sujets intimes, et 64 % de ceux qui sollicitent l'IA pour des conseils personnels la considèrent comme un « conseiller de vie ». Un glissement de l'outil vers le substitut relationnel qui pose une double question — effets sur la santé mentale et protection des informations personnelles confiées — et que les experts rattachent aux enjeux de « dette émotionnelle ». Ils appellent à des travaux indépendants et longitudinaux, les enquêtes déclaratives ne suffisant pas à établir les effets.</p>
+<div class="tags"><span class="tag">IA conversationnelle</span><span class="tag">santé mentale</span><span class="tag">vie privée</span><span class="tag">vulnérabilités</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.free-work.com/fr/tech-it/blog/metiers-it/gouvernance-de-lia-le-nouveau-metier-ne-de-la-conformite-ai-act" target="_blank">Gouvernance de l'IA : le nouveau métier porté par l'AI Act</a></h3>
+<div class="meta">Free-Work (média Tech &amp; IT) • 12/11/2026 • Secteur : transversal <span class="flag">Horizon : Court terme (<2 ans)</span></div>
+<p>Contrairement au RGPD et à son DPO, l'AI Act n'oblige pas les entreprises à nommer un responsable de l'IA : le métier naît d'un besoin concret, pas d'une obligation légale. Il consiste à recenser tous les systèmes d'IA utilisés — y compris ceux adoptés sans validation — à les classer par niveau de risque, rédiger la charte d'usage et les procédures, évaluer les fournisseurs, tenir la documentation exigée par le règlement, former les équipes et faire le lien entre DPO, RSSI, direction juridique, DSI et métiers, sur un cadre de référence comme l'ISO/IEC 42001. Le besoin est documenté : selon le baromètre Data & IA de Coface réalisé avec Les Échos Études auprès de 900 décideurs (octobre 2026), 60 % des entreprises françaises n'ont aucun cadre formalisé pour encadrer l'IA et 17 % seulement ont défini une politique écrite communiquée à leurs équipes, tandis que 61 % des salariés du privé qui utilisent l'IA générative passent par des outils grand public et que 23 % seulement ont été formés à un usage responsable.</p>
+<div class="tags"><span class="tag">gouvernance de l'IA</span><span class="tag">AI Act</span><span class="tag">nouveaux métiers</span><span class="tag">conformité</span></div>
+</div>
+<div class="item">
+<h3><a href="https://www.cnil.fr/fr/actualite-du-cepd-adequation-de-la-coree-du-sud-versions-finales-des-bcr-st-et-action-coordonnee-sur" target="_blank">Action coordonnée du CEPD : le recrutement par IA dans le viseur pour 2027</a></h3>
+<div class="meta">CNIL (actualité du CEPD, plénière du 10 novembre 2026) • 12/11/2026 • Secteur : transversal <span class="flag">Horizon : Court terme (<2 ans)</span></div>
+<p>Lors de sa plénière du 10 novembre 2026, le Comité européen de la protection des données a choisi comme thème de sa sixième action coordonnée en matière d'application, lancée en 2027, la prise de décision automatisée dans le recrutement, y compris via des outils d'IA : les autorités nationales, dont la CNIL, contrôleront conjointement l'application de l'article 22 du RGPD — le droit de ne pas faire l'objet d'une décision fondée exclusivement sur un traitement automatisé — et le droit d'accès associé, dans le contexte des outils de présélection des candidats. La même plénière a adopté une déclaration sur l'adéquation de la Corée du Sud et les versions finales des recommandations sur les règles d'entreprise contraignantes des sous-traitants (BCR-ST).</p>
+<div class="tags"><span class="tag">CEPD</span><span class="tag">RGPD</span><span class="tag">recrutement IA</span><span class="tag">décisions automatisées</span></div>
+</div>
+</div>
+</div>
+
+  <div class="card full-card">
+    <div class="card-head" id="zone-images-schemas-analyses"><div class="card-title">🖼️ Images &amp; schémas analysés<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+    <div class="card-body synthese">
+      Aucun schéma de données directement réutilisable cette semaine : les visuels des sources retenues sont majoritairement des illustrations de presse et des encarts d'annonceurs. Cinq éléments chiffrés méritent en revanche d'être reconstruits en support DRH : la courbe de décrochage des offres d'emploi par exposition à l'IA (Coface/OEM : −12,4 % pour dix points d'exposition, 25 000 annonces perdues au 3e trimestre, plus de 100 000 en rythme annuel ; −42,8 % dans les RH et −40 % dans le secrétariat depuis 2022) ; la partition des métiers par France Travail en trois familles — « fragilisés », « augmentés », « développent l'IA » — à croiser avec les taux d'impact déclarés (ingénieurs informatique 94 %, banque-assurance 75 %) ; l'escalier de la gouvernance de l'IA en assurance, des agents encore en pilote aux agents « gouvernés » branchés sur les systèmes cœur (seuils d'autorité, journalisation, décision finale humaine) ; la courbe d'acceptabilité selon la fréquence d'usage (37,2/100 chez les non-utilisateurs, 66,7/100 chez les utilisateurs très fréquents) avec le décalage utilité/confiance (95,8 % contre 33,1 %) et l'effet du cadre (80,4 % contre 28,1 % quand les règles sont claires) ; et le tableau de bord de pilotage de la GEPP en deux colonnes — emplois exposés / dispositifs d'accompagnement déjà contractualisés (accord-cadre La Poste du 19 novembre, Objectif IA : ~93 000 postiers formés, Generali : 35 000 formés au prompting et 8 500 managers, LCL : quatre priorités d'employabilité).
+    </div>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head" id="zone-synthese"><div class="card-title">📊 Synthèse — 5 signaux faibles à surveiller<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+    <div class="card-body signals">
+      <ol>
+<li><strong>1. Le frein ne passe plus par le licenciement, mais par le gel des recrutements</strong> — Dix points d'exposition supplémentaires à l'IA sont associés à 12,4 % d'offres en moins (25 000 annonces perdues au 3e trimestre, plus de 100 000 en rythme annuel), la chute atteint 42,8 % dans les RH et 40 % dans le secrétariat depuis 2022, alors que seuls 6 % des employeurs anticipent une automatisation importante : l'ajustement se fait à bas bruit, en différant une embauche ou en ne remplaçant pas un départ — un risque qui touche aussi les postes expérimentés (−14 % à −19,4 %).
+<div class="signal-src">Sources : <a href="https://www.bfmtv.com/economie/emploi/pour-la-premiere-fois-une-etude-etablit-un-lien-entre-l-ia-et-les-recrutements-25-000-offres-d-emploi-ont-disparu-en-seulement-trois-mois-en-france_AD-202611170400.html" target="_blank">https://www.bfmtv.com/economie/emploi/pour-la-premiere-fois-une-etude-etablit-un-lien-entre-l-ia-et-les-recrutements-25-000-offres-d-emploi-ont-disparu-en-seulement-trois-mois-en-france_AD-202611170400.html</a> · <a href="https://www.01net.com/actualites/travail-ia-ces-metiers-ou-offres-emploi-se-sont-effondrees.html" target="_blank">https://www.01net.com/actualites/travail-ia-ces-metiers-ou-offres-emploi-se-sont-effondrees.html</a> · <a href="https://www.francetravail.org/statistiques-analyses/entreprises/metiers/l-intelligence-artificielle-et-les-metiers-a-5-ans-la-vision-des-employeurs.html?type=article" target="_blank">https://www.francetravail.org/statistiques-analyses/entreprises/metiers/l-intelligence-artificielle-et-les-metiers-a-5-ans-la-vision-des-employeurs.html?type=article</a></div></li>
+<li><strong>2. L'assurance industrialise l'IA sur les sinistres et les documents, sans chiffrer encore l'effet sur l'emploi</strong> — Les éditeurs poussent des agents « gouvernés » branchés sur les systèmes cœur (Imagine Enterprise d'IBM Consulting et Microsoft le 10 novembre, plateforme Guidewire fin octobre) et l'IA documentaire divise par dix les temps d'analyse d'un sinistre auto avec 98 % de détection de fraude ; le gestionnaire se déplace vers l'arbitrage et la relation à l'assuré — formation, parcours et compétences à recadrer maintenant, pas au moment du passage à l'échelle.
+<div class="signal-src">Sources : <a href="https://www.lassuranceenmouvement.com/2026/11/22/ia-agentique-gouvernee-la-course-a-lindustrialisation/" target="_blank">https://www.lassuranceenmouvement.com/2026/11/22/ia-agentique-gouvernee-la-course-a-lindustrialisation/</a> · <a href="https://www.lassuranceenmouvement.com/2026/11/18/plus-vite-et-plus-sur-lia-redefinit-la-gestion-documentaire-en-assurance/" target="_blank">https://www.lassuranceenmouvement.com/2026/11/18/plus-vite-et-plus-sur-lia-redefinit-la-gestion-documentaire-en-assurance/</a></div></li>
+<li><strong>3. Le recrutement automatisé devient un objet de contrôle avant d'être un objet de droit</strong> — Le CEPD fait de la décision automatisée de recrutement le thème de sa sixième action coordonnée, lancée en 2027, et la CNIL en a déjà fait une thématique prioritaire pour 2026 (article 22 du RGPD, information des candidats, durées de conservation) — or 60 % des entreprises françaises n'ont aucun cadre formalisé pour l'IA, et le « responsable de la gouvernance de l'IA » s'installe comme nouveau métier sans obligation légale de le nommer.
+<div class="signal-src">Sources : <a href="https://www.cnil.fr/fr/actualite-du-cepd-adequation-de-la-coree-du-sud-versions-finales-des-bcr-st-et-action-coordonnee-sur" target="_blank">https://www.cnil.fr/fr/actualite-du-cepd-adequation-de-la-coree-du-sud-versions-finales-des-bcr-st-et-action-coordonnee-sur</a> · <a href="https://www.free-work.com/fr/tech-it/blog/metiers-it/gouvernance-de-lia-le-nouveau-metier-ne-de-la-conformite-ai-act" target="_blank">https://www.free-work.com/fr/tech-it/blog/metiers-it/gouvernance-de-lia-le-nouveau-metier-ne-de-la-conformite-ai-act</a></div></li>
+<li><strong>4. L'acceptabilité se joue sur l'usage, l'accompagnement et le cadre — pas sur la génération</strong> — Le score d'acceptabilité passe de 37,2 à 66,7 sur 100 selon la fréquence d'usage, et les écarts d'âge ou de genre s'effacent presque à usage comparable ; quand les règles sont claires, 80,4 % des salariés se sentent libres d'utiliser l'IA, mais 95,8 % des utilisateurs intensifs reconnaissent l'utilité de l'outil tout en n'étant que 33,1 % à faire confiance à ses résultats — et 41 % privilégient une formation au discernement plutôt que technique.
+<div class="signal-src">Sources : <a href="https://www.lemondeinformatique.fr/donnees-ia/ia-au-travail-l-usage-fait-l-adhesion-pas-la-confiance" target="_blank">https://www.lemondeinformatique.fr/donnees-ia/ia-au-travail-l-usage-fait-l-adhesion-pas-la-confiance</a> · <a href="https://www.itforbusiness.fr/axelle-arquie-ia-marche-du-travail-110217" target="_blank">https://www.itforbusiness.fr/axelle-arquie-ia-marche-du-travail-110217</a> · <a href="https://culture-rh.com/pluxee-ia-travail-quatre-priorites-rh/" target="_blank">https://culture-rh.com/pluxee-ia-travail-quatre-priorites-rh/</a></div></li>
+<li><strong>5. Les plans IA se négocient désormais avec les partenaires sociaux, pas seulement avec la DSI</strong> — La Poste signe le 19 novembre son premier accord-cadre IA (28 mois, ~93 000 postiers formés, comité IA & dialogue social, reconversions certifiantes via la GEPP), Generali affiche 35 000 collaborateurs formés au prompting et 8 500 managers formés, tandis que ver.di bloque les négociations des banques privées allemandes en exigeant des règles contraignantes sur l'IA (emploi, planification, qualification) : le déploiement de l'IA devient un sujet de dialogue social, et le rythme des accords devient le facteur limitant du passage à l'échelle.
+<div class="signal-src">Sources : <a href="https://www.lapostegroupe.com/fr/actualite/la-poste-signe-un-accord-cadre-dedie-a-lia-pour-accompagner-sa-transformation-et-placer-lhumain-au-coeur-des-usages" target="_blank">https://www.lapostegroupe.com/fr/actualite/la-poste-signe-un-accord-cadre-dedie-a-lia-pour-accompagner-sa-transformation-et-placer-lhumain-au-coeur-des-usages</a> · <a href="https://presse.generali.fr/actualites/generali-en-bonne-voie-pour-depasser-tous-les-objectifs-de-son-plan-strategique-lifetime-partner-27-driving-excellence-50c63-a5035.html" target="_blank">https://presse.generali.fr/actualites/generali-en-bonne-voie-pour-depasser-tous-les-objectifs-de-son-plan-strategique-lifetime-partner-27-driving-excellence-50c63-a5035.html</a> · <a href="https://www.news.de/wirtschaft/860213785/tarifkonflikt-bei-privaten-banken-zieht-sich-hin-tarifverhandlungen-news-der-dpa-aktuell-zu-bank-tarifen-und-gewerkschaft/1/" target="_blank">https://www.news.de/wirtschaft/860213785/tarifkonflikt-bei-privaten-banken-zieht-sich-hin-tarifverhandlungen-news-der-dpa-aktuell-zu-bank-tarifen-und-gewerkschaft/1/</a></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card full-card">
+    <div class="card-head" id="zone-tableau-de-bord-des-metiers"><div class="card-title">🗺️ Tableau de bord des métiers à risque<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+    <div class="card-body">
+      <div class="dash-scroll">
+        <table class="dash">
+          <thead>
+            <tr><th>Secteur</th><th>Métier</th><th>Niveau de risque IA</th><th>Horizon</th><th>Piste de reconversion prioritaire</th></tr>
+          </thead>
+          <tbody>
+<tr><td>Banque</td><td>Conseillers de réseau, directeurs d'agence</td><td class="riskcell m">Modéré</td><td>&lt; 2 ans</td><td>Conseil patrimonial, épargne-assurance, financement — la GEPP revendiquée chez LCL vise expertise métier + maîtrise de l'IA + mobilités accompagnées</td></tr>
+<tr><td>Banque</td><td>Fonctions support et siège (achats, reporting)</td><td class="riskcell m">Modéré</td><td>&lt; 2 ans</td><td>Pilotage de processus, conformité, qualité de la donnée — l'ajustement se fait par départs volontaires et mobilités internes, comme au GIE AXA</td></tr>
+<tr><td>Banque (Europe)</td><td>Emploi de réseau et back-office sous pression sociale</td><td class="riskcell m">Modéré</td><td>&lt; 2 ans</td><td>Négociation collective : clauses contraignantes de protection de l'emploi, de planification et de qualification liées à l'IA (revendication ver.di, ~150 000 salariés)</td></tr>
+<tr><td>Banque</td><td>Analystes, asset management, marchés</td><td class="riskcell w">Faible à modéré</td><td>2-5 ans</td><td>Supervision et arbitrage à valeur ajoutée — l'IA agentique redéfinit la chaîne de décision de la recherche au post-marché</td></tr>
+<tr><td>Assurance</td><td>Gestionnaires de sinistres simples</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Sinistres complexes, expertise fraude, relation conseil — l'IA documentaire divise par dix les délais d'analyse et l'agentique passe en production</td></tr>
+<tr><td>Assurance</td><td>Back-office gestion documentaire, souscription standardisée</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Supervision des chaînes IA, qualité de la donnée, gouvernance des modèles et des fournisseurs (seuils d'autorité, journalisation, conformité AI Act)</td></tr>
+<tr><td>Assurance</td><td>Formation et montée en compétences (fonction RH)</td><td class="riskcell w">Faible</td><td>&lt; 2 ans</td><td>Ingénierie pédagogique augmentée, coaching digital, mesure de l'upskilling — 35 000 formés au prompting chez Generali, parcours différenciés chez La Poste</td></tr>
+<tr><td>Informatique / ESN</td><td>Développeur junior, testeur QA, programmeur</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Ingénierie produit/plateforme, orchestration d'agents, IA engineering — préserver des séquences d'apprentissage sans assistant (le BLS projette −7 % pour les programmeurs)</td></tr>
+<tr><td>Informatique / Conseil</td><td>Consultant junior, analyste, chercheur junior</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Cadrage, arbitrage, relecture critique — le baromètre Emlyon décrit un « déficit d'apprentissage » quand l'IA absorbe recherche et synthèse</td></tr>
+<tr><td>Informatique / ESN</td><td>Consultant d'intégration, administrateur systèmes</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>Architecture cloud, sécurité des agents IA, MLOps — la rotation des compétences prime sur la baisse des effectifs</td></tr>
+<tr><td>Transversal RH</td><td>Recrutement et tri des candidatures</td><td class="riskcell f">Fort</td><td>&lt; 2 ans</td><td>Sourcing fondé sur les compétences, contrôle des biais, réel contrôle humain (article 22 RGPD) — les annonces RH ont chuté de 42,8 % depuis 2022</td></tr>
+<tr><td>Transversal RH</td><td>Administration du personnel, paie, reporting</td><td class="riskcell m">Modéré</td><td>2-5 ans</td><td>People analytics opérationnel (8 % des DRH seulement), contrôle de conformité IA, gouvernance des données RH, formation au discernement</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Généré le 24 novembre 2026 par Hermes (skill veille-rh-ia). Fichiers : veille-RH-IA-2026-11-24.md + .html</p>
+    <p>Corpus : 25 articles, 4 axes, dates de publication vérifiées page par page (HTTP 200 + métadonnée de publication).</p>
+    <p>Destinataire du thème : reynald.chapuis@creditmutuel.fr (CCI : dorninem@e-i.com)</p>
+    <p>Dernière modification : <span id="lastmod"></span></p>
+    <script>document.getElementById("lastmod").innerText = new Date(document.lastModified).toLocaleString("fr-FR");</script>
+  </footer>
+</div>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return; i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
+</body></html>
