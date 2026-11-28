@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille Alsace — Archives HERMES</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>:root{
+    --bg:#010409; --panel:#0b1220; --ink:#e6f1ff; --muted:#8fb3cc;
+    --accent:#40dcff; --accent-2:#ffb347; --border:rgba(64,220,255,.22);
+    --shadow:0 10px 30px rgba(0,0,0,.45); --radius:14px;
+  }
+  html[data-theme="light"]{
+    --bg:#f8fafc; --panel:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --accent:#0ea5e9; --accent-2:#6366f1; --border:#e5e7eb; --shadow:0 10px 30px rgba(15,23,42,.08);
+  }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:'Rajdhani',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.55}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
+    header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid var(--border);padding-bottom:14px}
+    h1{margin:0;font-size:1.7rem;letter-spacing:.5px}
+    h1::after{content:'';display:block;width:120px;height:3px;margin-top:8px;background:linear-gradient(90deg,var(--accent),transparent)}
+    header p{margin:6px 0 0;color:var(--muted)}
+    time{color:var(--accent-2);font-weight:600;white-space:nowrap}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .kpi{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;cursor:pointer;transition:border-color .18s,transform .18s}
+    .kpi:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .kpi .label{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .kpi .value{font-size:1.6rem;font-weight:700;color:var(--accent)}
+    .synthese{background:linear-gradient(90deg,rgba(64,220,255,.10),rgba(64,220,255,.02));border:1px solid rgba(64,220,255,.35);border-radius:var(--radius);padding:14px 18px;margin:16px 0 8px}
+    .section-title{margin:34px 0 4px;color:var(--accent);font-size:1.35rem;letter-spacing:.5px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+    .card{background:linear-gradient(180deg,var(--panel),#0b1220);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .card-head{padding:12px 18px;border-bottom:1px solid var(--border)}
+    .card-title{font-weight:700;letter-spacing:.3px}
+    .card-body{padding:8px 18px 14px}
+    .item{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .item:last-child{border-bottom:none}
+    .item h3{margin:0 0 4px;font-size:1.02rem}
+    .item h3 a{color:var(--ink);text-decoration:none;border-bottom:1px dotted rgba(64,220,255,.5)}
+    .item h3 a:hover{color:var(--accent)}
+    .meta{font-size:.8rem;color:var(--accent-2);margin-bottom:6px;letter-spacing:.03em}
+    .item p{margin:0;color:var(--muted)}
+    .item p a{color:var(--accent);text-decoration:none}
+    .item p a:hover{text-decoration:underline}
+    .illus{margin:18px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .illus img{display:block;width:100%;height:auto}
+    .illus figcaption{padding:8px 14px;font-size:.8rem;color:var(--muted);background:rgba(15,23,42,.6)}
+    footer{padding:18px 2px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);margin-top:26px}
+    footer p{margin:4px 0}
+    .zone-flash{animation:zoneflash 1.6s ease}
+    @keyframes zoneflash{
+      0%{box-shadow:0 0 0 0 rgba(64,220,255,.65);border-color:#40dcff}
+      35%{box-shadow:0 0 0 7px rgba(64,220,255,.18);border-color:#40dcff}
+      100%{box-shadow:0 10px 30px rgba(0,0,0,.45);border-color:rgba(64,220,255,.22)}}
+
+    .weak .signal{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+    .weak .signal:last-child{border-bottom:none}
+    .weak .signal p{margin:0 0 6px}
+    .weak .signal strong{color:var(--ink)}
+    .weak .signal ul{margin:0;padding-left:18px}
+    .weak .signal li{font-size:.85rem;color:var(--muted)}
+    .weak .signal li a{color:var(--accent);text-decoration:none}
+    .weak .signal li a:hover{text-decoration:underline}
+    .prose h3{margin:18px 0 6px;color:var(--accent);font-size:1.05rem}
+    .prose ul{margin:6px 0 0;padding-left:20px}
+    .prose li{margin:5px 0;color:var(--muted)}
+    .prose a{color:var(--accent);text-decoration:none}
+    .prose a:hover{text-decoration:underline}
+</style>
+<style>
+#veille-audio-banner{max-width:1100px;margin:14px auto 22px;padding:0 18px;}
+#veille-audio-banner .vab-link{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+ background:linear-gradient(90deg,rgba(64,220,255,.14),rgba(64,220,255,.04));
+ border:1px solid rgba(64,220,255,.45);color:var(--ink,#1f2937);
+ animation:vabGlow 2.6s ease-in-out infinite;transition:transform .2s;}
+#veille-audio-banner .vab-link:hover{transform:scale(1.02);}
+#veille-audio-banner .vab-ico{font-size:20px;animation:vabBeat 1.6s ease-in-out infinite;}
+#veille-audio-banner .vab-txt b{color:#0e7490;}
+@keyframes vabGlow{0%,100%{box-shadow:0 0 6px rgba(64,220,255,.25);}50%{box-shadow:0 0 22px rgba(64,220,255,.55);}}
+@keyframes vabBeat{0%,100%{transform:scale(1);}30%{transform:scale(1.25);}60%{transform:scale(1);}}
+@media (prefers-reduced-motion:reduce){#veille-audio-banner .vab-link,# veille-audio-banner .vab-ico{animation:none;}}
+</style>
+<style id="veille-toc-css">
+#veille-toc{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+ padding:10px 160px 10px 18px;margin:0 auto 14px;max-width:1100px;background:rgba(1,4,9,.92);
+ backdrop-filter:blur(6px);border-bottom:1px solid rgba(64,220,255,.20);}
+html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(14,116,144,.22);}
+#veille-toc .vt-lab{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+ text-transform:uppercase;opacity:.55;margin-right:4px;}
+#veille-toc a.vt{padding:5px 12px;border-radius:999px;border:1px solid rgba(64,220,255,.35);
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.88rem;
+ white-space:nowrap;transition:transform .15s;animation:vtGlow 2.6s ease-in-out infinite;}
+#veille-toc a.vt:hover{transform:translateY(-1px);border-color:var(--accent,#40dcff);}
+@keyframes vtGlow{0%,100%{box-shadow:0 0 4px rgba(64,220,255,.18);}50%{box-shadow:0 0 14px rgba(64,220,255,.45);}}
+.retour-haut{display:inline-flex;align-items:center;gap:5px;margin-left:10px;padding:2px 9px;
+ border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
+ text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
+.retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+/* Ancre du sommaire : une VRAIE boîte (1 px, invisible) et non un span vide — certains moteurs
+   ignorent le défilement vers un élément sans boîte. */
+#veille-toc-haut.rth{display:block;height:1px;margin-top:-1px}
+/* sous la barre collante : sans cela, le titre visé arrive caché derrière elle */
+[id^="zone-"]{scroll-margin-top:72px}
+[id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+/* TÉLÉPHONE : la barre tient sur UNE ligne et se balaie du doigt. Sans cela les pastilles
+   passent à la ligne (mesuré le 27/11/2026, écran 390 × 844 : 5 lignes, 229 px de haut, soit
+   27 % de l'écran) et, comme la barre est collante, elle ne s'efface jamais pour rendre la
+   place. Une seule ligne, défilante horizontalement, garde le sommaire accessible et discret. */
+@media (max-width:700px){
+  /* Le bouton de thème est FIXE en haut à droite (124 px de large sur un écran de 390 px) et
+     se superposait à la barre : les appuis à droite tombaient dessus au lieu de la pastille —
+     d'où « sur mon Safari mobile le bloc du sommaire ne défile pas ». On lui réserve sa place
+     dans la barre (comme les 160 px du bureau) et on le réduit à son icône. */
+  html .theme-toggle{top:11px;right:12px;padding:6px 9px}
+  html .theme-toggle #hv-tt{display:none}
+  #veille-toc{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+   scrollbar-width:none;padding:7px 64px 7px 10px;margin-bottom:10px;}
+  #veille-toc::-webkit-scrollbar{display:none}
+  #veille-toc a.vt{flex:0 0 auto;font-size:.76rem;padding:6px 11px;}
+  #veille-toc .vt-lab{font-size:.66rem;margin-right:2px;}
+  [id^="zone-"]{scroll-margin-top:54px}
+  .retour-haut{padding:6px 11px}
+}
+@media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
+</style></head>
+<body><span id="veille-toc-haut" class="rth"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-economie-entreprises">🏭 Économie & entreprises</a><a class="vt" href="#zone-innovation-ia">💡 Innovation & IA</a><a class="vt" href="#zone-territoires-institutions">🏛️ Territoires & institutions</a><a class="vt" href="#zone-lecture-transversale">🧭 Lecture transversale</a><a class="vt" href="#zone-prospective">🔮 Prospective</a><a class="vt" href="#zone-signaux-faibles">📡 Signaux faibles</a></nav>
+<div id="veille-audio-banner"><a href="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-28.ogg" class="vab-link"><span class="vab-ico">🔊</span><span class="vab-txt">Résumé vocal rapide — <b>écoute</b></span></a></div>
+<script id="veille-audio-banner-js">(function(){
+  var l=document.querySelector('#veille-audio-banner .vab-link');if(!l)return;
+  var u=l.getAttribute('href');
+  if(window.location.protocol!=='http'){return;} /* pièce jointe : on garde le lien absolu cliquable */
+  fetch(u,{method:'HEAD'}).catch(function(){}).then(function(r){
+    if(r&&!r.ok){l.style.opacity=.4;l.style.pointerEvents='none';l.title='Audio indisponible';}
+  });
+})();</script>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>🚀 Veille Alsace — Économie · Innovation &amp; IA · Territoires</h1>
+      <p>Actualité régionale Alsace / Grand Est — généré par ORAC (skills veille-alsace + veille-html)</p>
+      <p class="model-badge" style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#4d7c99;margin-top:6px">⚙ produit par DeepSeek v4.1 Flash · Nous <span style="color:#ffb347">[DEMO]</span></p>
+    </div>
+    <time datetime="2026-11-28">28 novembre 2026</time>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi kpi-click" onclick="jumpTo('zone-economie')"><div class="label">🏭 Économie &amp; entreprises</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-innovation')"><div class="label">💡 Innovation &amp; IA</div><div class="value">4</div></div>
+    <div class="kpi kpi-click" onclick="jumpTo('zone-territoires')"><div class="label">🏛️ Territoires &amp; institutions</div><div class="value">4</div></div>
+  </div>
+
+  <div class="synthese">
+    <strong>Synthèse.</strong> Semaine de recomposition industrielle et de confirmation en IA. Côté économie, les coups durs s'enchaînent — la coentreprise chimique Butachimie annonce un plan de sauvegarde de l'emploi à Chalampé et Stellantis place au moins 1 500 salariés de Mulhouse en chômage partiel — tandis que d'autres investissent : Mars Petcare à Ernolsheim-Bruche, la coopérative Bureland à Bernolsheim dans la lignée de Choose France, et le cristallier Lalique, dont la manufacture de Wingen-sur-Moder pourrait revenir sous pavillon français via C4 Industries. L'IA continue d'irriguer la région : l'IHU Strasbourg publie les résultats du premier concours mondial d'IA dédié à la sécurité chirurgicale, les Hôpitaux civils de Colmar mettent en service un mammographe assisté par IA et le cluster ENACT ouvre une trentaine de contrats doctoraux. Sur le plan institutionnel, la Région Grand Est interpelle la SNCF après la suppression d'une soixantaine de trains Fluo, le Haut-Rhin chiffre à 46 millions d'euros l'impact du projet de loi de finances et l'Insee projette une baisse de 21 % de la population régionale d'ici 2070.
+  </div>
+
+  <div class="grid">
+    <!-- ===== ZONE 1 : ÉCONOMIE &AMP; ENTREPRISES ===== -->
+    <div class="card" id="zone-economie">
+      <div class="card-head" id="zone-economie-entreprises"><div class="card-title">🏭 Économie &amp; entreprises<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+      <div class="card-body">
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.dna.fr/economie/2026/11/21/mars-petcare-investit-60-millions-dans-son-usine-de-nutrition-animale" target="_blank">Ernolsheim-Bruche : Mars Petcare investit 60 millions d&#x27;euros dans son usine de nutrition animale</a></h3>
+          <div class="meta">DNA • 21/11/2026</div>
+          <p>L'usine d'aliments pour animaux <a href="https://www.dna.fr/economie/2026/11/21/mars-petcare-investit-60-millions-dans-son-usine-de-nutrition-animale" target="_blank">Mars Petcare</a> d'Ernolsheim-Bruche va bénéficier d'un investissement de <a href="https://www.dna.fr/economie/2026/11/21/mars-petcare-investit-60-millions-dans-son-usine-de-nutrition-animale" target="_blank">60 millions d'euros</a> d'ici 2030, a annoncé le groupe le 16 novembre. Le programme prévoit un <a href="https://alsace-industrie.com/actualites/2026/11/mars-investira-60-m-d-ici-2030-dans-son-usine-d-aliments-pour-animaux-d" target="_blank">bâtiment de 1 400 m² pour la réception et le stockage automatisé</a> des matières premières, la rénovation de l'outil industriel et le passage des trois lignes de sachets à un <a href="https://alsace-industrie.com/actualites/2026/11/mars-investira-60-m-d-ici-2030-dans-son-usine-d-aliments-pour-animaux-d" target="_blank">emballage recyclable</a>, pour s'adapter à un marché en forte croissance.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.dna.fr/economie/2026/11/23/bureland-invite-de-choose-france-avec-pres-de-20-millions-d-euros-d-investissement" target="_blank">Choose France : la coopérative Bureland investit 19,5 millions d&#x27;euros à Bernolsheim</a></h3>
+          <div class="meta">DNA • 23/11/2026</div>
+          <p>La coopérative des Producteurs alsaciens et lorrains (PAL), connue sous sa marque <a href="https://www.dna.fr/economie/2026/11/23/bureland-invite-de-choose-france-avec-pres-de-20-millions-d-euros-d-investissement" target="_blank">Bureland</a>, investit <a href="https://www.dna.fr/economie/2026/11/23/bureland-invite-de-choose-france-avec-pres-de-20-millions-d-euros-d-investissement" target="_blank">19,5 millions d'euros</a> à Bernolsheim dans un nouveau centre de conditionnement et une casserie, dans le cadre de la deuxième édition du sommet <a href="https://www.dna.fr/economie/2026/11/23/bureland-invite-de-choose-france-avec-pres-de-20-millions-d-euros-d-investissement" target="_blank">Choose France</a> tenue à l'Élysée le 23 novembre ; le site doit plus que doubler de surface. L'opération complète les <a href="https://alsace-industrie.com/actualites/2026/11/sermes-construit-une-nouvelle-cablerie-a-altorf-et-investit-25-m-selon" target="_blank">quatre projets alsaciens</a> retenus par l'Élysée, dont la câblerie <a href="https://alsace-industrie.com/actualites/2026/11/sermes-construit-une-nouvelle-cablerie-a-altorf-et-investit-25-m-selon" target="_blank">Sermes</a> à Altorf.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">Chalampé : le chimiste Butachimie (BASF-Invista) annonce un plan de sauvegarde de l&#x27;emploi</a></h3>
+          <div class="meta">Les Echos • 24/11/2026</div>
+          <p>La coentreprise <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">Butachimie</a>, détenue par les groupes <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">BASF</a> et <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">Invista</a> et basée à <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">Chalampé</a> dans le Haut-Rhin, fait l'objet d'un plan de sauvegarde de l'emploi : <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">69 postes</a> sont concernés, dans un contexte de hausse des prix du gaz et de concurrence internationale. Le site produit des précurseurs du nylon 6.6.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.ici.fr/grand-est/alsace-cea/mulhouse/comment-on-va-faire-au-moins-1500-salaries-de-stellantis-a-mulhouse-touches-par-du-chomage-partiel-d-ici-janvier-7588056" target="_blank">Stellantis Mulhouse : neuf jours de chômage partiel pour au moins 1 500 salariés</a></h3>
+          <div class="meta">ICI Alsace • 26/11/2026</div>
+          <p>La direction du site <a href="https://www.ici.fr/grand-est/alsace-cea/mulhouse/comment-on-va-faire-au-moins-1500-salaries-de-stellantis-a-mulhouse-touches-par-du-chomage-partiel-d-ici-janvier-7588056" target="_blank">Stellantis de Mulhouse</a> a annoncé le 26 novembre aux syndicats neuf jours de chômage technique entre le 4 décembre et le 12 janvier, pour <a href="https://www.ici.fr/grand-est/alsace-cea/mulhouse/comment-on-va-faire-au-moins-1500-salaries-de-stellantis-a-mulhouse-touches-par-du-chomage-partiel-d-ici-janvier-7588056" target="_blank">au moins 1 500 salariés</a> du montage, du ferrage, de la peinture et de l'emboutissage — jusqu'à 2 000 selon la CGT. Le site, qui produit les Peugeot 308 et 408, redémarrera le 12 janvier au lieu du 5. D'autres usines Stellantis sont touchées, à <a href="https://www.franceinfo.fr/economie/industrie/on-est-quand-meme-inquiets-pour-l-avenir-du-site-des-salaries-de-stellantis-mis-en-chomage-partiel-a-rennes-et-mulhouse-face-aux-difficultes-du-groupe_8303127.html" target="_blank">Sochaux et Rennes</a>.</p>
+        </div>
+      </div>
+    </div>
+    <figure class="illus"><img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-28-1.png" alt="Illustration — l'usine augmentée : robotique et câblage automatisés, au cœur de l'industrie alsacienne." loading="lazy"><figcaption>Illustration — l'usine augmentée : robotique et câblage automatisés, au cœur de l'industrie alsacienne.</figcaption></figure>
+    <!-- ===== ZONE 2 : INNOVATION &AMP; IA ===== -->
+    <div class="card" id="zone-innovation">
+      <div class="card-head" id="zone-innovation-ia"><div class="card-title">💡 Innovation &amp; IA<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+      <div class="card-body">
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">IA et santé : l&#x27;IHU Strasbourg publie le premier concours mondial d&#x27;IA pour la sécurité chirurgicale</a></h3>
+          <div class="meta">IHU Strasbourg • 26/11/2026</div>
+          <p>Le rapport du « <a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">SAGES CVS Challenge</a> », co-organisé par l'<a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">IHU Strasbourg</a> et l'équipe <a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">CAMMA</a>, a été accepté pour publication dans la revue <a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">Medical Image Analysis</a>. Ce premier concours mondial d'IA dédié à la sécurité chirurgicale s'appuie sur <a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">1 000 vidéos</a> de cholécystectomies annotées par 20 experts, mises à l'épreuve par 13 équipes internationales ; l'objectif est d'automatiser l'évaluation de la « vue critique de sécurité », <a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">sans remplacer le praticien</a>. Le travail est aussi disponible sur <a href="https://arxiv.org/abs/2509.17100" target="_blank">arXiv</a>.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://ch-colmar.fr/actualites/mammographie-nouvel-equipement/" target="_blank">Colmar : un mammographe assisté par IA entre en service aux Hôpitaux civils</a></h3>
+          <div class="meta">Hôpitaux civils de Colmar / ia3.alsace • 23/11/2026</div>
+          <p>Les <a href="https://ch-colmar.fr/actualites/mammographie-nouvel-equipement/" target="_blank">Hôpitaux civils de Colmar</a> ont mis en service, en radiologie, un nouveau mammographe 2D et 3D qui remplace un appareil resté douze ans en activité. Un outil d'IA y <a href="https://ch-colmar.fr/actualites/mammographie-nouvel-equipement/" target="_blank">accompagne les radiologues</a> en identifiant et classant les anomalies détectées, « sans se substituer à l'analyse et à la décision du radiologue », selon l'établissement. L'information est relayée par l'<a href="https://ia3.alsace/le-fil/" target="_blank">agenda IA du Rhin supérieur</a>.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://cluster-ia-enact.ai/aap-contrats-doctoraux-en-ia-2027-vague-3/" target="_blank">IA : le cluster Grand Est ENACT ouvre une trentaine de contrats doctoraux</a></h3>
+          <div class="meta">ENACT • 20/11/2026</div>
+          <p>Le cluster IA Grand Est <a href="https://cluster-ia-enact.ai/aap-contrats-doctoraux-en-ia-2027-vague-3/" target="_blank">ENACT</a> a publié le 20 novembre la troisième vague de son appel à contrats doctoraux en IA pour 2027, soit une <a href="https://cluster-ia-enact.ai/aap-contrats-doctoraux-en-ia-2027-vague-3/" target="_blank">trentaine de financements</a>. Ouvert aux laboratoires lorrains et alsaciens, l'appel couvre trois axes — langues et grands modèles multimodaux, IA pour l'ingénierie et la découverte scientifique, santé numérique — avec des dossiers attendus <a href="https://cluster-ia-enact.ai/wp-content/uploads/2026/11/Campagne-theses-ENACT-2027-FR.pdf" target="_blank">jusqu'au 11 janvier 2027</a>. Le dispositif prolonge la dynamique des <a href="https://ia3.alsace/le-fil/" target="_blank">journées annuelles d'ENACT</a> tenues les 26 et 27 novembre à Strasbourg.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://fabeon.fr/2026/11/19/robotkraft-chez-fabeon-3-jours-pour-dompter-la-robotique/" target="_blank">Robotique : 72 heures de bras robotisés chez Fabéon avec le challenge RobotKraft</a></h3>
+          <div class="meta">Fabéon / Alsace Digitale • 19/11/2026</div>
+          <p>Le challenge <a href="https://fabeon.fr/2026/11/19/robotkraft-chez-fabeon-3-jours-pour-dompter-la-robotique/" target="_blank">RobotKraft</a>, organisé par <a href="https://www.alsacedigitale.org/" target="_blank">Alsace Digitale</a> dans le cadre du projet <a href="https://ia3.alsace/le-fil/" target="_blank">ENACT</a>, a réuni à <a href="https://fabeon.fr/2026/11/19/robotkraft-chez-fabeon-3-jours-pour-dompter-la-robotique/" target="_blank">Fabéon</a>, au parc d'innovation d'Illkirch, développeurs, ingénieurs et étudiants autour de bras robotisés. Pendant 72 heures, les équipes ont relevé des défis inspirés de la santé et du spatial, avec Télécom Physique Strasbourg (InnovLab), Agora Calycé, <a href="https://ia3.alsace/le-fil/" target="_blank">IA Strasbourg Meetups</a> et l'<a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">IHU</a>, pour confronter théorie et robotique embarquée.</p>
+        </div>
+      </div>
+    </div>
+    <figure class="illus"><img src="https://dorninem.github.io/ParkStras/HERMES/archives/veille-ALSACE-2026-11-28-2.png" alt="Illustration — l'IA au service de la santé : assistance chirurgicale et imagerie augmentée." loading="lazy"><figcaption>Illustration — l'IA au service de la santé : assistance chirurgicale et imagerie augmentée.</figcaption></figure>
+    <!-- ===== ZONE 3 : TERRITOIRES &AMP; INSTITUTIONS ===== -->
+    <div class="card" id="zone-territoires">
+      <div class="card-head" id="zone-territoires-institutions"><div class="card-title">🏛️ Territoires &amp; institutions<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
+      <div class="card-body">
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.dna.fr/economie/2026/11/27/vente-du-groupe-lalique-l-alsacien-pascal-cagni-sur-les-rangs" target="_blank">Wingen-sur-Moder : Lalique pourrait revenir sous pavillon français via C4 Industries</a></h3>
+          <div class="meta">DNA / Lalique Group • 27/11/2026</div>
+          <p>Le groupe suisse <a href="https://press.lalique.com/lalique-group-entame-des-negociations-exclusives-avec-c4-industries-en-vue-de-la-cession-envisagee-de-lalique-sa" target="_blank">Lalique Group</a> a annoncé le 27 novembre des négociations exclusives avec <a href="https://press.lalique.com/lalique-group-entame-des-negociations-exclusives-avec-c4-industries-en-vue-de-la-cession-envisagee-de-lalique-sa" target="_blank">C4 Industries</a>, le groupe français fondé par l'Alsacien <a href="https://www.dna.fr/economie/2026/11/27/vente-du-groupe-lalique-l-alsacien-pascal-cagni-sur-les-rangs" target="_blank">Pascal Cagni</a>, en vue de la cession de Lalique SA. Le périmètre inclut la manufacture de <a href="https://press.lalique.com/lalique-group-entame-des-negociations-exclusives-avec-c4-industries-en-vue-de-la-cession-envisagee-de-lalique-sa" target="_blank">Wingen-sur-Moder</a>, où le cristal Lalique est fabriqué depuis 1922, les équipes parisiennes, les boutiques et l'hôtel-restaurant Château Hochberg ; les parfums et l'hôtellerie de <a href="https://press.lalique.com/lalique-group-entame-des-negociations-exclusives-avec-c4-industries-en-vue-de-la-cession-envisagee-de-lalique-sa" target="_blank">Silvio Denz</a> restent hors opération. Par ailleurs, le <a href="https://www.lesechos.fr/pme-regions/grand-est/cambriole-debut-juillet-le-musee-lalique-rouvre-ses-portes-2264948" target="_blank">musée Lalique</a> de Wingen-sur-Moder, cambriolé début juillet, rouvre le 28 novembre.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">Mobilités : la Région Grand Est demande des comptes à la SNCF après une soixantaine de trains supprimés</a></h3>
+          <div class="meta">actu.fr • 26/11/2026</div>
+          <p>Une <a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">soixantaine de trains Fluo</a> ont été supprimés en Alsace entre le 24 et le 27 novembre, selon un communiqué de la <a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">Région Grand Est</a>. Les perturbations touchent l'axe <a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">Strasbourg-Mulhouse-Bâle</a> et plusieurs lignes du nord de l'Alsace ; la Région indique que 19% du parc d'automotrices est indisponible. Son président <a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">Franck Leroy</a> demande à la SNCF de rétablir les circulations et <a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">envisage des pénalités</a>, et annonce le rétablissement de seize omnibus.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.lesechos.fr/pme-regions/grand-est/les-collectivites-du-haut-rhin-vent-debout-contre-le-projet-de-loi-de-finances-2264506" target="_blank">Haut-Rhin : les collectivités chiffrent à 46 millions d&#x27;euros l&#x27;impact du projet de loi de finances</a></h3>
+          <div class="meta">Les Echos • 25/11/2026</div>
+          <p>L'<a href="https://www.lesechos.fr/pme-regions/grand-est/les-collectivites-du-haut-rhin-vent-debout-contre-le-projet-de-loi-de-finances-2264506" target="_blank">association départementale des maires du Haut-Rhin</a> estime que le <a href="https://www.lesechos.fr/pme-regions/grand-est/les-collectivites-du-haut-rhin-vent-debout-contre-le-projet-de-loi-de-finances-2264506" target="_blank">projet de loi de finances 2027</a>, dans son état actuel, grèverait le budget des communes et intercommunalités du département de <a href="https://www.lesechos.fr/pme-regions/grand-est/les-collectivites-du-haut-rhin-vent-debout-contre-le-projet-de-loi-de-finances-2264506" target="_blank">46 millions d'euros</a>. À elle seule, l'agglomération de Colmar serait affectée à hauteur de <a href="https://www.lesechos.fr/pme-regions/grand-est/les-collectivites-du-haut-rhin-vent-debout-contre-le-projet-de-loi-de-finances-2264506" target="_blank">2,6 millions d'euros</a>.</p>
+        </div>
+        <div class="item cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+          <h3><a href="https://www.lesechos.fr/pme-regions/grand-est/la-population-du-grand-est-appelee-a-tres-fortement-baisser-dici-a-2070-2264975" target="_blank">Démographie : l&#x27;Insee projette une baisse de 21 % de la population du Grand Est d&#x27;ici 2070</a></h3>
+          <div class="meta">Les Echos / Insee • 27/11/2026</div>
+          <p>Selon les projections de l'<a href="https://www.lesechos.fr/pme-regions/grand-est/la-population-du-grand-est-appelee-a-tres-fortement-baisser-dici-a-2070-2264975" target="_blank">Insee Grand Est</a>, la population régionale pourrait chuter de <a href="https://www.lesechos.fr/pme-regions/grand-est/la-population-du-grand-est-appelee-a-tres-fortement-baisser-dici-a-2070-2264975" target="_blank">21% d'ici 2070</a>, la moitié des dix départements comptant parmi les plus touchés de France. En Alsace, le <a href="https://www.lalsace.fr/archives/2026/26-11" target="_blank">Haut-Rhin perdrait 18 % de ses habitants et le Bas-Rhin 8 %</a>, selon L'Alsace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="section-title" id="zone-lecture-transversale">🧭 Lecture transversale<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
+  <div class="card">
+    <div class="card-body prose">
+      <h3>Économie &amp; entreprises</h3>
+      <ul>
+        <li>Le tissu industriel se recompose entre investissements et coups durs : <a href="https://www.dna.fr/economie/2026/11/21/mars-petcare-investit-60-millions-dans-son-usine-de-nutrition-animale" target="_blank">Mars Petcare</a> investit 60 M€ à Ernolsheim-Bruche et <a href="https://www.dna.fr/economie/2026/11/23/bureland-invite-de-choose-france-avec-pres-de-20-millions-d-euros-d-investissement" target="_blank">Bureland</a> 19,5 M€ à Bernolsheim, quand <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">Butachimie</a> annonce un plan de sauvegarde de l'emploi à Chalampé et <a href="https://www.ici.fr/grand-est/alsace-cea/mulhouse/comment-on-va-faire-au-moins-1500-salaries-de-stellantis-a-mulhouse-touches-par-du-chomage-partiel-d-ici-janvier-7588056" target="_blank">Stellantis</a> place au moins 1 500 salariés en chômage partiel à Mulhouse.</li>
+        <li>Le capital alsacien revient : le cristallier <a href="https://www.dna.fr/economie/2026/11/27/vente-du-groupe-lalique-l-alsacien-pascal-cagni-sur-les-rangs" target="_blank">Lalique</a> de Wingen-sur-Moder pourrait passer sous pavillon français via <a href="https://press.lalique.com/lalique-group-entame-des-negociations-exclusives-avec-c4-industries-en-vue-de-la-cession-envisagee-de-lalique-sa" target="_blank">C4 Industries</a>, le groupe de l'Alsacien Pascal Cagni.</li>
+      </ul>
+      <h3>Innovation &amp; IA</h3>
+      <ul>
+        <li>L'IA s'installe dans la santé : l'<a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">IHU Strasbourg</a> publie un concours mondial d'IA pour la sécurité chirurgicale et les <a href="https://ch-colmar.fr/actualites/mammographie-nouvel-equipement/" target="_blank">Hôpitaux civils de Colmar</a> mettent en service un mammographe assisté par IA.</li>
+        <li>La recherche s'organise : <a href="https://cluster-ia-enact.ai/aap-contrats-doctoraux-en-ia-2027-vague-3/" target="_blank">ENACT</a> ouvre une trentaine de contrats doctoraux et le challenge robotique <a href="https://fabeon.fr/2026/11/19/robotkraft-chez-fabeon-3-jours-pour-dompter-la-robotique/" target="_blank">RobotKraft</a> mobilise les makers d'Alsace Digitale.</li>
+      </ul>
+      <h3>Territoires &amp; institutions</h3>
+      <ul>
+        <li>Les finances locales se tendent : le <a href="https://www.lesechos.fr/pme-regions/grand-est/les-collectivites-du-haut-rhin-vent-debout-contre-le-projet-de-loi-de-finances-2264506" target="_blank">Haut-Rhin</a> chiffre à 46 M€ l'impact du projet de loi de finances et l'<a href="https://www.lesechos.fr/pme-regions/grand-est/la-population-du-grand-est-appelee-a-tres-fortement-baisser-dici-a-2070-2264975" target="_blank">Insee</a> projette une baisse de 21% de la population régionale d'ici 2070.</li>
+        <li>Les mobilités déraillent : la <a href="https://actu.fr/societe/une-soixantaine-de-trains-supprimes-en-quatre-jours-la-region-grand-est-s-alerte-et-demande-des-comptes-a-la-sncf_65103150.html" target="_blank">Région</a> réclame des comptes à la SNCF après une soixantaine de trains Fluo supprimés en quatre jours en Alsace.</li>
+      </ul>
+    </div>
+  </div>
+  <h2 class="section-title" id="zone-prospective">🔮 Prospective<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
+  <div class="card">
+    <div class="card-body prose">
+      <h3>Horizon court (0–6 mois)</h3>
+      <ul>
+        <li>Événements à venir : deux soutenances de thèse en IA d'<a href="https://icube.unistra.fr/agenda/these-explainable-knowledge-based-diagnosis-for-lithium-ion-batteries/" target="_blank">ICube</a> les 1er et 4 décembre à Strasbourg, et la 150e édition de <a href="https://www.alsacedigitale.org/" target="_blank">HackSXB</a> à Strasbourg.</li>
+        <li>À surveiller : l'issue du plan de sauvegarde de l'emploi de <a href="https://www.lesechos.fr/pme-regions/grand-est/chimie-le-specialiste-haut-rhinois-des-precurseurs-du-nylon-66-butachimie-concerne-par-un-pse-2264379" target="_blank">Butachimie</a>, la reprise de <a href="https://press.lalique.com/lalique-group-entame-des-negociations-exclusives-avec-c4-industries-en-vue-de-la-cession-envisagee-de-lalique-sa" target="_blank">Lalique</a> par C4 Industries et la reprise de production de <a href="https://www.ici.fr/grand-est/alsace-cea/mulhouse/comment-on-va-faire-au-moins-1500-salaries-de-stellantis-a-mulhouse-touches-par-du-chomage-partiel-d-ici-janvier-7588056" target="_blank">Stellantis Mulhouse</a> le 12 janvier.</li>
+      </ul>
+      <h3>Horizon moyen (1–3 ans)</h3>
+      <ul>
+        <li>Recherche : les <a href="https://cluster-ia-enact.ai/aap-contrats-doctoraux-en-ia-2027-vague-3/" target="_blank">contrats doctoraux ENACT</a> irrigueront la santé numérique et l'IA pour l'ingénierie dans les laboratoires alsaciens et lorrains.</li>
+        <li>Industrie : les projets retenus à <a href="https://alsace-industrie.com/actualites/2026/11/sermes-construit-une-nouvelle-cablerie-a-altorf-et-investit-25-m-selon" target="_blank">Choose France</a>, dont <a href="https://alsace-industrie.com/actualites/2026/11/sermes-construit-une-nouvelle-cablerie-a-altorf-et-investit-25-m-selon" target="_blank">Sermes</a> à Altorf, pèseront sur l'emploi industriel régional.</li>
+      </ul>
+      <h3>Horizon long (3–10 ans)</h3>
+      <ul>
+        <li>Démographie : la baisse projetée par l'<a href="https://www.lesechos.fr/pme-regions/grand-est/la-population-du-grand-est-appelee-a-tres-fortement-baisser-dici-a-2070-2264975" target="_blank">Insee</a> interroge l'équilibre emploi-logement du Grand Est.</li>
+        <li>Santé : la filière d'IA chirurgicale strasbourgeoise, de l'<a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">IHU</a> à <a href="https://www.ihu-strasbourg.eu/sages-cvs-challenge-ia-chirurgie-publication-medical-image-analysis/" target="_blank">Scialytics</a>, pourrait essaimer au bloc opératoire.</li>
+      </ul>
+    </div>
+  </div>
+  <h2 class="section-title" id="zone-signaux-faibles">📡 Signaux faibles<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></h2>
+  <div class="card">
+    <div class="card-body weak">
+      <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+        <p><strong>Colmar : la robotique et l&#x27;IA au menu de la 6e Journée colmarienne d&#x27;urologie.</strong> Le 27 novembre, au CFPP de Colmar, la 6e Journée colmarienne d'urologie programme une intervention sur la robotique et l'intelligence artificielle en urologie, selon l'agenda de l'IA du Rhin supérieur.</p>
+        <ul>
+          <li><a href="https://ia3.alsace/les-rencontres/" target="_blank">ia3.alsace</a></li>
+        </ul>
+      </div>
+      <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+        <p><strong>Deux thèses en IA soutenues début décembre à Strasbourg.</strong> L'agenda d'ICube annonce deux soutenances liées à l'IA : le 1er décembre à l'INSA Strasbourg, sur un diagnostic explicable des batteries lithium-ion, et le 4 décembre à l'IRMA, sur des méthodes hybrides associant éléments finis et réseaux de neurones.</p>
+        <ul>
+          <li><a href="https://icube.unistra.fr/agenda/these-explainable-knowledge-based-diagnosis-for-lithium-ion-batteries/" target="_blank">icube.unistra.fr</a></li>
+        </ul>
+      </div>
+      <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+        <p><strong>ADIRA : « Mettons de l&#x27;Alsacien sous le sapin ».</strong> L'agence de développement d'Alsace (ADIRA) a lancé le 24 novembre une opération de promotion des savoir-faire locaux pour les cadeaux de Noël, réunissant 43 entreprises alsaciennes.</p>
+        <ul>
+          <li><a href="https://www.ici.fr/emissions/l-eco-d-ici-ici-alsace/et-si-vous-mettiez-des-produits-alsaciens-sous-le-sapin-de-noel-9376652" target="_blank">ici.fr</a></li>
+        </ul>
+      </div>
+      <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+        <p><strong>Altkirch : comment les petites collectivités peuvent se servir de l&#x27;IA.</strong> Une conférence sur l'usage de l'intelligence artificielle par les petites collectivités est annoncée à Altkirch, le 25 novembre, selon les DNA.</p>
+        <ul>
+          <li><a href="https://www.dna.fr/culture-loisirs/2026/11/25/conference-comment-les-petites-collectivites-peuvent-se-servir-de-l-intelligence-artificielle" target="_blank">dna.fr</a></li>
+        </ul>
+      </div>
+      <div class="signal cp-blk"><button class="cp-btn" type="button" aria-label="Copier ce passage" title="Copier ce passage"><span class="i-copy"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span><span class="i-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>
+        <p><strong>HackSXB #150 : la communauté des makers fête sa 150e édition.</strong> Alsace Digitale organise le 27 novembre, au Digital Village de Strasbourg, la 150e édition de HackSXB, soirée dédiée à la programmation et à la bidouille.</p>
+        <ul>
+          <li><a href="https://www.meetup.com/hacksxb/events/316406167/" target="_blank">meetup.com</a></li>
+          <li><a href="https://www.alsacedigitale.org/" target="_blank">alsacedigitale.org</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Archives HERMES · Veille Alsace — Économie · Innovation &amp; IA · Territoires. Fenêtre : 21 au 28 novembre 2026 · 12 articles + 5 signaux faibles.</p>
+    <p>Généré le 28 novembre 2026 par ORAC (skills veille-alsace + veille-html). · <a href="index.html">page passerelle</a></p>
+  </footer>
+</div>
+<script>
+function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
+</script>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return;
+  i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+<script id="veille-toc-js">
+(function(){
+  var HAUT = '#veille-toc-haut';
+  var depart = null, contact = 0;
+  function cible_de(h){ return h === HAUT ? null : document.getElementById(h.slice(1)); }
+  function marge(){                                   /* hauteur réelle de la barre, + air */
+    var b = document.getElementById('veille-toc');
+    return (b ? Math.round(b.getBoundingClientRect().height) : 52) + 10;
+  }
+  function pos(el){
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    return Math.max(0, Math.round(y) - marge());
+  }
+  function aller(c){
+    var y = c ? pos(c) : 0;
+    window.scrollTo(0, y);
+    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* le moteur a ramené la page : on rejoue */
+      setTimeout(function(){ window.scrollTo(0, y); }, 60);
+    }
+  }
+  function lien(e){
+    return e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  }
+  function suivre(e){
+    var a = lien(e), t = e.changedTouches ? e.changedTouches[0] : null;
+    depart = a ? {lien: a, x: t ? t.clientX : 0, y: t ? t.clientY : 0, t: Date.now()} : null;
+  }
+  function relacher(e){
+    var a = lien(e) || (depart ? depart.lien : null), d = depart;
+    depart = null;
+    if (!a) return;
+    if (d) {                                          /* appui ou balayage ? */
+      var t = e.changedTouches ? e.changedTouches[0] : null;
+      var bouge = t ? (Math.abs(t.clientX - d.x) > 10 || Math.abs(t.clientY - d.y) > 10) : false;
+      if (bouge || Date.now() - d.t > 700) return;     /* balayage : on laisse la page défiler */
+    }
+    var h = a.getAttribute('href') || '';
+    if (h.charAt(0) !== '#') return;
+    e.preventDefault();
+    var c = cible_de(h);
+    if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
+    aller(c);
+    setTimeout(function(){ aller(c); }, 120);          /* après un éventuel rappel de focus */
+  }
+  document.addEventListener('touchstart', function(e){ contact = Date.now(); suivre(e); }, {capture:true, passive:true});
+  document.addEventListener('touchend', function(e){ contact = Date.now(); relacher(e); }, {capture:true, passive:false});
+  document.addEventListener('mousedown', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+  document.addEventListener('click', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+})();
+</script>
+<style id="copier-css">
+.cp-blk{position:relative}
+.cp-btn{position:absolute;top:10px;right:0;width:26px;height:26px;display:inline-flex;align-items:center;
+ justify-content:center;padding:0;border:1px solid var(--border);border-radius:8px;background:transparent;
+ color:var(--muted);opacity:.35;cursor:pointer;font:inherit;line-height:1;
+ transition:opacity .15s,color .15s,border-color .15s}
+.cp-btn .i-ok{display:none}
+.cp-btn:hover,.cp-btn:focus-visible{opacity:1;color:var(--accent-2);border-color:var(--accent-2)}
+.cp-btn.ok{opacity:1;color:#16a34a;border-color:#16a34a}
+.cp-btn.ok .i-copy{display:none}
+.cp-btn.ok .i-ok{display:block}
+.cp-btn.ko{opacity:1;color:#dc2626;border-color:#dc2626}
+.cp-blk>h3:first-child,.cp-blk>h4:first-child,.cp-blk>p:first-child{padding-right:34px}
+@media (hover:none){.cp-btn{opacity:.7}
+ /* Sur écran tactile, la cible visuelle de 26 px est trop petite pour un doigt (44 px
+    recommandés) : on élargit la ZONE sensible sans grossir l'icône — l'icône garde sa
+    discrétion, le doigt a de quoi viser. */
+ .cp-btn::after{content:'';position:absolute;top:-9px;right:-9px;bottom:-9px;left:-9px}}
+#cp-toast{position:fixed;right:18px;bottom:18px;z-index:80;padding:9px 14px;border-radius:10px;
+ font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.06em;background:#0b1220;
+ color:#40dcff;border:1px solid rgba(64,220,255,.45);opacity:0;transform:translateY(6px);
+ transition:opacity .2s,transform .2s;pointer-events:none}
+#cp-toast.ko{color:#fca5a5;border-color:rgba(220,38,38,.5)}
+#cp-toast.visible{opacity:1;transform:translateY(0)}
+html[data-theme="light"] #cp-toast{background:#fff;color:#0e7490;border-color:rgba(14,116,144,.4)}
+</style>
+<script id="copier-js">
+(function(){
+  function texte(n){ return (n.textContent||'').replace(/\s+/g,' ').trim(); }
+
+  /* Copie propre : on retire le bouton lui-même, la flèche de retour, puis TOUT attribut de
+     classe ou de style, et on rend les liens absolus (une URL relative ne survit pas au collage). */
+  function nettoyer(n){
+    var c = n.cloneNode(true);
+    c.querySelectorAll('.cp-btn,.retour-haut,button,script,style,svg').forEach(function(x){ x.remove(); });
+    c.querySelectorAll('*').forEach(function(x){
+      var attrs = x.attributes, i;
+      for (i = attrs.length - 1; i >= 0; i--) { if (attrs[i].name !== 'href') { x.removeAttribute(attrs[i].name); } }
+    });
+    c.querySelectorAll('a[href]').forEach(function(a){
+      try { a.setAttribute('href', new URL(a.getAttribute('href'), location.href).href); } catch(e){}
+    });
+    return c;
+  }
+
+  /* Les pièces sont repérées sur le bloc D'ORIGINE (avant nettoyage) : nettoyer d'abord les
+     classes effacerait `.meta`, `.src`, et la ligne source/date disparaîtrait de la copie. */
+  function morceau(n){ return n ? nettoyer(n) : null; }
+
+  function contenu(el){
+    var t = morceau(el.querySelector('h3,h4'));
+    var m = morceau(el.querySelector('.meta'));
+    var s = morceau(el.querySelector('.src'));
+    var ps = Array.prototype.slice.call(el.querySelectorAll('p')).map(nettoyer);
+
+    var html = '';
+    if (t) html += '<h3>' + t.innerHTML + '</h3>';
+    if (m) html += '<div>' + m.innerHTML + '</div>';
+    ps.forEach(function(p){ html += '<p>' + p.innerHTML + '</p>'; });
+    if (s) html += '<div>' + s.innerHTML + '</div>';
+
+    var lien = t && t.querySelector('a[href]') ? t.querySelector('a').getAttribute('href') : '';
+    var morceaux = [];
+    if (t) morceaux.push(texte(t));
+    if (m) morceaux.push(texte(m));
+    ps.forEach(function(p){ morceaux.push(texte(p)); });
+    if (s) morceaux.push(texte(s));
+    if (lien) morceaux.push(lien);
+
+    return { html: html, text: morceaux.filter(function(x){ return x; }).join('\n') };
+  }
+
+  function dire(ok, btn){
+    var t = document.getElementById('cp-toast');
+    if (!t) { t = document.createElement('div'); t.id = 'cp-toast'; document.body.appendChild(t); }
+    t.textContent = ok ? 'Passage copié' : 'Copie impossible';
+    t.className = (ok ? '' : 'ko ') + 'visible';
+    clearTimeout(dire.t);
+    dire.t = setTimeout(function(){ t.className = ok ? '' : 'ko'; }, 1600);
+    if (btn) {
+      btn.classList.add(ok ? 'ok' : 'ko');
+      setTimeout(function(){ btn.classList.remove('ok','ko'); }, 1600);
+    }
+  }
+
+  /* Repli sans API moderne : sélection invisible + execCommand. C'est le seul chemin disponible
+     quand la page est ouverte depuis un fichier local (file:// n'est pas un contexte sécurisé). */
+  function copie_ancienne(p){
+    var h = document.createElement('div');
+    h.setAttribute('contenteditable','true');
+    h.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
+    h.innerHTML = p.html;
+    document.body.appendChild(h);
+    var r = document.createRange(); r.selectNodeContents(h);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+    s.removeAllRanges(); document.body.removeChild(h);
+    return ok;
+  }
+
+  function copier(el, btn){
+    if (!el) { dire(false, btn); return; }
+    var p = contenu(el);
+    if (!p.html && !p.text) { dire(false, btn); return; }
+    var suivre = function(ok){ dire(ok, btn); };
+    if (navigator.clipboard && window.ClipboardItem && location.protocol !== 'file:') {
+      try {
+        navigator.clipboard.write([new ClipboardItem({
+          'text/html':  new Blob([p.html], {type:'text/html'}),
+          'text/plain': new Blob([p.text], {type:'text/plain'})
+        })]).then(function(){ suivre(true); }, function(){ suivre(copie_ancienne(p)); });
+        return;
+      } catch(e) {}
+    }
+    suivre(copie_ancienne(p));
+  }
+
+  document.addEventListener('click', function(e){
+    var cible = e.target && e.target.closest ? e.target.closest('.cp-btn') : null;
+    if (!cible) return;
+    e.preventDefault();
+    copier(cible.closest('.cp-blk'), cible);
+  });
+
+  /* Contrôle : permet de lire le contenu fabriqué sans toucher au presse-papier. */
+  window.__cpContenu = function(el){ return contenu(el); };
+})();
+</script>
+</body>
+</html>

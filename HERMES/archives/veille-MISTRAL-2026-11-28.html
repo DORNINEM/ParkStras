@@ -346,6 +346,27 @@ html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bot
 <script>
 function jumpTo(z){var el=document.getElementById(z);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('zone-flash');setTimeout(function(){el.classList.remove('zone-flash')},1600)}
 </script>
+<!-- theme-toggle -->
+<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
+  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
+</a>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
+  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
+function hvToggleTheme(e){if(e)e.preventDefault();
+  var cur=document.documentElement.dataset.theme||'dark';
+  var nxt=(cur==='dark')?'light':'dark';
+  document.documentElement.dataset.theme=nxt;
+  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
+  hvPaint();}
+function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
+  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
+  if(!i||!t)return;
+  i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
+  t.textContent=dark?'Mode clair':'Mode sombre';}
+document.addEventListener('DOMContentLoaded',hvPaint);
+</script>
+
 <script id="veille-toc-js">
 (function(){
   var HAUT = '#veille-toc-haut';
@@ -525,26 +546,5 @@ html[data-theme="light"] #cp-toast{background:#fff;color:#0e7490;border-color:rg
   window.__cpContenu = function(el){ return contenu(el); };
 })();
 </script>
-<!-- theme-toggle -->
-<a class="theme-toggle" href="#" role="button" aria-label="Changer de theme (sombre / clair)" title="Basculer sombre / clair" onclick="hvToggleTheme(event)">
-  <span id="hv-ti" aria-hidden="true">&#9728;&#65039;</span><span id="hv-tt">Mode clair</span>
-</a>
-<script>
-(function(){var t=null;try{t=localStorage.getItem('hermes-theme')}catch(e){}
-  document.documentElement.dataset.theme=(t==='light')?'light':'dark';})();
-function hvToggleTheme(e){if(e)e.preventDefault();
-  var cur=document.documentElement.dataset.theme||'dark';
-  var nxt=(cur==='dark')?'light':'dark';
-  document.documentElement.dataset.theme=nxt;
-  try{localStorage.setItem('hermes-theme',nxt)}catch(err){}
-  hvPaint();}
-function hvPaint(){var dark=(document.documentElement.dataset.theme||'dark')==='dark';
-  var i=document.getElementById('hv-ti'),t=document.getElementById('hv-tt');
-  if(!i||!t)return;
-  i.innerHTML=dark?'&#9728;&#65039;':'&#127769;&#65039;';
-  t.textContent=dark?'Mode clair':'Mode sombre';}
-document.addEventListener('DOMContentLoaded',hvPaint);
-</script>
-
 </body>
 </html>
