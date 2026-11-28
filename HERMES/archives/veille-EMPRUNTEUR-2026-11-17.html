@@ -93,7 +93,49 @@
       box-shadow:0 4px 16px rgba(0,0,0,.28);transition:all .18s}
     .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
 </style>
-</head><body>
+<style id="veille-toc-css">
+#veille-toc{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+ padding:10px 160px 10px 18px;margin:0 auto 14px;max-width:1100px;background:rgba(1,4,9,.92);
+ backdrop-filter:blur(6px);border-bottom:1px solid rgba(64,220,255,.20);}
+html[data-theme="light"] #veille-toc{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(14,116,144,.22);}
+#veille-toc .vt-lab{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.14em;
+ text-transform:uppercase;opacity:.55;margin-right:4px;}
+#veille-toc a.vt{padding:5px 12px;border-radius:999px;border:1px solid rgba(64,220,255,.35);
+ text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.88rem;
+ white-space:nowrap;transition:transform .15s;animation:vtGlow 2.6s ease-in-out infinite;}
+#veille-toc a.vt:hover{transform:translateY(-1px);border-color:var(--accent,#40dcff);}
+@keyframes vtGlow{0%,100%{box-shadow:0 0 4px rgba(64,220,255,.18);}50%{box-shadow:0 0 14px rgba(64,220,255,.45);}}
+.retour-haut{display:inline-flex;align-items:center;gap:5px;margin-left:10px;padding:2px 9px;
+ border-radius:999px;font-family:'Rajdhani',sans-serif;font-size:.78rem;font-weight:600;
+ text-decoration:none;border:1px solid rgba(64,220,255,.30);opacity:.7;vertical-align:middle;}
+.retour-haut:hover{opacity:1;border-color:var(--accent,#40dcff);}
+/* Ancre du sommaire : une VRAIE boîte (1 px, invisible) et non un span vide — certains moteurs
+   ignorent le défilement vers un élément sans boîte. */
+#veille-toc-haut.rth{display:block;height:1px;margin-top:-1px}
+/* sous la barre collante : sans cela, le titre visé arrive caché derrière elle */
+[id^="zone-"]{scroll-margin-top:72px}
+[id^="zone-"]:target{outline:2px solid rgba(64,220,255,.55);outline-offset:6px;border-radius:10px;}
+/* TÉLÉPHONE : la barre tient sur UNE ligne et se balaie du doigt. Sans cela les pastilles
+   passent à la ligne (mesuré le 27/11/2026, écran 390 × 844 : 5 lignes, 229 px de haut, soit
+   27 % de l'écran) et, comme la barre est collante, elle ne s'efface jamais pour rendre la
+   place. Une seule ligne, défilante horizontalement, garde le sommaire accessible et discret. */
+@media (max-width:700px){
+  /* Le bouton de thème est FIXE en haut à droite (124 px de large sur un écran de 390 px) et
+     se superposait à la barre : les appuis à droite tombaient dessus au lieu de la pastille —
+     d'où « sur mon Safari mobile le bloc du sommaire ne défile pas ». On lui réserve sa place
+     dans la barre (comme les 160 px du bureau) et on le réduit à son icône. */
+  html .theme-toggle{top:11px;right:12px;padding:6px 9px}
+  html .theme-toggle #hv-tt{display:none}
+  #veille-toc{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+   scrollbar-width:none;padding:7px 64px 7px 10px;margin-bottom:10px;}
+  #veille-toc::-webkit-scrollbar{display:none}
+  #veille-toc a.vt{flex:0 0 auto;font-size:.76rem;padding:6px 11px;}
+  #veille-toc .vt-lab{font-size:.66rem;margin-right:2px;}
+  [id^="zone-"]{scroll-margin-top:54px}
+  .retour-haut{padding:6px 11px}
+}
+@media (prefers-reduced-motion:reduce){#veille-toc a.vt{animation:none;}}
+</style></head><body><span id="veille-toc-haut" class="rth"></span><nav id="veille-toc" aria-label="Sommaire de la veille"><span class="vt-lab">Sommaire</span><a class="vt" href="#zone-engagements-du-ccsf">🏛️ Engagements du CCSF</a><a class="vt" href="#zone-le-processus-de-substitution-encadre">🔁 Le processus de substitution</a><a class="vt" href="#zone-autorites-de-controle">🏛️ Autorités de contrôle</a><a class="vt" href="#zone-contentieux-et-points-de-vigilance">⚖️ Contentieux et points de</a><a class="vt" href="#zone-marche">📈 Marché : ce que la substitution</a><a class="vt" href="#zone-signaux-faibles">📡 Signaux faibles — 5</a><a class="vt" href="#zone-lecture-transversale">🧭 Lecture transversale</a><a class="vt" href="#zone-prospective">🔮 Prospective</a></nav>
 <div class="wrap">
     <header>
       <div>
@@ -116,7 +158,7 @@
     </div>
     <div class="grid">
       <div class="card">
-        <div class="card-head"><div class="card-title">🏛️ Engagements du CCSF — avis du 26 mai 2026</div></div>
+        <div class="card-head" id="zone-engagements-du-ccsf"><div class="card-title">🏛️ Engagements du CCSF — avis du 26 mai 2026<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3><a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/avis-du-ccsf-sur-les-contrats-dassurance-emprunteur-des-credits-immobiliers" target="_blank">Fin des « trous de garantie » lors d’une substitution</a></h3><div class="meta">CCSF / Banque de France • 26/05/2026</div><p>L’ACPR a relevé que 85 contrats sur les 139 qu’elle a analysés contiennent une clause mettant fin au versement des prestations en cas de résiliation — un assuré en arrêt de travail pouvait donc perdre sa couverture en changeant d’assureur. Les organismes se sont engagés à garantir l’absence totale de trou de couverture, en dérogeant à toute clause contraire (franchise, cessation, aléa). Mise en œuvre dès le 1er septembre 2026, généralisation au plus tard le 1er janvier 2027.</p><div class="meta">↳ <a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">source complémentaire</a></div></div>
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">Seuil des 200 000 € : périmètre clarifié</a></h3><div class="meta">CCSF / Banque de France • 26/05/2026</div><p>L’accès aux contrats sans sélection médicale suppose un encours cumulé n’excédant pas 200 000 € par assuré. L’application étant hétérogène — certains acteurs y intègrent des prêts consommation ou professionnels —, les assureurs s’engagent à ne retenir que les crédits immobiliers destinés à l’habitation. Mécaniquement, davantage d’emprunteurs repassent sous le seuil. Effet dès le 1er septembre 2026, généralisation au 1er juin 2027.</p></div>
@@ -124,7 +166,7 @@
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">Clauses d’exclusion pour états pathologiques antérieurs : le CCSF les juge non conformes</a></h3><div class="meta">CCSF / Banque de France • 26/05/2026</div><p>Le Comité constate des analyses juridiques divergentes, puis tranche : les clauses excluant les états pathologiques antérieurs — générales ou spécifiques — « ne sont pas conformes à l’objectif poursuivi par la loi Lemoine », dès lors qu’elles neutralisent en pratique l’interdiction de collecter l’information de santé. Environ 93 contrats analysés comportent une telle clause, dont 24 l’appliquant aux souscriptions sans sélection médicale.</p></div>
         </div></div>
       <div class="card">
-        <div class="card-head"><div class="card-title">🔁 Le processus de substitution encadré — avis du 10 novembre 2026</div></div>
+        <div class="card-head" id="zone-le-processus-de-substitution-encadre"><div class="card-title">🔁 Le processus de substitution encadré — avis du 10 novembre 2026<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">Un « guide de substitution » et un point de contact identifié</a></h3><div class="meta">CCSF / Banque de France • 10/11/2026</div><p>Chaque banque devra publier un guide décrivant le parcours interne, les pièces à fournir pour un dossier complet, l’accès au tableau d’amortissement, les délais et les étapes, et désigner un point de contact fonctionnel identifiable par les emprunteurs comme par les intermédiaires. Objectif affiché : réduire les erreurs d’aiguillage et les délais. Mise en œuvre du 1er juillet 2027 au plus tard le 31 décembre 2027.</p><div class="meta">↳ <a href="https://www.banque-france.fr/fr/communiques-de-presse/assurance-emprunteur-le-ccsf-adopte-un-avis-visant-fluidifier-et-securiser-le-processus-de" target="_blank">source complémentaire</a></div></div>
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">Prise d’effet à « E+2 » : le calendrier devient prévisible</a></h3><div class="meta">CCSF / Banque de France • 10/11/2026</div><p>Fédération bancaire française, intermédiaires et France Assureurs proposent de fixer l’effet de la substitution à la deuxième échéance mensuelle du crédit suivant la réception d’un dossier complet et conforme, sauf demande contraire de l’assuré. Le CCSF retient ce schéma comme référence pour limiter doubles prélèvements et primes intercalaires. Le trop-perçu reste remboursé systématiquement.</p></div>
@@ -132,21 +174,21 @@
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">Devoir de conseil et équivalence : deux responsabilités distinctes</a></h3><div class="meta">CCSF / Banque de France • 10/11/2026</div><p>Le Comité rappelle que le devoir de conseil du distributeur est distinct de l’appréciation de l’équivalence des garanties, laquelle relève exclusivement du prêteur — et distinct de la simple remise documentaire. Le distributeur doit mettre en garde l’assuré lorsque le contrat proposé dégrade significativement sa couverture : garanties absentes, exclusions ou franchises nouvelles.</p><div class="meta">↳ <a href="https://acpr.banque-france.fr/fr/publications-et-statistiques/publications/recommandation-2024-r-03-du-21-novembre-2024-sur-le-recueil-des-informations-relatives-au-client" target="_blank">source complémentaire</a></div></div>
         </div></div>
       <div class="card">
-        <div class="card-head"><div class="card-title">🏛️ Autorités de contrôle : ACPR et DGCCRF</div></div>
+        <div class="card-head" id="zone-autorites-de-controle"><div class="card-title">🏛️ Autorités de contrôle : ACPR et DGCCRF<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3><a href="https://acpr.banque-france.fr/fr/publications-et-statistiques/publications/libre-choix-de-lassurance-emprunteur-les-bonnes-pratiques-recommandees-par-lacpr" target="_blank">ACPR : le risque invalidité resté « à géométrie variable »</a></h3><div class="meta">ACPR / Banque de France • 14/03/2025</div><p>L’Autorité a relevé « des garanties complexes, à géométrie variable, difficiles à expliquer aux emprunteurs » : barèmes d’invalidité différents selon les organismes, référentiels d’incapacité fonctionnelle divergents, application ou non de la règle de Balthazar, indemnisation forfaitaire ou indemnitaire. C’est cette hétérogénéité qui fonde l’harmonisation des seuils négociée au CCSF.</p><div class="meta">↳ <a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">source complémentaire</a></div></div>
           <div class="item"><h3><a href="https://acpr.banque-france.fr/fr/publications-et-statistiques/publications/recommandation-2024-r-03-du-21-novembre-2024-sur-le-recueil-des-informations-relatives-au-client" target="_blank">ACPR : devoir de conseil encadré depuis fin 2025</a></h3><div class="meta">ACPR / Banque de France • 21/11/2024</div><p>La recommandation 2024-R-03 encadre le recueil des informations client et le conseil personnalisé en assurance, assurance emprunteur incluse : adéquation des garanties et suivi dans la durée. Entrée en application fin 2025, elle constitue le socle sur lequel s’adosse désormais toute demande de substitution mal documentée par un distributeur.</p></div>
           <div class="item"><h3><a href="https://www.actual-immo.fr/assurance-emprunteur-banques-sanctionnees/" target="_blank">DGCCRF : près de 900 000 € d’amendes pour dépassement du délai de dix jours</a></h3><div class="meta">DGCCRF / presse professionnelle • 10/2025</div><p>Quatre banques ont été sanctionnées pour ne pas avoir répondu dans le délai légal de dix jours ouvrés à des demandes de substitution, et pour défaut de transmission d’avenants : Crédit Agricole Paris Île-de-France 323 518 €, BRED Banque Populaire 298 000 €, CIC Est 196 000 €, Caisse d’Épargne Île-de-France 80 000 €. Le risque quitte le terrain du contrat pour celui du processus.</p><div class="meta">↳ <a href="https://www.magnolia.fr/assurance-pret-immobilier/changer/banque-peut-elle-refuser" target="_blank">source complémentaire</a></div></div>
         </div></div>
       <div class="card">
-        <div class="card-head"><div class="card-title">⚖️ Contentieux et points de vigilance pour l’emprunteur</div></div>
+        <div class="card-head" id="zone-contentieux-et-points-de-vigilance"><div class="card-title">⚖️ Contentieux et points de vigilance pour l’emprunteur<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">Cour de cassation : une clause d’invalidité jugée inintelligible</a></h3><div class="meta">Cour de cassation, 2e civ. • 07/05/2025</div><p>Dans l’arrêt n° 23-14.896, la deuxième chambre civile juge qu’une clause de garantie d’invalidité d’un contrat d’assurance emprunteur n’est pas claire et compréhensible, faute de comporter les informations suffisantes pour qu’un consommateur moyen comprenne le calcul du taux d’invalidité déterminant l’octroi de la rente. C’est la première décision citée par le CCSF à l’appui de son exigence de lisibilité.</p></div>
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">La double franchise, trou de garantie résiduel</a></h3><div class="meta">CCSF / Banque de France • 26/05/2026</div><p>Les associations de consommateurs et de patients saluent l’engagement de continuité, mais signalent un angle mort : après substitution, le nouvel assureur applique sa propre franchise, souvent 90 jours et jusqu’à 120 ou 180 jours, avec des délais de carence atteignant parfois 365 jours en PTIA. Si l’assuré était resté, il n’aurait pas subi cette double franchise.</p></div>
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">Médiation de l’assurance : dix-sept dossiers de rupture de couverture</a></h3><div class="meta">CCSF / Banque de France • 26/05/2026</div><p>Entre 2020 et 2024, dix-sept cas de rupture de couverture lors d’une substitution ont été portés devant le Médiateur de l’assurance. Ces dossiers — arrêt de travail déclaré avant la prise d’effet, franchise se terminant après la résiliation, rechute après bascule — constituent la matière factuelle sur laquelle le CCSF a bâti l’engagement d’absence de trou de couverture.</p></div>
         </div></div>
       <div class="card">
-        <div class="card-head"><div class="card-title">📈 Marché : ce que la substitution est devenue</div></div>
+        <div class="card-head" id="zone-marche"><div class="card-title">📈 Marché : ce que la substitution est devenue<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">496 654 demandes de substitution en 2024</a></h3><div class="meta">CCSF / Banque de France • 10/11/2026</div><p>Les établissements bancaires ont recensé 496 654 demandes de substitution en 2024, contre 198 530 en 2021, et 93,91 % d’entre elles sont acceptées (92,86 % en 2021). La résiliation infra-annuelle issue de la loi Lemoine est donc entrée dans les mœurs, ce qui déplace l’enjeu de l’éligibilité vers la qualité d’exécution.</p></div>
           <div class="item"><h3><a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">Assureurs alternatifs : 17,48 % des encours couverts</a></h3><div class="meta">CCSF / Banque de France • 10/11/2026</div><p>La part de marché des crédits en portefeuille couverts par des assureurs alternatifs externes est passée de 16 % en 2021 à 17,48 % en 2024. La progression est réelle mais lente, cohérente avec un taux d’acceptation élevé : le frein n’est plus le refus bancaire, mais la lourdeur du parcours.</p></div>
@@ -154,7 +196,7 @@
         </div></div>
 
       <div class="card">
-        <div class="card-head"><div class="card-title">📡 Signaux faibles — 5</div></div>
+        <div class="card-head" id="zone-signaux-faibles"><div class="card-title">📡 Signaux faibles — 5<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3>Le risque se déplace du contrat vers le processus</h3><div class="meta"><a href="https://www.actual-immo.fr/assurance-emprunteur-banques-sanctionnees/" target="_blank">source</a> · <a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">source</a></div><p>Les sanctions DGCCRF ne portent plus sur la rédaction des garanties mais sur la tenue des délais et la transmission des avenants : la conformité d’un prêteur se mesurera désormais à son parcours de substitution, pas à sa notice.</p></div>
           <div class="item"><h3>Un stock de contrats à refaire, pas seulement des flux</h3><div class="meta"><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">source</a> · <a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/avis-du-ccsf-sur-les-contrats-dassurance-emprunteur-des-credits-immobiliers" target="_blank">source</a></div><p>L’engagement sur la continuité de couverture vaut pour les contrats existants comme pour les nouveaux ; le calendrier de généralisation au 1er janvier 2027 annonce un chantier de réécriture des conditions générales plus lourd que prévu.</p></div>
@@ -163,14 +205,14 @@
           <div class="item"><h3>Un calendrier à trois vitesses</h3><div class="meta"><a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">source</a> · <a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">source</a></div><p>Trois échéances coexistent — 1er septembre 2026 pour la continuité de couverture, 1er janvier 2027 pour la généralisation, 1er juillet 2027 pour le guide et la bascule « E+2 » — ce qui créera des situations mixtes pendant plus d’un an pour les contrats en cours.</p></div>
         </div></div>
       <div class="card">
-        <div class="card-head"><div class="card-title">🧭 Lecture transversale</div></div>
+        <div class="card-head" id="zone-lecture-transversale"><div class="card-title">🧭 Lecture transversale<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><p>Deux avis du CCSF en six mois dessinent le même mouvement : après avoir servi la résiliation et la suppression du questionnaire de santé, la réglementation s’attaque au moment le plus fragile, celui où l’emprunteur change de contrat. <a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/avis-du-ccsf-sur-les-contrats-dassurance-emprunteur-des-credits-immobiliers" target="_blank">source</a> <a href="https://www.banque-france.fr/fr/communiques-de-presse/assurance-emprunteur-le-ccsf-adopte-un-avis-visant-fluidifier-et-securiser-le-processus-de" target="_blank">source</a></p></div>
           <div class="item"><p>Le seuil des 200 000 € élargi aux seuls crédits immobiliers relève d’une technique simple — resserrer le périmètre du calcul pour élargir l’accès —, mais son effet est structurel : il fait entrer dans le champ Lemoine des emprunteurs qui en étaient écartés par des prêts annexes. <a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">source</a></p></div>
           <div class="item"><p>La distinction réaffirmée entre devoir de conseil du distributeur et appréciation de l’équivalence par le prêteur est un point de responsabilité, pas de vocabulaire : elle délimite qui répond de quoi devant l’ACPR et devant le juge. <a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">source</a> <a href="https://acpr.banque-france.fr/fr/publications-et-statistiques/publications/recommandation-2024-r-03-du-21-novembre-2024-sur-le-recueil-des-informations-relatives-au-client" target="_blank">source</a></p></div>
         </div></div>
       <div class="card">
-        <div class="card-head"><div class="card-title">🔮 Prospective</div></div>
+        <div class="card-head" id="zone-prospective"><div class="card-title">🔮 Prospective<a class="retour-haut" href="#veille-toc-haut" title="Retour en haut">↑</a></div></div>
         <div class="card-body">
           <div class="item"><h3>Bilan à horizon 2028</h3><div class="meta">CCSF • 26/05/2026</div><p>Après mise en place effective de l’avis de mai, le Comité a prévu un suivi de l’évolution des tarifs et de la sinistralité.</p><div class="meta">↳ <a href="https://www.banque-france.fr/system/files/2026-06/CCSF_Avis_ADE_1_adopte_260526.pdf" target="_blank">source</a></div></div>
           <div class="item"><h3>Point d’étape sur la digitalisation</h3><div class="meta">CCSF • 10/11/2026</div><p>Un mouvement de digitalisation du parcours de substitution est en cours ; le Comité refera un point d’étape, l’organisation interne restant de la responsabilité de chaque établissement.</p><div class="meta">↳ <a href="https://www.banque-france.fr/system/files/2026-11/CCSF_Avis_ADE2_substitution_10nov26.pdf" target="_blank">source</a></div></div>
@@ -203,4 +245,54 @@ function hvPaint(){var d=(document.documentElement.dataset.theme||'dark')==='dar
 document.addEventListener('DOMContentLoaded',hvPaint);
 </script>
 
+<script id="veille-toc-js">
+(function(){
+  var HAUT = '#veille-toc-haut';
+  var depart = null, contact = 0;
+  function cible_de(h){ return h === HAUT ? null : document.getElementById(h.slice(1)); }
+  function marge(){                                   /* hauteur réelle de la barre, + air */
+    var b = document.getElementById('veille-toc');
+    return (b ? Math.round(b.getBoundingClientRect().height) : 52) + 10;
+  }
+  function pos(el){
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    return Math.max(0, Math.round(y) - marge());
+  }
+  function aller(c){
+    var y = c ? pos(c) : 0;
+    window.scrollTo(0, y);
+    if (Math.abs((window.pageYOffset || 0) - y) > 4) {   /* le moteur a ramené la page : on rejoue */
+      setTimeout(function(){ window.scrollTo(0, y); }, 60);
+    }
+  }
+  function lien(e){
+    return e.target && e.target.closest ? e.target.closest('a.retour-haut, #veille-toc a.vt') : null;
+  }
+  function suivre(e){
+    var a = lien(e), t = e.changedTouches ? e.changedTouches[0] : null;
+    depart = a ? {lien: a, x: t ? t.clientX : 0, y: t ? t.clientY : 0, t: Date.now()} : null;
+  }
+  function relacher(e){
+    var a = lien(e) || (depart ? depart.lien : null), d = depart;
+    depart = null;
+    if (!a) return;
+    if (d) {                                          /* appui ou balayage ? */
+      var t = e.changedTouches ? e.changedTouches[0] : null;
+      var bouge = t ? (Math.abs(t.clientX - d.x) > 10 || Math.abs(t.clientY - d.y) > 10) : false;
+      if (bouge || Date.now() - d.t > 700) return;     /* balayage : on laisse la page défiler */
+    }
+    var h = a.getAttribute('href') || '';
+    if (h.charAt(0) !== '#') return;
+    e.preventDefault();
+    var c = cible_de(h);
+    if (history.pushState) { try { history.pushState(null, '', h); } catch(err) {} }
+    aller(c);
+    setTimeout(function(){ aller(c); }, 120);          /* après un éventuel rappel de focus */
+  }
+  document.addEventListener('touchstart', function(e){ contact = Date.now(); suivre(e); }, {capture:true, passive:true});
+  document.addEventListener('touchend', function(e){ contact = Date.now(); relacher(e); }, {capture:true, passive:false});
+  document.addEventListener('mousedown', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+  document.addEventListener('click', function(e){ if (Date.now() - contact < 800) return; relacher(e); }, {capture:true});
+})();
+</script>
 </body></html>
